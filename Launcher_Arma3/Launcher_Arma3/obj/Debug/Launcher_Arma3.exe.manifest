@@ -4,7 +4,7 @@
   <description asmv2:iconFile="icon_launcher_ico.ico" xmlns="urn:schemas-microsoft-com:asm.v1" />
   <application />
   <entryPoint>
-    <assemblyIdentity name="Launcher_Arma3" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
+    <assemblyIdentity name="Launcher_Arma3" version="1.0.0.1" language="neutral" processorArchitecture="msil" />
     <commandLine file="Launcher_Arma3.exe" parameters="" />
   </entryPoint>
   <trustInfo>
@@ -43,14 +43,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Launcher_Arma3.exe" size="996336">
-      <assemblyIdentity name="Launcher_Arma3" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Launcher_Arma3.exe" size="997360">
+      <assemblyIdentity name="Launcher_Arma3" version="1.0.0.1" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>dNnHfYphQ//aNcU9/fHMlfhY3RShS+A7Bn01BV2smq0=</dsig:DigestValue>
+        <dsig:DigestValue>xWRxUnMZoY2NuUKdjoiK4o9X5Vmc6OAnNVjHRhH7tJE=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

@@ -93,6 +93,16 @@ namespace Launcher_Arma3
         private void Launch_Load(object sender, EventArgs e)
         {
 
+            System.Drawing.Graphics graphicsObj;
+
+            graphicsObj = this.CreateGraphics();
+
+            Pen myPen = new Pen(System.Drawing.Color.Red, 5);
+
+            graphicsObj.DrawLine(myPen, 20, 20, 200, 20);
+
+
+
             // Change Launcher Name  */* Change le nom du launcher
             Launch.ActiveForm.Text = namelaunch;
             iTalk_ThemeContainer1.Text = namelaunch;
@@ -313,6 +323,8 @@ namespace Launcher_Arma3
         {
             MessageBox.Show(language);
         }
+
+
 
 
     }
