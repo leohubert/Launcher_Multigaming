@@ -72,8 +72,8 @@ namespace Launcher_Arma3
 
         //Settings Update */* Paramètre mise à jour
         string update_ext = "Update.exe";
-        string update_site = "up_site.txt";
-        string update_destlaunch = "up_patch.txt";
+        string update_site = "site.txt";
+        string update_destlaunch = "update.txt";
                                                              
         // Parametre anexe 
         bool locked = false; // DON'T CHANGE 
@@ -266,6 +266,10 @@ namespace Launcher_Arma3
                 up_destlauncher.WriteLine(dlauncher);
                 up_destlauncher.Close();
 
+                MessageBox.Show(dlauncher + Environment.NewLine + ftp + dest_update + "/" + extention );
+
+
+
                 Process.Start(appdata + servername + "\\" + dest_update + "\\" + update_ext );
 
         
@@ -273,6 +277,7 @@ namespace Launcher_Arma3
 
             
                 Application.Exit();
+
             }
 
 
