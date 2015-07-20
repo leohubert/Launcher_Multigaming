@@ -23,6 +23,7 @@ using System.IO;
 using System.Net;
 using System.Globalization;
 using System.Threading;
+using System.Net.NetworkInformation;
 
 namespace Launcher_Arma3
 {
@@ -50,7 +51,16 @@ namespace Launcher_Arma3
         const string servpassword = "none"; // Password of your arma 3 server ( if you don't have a password make " none " ) */* Le mots de passe de votre serveur Arma 3 ( si vous n'avez pas de mot de passe mettez " none " )
 
         //Configuration language
-        public string language = "FR"; // Make your language "EN" pour l'anglais */* Mettez votre langage "FR" pour le français.
+        public string language = "AL"; // Make your language "EN" pour l'anglais */* Mettez votre langage "FR" pour le français.
+
+        /*
+           List of language // Liste des langues
+         
+         - English // Anglais  //  " EN "
+         - French // Français  //  " FR "
+         - German // Allemand  //  " AL "
+         
+        */
 
         // Config VocalServer
         const string servervocal = "teamspeak3"; // Choise your serveur vocal ("teamspeak3" or "mumble") */* Choissisez votre serveur vocal ("teamspeak3" ou "mumble")
@@ -81,6 +91,7 @@ namespace Launcher_Arma3
         string dlauncher = Application.ExecutablePath;
         string vlauncher = Application.ProductVersion.ToString();
         string username = "UserName";
+        bool connection = NetworkInterface.GetIsNetworkAvailable();
 
 
         public Launch()
@@ -92,16 +103,6 @@ namespace Launcher_Arma3
 
         private void Launch_Load(object sender, EventArgs e)
         {
-
-            System.Drawing.Graphics graphicsObj;
-
-            graphicsObj = this.CreateGraphics();
-
-            Pen myPen = new Pen(System.Drawing.Color.Red, 5);
-
-            graphicsObj.DrawLine(myPen, 20, 20, 200, 20);
-
-
 
             // Change Launcher Name  */* Change le nom du launcher
             Launch.ActiveForm.Text = namelaunch;
@@ -229,19 +230,14 @@ namespace Launcher_Arma3
             MessageBox.Show("CODAGE IN PROGRESS */* EN COUR DE CODAGE" , namelaunch );
         }
 
-        private void destination_bouton_Click(object sender, EventArgs e)
-        {
-          
-        } 
-
-
         private void Option_Boutton_Click(object sender, EventArgs e)
         {
-
-            Form2 dlg = new Form2();
-            dlg.language = language;
-            dlg.Show();
+            Form2 frm = new Form2(language);
+            frm.Show();
+         
         }
+
+
 
         private void Update_Launcher_DoWork(object sender, DoWorkEventArgs e)
         {
@@ -313,6 +309,19 @@ namespace Launcher_Arma3
                 Play_bouton.Text = "Jouer";
                 Option_Boutton.Text = "Options";
                 destination_bouton.Text = "Destination";
+
+                //Load Connection bouton
+                if (connection == true)
+                {
+                    connection_label.ForeColor = Color.Green;
+                    connection_label.Text = "Connecté";
+                }
+                else
+                {
+                    connection_label.ForeColor = Color.Red;
+                    connection_label.Text = "Déconnecté";
+                }
+                 
             }
 
             // English language */* Langage Anglais
@@ -323,6 +332,40 @@ namespace Launcher_Arma3
                 Play_bouton.Text = "Play";
                 Option_Boutton.Text = "Settings";
                 destination_bouton.Text = "Destination";
+
+                //Load Connection bouton
+                if (connection == true)
+                {
+                    connection_label.ForeColor = Color.Green;
+                    connection_label.Text = "Connected";
+                }
+                else
+                {
+                    connection_label.ForeColor = Color.Red;
+                    connection_label.Text = "Disconnected";
+                }  
+            }
+
+            // German language */* Langage Allemand
+            if (language == "AL")
+            {
+                Group_Link.Text = "Anschlüsse";
+                WebSite_bouton.Text = "Baustelle";
+                Play_bouton.Text = "Spielen";
+                Option_Boutton.Text = "Einstellungen";
+                destination_bouton.Text = "Reiseziel";
+
+                //Load Connection bouton
+                if (connection == true)
+                {
+                    connection_label.ForeColor = Color.Green;
+                    connection_label.Text = "Verbunden";
+                }
+                else
+                {
+                    connection_label.ForeColor = Color.Red;
+                    connection_label.Text = "Getrennt";
+                }
             }
         }
 
@@ -330,6 +373,8 @@ namespace Launcher_Arma3
         {
             MessageBox.Show(language);
         }
+
+
 
 
 

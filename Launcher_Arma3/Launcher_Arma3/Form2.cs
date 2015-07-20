@@ -16,12 +16,12 @@ namespace Launcher_Arma3
     public partial class Form2 : Form
     {
 
-        public string language {     get {  return language ;}  set { language = language; } }
+        string language = "FR";
 
-
-        public Form2()
+        public Form2(string value)
         {
             InitializeComponent();
+            language = value;
         }
 
 
@@ -51,12 +51,17 @@ namespace Launcher_Arma3
                 change_language.RunWorkerAsync();
          
             }
+            if (Language_Chose.Text == "Allemand")
+            {
+                language = "AL";
+                change_language.RunWorkerAsync();
+
+            }
         }
 
         private void iTalk_Icon_Tick1_Click(object sender, EventArgs e)
         {
-
-     
+           
             this.Hide();
         }
 
@@ -78,8 +83,15 @@ namespace Launcher_Arma3
 
             }
 
-        }
+            if (language == "AL")
+            {
+                monoFlat_ThemeContainer1.Text = "Einstellungen";
+                Language_label.Text = "Sprache: ";
+                Language_Chose.Text = "Allemand";
 
+            }
+
+        }
 
 
     }

@@ -32,8 +32,7 @@
             this.Update_Launcher = new System.ComponentModel.BackgroundWorker();
             this.Change_Lang = new System.ComponentModel.BackgroundWorker();
             this.iTalk_ThemeContainer1 = new iTalk.iTalk_ThemeContainer();
-            this.iTalk_ChatBubble_R1 = new iTalk.iTalk_ChatBubble_R();
-            this.iTalk_ChatBubble_L1 = new iTalk.iTalk_ChatBubble_L();
+            this.connection_label = new iTalk.iTalk_Label();
             this.destination_bouton = new iTalk.iTalk_Button_2();
             this.Option_Boutton = new iTalk.iTalk_Button_1();
             this.Play_bouton = new iTalk.iTalk_Button_2();
@@ -60,8 +59,7 @@
             // iTalk_ThemeContainer1
             // 
             this.iTalk_ThemeContainer1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(246)))), ((int)(((byte)(246)))), ((int)(((byte)(246)))));
-            this.iTalk_ThemeContainer1.Controls.Add(this.iTalk_ChatBubble_R1);
-            this.iTalk_ThemeContainer1.Controls.Add(this.iTalk_ChatBubble_L1);
+            this.iTalk_ThemeContainer1.Controls.Add(this.connection_label);
             this.iTalk_ThemeContainer1.Controls.Add(this.destination_bouton);
             this.iTalk_ThemeContainer1.Controls.Add(this.Option_Boutton);
             this.iTalk_ThemeContainer1.Controls.Add(this.Play_bouton);
@@ -83,29 +81,17 @@
             this.iTalk_ThemeContainer1.TabIndex = 0;
             this.iTalk_ThemeContainer1.Text = "Launcher Arma 3";
             // 
-            // iTalk_ChatBubble_R1
+            // connection_label
             // 
-            this.iTalk_ChatBubble_R1.BackColor = System.Drawing.Color.Transparent;
-            this.iTalk_ChatBubble_R1.BubbleColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(206)))), ((int)(((byte)(215)))));
-            this.iTalk_ChatBubble_R1.DrawBubbleArrow = true;
-            this.iTalk_ChatBubble_R1.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.iTalk_ChatBubble_R1.Location = new System.Drawing.Point(628, 383);
-            this.iTalk_ChatBubble_R1.Name = "iTalk_ChatBubble_R1";
-            this.iTalk_ChatBubble_R1.Size = new System.Drawing.Size(152, 60);
-            this.iTalk_ChatBubble_R1.TabIndex = 10;
-            this.iTalk_ChatBubble_R1.Text = "Trop #bow ce launcher non ?";
-            // 
-            // iTalk_ChatBubble_L1
-            // 
-            this.iTalk_ChatBubble_L1.BackColor = System.Drawing.Color.Transparent;
-            this.iTalk_ChatBubble_L1.BubbleColor = System.Drawing.Color.FromArgb(((int)(((byte)(217)))), ((int)(((byte)(217)))), ((int)(((byte)(217)))));
-            this.iTalk_ChatBubble_L1.DrawBubbleArrow = true;
-            this.iTalk_ChatBubble_L1.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.iTalk_ChatBubble_L1.Location = new System.Drawing.Point(230, 258);
-            this.iTalk_ChatBubble_L1.Name = "iTalk_ChatBubble_L1";
-            this.iTalk_ChatBubble_L1.Size = new System.Drawing.Size(181, 60);
-            this.iTalk_ChatBubble_L1.TabIndex = 9;
-            this.iTalk_ChatBubble_L1.Text = "Bienvenue sur le launcher crée par Hubert Léo ";
+            this.connection_label.AutoSize = true;
+            this.connection_label.BackColor = System.Drawing.Color.Transparent;
+            this.connection_label.Font = new System.Drawing.Font("Segoe UI Emoji", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.connection_label.ForeColor = System.Drawing.Color.RoyalBlue;
+            this.connection_label.Location = new System.Drawing.Point(2, 421);
+            this.connection_label.Name = "connection_label";
+            this.connection_label.Size = new System.Drawing.Size(83, 20);
+            this.connection_label.TabIndex = 11;
+            this.connection_label.Text = "Loading ..";
             // 
             // destination_bouton
             // 
@@ -278,8 +264,7 @@
         private iTalk.iTalk_Button_1 Option_Boutton;
         private iTalk.iTalk_Button_2 destination_bouton;
         private System.ComponentModel.BackgroundWorker Change_Lang;
-        private iTalk.iTalk_ChatBubble_R iTalk_ChatBubble_R1;
-        private iTalk.iTalk_ChatBubble_L iTalk_ChatBubble_L1;
+        private iTalk.iTalk_Label connection_label;
 
 
     }

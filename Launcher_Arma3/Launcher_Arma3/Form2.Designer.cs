@@ -94,7 +94,8 @@
             this.Language_Chose.ItemHeight = 16;
             this.Language_Chose.Items.AddRange(new object[] {
             "English",
-            "Français"});
+            "Français",
+            "Allemand"});
             this.Language_Chose.Location = new System.Drawing.Point(15, 86);
             this.Language_Chose.Name = "Language_Chose";
             this.Language_Chose.Size = new System.Drawing.Size(303, 22);
