@@ -1,0 +1,7 @@
+Erreur list launcher Arma3
+
+
+Français:
+
+Erreur #202: Bug de la mise à jours, les fichier que le launcher doit généré ne sont pas crée ou valide, vérifié les paramètre de mise à jours dans le launcher et dans le Update_Launcher.
+Erreur #401: Destination d'Arma3 non valide.

@@ -75,23 +75,29 @@ namespace Launcher_Arma3
 
         //Settings destination 
         string dest_version = "version"; // Folder where all version file is located */* Dossier ou sont placé tout les fichier version
-        string dest_update = "update"; // Folder where all updazte launcher file is located */* Dossier ou sont placé tout les fichier de mise à jour du launcher
+        string dest_update = "update"; // Folder where all update launcher file is located */* Dossier ou sont placé tout les fichier de mise à jour du launcher
+        string dest_arma = "C:\\Program Files (x86)\\Steam\\SteamApps\\common\\Arma 3\\"; // Folder of arma 3 */* Dossier d'arma 3
 
         // Settings file */* Paramètre fichier
-        string file_vlauncher = "vlauncher.txt";
+        string file_vlauncher = "vlauncher.txt"; // Distant file launcher version */* Fichier distant version launcher
+        string file_darma = "darma3.a3";  // Local file directory arma 3 */* Fichier local destination arma3
+        string file_arma3 = "arma3battleye.exe"; // Extention of Arma3 */* Extention d'arma3
 
         //Settings Update */* Paramètre mise à jour
-        string update_ext = "Update.exe";
-        string update_site = "site.txt";
-        string update_destlaunch = "update.txt";
+        string update_ext = "Update.exe"; // Distant program for update launcher */* Fichier distant pour la mise à jour du launcher
+        string update_site = "site.txt"; // Local File where is the website for download the update */* Fichier local là ou est le lien pour télécharger la mise à jour
+        string update_destlaunch = "update.txt"; // Local File where is the patch to launcher up to date */* Fichier local là ou est la destination du launcher à mettre à jours
                                                              
         // Parametre anexe 
+
+        string appdata = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData)+ "\\" + servername + "\\"; // DON'T CHANGE
+        string dlauncher = Application.ExecutablePath; // DON'T CHANGE
+        string vlauncher = Application.ProductVersion.ToString();// DON'T CHANGE
+        string username = "UserName"; // DON'T CHANGE
+        string msg_darma = "Arma3 Directory: ";
+        bool connection = NetworkInterface.GetIsNetworkAvailable();// DON'T CHANGE
         bool locked = false; // DON'T CHANGE 
-        string appdata = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\\"; // DON'T CHANGE
-        string dlauncher = Application.ExecutablePath;
-        string vlauncher = Application.ProductVersion.ToString();
-        string username = "UserName";
-        bool connection = NetworkInterface.GetIsNetworkAvailable();
+
 
 
         public Launch()
@@ -131,15 +137,46 @@ namespace Launcher_Arma3
 
 
             // Create AppData repertory */* Crée le répertoire AppData
-            if (!Directory.Exists(appdata + servername))
+            if (!Directory.Exists(appdata))
             {
-                Directory.CreateDirectory(appdata + servername);
+                Directory.CreateDirectory(appdata);
             }
 
 
             // Launch BackGround Worker  */* Lance les BackGround Worker
-            Update_Launcher.RunWorkerAsync();
-                
+            Update_Launcher.RunWorkerAsync(); // Update background worker */* Mise à jour background worker
+
+
+            // Load if arma3 destination is completed */* Charge si la destination d'arma3 est fini
+            if (File.Exists(appdata + file_darma))
+            {
+                dest_arma = File.ReadAllText(appdata + file_darma);
+            }
+            else
+            {
+                if (!File.Exists(dest_arma + file_arma3))
+                {
+                    Folder.ShowDialog();
+                    dest_arma = Folder.SelectedPath + "\\";
+                    File.WriteAllText(appdata + file_darma, dest_arma);
+                }
+            }
+
+            if (!File.Exists(dest_arma + file_arma3))
+            {
+                MessageBox.Show("Erreur #401 | Arma3 Directory is not valid, choose a new Directory"
+                    + Environment.NewLine + "Erreur #401 | Destination d'Arma3 non valide, choisissez un nouvelle destination"
+                    + Environment.NewLine + Environment.NewLine + "Default: C:\\Program Files (x86)\\Steam\\SteamApps\\common\\Arma 3");
+                label_darma.ForeColor = Color.Red;
+            }
+            else
+            {
+                label_darma.ForeColor = Color.Green;
+            }
+
+            label_darma.Text = msg_darma + dest_arma;
+
+            
 
         }
 
@@ -156,6 +193,29 @@ namespace Launcher_Arma3
         {
             Process.Start(website);
         }
+
+
+        private void destination_bouton_Click_1(object sender, EventArgs e)
+        {
+            Folder.ShowDialog();
+            dest_arma = Folder.SelectedPath + "\\";
+            File.WriteAllText(appdata + file_darma, dest_arma);
+            if (!File.Exists(dest_arma + file_arma3))
+            {
+                MessageBox.Show("Erreur #401 | Arma3 Directory is not valid, choose a new Directory"
+                    + Environment.NewLine + "Erreur #401 | Destination d'Arma3 non valide, choisissez un nouvelle destination"
+                    + Environment.NewLine + Environment.NewLine + "Default: C:\\Program Files (x86)\\Steam\\SteamApps\\common\\Arma 3");
+                label_darma.ForeColor = Color.Red;
+            }
+            else
+            {
+                label_darma.ForeColor = Color.Green;
+            }
+
+            label_darma.Text = msg_darma + dest_arma;
+
+        }
+
 
         private void Vocal_bouton_Click(object sender, EventArgs e)
         {
@@ -250,9 +310,9 @@ namespace Launcher_Arma3
             if (content != vlauncher)
             {
                 // Create Update folder */* crée le dossier Update
-                if (!Directory.Exists(appdata + servername + "\\" + dest_update))
+                if (!Directory.Exists(appdata + "\\" + dest_update))
                 {
-                    Directory.CreateDirectory(appdata + servername + "\\" + dest_update);
+                    Directory.CreateDirectory(appdata + "\\" + dest_update);
                 }
 
                // Show a dialog before update */* montre un dialogue avant l'update 
@@ -260,34 +320,34 @@ namespace Launcher_Arma3
                 
                 //Start the update program */* lance le programme de mise à jour 
                 WebClient webClient = new WebClient();
-                webClient.DownloadFile(ftp + dest_update + "/" + update_ext, appdata + servername + "\\" + dest_update + "\\" + update_ext);
+                webClient.DownloadFile(ftp + dest_update + "/" + update_ext, appdata + "\\" + dest_update + "\\" + update_ext);
       
                 //Write into file update 
-                if (File.Exists(appdata + servername + "\\" + dest_update + "\\" + update_site))
+                if (File.Exists(appdata + "\\" + dest_update + "\\" + update_site))
                 {
-                    File.Delete(appdata + servername + "\\" + dest_update + "\\" + update_site);
+                    File.Delete(appdata + "\\" + dest_update + "\\" + update_site);
                 }
-                File.AppendAllText(appdata + servername + "\\" + dest_update  + "\\" + update_site,ftp + dest_update + "/" + extention);
+                File.AppendAllText(appdata + "\\" + dest_update  + "\\" + update_site,ftp + dest_update + "/" + extention);
                 /*
-                TextWriter up_site = new StreamWriter(appdata + servername + "\\" + dest_update  + "\\" + update_site);
+                TextWriter up_site = new StreamWriter(appdata + "\\" + dest_update  + "\\" + update_site);
                 up_site.WriteLine(ftp + dest_update + "/" + extention);
                 up_site.Close();
                 */
 
 
                 //Write into file update 
-                if (File.Exists(appdata + servername + "\\" + dest_update + "\\" + update_destlaunch))
+                if (File.Exists(appdata + "\\" + dest_update + "\\" + update_destlaunch))
                 {
-                    File.Delete(appdata + servername + "\\" + dest_update + "\\" + update_destlaunch);
+                    File.Delete(appdata + "\\" + dest_update + "\\" + update_destlaunch);
                 }
-                File.AppendAllText(appdata + servername + "\\" + dest_update + "\\" + update_destlaunch, dlauncher);
+                File.AppendAllText(appdata + "\\" + dest_update + "\\" + update_destlaunch, dlauncher);
                 /*
-                TextWriter up_destlauncher = new StreamWriter(appdata + servername + "\\" + dest_update + "\\" + update_destlaunch);
+                TextWriter up_destlauncher = new StreamWriter(appdata + "\\" + dest_update + "\\" + update_destlaunch);
                 up_destlauncher.WriteLine(dlauncher);
                 up_destlauncher.Close();
                 */
 
-                Process.Start(appdata + servername + "\\" + dest_update + "\\" + update_ext );
+                Process.Start(appdata + "\\" + dest_update + "\\" + update_ext );
                         
                 Application.Exit();
 
@@ -309,6 +369,8 @@ namespace Launcher_Arma3
                 Play_bouton.Text = "Jouer";
                 Option_Boutton.Text = "Options";
                 destination_bouton.Text = "Destination";
+                msg_darma = "Destination Arma3: ";
+                label_darma.Text = msg_darma + dest_arma;
 
                 //Load Connection bouton
                 if (connection == true)
@@ -332,6 +394,8 @@ namespace Launcher_Arma3
                 Play_bouton.Text = "Play";
                 Option_Boutton.Text = "Settings";
                 destination_bouton.Text = "Destination";
+                msg_darma = "Arma3 Directory: ";
+                label_darma.Text = msg_darma + dest_arma;
 
                 //Load Connection bouton
                 if (connection == true)
@@ -354,6 +418,8 @@ namespace Launcher_Arma3
                 Play_bouton.Text = "Spielen";
                 Option_Boutton.Text = "Einstellungen";
                 destination_bouton.Text = "Reiseziel";
+                msg_darma = "Arma 3 Reiseziel: ";
+                label_darma.Text = msg_darma + dest_arma;
 
                 //Load Connection bouton
                 if (connection == true)
@@ -367,11 +433,6 @@ namespace Launcher_Arma3
                     connection_label.Text = "Getrennt";
                 }
             }
-        }
-
-        private void destination_bouton_Click_1(object sender, EventArgs e)
-        {
-            MessageBox.Show(language);
         }
 
 
