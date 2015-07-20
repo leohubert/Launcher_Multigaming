@@ -36,3 +36,4 @@ C:\Users\Leo\Documents\GitHub\Launcher_Arma3\Launcher_Arma3\Launcher_Arma3\obj\D
 C:\Users\Leo\Documents\GitHub\Launcher_Arma3\Launcher_Arma3\Launcher_Arma3\obj\Debug\Launcher_Arma3.TrustInfo.xml
 C:\Users\Leo\Documents\GitHub\Launcher_Arma3\Launcher_Arma3\Launcher_Arma3\obj\Debug\Launcher_Arma3.exe.manifest
 C:\Users\Leo\Documents\GitHub\Launcher_Arma3\Launcher_Arma3\Launcher_Arma3\obj\Debug\Launcher_Arma3.application
+C:\Users\Leo\Documents\GitHub\Launcher_Arma3\Launcher_Arma3\Launcher_Arma3\obj\Debug\Launcher_Arma3.csprojResolveAssemblyReference.cache
