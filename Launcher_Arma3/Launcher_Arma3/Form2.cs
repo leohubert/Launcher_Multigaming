@@ -59,6 +59,8 @@ namespace Launcher_Arma3
             }
         }
 
+
+
         private void iTalk_Icon_Tick1_Click(object sender, EventArgs e)
         {
            
@@ -73,14 +75,12 @@ namespace Launcher_Arma3
                 monoFlat_ThemeContainer1.Text = "Launcher Options";
                 Language_label.Text = "Langage: ";
                 Language_Chose.Text = "Français";
-
             }
             if (language == "EN")
             {
                 monoFlat_ThemeContainer1.Text = "Launcher Settings";
                 Language_label.Text = "Language: ";
                 Language_Chose.Text = "English";
-
             }
 
             if (language == "AL")
@@ -88,7 +88,6 @@ namespace Launcher_Arma3
                 monoFlat_ThemeContainer1.Text = "Einstellungen";
                 Language_label.Text = "Sprache: ";
                 Language_Chose.Text = "Allemand";
-
             }
 
         }

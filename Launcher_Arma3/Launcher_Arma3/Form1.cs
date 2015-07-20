@@ -51,7 +51,7 @@ namespace Launcher_Arma3
         const string servpassword = "none"; // Password of your arma 3 server ( if you don't have a password make " none " ) */* Le mots de passe de votre serveur Arma 3 ( si vous n'avez pas de mot de passe mettez " none " )
 
         //Configuration language
-        public string language = "AL"; // Make your language "EN" pour l'anglais */* Mettez votre langage "FR" pour le français.
+        public string language = "FR"; // Make your language "EN" pour l'anglais */* Mettez votre langage "FR" pour le français.
 
         /*
            List of language // Liste des langues
