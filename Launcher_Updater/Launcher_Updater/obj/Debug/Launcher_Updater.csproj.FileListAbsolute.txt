@@ -1,0 +1,13 @@
+C:\Users\Leo\Documents\GitHub\Launcher_AltisDev.com\Launcher_Updater\Launcher_Updater\bin\Debug\Launcher_Updater.exe.config
+C:\Users\Leo\Documents\GitHub\Launcher_Arma3\Launcher_Updater\Launcher_Updater\bin\Debug\Launcher_Updater.exe.config
+C:\Users\Leo\Documents\GitHub\Launcher_Arma3\Launcher_Updater\Launcher_Updater\obj\Debug\Launcher_Updater.Form1.resources
+C:\Users\Leo\Documents\GitHub\Launcher_Arma3\Launcher_Updater\Launcher_Updater\obj\Debug\Launcher_Updater.Properties.Resources.resources
+C:\Users\Leo\Documents\GitHub\Launcher_Arma3\Launcher_Updater\Launcher_Updater\obj\Debug\Launcher_Updater.csproj.GenerateResource.Cache
+C:\Users\Leo\Documents\GitHub\Launcher_Arma3\Launcher_Updater\Launcher_Updater\bin\Debug\Launcher_Updater.exe
+C:\Users\Leo\Documents\GitHub\Launcher_Arma3\Launcher_Updater\Launcher_Updater\bin\Debug\Launcher_Updater.pdb
+C:\Users\Leo\Documents\GitHub\Launcher_Arma3\Launcher_Updater\Launcher_Updater\obj\Debug\Launcher_Updater.exe
+C:\Users\Leo\Documents\GitHub\Launcher_Arma3\Launcher_Updater\Launcher_Updater\obj\Debug\Launcher_Updater.pdb
+C:\Users\Leo\Documents\GitHub\Launcher_Arma3\Debug\Launcher_Updater.exe.config
+C:\Users\Leo\Documents\GitHub\Launcher_Arma3\Debug\Launcher_Updater.exe
+C:\Users\Leo\Documents\GitHub\Launcher_Arma3\Debug\Launcher_Updater.pdb
+C:\Users\Leo\Documents\GitHub\Launcher_Arma3\Launcher_Updater\Launcher_Updater\obj\Debug\Launcher_Updater.csprojResolveAssemblyReference.cache

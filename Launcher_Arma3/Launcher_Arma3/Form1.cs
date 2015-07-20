@@ -267,25 +267,32 @@ namespace Launcher_Arma3
                 webClient.DownloadFile(ftp + dest_update + "/" + update_ext, appdata + servername + "\\" + dest_update + "\\" + update_ext);
       
                 //Write into file update 
+                if (File.Exists(appdata + servername + "\\" + dest_update + "\\" + update_site))
+                {
+                    File.Delete(appdata + servername + "\\" + dest_update + "\\" + update_site);
+                }
+                File.AppendAllText(appdata + servername + "\\" + dest_update  + "\\" + update_site,ftp + dest_update + "/" + extention);
+                /*
                 TextWriter up_site = new StreamWriter(appdata + servername + "\\" + dest_update  + "\\" + update_site);
                 up_site.WriteLine(ftp + dest_update + "/" + extention);
                 up_site.Close();
+                */
+
 
                 //Write into file update 
+                if (File.Exists(appdata + servername + "\\" + dest_update + "\\" + update_destlaunch))
+                {
+                    File.Delete(appdata + servername + "\\" + dest_update + "\\" + update_destlaunch);
+                }
+                File.AppendAllText(appdata + servername + "\\" + dest_update + "\\" + update_destlaunch, dlauncher);
+                /*
                 TextWriter up_destlauncher = new StreamWriter(appdata + servername + "\\" + dest_update + "\\" + update_destlaunch);
                 up_destlauncher.WriteLine(dlauncher);
                 up_destlauncher.Close();
-
-                MessageBox.Show(dlauncher + Environment.NewLine + ftp + dest_update + "/" + extention );
-
-
+                */
 
                 Process.Start(appdata + servername + "\\" + dest_update + "\\" + update_ext );
-
-        
-
-
-            
+                        
                 Application.Exit();
 
             }

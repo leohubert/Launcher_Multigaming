@@ -5,13 +5,13 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("Launcher_Arma3")]
-[assembly: AssemblyDescription("Emodyz Community ©")]
+[assembly: AssemblyTitle("Launcher_Updater")]
+[assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("Copyright HUBERT Léo © 2014 - 2015")]
-[assembly: AssemblyProduct("Launcher_Arma3")]
-[assembly: AssemblyCopyright("Copyright HUBERT Léo © 2014 - 2015")]
-[assembly: AssemblyTrademark("Emodyz Community ©")]
+[assembly: AssemblyCompany("")]
+[assembly: AssemblyProduct("Launcher_Updater")]
+[assembly: AssemblyCopyright("Copyright ©  2015")]
+[assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
 // Setting ComVisible to false makes the types in this assembly not visible 
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("2e2301ad-03a6-4e72-b389-6ed7098eecbe")]
+[assembly: Guid("7c717dd6-4f94-44c0-abf0-2c35f048759b")]
 
 // Version information for an assembly consists of the following four values:
 //
