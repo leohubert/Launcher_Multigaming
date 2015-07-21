@@ -31,7 +31,9 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Launch));
             this.Update_Launcher = new System.ComponentModel.BackgroundWorker();
             this.Change_Lang = new System.ComponentModel.BackgroundWorker();
+            this.Folder = new System.Windows.Forms.FolderBrowserDialog();
             this.iTalk_ThemeContainer1 = new iTalk.iTalk_ThemeContainer();
+            this.label_darma = new iTalk.iTalk_Label();
             this.connection_label = new iTalk.iTalk_Label();
             this.destination_bouton = new iTalk.iTalk_Button_2();
             this.Option_Boutton = new iTalk.iTalk_Button_1();
@@ -56,9 +58,15 @@
             // 
             this.Change_Lang.DoWork += new System.ComponentModel.DoWorkEventHandler(this.Change_Lang_DoWork);
             // 
+            // Folder
+            // 
+            this.Folder.Description = "Choose Arma3 directory */* Choissisez la destination d\'arma3";
+            this.Folder.SelectedPath = "C:\\Users\\Leo\\Desktop";
+            // 
             // iTalk_ThemeContainer1
             // 
             this.iTalk_ThemeContainer1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(246)))), ((int)(((byte)(246)))), ((int)(((byte)(246)))));
+            this.iTalk_ThemeContainer1.Controls.Add(this.label_darma);
             this.iTalk_ThemeContainer1.Controls.Add(this.connection_label);
             this.iTalk_ThemeContainer1.Controls.Add(this.destination_bouton);
             this.iTalk_ThemeContainer1.Controls.Add(this.Option_Boutton);
@@ -80,6 +88,18 @@
             this.iTalk_ThemeContainer1.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.iTalk_ThemeContainer1.TabIndex = 0;
             this.iTalk_ThemeContainer1.Text = "Launcher Arma 3";
+            // 
+            // label_darma
+            // 
+            this.label_darma.AutoSize = true;
+            this.label_darma.BackColor = System.Drawing.Color.Transparent;
+            this.label_darma.Font = new System.Drawing.Font("Adobe Fan Heiti Std B", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label_darma.ForeColor = System.Drawing.Color.Black;
+            this.label_darma.Location = new System.Drawing.Point(6, 443);
+            this.label_darma.Name = "label_darma";
+            this.label_darma.Size = new System.Drawing.Size(93, 14);
+            this.label_darma.TabIndex = 12;
+            this.label_darma.Text = "Arma3 Directory: ";
             // 
             // connection_label
             // 
@@ -163,8 +183,8 @@
             this.credits_label.BackColor = System.Drawing.Color.Transparent;
             this.credits_label.Enabled = false;
             this.credits_label.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.credits_label.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(116)))), ((int)(((byte)(125)))), ((int)(((byte)(132)))));
-            this.credits_label.Location = new System.Drawing.Point(3, 441);
+            this.credits_label.ForeColor = System.Drawing.Color.White;
+            this.credits_label.Location = new System.Drawing.Point(795, 469);
             this.credits_label.Name = "credits_label";
             this.credits_label.Size = new System.Drawing.Size(205, 15);
             this.credits_label.TabIndex = 3;
@@ -265,6 +285,8 @@
         private iTalk.iTalk_Button_2 destination_bouton;
         private System.ComponentModel.BackgroundWorker Change_Lang;
         private iTalk.iTalk_Label connection_label;
+        private System.Windows.Forms.FolderBrowserDialog Folder;
+        private iTalk.iTalk_Label label_darma;
 
 
     }
