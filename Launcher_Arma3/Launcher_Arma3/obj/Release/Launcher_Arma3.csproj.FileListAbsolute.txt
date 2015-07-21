@@ -3,6 +3,11 @@ C:\Users\Leo\Documents\GitHub\Launcher_Arma3\Launcher_Arma3\Launcher_Arma3\bin\R
 C:\Users\Leo\Documents\GitHub\Launcher_Arma3\Launcher_Arma3\Launcher_Arma3\bin\Release\Launcher_Arma3.application
 C:\Users\Leo\Documents\GitHub\Launcher_Arma3\Launcher_Arma3\Launcher_Arma3\bin\Release\Launcher_Arma3.exe
 C:\Users\Leo\Documents\GitHub\Launcher_Arma3\Launcher_Arma3\Launcher_Arma3\bin\Release\Launcher_Arma3.pdb
+C:\Users\Leo\Documents\GitHub\Launcher_Arma3\Debug\Launcher_Arma3.exe.config
+C:\Users\Leo\Documents\GitHub\Launcher_Arma3\Debug\Launcher_Arma3.exe.manifest
+C:\Users\Leo\Documents\GitHub\Launcher_Arma3\Debug\Launcher_Arma3.application
+C:\Users\Leo\Documents\GitHub\Launcher_Arma3\Debug\Launcher_Arma3.exe
+C:\Users\Leo\Documents\GitHub\Launcher_Arma3\Debug\Launcher_Arma3.pdb
 C:\Users\Leo\Documents\GitHub\Launcher_Arma3\Launcher_Arma3\Launcher_Arma3\obj\Release\Launcher_Arma3.Launch.resources
 C:\Users\Leo\Documents\GitHub\Launcher_Arma3\Launcher_Arma3\Launcher_Arma3\obj\Release\Launcher_Arma3.Form2.resources
 C:\Users\Leo\Documents\GitHub\Launcher_Arma3\Launcher_Arma3\Launcher_Arma3\obj\Release\Launcher_Arma3.Properties.Resources.resources
@@ -12,9 +17,4 @@ C:\Users\Leo\Documents\GitHub\Launcher_Arma3\Launcher_Arma3\Launcher_Arma3\obj\R
 C:\Users\Leo\Documents\GitHub\Launcher_Arma3\Launcher_Arma3\Launcher_Arma3\obj\Release\Launcher_Arma3.application
 C:\Users\Leo\Documents\GitHub\Launcher_Arma3\Launcher_Arma3\Launcher_Arma3\obj\Release\Launcher_Arma3.exe
 C:\Users\Leo\Documents\GitHub\Launcher_Arma3\Launcher_Arma3\Launcher_Arma3\obj\Release\Launcher_Arma3.pdb
-C:\Users\Leo\Documents\GitHub\Launcher_Arma3\Debug\Launcher_Arma3.exe.config
-C:\Users\Leo\Documents\GitHub\Launcher_Arma3\Debug\Launcher_Arma3.exe.manifest
-C:\Users\Leo\Documents\GitHub\Launcher_Arma3\Debug\Launcher_Arma3.application
-C:\Users\Leo\Documents\GitHub\Launcher_Arma3\Debug\Launcher_Arma3.exe
-C:\Users\Leo\Documents\GitHub\Launcher_Arma3\Debug\Launcher_Arma3.pdb
 C:\Users\Leo\Documents\GitHub\Launcher_Arma3\Launcher_Arma3\Launcher_Arma3\obj\Release\Launcher_Arma3.csprojResolveAssemblyReference.cache

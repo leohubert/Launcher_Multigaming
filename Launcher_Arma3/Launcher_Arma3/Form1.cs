@@ -24,6 +24,8 @@ using System.Net;
 using System.Globalization;
 using System.Threading;
 using System.Net.NetworkInformation;
+using System.Xml;
+using System.Xml.Linq;
 
 namespace Launcher_Arma3
 {
@@ -82,6 +84,7 @@ namespace Launcher_Arma3
         string file_vlauncher = "vlauncher.txt"; // Distant file launcher version */* Fichier distant version launcher
         string file_darma = "darma3.a3";  // Local file directory arma 3 */* Fichier local destination arma3
         string file_arma3 = "arma3battleye.exe"; // Extention of Arma3 */* Extention d'arma3
+        string file_translate = "translate.xml";
 
         //Settings Update */* Paramètre mise à jour
         string update_ext = "Update.exe"; // Distant program for update launcher */* Fichier distant pour la mise à jour du launcher
@@ -168,10 +171,12 @@ namespace Launcher_Arma3
                     + Environment.NewLine + "Erreur #401 | Destination d'Arma3 non valide, choisissez un nouvelle destination"
                     + Environment.NewLine + Environment.NewLine + "Default: C:\\Program Files (x86)\\Steam\\SteamApps\\common\\Arma 3");
                 label_darma.ForeColor = Color.Red;
+                picture_darma.Image = Properties.Resources.cross;
             }
             else
             {
                 label_darma.ForeColor = Color.Green;
+                picture_darma.Image = Properties.Resources.checkmark;
             }
 
             label_darma.Text = msg_darma + dest_arma;
@@ -206,10 +211,12 @@ namespace Launcher_Arma3
                     + Environment.NewLine + "Erreur #401 | Destination d'Arma3 non valide, choisissez un nouvelle destination"
                     + Environment.NewLine + Environment.NewLine + "Default: C:\\Program Files (x86)\\Steam\\SteamApps\\common\\Arma 3");
                 label_darma.ForeColor = Color.Red;
+                picture_darma.Image = Properties.Resources.cross;
             }
             else
             {
                 label_darma.ForeColor = Color.Green;
+                picture_darma.Image = Properties.Resources.checkmark;
             }
 
             label_darma.Text = msg_darma + dest_arma;
@@ -361,84 +368,62 @@ namespace Launcher_Arma3
         private void Change_Lang_DoWork(object sender, DoWorkEventArgs e)
         {
 
-            // French language */* Langage Français 
-            if (language == "FR")
+            // Download XML translate */* Télécharge le fichier XML
+            if (File.Exists(appdata + file_translate))
             {
-                Group_Link.Text = "Liens";
-                WebSite_bouton.Text = "Site Web";
-                Play_bouton.Text = "Jouer";
-                Option_Boutton.Text = "Options";
-                destination_bouton.Text = "Destination";
-                msg_darma = "Destination Arma3: ";
-                label_darma.Text = msg_darma + dest_arma;
+                File.Delete(appdata + file_translate);
+            }
+            WebClient webClient = new WebClient();
+            webClient.DownloadFile(ftp + file_translate , appdata + file_translate);
 
-                //Load Connection bouton
-                if (connection == true)
-                {
-                    connection_label.ForeColor = Color.Green;
-                    connection_label.Text = "Connecté";
-                }
-                else
-                {
-                    connection_label.ForeColor = Color.Red;
-                    connection_label.Text = "Déconnecté";
-                }
-                 
+            // Open XML doc */* Ouvre le fichier XML
+
+            XDocument xmlDoc = XDocument.Load(appdata + file_translate);
+
+            // Search translate */* Cherche la traduction
+            var tr_link = xmlDoc.Descendants(language).Elements("Links").Select(r => r.Value).ToArray();
+            var tr_website = xmlDoc.Descendants(language).Elements("WebSite").Select(r => r.Value).ToArray();
+            var tr_play = xmlDoc.Descendants(language).Elements("Play").Select(r => r.Value).ToArray();
+            var tr_connected = xmlDoc.Descendants(language).Elements("Connected").Select(r => r.Value).ToArray();
+            var tr_disconnected = xmlDoc.Descendants(language).Elements("Disconnected").Select(r => r.Value).ToArray();
+            var tr_settings = xmlDoc.Descendants(language).Elements("Settings").Select(r => r.Value).ToArray();
+            var tr_directory = xmlDoc.Descendants(language).Elements("Directory").Select(r => r.Value).ToArray();
+
+            string tra_link = string.Join(",", tr_link);
+            string tra_website = string.Join(",", tr_website);
+            string tra_play = string.Join(",", tr_play);
+            string tra_connected = string.Join(",", tr_connected);
+            string tra_disconnected = string.Join(",", tr_disconnected);
+            string tra_settings = string.Join(",", tr_settings);
+            string tra_directory = string.Join(",", tr_directory);
+
+
+
+
+            // Change bouton text */* Change le text des boutons 
+            Group_Link.Text = tra_link;
+            WebSite_bouton.Text = tra_website;
+            Play_bouton.Text = tra_play;
+            Option_Boutton.Text = tra_settings;
+            destination_bouton.Text = tra_directory;
+            msg_darma = tra_directory + " Arma3: ";
+            label_darma.Text = msg_darma + dest_arma;
+
+            //Load Connection bouton
+            if (connection == true)
+            {
+                connection_label.ForeColor = Color.Green;
+                connection_label.Text = tra_connected;
+            }
+            else
+            {
+                connection_label.ForeColor = Color.Red;
+                connection_label.Text = tra_disconnected;
             }
 
-            // English language */* Langage Anglais
-            if (language == "EN")
-            {
-                Group_Link.Text = "Links";
-                WebSite_bouton.Text = "WebSite";
-                Play_bouton.Text = "Play";
-                Option_Boutton.Text = "Settings";
-                destination_bouton.Text = "Destination";
-                msg_darma = "Arma3 Directory: ";
-                label_darma.Text = msg_darma + dest_arma;
+     
 
-                //Load Connection bouton
-                if (connection == true)
-                {
-                    connection_label.ForeColor = Color.Green;
-                    connection_label.Text = "Connected";
-                }
-                else
-                {
-                    connection_label.ForeColor = Color.Red;
-                    connection_label.Text = "Disconnected";
-                }  
-            }
-
-            // German language */* Langage Allemand
-            if (language == "AL")
-            {
-                Group_Link.Text = "Anschlüsse";
-                WebSite_bouton.Text = "Baustelle";
-                Play_bouton.Text = "Spielen";
-                Option_Boutton.Text = "Einstellungen";
-                destination_bouton.Text = "Reiseziel";
-                msg_darma = "Arma 3 Reiseziel: ";
-                label_darma.Text = msg_darma + dest_arma;
-
-                //Load Connection bouton
-                if (connection == true)
-                {
-                    connection_label.ForeColor = Color.Green;
-                    connection_label.Text = "Verbunden";
-                }
-                else
-                {
-                    connection_label.ForeColor = Color.Red;
-                    connection_label.Text = "Getrennt";
-                }
-            }
         }
-
-
-
-
-
 
     }
 }

@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<users>
+  <profile username="johndoe">
+    <name>John Doe</name>
+    <gender>male</gender>
+    <age>99</age>
+  </profile>
+  <profile username="pacman">
+    <name>Pac Man</name>
+    <gender>male</gender>
+    <age>11</age>
+  </profile>
+</users>

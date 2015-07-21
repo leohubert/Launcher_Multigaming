@@ -8,10 +8,10 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Launcher_Arma3.Properties
-{
-
-
+namespace Launcher_Arma3.Properties {
+    using System;
+    
+    
     /// <summary>
     ///   A strongly-typed resource class, for looking up localized strings, etc.
     /// </summary>
@@ -22,49 +22,89 @@ namespace Launcher_Arma3.Properties
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class Resources
-    {
-
+    internal class Resources {
+        
         private static global::System.Resources.ResourceManager resourceMan;
-
+        
         private static global::System.Globalization.CultureInfo resourceCulture;
-
+        
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        internal Resources()
-        {
+        internal Resources() {
         }
-
+        
         /// <summary>
         ///   Returns the cached ResourceManager instance used by this class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Resources.ResourceManager ResourceManager
-        {
-            get
-            {
-                if ((resourceMan == null))
-                {
+        internal static global::System.Resources.ResourceManager ResourceManager {
+            get {
+                if (object.ReferenceEquals(resourceMan, null)) {
                     global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Launcher_Arma3.Properties.Resources", typeof(Resources).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
             }
         }
-
+        
         /// <summary>
         ///   Overrides the current thread's CurrentUICulture property for all
         ///   resource lookups using this strongly typed resource class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Globalization.CultureInfo Culture
-        {
-            get
-            {
+        internal static global::System.Globalization.CultureInfo Culture {
+            get {
                 return resourceCulture;
             }
-            set
-            {
+            set {
                 resourceCulture = value;
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap checkmark {
+            get {
+                object obj = ResourceManager.GetObject("checkmark", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap cross {
+            get {
+                object obj = ResourceManager.GetObject("cross", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
+        ///&lt;Project name=&quot;Launcher_Arma3&quot;&gt;
+        ///	&lt;Package name=&quot;Global&quot;&gt;
+        ///		&lt;Key ID=&quot;STR_Play&quot;&gt;
+        ///			&lt;Original&gt;Play&lt;/Original&gt;
+        ///			&lt;English&gt;Play&lt;/English&gt;
+        ///			&lt;German&gt;Spielen&lt;/German&gt;
+        ///			&lt;French&gt;Jouer&lt;/French&gt;
+        ///			&lt;Italian&gt;Giocare&lt;/Italian&gt;
+        ///		&lt;/Key&gt;
+        ///		&lt;Key ID=&quot;STR_Link&quot;&gt;
+        ///			&lt;Original&gt;Link&lt;/Original&gt;
+        ///			&lt;English&gt;Link&lt;/English&gt;
+        ///			&lt;German&gt;Anschlüsse&lt;/German&gt;
+        ///			&lt;Italian&gt;Connessioni&lt;/Italian&gt;
+        ///			&lt;French&gt;Lien&lt;/French&gt;
+        ///		&lt;/Key&gt;
+        ///	&lt;/Package&gt;
+        ///&lt;/Project&gt;
+        ///.
+        /// </summary>
+        internal static string translate {
+            get {
+                return ResourceManager.GetString("translate", resourceCulture);
             }
         }
     }

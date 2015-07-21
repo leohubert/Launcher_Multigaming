@@ -33,6 +33,8 @@
             this.Change_Lang = new System.ComponentModel.BackgroundWorker();
             this.Folder = new System.Windows.Forms.FolderBrowserDialog();
             this.iTalk_ThemeContainer1 = new iTalk.iTalk_ThemeContainer();
+            this.picture_darma = new System.Windows.Forms.PictureBox();
+            this.credits_label = new System.Windows.Forms.Label();
             this.label_darma = new iTalk.iTalk_Label();
             this.connection_label = new iTalk.iTalk_Label();
             this.destination_bouton = new iTalk.iTalk_Button_2();
@@ -40,12 +42,12 @@
             this.Play_bouton = new iTalk.iTalk_Button_2();
             this.iTalk_ControlBox1 = new iTalk.iTalk_ControlBox();
             this.imagebox = new System.Windows.Forms.PictureBox();
-            this.credits_label = new MonoFlat.MonoFlat_Label();
             this.Group_Link = new iTalk.iTalk_GroupBox();
             this.WebSite_bouton = new MonoFlat.MonoFlat_Button();
             this.Vocal_bouton = new MonoFlat.MonoFlat_Button();
             this.notif_1 = new MonoFlat.MonoFlat_NotificationBox();
             this.iTalk_ThemeContainer1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picture_darma)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imagebox)).BeginInit();
             this.Group_Link.SuspendLayout();
             this.SuspendLayout();
@@ -66,6 +68,8 @@
             // iTalk_ThemeContainer1
             // 
             this.iTalk_ThemeContainer1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(246)))), ((int)(((byte)(246)))), ((int)(((byte)(246)))));
+            this.iTalk_ThemeContainer1.Controls.Add(this.picture_darma);
+            this.iTalk_ThemeContainer1.Controls.Add(this.credits_label);
             this.iTalk_ThemeContainer1.Controls.Add(this.label_darma);
             this.iTalk_ThemeContainer1.Controls.Add(this.connection_label);
             this.iTalk_ThemeContainer1.Controls.Add(this.destination_bouton);
@@ -73,7 +77,6 @@
             this.iTalk_ThemeContainer1.Controls.Add(this.Play_bouton);
             this.iTalk_ThemeContainer1.Controls.Add(this.iTalk_ControlBox1);
             this.iTalk_ThemeContainer1.Controls.Add(this.imagebox);
-            this.iTalk_ThemeContainer1.Controls.Add(this.credits_label);
             this.iTalk_ThemeContainer1.Controls.Add(this.Group_Link);
             this.iTalk_ThemeContainer1.Controls.Add(this.notif_1);
             this.iTalk_ThemeContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -89,13 +92,34 @@
             this.iTalk_ThemeContainer1.TabIndex = 0;
             this.iTalk_ThemeContainer1.Text = "Launcher Arma 3";
             // 
+            // picture_darma
+            // 
+            this.picture_darma.Location = new System.Drawing.Point(6, 438);
+            this.picture_darma.Name = "picture_darma";
+            this.picture_darma.Size = new System.Drawing.Size(20, 19);
+            this.picture_darma.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.picture_darma.TabIndex = 14;
+            this.picture_darma.TabStop = false;
+            // 
+            // credits_label
+            // 
+            this.credits_label.AutoSize = true;
+            this.credits_label.BackColor = System.Drawing.Color.Transparent;
+            this.credits_label.Font = new System.Drawing.Font("Impact", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.credits_label.ForeColor = System.Drawing.Color.White;
+            this.credits_label.Location = new System.Drawing.Point(806, 467);
+            this.credits_label.Name = "credits_label";
+            this.credits_label.Size = new System.Drawing.Size(198, 17);
+            this.credits_label.TabIndex = 13;
+            this.credits_label.Text = "Copyright HUBERT Léo © 2014 - 2015";
+            // 
             // label_darma
             // 
             this.label_darma.AutoSize = true;
             this.label_darma.BackColor = System.Drawing.Color.Transparent;
             this.label_darma.Font = new System.Drawing.Font("Adobe Fan Heiti Std B", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label_darma.ForeColor = System.Drawing.Color.Black;
-            this.label_darma.Location = new System.Drawing.Point(6, 443);
+            this.label_darma.Location = new System.Drawing.Point(32, 443);
             this.label_darma.Name = "label_darma";
             this.label_darma.Size = new System.Drawing.Size(93, 14);
             this.label_darma.TabIndex = 12;
@@ -177,19 +201,6 @@
             this.imagebox.TabIndex = 4;
             this.imagebox.TabStop = false;
             // 
-            // credits_label
-            // 
-            this.credits_label.AutoSize = true;
-            this.credits_label.BackColor = System.Drawing.Color.Transparent;
-            this.credits_label.Enabled = false;
-            this.credits_label.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.credits_label.ForeColor = System.Drawing.Color.White;
-            this.credits_label.Location = new System.Drawing.Point(795, 469);
-            this.credits_label.Name = "credits_label";
-            this.credits_label.Size = new System.Drawing.Size(205, 15);
-            this.credits_label.TabIndex = 3;
-            this.credits_label.Text = "Copyright HUBERT Léo © 2014 - 2015";
-            // 
             // Group_Link
             // 
             this.Group_Link.BackColor = System.Drawing.Color.Transparent;
@@ -263,6 +274,7 @@
             this.Load += new System.EventHandler(this.Launch_Load);
             this.iTalk_ThemeContainer1.ResumeLayout(false);
             this.iTalk_ThemeContainer1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picture_darma)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.imagebox)).EndInit();
             this.Group_Link.ResumeLayout(false);
             this.ResumeLayout(false);
@@ -276,7 +288,6 @@
         private MonoFlat.MonoFlat_Button Vocal_bouton;
         private iTalk.iTalk_GroupBox Group_Link;
         private MonoFlat.MonoFlat_Button WebSite_bouton;
-        private MonoFlat.MonoFlat_Label credits_label;
         private System.Windows.Forms.PictureBox imagebox;
         private iTalk.iTalk_ControlBox iTalk_ControlBox1;
         private iTalk.iTalk_Button_2 Play_bouton;
@@ -287,6 +298,8 @@
         private iTalk.iTalk_Label connection_label;
         private System.Windows.Forms.FolderBrowserDialog Folder;
         private iTalk.iTalk_Label label_darma;
+        protected System.Windows.Forms.Label credits_label;
+        private System.Windows.Forms.PictureBox picture_darma;
 
 
     }
