@@ -4,7 +4,7 @@ Launcher_Arma3_v4.0
 -------------[ Information Launcher ]-------------
 
 Version: building 0.0.3.0
-Opérationnel: NON
+Opérationnel: Semi-Opérationnel
 Date de sortie: INCONUE
 
 --------------------------------------------------
@@ -13,6 +13,11 @@ Copyright HUBERT Léo © 2014 - 2015
 
 
 ChangeLogs:
+
+beta_0.0.0.1:
+- Add: Download mods
+- Add: Vérification mods
+- Add: AutoUpdate mods
 
 building_0.0.3.0:
 - Add: Translate With XML file

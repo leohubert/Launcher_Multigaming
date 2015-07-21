@@ -77,6 +77,7 @@ namespace Launcher_Arma3
 
         //Settings destination 
         string dest_version = "version"; // Folder where all version file is located */* Dossier ou sont placé tout les fichier version
+        string dest_mods = "mods"; // Folder where all mods is upload */* Dossier là ou sont upload tout les mods
         string dest_update = "update"; // Folder where all update launcher file is located */* Dossier ou sont placé tout les fichier de mise à jour du launcher
         string dest_arma = "C:\\Program Files (x86)\\Steam\\SteamApps\\common\\Arma 3\\"; // Folder of arma 3 */* Dossier d'arma 3
 
@@ -84,7 +85,8 @@ namespace Launcher_Arma3
         string file_vlauncher = "vlauncher.txt"; // Distant file launcher version */* Fichier distant version launcher
         string file_darma = "darma3.a3";  // Local file directory arma 3 */* Fichier local destination arma3
         string file_arma3 = "arma3battleye.exe"; // Extention of Arma3 */* Extention d'arma3
-        string file_translate = "translate.xml";
+        string file_translate = "translate.xml"; // File XML for launcher translate */* Fichier XML pour la traduction du launcher
+        string file_modslist = "modslist.txt"; // File mods list */* Fichier list des mods
 
         //Settings Update */* Paramètre mise à jour
         string update_ext = "Update.exe"; // Distant program for update launcher */* Fichier distant pour la mise à jour du launcher
@@ -100,6 +102,10 @@ namespace Launcher_Arma3
         string msg_darma = "Arma3 Directory: ";
         bool connection = NetworkInterface.GetIsNetworkAvailable();// DON'T CHANGE
         bool locked = false; // DON'T CHANGE 
+        int counter = 0;
+        int counter_total = 0;
+        string wrs_1;
+        string wrs_2;
 
 
 
@@ -110,8 +116,11 @@ namespace Launcher_Arma3
 
         // Launcher Load Script 
 
+
+
         private void Launch_Load(object sender, EventArgs e)
         {
+           
 
             // Change Launcher Name  */* Change le nom du launcher
             Launch.ActiveForm.Text = namelaunch;
@@ -293,8 +302,25 @@ namespace Launcher_Arma3
                 MessageBox.Show("Launcher Bloquer ! "+ Environment.NewLine + Environment.NewLine +"Cause: Changement de crédits .");
                 return;
             }
-            
-            MessageBox.Show("CODAGE IN PROGRESS */* EN COUR DE CODAGE" , namelaunch );
+
+            // Verification of arma3 directory */* Vérification de la destination d'arma3
+            if (!File.Exists(dest_arma + file_arma3))
+            {
+                MessageBox.Show("Erreur #401 | Arma3 Directory is not valid, choose a new Directory"
+                    + Environment.NewLine + "Erreur #401 | Destination d'Arma3 non valide, choisissez un nouvelle destination"
+                    + Environment.NewLine + Environment.NewLine + "Default: C:\\Program Files (x86)\\Steam\\SteamApps\\common\\Arma 3");
+                return;
+            }
+
+            // Load download procedur */* Charge la procédure de téléchargement
+            Download_Mods.RunWorkerAsync();
+
+            // Change visibility bouton */* Change la visibilité des bouton
+            Download_Progress.Visible = true;
+            Total_Progress.Visible = true;
+            Download_label1.Visible = true;
+
+
         }
 
         private void Option_Boutton_Click(object sender, EventArgs e)
@@ -422,6 +448,211 @@ namespace Launcher_Arma3
             }
 
      
+
+        }
+
+        private void Download_Mods_DoWork(object sender, DoWorkEventArgs e)
+        {
+            
+
+            // Download modspack list */* Télécharge le fichier modpack
+            if (File.Exists(appdata + file_modslist))
+            {
+                File.Delete(appdata + file_modslist);
+            }
+
+            WebClient webClient = new WebClient();
+            webClient.DownloadFile(ftp + file_modslist, appdata + file_modslist);
+
+            // Read modslist file */* Lis le fichier modslist
+            if (!File.Exists(appdata + file_modslist))
+            {
+                MessageBox.Show("Erreur #402 | Error while downloading the required file "
+                    + Environment.NewLine + "Erreur #402 | Erreur pendant le téléchargement des fichier requis"
+                    + Environment.NewLine + Environment.NewLine + "Please contact your Administrator.");
+                return;
+            }
+
+           
+          
+
+            // Read the file and display it line by line.
+
+            string[] lines = File.ReadAllLines(appdata + file_modslist);
+
+            string line = lines[counter];
+            counter_total = lines.Length;
+
+            HttpWebRequest wrq = (HttpWebRequest)WebRequest.Create(ftp + dest_mods + "/" + line);
+            //You should be getting only the response header
+            wrq.Method = "HEAD";
+
+          
+
+            // Load Local size */* Charge 
+            using (var wrs = (HttpWebResponse)wrq.GetResponse())
+            {
+                //Do something logic here...
+                wrs_1 = wrs.ContentLength.ToString();
+            }
+
+            // Create new FileInfo object and get the Length.
+            if (File.Exists(dest_arma + modsname + "\\addons\\" + line))
+            {
+                byte[] array = File.ReadAllBytes(dest_arma + modsname + "\\addons\\" + line);
+                wrs_2 = array.Length.ToString();
+
+            }
+
+            if (wrs_1 != wrs_2) { 
+
+            // Downlaod the mods
+
+                // the URL to download the file from
+                string sUrlToReadFileFrom = ftp + dest_mods + "/"+ line;
+                // the path to write the file to
+                string sFilePathToWriteFileTo = dest_arma + modsname + "\\addons\\" + line;
+
+                // first, we need to get the exact size (in bytes) of the file we are downloading
+                Uri url = new Uri(sUrlToReadFileFrom);
+                System.Net.HttpWebRequest request = (System.Net.HttpWebRequest)System.Net.WebRequest.Create(url);
+                System.Net.HttpWebResponse response = (System.Net.HttpWebResponse)request.GetResponse();
+                response.Close();
+                // gets the size of the file in bytes
+                Int64 iSize = response.ContentLength;
+
+                // keeps track of the total bytes downloaded so we can update the progress bar
+                Int64 iRunningByteTotal = 0;
+
+                // use the webclient object to download the file
+                using (System.Net.WebClient client = new System.Net.WebClient())
+                {
+                    // open the file at the remote URL for reading
+                    using (System.IO.Stream streamRemote = client.OpenRead(new Uri(sUrlToReadFileFrom)))
+                    {
+                        // using the FileStream object, we can write the downloaded bytes to the file system
+                        using (Stream streamLocal = new FileStream(sFilePathToWriteFileTo, FileMode.Create, FileAccess.Write, FileShare.None))
+                        {
+                            // loop the stream and get the file into the byte buffer
+                            int iByteSize = 0;
+                            byte[] byteBuffer = new byte[iSize];
+                            while ((iByteSize = streamRemote.Read(byteBuffer, 0, byteBuffer.Length)) > 0)
+                            {
+                                // write the bytes to the file system at the file path specified
+                                streamLocal.Write(byteBuffer, 0, iByteSize);
+                                iRunningByteTotal += iByteSize;
+
+                                // calculate the progress out of a base "100"
+                                double dIndex = (double)(iRunningByteTotal);
+                                double dTotal = (double)byteBuffer.Length;
+                                double dProgressPercentage = (dIndex / dTotal);
+                                int iProgressPercentage = (int)(dProgressPercentage * 100);
+
+
+                                // update the progress bar
+                                Download_Mods.ReportProgress(iProgressPercentage);
+                            }
+
+                            // clean up the file stream
+                            streamLocal.Close();
+                        }
+
+                        // close the connection to the remote server
+                        streamRemote.Close();
+
+                    }
+
+                    
+                }
+            }
+            else
+            {
+                            // the URL to download the file from
+                string sUrlToReadFileFrom = ftp + "copyright.txt";
+                // the path to write the file to
+                string sFilePathToWriteFileTo = dest_arma + "copyright.txt";
+
+                // first, we need to get the exact size (in bytes) of the file we are downloading
+                Uri url = new Uri(sUrlToReadFileFrom);
+                System.Net.HttpWebRequest request = (System.Net.HttpWebRequest)System.Net.WebRequest.Create(url);
+                System.Net.HttpWebResponse response = (System.Net.HttpWebResponse)request.GetResponse();
+                response.Close();
+                // gets the size of the file in bytes
+                Int64 iSize = response.ContentLength;
+
+                // keeps track of the total bytes downloaded so we can update the progress bar
+                Int64 iRunningByteTotal = 0;
+
+                // use the webclient object to download the file
+                using (System.Net.WebClient client = new System.Net.WebClient())
+                {
+                    // open the file at the remote URL for reading
+                    using (System.IO.Stream streamRemote = client.OpenRead(new Uri(sUrlToReadFileFrom)))
+                    {
+                        // using the FileStream object, we can write the downloaded bytes to the file system
+                        using (Stream streamLocal = new FileStream(sFilePathToWriteFileTo, FileMode.Create, FileAccess.Write, FileShare.None))
+                        {
+                            // loop the stream and get the file into the byte buffer
+                            int iByteSize = 0;
+                            byte[] byteBuffer = new byte[iSize];
+                            while ((iByteSize = streamRemote.Read(byteBuffer, 0, byteBuffer.Length)) > 0)
+                            {
+                                // write the bytes to the file system at the file path specified
+                                streamLocal.Write(byteBuffer, 0, iByteSize);
+                                iRunningByteTotal += iByteSize;
+
+                                // calculate the progress out of a base "100"
+                                double dIndex = (double)(iRunningByteTotal);
+                                double dTotal = (double)byteBuffer.Length;
+                                double dProgressPercentage = (dIndex / dTotal);
+                                int iProgressPercentage = (int)(dProgressPercentage * 100);
+
+
+                                // update the progress bar
+                                Download_Mods.ReportProgress(iProgressPercentage);
+                            }
+
+                            // clean up the file stream
+                            streamLocal.Close();
+                        }
+
+                        // close the connection to the remote server
+                        streamRemote.Close();
+
+                    }
+
+
+                }
+            
+            }
+            
+        }
+
+        private void backgroundWorker1_ProgressChanged(object sender, ProgressChangedEventArgs e)
+        {
+            Download_Progress.Value = e.ProgressPercentage;
+        }
+        private void backgroundWorker1_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+
+            counter++;
+
+            Total_Progress.Value = counter * 100 / counter_total;
+
+            if (Total_Progress.Value == 100)
+            {
+                // Start Arma3 */* Lance Arma3
+              
+                
+                return;
+            }
+            
+            Download_Mods.RunWorkerAsync();
+
+        }
+
+        private void Pont_DoWork(object sender, DoWorkEventArgs e)
+        {
 
         }
 

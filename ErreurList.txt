@@ -1,0 +1,11 @@
+
+
+
+Français:
+
+Erreur #202: Problème configuration update, vérifier les paramètre de mise à jour du launcher et du " Update_Laucher" programme.
+
+Erreur #401: Destination d'Arma3 non valide.
+
+Erreur #402: Erreur de téléchargement de fichier, vérifier votre ftp et vos configuration launcher.
+

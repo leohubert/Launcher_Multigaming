@@ -32,7 +32,12 @@
             this.Update_Launcher = new System.ComponentModel.BackgroundWorker();
             this.Change_Lang = new System.ComponentModel.BackgroundWorker();
             this.Folder = new System.Windows.Forms.FolderBrowserDialog();
+            this.Download_Mods = new System.ComponentModel.BackgroundWorker();
+            this.Pont = new System.ComponentModel.BackgroundWorker();
             this.iTalk_ThemeContainer1 = new iTalk.iTalk_ThemeContainer();
+            this.Download_label1 = new iTalk.iTalk_Label();
+            this.Total_Progress = new iTalk.iTalk_ProgressBar();
+            this.Download_Progress = new iTalk.iTalk_ProgressBar();
             this.picture_darma = new System.Windows.Forms.PictureBox();
             this.credits_label = new System.Windows.Forms.Label();
             this.label_darma = new iTalk.iTalk_Label();
@@ -65,9 +70,24 @@
             this.Folder.Description = "Choose Arma3 directory */* Choissisez la destination d\'arma3";
             this.Folder.SelectedPath = "C:\\Users\\Leo\\Desktop";
             // 
+            // Download_Mods
+            // 
+            this.Download_Mods.WorkerReportsProgress = true;
+            this.Download_Mods.DoWork += new System.ComponentModel.DoWorkEventHandler(this.Download_Mods_DoWork);
+            this.Download_Mods.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.backgroundWorker1_ProgressChanged);
+            this.Download_Mods.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.backgroundWorker1_RunWorkerCompleted);
+            // 
+            // Pont
+            // 
+            this.Pont.WorkerReportsProgress = true;
+            this.Pont.DoWork += new System.ComponentModel.DoWorkEventHandler(this.Pont_DoWork);
+            // 
             // iTalk_ThemeContainer1
             // 
             this.iTalk_ThemeContainer1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(246)))), ((int)(((byte)(246)))), ((int)(((byte)(246)))));
+            this.iTalk_ThemeContainer1.Controls.Add(this.Download_label1);
+            this.iTalk_ThemeContainer1.Controls.Add(this.Total_Progress);
+            this.iTalk_ThemeContainer1.Controls.Add(this.Download_Progress);
             this.iTalk_ThemeContainer1.Controls.Add(this.picture_darma);
             this.iTalk_ThemeContainer1.Controls.Add(this.credits_label);
             this.iTalk_ThemeContainer1.Controls.Add(this.label_darma);
@@ -91,6 +111,53 @@
             this.iTalk_ThemeContainer1.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.iTalk_ThemeContainer1.TabIndex = 0;
             this.iTalk_ThemeContainer1.Text = "Launcher Arma 3";
+            // 
+            // Download_label1
+            // 
+            this.Download_label1.AutoSize = true;
+            this.Download_label1.BackColor = System.Drawing.Color.Transparent;
+            this.Download_label1.Font = new System.Drawing.Font("Segoe UI", 8F);
+            this.Download_label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(142)))), ((int)(((byte)(142)))), ((int)(((byte)(142)))));
+            this.Download_label1.Location = new System.Drawing.Point(227, 405);
+            this.Download_label1.Name = "Download_label1";
+            this.Download_label1.Size = new System.Drawing.Size(64, 13);
+            this.Download_label1.TabIndex = 18;
+            this.Download_label1.Text = "Download:";
+            this.Download_label1.Visible = false;
+            // 
+            // Total_Progress
+            // 
+            this.Total_Progress.Font = new System.Drawing.Font("Segoe UI", 15F);
+            this.Total_Progress.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
+            this.Total_Progress.Location = new System.Drawing.Point(620, 258);
+            this.Total_Progress.Maximum = ((long)(100));
+            this.Total_Progress.MinimumSize = new System.Drawing.Size(100, 100);
+            this.Total_Progress.Name = "Total_Progress";
+            this.Total_Progress.ProgressColor1 = System.Drawing.Color.Lime;
+            this.Total_Progress.ProgressColor2 = System.Drawing.Color.Lime;
+            this.Total_Progress.ProgressShape = iTalk.iTalk_ProgressBar._ProgressShape.Round;
+            this.Total_Progress.Size = new System.Drawing.Size(160, 160);
+            this.Total_Progress.TabIndex = 17;
+            this.Total_Progress.Text = "Total_Progress";
+            this.Total_Progress.Value = ((long)(0));
+            this.Total_Progress.Visible = false;
+            // 
+            // Download_Progress
+            // 
+            this.Download_Progress.Font = new System.Drawing.Font("Segoe UI", 15F);
+            this.Download_Progress.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
+            this.Download_Progress.Location = new System.Drawing.Point(230, 258);
+            this.Download_Progress.Maximum = ((long)(100));
+            this.Download_Progress.MinimumSize = new System.Drawing.Size(100, 100);
+            this.Download_Progress.Name = "Download_Progress";
+            this.Download_Progress.ProgressColor1 = System.Drawing.Color.Lime;
+            this.Download_Progress.ProgressColor2 = System.Drawing.Color.Lime;
+            this.Download_Progress.ProgressShape = iTalk.iTalk_ProgressBar._ProgressShape.Round;
+            this.Download_Progress.Size = new System.Drawing.Size(160, 160);
+            this.Download_Progress.TabIndex = 16;
+            this.Download_Progress.Text = "iTalk_ProgressBar2";
+            this.Download_Progress.Value = ((long)(0));
+            this.Download_Progress.Visible = false;
             // 
             // picture_darma
             // 
@@ -300,6 +367,11 @@
         private iTalk.iTalk_Label label_darma;
         protected System.Windows.Forms.Label credits_label;
         private System.Windows.Forms.PictureBox picture_darma;
+        private System.ComponentModel.BackgroundWorker Download_Mods;
+        private iTalk.iTalk_ProgressBar Download_Progress;
+        private iTalk.iTalk_ProgressBar Total_Progress;
+        private System.ComponentModel.BackgroundWorker Pont;
+        private iTalk.iTalk_Label Download_label1;
 
 
     }
