@@ -41,18 +41,19 @@ namespace Launcher_Arma3
 
 
         // Configuration base of launcher  */* Configuration de base du launcher 
-        const string ftp = "http://play.emodyz.com/dev/";  // WebLink of your FTP server */* Lien web de votre serveur FTP
+        const string ftp = "http://localhost/";  // WebLink of your FTP server */* Lien web de votre serveur FTP
         const string servername = "Emodyz"; // Name of your server */* Nom de votre serveur 
         const string namelaunch = "Emodyz Launcher ©";  // Name of your launcher */* Nom de votre launcher
         const string modsname = "@Emodyz"; // Patch of your mods directory */* Patch de votre répertoire de mods
         const string website = "http://emodyz.com"; // Link of your web site */* Lien de votre site web
         const string extention = "Emodyz.exe"; // Your sofware extension .exe ( example: "Emodyz.exe ) */* votre logiciel .exe ( exemple: " Emodyz.exe " )
+        string fader_statut = "on"; // Make " on " if you want to remove fade animation on startup */* Mettez " on " si vous voulez supprimer l'animation au démarage du launcher 
 
         // Config server */* Config serveur
         const string ipserver = "play.emodyz.com:2302"; // Your Arma3 server ip  */* L'ip de votre serveur Arma 3 
         const string servpassword = "none"; // Password of your arma 3 server ( if you don't have a password make " none " ) */* Le mots de passe de votre serveur Arma 3 ( si vous n'avez pas de mot de passe mettez " none " )
 
-        //Configuration language
+        //Configuration errorlistguage
         public string language = "FR"; // Make your language "EN" pour l'anglais */* Mettez votre langage "FR" pour le français.
 
         /*
@@ -92,8 +93,21 @@ namespace Launcher_Arma3
         string update_ext = "Update.exe"; // Distant program for update launcher */* Fichier distant pour la mise à jour du launcher
         string update_site = "site.txt"; // Local File where is the website for download the update */* Fichier local là ou est le lien pour télécharger la mise à jour
         string update_destlaunch = "update.txt"; // Local File where is the patch to launcher up to date */* Fichier local là ou est la destination du launcher à mettre à jours
-                                                             
+
+
+        // Config error message */* Paramètres erreurs message.
+        // 404
+        bool error404 = false;
+        string error404_msg = "Serveur not found !";
+        string error_type;
+        int error_code;
+        string error_message;
+        string error_xml = "errorlist";
+     
+
+
         // Parametre anexe 
+
 
         string appdata = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData)+ "\\" + servername + "\\"; // DON'T CHANGE
         string dlauncher = Application.ExecutablePath; // DON'T CHANGE
@@ -112,10 +126,37 @@ namespace Launcher_Arma3
         public Launch()
         {
             InitializeComponent();
+
+            //Change language launcher */* Change la langue du launcher
+            Change_Lang.RunWorkerAsync();
+
+            if (fader_statut == "on")
+            {
+                Fader.Start();
+            }
+            else
+            {
+                this.Opacity = 1;
+            }
+
+            WebClient webClient = new WebClient();
+            try
+            {
+                Stream strm = webClient.OpenRead(ftp);
+            }
+            catch (WebException we)
+            {
+                error404 = true;
+                if (!Erreur_Msg.IsBusy)
+                {
+                    error_code = 404;
+                    Erreur_Msg.RunWorkerAsync();
+                }
+            }
         }
 
         // Launcher Load Script 
-
+       
 
 
         private void Launch_Load(object sender, EventArgs e)
@@ -125,9 +166,6 @@ namespace Launcher_Arma3
             // Change Launcher Name  */* Change le nom du launcher
             Launch.ActiveForm.Text = namelaunch;
             iTalk_ThemeContainer1.Text = namelaunch;
-
-            //Change language launcher */* Change la langue du launcher
-            Change_Lang.RunWorkerAsync();
 
             // Change le bouton TeamSpeak ou Mumble
             if (servervocal == "teamspeak3")
@@ -140,11 +178,17 @@ namespace Launcher_Arma3
                 Vocal_bouton.Text = "Mumble";
             }
 
-            if (credits_label.Text != Application.CompanyName)
+            if (credits_label.Text != Properties.Resources.Copyright)
             {
-                MessageBox.Show("Credits is modified ! */* Les crédits sont modifié !",  "Copyright HUBERT Léo © 2014 - 2015");
-                credits_label.Text = "Copyright HUBERT Léo © 2014 - 2015";
+                if (!Erreur_Msg.IsBusy)
+                {
+                    error_code = 100;
+                    Erreur_Msg.RunWorkerAsync();
+                }
+
+                credits_label.Text = Properties.Resources.Copyright;
                 locked = true;
+                return;
             }
 
 
@@ -176,9 +220,13 @@ namespace Launcher_Arma3
 
             if (!File.Exists(dest_arma + file_arma3))
             {
-                MessageBox.Show("Erreur #401 | Arma3 Directory is not valid, choose a new Directory"
-                    + Environment.NewLine + "Erreur #401 | Destination d'Arma3 non valide, choisissez un nouvelle destination"
-                    + Environment.NewLine + Environment.NewLine + "Default: C:\\Program Files (x86)\\Steam\\SteamApps\\common\\Arma 3");
+
+                if (!Erreur_Msg.IsBusy)
+                {
+                    error_code = 401;
+                    Erreur_Msg.RunWorkerAsync();
+                }
+
                 label_darma.ForeColor = Color.Red;
                 picture_darma.Image = Properties.Resources.cross;
             }
@@ -205,20 +253,49 @@ namespace Launcher_Arma3
 
         private void WebSite_bouton_Click(object sender, EventArgs e)
         {
+            if (locked)
+            {
+                if (!Erreur_Msg.IsBusy)
+                {
+                    error_code = 100;
+                    Erreur_Msg.RunWorkerAsync();
+                }
+
+                credits_label.Text = Properties.Resources.Copyright;
+
+                return;
+            }
+
             Process.Start(website);
         }
 
 
         private void destination_bouton_Click_1(object sender, EventArgs e)
         {
+            if (locked)
+            {
+                if (!Erreur_Msg.IsBusy)
+                {
+                    error_code = 100;
+                    Erreur_Msg.RunWorkerAsync();
+                }
+
+                credits_label.Text = Properties.Resources.Copyright;
+
+                return;
+            }
+
             Folder.ShowDialog();
             dest_arma = Folder.SelectedPath + "\\";
             File.WriteAllText(appdata + file_darma, dest_arma);
             if (!File.Exists(dest_arma + file_arma3))
             {
-                MessageBox.Show("Erreur #401 | Arma3 Directory is not valid, choose a new Directory"
-                    + Environment.NewLine + "Erreur #401 | Destination d'Arma3 non valide, choisissez un nouvelle destination"
-                    + Environment.NewLine + Environment.NewLine + "Default: C:\\Program Files (x86)\\Steam\\SteamApps\\common\\Arma 3");
+                if (!Erreur_Msg.IsBusy)
+                {
+                    error_code = 401;
+                    Erreur_Msg.RunWorkerAsync();
+                }
+               
                 label_darma.ForeColor = Color.Red;
                 picture_darma.Image = Properties.Resources.cross;
             }
@@ -235,10 +312,16 @@ namespace Launcher_Arma3
 
         private void Vocal_bouton_Click(object sender, EventArgs e)
         {
-            if (credits_label.Text != Application.CompanyName)
+            if (locked)
             {
-                MessageBox.Show("Credits is modified ! */* Les crédits sont modifié !", "Copyright HUBERT Léo © 2014 - 2015");
-                credits_label.Text = "Copyright HUBERT Léo © 2014 - 2015";
+                if (!Erreur_Msg.IsBusy)
+                {
+                    error_code = 100;
+                    Erreur_Msg.RunWorkerAsync();
+                }
+
+                credits_label.Text = Properties.Resources.Copyright;
+                return;
             }
             if (servervocal == "teamspeak3")
             {
@@ -299,16 +382,35 @@ namespace Launcher_Arma3
         {
             if (locked)
             {
-                MessageBox.Show("Launcher Bloquer ! "+ Environment.NewLine + Environment.NewLine +"Cause: Changement de crédits .");
+                if (!Erreur_Msg.IsBusy)
+                {
+                    error_code = 100;
+                    Erreur_Msg.RunWorkerAsync();
+                }
+
+                credits_label.Text = Properties.Resources.Copyright;
+                return;
+            }
+
+            if (error404)
+            {
+                if (!Erreur_Msg.IsBusy)
+                {
+                    error_code = 404;
+                    Erreur_Msg.RunWorkerAsync();
+                }
                 return;
             }
 
             // Verification of arma3 directory */* Vérification de la destination d'arma3
             if (!File.Exists(dest_arma + file_arma3))
             {
-                MessageBox.Show("Erreur #401 | Arma3 Directory is not valid, choose a new Directory"
-                    + Environment.NewLine + "Erreur #401 | Destination d'Arma3 non valide, choisissez un nouvelle destination"
-                    + Environment.NewLine + Environment.NewLine + "Default: C:\\Program Files (x86)\\Steam\\SteamApps\\common\\Arma 3");
+
+                if (!Erreur_Msg.IsBusy)
+                {
+                    error_code = 401;
+                    Erreur_Msg.RunWorkerAsync();
+                }
                 return;
             }
 
@@ -325,6 +427,19 @@ namespace Launcher_Arma3
 
         private void Option_Boutton_Click(object sender, EventArgs e)
         {
+            if (locked)
+            {
+                if (!Erreur_Msg.IsBusy)
+                {
+                    error_code = 100;
+                    Erreur_Msg.RunWorkerAsync();
+                }
+
+                credits_label.Text = Properties.Resources.Copyright;
+
+                return;
+            }
+
             Form2 frm = new Form2(language);
             frm.Show();
          
@@ -399,6 +514,7 @@ namespace Launcher_Arma3
             {
                 File.Delete(appdata + file_translate);
             }
+
             WebClient webClient = new WebClient();
             webClient.DownloadFile(ftp + file_translate , appdata + file_translate);
 
@@ -467,9 +583,12 @@ namespace Launcher_Arma3
             // Read modslist file */* Lis le fichier modslist
             if (!File.Exists(appdata + file_modslist))
             {
-                MessageBox.Show("Erreur #402 | Error while downloading the required file "
-                    + Environment.NewLine + "Erreur #402 | Erreur pendant le téléchargement des fichier requis"
-                    + Environment.NewLine + Environment.NewLine + "Please contact your Administrator.");
+                if (!Erreur_Msg.IsBusy)
+                {
+                    error_code = 402;
+                    Erreur_Msg.RunWorkerAsync();
+                }
+
                 return;
             }
 
@@ -651,10 +770,55 @@ namespace Launcher_Arma3
 
         }
 
-        private void Pont_DoWork(object sender, DoWorkEventArgs e)
+        private void Erreur_Msg_DoWork(object sender, DoWorkEventArgs e)
         {
+            if (error404)
+            {
+                error_code = 404;
+                error_message = error404_msg;
+            }
+            else
+            {
 
+                // Open XML doc */* Ouvre le fichier XML
+                XDocument xmlDoc = XDocument.Load(appdata + file_translate);
+
+                // Search translate */* Cherche la traduction
+                var tr_erreur = xmlDoc.Descendants(error_xml).Elements(language).Elements("error" + error_code).Select(r => r.Value).ToArray();
+
+
+                string tra_erreur = string.Join(",", tr_erreur);
+
+
+                error_message = tra_erreur;
+
+            }
+
+
+
+            
+
+             notif_1.Text = "Erreur #"+ error_code +" | " + error_message;
+             notif_1.BringToFront();
+             notif_1.Visible = true;
+
+             System.Threading.Thread.Sleep(5000);
+
+             notif_1.Visible = false;
+             notif_1.SendToBack();
         }
+
+        private void Fader_Tick(object sender, EventArgs e)
+        {
+            this.Opacity += .05;
+            if (this.Opacity == 1)
+            {
+                Fader.Stop();
+
+            }
+        }
+
+
 
     }
 }

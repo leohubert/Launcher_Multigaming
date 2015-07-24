@@ -28,12 +28,14 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Launch));
             this.Update_Launcher = new System.ComponentModel.BackgroundWorker();
             this.Change_Lang = new System.ComponentModel.BackgroundWorker();
             this.Folder = new System.Windows.Forms.FolderBrowserDialog();
             this.Download_Mods = new System.ComponentModel.BackgroundWorker();
-            this.Pont = new System.ComponentModel.BackgroundWorker();
+            this.Erreur_Msg = new System.ComponentModel.BackgroundWorker();
+            this.Fader = new System.Windows.Forms.Timer(this.components);
             this.iTalk_ThemeContainer1 = new iTalk.iTalk_ThemeContainer();
             this.Download_label1 = new iTalk.iTalk_Label();
             this.Total_Progress = new iTalk.iTalk_ProgressBar();
@@ -51,6 +53,7 @@
             this.WebSite_bouton = new MonoFlat.MonoFlat_Button();
             this.Vocal_bouton = new MonoFlat.MonoFlat_Button();
             this.notif_1 = new MonoFlat.MonoFlat_NotificationBox();
+            this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.iTalk_ThemeContainer1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picture_darma)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imagebox)).BeginInit();
@@ -77,10 +80,15 @@
             this.Download_Mods.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.backgroundWorker1_ProgressChanged);
             this.Download_Mods.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.backgroundWorker1_RunWorkerCompleted);
             // 
-            // Pont
+            // Erreur_Msg
             // 
-            this.Pont.WorkerReportsProgress = true;
-            this.Pont.DoWork += new System.ComponentModel.DoWorkEventHandler(this.Pont_DoWork);
+            this.Erreur_Msg.WorkerReportsProgress = true;
+            this.Erreur_Msg.DoWork += new System.ComponentModel.DoWorkEventHandler(this.Erreur_Msg_DoWork);
+            // 
+            // Fader
+            // 
+            this.Fader.Interval = 30;
+            this.Fader.Tick += new System.EventHandler(this.Fader_Tick);
             // 
             // iTalk_ThemeContainer1
             // 
@@ -118,7 +126,7 @@
             this.Download_label1.BackColor = System.Drawing.Color.Transparent;
             this.Download_label1.Font = new System.Drawing.Font("Segoe UI", 8F);
             this.Download_label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(142)))), ((int)(((byte)(142)))), ((int)(((byte)(142)))));
-            this.Download_label1.Location = new System.Drawing.Point(227, 405);
+            this.Download_label1.Location = new System.Drawing.Point(227, 421);
             this.Download_label1.Name = "Download_label1";
             this.Download_label1.Size = new System.Drawing.Size(64, 13);
             this.Download_label1.TabIndex = 18;
@@ -172,11 +180,11 @@
             // 
             this.credits_label.AutoSize = true;
             this.credits_label.BackColor = System.Drawing.Color.Transparent;
-            this.credits_label.Font = new System.Drawing.Font("Impact", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.credits_label.Font = new System.Drawing.Font("Lucida Sans Unicode", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.credits_label.ForeColor = System.Drawing.Color.White;
-            this.credits_label.Location = new System.Drawing.Point(806, 467);
+            this.credits_label.Location = new System.Drawing.Point(789, 469);
             this.credits_label.Name = "credits_label";
-            this.credits_label.Size = new System.Drawing.Size(198, 17);
+            this.credits_label.Size = new System.Drawing.Size(211, 15);
             this.credits_label.TabIndex = 13;
             this.credits_label.Text = "Copyright HUBERT Léo © 2014 - 2015";
             // 
@@ -322,7 +330,14 @@
             this.notif_1.ShowCloseButton = false;
             this.notif_1.Size = new System.Drawing.Size(992, 40);
             this.notif_1.TabIndex = 0;
-            this.notif_1.Visible = false;
+            // 
+            // imageList1
+            // 
+            this.imageList1.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageList1.ImageStream")));
+            this.imageList1.TransparentColor = System.Drawing.Color.Transparent;
+            this.imageList1.Images.SetKeyName(0, "banner.jpg");
+            this.imageList1.Images.SetKeyName(1, "banner.png");
+            this.imageList1.Images.SetKeyName(2, "logo.jpg");
             // 
             // Launch
             // 
@@ -335,6 +350,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MinimumSize = new System.Drawing.Size(126, 39);
             this.Name = "Launch";
+            this.Opacity = 0D;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Launcher Arma 3";
             this.TransparencyKey = System.Drawing.Color.Fuchsia;
@@ -370,8 +386,10 @@
         private System.ComponentModel.BackgroundWorker Download_Mods;
         private iTalk.iTalk_ProgressBar Download_Progress;
         private iTalk.iTalk_ProgressBar Total_Progress;
-        private System.ComponentModel.BackgroundWorker Pont;
         private iTalk.iTalk_Label Download_label1;
+        private System.ComponentModel.BackgroundWorker Erreur_Msg;
+        private System.Windows.Forms.Timer Fader;
+        private System.Windows.Forms.ImageList imageList1;
 
 
     }

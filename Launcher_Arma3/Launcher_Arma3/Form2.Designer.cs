@@ -105,7 +105,7 @@
             // 
             // change_language
             // 
-            this.change_language.DoWork += new System.ComponentModel.DoWorkEventHandler(this.change_language_DoWork);
+  
             // 
             // Form2
             // 

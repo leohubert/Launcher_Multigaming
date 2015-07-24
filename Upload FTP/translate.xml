@@ -6,7 +6,7 @@
 		<Play>Jouer</Play>
 		<Connected>Connecté</Connected>
 		<Disconnected>Déconnecté</Disconnected>
-		<Settings>Paramètre</Settings>
+		<Settings>Paramètres</Settings>
 		<Directory>Destination</Directory>
 	</FR>
 	<EN language="English">
@@ -26,5 +26,28 @@
 		<Disconnected>Getrennt</Disconnected>
 		<Settings>Parameter</Settings>
 		<Directory>Reiseziel</Directory>
-	</AL>
+	</AL>	
+	
+	<errorlist>
+       <FR description="Listing des erreurs">
+			<error100>Ce launcher est bloqué pour non respect des crédits !</error100>
+			<error401>Destination d'Arma 3 non valide !</error401>
+			<error402>Erreur pendant le téléchargement des fichier requis</error402>
+			<error404>Le serveur est momentanément indisponible !</error404>
+	   </FR>
+	   <EN description="Error Listing">
+			<error100>This launcher is blocked for breach credits!</error100>
+			<error401>Arma 3 Invalid destination!</error401>
+			<error402>Error while downloading the required file</error402>
+			<error404>The server is temporarily unavailable!</error404>
+	   </EN>
+	   <AL description="Fehler Listing">
+			<error100>Das Startprogramm wird für die Verletzung Credits blockiert!</error100>
+			<error401>Arma 3 Ungültige Reiseziel!</error401>
+			<error402>Fehler beim Herunterladen der gewünschten Datei</error402>
+			<error404>Der Server ist vorübergehend nicht verfügbar!</error404>
+	   </AL>
+		
+	</errorlist>
 </user>
+

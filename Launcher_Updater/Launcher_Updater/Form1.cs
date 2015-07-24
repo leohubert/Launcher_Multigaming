@@ -17,6 +17,7 @@ namespace Launcher_Updater
 {
     public partial class Form1 : Form
     {
+		
 
         string site = "";
         string patch = "";

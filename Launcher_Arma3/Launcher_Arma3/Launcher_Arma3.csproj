@@ -67,6 +67,7 @@
     <TargetZone>LocalIntranet</TargetZone>
   </PropertyGroup>
   <PropertyGroup />
+  <PropertyGroup />
   <PropertyGroup>
     <ApplicationManifest>Properties\app.manifest</ApplicationManifest>
   </PropertyGroup>
@@ -136,6 +137,7 @@
   <ItemGroup>
     <Content Include="icon_launcher_ico.ico" />
     <None Include="Resources\translate.xml" />
+    <None Include="Resources\copyright.txt" />
     <None Include="Resources\cross.png" />
     <None Include="Resources\checkmark.png" />
   </ItemGroup>

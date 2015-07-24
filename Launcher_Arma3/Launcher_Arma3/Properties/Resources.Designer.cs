@@ -71,6 +71,24 @@ namespace Launcher_Arma3.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Copyright HUBERT Léo © 2014 - 2015.
+        /// </summary>
+        internal static string Copyright {
+            get {
+                return ResourceManager.GetString("Copyright", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Copyright HUBERT Léo © 2014 - 2015.
+        /// </summary>
+        internal static string copyright1 {
+            get {
+                return ResourceManager.GetString("copyright1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap cross {
@@ -81,26 +99,25 @@ namespace Launcher_Arma3.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to &lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
-        ///&lt;Project name=&quot;Launcher_Arma3&quot;&gt;
-        ///	&lt;Package name=&quot;Global&quot;&gt;
-        ///		&lt;Key ID=&quot;STR_Play&quot;&gt;
-        ///			&lt;Original&gt;Play&lt;/Original&gt;
-        ///			&lt;English&gt;Play&lt;/English&gt;
-        ///			&lt;German&gt;Spielen&lt;/German&gt;
-        ///			&lt;French&gt;Jouer&lt;/French&gt;
-        ///			&lt;Italian&gt;Giocare&lt;/Italian&gt;
-        ///		&lt;/Key&gt;
-        ///		&lt;Key ID=&quot;STR_Link&quot;&gt;
-        ///			&lt;Original&gt;Link&lt;/Original&gt;
-        ///			&lt;English&gt;Link&lt;/English&gt;
-        ///			&lt;German&gt;Anschlüsse&lt;/German&gt;
-        ///			&lt;Italian&gt;Connessioni&lt;/Italian&gt;
-        ///			&lt;French&gt;Lien&lt;/French&gt;
-        ///		&lt;/Key&gt;
-        ///	&lt;/Package&gt;
-        ///&lt;/Project&gt;
-        ///.
+        ///   Looks up a localized string similar to &lt;?xml version=&quot;1.0&quot;?&gt;
+        ///&lt;user&gt;
+        ///	&lt;FR language=&quot;Français&quot;&gt;
+        ///		&lt;Links&gt;Liens&lt;/Links&gt;
+        ///		&lt;WebSite&gt;Site Web&lt;/WebSite&gt;
+        ///		&lt;Play&gt;Jouer&lt;/Play&gt;
+        ///		&lt;Connected&gt;Connecté&lt;/Connected&gt;
+        ///		&lt;Disconnected&gt;Déconnecté&lt;/Disconnected&gt;
+        ///		&lt;Settings&gt;Paramètres&lt;/Settings&gt;
+        ///		&lt;Directory&gt;Destination&lt;/Directory&gt;
+        ///	&lt;/FR&gt;
+        ///	&lt;EN language=&quot;English&quot;&gt;
+        ///		&lt;Links&gt;Links&lt;/Links&gt;
+        ///		&lt;WebSite&gt;WebSite&lt;/WebSite&gt;
+        ///		&lt;Play&gt;Play&lt;/Play&gt;
+        ///		&lt;Connected&gt;Connected&lt;/Connected&gt;
+        ///		&lt;Disconnected&gt;Disconnected&lt;/Disconnected&gt;
+        ///		&lt;Settings&gt;Settings&lt;/Settings&gt;
+        ///		&lt; [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string translate {
             get {

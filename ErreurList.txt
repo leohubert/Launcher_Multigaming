@@ -9,3 +9,6 @@ Erreur #401: Destination d'Arma3 non valide.
 
 Erreur #402: Erreur de téléchargement de fichier, vérifier votre ftp et vos configuration launcher.
 
+Erreur #100: Changement des crédits non autorisé !
+
+Erreur #404: Serveur non disponible .

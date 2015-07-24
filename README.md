@@ -3,7 +3,7 @@ Launcher_Arma3_v4.0
 
 -------------[ Information Launcher ]-------------
 
-Version: building 0.0.3.0
+Version: beta 0.0.2.0
 Opérationnel: Semi-Opérationnel
 Date de sortie: INCONUE
 
@@ -13,6 +13,11 @@ Copyright HUBERT Léo © 2014 - 2015
 
 
 ChangeLogs:
+
+beta_0.0.2.0:
+- Add: Bannière erreur au lieu des Messages popup 
+- Add: XML translate error
+- Add: Animation fader + option " on / off"
 
 beta_0.0.0.1:
 - Add: Download mods
