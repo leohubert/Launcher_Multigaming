@@ -28,11 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.change_language = new System.ComponentModel.BackgroundWorker();
             this.monoFlat_ThemeContainer1 = new MonoFlat.MonoFlat_ThemeContainer();
             this.iTalk_Icon_Tick1 = new iTalk.iTalk_Icon_Tick();
             this.Language_label = new iTalk.iTalk_Label();
             this.Language_Chose = new iTalk.iTalk_ComboBox();
-            this.change_language = new System.ComponentModel.BackgroundWorker();
             this.monoFlat_ThemeContainer1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -103,16 +103,13 @@
             this.Language_Chose.TabIndex = 0;
             this.Language_Chose.SelectedIndexChanged += new System.EventHandler(this.iTalk_ComboBox1_SelectedIndexChanged);
             // 
-            // change_language
-            // 
-  
-            // 
             // Form2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(718, 368);
             this.Controls.Add(this.monoFlat_ThemeContainer1);
+            this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.MinimumSize = new System.Drawing.Size(126, 39);
             this.Name = "Form2";

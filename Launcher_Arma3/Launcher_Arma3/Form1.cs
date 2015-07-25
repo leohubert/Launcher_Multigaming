@@ -26,6 +26,7 @@ using System.Threading;
 using System.Net.NetworkInformation;
 using System.Xml;
 using System.Xml.Linq;
+using System.Reflection;
 
 namespace Launcher_Arma3
 {
@@ -41,7 +42,7 @@ namespace Launcher_Arma3
 
 
         // Configuration base of launcher  */* Configuration de base du launcher 
-        const string ftp = "http://localhost/";  // WebLink of your FTP server */* Lien web de votre serveur FTP
+        const string ftp = "http://emodyz.com/dev/";  // WebLink of your FTP server */* Lien web de votre serveur FTP
         const string servername = "Emodyz"; // Name of your server */* Nom de votre serveur 
         const string namelaunch = "Emodyz Launcher ©";  // Name of your launcher */* Nom de votre launcher
         const string modsname = "@Emodyz"; // Patch of your mods directory */* Patch de votre répertoire de mods
@@ -50,8 +51,8 @@ namespace Launcher_Arma3
         string fader_statut = "on"; // Make " on " if you want to remove fade animation on startup */* Mettez " on " si vous voulez supprimer l'animation au démarage du launcher 
 
         // Config server */* Config serveur
-        const string ipserver = "play.emodyz.com:2302"; // Your Arma3 server ip  */* L'ip de votre serveur Arma 3 
-        const string servpassword = "none"; // Password of your arma 3 server ( if you don't have a password make " none " ) */* Le mots de passe de votre serveur Arma 3 ( si vous n'avez pas de mot de passe mettez " none " )
+        string ipserver = "play.emodyz.com:2302"; // Your Arma3 server ip  */* L'ip de votre serveur Arma 3 
+        string servpassword = "none"; // Password of your arma 3 server ( if you don't have a password make " none " ) */* Le mots de passe de votre serveur Arma 3 ( si vous n'avez pas de mot de passe mettez " none " )
 
         //Configuration errorlistguage
         public string language = "FR"; // Make your language "EN" pour l'anglais */* Mettez votre langage "FR" pour le français.
@@ -93,12 +94,12 @@ namespace Launcher_Arma3
         string update_ext = "Update.exe"; // Distant program for update launcher */* Fichier distant pour la mise à jour du launcher
         string update_site = "site.txt"; // Local File where is the website for download the update */* Fichier local là ou est le lien pour télécharger la mise à jour
         string update_destlaunch = "update.txt"; // Local File where is the patch to launcher up to date */* Fichier local là ou est la destination du launcher à mettre à jours
-
+        string update_message; //Its a simple variable */* C'est une simple variable
 
         // Config error message */* Paramètres erreurs message.
-        // 404
-        bool error404 = false;
-        string error404_msg = "Serveur not found !";
+        bool error404;
+
+        int error_time = 5000;
         string error_type;
         int error_code;
         string error_message;
@@ -112,10 +113,16 @@ namespace Launcher_Arma3
         string appdata = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData)+ "\\" + servername + "\\"; // DON'T CHANGE
         string dlauncher = Application.ExecutablePath; // DON'T CHANGE
         string vlauncher = Application.ProductVersion.ToString();// DON'T CHANGE
-        string username = "UserName"; // DON'T CHANGE
+        string startoption = "any";// DON'T CHANGE
+        string speudo = "any"; // DON'T CHANGE
         string msg_darma = "Arma3 Directory: ";
+        Assembly assembly = Assembly.GetExecutingAssembly();
         bool connection = NetworkInterface.GetIsNetworkAvailable();// DON'T CHANGE
         bool locked = false; // DON'T CHANGE 
+        string GUID;
+        string var_1;
+        string var_2;
+        string var_3;
         int counter = 0;
         int counter_total = 0;
         string wrs_1;
@@ -127,9 +134,29 @@ namespace Launcher_Arma3
         {
             InitializeComponent();
 
+            //View if network is ok */* Regarde si internet est ok
+            WebClient webClient = new WebClient();
+            try
+            {
+                Stream strm = webClient.OpenRead(ftp);
+            }
+            catch (WebException we)
+            {
+
+                error404 = true;
+
+                error_time = -1;
+                if (!Erreur_Msg.IsBusy)
+                {
+                    error_code = 404;
+                    Erreur_Msg.RunWorkerAsync();
+                }
+            }
+
             //Change language launcher */* Change la langue du launcher
             Change_Lang.RunWorkerAsync();
 
+            // Fader animation */* Animation fader
             if (fader_statut == "on")
             {
                 Fader.Start();
@@ -138,33 +165,16 @@ namespace Launcher_Arma3
             {
                 this.Opacity = 1;
             }
-
-            WebClient webClient = new WebClient();
-            try
-            {
-                Stream strm = webClient.OpenRead(ftp);
-            }
-            catch (WebException we)
-            {
-                error404 = true;
-                if (!Erreur_Msg.IsBusy)
-                {
-                    error_code = 404;
-                    Erreur_Msg.RunWorkerAsync();
-                }
-            }
         }
 
+     
+
         // Launcher Load Script 
-       
-
-
         private void Launch_Load(object sender, EventArgs e)
         {
            
 
             // Change Launcher Name  */* Change le nom du launcher
-            Launch.ActiveForm.Text = namelaunch;
             iTalk_ThemeContainer1.Text = namelaunch;
 
             // Change le bouton TeamSpeak ou Mumble
@@ -182,6 +192,7 @@ namespace Launcher_Arma3
             {
                 if (!Erreur_Msg.IsBusy)
                 {
+                    error_time = -1;
                     error_code = 100;
                     Erreur_Msg.RunWorkerAsync();
                 }
@@ -191,6 +202,14 @@ namespace Launcher_Arma3
                 return;
             }
 
+
+            // Load GUID App */* Charge le GUID de l'app
+
+
+            GUID = ftp.Replace(".","");
+            GUID = GUID.Replace("/", "");
+            GUID = GUID.Replace(":", "");
+                      
 
             // Create AppData repertory */* Crée le répertoire AppData
             if (!Directory.Exists(appdata))
@@ -418,9 +437,7 @@ namespace Launcher_Arma3
             Download_Mods.RunWorkerAsync();
 
             // Change visibility bouton */* Change la visibilité des bouton
-            Download_Progress.Visible = true;
-            Total_Progress.Visible = true;
-            Download_label1.Visible = true;
+            Download_Group.Visible = true;
 
 
         }
@@ -431,6 +448,7 @@ namespace Launcher_Arma3
             {
                 if (!Erreur_Msg.IsBusy)
                 {
+
                     error_code = 100;
                     Erreur_Msg.RunWorkerAsync();
                 }
@@ -458,9 +476,9 @@ namespace Launcher_Arma3
             if (content != vlauncher)
             {
                 // Create Update folder */* crée le dossier Update
-                if (!Directory.Exists(appdata + "\\" + dest_update))
+                if (!Directory.Exists(appdata + dest_update))
                 {
-                    Directory.CreateDirectory(appdata + "\\" + dest_update);
+                    Directory.CreateDirectory(appdata + dest_update);
                 }
 
                // Show a dialog before update */* montre un dialogue avant l'update 
@@ -468,14 +486,14 @@ namespace Launcher_Arma3
                 
                 //Start the update program */* lance le programme de mise à jour 
                 WebClient webClient = new WebClient();
-                webClient.DownloadFile(ftp + dest_update + "/" + update_ext, appdata + "\\" + dest_update + "\\" + update_ext);
+                webClient.DownloadFile(ftp + dest_update + "/" + update_ext, appdata + dest_update + "\\" + update_ext);
       
                 //Write into file update 
-                if (File.Exists(appdata + "\\" + dest_update + "\\" + update_site))
+                if (File.Exists(appdata + dest_update + "\\" + update_site))
                 {
-                    File.Delete(appdata + "\\" + dest_update + "\\" + update_site);
+                    File.Delete(appdata + dest_update + "\\" + update_site);
                 }
-                File.AppendAllText(appdata + "\\" + dest_update  + "\\" + update_site,ftp + dest_update + "/" + extention);
+                File.AppendAllText(appdata + dest_update  + "\\" + update_site,ftp + dest_update + "/" + extention);
                 /*
                 TextWriter up_site = new StreamWriter(appdata + "\\" + dest_update  + "\\" + update_site);
                 up_site.WriteLine(ftp + dest_update + "/" + extention);
@@ -484,18 +502,20 @@ namespace Launcher_Arma3
 
 
                 //Write into file update 
-                if (File.Exists(appdata + "\\" + dest_update + "\\" + update_destlaunch))
+                if (File.Exists(appdata + dest_update + "\\" + update_destlaunch))
                 {
-                    File.Delete(appdata + "\\" + dest_update + "\\" + update_destlaunch);
+                    File.Delete(appdata + dest_update + "\\" + update_destlaunch);
                 }
-                File.AppendAllText(appdata + "\\" + dest_update + "\\" + update_destlaunch, dlauncher);
+                File.AppendAllText(appdata + dest_update + "\\" + update_destlaunch, dlauncher);
                 /*
                 TextWriter up_destlauncher = new StreamWriter(appdata + "\\" + dest_update + "\\" + update_destlaunch);
                 up_destlauncher.WriteLine(dlauncher);
                 up_destlauncher.Close();
                 */
 
-                Process.Start(appdata + "\\" + dest_update + "\\" + update_ext );
+
+
+                Process.Start(appdata + dest_update + "\\" + update_ext);
                         
                 Application.Exit();
 
@@ -510,6 +530,8 @@ namespace Launcher_Arma3
         {
 
             // Download XML translate */* Télécharge le fichier XML
+
+            /*
             if (File.Exists(appdata + file_translate))
             {
                 File.Delete(appdata + file_translate);
@@ -517,10 +539,10 @@ namespace Launcher_Arma3
 
             WebClient webClient = new WebClient();
             webClient.DownloadFile(ftp + file_translate , appdata + file_translate);
+            */
 
             // Open XML doc */* Ouvre le fichier XML
-
-            XDocument xmlDoc = XDocument.Load(appdata + file_translate);
+            XDocument xmlDoc = XDocument.Load(Properties.Resources.Translate_server);
 
             // Search translate */* Cherche la traduction
             var tr_link = xmlDoc.Descendants(language).Elements("Links").Select(r => r.Value).ToArray();
@@ -530,6 +552,7 @@ namespace Launcher_Arma3
             var tr_disconnected = xmlDoc.Descendants(language).Elements("Disconnected").Select(r => r.Value).ToArray();
             var tr_settings = xmlDoc.Descendants(language).Elements("Settings").Select(r => r.Value).ToArray();
             var tr_directory = xmlDoc.Descendants(language).Elements("Directory").Select(r => r.Value).ToArray();
+            var tr_download = xmlDoc.Descendants(language).Elements("Download").Select(r => r.Value).ToArray();
 
             string tra_link = string.Join(",", tr_link);
             string tra_website = string.Join(",", tr_website);
@@ -538,6 +561,7 @@ namespace Launcher_Arma3
             string tra_disconnected = string.Join(",", tr_disconnected);
             string tra_settings = string.Join(",", tr_settings);
             string tra_directory = string.Join(",", tr_directory);
+            string tra_download = string.Join(",", tr_download);
 
 
 
@@ -550,27 +574,149 @@ namespace Launcher_Arma3
             destination_bouton.Text = tra_directory;
             msg_darma = tra_directory + " Arma3: ";
             label_darma.Text = msg_darma + dest_arma;
+            Download_Group.Text = tra_download;
+
+            if (connection == false)
+            {
+                tra_disconnected = "Error #405 ! No network found ...";
+                error_message = "No network found ...";
+               
+                if (!Erreur_Msg.IsBusy)
+                {
+                    error_code = 405;
+                    Erreur_Msg.RunWorkerAsync();
+                }
+            }
 
             //Load Connection bouton
-            if (connection == true)
-            {
-                connection_label.ForeColor = Color.Green;
-                connection_label.Text = tra_connected;
-            }
-            else
+            if ((error_code == 404) || (error404 == true) || (connection == false))
             {
                 connection_label.ForeColor = Color.Red;
                 connection_label.Text = tra_disconnected;
             }
-
+            else
+            {
+                 connection_label.ForeColor = Color.Green;
+                 connection_label.Text = tra_connected;
+            }
      
+            try
+            {
+
+         
+            
+                // Open XML doc */* Ouvre le fichier XML
+                XDocument xml = XDocument.Load(Properties.Resources.General_server);
+
+                try
+                {
+                    var tr_ftp = xml.Descendants("general").Elements("locked").Select(r => r.Value).ToArray();
+
+                    string tra_ftp = string.Join(",", tr_ftp);
+                    var_1 = tra_ftp;
+                }
+                catch
+                {
+
+                }
+
+                try
+                {
+                    var tr_launcher = xml.Descendants(servername).Elements("locked").Select(r => r.Value).ToArray();
+
+                    string tra_launcher = string.Join(",", tr_launcher);
+                    var_2 = tra_launcher;
+                }
+                catch 
+                {
+
+                }
+
+                try
+                {
+                    var tr_guid = xml.Descendants(GUID).Elements("locked").Select(r => r.Value).ToArray();
+
+                    string tra_guid = string.Join(",", tr_guid);
+                    var_3 = tra_guid;
+                }
+                catch
+                {
+
+                }
+
+                if ((var_1 == "true") || (var_2 == "true") || (var_3 == "true"))
+                {
+                    if (!Erreur_Msg.IsBusy)
+                    {
+                        error_time = -1;
+                        error_code = 101;
+                        Erreur_Msg.RunWorkerAsync();
+                    }
+
+                    iTalk_ThemeContainer1.Visible = false;
+
+                }
+            }
+            catch 
+            {
+             
+            }
+
 
         }
 
+        private void Close_Form(object sender, EventArgs e)
+        {
+            // Fader animation */* Animation fader
+            if (fader_statut == "on")
+            {
+                Close.Start();
+            }
+            else
+            {
+                this.Opacity = 0;
+            }
+        }
+
+        private void Show_Launcher_Info(object sender, EventArgs e)
+        {
+     
+            try
+            {
+                File.WriteAllText(appdata + "info.txt", ftp
+                                + Environment.NewLine + servername
+                                + Environment.NewLine + ipserver
+                                + Environment.NewLine + ipTS + ":" + portTS + "@" + passTS
+                                + Environment.NewLine + website
+                                + Environment.NewLine + GUID);
+
+            }
+            catch
+            {
+
+                File.WriteAllText("info.txt", ftp
+                                + Environment.NewLine + servername
+                                + Environment.NewLine + ipserver
+                                + Environment.NewLine + ipTS + ":" + portTS + "@" + passTS
+                                + Environment.NewLine + website
+                                + Environment.NewLine + GUID);
+            }
+
+            
+        }
+           
+
         private void Download_Mods_DoWork(object sender, DoWorkEventArgs e)
         {
-            
-
+            // Create mods directory */* Crée la destination des mods
+            if (!Directory.Exists(dest_arma + modsname))
+            {
+                Directory.CreateDirectory(dest_arma + modsname);
+            }
+            if (!Directory.Exists(dest_arma + modsname + "\\addons\\"))
+            {
+                Directory.CreateDirectory(dest_arma + modsname + "\\addons\\");
+            }
             // Download modspack list */* Télécharge le fichier modpack
             if (File.Exists(appdata + file_modslist))
             {
@@ -686,6 +832,7 @@ namespace Launcher_Arma3
             }
             else
             {
+ 
                             // the URL to download the file from
                 string sUrlToReadFileFrom = ftp + "copyright.txt";
                 // the path to write the file to
@@ -737,6 +884,7 @@ namespace Launcher_Arma3
 
                         // close the connection to the remote server
                         streamRemote.Close();
+                    
 
                     }
 
@@ -761,7 +909,8 @@ namespace Launcher_Arma3
             if (Total_Progress.Value == 100)
             {
                 // Start Arma3 */* Lance Arma3
-              
+                Start_Arma.RunWorkerAsync();
+                Download_Group.Visible = false;
                 
                 return;
             }
@@ -772,40 +921,27 @@ namespace Launcher_Arma3
 
         private void Erreur_Msg_DoWork(object sender, DoWorkEventArgs e)
         {
-            if (error404)
+              // Open XML doc */* Ouvre le fichier XML
+            if (error_code != 500)
             {
-                error_code = 404;
-                error_message = error404_msg;
-            }
-            else
-            {
-
-                // Open XML doc */* Ouvre le fichier XML
-                XDocument xmlDoc = XDocument.Load(appdata + file_translate);
+                XDocument xmlDoc = XDocument.Load(Properties.Resources.Translate_server);
 
                 // Search translate */* Cherche la traduction
                 var tr_erreur = xmlDoc.Descendants(error_xml).Elements(language).Elements("error" + error_code).Select(r => r.Value).ToArray();
-
-
                 string tra_erreur = string.Join(",", tr_erreur);
-
-
                 error_message = tra_erreur;
-
             }
-
-
-
-            
+               
 
              notif_1.Text = "Erreur #"+ error_code +" | " + error_message;
              notif_1.BringToFront();
              notif_1.Visible = true;
 
-             System.Threading.Thread.Sleep(5000);
+             System.Threading.Thread.Sleep(error_time);
 
              notif_1.Visible = false;
              notif_1.SendToBack();
+
         }
 
         private void Fader_Tick(object sender, EventArgs e)
@@ -817,6 +953,93 @@ namespace Launcher_Arma3
 
             }
         }
+
+        private void Close_Tick(object sender, EventArgs e)
+        {
+            this.Opacity -= .05;
+            if (this.Opacity == 0)
+            {
+                Close.Stop();
+                Application.Exit();
+
+            }
+        }
+
+        private void Start_Arma_DoWork(object sender, DoWorkEventArgs e)
+        {
+            if (File.Exists(dest_arma + file_arma3))
+            {
+                if (servpassword == "none")
+                {
+                    if (startoption == "any")
+                    {
+                        if (speudo == "any")
+                        {
+                            Process.Start(dest_arma + file_arma3, "0 1 -mod=" + modsname + " -connect=" + ipserver);
+                        }
+                        else
+                        {
+                            Process.Start(dest_arma + file_arma3, "0 1 -mod=" + modsname + " -connect=" + ipserver + " -name=" + speudo);
+                        }
+                    }
+                    else
+                    {
+                        if (speudo == "any")
+                        {
+                            Process.Start(dest_arma + file_arma3, "0 1 -mod=" + modsname + " -connect=" + ipserver + " " + startoption);
+                        }
+                        else
+                        {
+                            Process.Start(dest_arma + file_arma3, "0 1 -mod=" + modsname + " -connect=" + ipserver + " -name=" + speudo + " " + startoption);
+                        }
+
+                    }
+
+                }
+                else
+                {
+                    if (startoption == "any")
+                    {
+                        if (speudo == "any")
+                        {
+                            
+                            Process.Start(dest_arma + file_arma3, "0 1 -mod=" + modsname + " -connect=" + ipserver + " -password=" + servpassword);
+                        }
+                        else
+                        {
+                            Process.Start(dest_arma + file_arma3, "0 1 -mod=" + modsname + " -connect=" + ipserver + " -name=" + speudo + " -password=" + servpassword);
+                        }
+                    }
+                    else
+                    {
+                        if (speudo == "any")
+                        {
+                            Process.Start(dest_arma + file_arma3, "0 1 -mod=" + modsname + " -connect=" + ipserver + " -password=" + servpassword  + " " + startoption);
+                        }
+                        else
+                        {
+                            Process.Start(dest_arma + file_arma3, "0 1 -mod=" + modsname + " -connect=" + ipserver + " -name=" + speudo + " -password=" + servpassword + " " + startoption);
+                        }
+
+                    }
+                }
+
+            }
+            else
+            {              
+                    if (!Erreur_Msg.IsBusy)
+                    {
+                        error_code = 401;
+                        Erreur_Msg.RunWorkerAsync();
+                    }
+                    return;
+            }
+
+
+        }
+
+  
+ 
 
 
 

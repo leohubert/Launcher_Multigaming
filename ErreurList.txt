@@ -12,3 +12,37 @@ Erreur #402: Erreur de téléchargement de fichier, vérifier votre ftp et vos conf
 Erreur #100: Changement des crédits non autorisé !
 
 Erreur #404: Serveur non disponible .
+
+Erreur #405: Internet non disponible.
+
+
+-----------------------------------------------------------------------------------------------------------------------
+
+English:
+
+Error # 202: Problem update configuration, check the update parameter launcher and "Update_Laucher" program.
+
+Error # 401: Invalid Arma3 Destination.
+
+Error # 402: Error downloading file, check your ftp and your launcher configuration.
+
+Error # 100: Change of unauthorized credits!
+
+Error # 404: Server not available.
+
+Error #405: Network not found.
+-----------------------------------------------------------------------------------------------------------------------
+
+Deutch:
+
+Error # 202: Problem Update-Konfiguration, prüfen Sie die Update-Parameter Werfer und "Update_Laucher" -Programm.
+
+Error # 401: Ungültige Arma3 Destination.
+
+Error # 402: Fehler beim Herunterladen der Datei, überprüfen Sie Ihren ftp und Ihre Launcher-Konfiguration.
+
+Error # 100: Änderung der unbefugten Credits!
+
+Error # 404: Server nicht verfügbar.
+
+Error # 405: Netzwerk nicht gefunden werden.

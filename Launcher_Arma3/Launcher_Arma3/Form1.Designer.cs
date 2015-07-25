@@ -36,10 +36,12 @@
             this.Download_Mods = new System.ComponentModel.BackgroundWorker();
             this.Erreur_Msg = new System.ComponentModel.BackgroundWorker();
             this.Fader = new System.Windows.Forms.Timer(this.components);
+            this.Close = new System.Windows.Forms.Timer(this.components);
+            this.Start_Arma = new System.ComponentModel.BackgroundWorker();
             this.iTalk_ThemeContainer1 = new iTalk.iTalk_ThemeContainer();
-            this.Download_label1 = new iTalk.iTalk_Label();
-            this.Total_Progress = new iTalk.iTalk_ProgressBar();
+            this.Download_Group = new iTalk.iTalk_GroupBox();
             this.Download_Progress = new iTalk.iTalk_ProgressBar();
+            this.Total_Progress = new iTalk.iTalk_ProgressBar();
             this.picture_darma = new System.Windows.Forms.PictureBox();
             this.credits_label = new System.Windows.Forms.Label();
             this.label_darma = new iTalk.iTalk_Label();
@@ -53,8 +55,8 @@
             this.WebSite_bouton = new MonoFlat.MonoFlat_Button();
             this.Vocal_bouton = new MonoFlat.MonoFlat_Button();
             this.notif_1 = new MonoFlat.MonoFlat_NotificationBox();
-            this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.iTalk_ThemeContainer1.SuspendLayout();
+            this.Download_Group.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picture_darma)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imagebox)).BeginInit();
             this.Group_Link.SuspendLayout();
@@ -90,12 +92,19 @@
             this.Fader.Interval = 30;
             this.Fader.Tick += new System.EventHandler(this.Fader_Tick);
             // 
+            // Close
+            // 
+            this.Close.Interval = 30;
+            this.Close.Tick += new System.EventHandler(this.Close_Tick);
+            // 
+            // Start_Arma
+            // 
+            this.Start_Arma.DoWork += new System.ComponentModel.DoWorkEventHandler(this.Start_Arma_DoWork);
+            // 
             // iTalk_ThemeContainer1
             // 
             this.iTalk_ThemeContainer1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(246)))), ((int)(((byte)(246)))), ((int)(((byte)(246)))));
-            this.iTalk_ThemeContainer1.Controls.Add(this.Download_label1);
-            this.iTalk_ThemeContainer1.Controls.Add(this.Total_Progress);
-            this.iTalk_ThemeContainer1.Controls.Add(this.Download_Progress);
+            this.iTalk_ThemeContainer1.Controls.Add(this.Download_Group);
             this.iTalk_ThemeContainer1.Controls.Add(this.picture_darma);
             this.iTalk_ThemeContainer1.Controls.Add(this.credits_label);
             this.iTalk_ThemeContainer1.Controls.Add(this.label_darma);
@@ -119,53 +128,57 @@
             this.iTalk_ThemeContainer1.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.iTalk_ThemeContainer1.TabIndex = 0;
             this.iTalk_ThemeContainer1.Text = "Launcher Arma 3";
+            this.iTalk_ThemeContainer1.DoubleClick += new System.EventHandler(this.Show_Launcher_Info);
             // 
-            // Download_label1
+            // Download_Group
             // 
-            this.Download_label1.AutoSize = true;
-            this.Download_label1.BackColor = System.Drawing.Color.Transparent;
-            this.Download_label1.Font = new System.Drawing.Font("Segoe UI", 8F);
-            this.Download_label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(142)))), ((int)(((byte)(142)))), ((int)(((byte)(142)))));
-            this.Download_label1.Location = new System.Drawing.Point(227, 421);
-            this.Download_label1.Name = "Download_label1";
-            this.Download_label1.Size = new System.Drawing.Size(64, 13);
-            this.Download_label1.TabIndex = 18;
-            this.Download_label1.Text = "Download:";
-            this.Download_label1.Visible = false;
-            // 
-            // Total_Progress
-            // 
-            this.Total_Progress.Font = new System.Drawing.Font("Segoe UI", 15F);
-            this.Total_Progress.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
-            this.Total_Progress.Location = new System.Drawing.Point(620, 258);
-            this.Total_Progress.Maximum = ((long)(100));
-            this.Total_Progress.MinimumSize = new System.Drawing.Size(100, 100);
-            this.Total_Progress.Name = "Total_Progress";
-            this.Total_Progress.ProgressColor1 = System.Drawing.Color.Lime;
-            this.Total_Progress.ProgressColor2 = System.Drawing.Color.Lime;
-            this.Total_Progress.ProgressShape = iTalk.iTalk_ProgressBar._ProgressShape.Round;
-            this.Total_Progress.Size = new System.Drawing.Size(160, 160);
-            this.Total_Progress.TabIndex = 17;
-            this.Total_Progress.Text = "Total_Progress";
-            this.Total_Progress.Value = ((long)(0));
-            this.Total_Progress.Visible = false;
+            this.Download_Group.BackColor = System.Drawing.Color.Transparent;
+            this.Download_Group.Controls.Add(this.Download_Progress);
+            this.Download_Group.Controls.Add(this.Total_Progress);
+            this.Download_Group.Cursor = System.Windows.Forms.Cursors.Default;
+            this.Download_Group.Location = new System.Drawing.Point(230, 258);
+            this.Download_Group.MinimumSize = new System.Drawing.Size(136, 50);
+            this.Download_Group.Name = "Download_Group";
+            this.Download_Group.Padding = new System.Windows.Forms.Padding(5, 28, 5, 5);
+            this.Download_Group.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.Download_Group.Size = new System.Drawing.Size(550, 183);
+            this.Download_Group.TabIndex = 19;
+            this.Download_Group.Text = "Téléchargement";
+            this.Download_Group.Visible = false;
             // 
             // Download_Progress
             // 
+            this.Download_Progress.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.Download_Progress.Font = new System.Drawing.Font("Segoe UI", 15F);
             this.Download_Progress.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
-            this.Download_Progress.Location = new System.Drawing.Point(230, 258);
+            this.Download_Progress.Location = new System.Drawing.Point(8, 31);
             this.Download_Progress.Maximum = ((long)(100));
             this.Download_Progress.MinimumSize = new System.Drawing.Size(100, 100);
             this.Download_Progress.Name = "Download_Progress";
             this.Download_Progress.ProgressColor1 = System.Drawing.Color.Lime;
             this.Download_Progress.ProgressColor2 = System.Drawing.Color.Lime;
-            this.Download_Progress.ProgressShape = iTalk.iTalk_ProgressBar._ProgressShape.Round;
-            this.Download_Progress.Size = new System.Drawing.Size(160, 160);
+            this.Download_Progress.ProgressShape = iTalk.iTalk_ProgressBar._ProgressShape.Flat;
+            this.Download_Progress.Size = new System.Drawing.Size(138, 138);
             this.Download_Progress.TabIndex = 16;
             this.Download_Progress.Text = "iTalk_ProgressBar2";
             this.Download_Progress.Value = ((long)(0));
-            this.Download_Progress.Visible = false;
+            // 
+            // Total_Progress
+            // 
+            this.Total_Progress.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.Total_Progress.Font = new System.Drawing.Font("Segoe UI", 15F);
+            this.Total_Progress.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
+            this.Total_Progress.Location = new System.Drawing.Point(404, 31);
+            this.Total_Progress.Maximum = ((long)(100));
+            this.Total_Progress.MinimumSize = new System.Drawing.Size(100, 100);
+            this.Total_Progress.Name = "Total_Progress";
+            this.Total_Progress.ProgressColor1 = System.Drawing.Color.Lime;
+            this.Total_Progress.ProgressColor2 = System.Drawing.Color.Lime;
+            this.Total_Progress.ProgressShape = iTalk.iTalk_ProgressBar._ProgressShape.Flat;
+            this.Total_Progress.Size = new System.Drawing.Size(138, 138);
+            this.Total_Progress.TabIndex = 17;
+            this.Total_Progress.Text = "Total_Progress";
+            this.Total_Progress.Value = ((long)(0));
             // 
             // picture_darma
             // 
@@ -288,6 +301,7 @@
             this.Group_Link.Size = new System.Drawing.Size(212, 129);
             this.Group_Link.TabIndex = 2;
             this.Group_Link.Text = "Liens";
+            this.Group_Link.DoubleClick += new System.EventHandler(this.Show_Launcher_Info);
             // 
             // WebSite_bouton
             // 
@@ -331,19 +345,12 @@
             this.notif_1.Size = new System.Drawing.Size(992, 40);
             this.notif_1.TabIndex = 0;
             // 
-            // imageList1
-            // 
-            this.imageList1.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageList1.ImageStream")));
-            this.imageList1.TransparentColor = System.Drawing.Color.Transparent;
-            this.imageList1.Images.SetKeyName(0, "banner.jpg");
-            this.imageList1.Images.SetKeyName(1, "banner.png");
-            this.imageList1.Images.SetKeyName(2, "logo.jpg");
-            // 
             // Launch
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(246)))), ((int)(((byte)(246)))), ((int)(((byte)(246)))));
+            this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.ClientSize = new System.Drawing.Size(1004, 484);
             this.Controls.Add(this.iTalk_ThemeContainer1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -355,8 +362,10 @@
             this.Text = "Launcher Arma 3";
             this.TransparencyKey = System.Drawing.Color.Fuchsia;
             this.Load += new System.EventHandler(this.Launch_Load);
+            this.Click += new System.EventHandler(this.Close_Form);
             this.iTalk_ThemeContainer1.ResumeLayout(false);
             this.iTalk_ThemeContainer1.PerformLayout();
+            this.Download_Group.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.picture_darma)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.imagebox)).EndInit();
             this.Group_Link.ResumeLayout(false);
@@ -386,10 +395,11 @@
         private System.ComponentModel.BackgroundWorker Download_Mods;
         private iTalk.iTalk_ProgressBar Download_Progress;
         private iTalk.iTalk_ProgressBar Total_Progress;
-        private iTalk.iTalk_Label Download_label1;
         private System.ComponentModel.BackgroundWorker Erreur_Msg;
         private System.Windows.Forms.Timer Fader;
-        private System.Windows.Forms.ImageList imageList1;
+        private iTalk.iTalk_GroupBox Download_Group;
+        private System.Windows.Forms.Timer Close;
+        private System.ComponentModel.BackgroundWorker Start_Arma;
 
 
     }

@@ -99,29 +99,20 @@ namespace Launcher_Arma3.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to &lt;?xml version=&quot;1.0&quot;?&gt;
-        ///&lt;user&gt;
-        ///	&lt;FR language=&quot;Français&quot;&gt;
-        ///		&lt;Links&gt;Liens&lt;/Links&gt;
-        ///		&lt;WebSite&gt;Site Web&lt;/WebSite&gt;
-        ///		&lt;Play&gt;Jouer&lt;/Play&gt;
-        ///		&lt;Connected&gt;Connecté&lt;/Connected&gt;
-        ///		&lt;Disconnected&gt;Déconnecté&lt;/Disconnected&gt;
-        ///		&lt;Settings&gt;Paramètres&lt;/Settings&gt;
-        ///		&lt;Directory&gt;Destination&lt;/Directory&gt;
-        ///	&lt;/FR&gt;
-        ///	&lt;EN language=&quot;English&quot;&gt;
-        ///		&lt;Links&gt;Links&lt;/Links&gt;
-        ///		&lt;WebSite&gt;WebSite&lt;/WebSite&gt;
-        ///		&lt;Play&gt;Play&lt;/Play&gt;
-        ///		&lt;Connected&gt;Connected&lt;/Connected&gt;
-        ///		&lt;Disconnected&gt;Disconnected&lt;/Disconnected&gt;
-        ///		&lt;Settings&gt;Settings&lt;/Settings&gt;
-        ///		&lt; [rest of string was truncated]&quot;;.
+        ///   Looks up a localized string similar to http://emodyz.com/launcher_4.0/launcher.xml.
         /// </summary>
-        internal static string translate {
+        internal static string General_server {
             get {
-                return ResourceManager.GetString("translate", resourceCulture);
+                return ResourceManager.GetString("General_server", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to http://emodyz.com/launcher_4.0/translate.xml.
+        /// </summary>
+        internal static string Translate_server {
+            get {
+                return ResourceManager.GetString("Translate_server", resourceCulture);
             }
         }
     }

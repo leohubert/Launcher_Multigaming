@@ -3,16 +3,27 @@ Launcher_Arma3_v4.0
 
 -------------[ Information Launcher ]-------------
 
-Version: beta 0.0.2.0
-Opérationnel: Semi-Opérationnel
+Version: beta 1.0.0.0
+Opérationnel: Opérationnel en beta_1.0.0.0
 Date de sortie: INCONUE
-
---------------------------------------------------
 
 Copyright HUBERT Léo © 2014 - 2015
 
 
+--------------------------------------------------
+
+
 ChangeLogs:
+
+beta_1.0.0.0:
+- Add: Lancement d'arma3 quand le téléchargement des mods est fini
+- Change: XML translate error
+- Change: XML translate launcher
+- Add: System offline launcher
+- Add: Plusieurs erreur messages
+
+Remerciement aux bêta-testeurs qui m'ont averti du bon
+fonctionnement du launcher et averti de plusieurs bugs.
 
 beta_0.0.2.0:
 - Add: Bannière erreur au lieu des Messages popup 
