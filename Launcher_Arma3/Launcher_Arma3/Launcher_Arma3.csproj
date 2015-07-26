@@ -112,6 +112,9 @@
     <Compile Include="Theme_MonoFlat.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Theme_Perplex.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>

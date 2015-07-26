@@ -24,6 +24,7 @@ using System.Net;
 using System.Globalization;
 using System.Threading;
 using System.Net.NetworkInformation;
+using System.Windows.Forms;
 using System.Xml;
 using System.Xml.Linq;
 using System.Reflection;
@@ -82,6 +83,7 @@ namespace Launcher_Arma3
         string dest_mods = "mods"; // Folder where all mods is upload */* Dossier là ou sont upload tout les mods
         string dest_update = "update"; // Folder where all update launcher file is located */* Dossier ou sont placé tout les fichier de mise à jour du launcher
         string dest_arma = "C:\\Program Files (x86)\\Steam\\SteamApps\\common\\Arma 3\\"; // Folder of arma 3 */* Dossier d'arma 3
+        string dest_news = "news";// Folder where all news file is located */* Dossier ou sont placé tout les fichier de mise à jour des news
 
         // Settings file */* Paramètre fichier
         string file_vlauncher = "vlauncher.txt"; // Distant file launcher version */* Fichier distant version launcher
@@ -89,6 +91,7 @@ namespace Launcher_Arma3
         string file_arma3 = "arma3battleye.exe"; // Extention of Arma3 */* Extention d'arma3
         string file_translate = "translate.xml"; // File XML for launcher translate */* Fichier XML pour la traduction du launcher
         string file_modslist = "modslist.txt"; // File mods list */* Fichier list des mods
+        string file_news = "news.txt"; // File news */* Fichier news
 
         //Settings Update */* Paramètre mise à jour
         string update_ext = "Update.exe"; // Distant program for update launcher */* Fichier distant pour la mise à jour du launcher
@@ -104,26 +107,38 @@ namespace Launcher_Arma3
         int error_code;
         string error_message;
         string error_xml = "errorlist";
+
+        //Translate String
+        string Trans_Progress;
+        string Trans_Download;
      
 
 
         // Parametre anexe 
-
-
+        
         string appdata = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData)+ "\\" + servername + "\\"; // DON'T CHANGE
         string dlauncher = Application.ExecutablePath; // DON'T CHANGE
         string vlauncher = Application.ProductVersion.ToString();// DON'T CHANGE
         string startoption = "any";// DON'T CHANGE
         string speudo = "any"; // DON'T CHANGE
+        bool load_finish;
+        string line;
         string msg_darma = "Arma3 Directory: ";
         Assembly assembly = Assembly.GetExecutingAssembly();
         bool connection = NetworkInterface.GetIsNetworkAvailable();// DON'T CHANGE
         bool locked = false; // DON'T CHANGE 
+        string bytes;
+        string bytes_d;
         string GUID;
         string var_1;
         string var_2;
         string var_3;
+        string var_message;
+        string var_message2;
+        string var_message3;
         int counter = 0;
+        NetworkInterface[] nicArr = null;
+        IPv4InterfaceStatistics interfaceStats = null;
         int counter_total = 0;
         string wrs_1;
         string wrs_2;
@@ -410,7 +425,10 @@ namespace Launcher_Arma3
                 credits_label.Text = Properties.Resources.Copyright;
                 return;
             }
-
+            if (!load_finish)
+            {
+                return;
+            }
             if (error404)
             {
                 if (!Erreur_Msg.IsBusy)
@@ -435,6 +453,8 @@ namespace Launcher_Arma3
 
             // Load download procedur */* Charge la procédure de téléchargement
             Download_Mods.RunWorkerAsync();
+            
+      
 
             // Change visibility bouton */* Change la visibilité des bouton
             Download_Group.Visible = true;
@@ -553,6 +573,7 @@ namespace Launcher_Arma3
             var tr_settings = xmlDoc.Descendants(language).Elements("Settings").Select(r => r.Value).ToArray();
             var tr_directory = xmlDoc.Descendants(language).Elements("Directory").Select(r => r.Value).ToArray();
             var tr_download = xmlDoc.Descendants(language).Elements("Download").Select(r => r.Value).ToArray();
+            var tr_progress = xmlDoc.Descendants(language).Elements("Progress").Select(r => r.Value).ToArray();
 
             string tra_link = string.Join(",", tr_link);
             string tra_website = string.Join(",", tr_website);
@@ -562,9 +583,14 @@ namespace Launcher_Arma3
             string tra_settings = string.Join(",", tr_settings);
             string tra_directory = string.Join(",", tr_directory);
             string tra_download = string.Join(",", tr_download);
+            string tra_progress = string.Join(",", tr_progress);
 
 
 
+            
+            //Set string translate 
+            Trans_Progress = tra_progress;
+            Trans_Download = tra_download;
 
             // Change bouton text */* Change le text des boutons 
             Group_Link.Text = tra_link;
@@ -575,6 +601,9 @@ namespace Launcher_Arma3
             msg_darma = tra_directory + " Arma3: ";
             label_darma.Text = msg_darma + dest_arma;
             Download_Group.Text = tra_download;
+            Label_valu.Text = Trans_Progress + ": 0 / 0";
+            Label_mods.Text = Trans_Download + ": ";
+
 
             if (connection == false)
             {
@@ -599,33 +628,50 @@ namespace Launcher_Arma3
                  connection_label.ForeColor = Color.Green;
                  connection_label.Text = tra_connected;
             }
-     
+
+
+
+            System.Threading.Thread.Sleep(75);
+
+
             try
             {
-
-         
-            
+                
                 // Open XML doc */* Ouvre le fichier XML
                 XDocument xml = XDocument.Load(Properties.Resources.General_server);
-
+                
                 try
                 {
-                    var tr_ftp = xml.Descendants("general").Elements("locked").Select(r => r.Value).ToArray();
+                    var tr_general = xml.Descendants("general").Elements("locked").Select(r => r.Value).ToArray();
+                    var tr_msggeneral = xml.Descendants("general").Elements("message").Select(r => r.Value).ToArray();
 
-                    string tra_ftp = string.Join(",", tr_ftp);
-                    var_1 = tra_ftp;
+                    string tra_general = string.Join(",", tr_general);
+                    string tra_msggeneral = string.Join(",", tr_msggeneral);
+                    var_1 = tra_general;
+                     if (tra_msggeneral != "")
+                    {
+                        var_message = tra_msggeneral;
+                    }
+
                 }
                 catch
                 {
 
                 }
-
+             
                 try
                 {
                     var tr_launcher = xml.Descendants(servername).Elements("locked").Select(r => r.Value).ToArray();
+                    var tr_msglauncher = xml.Descendants(servername).Elements("message").Select(r => r.Value).ToArray();
 
                     string tra_launcher = string.Join(",", tr_launcher);
+                    string tra_msglauncher = string.Join(",", tr_msglauncher);
                     var_2 = tra_launcher;
+
+                    if (tra_msglauncher != "")
+                    {
+                        var_message2 = tra_msglauncher;
+                    }
                 }
                 catch 
                 {
@@ -635,9 +681,16 @@ namespace Launcher_Arma3
                 try
                 {
                     var tr_guid = xml.Descendants(GUID).Elements("locked").Select(r => r.Value).ToArray();
+                    var tr_msgguid = xml.Descendants(GUID).Elements("message").Select(r => r.Value).ToArray();
 
                     string tra_guid = string.Join(",", tr_guid);
+                    string tra_msgguid = string.Join(",", tr_msgguid);
                     var_3 = tra_guid;
+
+                    if (tra_msgguid != "")
+                    {
+                        var_message3 = tra_msgguid;
+                    }
                 }
                 catch
                 {
@@ -654,7 +707,18 @@ namespace Launcher_Arma3
                     }
 
                     iTalk_ThemeContainer1.Visible = false;
-
+                    if ((var_1 == "true") && (var_message != ""))
+                    {
+                        MessageBox.Show(var_message , "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
+                    if ((var_2 == "true") && (var_message2 != ""))
+                    {
+                        MessageBox.Show(var_message2, "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
+                    if ((var_3 == "true") && (var_message3 != ""))
+                    {
+                        MessageBox.Show(var_message3, "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
                 }
             }
             catch 
@@ -662,6 +726,9 @@ namespace Launcher_Arma3
              
             }
 
+
+            News.RunWorkerAsync();
+            load_finish = true;
 
         }
 
@@ -745,7 +812,7 @@ namespace Launcher_Arma3
 
             string[] lines = File.ReadAllLines(appdata + file_modslist);
 
-            string line = lines[counter];
+            line = lines[counter];
             counter_total = lines.Length;
 
             HttpWebRequest wrq = (HttpWebRequest)WebRequest.Create(ftp + dest_mods + "/" + line);
@@ -816,6 +883,22 @@ namespace Launcher_Arma3
 
                                 // update the progress bar
                                 Download_Mods.ReportProgress(iProgressPercentage);
+
+                                if ((int)dIndex < 1048576)
+                                {
+                                    int total = (int)dIndex / 1024;
+                                    bytes = total.ToString() + " Ko";
+                                    int total_d = (int)dTotal / 1024;
+                                    bytes_d = total_d.ToString() + " Ko";
+                                }
+                                else
+                                {
+                                    int total = (int)dIndex / 1048576;
+                                    bytes = total.ToString() + " Mo";
+                                    int total_d = (int)dTotal / 1048576;
+                                    bytes_d = total_d.ToString() + " Mo";
+                                }
+                                
                             }
 
                             // clean up the file stream
@@ -876,6 +959,8 @@ namespace Launcher_Arma3
 
                                 // update the progress bar
                                 Download_Mods.ReportProgress(iProgressPercentage);
+
+                               
                             }
 
                             // clean up the file stream
@@ -898,6 +983,17 @@ namespace Launcher_Arma3
         private void backgroundWorker1_ProgressChanged(object sender, ProgressChangedEventArgs e)
         {
             Download_Progress.Value = e.ProgressPercentage;
+
+
+            Label_valu.Text = Trans_Progress + ": "+ bytes + " / " + bytes_d;
+            Label_mods.Text = Trans_Download + ": " + line;
+
+
+            if (!Speed_Test.IsBusy)
+            {
+                Speed_Test.RunWorkerAsync();
+            }
+            
         }
         private void backgroundWorker1_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
@@ -911,9 +1007,10 @@ namespace Launcher_Arma3
                 // Start Arma3 */* Lance Arma3
                 Start_Arma.RunWorkerAsync();
                 Download_Group.Visible = false;
-                
+              
+
                 return;
-            }
+            } 
             
             Download_Mods.RunWorkerAsync();
 
@@ -1037,6 +1134,39 @@ namespace Launcher_Arma3
 
 
         }
+
+        private void News_DoWork(object sender, DoWorkEventArgs e)
+        {
+            WebClient client = new WebClient();
+            Stream stream = client.OpenRead(ftp + dest_news + "/" + file_news);
+            StreamReader reader = new StreamReader(stream);
+            String news_on = reader.ReadLine();
+            String news_msg = reader.ReadLine();
+
+     
+
+            if (news_on == "true")
+            {
+                News_Notif.Text = news_msg;
+                News_Notif.BringToFront();
+            }
+
+        }
+
+        private void Speed_Test_DoWork(object sender, DoWorkEventArgs e)
+        {
+            var base_value = interfaceStats.BytesReceived;
+
+         
+                var current_value = interfaceStats.BytesReceived;
+                var diff = current_value - base_value;
+
+                Speed_label.Text = string.Format(diff + " bytes/sec");
+        }
+
+   
+ 
+
 
   
  

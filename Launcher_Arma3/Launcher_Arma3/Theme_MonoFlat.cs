@@ -2576,7 +2576,7 @@ namespace MonoFlat
             switch (_NotificationType)
             {
                 case Type.Notice:
-                    NotificationText = "NOTICE";
+                    NotificationText = "NEWS";
                     break;
                 case Type.Success:
                     NotificationText = "SUCCESS";

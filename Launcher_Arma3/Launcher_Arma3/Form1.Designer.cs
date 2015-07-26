@@ -38,9 +38,12 @@
             this.Fader = new System.Windows.Forms.Timer(this.components);
             this.Close = new System.Windows.Forms.Timer(this.components);
             this.Start_Arma = new System.ComponentModel.BackgroundWorker();
+            this.News = new System.ComponentModel.BackgroundWorker();
             this.iTalk_ThemeContainer1 = new iTalk.iTalk_ThemeContainer();
             this.Download_Group = new iTalk.iTalk_GroupBox();
-            this.Download_Progress = new iTalk.iTalk_ProgressBar();
+            this.Label_mods = new iTalk.iTalk_Label();
+            this.Label_valu = new iTalk.iTalk_Label();
+            this.Download_Progress = new PerplexProgressBar();
             this.Total_Progress = new iTalk.iTalk_ProgressBar();
             this.picture_darma = new System.Windows.Forms.PictureBox();
             this.credits_label = new System.Windows.Forms.Label();
@@ -55,6 +58,9 @@
             this.WebSite_bouton = new MonoFlat.MonoFlat_Button();
             this.Vocal_bouton = new MonoFlat.MonoFlat_Button();
             this.notif_1 = new MonoFlat.MonoFlat_NotificationBox();
+            this.News_Notif = new MonoFlat.MonoFlat_NotificationBox();
+            this.Speed_Test = new System.ComponentModel.BackgroundWorker();
+            this.Speed_label = new iTalk.iTalk_Label();
             this.iTalk_ThemeContainer1.SuspendLayout();
             this.Download_Group.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picture_darma)).BeginInit();
@@ -101,6 +107,10 @@
             // 
             this.Start_Arma.DoWork += new System.ComponentModel.DoWorkEventHandler(this.Start_Arma_DoWork);
             // 
+            // News
+            // 
+            this.News.DoWork += new System.ComponentModel.DoWorkEventHandler(this.News_DoWork);
+            // 
             // iTalk_ThemeContainer1
             // 
             this.iTalk_ThemeContainer1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(246)))), ((int)(((byte)(246)))), ((int)(((byte)(246)))));
@@ -116,6 +126,7 @@
             this.iTalk_ThemeContainer1.Controls.Add(this.imagebox);
             this.iTalk_ThemeContainer1.Controls.Add(this.Group_Link);
             this.iTalk_ThemeContainer1.Controls.Add(this.notif_1);
+            this.iTalk_ThemeContainer1.Controls.Add(this.News_Notif);
             this.iTalk_ThemeContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.iTalk_ThemeContainer1.Font = new System.Drawing.Font("Segoe UI", 8F);
             this.iTalk_ThemeContainer1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(142)))), ((int)(((byte)(142)))), ((int)(((byte)(142)))));
@@ -133,6 +144,9 @@
             // Download_Group
             // 
             this.Download_Group.BackColor = System.Drawing.Color.Transparent;
+            this.Download_Group.Controls.Add(this.Speed_label);
+            this.Download_Group.Controls.Add(this.Label_mods);
+            this.Download_Group.Controls.Add(this.Label_valu);
             this.Download_Group.Controls.Add(this.Download_Progress);
             this.Download_Group.Controls.Add(this.Total_Progress);
             this.Download_Group.Cursor = System.Windows.Forms.Cursors.Default;
@@ -146,36 +160,55 @@
             this.Download_Group.Text = "Téléchargement";
             this.Download_Group.Visible = false;
             // 
+            // Label_mods
+            // 
+            this.Label_mods.AutoSize = true;
+            this.Label_mods.BackColor = System.Drawing.Color.Transparent;
+            this.Label_mods.Font = new System.Drawing.Font("Impact", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Label_mods.ForeColor = System.Drawing.Color.Black;
+            this.Label_mods.Location = new System.Drawing.Point(8, 101);
+            this.Label_mods.Name = "Label_mods";
+            this.Label_mods.Size = new System.Drawing.Size(58, 15);
+            this.Label_mods.TabIndex = 22;
+            this.Label_mods.Text = "Download: ";
+            // 
+            // Label_valu
+            // 
+            this.Label_valu.AutoSize = true;
+            this.Label_valu.BackColor = System.Drawing.Color.Transparent;
+            this.Label_valu.Font = new System.Drawing.Font("Impact", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Label_valu.ForeColor = System.Drawing.Color.Black;
+            this.Label_valu.Location = new System.Drawing.Point(8, 86);
+            this.Label_valu.Name = "Label_valu";
+            this.Label_valu.Size = new System.Drawing.Size(27, 15);
+            this.Label_valu.TabIndex = 20;
+            this.Label_valu.Text = "0 / 0";
+            // 
             // Download_Progress
             // 
-            this.Download_Progress.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.Download_Progress.Font = new System.Drawing.Font("Segoe UI", 15F);
-            this.Download_Progress.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
-            this.Download_Progress.Location = new System.Drawing.Point(8, 31);
-            this.Download_Progress.Maximum = ((long)(100));
-            this.Download_Progress.MinimumSize = new System.Drawing.Size(100, 100);
+            this.Download_Progress.BackColor = System.Drawing.Color.Transparent;
+            this.Download_Progress.Location = new System.Drawing.Point(8, 32);
+            this.Download_Progress.Maximum = 100;
             this.Download_Progress.Name = "Download_Progress";
-            this.Download_Progress.ProgressColor1 = System.Drawing.Color.Lime;
-            this.Download_Progress.ProgressColor2 = System.Drawing.Color.Lime;
-            this.Download_Progress.ProgressShape = iTalk.iTalk_ProgressBar._ProgressShape.Flat;
-            this.Download_Progress.Size = new System.Drawing.Size(138, 138);
-            this.Download_Progress.TabIndex = 16;
-            this.Download_Progress.Text = "iTalk_ProgressBar2";
-            this.Download_Progress.Value = ((long)(0));
+            this.Download_Progress.ShowPercentage = false;
+            this.Download_Progress.Size = new System.Drawing.Size(534, 28);
+            this.Download_Progress.TabIndex = 21;
+            this.Download_Progress.Text = "perplexProgressBar1";
+            this.Download_Progress.Value = 0;
             // 
             // Total_Progress
             // 
             this.Total_Progress.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.Total_Progress.Font = new System.Drawing.Font("Segoe UI", 15F);
             this.Total_Progress.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
-            this.Total_Progress.Location = new System.Drawing.Point(404, 31);
+            this.Total_Progress.Location = new System.Drawing.Point(432, 66);
             this.Total_Progress.Maximum = ((long)(100));
             this.Total_Progress.MinimumSize = new System.Drawing.Size(100, 100);
             this.Total_Progress.Name = "Total_Progress";
             this.Total_Progress.ProgressColor1 = System.Drawing.Color.Lime;
             this.Total_Progress.ProgressColor2 = System.Drawing.Color.Lime;
             this.Total_Progress.ProgressShape = iTalk.iTalk_ProgressBar._ProgressShape.Flat;
-            this.Total_Progress.Size = new System.Drawing.Size(138, 138);
+            this.Total_Progress.Size = new System.Drawing.Size(110, 110);
             this.Total_Progress.TabIndex = 17;
             this.Total_Progress.Text = "Total_Progress";
             this.Total_Progress.Value = ((long)(0));
@@ -345,6 +378,36 @@
             this.notif_1.Size = new System.Drawing.Size(992, 40);
             this.notif_1.TabIndex = 0;
             // 
+            // News_Notif
+            // 
+            this.News_Notif.BorderCurve = 8;
+            this.News_Notif.Font = new System.Drawing.Font("Tahoma", 9F);
+            this.News_Notif.Image = null;
+            this.News_Notif.Location = new System.Drawing.Point(6, 212);
+            this.News_Notif.MinimumSize = new System.Drawing.Size(100, 40);
+            this.News_Notif.Name = "News_Notif";
+            this.News_Notif.NotificationType = MonoFlat.MonoFlat_NotificationBox.Type.Notice;
+            this.News_Notif.RoundCorners = false;
+            this.News_Notif.ShowCloseButton = true;
+            this.News_Notif.Size = new System.Drawing.Size(992, 40);
+            this.News_Notif.TabIndex = 23;
+            // 
+            // Speed_Test
+            // 
+            this.Speed_Test.DoWork += new System.ComponentModel.DoWorkEventHandler(this.Speed_Test_DoWork);
+            // 
+            // Speed_label
+            // 
+            this.Speed_label.AutoSize = true;
+            this.Speed_label.BackColor = System.Drawing.Color.Transparent;
+            this.Speed_label.Font = new System.Drawing.Font("Impact", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Speed_label.ForeColor = System.Drawing.Color.Black;
+            this.Speed_label.Location = new System.Drawing.Point(8, 116);
+            this.Speed_label.Name = "Speed_label";
+            this.Speed_label.Size = new System.Drawing.Size(39, 15);
+            this.Speed_label.TabIndex = 23;
+            this.Speed_label.Text = "Speed:";
+            // 
             // Launch
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -366,6 +429,7 @@
             this.iTalk_ThemeContainer1.ResumeLayout(false);
             this.iTalk_ThemeContainer1.PerformLayout();
             this.Download_Group.ResumeLayout(false);
+            this.Download_Group.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picture_darma)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.imagebox)).EndInit();
             this.Group_Link.ResumeLayout(false);
@@ -393,13 +457,19 @@
         protected System.Windows.Forms.Label credits_label;
         private System.Windows.Forms.PictureBox picture_darma;
         private System.ComponentModel.BackgroundWorker Download_Mods;
-        private iTalk.iTalk_ProgressBar Download_Progress;
         private iTalk.iTalk_ProgressBar Total_Progress;
         private System.ComponentModel.BackgroundWorker Erreur_Msg;
         private System.Windows.Forms.Timer Fader;
         private iTalk.iTalk_GroupBox Download_Group;
         private System.Windows.Forms.Timer Close;
         private System.ComponentModel.BackgroundWorker Start_Arma;
+        private iTalk.iTalk_Label Label_valu;
+        private PerplexProgressBar Download_Progress;
+        private iTalk.iTalk_Label Label_mods;
+        private MonoFlat.MonoFlat_NotificationBox News_Notif;
+        private System.ComponentModel.BackgroundWorker News;
+        private System.ComponentModel.BackgroundWorker Speed_Test;
+        private iTalk.iTalk_Label Speed_label;
 
 
     }

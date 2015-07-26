@@ -3,8 +3,8 @@ Launcher_Arma3_v4.0
 
 -------------[ Information Launcher ]-------------
 
-Version: beta 1.0.0.0
-Opérationnel: Opérationnel en beta_1.0.0.0
+Version: beta 1.5.0.0
+Opérationnel: Opérationnel en beta_1.5.0.0
 Date de sortie: INCONUE
 
 Copyright HUBERT Léo © 2014 - 2015
@@ -13,7 +13,15 @@ Copyright HUBERT Léo © 2014 - 2015
 --------------------------------------------------
 
 
-ChangeLogs:
+Change Logs:
+
+Beta_1.5.0.0:
+- Add: download information ( bytesdownloaded / bytes total).
+- Add: Download mods information ( modsname ).
+- Add: System de news.
+- Change: Start Arma3 options.
+- Change: Download Progress bar download ( Bar de progression droite ).
+- Fix: Message erreur quand le launcher s'ouvre
 
 beta_1.0.0.0:
 - Add: Lancement d'arma3 quand le téléchargement des mods est fini
