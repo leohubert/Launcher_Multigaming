@@ -1393,7 +1393,7 @@ namespace MonoFlat
                 GP = RoundRectangle.RoundRect(BaseRect, 4);
                 ThumbRect = new Rectangle((_Width / 2) - 2, 4, 36, _Height - 8);
                 GP2 = RoundRectangle.RoundRect(ThumbRect, 4);
-                G.FillPath(new SolidBrush(Color.FromArgb(181, 41, 42)), GP);
+                G.FillPath(new SolidBrush(Color.Green), GP);
                 G.FillPath(new SolidBrush(Color.FromArgb(32, 41, 50)), GP2);
             }
 

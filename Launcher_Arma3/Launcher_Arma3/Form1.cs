@@ -24,7 +24,6 @@ using System.Net;
 using System.Globalization;
 using System.Threading;
 using System.Net.NetworkInformation;
-using System.Windows.Forms;
 using System.Xml;
 using System.Xml.Linq;
 using System.Reflection;
@@ -50,6 +49,7 @@ namespace Launcher_Arma3
         const string website = "http://emodyz.com"; // Link of your web site */* Lien de votre site web
         const string extention = "Emodyz.exe"; // Your sofware extension .exe ( example: "Emodyz.exe ) */* votre logiciel .exe ( exemple: " Emodyz.exe " )
         string fader_statut = "on"; // Make " on " if you want to remove fade animation on startup */* Mettez " on " si vous voulez supprimer l'animation au démarage du launcher 
+        bool anticheat = true; //Make "true" if you want to enable the anticheat and "false" for reverse  */* Mettez "true" si vous voulez activer l'anticheat et "false" pour l'inverse 
 
         // Config server */* Config serveur
         string ipserver = "play.emodyz.com:2302"; // Your Arma3 server ip  */* L'ip de votre serveur Arma 3 
@@ -84,6 +84,7 @@ namespace Launcher_Arma3
         string dest_update = "update"; // Folder where all update launcher file is located */* Dossier ou sont placé tout les fichier de mise à jour du launcher
         string dest_arma = "C:\\Program Files (x86)\\Steam\\SteamApps\\common\\Arma 3\\"; // Folder of arma 3 */* Dossier d'arma 3
         string dest_news = "news";// Folder where all news file is located */* Dossier ou sont placé tout les fichier de mise à jour des news
+        string dest_options = "options"; // Folder where all settings file is located */* Dossier ou sont placé tout les fichier d'options
 
         // Settings file */* Paramètre fichier
         string file_vlauncher = "vlauncher.txt"; // Distant file launcher version */* Fichier distant version launcher
@@ -92,15 +93,20 @@ namespace Launcher_Arma3
         string file_translate = "translate.xml"; // File XML for launcher translate */* Fichier XML pour la traduction du launcher
         string file_modslist = "modslist.txt"; // File mods list */* Fichier list des mods
         string file_news = "news.txt"; // File news */* Fichier news
+        string file_username = "UserName.a3";  // File UserName */* Fichier Nom d'utilisateur
+        string file_a3options = "A3_Options.a3"; // File launcher Arma3 settings */* Fichier des options de lancement d'Arma3
+        string file_language = "Language.a3"; // File language settings */* Fichier des options de languages
 
         //Settings Update */* Paramètre mise à jour
         string update_ext = "Update.exe"; // Distant program for update launcher */* Fichier distant pour la mise à jour du launcher
         string update_site = "site.txt"; // Local File where is the website for download the update */* Fichier local là ou est le lien pour télécharger la mise à jour
         string update_destlaunch = "update.txt"; // Local File where is the patch to launcher up to date */* Fichier local là ou est la destination du launcher à mettre à jours
         string update_message; //Its a simple variable */* C'est une simple variable
+     
 
         // Config error message */* Paramètres erreurs message.
         bool error404;
+        string error01; 
 
         int error_time = 5000;
         string error_type;
@@ -111,6 +117,8 @@ namespace Launcher_Arma3
         //Translate String
         string Trans_Progress;
         string Trans_Download;
+        string Trans_Checks;
+        string Trans_Deal;
      
 
 
@@ -137,16 +145,22 @@ namespace Launcher_Arma3
         string var_message2;
         string var_message3;
         int counter = 0;
-        NetworkInterface[] nicArr = null;
-        IPv4InterfaceStatistics interfaceStats = null;
         int counter_total = 0;
         string wrs_1;
         string wrs_2;
+        public string[] UserNames { get; private set; }
 
 
 
         public Launch()
         {
+
+            if (File.Exists(appdata + dest_options + "\\" + file_language))
+            {
+                string[] lines = File.ReadAllLines(appdata + dest_options + "\\" + file_language);
+                language = lines[1];
+            }
+
             InitializeComponent();
 
             //View if network is ok */* Regarde si internet est ok
@@ -427,6 +441,16 @@ namespace Launcher_Arma3
             }
             if (!load_finish)
             {
+                if (!Erreur_Msg.IsBusy)
+                {
+                    error_code = 110;
+                    Erreur_Msg.RunWorkerAsync();
+                }
+
+                if (!News.IsBusy)
+                {
+                    News.RunWorkerAsync();
+                }
                 return;
             }
             if (error404)
@@ -478,9 +502,19 @@ namespace Launcher_Arma3
                 return;
             }
 
-            Form2 frm = new Form2(language);
-            frm.Show();
-         
+            Form2 frm = new Form2(language, appdata, dest_options, file_username, file_a3options, file_language);
+            frm.ShowDialog();
+            if (File.Exists(appdata + dest_options + "\\" + file_language))
+            {
+                string[] lines = File.ReadAllLines(appdata + dest_options + "\\" + file_language);
+                language = lines[1];
+            }
+            if (!Change_Lang.IsBusy)
+            {
+                Change_Lang.RunWorkerAsync();
+            }
+        
+        
         }
 
 
@@ -574,6 +608,8 @@ namespace Launcher_Arma3
             var tr_directory = xmlDoc.Descendants(language).Elements("Directory").Select(r => r.Value).ToArray();
             var tr_download = xmlDoc.Descendants(language).Elements("Download").Select(r => r.Value).ToArray();
             var tr_progress = xmlDoc.Descendants(language).Elements("Progress").Select(r => r.Value).ToArray();
+            var tr_modsdeal = xmlDoc.Descendants(language).Elements("ModsDeal").Select(r => r.Value).ToArray();
+            var tr_checks = xmlDoc.Descendants(language).Elements("Checks").Select(r => r.Value).ToArray();
 
             string tra_link = string.Join(",", tr_link);
             string tra_website = string.Join(",", tr_website);
@@ -584,6 +620,14 @@ namespace Launcher_Arma3
             string tra_directory = string.Join(",", tr_directory);
             string tra_download = string.Join(",", tr_download);
             string tra_progress = string.Join(",", tr_progress);
+            string tra_modsdeal = string.Join(",", tr_modsdeal);
+            string tra_checks = string.Join(",", tr_checks);
+
+
+            //Error Load */* Chargement erreur
+            var tr_erreur01 = xmlDoc.Descendants(error_xml).Elements(language).Elements("error01").Select(r => r.Value).ToArray();
+
+            string tra_erreur01 = string.Join(",", tr_erreur01);
 
 
 
@@ -591,6 +635,9 @@ namespace Launcher_Arma3
             //Set string translate 
             Trans_Progress = tra_progress;
             Trans_Download = tra_download;
+            Trans_Deal = tra_modsdeal;
+            Trans_Checks = tra_checks;
+            error01 = tra_erreur01;
 
             // Change bouton text */* Change le text des boutons 
             Group_Link.Text = tra_link;
@@ -603,7 +650,9 @@ namespace Launcher_Arma3
             Download_Group.Text = tra_download;
             Label_valu.Text = Trans_Progress + ": 0 / 0";
             Label_mods.Text = Trans_Download + ": ";
+            Label_modsdeal.Text = Trans_Deal + ": ";
 
+           
 
             if (connection == false)
             {
@@ -726,9 +775,9 @@ namespace Launcher_Arma3
              
             }
 
-
             News.RunWorkerAsync();
-            load_finish = true;
+        
+    
 
         }
 
@@ -819,7 +868,8 @@ namespace Launcher_Arma3
             //You should be getting only the response header
             wrq.Method = "HEAD";
 
-          
+            // Set label info 
+            Label_modsdeal.Text = Trans_Deal + ": " + counter + " / " + counter_total;
 
             // Load Local size */* Charge 
             using (var wrs = (HttpWebResponse)wrq.GetResponse())
@@ -839,7 +889,7 @@ namespace Launcher_Arma3
             if (wrs_1 != wrs_2) { 
 
             // Downlaod the mods
-
+                Label_mods.Text = Trans_Download + ": " + line;
                 // the URL to download the file from
                 string sUrlToReadFileFrom = ftp + dest_mods + "/"+ line;
                 // the path to write the file to
@@ -915,7 +965,8 @@ namespace Launcher_Arma3
             }
             else
             {
- 
+
+                Label_mods.Text = Trans_Checks + ": " + line;
                             // the URL to download the file from
                 string sUrlToReadFileFrom = ftp + "copyright.txt";
                 // the path to write the file to
@@ -986,14 +1037,9 @@ namespace Launcher_Arma3
 
 
             Label_valu.Text = Trans_Progress + ": "+ bytes + " / " + bytes_d;
-            Label_mods.Text = Trans_Download + ": " + line;
+           
+    
 
-
-            if (!Speed_Test.IsBusy)
-            {
-                Speed_Test.RunWorkerAsync();
-            }
-            
         }
         private void backgroundWorker1_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
@@ -1001,6 +1047,7 @@ namespace Launcher_Arma3
             counter++;
 
             Total_Progress.Value = counter * 100 / counter_total;
+            
 
             if (Total_Progress.Value == 100)
             {
@@ -1019,7 +1066,7 @@ namespace Launcher_Arma3
         private void Erreur_Msg_DoWork(object sender, DoWorkEventArgs e)
         {
               // Open XML doc */* Ouvre le fichier XML
-            if (error_code != 500)
+            if (error_code != 405)
             {
                 XDocument xmlDoc = XDocument.Load(Properties.Resources.Translate_server);
 
@@ -1030,7 +1077,7 @@ namespace Launcher_Arma3
             }
                
 
-             notif_1.Text = "Erreur #"+ error_code +" | " + error_message;
+             notif_1.Text = "Error #"+ error_code +" | " + error_message;
              notif_1.BringToFront();
              notif_1.Visible = true;
 
@@ -1064,6 +1111,25 @@ namespace Launcher_Arma3
 
         private void Start_Arma_DoWork(object sender, DoWorkEventArgs e)
         {
+
+            //Load launcher option and speudo */* Change les options du launcher et le speudo 
+            if (File.Exists(appdata + dest_options + "\\" + file_username))
+            {
+                string[] lines = File.ReadAllLines(appdata + dest_options + "\\" + file_username);
+                if (lines[1] == "True")
+                {
+                    speudo = lines[0];
+                }
+            }
+            if (File.Exists(appdata + dest_options + "\\" + file_a3options))
+            {
+                string[] lines = File.ReadAllLines(appdata + dest_options + "\\" + file_a3options);
+                if (lines[1] == "True")
+                {
+                    startoption = lines[0];
+                }
+            }
+
             if (File.Exists(dest_arma + file_arma3))
             {
                 if (servpassword == "none")
@@ -1151,28 +1217,30 @@ namespace Launcher_Arma3
                 News_Notif.BringToFront();
             }
 
+            load_finish = true;
+
+
         }
 
-        private void Speed_Test_DoWork(object sender, DoWorkEventArgs e)
+        private void Launch_FormClosed(object sender, System.Windows.Forms.FormClosedEventArgs e)
         {
-            var base_value = interfaceStats.BytesReceived;
+            if (anticheat)
+            {
+                try
+                {
+                    Process[] proc = Process.GetProcessesByName("arma3");
+                    proc[0].Kill();
+           
+                    
+                    MessageBox.Show("Error #01 | " + error01);
 
-         
-                var current_value = interfaceStats.BytesReceived;
-                var diff = current_value - base_value;
+                }
+                catch
+                {
 
-                Speed_label.Text = string.Format(diff + " bytes/sec");
+                }
+            }
         }
-
-   
- 
-
-
-  
- 
-
-
-
     }
 }
 

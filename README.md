@@ -3,8 +3,8 @@ Launcher_Arma3_v4.0
 
 -------------[ Information Launcher ]-------------
 
-Version: beta 1.5.0.0
-Opérationnel: Opérationnel en beta_1.5.0.0
+Version: beta 2.0.0.0 ( dernière BETA )
+Opérationnel: OUI
 Date de sortie: INCONUE
 
 Copyright HUBERT Léo © 2014 - 2015
@@ -14,6 +14,17 @@ Copyright HUBERT Léo © 2014 - 2015
 
 
 Change Logs:
+
+Beta_2.0.0.0:
+( dernière BETA ! )
+- Add: Le language Italien est pris en charge par le launcher
+- Add: Le language Chinois est pris en charge par le launcher
+- Fix: Les options du launcher sont 100% fonctionnelles
+- Add: Mémoire du choix des langues
+- Add: UserName set via les options du launcher
+- Add: Options de lancement ajouter au panel option du launcher
+- Fix: Lanteur au lancement du launcher
+- Fix: Bug bloquage de téléchargement des mods
 
 Beta_1.5.0.0:
 - Add: download information ( bytesdownloaded / bytes total).

@@ -39,8 +39,10 @@
             this.Close = new System.Windows.Forms.Timer(this.components);
             this.Start_Arma = new System.ComponentModel.BackgroundWorker();
             this.News = new System.ComponentModel.BackgroundWorker();
+            this.Anti_Cheat = new System.ComponentModel.BackgroundWorker();
             this.iTalk_ThemeContainer1 = new iTalk.iTalk_ThemeContainer();
             this.Download_Group = new iTalk.iTalk_GroupBox();
+            this.Label_modsdeal = new iTalk.iTalk_Label();
             this.Label_mods = new iTalk.iTalk_Label();
             this.Label_valu = new iTalk.iTalk_Label();
             this.Download_Progress = new PerplexProgressBar();
@@ -59,8 +61,6 @@
             this.Vocal_bouton = new MonoFlat.MonoFlat_Button();
             this.notif_1 = new MonoFlat.MonoFlat_NotificationBox();
             this.News_Notif = new MonoFlat.MonoFlat_NotificationBox();
-            this.Speed_Test = new System.ComponentModel.BackgroundWorker();
-            this.Speed_label = new iTalk.iTalk_Label();
             this.iTalk_ThemeContainer1.SuspendLayout();
             this.Download_Group.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picture_darma)).BeginInit();
@@ -136,7 +136,7 @@
             this.iTalk_ThemeContainer1.Sizable = false;
             this.iTalk_ThemeContainer1.Size = new System.Drawing.Size(1004, 484);
             this.iTalk_ThemeContainer1.SmartBounds = false;
-            this.iTalk_ThemeContainer1.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.iTalk_ThemeContainer1.StartPosition = System.Windows.Forms.FormStartPosition.WindowsDefaultLocation;
             this.iTalk_ThemeContainer1.TabIndex = 0;
             this.iTalk_ThemeContainer1.Text = "Launcher Arma 3";
             this.iTalk_ThemeContainer1.DoubleClick += new System.EventHandler(this.Show_Launcher_Info);
@@ -144,7 +144,7 @@
             // Download_Group
             // 
             this.Download_Group.BackColor = System.Drawing.Color.Transparent;
-            this.Download_Group.Controls.Add(this.Speed_label);
+            this.Download_Group.Controls.Add(this.Label_modsdeal);
             this.Download_Group.Controls.Add(this.Label_mods);
             this.Download_Group.Controls.Add(this.Label_valu);
             this.Download_Group.Controls.Add(this.Download_Progress);
@@ -160,6 +160,18 @@
             this.Download_Group.Text = "Téléchargement";
             this.Download_Group.Visible = false;
             // 
+            // Label_modsdeal
+            // 
+            this.Label_modsdeal.AutoSize = true;
+            this.Label_modsdeal.BackColor = System.Drawing.Color.Transparent;
+            this.Label_modsdeal.Font = new System.Drawing.Font("Impact", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Label_modsdeal.ForeColor = System.Drawing.Color.Black;
+            this.Label_modsdeal.Location = new System.Drawing.Point(8, 116);
+            this.Label_modsdeal.Name = "Label_modsdeal";
+            this.Label_modsdeal.Size = new System.Drawing.Size(91, 15);
+            this.Label_modsdeal.TabIndex = 24;
+            this.Label_modsdeal.Text = "Mods Treaty:  0 / 0 ";
+            // 
             // Label_mods
             // 
             this.Label_mods.AutoSize = true;
@@ -168,9 +180,9 @@
             this.Label_mods.ForeColor = System.Drawing.Color.Black;
             this.Label_mods.Location = new System.Drawing.Point(8, 101);
             this.Label_mods.Name = "Label_mods";
-            this.Label_mods.Size = new System.Drawing.Size(58, 15);
+            this.Label_mods.Size = new System.Drawing.Size(98, 15);
             this.Label_mods.TabIndex = 22;
-            this.Label_mods.Text = "Download: ";
+            this.Label_mods.Text = "Download:  ******.pbo";
             // 
             // Label_valu
             // 
@@ -180,9 +192,9 @@
             this.Label_valu.ForeColor = System.Drawing.Color.Black;
             this.Label_valu.Location = new System.Drawing.Point(8, 86);
             this.Label_valu.Name = "Label_valu";
-            this.Label_valu.Size = new System.Drawing.Size(27, 15);
+            this.Label_valu.Size = new System.Drawing.Size(73, 15);
             this.Label_valu.TabIndex = 20;
-            this.Label_valu.Text = "0 / 0";
+            this.Label_valu.Text = "Progress: 0 / 0";
             // 
             // Download_Progress
             // 
@@ -201,14 +213,14 @@
             this.Total_Progress.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.Total_Progress.Font = new System.Drawing.Font("Segoe UI", 15F);
             this.Total_Progress.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
-            this.Total_Progress.Location = new System.Drawing.Point(432, 66);
+            this.Total_Progress.Location = new System.Drawing.Point(442, 75);
             this.Total_Progress.Maximum = ((long)(100));
             this.Total_Progress.MinimumSize = new System.Drawing.Size(100, 100);
             this.Total_Progress.Name = "Total_Progress";
             this.Total_Progress.ProgressColor1 = System.Drawing.Color.Lime;
             this.Total_Progress.ProgressColor2 = System.Drawing.Color.Lime;
             this.Total_Progress.ProgressShape = iTalk.iTalk_ProgressBar._ProgressShape.Flat;
-            this.Total_Progress.Size = new System.Drawing.Size(110, 110);
+            this.Total_Progress.Size = new System.Drawing.Size(100, 100);
             this.Total_Progress.TabIndex = 17;
             this.Total_Progress.Text = "Total_Progress";
             this.Total_Progress.Value = ((long)(0));
@@ -333,7 +345,7 @@
             this.Group_Link.Padding = new System.Windows.Forms.Padding(5, 28, 5, 5);
             this.Group_Link.Size = new System.Drawing.Size(212, 129);
             this.Group_Link.TabIndex = 2;
-            this.Group_Link.Text = "Liens";
+            this.Group_Link.Text = "Links";
             this.Group_Link.DoubleClick += new System.EventHandler(this.Show_Launcher_Info);
             // 
             // WebSite_bouton
@@ -392,22 +404,6 @@
             this.News_Notif.Size = new System.Drawing.Size(992, 40);
             this.News_Notif.TabIndex = 23;
             // 
-            // Speed_Test
-            // 
-            this.Speed_Test.DoWork += new System.ComponentModel.DoWorkEventHandler(this.Speed_Test_DoWork);
-            // 
-            // Speed_label
-            // 
-            this.Speed_label.AutoSize = true;
-            this.Speed_label.BackColor = System.Drawing.Color.Transparent;
-            this.Speed_label.Font = new System.Drawing.Font("Impact", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Speed_label.ForeColor = System.Drawing.Color.Black;
-            this.Speed_label.Location = new System.Drawing.Point(8, 116);
-            this.Speed_label.Name = "Speed_label";
-            this.Speed_label.Size = new System.Drawing.Size(39, 15);
-            this.Speed_label.TabIndex = 23;
-            this.Speed_label.Text = "Speed:";
-            // 
             // Launch
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -421,9 +417,9 @@
             this.MinimumSize = new System.Drawing.Size(126, 39);
             this.Name = "Launch";
             this.Opacity = 0D;
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Launcher Arma 3";
             this.TransparencyKey = System.Drawing.Color.Fuchsia;
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Launch_FormClosed);
             this.Load += new System.EventHandler(this.Launch_Load);
             this.Click += new System.EventHandler(this.Close_Form);
             this.iTalk_ThemeContainer1.ResumeLayout(false);
@@ -468,8 +464,8 @@
         private iTalk.iTalk_Label Label_mods;
         private MonoFlat.MonoFlat_NotificationBox News_Notif;
         private System.ComponentModel.BackgroundWorker News;
-        private System.ComponentModel.BackgroundWorker Speed_Test;
-        private iTalk.iTalk_Label Speed_label;
+        private iTalk.iTalk_Label Label_modsdeal;
+        private System.ComponentModel.BackgroundWorker Anti_Cheat;
 
 
     }
