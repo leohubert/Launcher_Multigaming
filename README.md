@@ -3,9 +3,9 @@ Launcher_Arma3_v4.0
 
 -------------[ Information Launcher ]-------------
 
-Version: beta 2.0.0.0 ( dernière BETA )
+Version: release 1.0.0.0
 Opérationnel: OUI
-Date de sortie: INCONUE
+Date de sortie: 01/08/2015
 
 Copyright HUBERT Léo © 2014 - 2015
 
@@ -14,6 +14,14 @@ Copyright HUBERT Léo © 2014 - 2015
 
 
 Change Logs:
+
+Release_1.0.0.0:
+- Add: Taskforce Radio Install
+- Add: Bouton Reset mods ( supprime tout les mods )
+- Add: Musique d'introduction ( option "on,off")
+- Add: Paramètres gestion musique
+- Add: Options lancer Arma3 quand le téléchargement est fini.
+- Add: Téléchargement des fichiers CPP.
 
 Beta_2.0.0.0:
 ( dernière BETA ! )

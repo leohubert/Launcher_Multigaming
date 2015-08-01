@@ -27,6 +27,8 @@ using System.Net.NetworkInformation;
 using System.Xml;
 using System.Xml.Linq;
 using System.Reflection;
+using WMPLib;
+
 
 namespace Launcher_Arma3
 {
@@ -46,17 +48,27 @@ namespace Launcher_Arma3
         const string servername = "Emodyz"; // Name of your server */* Nom de votre serveur 
         const string namelaunch = "Emodyz Launcher ©";  // Name of your launcher */* Nom de votre launcher
         const string modsname = "@Emodyz"; // Patch of your mods directory */* Patch de votre répertoire de mods
-        const string website = "http://emodyz.com"; // Link of your web site */* Lien de votre site web
         const string extention = "Emodyz.exe"; // Your sofware extension .exe ( example: "Emodyz.exe ) */* votre logiciel .exe ( exemple: " Emodyz.exe " )
         string fader_statut = "on"; // Make " on " if you want to remove fade animation on startup */* Mettez " on " si vous voulez supprimer l'animation au démarage du launcher 
-        bool anticheat = true; //Make "true" if you want to enable the anticheat and "false" for reverse  */* Mettez "true" si vous voulez activer l'anticheat et "false" pour l'inverse 
+        bool anticheat = true; //Make "true" if you want to enable the anticheat and "false" for reverse  */* Mettez "true" si vous voulez activer l'anticheat et "false" pour l'inverse
+ 
+        //TaskForce Radio settings */* Paramètre TaskForce Radio
+        bool TaskForce_statut = true; // Make "true" for enable installation to taskforce  */* Mettez "true" pour permettre l'installation de TaskForce Radio
+
+        //Music Settings */* Paramètre music
+        bool intro_music = true; //Make "Fasle" for disable the intro music */* Mettez "false" pour desactivé la music d'intro
+        int music_volume = 50; // Choose volume base " 0 ~ 100 " */* CHoississez le volume de base " 0 ~ 100 "
+
+        const string website = "http://emodyz.com/"; // Link of your web site */* Lien de votre site web
+        const string forum = "none"; // Link of your forum if you have this */* Lien de votre forum si vous en avez un
+        string web_type = "WebSite"; // Choise your web_type ("Forum" or "WebSite") */* Choissisez votre Web_Type ("Forum" ou "WebSite")
 
         // Config server */* Config serveur
         string ipserver = "play.emodyz.com:2302"; // Your Arma3 server ip  */* L'ip de votre serveur Arma 3 
         string servpassword = "none"; // Password of your arma 3 server ( if you don't have a password make " none " ) */* Le mots de passe de votre serveur Arma 3 ( si vous n'avez pas de mot de passe mettez " none " )
 
         //Configuration errorlistguage
-        public string language = "FR"; // Make your language "EN" pour l'anglais */* Mettez votre langage "FR" pour le français.
+        public string language = "FR"; // Make your language ("EN" for english) */* Mettez votre langage ("FR" pour le français).
 
         /*
            List of language // Liste des langues
@@ -64,10 +76,12 @@ namespace Launcher_Arma3
          - English // Anglais  //  " EN "
          - French // Français  //  " FR "
          - German // Allemand  //  " AL "
+         - Italiano // Italien //  " IT "
+         - 中国   //  Chinois  //  " CH "
          
         */
 
-        // Config VocalServer
+        // Config VocalServer */* Configuration Serveur Vocal
         const string servervocal = "teamspeak3"; // Choise your serveur vocal ("teamspeak3" or "mumble") */* Choissisez votre serveur vocal ("teamspeak3" ou "mumble")
 
         const string ipmumble = "none"; // Your Mumble server ip  */* Votre ip serveur mumble
@@ -83,8 +97,10 @@ namespace Launcher_Arma3
         string dest_mods = "mods"; // Folder where all mods is upload */* Dossier là ou sont upload tout les mods
         string dest_update = "update"; // Folder where all update launcher file is located */* Dossier ou sont placé tout les fichier de mise à jour du launcher
         string dest_arma = "C:\\Program Files (x86)\\Steam\\SteamApps\\common\\Arma 3\\"; // Folder of arma 3 */* Dossier d'arma 3
-        string dest_news = "news";// Folder where all news file is located */* Dossier ou sont placé tout les fichier de mise à jour des news
+        string dest_news = "news";/// Folder where all settings file is located */* Dossier ou sont placé tout les fichier d'options
         string dest_options = "options"; // Folder where all settings file is located */* Dossier ou sont placé tout les fichier d'options
+        string dest_cpp = "cpp"; // Folder where all cpp file is located */* Dossier ou sont placé tout les fichier cpp
+        string dest_taskforce = "taskforce"; // Folder where all taskforce file is located */* Dossier ou sont placé tout les fichier du taskforce
 
         // Settings file */* Paramètre fichier
         string file_vlauncher = "vlauncher.txt"; // Distant file launcher version */* Fichier distant version launcher
@@ -96,6 +112,11 @@ namespace Launcher_Arma3
         string file_username = "UserName.a3";  // File UserName */* Fichier Nom d'utilisateur
         string file_a3options = "A3_Options.a3"; // File launcher Arma3 settings */* Fichier des options de lancement d'Arma3
         string file_language = "Language.a3"; // File language settings */* Fichier des options de languages
+        string file_option = "options.a3"; // File all option settings */* Fichier des options du launcher
+        string file_music = "Music.wav"; // File ".wav" of your music intro */* Fichier ".wav" de votre music d'intro
+        string file_cpp = "list_cpp.txt"; // File cpp list */* Fichier list des cpp
+        string file_teamspeak = "teamspeak.a3"; // Local file directory TeamSpeak */* Fichier local destination TeamSpeak
+        string file_listtask = "list_taskforce.txt"; // File taskforce list */* Fichier list taskforce
 
         //Settings Update */* Paramètre mise à jour
         string update_ext = "Update.exe"; // Distant program for update launcher */* Fichier distant pour la mise à jour du launcher
@@ -105,56 +126,63 @@ namespace Launcher_Arma3
      
 
         // Config error message */* Paramètres erreurs message.
+        string error_xml = "errorlist";
         bool error404;
-        string error01; 
-
+        string error01;
         int error_time = 5000;
         string error_type;
         int error_code;
         string error_message;
-        string error_xml = "errorlist";
+
 
         //Translate String
-        string Trans_Progress;
-        string Trans_Download;
-        string Trans_Checks;
-        string Trans_Deal;
-     
+        string Trans_Progress; // DON'T CHANGE
+        string Trans_Download; // DON'T CHANGE
+        string Trans_Checks;// DON'T CHANGE
+        string Trans_Deal;// DON'T CHANGE
+        string Trans_Play;// DON'T CHANGE
 
 
-        // Parametre anexe 
+
+        // Parametre anexe   // DON'T CHANGE 
         
         string appdata = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData)+ "\\" + servername + "\\"; // DON'T CHANGE
         string dlauncher = Application.ExecutablePath; // DON'T CHANGE
         string vlauncher = Application.ProductVersion.ToString();// DON'T CHANGE
+        WMPLib.WindowsMediaPlayer wplayer = new WMPLib.WindowsMediaPlayer();// DON'T CHANGE 
         string startoption = "any";// DON'T CHANGE
         string speudo = "any"; // DON'T CHANGE
-        bool load_finish;
-        string line;
-        string msg_darma = "Arma3 Directory: ";
-        Assembly assembly = Assembly.GetExecutingAssembly();
+        bool load_finish;// DON'T CHANGE 
+        int counter_cpp = 0; // DON'T CHANGE
+        bool download_finish;// DON'T CHANGE
+        bool music_started = false;//DON'T CHANGE
+        int line_1;//DON'T CHANGE
+        string line;// DON'T CHANGE 
+        string msg_darma = "Arma3 Directory: ";// DON'T CHANGE 
+        Assembly assembly = Assembly.GetExecutingAssembly();// DON'T CHANGE 
         bool connection = NetworkInterface.GetIsNetworkAvailable();// DON'T CHANGE
         bool locked = false; // DON'T CHANGE 
-        string bytes;
-        string bytes_d;
-        string GUID;
-        string var_1;
-        string var_2;
-        string var_3;
-        string var_message;
-        string var_message2;
-        string var_message3;
-        int counter = 0;
-        int counter_total = 0;
-        string wrs_1;
-        string wrs_2;
-        public string[] UserNames { get; private set; }
+        bool start_arma = false;// DON'T CHANGE 
+        bool download_progress; // DON'T CHANGE 
+        string bytes;// DON'T CHANGE 
+        string bytes_d;// DON'T CHANGE 
+        string GUID;// DON'T CHANGE 
+        string var_1;// DON'T CHANGE 
+        string var_2;// DON'T CHANGE 
+        string var_3;// DON'T CHANGE 
+        string var_message;// DON'T CHANGE 
+        string var_message2;// DON'T CHANGE 
+        string var_message3;// DON'T CHANGE 
+        int counter = 0;// DON'T CHANGE 
+        int counter_total = 0;// DON'T CHANGE 
+        string wrs_1;// DON'T CHANGE 
+        string wrs_2;// DON'T CHANGE 
 
 
 
         public Launch()
         {
-
+          
             if (File.Exists(appdata + dest_options + "\\" + file_language))
             {
                 string[] lines = File.ReadAllLines(appdata + dest_options + "\\" + file_language);
@@ -167,7 +195,7 @@ namespace Launcher_Arma3
             WebClient webClient = new WebClient();
             try
             {
-                Stream strm = webClient.OpenRead(ftp);
+                Stream strm = webClient.OpenRead(ftp + file_modslist);
             }
             catch (WebException we)
             {
@@ -194,6 +222,9 @@ namespace Launcher_Arma3
             {
                 this.Opacity = 1;
             }
+
+        
+     
         }
 
      
@@ -201,7 +232,29 @@ namespace Launcher_Arma3
         // Launcher Load Script 
         private void Launch_Load(object sender, EventArgs e)
         {
-           
+            if (File.Exists(appdata + dest_options + "\\" + file_option))
+            {
+                string[] lines = File.ReadAllLines(appdata + dest_options + "\\" + file_option);
+                if (lines[1] == "False")
+                {
+                    intro_music = false;
+                }
+                else
+                {
+                    intro_music = true;
+                }
+                music_volume = int.Parse(lines[2]);
+            }
+
+            // Load Music
+            if (intro_music)
+            {
+                Music.RunWorkerAsync();
+            }
+            else
+            {
+                Sound.Visible = false;
+            }
 
             // Change Launcher Name  */* Change le nom du launcher
             iTalk_ThemeContainer1.Text = namelaunch;
@@ -314,7 +367,15 @@ namespace Launcher_Arma3
                 return;
             }
 
-            Process.Start(website);
+            if (web_type == "Forum")
+            {
+                Process.Start(forum);
+            }
+            else
+            {
+                Process.Start(website);
+            }
+           
         }
 
 
@@ -453,6 +514,7 @@ namespace Launcher_Arma3
                 }
                 return;
             }
+   
             if (error404)
             {
                 if (!Erreur_Msg.IsBusy)
@@ -475,16 +537,77 @@ namespace Launcher_Arma3
                 return;
             }
 
+           bool var5 = false;
+
+            if (TaskForce_statut)
+            {
+                if (File.Exists(appdata + dest_options + "\\" + file_teamspeak + "1"))
+                {
+                    if (File.ReadAllText(appdata + dest_options + "\\" + file_teamspeak + "1") == "Not Installed")
+                    {
+                        var5 = true;
+                    }
+                }
+                else
+                {
+                    var5 = true;
+                }
+               
+            }
+            if (var5 == true)
+            {
+                if (!Erreur_Msg.IsBusy)
+                {
+
+                    error_code = 55;
+                    Erreur_Msg.RunWorkerAsync();
+                }
+                return;
+            }
+
+            if (download_finish)
+            {
+                Start_Arma.RunWorkerAsync();
+                return;
+            }
+
+            if (download_progress)
+            {
+                return;
+            }
+            else
+            {
+                download_progress = true;
+            }
+
+
+            // Create mods directory */* Crée la destination des mods
+            if (!Directory.Exists(dest_arma + modsname))
+            {
+                Directory.CreateDirectory(dest_arma + modsname);
+            }
+            if (!Directory.Exists(dest_arma + modsname + "\\addons\\"))
+            {
+                Directory.CreateDirectory(dest_arma + modsname + "\\addons\\");
+            }
+            // Download modspack list */* Télécharge le fichier modpack
+            if (File.Exists(appdata + file_modslist))
+            {
+                File.Delete(appdata + file_modslist);
+            }
+
             // Load download procedur */* Charge la procédure de téléchargement
-            Download_Mods.RunWorkerAsync();
+            Download_CPP.RunWorkerAsync();
+       
+       
             
       
 
-            // Change visibility bouton */* Change la visibilité des bouton
-            Download_Group.Visible = true;
+
 
 
         }
+
 
         private void Option_Boutton_Click(object sender, EventArgs e)
         {
@@ -502,17 +625,36 @@ namespace Launcher_Arma3
                 return;
             }
 
-            Form2 frm = new Form2(language, appdata, dest_options, file_username, file_a3options, file_language);
+            //Open Form2 ( Launcher Settings)  */* Ouvre la page N°2 ( Options Launcher )
+            Form2 frm = new Form2(language, appdata, dest_options, file_username, file_a3options, file_language, file_option,
+                                  dest_arma, modsname, download_progress, music_volume, intro_music, TaskForce_statut, file_teamspeak,
+                                  file_listtask, dest_taskforce, ftp, file_arma3, error_xml, servervocal, ipmumble, portmumble, passmumble, ipTS, portTS, passTS);
             frm.ShowDialog();
+
             if (File.Exists(appdata + dest_options + "\\" + file_language))
             {
                 string[] lines = File.ReadAllLines(appdata + dest_options + "\\" + file_language);
                 language = lines[1];
             }
+            if (File.Exists(appdata + dest_options + "\\" + file_option))
+            {
+                string[] lines = File.ReadAllLines(appdata + dest_options + "\\" + file_option);
+                if (lines[1] == "False")
+                {
+                    intro_music = false;
+                }
+                else
+                {
+                    intro_music = true;
+                }
+                music_volume = int.Parse(lines[2]);
+                Music.RunWorkerAsync();
+            }
             if (!Change_Lang.IsBusy)
             {
                 Change_Lang.RunWorkerAsync();
             }
+         
         
         
         }
@@ -606,10 +748,12 @@ namespace Launcher_Arma3
             var tr_disconnected = xmlDoc.Descendants(language).Elements("Disconnected").Select(r => r.Value).ToArray();
             var tr_settings = xmlDoc.Descendants(language).Elements("Settings").Select(r => r.Value).ToArray();
             var tr_directory = xmlDoc.Descendants(language).Elements("Directory").Select(r => r.Value).ToArray();
+            var tr_downloading = xmlDoc.Descendants(language).Elements("Downloading").Select(r => r.Value).ToArray();
             var tr_download = xmlDoc.Descendants(language).Elements("Download").Select(r => r.Value).ToArray();
             var tr_progress = xmlDoc.Descendants(language).Elements("Progress").Select(r => r.Value).ToArray();
             var tr_modsdeal = xmlDoc.Descendants(language).Elements("ModsDeal").Select(r => r.Value).ToArray();
             var tr_checks = xmlDoc.Descendants(language).Elements("Checks").Select(r => r.Value).ToArray();
+            var tr_forum = xmlDoc.Descendants(language).Elements("Forum").Select(r => r.Value).ToArray();
 
             string tra_link = string.Join(",", tr_link);
             string tra_website = string.Join(",", tr_website);
@@ -618,10 +762,12 @@ namespace Launcher_Arma3
             string tra_disconnected = string.Join(",", tr_disconnected);
             string tra_settings = string.Join(",", tr_settings);
             string tra_directory = string.Join(",", tr_directory);
+            string tra_downloading = string.Join(",", tr_downloading);
             string tra_download = string.Join(",", tr_download);
             string tra_progress = string.Join(",", tr_progress);
             string tra_modsdeal = string.Join(",", tr_modsdeal);
             string tra_checks = string.Join(",", tr_checks);
+            string tra_forum = string.Join(",", tr_forum);
 
 
             //Error Load */* Chargement erreur
@@ -634,25 +780,60 @@ namespace Launcher_Arma3
             
             //Set string translate 
             Trans_Progress = tra_progress;
-            Trans_Download = tra_download;
+            Trans_Download = tra_downloading;
             Trans_Deal = tra_modsdeal;
             Trans_Checks = tra_checks;
+            Trans_Play = tra_play;
             error01 = tra_erreur01;
 
             // Change bouton text */* Change le text des boutons 
             Group_Link.Text = tra_link;
-            WebSite_bouton.Text = tra_website;
-            Play_bouton.Text = tra_play;
+            
+          
             Option_Boutton.Text = tra_settings;
             destination_bouton.Text = tra_directory;
             msg_darma = tra_directory + " Arma3: ";
             label_darma.Text = msg_darma + dest_arma;
-            Download_Group.Text = tra_download;
+            Download_Group.Text = tra_downloading;
             Label_valu.Text = Trans_Progress + ": 0 / 0";
             Label_mods.Text = Trans_Download + ": ";
             Label_modsdeal.Text = Trans_Deal + ": ";
 
-           
+
+            if (download_finish)
+            {
+                Play_bouton.Text = tra_play;
+                Play_bouton.Font = new Font(Play_bouton.Text, Single.Parse("14"));
+            }
+            else
+            {
+
+                if (File.Exists(appdata + dest_options + "\\" + file_option))
+                {
+                    string[] lines = File.ReadAllLines(appdata + dest_options + "\\" + file_option);
+                    if (lines[0] == "True")
+                    {
+                        Play_bouton.Text = tra_download + " / " + tra_play;
+                        Play_bouton.Font = new Font(Play_bouton.Text, Single.Parse("11"));
+                        start_arma = true;
+                    }
+                    else
+                    {
+                        Play_bouton.Text = tra_download;
+                        Play_bouton.Font = new Font(Play_bouton.Text, Single.Parse("14"));
+                        start_arma = false;
+                    }
+                }
+            }
+
+            if (web_type == "Forum")
+            {
+                WebSite_bouton.Text = tra_forum;
+            }
+            if (web_type == "WebSite")
+            {
+                WebSite_bouton.Text = tra_website;
+            }
 
             if (connection == false)
             {
@@ -824,20 +1005,6 @@ namespace Launcher_Arma3
 
         private void Download_Mods_DoWork(object sender, DoWorkEventArgs e)
         {
-            // Create mods directory */* Crée la destination des mods
-            if (!Directory.Exists(dest_arma + modsname))
-            {
-                Directory.CreateDirectory(dest_arma + modsname);
-            }
-            if (!Directory.Exists(dest_arma + modsname + "\\addons\\"))
-            {
-                Directory.CreateDirectory(dest_arma + modsname + "\\addons\\");
-            }
-            // Download modspack list */* Télécharge le fichier modpack
-            if (File.Exists(appdata + file_modslist))
-            {
-                File.Delete(appdata + file_modslist);
-            }
 
             WebClient webClient = new WebClient();
             webClient.DownloadFile(ftp + file_modslist, appdata + file_modslist);
@@ -1033,7 +1200,7 @@ namespace Launcher_Arma3
 
         private void backgroundWorker1_ProgressChanged(object sender, ProgressChangedEventArgs e)
         {
-            Download_Progress.Value = e.ProgressPercentage;
+           Download_Progressbar.Value = e.ProgressPercentage;
 
 
             Label_valu.Text = Trans_Progress + ": "+ bytes + " / " + bytes_d;
@@ -1051,15 +1218,30 @@ namespace Launcher_Arma3
 
             if (Total_Progress.Value == 100)
             {
+               
                 // Start Arma3 */* Lance Arma3
-                Start_Arma.RunWorkerAsync();
+                if (start_arma)
+                {
+                    Start_Arma.RunWorkerAsync();
+                }
+                else
+                {
+                    Play_bouton.Text = Trans_Play;
+                    start_arma = true;
+                }
+                download_finish = true;
+                download_progress = false;
                 Download_Group.Visible = false;
               
 
                 return;
             } 
             
-            Download_Mods.RunWorkerAsync();
+
+         
+                Download_Mods.RunWorkerAsync();
+ 
+           
 
         }
 
@@ -1075,7 +1257,7 @@ namespace Launcher_Arma3
                 string tra_erreur = string.Join(",", tr_erreur);
                 error_message = tra_erreur;
             }
-               
+            
 
              notif_1.Text = "Error #"+ error_code +" | " + error_message;
              notif_1.BringToFront();
@@ -1108,7 +1290,13 @@ namespace Launcher_Arma3
 
             }
         }
-
+        // [CREDIT][DO NOT REMOVE]
+        //
+        // This module was written by HUBERT Léo 
+        //
+        // Copyright HUBERT Léo © 2014 - 2015
+        //
+        // [CREDIT][DO NOT REMOVE]
         private void Start_Arma_DoWork(object sender, DoWorkEventArgs e)
         {
 
@@ -1128,6 +1316,11 @@ namespace Launcher_Arma3
                 {
                     startoption = lines[0];
                 }
+            }
+
+            if (start_arma == false)
+            {
+                return;
             }
 
             if (File.Exists(dest_arma + file_arma3))
@@ -1241,6 +1434,98 @@ namespace Launcher_Arma3
                 }
             }
         }
+
+
+      
+        private void Music_DoWork(object sender, DoWorkEventArgs e)
+        {
+            if (intro_music == false)
+            {
+                Sound.Visible = false;
+                wplayer.controls.pause();
+                return;
+            }
+            else
+            {
+                if (Sound.Visible == false)
+                {
+                    Sound.Visible = true;
+                }
+                wplayer.controls.play();
+            }
+            if (!music_started)
+            {
+                wplayer.URL = ftp + file_music;
+                wplayer.settings.setMode("loop",true);
+                music_started = true;
+            }
+            wplayer.settings.volume = music_volume;
+            if (music_volume >= 0)
+            {
+                Sound.Image = Properties.Resources.muted;
+            }
+            if (music_volume >= 30)
+            {
+                Sound.Image = Properties.Resources.sound_1;
+            }
+            if (music_volume >= 60)
+            {
+                Sound.Image = Properties.Resources.sound;
+            }
+        
+       
+        }
+
+        private void Download_CPP_DoWork(object sender, DoWorkEventArgs e)
+        {
+            Loading.Visible = true;
+            WebClient download = new WebClient();
+            if (counter_cpp == 0)
+            {
+                if (File.Exists(appdata + file_cpp))
+                {
+                    File.Delete(appdata + file_cpp);
+                }
+
+
+              
+                download.DownloadFile(ftp + file_cpp, appdata + file_cpp);
+            }
+
+            string[] lines = File.ReadAllLines(appdata + file_cpp);
+            language = lines[counter_cpp];
+            line_1 = lines.Length;
+
+
+        
+
+           download.DownloadFile(ftp + dest_cpp + "\\" + lines[counter_cpp], dest_arma + modsname + "\\" + lines[counter_cpp]);
+
+
+
+        }
+        private void Pont_Cpp(object sender, RunWorkerCompletedEventArgs e)
+        {
+
+            if (counter_cpp >= line_1)
+            {
+                Loading.Visible = false;
+                //Start Download Mods */* Lance le téléchargement des mods
+                Download_Mods.RunWorkerAsync();
+                // Change visibility bouton */* Change la visibilité des bouton
+                Download_Group.Visible = true;
+                return;
+            }
+
+            counter_cpp += 1;
+            Download_CPP.RunWorkerAsync();
+
+        }
+
+        private void Anti_Cheat_DoWork(object sender, DoWorkEventArgs e)
+        {
+
+        }    
     }
 }
 

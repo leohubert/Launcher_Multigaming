@@ -40,16 +40,20 @@
             this.Start_Arma = new System.ComponentModel.BackgroundWorker();
             this.News = new System.ComponentModel.BackgroundWorker();
             this.Anti_Cheat = new System.ComponentModel.BackgroundWorker();
+            this.Music = new System.ComponentModel.BackgroundWorker();
+            this.Download_CPP = new System.ComponentModel.BackgroundWorker();
             this.iTalk_ThemeContainer1 = new iTalk.iTalk_ThemeContainer();
+            this.Sound = new System.Windows.Forms.PictureBox();
             this.Download_Group = new iTalk.iTalk_GroupBox();
+            this.Download_Progressbar = new PerplexProgressBar();
             this.Label_modsdeal = new iTalk.iTalk_Label();
             this.Label_mods = new iTalk.iTalk_Label();
             this.Label_valu = new iTalk.iTalk_Label();
-            this.Download_Progress = new PerplexProgressBar();
             this.Total_Progress = new iTalk.iTalk_ProgressBar();
             this.picture_darma = new System.Windows.Forms.PictureBox();
             this.credits_label = new System.Windows.Forms.Label();
             this.label_darma = new iTalk.iTalk_Label();
+            this.Loading = new Ambiance.Ambiance_ProgressIndicator();
             this.connection_label = new iTalk.iTalk_Label();
             this.destination_bouton = new iTalk.iTalk_Button_2();
             this.Option_Boutton = new iTalk.iTalk_Button_1();
@@ -62,6 +66,7 @@
             this.notif_1 = new MonoFlat.MonoFlat_NotificationBox();
             this.News_Notif = new MonoFlat.MonoFlat_NotificationBox();
             this.iTalk_ThemeContainer1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.Sound)).BeginInit();
             this.Download_Group.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picture_darma)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imagebox)).BeginInit();
@@ -111,13 +116,29 @@
             // 
             this.News.DoWork += new System.ComponentModel.DoWorkEventHandler(this.News_DoWork);
             // 
+            // Anti_Cheat
+            // 
+            this.Anti_Cheat.DoWork += new System.ComponentModel.DoWorkEventHandler(this.Anti_Cheat_DoWork);
+            // 
+            // Music
+            // 
+            this.Music.DoWork += new System.ComponentModel.DoWorkEventHandler(this.Music_DoWork);
+            // 
+            // Download_CPP
+            // 
+            this.Download_CPP.WorkerReportsProgress = true;
+            this.Download_CPP.DoWork += new System.ComponentModel.DoWorkEventHandler(this.Download_CPP_DoWork);
+            this.Download_CPP.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.Pont_Cpp);
+            // 
             // iTalk_ThemeContainer1
             // 
             this.iTalk_ThemeContainer1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(246)))), ((int)(((byte)(246)))), ((int)(((byte)(246)))));
+            this.iTalk_ThemeContainer1.Controls.Add(this.Sound);
             this.iTalk_ThemeContainer1.Controls.Add(this.Download_Group);
             this.iTalk_ThemeContainer1.Controls.Add(this.picture_darma);
             this.iTalk_ThemeContainer1.Controls.Add(this.credits_label);
             this.iTalk_ThemeContainer1.Controls.Add(this.label_darma);
+            this.iTalk_ThemeContainer1.Controls.Add(this.Loading);
             this.iTalk_ThemeContainer1.Controls.Add(this.connection_label);
             this.iTalk_ThemeContainer1.Controls.Add(this.destination_bouton);
             this.iTalk_ThemeContainer1.Controls.Add(this.Option_Boutton);
@@ -141,13 +162,26 @@
             this.iTalk_ThemeContainer1.Text = "Launcher Arma 3";
             this.iTalk_ThemeContainer1.DoubleClick += new System.EventHandler(this.Show_Launcher_Info);
             // 
+            // Sound
+            // 
+            this.Sound.BackColor = System.Drawing.Color.Transparent;
+            this.Sound.Cursor = System.Windows.Forms.Cursors.Default;
+            this.Sound.Image = global::Launcher_Arma3.Properties.Resources.muted;
+            this.Sound.Location = new System.Drawing.Point(6, 460);
+            this.Sound.Name = "Sound";
+            this.Sound.Size = new System.Drawing.Size(34, 24);
+            this.Sound.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.Sound.TabIndex = 24;
+            this.Sound.TabStop = false;
+            this.Sound.Click += new System.EventHandler(this.Show_Launcher_Info);
+            // 
             // Download_Group
             // 
             this.Download_Group.BackColor = System.Drawing.Color.Transparent;
+            this.Download_Group.Controls.Add(this.Download_Progressbar);
             this.Download_Group.Controls.Add(this.Label_modsdeal);
             this.Download_Group.Controls.Add(this.Label_mods);
             this.Download_Group.Controls.Add(this.Label_valu);
-            this.Download_Group.Controls.Add(this.Download_Progress);
             this.Download_Group.Controls.Add(this.Total_Progress);
             this.Download_Group.Cursor = System.Windows.Forms.Cursors.Default;
             this.Download_Group.Location = new System.Drawing.Point(230, 258);
@@ -159,6 +193,18 @@
             this.Download_Group.TabIndex = 19;
             this.Download_Group.Text = "Téléchargement";
             this.Download_Group.Visible = false;
+            // 
+            // Download_Progressbar
+            // 
+            this.Download_Progressbar.BackColor = System.Drawing.Color.Transparent;
+            this.Download_Progressbar.Location = new System.Drawing.Point(11, 31);
+            this.Download_Progressbar.Maximum = 100;
+            this.Download_Progressbar.Name = "Download_Progressbar";
+            this.Download_Progressbar.ShowPercentage = false;
+            this.Download_Progressbar.Size = new System.Drawing.Size(531, 38);
+            this.Download_Progressbar.TabIndex = 25;
+            this.Download_Progressbar.Text = "perplexProgressBar1";
+            this.Download_Progressbar.Value = 0;
             // 
             // Label_modsdeal
             // 
@@ -195,18 +241,6 @@
             this.Label_valu.Size = new System.Drawing.Size(73, 15);
             this.Label_valu.TabIndex = 20;
             this.Label_valu.Text = "Progress: 0 / 0";
-            // 
-            // Download_Progress
-            // 
-            this.Download_Progress.BackColor = System.Drawing.Color.Transparent;
-            this.Download_Progress.Location = new System.Drawing.Point(8, 32);
-            this.Download_Progress.Maximum = 100;
-            this.Download_Progress.Name = "Download_Progress";
-            this.Download_Progress.ShowPercentage = false;
-            this.Download_Progress.Size = new System.Drawing.Size(534, 28);
-            this.Download_Progress.TabIndex = 21;
-            this.Download_Progress.Text = "perplexProgressBar1";
-            this.Download_Progress.Value = 0;
             // 
             // Total_Progress
             // 
@@ -257,6 +291,19 @@
             this.label_darma.Size = new System.Drawing.Size(93, 14);
             this.label_darma.TabIndex = 12;
             this.label_darma.Text = "Arma3 Directory: ";
+            // 
+            // Loading
+            // 
+            this.Loading.Location = new System.Drawing.Point(447, 289);
+            this.Loading.MinimumSize = new System.Drawing.Size(80, 80);
+            this.Loading.Name = "Loading";
+            this.Loading.P_AnimationColor = System.Drawing.Color.Gray;
+            this.Loading.P_AnimationSpeed = 100;
+            this.Loading.P_BaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(76)))), ((int)(((byte)(76)))), ((int)(((byte)(76)))));
+            this.Loading.Size = new System.Drawing.Size(107, 107);
+            this.Loading.TabIndex = 25;
+            this.Loading.Text = "ambiance_ProgressIndicator1";
+            this.Loading.Visible = false;
             // 
             // connection_label
             // 
@@ -424,6 +471,7 @@
             this.Click += new System.EventHandler(this.Close_Form);
             this.iTalk_ThemeContainer1.ResumeLayout(false);
             this.iTalk_ThemeContainer1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.Sound)).EndInit();
             this.Download_Group.ResumeLayout(false);
             this.Download_Group.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picture_darma)).EndInit();
@@ -466,7 +514,11 @@
         private System.ComponentModel.BackgroundWorker News;
         private iTalk.iTalk_Label Label_modsdeal;
         private System.ComponentModel.BackgroundWorker Anti_Cheat;
-
+        private System.ComponentModel.BackgroundWorker Music;
+        private System.Windows.Forms.PictureBox Sound;
+        private PerplexProgressBar Download_Progressbar;
+        private System.ComponentModel.BackgroundWorker Download_CPP;
+        private Ambiance.Ambiance_ProgressIndicator Loading;
 
     }
 }
