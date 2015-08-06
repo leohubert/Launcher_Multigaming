@@ -10,4 +10,3 @@ C:\Users\Leo\Documents\GitHub\Launcher_Arma3\Launcher_Updater\Launcher_Updater\o
 C:\Users\Leo\Documents\GitHub\Launcher_Arma3\Debug\Launcher_Updater.exe.config
 C:\Users\Leo\Documents\GitHub\Launcher_Arma3\Debug\Launcher_Updater.exe
 C:\Users\Leo\Documents\GitHub\Launcher_Arma3\Debug\Launcher_Updater.pdb
-C:\Users\Leo\Documents\GitHub\Launcher_Arma3\Launcher_Updater\Launcher_Updater\obj\Debug\Launcher_Updater.csprojResolveAssemblyReference.cache

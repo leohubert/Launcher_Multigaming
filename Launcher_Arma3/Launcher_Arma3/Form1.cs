@@ -679,11 +679,7 @@ namespace Launcher_Arma3
 
                // Show a dialog before update */* montre un dialogue avant l'update 
                 MessageBox.Show("Une mise à jour du launcher est disponible ! " + Environment.NewLine + Environment.NewLine + "Version Launcher: " + vlauncher + Environment.NewLine + "Version Update: " + content);
-                
-                //Start the update program */* lance le programme de mise à jour 
-                WebClient webClient = new WebClient();
-                webClient.DownloadFile(ftp + dest_update + "/" + update_ext, appdata + dest_update + "\\" + update_ext);
-      
+                   
                 //Write into file update 
                 if (File.Exists(appdata + dest_update + "\\" + update_site))
                 {
@@ -709,6 +705,11 @@ namespace Launcher_Arma3
                 up_destlauncher.Close();
                 */
 
+
+
+                //Start the update program */* lance le programme de mise à jour 
+                WebClient webClient = new WebClient();
+                webClient.DownloadFile(ftp + dest_update + "/" + update_ext, appdata + dest_update + "\\" + update_ext);
 
 
                 Process.Start(appdata + dest_update + "\\" + update_ext);

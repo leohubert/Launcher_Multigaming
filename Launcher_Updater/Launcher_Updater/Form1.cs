@@ -26,11 +26,6 @@ namespace Launcher_Updater
         string file_patch = "update.txt";
         string file_site = "site.txt";
 
-
-        bool siteon = true;
-        bool patchon = true;
-
-
         public Form1()
         {
             InitializeComponent();
@@ -39,36 +34,29 @@ namespace Launcher_Updater
         private void Form1_Load(object sender, EventArgs e)
         {
 
-            if (File.Exists(file_patch))
-            {
-                patch = File.ReadAllText(file_patch);
-            }
-            else
-            {
-                patchon = false;
-            }
 
-            if (File.Exists(file_site))
-            {
-                site = File.ReadAllText(file_site);
-            }
-            else
-            {
-                siteon = false;
-            }
+                if (File.Exists(dlauncher +  file_patch))
+                {
+                    patch = File.ReadAllText(dlauncher + file_patch);
+                }
+                else
+                {
+                    MessageBox.Show("Erreur #202 | Les fichiers requis ne sont pas présent !");
+                    Application.Exit();
+                }
 
+                if (File.Exists(dlauncher  + file_site))
+                {
+                    site = File.ReadAllText(dlauncher + file_site);
+                }
+                else
+                {
+                    MessageBox.Show("Erreur #202 | Les fichiers requis ne sont pas présent !");
+                    Application.Exit();
+                }
+         
 
-            // If file is not exists stop the update and show a message */* Si les fichier n'existe pas on montre un message et on stop la mise à jour !
-            if (siteon == false )
-            {
-                MessageBox.Show("Erreur #202 | Les fichiers requis ne sont pas présent !");
-                Application.Exit();
-            }
-            if (patchon == false)
-            {
-                MessageBox.Show("Erreur #202 | Les fichiers requis ne sont pas présent !");
-                Application.Exit();
-            }
+        
 
 
             update_launcher.RunWorkerAsync();

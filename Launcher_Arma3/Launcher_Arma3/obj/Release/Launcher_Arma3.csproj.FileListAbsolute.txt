@@ -15,4 +15,3 @@ C:\Users\Leo\Documents\GitHub\Launcher_Arma3\Launcher_Arma3\Launcher_Arma3\obj\R
 C:\Users\Leo\Documents\GitHub\Launcher_Arma3\Launcher_Arma3\Launcher_Arma3\obj\Release\Interop.MediaPlayer.dll
 C:\Users\Leo\Documents\GitHub\Launcher_Arma3\Launcher_Arma3\Launcher_Arma3\obj\Release\Interop.WMPLib.dll
 C:\Users\Leo\Documents\GitHub\Launcher_Arma3\Launcher_Arma3\Launcher_Arma3\obj\Release\Launcher_Arma3.csproj.ResolveComReference.cache
-C:\Users\Leo\Documents\GitHub\Launcher_Arma3\Launcher_Arma3\Launcher_Arma3\obj\Release\Launcher_Arma3.csprojResolveAssemblyReference.cache
