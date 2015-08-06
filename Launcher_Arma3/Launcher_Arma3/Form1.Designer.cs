@@ -42,7 +42,10 @@
             this.Anti_Cheat = new System.ComponentModel.BackgroundWorker();
             this.Music = new System.ComponentModel.BackgroundWorker();
             this.Download_CPP = new System.ComponentModel.BackgroundWorker();
+            this.CheckInternet = new System.ComponentModel.BackgroundWorker();
+            this.Changelogs = new System.ComponentModel.BackgroundWorker();
             this.iTalk_ThemeContainer1 = new iTalk.iTalk_ThemeContainer();
+            this.Maintenance_Label = new Ambiance.Ambiance_Label();
             this.Sound = new System.Windows.Forms.PictureBox();
             this.Download_Group = new iTalk.iTalk_GroupBox();
             this.Download_Progressbar = new PerplexProgressBar();
@@ -53,7 +56,6 @@
             this.picture_darma = new System.Windows.Forms.PictureBox();
             this.credits_label = new System.Windows.Forms.Label();
             this.label_darma = new iTalk.iTalk_Label();
-            this.Loading = new Ambiance.Ambiance_ProgressIndicator();
             this.connection_label = new iTalk.iTalk_Label();
             this.destination_bouton = new iTalk.iTalk_Button_2();
             this.Option_Boutton = new iTalk.iTalk_Button_1();
@@ -65,12 +67,23 @@
             this.Vocal_bouton = new MonoFlat.MonoFlat_Button();
             this.notif_1 = new MonoFlat.MonoFlat_NotificationBox();
             this.News_Notif = new MonoFlat.MonoFlat_NotificationBox();
+            this.Panel = new iTalk.iTalk_TabControl();
+            this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.Changelogs_Serveur = new Ambiance.Ambiance_ListBox();
+            this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.Changelogs_Launcher = new Ambiance.Ambiance_ListBox();
+            this.Loading = new Ambiance.Ambiance_ProgressIndicator();
+            this.Maintenance = new System.Windows.Forms.PictureBox();
             this.iTalk_ThemeContainer1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Sound)).BeginInit();
             this.Download_Group.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picture_darma)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imagebox)).BeginInit();
             this.Group_Link.SuspendLayout();
+            this.Panel.SuspendLayout();
+            this.tabPage1.SuspendLayout();
+            this.tabPage2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.Maintenance)).BeginInit();
             this.SuspendLayout();
             // 
             // Update_Launcher
@@ -130,15 +143,23 @@
             this.Download_CPP.DoWork += new System.ComponentModel.DoWorkEventHandler(this.Download_CPP_DoWork);
             this.Download_CPP.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.Pont_Cpp);
             // 
+            // CheckInternet
+            // 
+            this.CheckInternet.DoWork += new System.ComponentModel.DoWorkEventHandler(this.CheckInternet_DoWork);
+            // 
+            // Changelogs
+            // 
+            this.Changelogs.DoWork += new System.ComponentModel.DoWorkEventHandler(this.Changelogs_DoWork);
+            // 
             // iTalk_ThemeContainer1
             // 
             this.iTalk_ThemeContainer1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(246)))), ((int)(((byte)(246)))), ((int)(((byte)(246)))));
+            this.iTalk_ThemeContainer1.Controls.Add(this.Maintenance_Label);
             this.iTalk_ThemeContainer1.Controls.Add(this.Sound);
             this.iTalk_ThemeContainer1.Controls.Add(this.Download_Group);
             this.iTalk_ThemeContainer1.Controls.Add(this.picture_darma);
             this.iTalk_ThemeContainer1.Controls.Add(this.credits_label);
             this.iTalk_ThemeContainer1.Controls.Add(this.label_darma);
-            this.iTalk_ThemeContainer1.Controls.Add(this.Loading);
             this.iTalk_ThemeContainer1.Controls.Add(this.connection_label);
             this.iTalk_ThemeContainer1.Controls.Add(this.destination_bouton);
             this.iTalk_ThemeContainer1.Controls.Add(this.Option_Boutton);
@@ -148,6 +169,9 @@
             this.iTalk_ThemeContainer1.Controls.Add(this.Group_Link);
             this.iTalk_ThemeContainer1.Controls.Add(this.notif_1);
             this.iTalk_ThemeContainer1.Controls.Add(this.News_Notif);
+            this.iTalk_ThemeContainer1.Controls.Add(this.Panel);
+            this.iTalk_ThemeContainer1.Controls.Add(this.Loading);
+            this.iTalk_ThemeContainer1.Controls.Add(this.Maintenance);
             this.iTalk_ThemeContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.iTalk_ThemeContainer1.Font = new System.Drawing.Font("Segoe UI", 8F);
             this.iTalk_ThemeContainer1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(142)))), ((int)(((byte)(142)))), ((int)(((byte)(142)))));
@@ -162,11 +186,22 @@
             this.iTalk_ThemeContainer1.Text = "Launcher Arma 3";
             this.iTalk_ThemeContainer1.DoubleClick += new System.EventHandler(this.Show_Launcher_Info);
             // 
+            // Maintenance_Label
+            // 
+            this.Maintenance_Label.AutoSize = true;
+            this.Maintenance_Label.BackColor = System.Drawing.Color.Transparent;
+            this.Maintenance_Label.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Maintenance_Label.ForeColor = System.Drawing.Color.Red;
+            this.Maintenance_Label.Location = new System.Drawing.Point(180, 140);
+            this.Maintenance_Label.Name = "Maintenance_Label";
+            this.Maintenance_Label.Size = new System.Drawing.Size(0, 20);
+            this.Maintenance_Label.TabIndex = 29;
+            // 
             // Sound
             // 
             this.Sound.BackColor = System.Drawing.Color.Transparent;
             this.Sound.Cursor = System.Windows.Forms.Cursors.Default;
-            this.Sound.Image = global::Launcher_Arma3.Properties.Resources.muted;
+            this.Sound.Image = ((System.Drawing.Image)(resources.GetObject("Sound.Image")));
             this.Sound.Location = new System.Drawing.Point(6, 460);
             this.Sound.Name = "Sound";
             this.Sound.Size = new System.Drawing.Size(34, 24);
@@ -291,19 +326,6 @@
             this.label_darma.Size = new System.Drawing.Size(93, 14);
             this.label_darma.TabIndex = 12;
             this.label_darma.Text = "Arma3 Directory: ";
-            // 
-            // Loading
-            // 
-            this.Loading.Location = new System.Drawing.Point(447, 289);
-            this.Loading.MinimumSize = new System.Drawing.Size(80, 80);
-            this.Loading.Name = "Loading";
-            this.Loading.P_AnimationColor = System.Drawing.Color.Gray;
-            this.Loading.P_AnimationSpeed = 100;
-            this.Loading.P_BaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(76)))), ((int)(((byte)(76)))), ((int)(((byte)(76)))));
-            this.Loading.Size = new System.Drawing.Size(107, 107);
-            this.Loading.TabIndex = 25;
-            this.Loading.Text = "ambiance_ProgressIndicator1";
-            this.Loading.Visible = false;
             // 
             // connection_label
             // 
@@ -451,6 +473,98 @@
             this.News_Notif.Size = new System.Drawing.Size(992, 40);
             this.News_Notif.TabIndex = 23;
             // 
+            // Panel
+            // 
+            this.Panel.Alignment = System.Windows.Forms.TabAlignment.Left;
+            this.Panel.Controls.Add(this.tabPage1);
+            this.Panel.Controls.Add(this.tabPage2);
+            this.Panel.DrawMode = System.Windows.Forms.TabDrawMode.OwnerDrawFixed;
+            this.Panel.ItemSize = new System.Drawing.Size(44, 135);
+            this.Panel.Location = new System.Drawing.Point(230, 258);
+            this.Panel.Multiline = true;
+            this.Panel.Name = "Panel";
+            this.Panel.SelectedIndex = 0;
+            this.Panel.Size = new System.Drawing.Size(545, 183);
+            this.Panel.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
+            this.Panel.TabIndex = 27;
+            this.Panel.DoubleClick += new System.EventHandler(this.Show_Launcher_Info);
+            // 
+            // tabPage1
+            // 
+            this.tabPage1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(246)))), ((int)(((byte)(246)))), ((int)(((byte)(246)))));
+            this.tabPage1.Controls.Add(this.Changelogs_Serveur);
+            this.tabPage1.Location = new System.Drawing.Point(139, 4);
+            this.tabPage1.Name = "tabPage1";
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage1.Size = new System.Drawing.Size(402, 175);
+            this.tabPage1.TabIndex = 0;
+            this.tabPage1.Text = "Serveur";
+            // 
+            // Changelogs_Serveur
+            // 
+            this.Changelogs_Serveur.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.Changelogs_Serveur.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
+            this.Changelogs_Serveur.FormattingEnabled = true;
+            this.Changelogs_Serveur.IntegralHeight = false;
+            this.Changelogs_Serveur.ItemHeight = 18;
+            this.Changelogs_Serveur.Items.AddRange(new object[] {
+            "Loading ....",
+            "Please Wait !"});
+            this.Changelogs_Serveur.Location = new System.Drawing.Point(6, 6);
+            this.Changelogs_Serveur.Name = "Changelogs_Serveur";
+            this.Changelogs_Serveur.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.Changelogs_Serveur.Size = new System.Drawing.Size(390, 166);
+            this.Changelogs_Serveur.TabIndex = 26;
+            this.Changelogs_Serveur.DoubleClick += new System.EventHandler(this.Show_Launcher_Info);
+            // 
+            // tabPage2
+            // 
+            this.tabPage2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(246)))), ((int)(((byte)(246)))), ((int)(((byte)(246)))));
+            this.tabPage2.Controls.Add(this.Changelogs_Launcher);
+            this.tabPage2.Location = new System.Drawing.Point(139, 4);
+            this.tabPage2.Name = "tabPage2";
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage2.Size = new System.Drawing.Size(402, 175);
+            this.tabPage2.TabIndex = 1;
+            this.tabPage2.Text = "Launcher";
+            // 
+            // Changelogs_Launcher
+            // 
+            this.Changelogs_Launcher.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.Changelogs_Launcher.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
+            this.Changelogs_Launcher.FormattingEnabled = true;
+            this.Changelogs_Launcher.IntegralHeight = false;
+            this.Changelogs_Launcher.ItemHeight = 18;
+            this.Changelogs_Launcher.Items.AddRange(new object[] {
+            "Loading ....",
+            "Please Wait !"});
+            this.Changelogs_Launcher.Location = new System.Drawing.Point(6, 6);
+            this.Changelogs_Launcher.Name = "Changelogs_Launcher";
+            this.Changelogs_Launcher.Size = new System.Drawing.Size(390, 166);
+            this.Changelogs_Launcher.TabIndex = 0;
+            // 
+            // Loading
+            // 
+            this.Loading.Location = new System.Drawing.Point(447, 289);
+            this.Loading.MinimumSize = new System.Drawing.Size(80, 80);
+            this.Loading.Name = "Loading";
+            this.Loading.P_AnimationColor = System.Drawing.Color.Gray;
+            this.Loading.P_AnimationSpeed = 100;
+            this.Loading.P_BaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(76)))), ((int)(((byte)(76)))), ((int)(((byte)(76)))));
+            this.Loading.Size = new System.Drawing.Size(107, 107);
+            this.Loading.TabIndex = 25;
+            this.Loading.Text = "ambiance_ProgressIndicator1";
+            this.Loading.Visible = false;
+            // 
+            // Maintenance
+            // 
+            this.Maintenance.InitialImage = ((System.Drawing.Image)(resources.GetObject("Maintenance.InitialImage")));
+            this.Maintenance.Location = new System.Drawing.Point(161, 101);
+            this.Maintenance.Name = "Maintenance";
+            this.Maintenance.Size = new System.Drawing.Size(10, 10);
+            this.Maintenance.TabIndex = 28;
+            this.Maintenance.TabStop = false;
+            // 
             // Launch
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -477,6 +591,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.picture_darma)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.imagebox)).EndInit();
             this.Group_Link.ResumeLayout(false);
+            this.Panel.ResumeLayout(false);
+            this.tabPage1.ResumeLayout(false);
+            this.tabPage2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.Maintenance)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -519,6 +637,15 @@
         private PerplexProgressBar Download_Progressbar;
         private System.ComponentModel.BackgroundWorker Download_CPP;
         private Ambiance.Ambiance_ProgressIndicator Loading;
+        private System.ComponentModel.BackgroundWorker CheckInternet;
+        private iTalk.iTalk_TabControl Panel;
+        private System.Windows.Forms.TabPage tabPage1;
+        private Ambiance.Ambiance_ListBox Changelogs_Serveur;
+        private System.Windows.Forms.TabPage tabPage2;
+        private Ambiance.Ambiance_ListBox Changelogs_Launcher;
+        private System.ComponentModel.BackgroundWorker Changelogs;
+        private System.Windows.Forms.PictureBox Maintenance;
+        private Ambiance.Ambiance_Label Maintenance_Label;
 
     }
 }

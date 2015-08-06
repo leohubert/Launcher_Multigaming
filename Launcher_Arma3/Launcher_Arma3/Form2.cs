@@ -46,6 +46,7 @@ namespace Launcher_Arma3
         string error_xml;
         int error_code;
         string error_message;
+        bool music_play;
 
         string dest_arma;
         string dest_options;
@@ -58,6 +59,7 @@ namespace Launcher_Arma3
         string file_teamspeak;
         string file_listtask;
         string file_arma3;
+        string file_translate;
 
         string Trans_Progress;
         string Trans_WarningMsg;
@@ -79,15 +81,16 @@ namespace Launcher_Arma3
         string passmumble; 
         string ipTS; 
         string portTS; 
-        string passTS; 
+        string passTS;
+
       
    
         public string[] UserNames { get; private set; }
          
         public Form2(string value, string value2, string value3, string value4, string value5, string value6, string value7, 
-                     string value8, string value9, bool value10, int value11, bool value12, bool value13, string value14,
+                     string value8, string value9, bool value10, int value11, bool value12, bool value12_1, bool value13, string value14,
                      string value15, string value16, string value17, string value18, string value19, string value20, string value21,
-                     string value22, string value23, string value24,string value25,string value26)
+                     string value22, string value23, string value24,string value25,string value26, string value27)
         {
 
             InitializeComponent();
@@ -103,6 +106,7 @@ namespace Launcher_Arma3
             download_progress = value10;
             music_volume = value11;
             music_intro = value12;
+            music_play = value12_1;
             TaskForce_Statut = value13;
             file_teamspeak = value14;
             file_listtask = value15;
@@ -116,7 +120,8 @@ namespace Launcher_Arma3
             passmumble = value23;
             ipTS= value24;
             portTS = value25;
-            passTS = value26; 
+            passTS = value26;
+            file_translate = value27;
         }
 
 
@@ -168,16 +173,27 @@ namespace Launcher_Arma3
                {
                    Toggle_StartArma.Toggled = true;
                }
-               if (lines[1] == "True")
-               {
-                   Toggle_Sound.Toggled = true;
-               }
 
+               if (music_intro != false)
+               {
+                   if (lines[1] == "True")
+                   {
+                       Toggle_Sound.Toggled = true;
+                   }
+               }
+               else
+               {
+                   Toggle_Sound.Toggled = false;
+                   Toggle_Sound.Enabled = false;
+                   TrackBar_Sound.Enabled = false;
+                   Label_Sound.ForeColor = Color.LightCoral;
+               }
+              
                TrackBar_Sound.Value = int.Parse(lines[2]);
            }
            else
            {
-               Toggle_Sound.Toggled = music_intro;
+               Toggle_Sound.Toggled = music_play;
                TrackBar_Sound.Value = music_volume;
            }
 
@@ -271,7 +287,7 @@ namespace Launcher_Arma3
         private void Change_Lang_DoWork(object sender, DoWorkEventArgs e)
         {
             // Open XML doc */* Ouvre le fichier XML
-            XDocument xmlDoc = XDocument.Load(Properties.Resources.Translate_server);
+            XDocument xmlDoc = XDocument.Load(ftp + file_translate);
 
             // Search translate */* Cherche la traduction
             var tr_close = xmlDoc.Descendants("settings").Elements(language).Elements("Close").Select(r => r.Value).ToArray();
@@ -288,6 +304,11 @@ namespace Launcher_Arma3
             var tr_warninglabel = xmlDoc.Descendants("settings").Elements(language).Elements("WarningLabel").Select(r => r.Value).ToArray();
             var tr_taskfinish = xmlDoc.Descendants("settings").Elements(language).Elements("TaskFinish").Select(r => r.Value).ToArray();
             var tr_loading = xmlDoc.Descendants("settings").Elements(language).Elements("Loading").Select(r => r.Value).ToArray();
+            var tr_taskforce = xmlDoc.Descendants("settings").Elements(language).Elements("TaskForce").Select(r => r.Value).ToArray();
+            var tr_install = xmlDoc.Descendants("settings").Elements(language).Elements("Install").Select(r => r.Value).ToArray();
+            var tr_lang = xmlDoc.Descendants("settings").Elements(language).Elements("Lang").Select(r => r.Value).ToArray();
+            var tr_disable = xmlDoc.Descendants("settings").Elements(language).Elements("Disable").Select(r => r.Value).ToArray();
+
 
             var tr_progress = xmlDoc.Descendants(language).Elements("Progress").Select(r => r.Value).ToArray();
 
@@ -296,7 +317,9 @@ namespace Launcher_Arma3
             var tr_erreur51 = xmlDoc.Descendants(error_xml).Elements(language).Elements("error51").Select(r => r.Value).ToArray();
             var tr_erreur52 = xmlDoc.Descendants(error_xml).Elements(language).Elements("error52").Select(r => r.Value).ToArray();
             var tr_erreur401 = xmlDoc.Descendants(error_xml).Elements(language).Elements("error401").Select(r => r.Value).ToArray();
+            var tr_erreur405 = xmlDoc.Descendants(error_xml).Elements(language).Elements("error401").Select(r => r.Value).ToArray();
 
+            string tra_erreur405 = string.Join(",", tr_erreur405);
             string tra_erreur401 = string.Join(",", tr_erreur401);
             string tra_erreur50 = string.Join(",", tr_erreur50);
             string tra_erreur51 = string.Join(",", tr_erreur51);
@@ -317,6 +340,10 @@ namespace Launcher_Arma3
             string tra_warninglabel = string.Join(",", tr_warninglabel);
             string tra_loading = string.Join(",", tr_loading);
             string tra_taskfinish = string.Join(",", tr_taskfinish);
+            string tra_taskforce = string.Join(",", tr_taskforce);
+            string tra_install = string.Join(",", tr_install);
+            string tra_lang = string.Join(",", tr_lang);
+            string tra_disable = string.Join(",", tr_disable);
 
             string tra_progress = string.Join(",", tr_progress);
 
@@ -328,12 +355,25 @@ namespace Launcher_Arma3
             Group_Options.Text = tra_launchoptions;
             Close_Bouton.Text = tra_close;
             Groups_OptionsArma.Text = tra_launcher + " " + tra_settings;
-            Label_StartArma.Text = tra_startarma + ".";
-            Label_Sound.Text = tra_music + " " + tra_settings;
+            Label_StartArma.Text = tra_startarma + ".";           
             Bouton_Reset.Text = tra_reset;
             Groupe_Warning.Text = tra_warningzone;
             Warning_Label.Text =  "/!\\  " + tra_warninglabel + "  /!\\";
             Label_TaskForce.Text = tra_progress + ": ";
+            Group_TaskForce.Text = tra_taskforce;
+            Bouton_TaskForce.Text = tra_install + " " + tra_taskforce;
+            Language_label.Text = tra_lang + ":" ;
+            
+
+            if (music_intro != false)
+            {
+                Label_Sound.Text = tra_music + " " + tra_settings;
+            }
+            else
+            {
+                Label_Sound.Text = tra_music + " " + tra_settings + " //  " + tra_disable;
+            }
+
 
             Trans_Loading = tra_loading;
             Trans_WarningMsg = tra_warningmsg;
@@ -426,7 +466,6 @@ namespace Launcher_Arma3
                 MessageBox.Show("Error #52 | " + Trans_error52);
                 return;
             }
-            TaskForce_install = true;
 
             bool var1 = false;
             bool var2 = false;
@@ -448,6 +487,12 @@ namespace Launcher_Arma3
             {
                 dteamspeak = File.ReadAllText(appdata + dest_options + "\\" + file_teamspeak);
             }
+            if ((!File.Exists(dteamspeak + "ts3client_win64.exe")) || (!File.Exists(dteamspeak + "ts3client_win32.exe")))
+            {
+                TeamSpeak.ShowDialog();
+                dteamspeak = TeamSpeak.SelectedPath + "\\";
+                File.WriteAllText(appdata + dest_options + "\\" + file_teamspeak, dteamspeak);
+            }
 
             if (File.Exists(dteamspeak + "ts3client_win64.exe"))
             {
@@ -457,6 +502,13 @@ namespace Launcher_Arma3
             {
                 var2 = true;
             }
+
+            if ((var1 == false) && (var2 == false))
+            {
+                MessageBox.Show("Error #51 | " + Trans_error51);
+                return;
+            }
+
 
             try
             {
@@ -475,11 +527,6 @@ namespace Launcher_Arma3
             {
             }
 
-            if ((var1 == false) && (var2 == false))
-            {
-                MessageBox.Show("Error #51 | " + Trans_error51);
-            }
-
 
             Label_TaskForce.Text = Trans_Progress + Trans_Loading + "...";
             Language_Chose.Enabled = false;
@@ -487,7 +534,7 @@ namespace Launcher_Arma3
             File.WriteAllText(appdata + dest_options + "\\" + file_teamspeak + "1", "Not Installed");
 
             TaskForce_Install.RunWorkerAsync();
-
+            TaskForce_install = true;
 
         }
 

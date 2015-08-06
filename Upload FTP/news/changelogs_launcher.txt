@@ -1,28 +1,8 @@
-# Launcher_Arma3
-Launcher_Arma3_v4.0
-
--------------[ Information Launcher ]-------------
-
-Version: release 2.0.0.0
-Opérationnel: OUI
-Date de sortie: 06/08/2015
-
-Copyright HUBERT Léo © 2014 - 2015
-
-
---------------------------------------------------
-
-
-Change Logs:
-
 Release_2.0.0.0:
-- Fix: Bug Taskforce ( destination TS3).
-- Fix: Bug quand la musique est désactiver de base.
+- Fix: Bug Taskforce ( destination TS3)
 - Change: Stopper la musique quand Arma3 ce lance.
-- Add: Changelogs system.
-- Add: System de maintenance avec image en ligne.
-- Add: Traduction system TaskForce
-- Add: Ficher de traduction.
+- Fix: Bug quand la musique est désactiver de base.
+
 
 Release_1.0.0.0:
 - Add: Taskforce Radio Install

@@ -51,6 +51,7 @@ namespace Launcher_Arma3
         const string extention = "Emodyz.exe"; // Your sofware extension .exe ( example: "Emodyz.exe ) */* votre logiciel .exe ( exemple: " Emodyz.exe " )
         string fader_statut = "on"; // Make " on " if you want to remove fade animation on startup */* Mettez " on " si vous voulez supprimer l'animation au démarage du launcher 
         bool anticheat = true; //Make "true" if you want to enable the anticheat and "false" for reverse  */* Mettez "true" si vous voulez activer l'anticheat et "false" pour l'inverse
+        bool changelogs = true; //Make "true" if you want to enable the changelogs system and "false" for reverse  */* Mettez "true" si vous voulez activer le system de changelogs et "false" pour l'inverse
  
         //TaskForce Radio settings */* Paramètre TaskForce Radio
         bool TaskForce_statut = true; // Make "true" for enable installation to taskforce  */* Mettez "true" pour permettre l'installation de TaskForce Radio
@@ -117,6 +118,9 @@ namespace Launcher_Arma3
         string file_cpp = "list_cpp.txt"; // File cpp list */* Fichier list des cpp
         string file_teamspeak = "teamspeak.a3"; // Local file directory TeamSpeak */* Fichier local destination TeamSpeak
         string file_listtask = "list_taskforce.txt"; // File taskforce list */* Fichier list taskforce
+        string file_changserveur = "changelogs_serveur.txt"; // File changelogs server */* Fichier changelogs Serveur
+        string file_changlauncher = "changelogs_launcher.txt"; // File changelgos launcher */* Fichier changelogs Launcher
+        string file_maintenan_img = "maintenance.png"; // Patch to image extention of maintenance system */* Patch de l'extention de l'image de maintenance
 
         //Settings Update */* Paramètre mise à jour
         string update_ext = "Update.exe"; // Distant program for update launcher */* Fichier distant pour la mise à jour du launcher
@@ -128,7 +132,7 @@ namespace Launcher_Arma3
         // Config error message */* Paramètres erreurs message.
         string error_xml = "errorlist";
         bool error404;
-        string error01;
+        string error10;
         int error_time = 5000;
         string error_type;
         int error_code;
@@ -158,6 +162,8 @@ namespace Launcher_Arma3
         bool music_started = false;//DON'T CHANGE
         int line_1;//DON'T CHANGE
         string line;// DON'T CHANGE 
+        bool music_play;
+        bool started_arma = false; // DON'T CHANGE
         string msg_darma = "Arma3 Directory: ";// DON'T CHANGE 
         Assembly assembly = Assembly.GetExecutingAssembly();// DON'T CHANGE 
         bool connection = NetworkInterface.GetIsNetworkAvailable();// DON'T CHANGE
@@ -182,14 +188,20 @@ namespace Launcher_Arma3
 
         public Launch()
         {
-          
+
+
+
+            InitializeComponent();
+
+            
+
             if (File.Exists(appdata + dest_options + "\\" + file_language))
             {
                 string[] lines = File.ReadAllLines(appdata + dest_options + "\\" + file_language);
                 language = lines[1];
             }
 
-            InitializeComponent();
+ 
 
             //View if network is ok */* Regarde si internet est ok
             WebClient webClient = new WebClient();
@@ -201,10 +213,10 @@ namespace Launcher_Arma3
             {
 
                 error404 = true;
-
-                error_time = -1;
+                
                 if (!Erreur_Msg.IsBusy)
                 {
+                    error_time = -1;
                     error_code = 404;
                     Erreur_Msg.RunWorkerAsync();
                 }
@@ -232,19 +244,33 @@ namespace Launcher_Arma3
         // Launcher Load Script 
         private void Launch_Load(object sender, EventArgs e)
         {
+
             if (File.Exists(appdata + dest_options + "\\" + file_option))
             {
                 string[] lines = File.ReadAllLines(appdata + dest_options + "\\" + file_option);
-                if (lines[1] == "False")
+                if (intro_music != false)
                 {
-                    intro_music = false;
+                    if (lines[1] == "True")
+                    {
+                        if (lines[1] == "False")
+                        {
+                            music_play  = false;
+                        }
+                        else
+                        {
+                            music_play  = true;
+                        }
+                        music_volume = int.Parse(lines[2]);
+                    }
                 }
-                else
-                {
-                    intro_music = true;
-                }
-                music_volume = int.Parse(lines[2]);
+
             }
+            else
+            {
+                music_play = intro_music;
+            }
+
+            CheckInternet.RunWorkerAsync();
 
             // Load Music
             if (intro_music)
@@ -284,6 +310,7 @@ namespace Launcher_Arma3
                 return;
             }
 
+       
 
             // Load GUID App */* Charge le GUID de l'app
 
@@ -339,7 +366,11 @@ namespace Launcher_Arma3
 
             label_darma.Text = msg_darma + dest_arma;
 
-            
+            if (!ftp.Contains("http://"))
+            {
+
+                MessageBox.Show("The FTP connection must be a link \"http: //\"! A link \"ftp: //\" or the like does not work!" + Environment.NewLine + Environment.NewLine + "Le lien FTP doit être obligatoirement un lien \" http:// \" !   Les liens tel que \" ftp:// \" ou autres ne marche pas ! ", namelaunch);
+            }
 
         }
 
@@ -615,20 +646,42 @@ namespace Launcher_Arma3
             {
                 if (!Erreur_Msg.IsBusy)
                 {
-
                     error_code = 100;
                     Erreur_Msg.RunWorkerAsync();
                 }
 
                 credits_label.Text = Properties.Resources.Copyright;
+                return;
+            }
+            if (!load_finish)
+            {
+                if (!Erreur_Msg.IsBusy)
+                {
+                    error_code = 110;
+                    Erreur_Msg.RunWorkerAsync();
+                }
 
+                if (!News.IsBusy)
+                {
+                    News.RunWorkerAsync();
+                }
+                return;
+            }
+
+            if (error404)
+            {
+                if (!Erreur_Msg.IsBusy)
+                {
+                    error_code = 404;
+                    Erreur_Msg.RunWorkerAsync();
+                }
                 return;
             }
 
             //Open Form2 ( Launcher Settings)  */* Ouvre la page N°2 ( Options Launcher )
             Form2 frm = new Form2(language, appdata, dest_options, file_username, file_a3options, file_language, file_option,
-                                  dest_arma, modsname, download_progress, music_volume, intro_music, TaskForce_statut, file_teamspeak,
-                                  file_listtask, dest_taskforce, ftp, file_arma3, error_xml, servervocal, ipmumble, portmumble, passmumble, ipTS, portTS, passTS);
+                                  dest_arma, modsname, download_progress, music_volume, intro_music, music_play, TaskForce_statut, file_teamspeak,
+                                  file_listtask, dest_taskforce, ftp, file_arma3, error_xml, servervocal, ipmumble, portmumble, passmumble, ipTS, portTS, passTS, file_translate);
             frm.ShowDialog();
 
             if (File.Exists(appdata + dest_options + "\\" + file_language))
@@ -641,11 +694,11 @@ namespace Launcher_Arma3
                 string[] lines = File.ReadAllLines(appdata + dest_options + "\\" + file_option);
                 if (lines[1] == "False")
                 {
-                    intro_music = false;
+                    music_play = false;
                 }
                 else
                 {
-                    intro_music = true;
+                    music_play = true;
                 }
                 music_volume = int.Parse(lines[2]);
                 Music.RunWorkerAsync();
@@ -739,7 +792,7 @@ namespace Launcher_Arma3
             */
 
             // Open XML doc */* Ouvre le fichier XML
-            XDocument xmlDoc = XDocument.Load(Properties.Resources.Translate_server);
+            XDocument xmlDoc = XDocument.Load(ftp + file_translate);
 
             // Search translate */* Cherche la traduction
             var tr_link = xmlDoc.Descendants(language).Elements("Links").Select(r => r.Value).ToArray();
@@ -755,6 +808,8 @@ namespace Launcher_Arma3
             var tr_modsdeal = xmlDoc.Descendants(language).Elements("ModsDeal").Select(r => r.Value).ToArray();
             var tr_checks = xmlDoc.Descendants(language).Elements("Checks").Select(r => r.Value).ToArray();
             var tr_forum = xmlDoc.Descendants(language).Elements("Forum").Select(r => r.Value).ToArray();
+            var tr_launch = xmlDoc.Descendants(language).Elements("Launch").Select(r => r.Value).ToArray();
+            var tr_server = xmlDoc.Descendants(language).Elements("Server").Select(r => r.Value).ToArray();
 
             string tra_link = string.Join(",", tr_link);
             string tra_website = string.Join(",", tr_website);
@@ -769,12 +824,14 @@ namespace Launcher_Arma3
             string tra_modsdeal = string.Join(",", tr_modsdeal);
             string tra_checks = string.Join(",", tr_checks);
             string tra_forum = string.Join(",", tr_forum);
+            string tra_launch = string.Join(",", tr_launch);
+            string tra_server = string.Join(",", tr_server);
 
 
             //Error Load */* Chargement erreur
-            var tr_erreur01 = xmlDoc.Descendants(error_xml).Elements(language).Elements("error01").Select(r => r.Value).ToArray();
+            var tr_erreur10 = xmlDoc.Descendants(error_xml).Elements(language).Elements("error10").Select(r => r.Value).ToArray();
 
-            string tra_erreur01 = string.Join(",", tr_erreur01);
+            string tra_erreur10 = string.Join(",", tr_erreur10);
 
 
 
@@ -785,7 +842,7 @@ namespace Launcher_Arma3
             Trans_Deal = tra_modsdeal;
             Trans_Checks = tra_checks;
             Trans_Play = tra_play;
-            error01 = tra_erreur01;
+            error10 = tra_erreur10;
 
             // Change bouton text */* Change le text des boutons 
             Group_Link.Text = tra_link;
@@ -799,6 +856,10 @@ namespace Launcher_Arma3
             Label_valu.Text = Trans_Progress + ": 0 / 0";
             Label_mods.Text = Trans_Download + ": ";
             Label_modsdeal.Text = Trans_Deal + ": ";
+
+            //TAB PAGES
+            tabPage1.Text = tra_launch;
+            tabPage2.Text = tra_server;
 
 
             if (download_finish)
@@ -1233,6 +1294,7 @@ namespace Launcher_Arma3
                 download_finish = true;
                 download_progress = false;
                 Download_Group.Visible = false;
+                Panel.Visible = true;
               
 
                 return;
@@ -1247,17 +1309,24 @@ namespace Launcher_Arma3
         }
 
         private void Erreur_Msg_DoWork(object sender, DoWorkEventArgs e)
-        {
+        { 
               // Open XML doc */* Ouvre le fichier XML
-            if (error_code != 405)
+            if ((error_code != 405))
             {
-                XDocument xmlDoc = XDocument.Load(Properties.Resources.Translate_server);
+                    XDocument xmlDoc = XDocument.Load(ftp + file_translate);
 
-                // Search translate */* Cherche la traduction
-                var tr_erreur = xmlDoc.Descendants(error_xml).Elements(language).Elements("error" + error_code).Select(r => r.Value).ToArray();
-                string tra_erreur = string.Join(",", tr_erreur);
-                error_message = tra_erreur;
+                    // Search translate */* Cherche la traduction
+                    var tr_erreur = xmlDoc.Descendants(error_xml).Elements(language).Elements("error" + error_code).Select(r => r.Value).ToArray();
+                    string tra_erreur = string.Join(",", tr_erreur);
+                    error_message = tra_erreur;
             }
+            else
+            {
+                    error_message = "No network found or server not responding ...";
+                    connection_label.ForeColor = Color.Red;
+                    connection_label.Text = "Error #405 | No network found or server not responding.";
+            }
+           
             
 
              notif_1.Text = "Error #"+ error_code +" | " + error_message;
@@ -1379,6 +1448,14 @@ namespace Launcher_Arma3
                         }
 
                     }
+
+                    
+                }
+
+                started_arma = true;
+                if (!Music.IsBusy)
+                {
+                    Music.RunWorkerAsync();
                 }
 
             }
@@ -1397,11 +1474,16 @@ namespace Launcher_Arma3
 
         private void News_DoWork(object sender, DoWorkEventArgs e)
         {
+            int locked_maintenance = 0;
+
             WebClient client = new WebClient();
             Stream stream = client.OpenRead(ftp + dest_news + "/" + file_news);
             StreamReader reader = new StreamReader(stream);
             String news_on = reader.ReadLine();
             String news_msg = reader.ReadLine();
+            String maintenance = reader.ReadLine();
+            String news_maintenance = reader.ReadLine();
+
 
      
 
@@ -1412,7 +1494,50 @@ namespace Launcher_Arma3
             }
 
             load_finish = true;
+            Changelogs.RunWorkerAsync();
 
+            if (maintenance == "true")
+            {
+                //Show MAintenance img // Montre l'image de maintenance 
+                Maintenance.ImageLocation = ftp + dest_news + "\\" + file_maintenan_img;
+                Maintenance.Location = new Point(0, 24);
+                Maintenance.Width = 1004;
+                Maintenance.Height = 433;
+                Maintenance.SizeMode = PictureBoxSizeMode.Zoom;
+                Maintenance.BringToFront();
+
+
+       
+                Maintenance_Label.Location = new Point(6, 460);
+                Maintenance_Label.Text = news_maintenance;
+                Maintenance_Label.BringToFront();
+
+         
+
+
+                while (locked_maintenance < 2)
+                {
+                  System.Threading.Thread.Sleep(10000);
+                  WebClient client1 = new WebClient();
+                  Stream stream1 = client.OpenRead(ftp + dest_news + "/" + file_news);
+                  StreamReader reader1 = new StreamReader(stream1);
+                  String news_on1 = reader1.ReadLine();
+                  String news_msg1 = reader1.ReadLine();
+                  String maintenance1 = reader1.ReadLine();
+                  String news_maintenance1 = reader1.ReadLine();
+
+                  if (maintenance1 != "true")
+                  {
+                      Maintenance.Visible = false;
+                      Maintenance_Label.Visible = false;
+                      locked_maintenance = 3;
+                  }
+                }
+       
+
+            }
+
+            
 
         }
 
@@ -1426,7 +1551,7 @@ namespace Launcher_Arma3
                     proc[0].Kill();
            
                     
-                    MessageBox.Show("Error #01 | " + error01);
+                    MessageBox.Show("Error #10 | " + error10);
 
                 }
                 catch
@@ -1440,6 +1565,18 @@ namespace Launcher_Arma3
       
         private void Music_DoWork(object sender, DoWorkEventArgs e)
         {
+            if (started_arma == true)
+            {
+                   Sound.Visible = false;
+                wplayer.controls.pause();
+                return;
+            }
+            if (music_play == false)
+            {
+                Sound.Visible = false;
+                wplayer.controls.pause();
+                return;
+            }
             if (intro_music == false)
             {
                 Sound.Visible = false;
@@ -1480,6 +1617,8 @@ namespace Launcher_Arma3
         private void Download_CPP_DoWork(object sender, DoWorkEventArgs e)
         {
             Loading.Visible = true;
+            Panel.Visible = false;
+
             WebClient download = new WebClient();
             if (counter_cpp == 0)
             {
@@ -1525,6 +1664,89 @@ namespace Launcher_Arma3
 
         private void Anti_Cheat_DoWork(object sender, DoWorkEventArgs e)
         {
+
+        }
+
+        private void CheckInternet_DoWork(object sender, DoWorkEventArgs e)
+        {
+            System.Threading.Thread.Sleep(5000);
+            if (connection_label.Text == "Loading ..")
+            {
+                 if (!Erreur_Msg.IsBusy)
+                 {
+                       error_code = 405;
+                       error_time = -1;
+                       Erreur_Msg.RunWorkerAsync();
+                 }
+            }
+          
+        }
+
+        private void Changelogs_DoWork(object sender, DoWorkEventArgs e)
+        {
+            if (!Directory.Exists(appdata + dest_news))
+            {
+                Directory.CreateDirectory(appdata + dest_news);
+            }
+            WebClient download = new WebClient();
+            
+            if (File.Exists(appdata + dest_news + "\\" + file_changlauncher))
+            {
+                File.Delete(appdata + dest_news + "\\" + file_changlauncher);
+            }
+            download.DownloadFile(ftp + dest_news + "\\" + file_changlauncher, appdata + dest_news + "\\" + file_changlauncher);
+
+
+            if (File.Exists(appdata + dest_news + "\\" + file_changserveur))
+            {
+                File.Delete(appdata + dest_news + "\\" + file_changserveur);
+            }
+            download.DownloadFile(ftp + dest_news + "\\" + file_changserveur, appdata + dest_news + "\\" + file_changserveur);
+
+
+            if (File.Exists(appdata + dest_news + "\\" + file_changlauncher))
+            {
+                int total_1;
+                int counter_1 = 0;
+              
+                    
+                string[] lines = File.ReadAllLines(appdata + dest_news + "\\" + file_changserveur);
+                total_1 = lines.Length;
+                Changelogs_Serveur.Items.Clear();
+
+                while (counter_1 < total_1)
+                {
+
+                    Changelogs_Serveur.Items.Add(lines[counter_1]);
+                    counter_1++;
+                }
+             
+
+
+            }
+
+
+
+            if (File.Exists(appdata + dest_news + "\\" + file_changserveur))
+            {
+                int total_1;
+                int counter_1 = 0;
+
+                string[] lines = File.ReadAllLines(appdata + dest_news + "\\" + file_changlauncher);
+                total_1 = lines.Length;
+                Changelogs_Launcher.Items.Clear();
+
+
+                while (counter_1 <= total_1)
+                {
+
+                    Changelogs_Launcher.Items.Add(lines[counter_1]);
+
+                    counter_1++;
+                }
+            }
+
+    
 
         }    
     }

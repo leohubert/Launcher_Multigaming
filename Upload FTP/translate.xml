@@ -1,0 +1,266 @@
+<?xml version="1.0"?>
+<user>
+	<FR language="Français">
+		<Links>Liens</Links>
+		<WebSite>Site Web</WebSite>
+		<Play>Jouer</Play>
+		<Connected>Connecté</Connected>
+		<Disconnected>Déconnecté</Disconnected>
+		<Settings>Paramètres</Settings>
+		<Directory>Destination</Directory>
+		<Downloading>Téléchargement</Downloading>
+		<Download>Télécharger</Download>
+		<Progress>Progression</Progress>
+		<ModsDeal>Mods traités</ModsDeal>
+		<Checks>Vérification</Checks>
+		<Forum>Forum</Forum>
+		<Launch>Launcher</Launch>
+		<Server>Serveur</Server>
+	</FR>
+	<EN language="English">
+		<Links>Links</Links>
+		<WebSite>WebSite</WebSite>
+		<Play>Play</Play>
+		<Connected>Connected</Connected>
+		<Disconnected>Disconnected</Disconnected>
+		<Settings>Settings</Settings>
+		<Directory>Directory</Directory>
+		<Downloading>Downloading</Downloading>
+		<Download>Download</Download>
+		<Progress>Progress</Progress>
+		<ModsDeal>Mods Treaty</ModsDeal>
+		<Checks>Check</Checks>
+		<Forum>Forum</Forum>
+		<Launch>Launcher</Launch>
+		<Server>Server</Server>
+	</EN>
+	<AL language="Deutsch">
+		<Links>Anschlüsse</Links>
+		<WebSite>Webseite</WebSite>
+		<Play>Spielen</Play>
+		<Connected>Verbunden</Connected>
+		<Disconnected>Getrennt</Disconnected>
+		<Settings>Parameter</Settings>
+		<Directory>Reiseziel</Directory>
+		<Downloading>Herunterladen</Downloading>
+		<Download>Download</Download>
+		<Progress>Fortschritt</Progress>
+		<ModsDeal>Mods Vertrag</ModsDeal>
+		<Checks>Scheck</Checks>
+		<Forum>Forum</Forum>
+		<Launch>Launcher</Launch>
+		<Server>Server</Server>
+	</AL>
+	<IT language="Italiano">
+		<Links>Collegamenti</Links>
+		<WebSite>Sito Web</WebSite>
+		<Play>Giocare</Play>
+		<Connected>Collegato</Connected>
+		<Disconnected>Scollegato</Disconnected>
+		<Settings>Impostazioni</Settings>
+		<Directory>Destinazione</Directory>
+		<Downloading>Il Download</Downloading>
+		<Download>Scaricare</Download>
+		<Progress>Progressione</Progress>
+		<ModsDeal>Mods trattati</ModsDeal>
+		<Checks>Controllare</Checks>
+		<Forum>Foro</Forum>
+		<Launch>Launcher</Launch>
+		<Server>Server</Server>
+	</IT>
+	<CH language="Chinois">
+		<Links>连接</Links>
+		<WebSite>网站</WebSite>
+		<Play>玩</Play>
+		<Connected>连接的</Connected>
+		<Disconnected>断开的</Disconnected>
+		<Settings>设置</Settings>
+		<Directory>目的地</Directory>
+		<Downloading>下载</Downloading>
+		<Download>下载</Download>
+		<Progress>级数</Progress>
+		<ModsDeal>国防部条约</ModsDeal>
+		<Checks>检查</Checks>
+		<Forum>论坛</Forum>
+		<Launch>发射台</Launch>
+		<Server>服务器</Server>
+	</CH>
+	
+	
+	<settings>
+		<FR language="Français">
+			<Language>Français</Language>
+		    <Options>Options</Options>
+			<UserName>Nom d'utilisateur</UserName>
+			<LaunchOptions>Options de lancement</LaunchOptions>
+			<Close>Fermer</Close>
+			<Launcher>Launcher</Launcher>
+			<Music>Musique</Music>
+			<Reset>Réinitialiser</Reset>
+			<WarningZone>Zone d'avertissement</WarningZone>
+			<WarningMsg>Êtes vous sure de bien vouloir supprimer tout les mods ?</WarningMsg>
+			<WarningLabel>Ce bouton supprime tous les mods</WarningLabel>
+			<Loading>Chargement</Loading>
+			<TaskForce>TaskForce Radio</TaskForce>
+			<Install>Installer</Install>
+			<Lang>Language</Lang>
+			<Disable>Désactiver</Disable>
+			<TaskFinish>Task Force radio à été installé, lancer TeamSpeak 3 aller dans les options de TeamSpeak, puis les plugins et activer le plugins "TaskForce Radio".</TaskFinish>
+			<StartArma>Lancer Arma quand le téléchargement est fini</StartArma>
+		</FR>
+		<EN language="English">
+			<Language>English</Language>
+			<Options>Settings</Options>
+			<UserName>UserName</UserName>
+			<LaunchOptions>Launch Options</LaunchOptions>
+			<Close>Close</Close>
+			<Launcher>Launcher</Launcher>
+			<Music>Music</Music>
+			<Reset>Reset</Reset>
+			<WarningZone>Warning area</WarningZone>
+			<WarningMsg>Are you sure you would remove all mods?</WarningMsg>
+			<WarningLabel>This button deletes all mods</WarningLabel>
+			<Loading>Loading</Loading>
+			<TaskForce>TaskForce Radio</TaskForce>
+			<Install>Install</Install>
+			<Lang>Language</Lang>
+			<Disable>Disable</Disable>
+			<TaskFinish>Task Force radio was installed, start TeamSpeak 3 TeamSpeak go to Options, and then activate the plugins and plugins "TaskForce Radio".</TaskFinish>
+			<StartArma>Launch Arma when the download is finished</StartArma>
+		</EN>
+		<AL language="German">
+			<Language>German</Language>
+			<Options>Einstellungen</Options>
+			<UserName>Benutzername</UserName>
+			<LaunchOptions>Launch Options</LaunchOptions>
+			<Close>schließen</Close>
+			<Launcher>Launcher</Launcher>
+			<Music>Musik</Music>
+			<Reset>Rücksetzen</Reset>
+			<WarningZone>Warnbereich</WarningZone>
+			<WarningMsg>Sind Sie sicher, Sie würden alle Mods zu entfernen?</WarningMsg>
+			<WarningLabel>Diese Taste löscht alle Mods</WarningLabel>
+			<Loading>Laden</Loading>
+			<TaskForce>TaskForce Radio</TaskForce>
+			<Install>Installieren</Install>
+			<Lang>Sprache</Lang>
+			<Disable>Behindert</Disable>
+			<TaskFinish>Task Force Radio installiert wurde, starten Sie Teamspeak 3 Teamspeak gehen Sie zu Optionen, und aktivieren Sie die Plugins und Plugins "Taskforce Radio".</TaskFinish>
+			<StartArma>Start Arma, wenn der Download abgeschlossen ist</StartArma>
+		</AL>
+		<IT language="Italiano">
+			<Language>Italiano</Language>
+			<Options>Opzioni</Options>
+			<UserName>Nome utente</UserName>
+			<LaunchOptions>Opzioni di avvio</LaunchOptions>
+			<Close>Chiudere</Close>
+			<Launcher>Launcher</Launcher>
+			<Music>Musica</Music>
+			<Reset>Reset</Reset>
+			<WarningZone>Zona di avvertimento</WarningZone>
+			<WarningMsg>Sei sicuro di voler rimuovere tutti i mod?</WarningMsg>
+			<WarningLabel>Questo pulsante elimina tutte mod</WarningLabel>
+			<Loading>Caricamento</Loading>
+			<TaskForce>TaskForce Radio</TaskForce>
+			<Install>Installare</Install>
+			<Lang>Lingua</Lang>
+			<Disable>Disabilitato</Disable>
+			<TaskFinish>Radio Task Force è stata installata, avviare TeamSpeak 3 TeamSpeak andare su Opzioni, e quindi attivare il plugin e plugin "task force Radio".</TaskFinish>
+			<StartArma>Lancio arma quando il download è terminato</StartArma>
+		</IT>
+		<CH language="中国">
+			<Language>中国</Language>
+		    <Options>选项</Options>
+			<UserName>用户名</UserName>
+			<LaunchOptions>启动选项</LaunchOptions>
+			<Close>关闭</Close>
+			<Launcher>发射台</Launcher>
+			<Music>音乐</Music>
+			<Reset>重置</Reset>
+			<WarningZone>警戒区域</WarningZone>
+			<WarningMsg>你肯定你会删除所有模式？</WarningMsg>
+			<WarningLabel>此按钮删除所有模式</WarningLabel>
+			<Loading>载入中</Loading>
+			<TaskForce>专责小组电台</TaskForce>
+			<Install>安装</Install>
+			<Lang>语言</Lang>
+			<Disable>残</Disable>
+			<TaskFinish>安装工作组电台，开始TeamSpeak3 TeamSpeak进入选项，然后激活插件和插件“特遣部队广播电台”。</TaskFinish>
+			<StartArma>当下载完成后阿玛推出</StartArma>
+		</CH>
+	</settings>
+	
+	<errorlist>
+       <FR description="Listing des erreurs">
+	   		<error10>Ne fermez pas le launcher quand vous jouer à arma3 !</error10>
+			<error20>Le lien FTP doit être obligatoirement un lien " http:// " ! Un lien " ftp:// " ou autres ne marche pas ! </error20>
+			<error50>Téléchargement du taskforce est refusé car le téléchargement des mods est en cour</error50>
+			<error51>Destination de TeamSpeak invalide</error51>
+			<error52>Installation de TeamSpeak déjà en cour</error52>
+			<error55>TaskForce Radio non installer, rendez vous dans les options du launcher</error55>
+			<error100>Ce launcher est bloqué pour non respect des crédits !</error100>
+			<error101>Ce launcher est bloqué ! Pour en savoir plus contacter: support@emodyz.com</error101>
+			<error110>Veuillez patienter, le launcher n'a pas fini de se lancer.</error110>
+			<error401>Destination d'Arma 3 non valide !</error401>
+			<error402>Erreur pendant le téléchargement des fichier requis</error402>
+			<error404>Le serveur est momentanément indisponible !</error404>		
+	   </FR>
+	   <EN description="Error Listing">
+			<error10>Do not close the launcher when you play arma 3!</error10>
+			<error20>The FTP connection must be a link "http: //"! A link "ftp: //" or the like does not work!</error20>
+			<error50>Download the taskforce is denied because downloading mods is in court</error50>
+			<error51>TeamSpeak invalid destination</error51>
+			<error52>Installing TeamSpeak already in court</error52>
+			<error55>TaskForce Radio not installed, go into the launcher options</error55>
+			<error100>This launcher is blocked for breach credits!</error100>
+			<error101>This launcher is blocked ! For more information contact: support@emodyz.com</error101>
+			<error110>Please wait, the launcher has not finished launching.</error110>
+			<error401>Arma 3 Invalid destination!</error401>
+			<error402>Error while downloading the required file</error402>
+			<error404>The server is temporarily unavailable!</error404>
+	   </EN>
+	   <AL description="Fehler Listing">
+			<error10>Das Startprogramm nicht schließen, wenn Sie Arma 3 zu spielen!</error10>
+			<error20>Die FTP-Verbindung muss ein Link "http: //" zu sein! Ein Link "ftp: //" oder dergleichen funktioniert nicht!</error20>
+			<error50>Laden Sie die Taskforce wird verweigert, weil das Herunterladen Mods ist vor Gericht</error50>
+			<error51>Teamspeak ungültige Ziel</error51>
+			<error52>Installieren von Teamspeak bereits vor Gericht</error52>
+			<error55>Task Force-Radio nicht installiert ist, um die Optionen des Launchers gehen</error55>
+			<error100>Das Startprogramm wird für die Verletzung Credits blockiert!</error100>
+			<error101>Das Startprogramm ist gesperrt! Für weitere Informationen kontaktieren Sie: support@emodyz.com</error101>
+			<error110>Bitte warten Sie, das Startprogramm nicht starten beendet.</error110>
+			<error401>Arma 3 Ungültige Reiseziel!</error401>
+			<error402>Fehler beim Herunterladen der gewünschten Datei</error402>
+			<error404>Der Server ist vorübergehend nicht verfügbar!</error404>
+	   </AL>
+	   <IT description="Listing Errore">
+	   		<error10>Non chiudere il programma di avvio quando si gioca arma3!</error10>
+			<error20>Il collegamento FTP deve essere un collegamento "http: //"! Un link "ftp: //" o simili non funziona!</error20>
+			<error50>Scarica la task force è negato perché il download di mods è in tribunale</error50>
+			<error51>TeamSpeak di destinazione non valido</error51>
+			<error52>Installazione di TeamSpeak già in tribunale</error52>
+			<error55>TaskForce Radio non installato, passare alle opzioni del lanciatore</error55>
+			<error100>Questo launcher è bloccato per i crediti di violazione!</error100>
+			<error101>Questo programma di avvio è bloccato! Per maggiori informazioni contattare: support@emodyz.com</error101>
+			<error110>Si prega di attendere, il lanciatore non ha finito di lanciare.</error110>
+			<error401>Arma 3 di destinazione non valido!</error401>
+			<error402>Errore durante il download del file richiesto</error402>
+			<error404>Il server è temporaneamente disponibile!</error404>		
+	   </IT>
+	   <CH description="错误清单">
+	   		<error10>不要关闭发射器，当你玩武装突袭3！</error10>
+			<error20>该FTP连接必须是一个链接的“http：//”！链接“的ftp：//”或类似不工作！ </error20>
+			<error50>下载专题组，因为下载模式在法庭上否认</error50>
+			<error51>TeamSpeak 无效的目标</error51>
+			<error52>在法庭上安装TeamSpeak已</error52>
+			<error55>无线电工作小组无法安装，进入发射器选项</error55>
+			<error100>该发射器被阻塞违约信用！</error100>
+			<error101>该发射器被堵塞！欲了解更多信息，请联系：support@emodyz.com</error101>
+			<error110>请等待，启动尚未完成发射。</error110>
+			<error401>武装突袭3无效的目的！</error401>
+			<error402>错误在下载所需文件</error402>
+			<error404>服务器暂时不可用！</error404>		
+	   </CH>
+	</errorlist>
+</user>
+

@@ -132,10 +132,6 @@
     <value>http://emodyz.com/launcher_4.0/launcher.xml</value>
     <comment>Don't change */* Ne pas changer !</comment>
   </data>
-  <data name="Translate_server" xml:space="preserve">
-    <value>http://emodyz.com/launcher_4.0/translate.xml</value>
-    <comment>Distant server for translate */* Serveur distant pour traduction</comment>
-  </data>
   <data name="copyright1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\copyright.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
   </data>
