@@ -74,6 +74,7 @@
             this.Changelogs_Launcher = new Ambiance.Ambiance_ListBox();
             this.Loading = new Ambiance.Ambiance_ProgressIndicator();
             this.Maintenance = new System.Windows.Forms.PictureBox();
+            this.Check_Mods = new System.ComponentModel.BackgroundWorker();
             this.iTalk_ThemeContainer1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Sound)).BeginInit();
             this.Download_Group.SuspendLayout();
@@ -565,6 +566,10 @@
             this.Maintenance.TabIndex = 28;
             this.Maintenance.TabStop = false;
             // 
+            // Check_Mods
+            // 
+            this.Check_Mods.DoWork += new System.ComponentModel.DoWorkEventHandler(this.Check_Mods_DoWork);
+            // 
             // Launch
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -646,6 +651,7 @@
         private System.ComponentModel.BackgroundWorker Changelogs;
         private System.Windows.Forms.PictureBox Maintenance;
         private Ambiance.Ambiance_Label Maintenance_Label;
+        private System.ComponentModel.BackgroundWorker Check_Mods;
 
     }
 }

@@ -49,7 +49,7 @@ namespace Launcher_Arma3
         const string namelaunch = "Emodyz Launcher ©";  // Name of your launcher */* Nom de votre launcher
         const string modsname = "@Emodyz"; // Patch of your mods directory */* Patch de votre répertoire de mods
         const string extention = "Emodyz.exe"; // Your sofware extension .exe ( example: "Emodyz.exe ) */* votre logiciel .exe ( exemple: " Emodyz.exe " )
-        string fader_statut = "on"; // Make " on " if you want to remove fade animation on startup */* Mettez " on " si vous voulez supprimer l'animation au démarage du launcher 
+        bool fader_statut = true; // Make " true " if you want to remove fade animation on startup */* Mettez " true" si vous voulez supprimer l'animation au démarage du launcher 
         bool anticheat = true; //Make "true" if you want to enable the anticheat and "false" for reverse  */* Mettez "true" si vous voulez activer l'anticheat et "false" pour l'inverse
         bool changelogs = true; //Make "true" if you want to enable the changelogs system and "false" for reverse  */* Mettez "true" si vous voulez activer le system de changelogs et "false" pour l'inverse
  
@@ -105,6 +105,7 @@ namespace Launcher_Arma3
 
         // Settings file */* Paramètre fichier
         string file_vlauncher = "vlauncher.txt"; // Distant file launcher version */* Fichier distant version launcher
+        string file_vmods = "vmods.txt"; // Distant file mods version */* Fichier distant version des mods
         string file_darma = "darma3.a3";  // Local file directory arma 3 */* Fichier local destination arma3
         string file_arma3 = "arma3battleye.exe"; // Extention of Arma3 */* Extention d'arma3
         string file_translate = "translate.xml"; // File XML for launcher translate */* Fichier XML pour la traduction du launcher
@@ -127,6 +128,8 @@ namespace Launcher_Arma3
         string update_site = "site.txt"; // Local File where is the website for download the update */* Fichier local là ou est le lien pour télécharger la mise à jour
         string update_destlaunch = "update.txt"; // Local File where is the patch to launcher up to date */* Fichier local là ou est la destination du launcher à mettre à jours
         string update_message; //Its a simple variable */* C'est une simple variable
+        string version_now;//Its a simple variable */* C'est une simple variable
+        string version_up; //Its a simple variable */* C'est une simple variable
      
 
         // Config error message */* Paramètres erreurs message.
@@ -160,6 +163,7 @@ namespace Launcher_Arma3
         int counter_cpp = 0; // DON'T CHANGE
         bool download_finish;// DON'T CHANGE
         bool music_started = false;//DON'T CHANGE
+        string mods_update; //DON'T CHANGE
         int line_1;//DON'T CHANGE
         string line;// DON'T CHANGE 
         bool music_play;
@@ -201,7 +205,8 @@ namespace Launcher_Arma3
                 language = lines[1];
             }
 
- 
+            //Check if new update for mods is here */* Vérifie si une mise à jour de mods est disponible
+            Check_Mods.RunWorkerAsync();     
 
             //View if network is ok */* Regarde si internet est ok
             WebClient webClient = new WebClient();
@@ -223,10 +228,14 @@ namespace Launcher_Arma3
             }
 
             //Change language launcher */* Change la langue du launcher
-            Change_Lang.RunWorkerAsync();
+            if (changelogs != false)
+            {
+                Change_Lang.RunWorkerAsync();
+            }
+            
 
             // Fader animation */* Animation fader
-            if (fader_statut == "on")
+            if (fader_statut == true)
             {
                 Fader.Start();
             }
@@ -244,7 +253,10 @@ namespace Launcher_Arma3
         // Launcher Load Script 
         private void Launch_Load(object sender, EventArgs e)
         {
-
+            if (changelogs == false )
+            {
+                Panel.Visible = false;
+            }
             if (File.Exists(appdata + dest_options + "\\" + file_option))
             {
                 string[] lines = File.ReadAllLines(appdata + dest_options + "\\" + file_option);
@@ -310,7 +322,7 @@ namespace Launcher_Arma3
                 return;
             }
 
-       
+           
 
             // Load GUID App */* Charge le GUID de l'app
 
@@ -555,7 +567,12 @@ namespace Launcher_Arma3
                 }
                 return;
             }
-
+            if (mods_update != "true")
+            {
+                Start_Arma.RunWorkerAsync();
+                start_arma = true;
+                return;
+            }
             // Verification of arma3 directory */* Vérification de la destination d'arma3
             if (!File.Exists(dest_arma + file_arma3))
             {
@@ -651,30 +668,6 @@ namespace Launcher_Arma3
                 }
 
                 credits_label.Text = Properties.Resources.Copyright;
-                return;
-            }
-            if (!load_finish)
-            {
-                if (!Erreur_Msg.IsBusy)
-                {
-                    error_code = 110;
-                    Erreur_Msg.RunWorkerAsync();
-                }
-
-                if (!News.IsBusy)
-                {
-                    News.RunWorkerAsync();
-                }
-                return;
-            }
-
-            if (error404)
-            {
-                if (!Erreur_Msg.IsBusy)
-                {
-                    error_code = 404;
-                    Erreur_Msg.RunWorkerAsync();
-                }
                 return;
             }
 
@@ -858,35 +851,44 @@ namespace Launcher_Arma3
             Label_modsdeal.Text = Trans_Deal + ": ";
 
             //TAB PAGES
-            tabPage1.Text = tra_launch;
-            tabPage2.Text = tra_server;
+            tabPage1.Text = tra_server;
+            tabPage2.Text = tra_launch;
 
 
-            if (download_finish)
+            if (mods_update != "true")
             {
                 Play_bouton.Text = tra_play;
                 Play_bouton.Font = new Font(Play_bouton.Text, Single.Parse("14"));
             }
             else
             {
-
-                if (File.Exists(appdata + dest_options + "\\" + file_option))
+                if (download_finish)
                 {
-                    string[] lines = File.ReadAllLines(appdata + dest_options + "\\" + file_option);
-                    if (lines[0] == "True")
+                    Play_bouton.Text = tra_play;
+                    Play_bouton.Font = new Font(Play_bouton.Text, Single.Parse("14"));
+                }
+                else
+                {
+
+                    if (File.Exists(appdata + dest_options + "\\" + file_option))
                     {
-                        Play_bouton.Text = tra_download + " / " + tra_play;
-                        Play_bouton.Font = new Font(Play_bouton.Text, Single.Parse("11"));
-                        start_arma = true;
-                    }
-                    else
-                    {
-                        Play_bouton.Text = tra_download;
-                        Play_bouton.Font = new Font(Play_bouton.Text, Single.Parse("14"));
-                        start_arma = false;
+                        string[] lines = File.ReadAllLines(appdata + dest_options + "\\" + file_option);
+                        if (lines[0] == "True")
+                        {
+                            Play_bouton.Text = tra_download + " / " + tra_play;
+                            Play_bouton.Font = new Font(Play_bouton.Text, Single.Parse("11"));
+                            start_arma = true;
+                        }
+                        else
+                        {
+                            Play_bouton.Text = tra_download;
+                            Play_bouton.Font = new Font(Play_bouton.Text, Single.Parse("14"));
+                            start_arma = false;
+                        }
                     }
                 }
             }
+            
 
             if (web_type == "Forum")
             {
@@ -1027,7 +1029,7 @@ namespace Launcher_Arma3
         private void Close_Form(object sender, EventArgs e)
         {
             // Fader animation */* Animation fader
-            if (fader_statut == "on")
+            if (fader_statut == true)
             {
                 Close.Start();
             }
@@ -1067,21 +1069,24 @@ namespace Launcher_Arma3
 
         private void Download_Mods_DoWork(object sender, DoWorkEventArgs e)
         {
-
-            WebClient webClient = new WebClient();
-            webClient.DownloadFile(ftp + file_modslist, appdata + file_modslist);
-
-            // Read modslist file */* Lis le fichier modslist
-            if (!File.Exists(appdata + file_modslist))
+            if (counter == 0)
             {
-                if (!Erreur_Msg.IsBusy)
-                {
-                    error_code = 402;
-                    Erreur_Msg.RunWorkerAsync();
-                }
+                WebClient webClient = new WebClient();
+                webClient.DownloadFile(ftp + file_modslist, appdata + file_modslist);
 
-                return;
+                // Read modslist file */* Lis le fichier modslist
+                if (!File.Exists(appdata + file_modslist))
+                {
+                    if (!Erreur_Msg.IsBusy)
+                    {
+                        error_code = 402;
+                        Erreur_Msg.RunWorkerAsync();
+                    }
+
+                    return;
+                }
             }
+
 
            
           
@@ -1235,7 +1240,7 @@ namespace Launcher_Arma3
                                 double dTotal = (double)byteBuffer.Length;
                                 double dProgressPercentage = (dIndex / dTotal);
                                 int iProgressPercentage = (int)(dProgressPercentage * 100);
-
+                               
 
                                 // update the progress bar
                                 Download_Mods.ReportProgress(iProgressPercentage);
@@ -1262,10 +1267,9 @@ namespace Launcher_Arma3
 
         private void backgroundWorker1_ProgressChanged(object sender, ProgressChangedEventArgs e)
         {
-           Download_Progressbar.Value = e.ProgressPercentage;
+            Download_Progressbar.Value = e.ProgressPercentage;
 
-
-            Label_valu.Text = Trans_Progress + ": "+ bytes + " / " + bytes_d;
+            Label_valu.Text = Trans_Progress + ": " + bytes + " / " + bytes_d;
            
     
 
@@ -1291,6 +1295,7 @@ namespace Launcher_Arma3
                     Play_bouton.Text = Trans_Play;
                     start_arma = true;
                 }
+                File.WriteAllText(appdata + dest_version + "\\" + file_vmods, version_up);
                 download_finish = true;
                 download_progress = false;
                 Download_Group.Visible = false;
@@ -1469,7 +1474,6 @@ namespace Launcher_Arma3
                     return;
             }
 
-
         }
 
         private void News_DoWork(object sender, DoWorkEventArgs e)
@@ -1491,6 +1495,7 @@ namespace Launcher_Arma3
             {
                 News_Notif.Text = news_msg;
                 News_Notif.BringToFront();
+               
             }
 
             load_finish = true;
@@ -1512,7 +1517,11 @@ namespace Launcher_Arma3
                 Maintenance_Label.Text = news_maintenance;
                 Maintenance_Label.BringToFront();
 
-         
+                music_play = false;
+                if (!Music.IsBusy)
+                {
+                    Music.RunWorkerAsync();
+                }
 
 
                 while (locked_maintenance < 2)
@@ -1704,7 +1713,7 @@ namespace Launcher_Arma3
             download.DownloadFile(ftp + dest_news + "\\" + file_changserveur, appdata + dest_news + "\\" + file_changserveur);
 
 
-            if (File.Exists(appdata + dest_news + "\\" + file_changlauncher))
+            if (File.Exists(appdata + dest_news + "\\" + file_changserveur))
             {
                 int total_1;
                 int counter_1 = 0;
@@ -1727,7 +1736,7 @@ namespace Launcher_Arma3
 
 
 
-            if (File.Exists(appdata + dest_news + "\\" + file_changserveur))
+            if (File.Exists(appdata + dest_news + "\\" + file_changlauncher))
             {
                 int total_1;
                 int counter_1 = 0;
@@ -1748,7 +1757,53 @@ namespace Launcher_Arma3
 
     
 
-        }    
+        }
+
+        private void Check_Mods_DoWork(object sender, DoWorkEventArgs e)
+        {
+            if (!Directory.Exists(appdata + dest_version))
+            {
+                Directory.CreateDirectory(appdata + dest_version);
+            }
+                    
+
+            if (!File.Exists(appdata + dest_version + "\\" + file_vmods))
+            {
+                WebClient web = new WebClient();
+                web.DownloadFile(ftp + dest_version + "/" + file_vmods, appdata + dest_version + "\\" + file_vmods);            
+            }
+            else
+            {
+                version_now = File.ReadAllText(appdata + dest_version + "\\" + file_vmods);
+
+                WebClient client = new WebClient();
+                Stream stream = client.OpenRead(ftp + dest_version + "/" + file_vmods);
+                StreamReader reader = new StreamReader(stream);
+
+                version_up = reader.ReadLine();
+
+                if (version_now != version_up)
+                {
+                    mods_update = "true";
+                    if (!Change_Lang.IsBusy)
+                    {           
+                        Change_Lang.RunWorkerAsync();
+                    }
+                    else
+                    {
+                        System.Threading.Thread.Sleep(250);
+                        if (!Change_Lang.IsBusy)
+                        {
+                            Change_Lang.RunWorkerAsync();
+                        }
+                    }
+                }
+            }
+        }
+    
+
+
+
     }
 }
 

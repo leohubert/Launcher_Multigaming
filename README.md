@@ -3,17 +3,25 @@ Launcher_Arma3_v4.0
 
 -------------[ Information Launcher ]-------------
 
-Version: release 2.0.0.0
+Version: release 2.5.1.0 ( update de le release 2.0.0.0 )
 Opérationnel: OUI
-Date de sortie: 06/08/2015
+Date de sortie: 09/08/2015
 
 Copyright HUBERT Léo © 2014 - 2015
-
 
 --------------------------------------------------
 
 
 Change Logs:
+
+Release 2.5.1.0:
+- Add: Vérification de la version des mods.
+- Add: Options d'activer les changelogs
+- Fix: Bug musique désactiver de base
+- Fix: Bug lancement d'arma3 après être passé par les options
+- Fix: Bug lancement TeamSpeak 3 après l'installation de TaskForce
+- Fix: Bug d'affichage des traduction du Panel de changelogs
+- Fix: Bug Changelogs inversé.
 
 Release_2.0.0.0:
 - Fix: Bug Taskforce ( destination TS3).

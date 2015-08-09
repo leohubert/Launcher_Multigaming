@@ -1,7 +1,7 @@
 true
 Hello les bitchies . Bienvenue sur le nouveaux launcher de MrDarkSkil :D
 false
-Hey :D Comment vas tu ? Moi ça va :D
+Maintenance en cour ...
 
 
 Ligne 1 // Activer ou non les news
