@@ -3,9 +3,9 @@ Launcher_Arma3_v4.0
 
 -------------[ Information Launcher ]-------------
 
-Version: release 2.5.1.0 ( update de le release 2.0.0.0 )
+Version: pre-release 2.9.3.0 ( pre-release de la 3.0.0.0 )
 Opérationnel: OUI
-Date de sortie: 09/08/2015
+Date de sortie: 16/08/2015
 
 Copyright HUBERT Léo © 2014 - 2015
 
@@ -13,6 +13,12 @@ Copyright HUBERT Léo © 2014 - 2015
 
 
 Change Logs:
+
+Pre-Release 2.9.3.0:
+- Fix: Vérification si TaskForce est déjà installer.
+- Fix: Quand on réinitialise les mods, les mods ce retélécharge ( avant non )
+- Optimisation: Optimisation du system de traduction.
+( Préparation du changement du script qui télécharge les mods)
 
 Release 2.5.1.0:
 - Add: Vérification de la version des mods.

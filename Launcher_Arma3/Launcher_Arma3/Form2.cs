@@ -51,6 +51,7 @@ namespace Launcher_Arma3
         string dest_arma;
         string dest_options;
         string dest_taskforce;
+        string dest_version;
 
         string file_username;
         string file_a3options;
@@ -60,11 +61,13 @@ namespace Launcher_Arma3
         string file_listtask;
         string file_arma3;
         string file_translate;
+        string file_vmods;
 
         string Trans_Progress;
         string Trans_WarningMsg;
         string Trans_Loading;
         string Trans_TaskFinish;
+        string Trans_ReinstallTask;
 
         // Traduction error message 
 
@@ -90,7 +93,8 @@ namespace Launcher_Arma3
         public Form2(string value, string value2, string value3, string value4, string value5, string value6, string value7, 
                      string value8, string value9, bool value10, int value11, bool value12, bool value12_1, bool value13, string value14,
                      string value15, string value16, string value17, string value18, string value19, string value20, string value21,
-                     string value22, string value23, string value24,string value25,string value26, string value27)
+                     string value22, string value23, string value24,string value25,string value26, string value27, string value28,
+                     string value29)
         {
 
             InitializeComponent();
@@ -122,6 +126,8 @@ namespace Launcher_Arma3
             portTS = value25;
             passTS = value26;
             file_translate = value27;
+            file_vmods = value28;
+            dest_version = value29;
         }
 
 
@@ -287,7 +293,7 @@ namespace Launcher_Arma3
         private void Change_Lang_DoWork(object sender, DoWorkEventArgs e)
         {
             // Open XML doc */* Ouvre le fichier XML
-            XDocument xmlDoc = XDocument.Load(ftp + file_translate);
+            XDocument xmlDoc = XDocument.Load(appdata + file_translate);
 
             // Search translate */* Cherche la traduction
             var tr_close = xmlDoc.Descendants("settings").Elements(language).Elements("Close").Select(r => r.Value).ToArray();
@@ -308,6 +314,9 @@ namespace Launcher_Arma3
             var tr_install = xmlDoc.Descendants("settings").Elements(language).Elements("Install").Select(r => r.Value).ToArray();
             var tr_lang = xmlDoc.Descendants("settings").Elements(language).Elements("Lang").Select(r => r.Value).ToArray();
             var tr_disable = xmlDoc.Descendants("settings").Elements(language).Elements("Disable").Select(r => r.Value).ToArray();
+            var tr_reinstalltask = xmlDoc.Descendants("settings").Elements(language).Elements("ReinstallTask").Select(r => r.Value).ToArray();
+
+            
 
 
             var tr_progress = xmlDoc.Descendants(language).Elements("Progress").Select(r => r.Value).ToArray();
@@ -344,11 +353,13 @@ namespace Launcher_Arma3
             string tra_install = string.Join(",", tr_install);
             string tra_lang = string.Join(",", tr_lang);
             string tra_disable = string.Join(",", tr_disable);
+            string tra_reinstalltask = string.Join(",", tr_reinstalltask);
 
             string tra_progress = string.Join(",", tr_progress);
 
 
             // Change bouton text */* Change le text des boutons 
+            Trans_ReinstallTask = tra_reinstalltask;
             monoFlat_ThemeContainer1.Text = tra_launcher + " " + tra_settings;
             Group_UserName.Text = tra_username;
             Language_Chose.Text = tra_language;
@@ -444,6 +455,10 @@ namespace Launcher_Arma3
                     {
                         Directory.Delete(dest_arma + modsname, true);
                     }
+                    if (File.Exists(appdata + dest_version + "\\" + file_vmods))
+                    {
+                        File.Delete(appdata + dest_version + "\\" + file_vmods);
+                    }
                 }
                
             }
@@ -476,23 +491,22 @@ namespace Launcher_Arma3
                 return;
             }
 
-            if (!File.Exists(appdata + dest_options + "\\" + file_teamspeak))
+            if (File.Exists(appdata + dest_options + "\\" + file_teamspeak))
             {
-                TeamSpeak.ShowDialog();
-                dteamspeak = TeamSpeak.SelectedPath + "\\";
-                File.WriteAllText(appdata + dest_options + "\\" + file_teamspeak, dteamspeak);
-             
+               string ts3 = File.ReadAllText(appdata + dest_options + "\\" + file_teamspeak);
+               if (ts3 == "Installed")
+               {
+                   if (MessageBox.Show(Trans_ReinstallTask, Groupe_Warning.Text, MessageBoxButtons.YesNo) == DialogResult.No)
+                   {
+                       return;
+                   }
+               }
             }
-            else
-            {
-                dteamspeak = File.ReadAllText(appdata + dest_options + "\\" + file_teamspeak);
-            }
-            if ((!File.Exists(dteamspeak + "ts3client_win64.exe")) || (!File.Exists(dteamspeak + "ts3client_win32.exe")))
-            {
-                TeamSpeak.ShowDialog();
-                dteamspeak = TeamSpeak.SelectedPath + "\\";
-                File.WriteAllText(appdata + dest_options + "\\" + file_teamspeak, dteamspeak);
-            }
+
+            TeamSpeak.ShowDialog();
+            dteamspeak = TeamSpeak.SelectedPath + "\\";
+            File.WriteAllText(appdata + dest_options + "\\" + file_teamspeak, dteamspeak);
+                   
 
             if (File.Exists(dteamspeak + "ts3client_win64.exe"))
             {
@@ -531,7 +545,7 @@ namespace Launcher_Arma3
             Label_TaskForce.Text = Trans_Progress + Trans_Loading + "...";
             Language_Chose.Enabled = false;
 
-            File.WriteAllText(appdata + dest_options + "\\" + file_teamspeak + "1", "Not Installed");
+            File.WriteAllText(appdata + dest_options + "\\" + file_teamspeak, "Not Installed");
 
             TaskForce_Install.RunWorkerAsync();
             TaskForce_install = true;
@@ -640,7 +654,7 @@ namespace Launcher_Arma3
                 // Finish Installation
                 Language_Chose.Enabled = true;
                 TaskForce_install = false;
-                File.WriteAllText(appdata + dest_options + "\\" + file_teamspeak +"1", "Installed");
+                File.WriteAllText(appdata + dest_options + "\\" + file_teamspeak, "Installed");
 
                 if (servervocal == "teamspeak3")
             {

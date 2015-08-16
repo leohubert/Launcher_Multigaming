@@ -107,6 +107,7 @@
 			<Disable>Désactiver</Disable>
 			<TaskFinish>Task Force radio à été installé, lancer TeamSpeak 3 aller dans les options de TeamSpeak, puis les plugins et activer le plugins "TaskForce Radio".</TaskFinish>
 			<StartArma>Lancer Arma quand le téléchargement est fini</StartArma>
+			<ReinstallTask>TaskForce Radio est déjà installée, voulez vous le réinstaller ?</ReinstallTask>
 		</FR>
 		<EN language="English">
 			<Language>English</Language>
@@ -127,6 +128,7 @@
 			<Disable>Disable</Disable>
 			<TaskFinish>Task Force radio was installed, start TeamSpeak 3 TeamSpeak go to Options, and then activate the plugins and plugins "TaskForce Radio".</TaskFinish>
 			<StartArma>Launch Arma when the download is finished</StartArma>
+			<ReinstallTask>Task Force Radio is already installed, you want to reinstall it?</ReinstallTask>
 		</EN>
 		<AL language="German">
 			<Language>German</Language>
@@ -147,6 +149,7 @@
 			<Disable>Behindert</Disable>
 			<TaskFinish>Task Force Radio installiert wurde, starten Sie Teamspeak 3 Teamspeak gehen Sie zu Optionen, und aktivieren Sie die Plugins und Plugins "Taskforce Radio".</TaskFinish>
 			<StartArma>Start Arma, wenn der Download abgeschlossen ist</StartArma>
+			<ReinstallTask>Task Force-Radio bereits installiert ist, sollten Sie es neu installieren?</ReinstallTask>
 		</AL>
 		<IT language="Italiano">
 			<Language>Italiano</Language>
@@ -167,6 +170,7 @@
 			<Disable>Disabilitato</Disable>
 			<TaskFinish>Radio Task Force è stata installata, avviare TeamSpeak 3 TeamSpeak andare su Opzioni, e quindi attivare il plugin e plugin "task force Radio".</TaskFinish>
 			<StartArma>Lancio arma quando il download è terminato</StartArma>
+			<ReinstallTask>Task Force Radio è già installato, si desidera reinstallarlo?</ReinstallTask>
 		</IT>
 		<CH language="中国">
 			<Language>中国</Language>
@@ -187,6 +191,7 @@
 			<Disable>残</Disable>
 			<TaskFinish>安装工作组电台，开始TeamSpeak3 TeamSpeak进入选项，然后激活插件和插件“特遣部队广播电台”。</TaskFinish>
 			<StartArma>当下载完成后阿玛推出</StartArma>
+			<ReinstallTask>已安装专责小组收音机，你要重新安装？</ReinstallTask>
 		</CH>
 	</settings>
 	

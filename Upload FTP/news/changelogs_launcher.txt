@@ -1,8 +1,26 @@
-Release_2.0.0.0:
-- Fix: Bug Taskforce ( destination TS3)
-- Change: Stopper la musique quand Arma3 ce lance.
-- Fix: Bug quand la musique est désactiver de base.
+Pre-Release 2.9.3.0:
+- Fix: Vérification si TaskForce est déjà installer.
+- Fix: Quand on réinitialise les mods, les mods ce retélécharge ( avant non )
+- Optimisation: Optimisation du system de traduction.
+( Préparation du changement du script qui télécharge les mods)
 
+Release 2.5.1.0:
+- Add: Vérification de la version des mods.
+- Add: Options d'activer les changelogs
+- Fix: Bug musique désactiver de base
+- Fix: Bug lancement d'arma3 après être passé par les options
+- Fix: Bug lancement TeamSpeak 3 après l'installation de TaskForce
+- Fix: Bug d'affichage des traduction du Panel de changelogs
+- Fix: Bug Changelogs inversé.
+
+Release_2.0.0.0:
+- Fix: Bug Taskforce ( destination TS3).
+- Fix: Bug quand la musique est désactiver de base.
+- Change: Stopper la musique quand Arma3 ce lance.
+- Add: Changelogs system.
+- Add: System de maintenance avec image en ligne.
+- Add: Traduction system TaskForce
+- Add: Ficher de traduction.
 
 Release_1.0.0.0:
 - Add: Taskforce Radio Install

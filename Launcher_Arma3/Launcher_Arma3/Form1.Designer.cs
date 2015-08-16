@@ -233,11 +233,11 @@
             // Download_Progressbar
             // 
             this.Download_Progressbar.BackColor = System.Drawing.Color.Transparent;
-            this.Download_Progressbar.Location = new System.Drawing.Point(11, 31);
+            this.Download_Progressbar.Location = new System.Drawing.Point(8, 31);
             this.Download_Progressbar.Maximum = 100;
             this.Download_Progressbar.Name = "Download_Progressbar";
             this.Download_Progressbar.ShowPercentage = false;
-            this.Download_Progressbar.Size = new System.Drawing.Size(531, 38);
+            this.Download_Progressbar.Size = new System.Drawing.Size(534, 38);
             this.Download_Progressbar.TabIndex = 25;
             this.Download_Progressbar.Text = "perplexProgressBar1";
             this.Download_Progressbar.Value = 0;

@@ -58,7 +58,7 @@ namespace Launcher_Arma3
 
         //Music Settings */* Paramètre music
         bool intro_music = true; //Make "Fasle" for disable the intro music */* Mettez "false" pour desactivé la music d'intro
-        int music_volume = 50; // Choose volume base " 0 ~ 100 " */* CHoississez le volume de base " 0 ~ 100 "
+        int music_volume = 10; // Choose volume base " 0 ~ 100 " */* CHoississez le volume de base " 0 ~ 100 "
 
         const string website = "http://emodyz.com/"; // Link of your web site */* Lien de votre site web
         const string forum = "none"; // Link of your forum if you have this */* Lien de votre forum si vous en avez un
@@ -70,6 +70,7 @@ namespace Launcher_Arma3
 
         //Configuration errorlistguage
         public string language = "FR"; // Make your language ("EN" for english) */* Mettez votre langage ("FR" pour le français).
+        public string language_Text = "Français"; // Make your language ("English" for english) */* Mettez votre langage ("Français" pour le français).
 
         /*
            List of language // Liste des langues
@@ -152,7 +153,9 @@ namespace Launcher_Arma3
 
 
         // Parametre anexe   // DON'T CHANGE 
-        
+
+
+
         string appdata = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData)+ "\\" + servername + "\\"; // DON'T CHANGE
         string dlauncher = Application.ExecutablePath; // DON'T CHANGE
         string vlauncher = Application.ProductVersion.ToString();// DON'T CHANGE
@@ -197,6 +200,7 @@ namespace Launcher_Arma3
 
             InitializeComponent();
 
+
             
 
             if (File.Exists(appdata + dest_options + "\\" + file_language))
@@ -227,13 +231,6 @@ namespace Launcher_Arma3
                 }
             }
 
-            //Change language launcher */* Change la langue du launcher
-            if (changelogs != false)
-            {
-                Change_Lang.RunWorkerAsync();
-            }
-            
-
             // Fader animation */* Animation fader
             if (fader_statut == true)
             {
@@ -253,6 +250,11 @@ namespace Launcher_Arma3
         // Launcher Load Script 
         private void Launch_Load(object sender, EventArgs e)
         {
+        
+
+            //Change language launcher */* Change la langue du launcher
+            Change_Lang.RunWorkerAsync();
+
             if (changelogs == false )
             {
                 Panel.Visible = false;
@@ -330,6 +332,8 @@ namespace Launcher_Arma3
             GUID = ftp.Replace(".","");
             GUID = GUID.Replace("/", "");
             GUID = GUID.Replace(":", "");
+            GUID = GUID.Replace("-", "");
+            GUID = GUID.Replace("_", "");
                       
 
             // Create AppData repertory */* Crée le répertoire AppData
@@ -589,9 +593,9 @@ namespace Launcher_Arma3
 
             if (TaskForce_statut)
             {
-                if (File.Exists(appdata + dest_options + "\\" + file_teamspeak + "1"))
+                if (File.Exists(appdata + dest_options + "\\" + file_teamspeak))
                 {
-                    if (File.ReadAllText(appdata + dest_options + "\\" + file_teamspeak + "1") == "Not Installed")
+                    if (File.ReadAllText(appdata + dest_options + "\\" + file_teamspeak) != "Installed")
                     {
                         var5 = true;
                     }
@@ -674,7 +678,8 @@ namespace Launcher_Arma3
             //Open Form2 ( Launcher Settings)  */* Ouvre la page N°2 ( Options Launcher )
             Form2 frm = new Form2(language, appdata, dest_options, file_username, file_a3options, file_language, file_option,
                                   dest_arma, modsname, download_progress, music_volume, intro_music, music_play, TaskForce_statut, file_teamspeak,
-                                  file_listtask, dest_taskforce, ftp, file_arma3, error_xml, servervocal, ipmumble, portmumble, passmumble, ipTS, portTS, passTS, file_translate);
+                                  file_listtask, dest_taskforce, ftp, file_arma3, error_xml, servervocal, ipmumble, portmumble, passmumble, ipTS,
+                                  portTS, passTS, file_translate, file_vmods, dest_version);
             frm.ShowDialog();
 
             if (File.Exists(appdata + dest_options + "\\" + file_language))
@@ -771,21 +776,24 @@ namespace Launcher_Arma3
 
         private void Change_Lang_DoWork(object sender, DoWorkEventArgs e)
         {
-
             // Download XML translate */* Télécharge le fichier XML
-
-            /*
-            if (File.Exists(appdata + file_translate))
+            
+            if (load_finish != true)
             {
-                File.Delete(appdata + file_translate);
+                if (File.Exists(appdata + file_translate))
+                {
+                    File.Delete(appdata + file_translate);
+                }
+
+                WebClient webClient = new WebClient();
+                webClient.DownloadFile(ftp + file_translate, appdata + file_translate);
+
             }
 
-            WebClient webClient = new WebClient();
-            webClient.DownloadFile(ftp + file_translate , appdata + file_translate);
-            */
+                   
 
             // Open XML doc */* Ouvre le fichier XML
-            XDocument xmlDoc = XDocument.Load(ftp + file_translate);
+            XDocument xmlDoc = XDocument.Load(appdata + file_translate);
 
             // Search translate */* Cherche la traduction
             var tr_link = xmlDoc.Descendants(language).Elements("Links").Select(r => r.Value).ToArray();
@@ -854,6 +862,10 @@ namespace Launcher_Arma3
             tabPage1.Text = tra_server;
             tabPage2.Text = tra_launch;
 
+            if (!File.Exists(appdata + dest_version + "\\" + file_vmods))
+            {
+                mods_update = "true";
+            }
 
             if (mods_update != "true")
             {
@@ -1021,8 +1033,6 @@ namespace Launcher_Arma3
             }
 
             News.RunWorkerAsync();
-        
-    
 
         }
 
@@ -1292,9 +1302,11 @@ namespace Launcher_Arma3
                 }
                 else
                 {
-                    Play_bouton.Text = Trans_Play;
-                    start_arma = true;
+                        start_arma = true;
                 }
+
+                Play_bouton.Text = Trans_Play;
+                Play_bouton.Font = new Font(Play_bouton.Text, Single.Parse("14"));
                 File.WriteAllText(appdata + dest_version + "\\" + file_vmods, version_up);
                 download_finish = true;
                 download_progress = false;
@@ -1318,7 +1330,7 @@ namespace Launcher_Arma3
               // Open XML doc */* Ouvre le fichier XML
             if ((error_code != 405))
             {
-                    XDocument xmlDoc = XDocument.Load(ftp + file_translate);
+                XDocument xmlDoc = XDocument.Load(appdata + file_translate);
 
                     // Search translate */* Cherche la traduction
                     var tr_erreur = xmlDoc.Descendants(error_xml).Elements(language).Elements("error" + error_code).Select(r => r.Value).ToArray();
@@ -1499,6 +1511,11 @@ namespace Launcher_Arma3
             }
 
             load_finish = true;
+
+            if (changelogs != false)
+            {
+
+            }
             Changelogs.RunWorkerAsync();
 
             if (maintenance == "true")
@@ -1769,8 +1786,11 @@ namespace Launcher_Arma3
 
             if (!File.Exists(appdata + dest_version + "\\" + file_vmods))
             {
-                WebClient web = new WebClient();
-                web.DownloadFile(ftp + dest_version + "/" + file_vmods, appdata + dest_version + "\\" + file_vmods);            
+                WebClient client = new WebClient();
+                Stream stream = client.OpenRead(ftp + dest_version + "/" + file_vmods);
+                StreamReader reader = new StreamReader(stream);
+                version_up = reader.ReadLine();
+                mods_update = "true";
             }
             else
             {
@@ -1791,7 +1811,7 @@ namespace Launcher_Arma3
                     }
                     else
                     {
-                        System.Threading.Thread.Sleep(250);
+                        System.Threading.Thread.Sleep(500);
                         if (!Change_Lang.IsBusy)
                         {
                             Change_Lang.RunWorkerAsync();
