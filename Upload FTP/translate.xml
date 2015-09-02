@@ -99,7 +99,7 @@
 			<Reset>Réinitialiser</Reset>
 			<WarningZone>Zone d'avertissement</WarningZone>
 			<WarningMsg>Êtes vous sure de bien vouloir supprimer tout les mods ?</WarningMsg>
-			<WarningLabel>Ce bouton supprime tous les mods</WarningLabel>
+			<WarningLabel>Supprimer tous les mods</WarningLabel>
 			<Loading>Chargement</Loading>
 			<TaskForce>TaskForce Radio</TaskForce>
 			<Install>Installer</Install>
@@ -120,7 +120,7 @@
 			<Reset>Reset</Reset>
 			<WarningZone>Warning area</WarningZone>
 			<WarningMsg>Are you sure you would remove all mods?</WarningMsg>
-			<WarningLabel>This button deletes all mods</WarningLabel>
+			<WarningLabel>Delete all mods</WarningLabel>
 			<Loading>Loading</Loading>
 			<TaskForce>TaskForce Radio</TaskForce>
 			<Install>Install</Install>
@@ -141,7 +141,7 @@
 			<Reset>Rücksetzen</Reset>
 			<WarningZone>Warnbereich</WarningZone>
 			<WarningMsg>Sind Sie sicher, Sie würden alle Mods zu entfernen?</WarningMsg>
-			<WarningLabel>Diese Taste löscht alle Mods</WarningLabel>
+			<WarningLabel>Löschen Sie alle Mods</WarningLabel>
 			<Loading>Laden</Loading>
 			<TaskForce>TaskForce Radio</TaskForce>
 			<Install>Installieren</Install>
@@ -162,7 +162,7 @@
 			<Reset>Reset</Reset>
 			<WarningZone>Zona di avvertimento</WarningZone>
 			<WarningMsg>Sei sicuro di voler rimuovere tutti i mod?</WarningMsg>
-			<WarningLabel>Questo pulsante elimina tutte mod</WarningLabel>
+			<WarningLabel>Eliminare tutti i mod</WarningLabel>
 			<Loading>Caricamento</Loading>
 			<TaskForce>TaskForce Radio</TaskForce>
 			<Install>Installare</Install>
@@ -183,7 +183,7 @@
 			<Reset>重置</Reset>
 			<WarningZone>警戒区域</WarningZone>
 			<WarningMsg>你肯定你会删除所有模式？</WarningMsg>
-			<WarningLabel>此按钮删除所有模式</WarningLabel>
+			<WarningLabel>删除模式</WarningLabel>
 			<Loading>载入中</Loading>
 			<TaskForce>专责小组电台</TaskForce>
 			<Install>安装</Install>

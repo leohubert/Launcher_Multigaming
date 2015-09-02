@@ -99,11 +99,31 @@ namespace Launcher_Arma3.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap forum_icon {
+            get {
+                object obj = ResourceManager.GetObject("forum_icon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to http://emodyz.com/launcher_4.0/launcher.xml.
         /// </summary>
         internal static string General_server {
             get {
                 return ResourceManager.GetString("General_server", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap mumble_icon {
+            get {
+                object obj = ResourceManager.GetObject("mumble_icon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
             }
         }
         
@@ -133,6 +153,26 @@ namespace Launcher_Arma3.Properties {
         internal static System.Drawing.Bitmap sound_1 {
             get {
                 object obj = ResourceManager.GetObject("sound_1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap teamspeak_icon {
+            get {
+                object obj = ResourceManager.GetObject("teamspeak_icon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap website_icon {
+            get {
+                object obj = ResourceManager.GetObject("website_icon", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

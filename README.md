@@ -3,9 +3,9 @@ Launcher_Arma3_v4.0
 
 -------------[ Information Launcher ]-------------
 
-Version: pre-release 2.9.3.0 ( pre-release de la 3.0.0.0 )
+Version: Release 3.0.0.0
 Opérationnel: OUI
-Date de sortie: 16/08/2015
+Date de sortie: 02/09/2015
 
 Copyright HUBERT Léo © 2014 - 2015
 
@@ -13,6 +13,13 @@ Copyright HUBERT Léo © 2014 - 2015
 
 
 Change Logs:
+
+Release 3.0.0.0:
+- Add: Force Update.
+- Fix: Erreur 405.
+- Change: Bouton lien.
+- Preparation: Anti-Cheat Arma3.
+- Preparation: Download mods en .zip ou .rar.
 
 Pre-Release 2.9.3.0:
 - Fix: Vérification si TaskForce est déjà installer.

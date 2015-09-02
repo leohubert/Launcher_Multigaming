@@ -145,6 +145,12 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="icon_launcher_ico.ico" />
+    <None Include="Resources\forum_icon.png" />
+    <None Include="Resources\mumble_icon.png" />
+    <None Include="Resources\teamspeak_icon.png" />
+    <None Include="Resources\teamspeak.png" />
+    <None Include="Resources\website.png" />
+    <None Include="Resources\mumble.png" />
     <None Include="Resources\sound.png" />
     <None Include="Resources\sound_1.png" />
     <None Include="Resources\muted.png" />
@@ -197,6 +203,9 @@
       <Isolated>False</Isolated>
       <EmbedInteropTypes>True</EmbedInteropTypes>
     </COMReference>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

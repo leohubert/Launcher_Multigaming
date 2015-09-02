@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form2));
             this.Change_Lang = new System.ComponentModel.BackgroundWorker();
             this.TaskForce_Install = new System.ComponentModel.BackgroundWorker();
             this.TeamSpeak = new System.Windows.Forms.FolderBrowserDialog();
@@ -39,7 +38,6 @@
             this.Bouton_TaskForce = new Ambiance.Ambiance_Button_2();
             this.Groupe_Warning = new System.Windows.Forms.GroupBox();
             this.Warning_Label = new iTalk.iTalk_Label();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.Bouton_Reset = new iTalk.iTalk_Button_1();
             this.Groups_OptionsArma = new System.Windows.Forms.GroupBox();
             this.Toggle_Sound = new MonoFlat.MonoFlat_Toggle();
@@ -61,7 +59,6 @@
             this.monoFlat_ThemeContainer1.SuspendLayout();
             this.Group_TaskForce.SuspendLayout();
             this.Groupe_Warning.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.Groups_OptionsArma.SuspendLayout();
             this.Group_Options.SuspendLayout();
             this.Group_UserName.SuspendLayout();
@@ -99,7 +96,7 @@
             this.monoFlat_ThemeContainer1.Padding = new System.Windows.Forms.Padding(10, 70, 10, 9);
             this.monoFlat_ThemeContainer1.RoundCorners = true;
             this.monoFlat_ThemeContainer1.Sizable = true;
-            this.monoFlat_ThemeContainer1.Size = new System.Drawing.Size(718, 368);
+            this.monoFlat_ThemeContainer1.Size = new System.Drawing.Size(724, 368);
             this.monoFlat_ThemeContainer1.SmartBounds = true;
             this.monoFlat_ThemeContainer1.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.monoFlat_ThemeContainer1.TabIndex = 0;
@@ -159,12 +156,11 @@
             // Groupe_Warning
             // 
             this.Groupe_Warning.Controls.Add(this.Warning_Label);
-            this.Groupe_Warning.Controls.Add(this.pictureBox1);
             this.Groupe_Warning.Controls.Add(this.Bouton_Reset);
             this.Groupe_Warning.ForeColor = System.Drawing.Color.White;
-            this.Groupe_Warning.Location = new System.Drawing.Point(432, 202);
+            this.Groupe_Warning.Location = new System.Drawing.Point(438, 202);
             this.Groupe_Warning.Name = "Groupe_Warning";
-            this.Groupe_Warning.Size = new System.Drawing.Size(278, 74);
+            this.Groupe_Warning.Size = new System.Drawing.Size(272, 74);
             this.Groupe_Warning.TabIndex = 11;
             this.Groupe_Warning.TabStop = false;
             this.Groupe_Warning.Text = "Warning Zone";
@@ -177,20 +173,10 @@
             this.Warning_Label.ForeColor = System.Drawing.Color.Tomato;
             this.Warning_Label.Location = new System.Drawing.Point(6, 19);
             this.Warning_Label.Name = "Warning_Label";
-            this.Warning_Label.Size = new System.Drawing.Size(175, 13);
+            this.Warning_Label.Size = new System.Drawing.Size(114, 13);
             this.Warning_Label.TabIndex = 8;
-            this.Warning_Label.Text = "/!\\ This button delete all mods /!\\";
+            this.Warning_Label.Text = "/!\\ Delete all mods /!\\";
             this.Warning_Label.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(186, 30);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(86, 38);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 11;
-            this.pictureBox1.TabStop = false;
             // 
             // Bouton_Reset
             // 
@@ -200,7 +186,7 @@
             this.Bouton_Reset.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.Bouton_Reset.Location = new System.Drawing.Point(6, 35);
             this.Bouton_Reset.Name = "Bouton_Reset";
-            this.Bouton_Reset.Size = new System.Drawing.Size(175, 33);
+            this.Bouton_Reset.Size = new System.Drawing.Size(260, 33);
             this.Bouton_Reset.TabIndex = 10;
             this.Bouton_Reset.Text = "Reset";
             this.Bouton_Reset.TextAlignment = System.Drawing.StringAlignment.Center;
@@ -314,7 +300,7 @@
             this.Close_Bouton.Font = new System.Drawing.Font("Segoe UI", 12F);
             this.Close_Bouton.Image = null;
             this.Close_Bouton.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.Close_Bouton.Location = new System.Drawing.Point(572, 315);
+            this.Close_Bouton.Location = new System.Drawing.Point(574, 315);
             this.Close_Bouton.Name = "Close_Bouton";
             this.Close_Bouton.Size = new System.Drawing.Size(138, 41);
             this.Close_Bouton.TabIndex = 9;
@@ -444,7 +430,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(718, 368);
+            this.ClientSize = new System.Drawing.Size(724, 368);
             this.Controls.Add(this.monoFlat_ThemeContainer1);
             this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -460,7 +446,6 @@
             this.Group_TaskForce.PerformLayout();
             this.Groupe_Warning.ResumeLayout(false);
             this.Groupe_Warning.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.Groups_OptionsArma.ResumeLayout(false);
             this.Groups_OptionsArma.PerformLayout();
             this.Group_Options.ResumeLayout(false);
@@ -493,7 +478,6 @@
         private MonoFlat.MonoFlat_Toggle Toggle_Sound;
         private iTalk.iTalk_Button_1 Bouton_Reset;
         private System.Windows.Forms.GroupBox Groupe_Warning;
-        private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.GroupBox Group_TaskForce;
         private Ambiance.Ambiance_Label Label_TaskForce;
         private PerplexProgressBar Progress_TaskForce;

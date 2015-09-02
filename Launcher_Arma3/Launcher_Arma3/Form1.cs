@@ -28,6 +28,7 @@ using System.Xml;
 using System.Xml.Linq;
 using System.Reflection;
 using WMPLib;
+using System.Text.RegularExpressions;
 
 
 namespace Launcher_Arma3
@@ -54,11 +55,11 @@ namespace Launcher_Arma3
         bool changelogs = true; //Make "true" if you want to enable the changelogs system and "false" for reverse  */* Mettez "true" si vous voulez activer le system de changelogs et "false" pour l'inverse
  
         //TaskForce Radio settings */* Paramètre TaskForce Radio
-        bool TaskForce_statut = true; // Make "true" for enable installation to taskforce  */* Mettez "true" pour permettre l'installation de TaskForce Radio
+        bool TaskForce_statut = false; // Make "true" for enable installation to taskforce  */* Mettez "true" pour permettre l'installation de TaskForce Radio
 
         //Music Settings */* Paramètre music
         bool intro_music = true; //Make "Fasle" for disable the intro music */* Mettez "false" pour desactivé la music d'intro
-        int music_volume = 10; // Choose volume base " 0 ~ 100 " */* CHoississez le volume de base " 0 ~ 100 "
+        int music_volume = 5; // Choose volume base " 0 ~ 100 " */* CHoississez le volume de base " 0 ~ 100 "
 
         const string website = "http://emodyz.com/"; // Link of your web site */* Lien de votre site web
         const string forum = "none"; // Link of your forum if you have this */* Lien de votre forum si vous en avez un
@@ -146,6 +147,7 @@ namespace Launcher_Arma3
         //Translate String
         string Trans_Progress; // DON'T CHANGE
         string Trans_Download; // DON'T CHANGE
+        string Trans_Download2; // DON'T CHANGE
         string Trans_Checks;// DON'T CHANGE
         string Trans_Deal;// DON'T CHANGE
         string Trans_Play;// DON'T CHANGE
@@ -160,6 +162,7 @@ namespace Launcher_Arma3
         string dlauncher = Application.ExecutablePath; // DON'T CHANGE
         string vlauncher = Application.ProductVersion.ToString();// DON'T CHANGE
         WMPLib.WindowsMediaPlayer wplayer = new WMPLib.WindowsMediaPlayer();// DON'T CHANGE 
+        bool force_download;
         string startoption = "any";// DON'T CHANGE
         string speudo = "any"; // DON'T CHANGE
         bool load_finish;// DON'T CHANGE 
@@ -255,6 +258,8 @@ namespace Launcher_Arma3
             //Change language launcher */* Change la langue du launcher
             Change_Lang.RunWorkerAsync();
 
+            CheckInternet.RunWorkerAsync();
+
             if (changelogs == false )
             {
                 Panel.Visible = false;
@@ -284,7 +289,7 @@ namespace Launcher_Arma3
                 music_play = intro_music;
             }
 
-            CheckInternet.RunWorkerAsync();
+     
 
             // Load Music
             if (intro_music)
@@ -302,12 +307,11 @@ namespace Launcher_Arma3
             // Change le bouton TeamSpeak ou Mumble
             if (servervocal == "teamspeak3")
             {
-                Vocal_bouton.Text = "TeamSpeak 3";
-
+                Vocal_Icon.Image = Properties.Resources.teamspeak_icon;
             }
             if (servervocal == "mumble")
             {
-                Vocal_bouton.Text = "Mumble";
+                Vocal_Icon.Image = Properties.Resources.mumble_icon;
             }
 
             if (credits_label.Text != Properties.Resources.Copyright)
@@ -342,6 +346,10 @@ namespace Launcher_Arma3
                 Directory.CreateDirectory(appdata);
             }
 
+            if (!Directory.Exists(appdata + dest_options))
+            {
+                Directory.CreateDirectory(appdata + dest_options);
+            }
 
             // Launch BackGround Worker  */* Lance les BackGround Worker
             Update_Launcher.RunWorkerAsync(); // Update background worker */* Mise à jour background worker
@@ -571,12 +579,19 @@ namespace Launcher_Arma3
                 }
                 return;
             }
-            if (mods_update != "true")
+            if (force_download != true)
             {
-                Start_Arma.RunWorkerAsync();
-                start_arma = true;
-                return;
+                if (mods_update != "true")
+                {
+                    Start_Arma.RunWorkerAsync();
+                    start_arma = true;
+                    return;
+                }
             }
+
+
+           
+
             // Verification of arma3 directory */* Vérification de la destination d'arma3
             if (!File.Exists(dest_arma + file_arma3))
             {
@@ -632,6 +647,7 @@ namespace Launcher_Arma3
                 download_progress = true;
             }
 
+           
 
             // Create mods directory */* Crée la destination des mods
             if (!Directory.Exists(dest_arma + modsname))
@@ -650,14 +666,14 @@ namespace Launcher_Arma3
 
             // Load download procedur */* Charge la procédure de téléchargement
             Download_CPP.RunWorkerAsync();
-       
-       
-            
-      
 
 
 
 
+
+
+
+         
         }
 
 
@@ -776,19 +792,16 @@ namespace Launcher_Arma3
 
         private void Change_Lang_DoWork(object sender, DoWorkEventArgs e)
         {
-            // Download XML translate */* Télécharge le fichier XML
-            
-            if (load_finish != true)
-            {
-                if (File.Exists(appdata + file_translate))
+
+
+                if (!File.Exists(appdata + file_translate))
                 {
-                    File.Delete(appdata + file_translate);
+                    WebClient webClient = new WebClient();
+                    webClient.DownloadFile(ftp + file_translate, appdata + file_translate);
                 }
+                  
 
-                WebClient webClient = new WebClient();
-                webClient.DownloadFile(ftp + file_translate, appdata + file_translate);
 
-            }
 
                    
 
@@ -840,6 +853,7 @@ namespace Launcher_Arma3
             //Set string translate 
             Trans_Progress = tra_progress;
             Trans_Download = tra_downloading;
+            Trans_Download2 = tra_download;
             Trans_Deal = tra_modsdeal;
             Trans_Checks = tra_checks;
             Trans_Play = tra_play;
@@ -857,6 +871,7 @@ namespace Launcher_Arma3
             Label_valu.Text = Trans_Progress + ": 0 / 0";
             Label_mods.Text = Trans_Download + ": ";
             Label_modsdeal.Text = Trans_Deal + ": ";
+            Option_Group.Text = tra_settings;
 
             //TAB PAGES
             tabPage1.Text = tra_server;
@@ -867,29 +882,65 @@ namespace Launcher_Arma3
                 mods_update = "true";
             }
 
-            if (mods_update != "true")
+            if (Force_Update.Checked.ToString() == "True")
             {
-                Play_bouton.Text = tra_play;
-                Play_bouton.Font = new Font(Play_bouton.Text, Single.Parse("14"));
+                Force_Update_Label.ForeColor = Color.LightGreen;
+                if (File.Exists(appdata + dest_options + "\\" + file_option))
+                {
+                    string[] lines = File.ReadAllLines(appdata + dest_options + "\\" + file_option);
+                    if (lines[0] == "True")
+                    {
+                        Play_bouton.Text = Trans_Download2 + " / " + Trans_Play;
+                        Play_bouton.Font = new Font(Play_bouton.Text, Single.Parse("11"));
+                        start_arma = true;
+                    }
+                    else
+                    {
+                        Play_bouton.Text = Trans_Download2;
+                        Play_bouton.Font = new Font(Play_bouton.Text, Single.Parse("14"));
+                        start_arma = false;
+                    }
+                }
+                else
+                {
+                    Play_bouton.Text = Trans_Download2;
+                    Play_bouton.Font = new Font(Play_bouton.Text, Single.Parse("11"));
+                    start_arma = false;
+                }
+                
             }
             else
             {
-                if (download_finish)
+                if (mods_update != "true")
                 {
                     Play_bouton.Text = tra_play;
                     Play_bouton.Font = new Font(Play_bouton.Text, Single.Parse("14"));
                 }
                 else
                 {
-
-                    if (File.Exists(appdata + dest_options + "\\" + file_option))
+                    if (download_finish)
                     {
-                        string[] lines = File.ReadAllLines(appdata + dest_options + "\\" + file_option);
-                        if (lines[0] == "True")
+                        Play_bouton.Text = tra_play;
+                        Play_bouton.Font = new Font(Play_bouton.Text, Single.Parse("14"));
+                    }
+                    else
+                    {
+
+                        if (File.Exists(appdata + dest_options + "\\" + file_option))
                         {
-                            Play_bouton.Text = tra_download + " / " + tra_play;
-                            Play_bouton.Font = new Font(Play_bouton.Text, Single.Parse("11"));
-                            start_arma = true;
+                            string[] lines = File.ReadAllLines(appdata + dest_options + "\\" + file_option);
+                            if (lines[0] == "True")
+                            {
+                                Play_bouton.Text = tra_download + " / " + tra_play;
+                                Play_bouton.Font = new Font(Play_bouton.Text, Single.Parse("11"));
+                                start_arma = true;
+                            }
+                            else
+                            {
+                                Play_bouton.Text = tra_download;
+                                Play_bouton.Font = new Font(Play_bouton.Text, Single.Parse("14"));
+                                start_arma = false;
+                            }
                         }
                         else
                         {
@@ -904,11 +955,11 @@ namespace Launcher_Arma3
 
             if (web_type == "Forum")
             {
-                WebSite_bouton.Text = tra_forum;
+                Web_Icon.Image = Properties.Resources.forum_icon;
             }
             if (web_type == "WebSite")
             {
-                WebSite_bouton.Text = tra_website;
+                Web_Icon.Image = Properties.Resources.website_icon;
             }
 
             if (connection == false)
@@ -936,101 +987,102 @@ namespace Launcher_Arma3
             }
 
 
+          /*
+          System.Threading.Thread.Sleep(75);
 
-            System.Threading.Thread.Sleep(75);
-
-
-            try
-            {
+          
+          try
+          {
                 
-                // Open XML doc */* Ouvre le fichier XML
-                XDocument xml = XDocument.Load(Properties.Resources.General_server);
+              // Open XML doc /* Ouvre le fichier XML
+              XDocument xml = XDocument.Load(Properties.Resources.General_server);
                 
-                try
-                {
-                    var tr_general = xml.Descendants("general").Elements("locked").Select(r => r.Value).ToArray();
-                    var tr_msggeneral = xml.Descendants("general").Elements("message").Select(r => r.Value).ToArray();
+              try
+              {
+                  var tr_general = xml.Descendants("general").Elements("locked").Select(r => r.Value).ToArray();
+                  var tr_msggeneral = xml.Descendants("general").Elements("message").Select(r => r.Value).ToArray();
 
-                    string tra_general = string.Join(",", tr_general);
-                    string tra_msggeneral = string.Join(",", tr_msggeneral);
-                    var_1 = tra_general;
-                     if (tra_msggeneral != "")
-                    {
-                        var_message = tra_msggeneral;
-                    }
+                  string tra_general = string.Join(",", tr_general);
+                  string tra_msggeneral = string.Join(",", tr_msggeneral);
+                  var_1 = tra_general;
+                   if (tra_msggeneral != "")
+                  {
+                      var_message = tra_msggeneral;
+                  }
 
-                }
-                catch
-                {
+              }
+              catch
+              {
 
-                }
+              }
              
-                try
-                {
-                    var tr_launcher = xml.Descendants(servername).Elements("locked").Select(r => r.Value).ToArray();
-                    var tr_msglauncher = xml.Descendants(servername).Elements("message").Select(r => r.Value).ToArray();
+              try
+              {
+                  var tr_launcher = xml.Descendants(servername).Elements("locked").Select(r => r.Value).ToArray();
+                  var tr_msglauncher = xml.Descendants(servername).Elements("message").Select(r => r.Value).ToArray();
 
-                    string tra_launcher = string.Join(",", tr_launcher);
-                    string tra_msglauncher = string.Join(",", tr_msglauncher);
-                    var_2 = tra_launcher;
+                  string tra_launcher = string.Join(",", tr_launcher);
+                  string tra_msglauncher = string.Join(",", tr_msglauncher);
+                  var_2 = tra_launcher;
 
-                    if (tra_msglauncher != "")
-                    {
-                        var_message2 = tra_msglauncher;
-                    }
-                }
-                catch 
-                {
+                  if (tra_msglauncher != "")
+                  {
+                      var_message2 = tra_msglauncher;
+                  }
+              }
+              catch 
+              {
 
-                }
+              }
 
-                try
-                {
-                    var tr_guid = xml.Descendants(GUID).Elements("locked").Select(r => r.Value).ToArray();
-                    var tr_msgguid = xml.Descendants(GUID).Elements("message").Select(r => r.Value).ToArray();
+              try
+              {
+                  var tr_guid = xml.Descendants(GUID).Elements("locked").Select(r => r.Value).ToArray();
+                  var tr_msgguid = xml.Descendants(GUID).Elements("message").Select(r => r.Value).ToArray();
 
-                    string tra_guid = string.Join(",", tr_guid);
-                    string tra_msgguid = string.Join(",", tr_msgguid);
-                    var_3 = tra_guid;
+                  string tra_guid = string.Join(",", tr_guid);
+                  string tra_msgguid = string.Join(",", tr_msgguid);
+                  var_3 = tra_guid;
 
-                    if (tra_msgguid != "")
-                    {
-                        var_message3 = tra_msgguid;
-                    }
-                }
-                catch
-                {
+                  if (tra_msgguid != "")
+                  {
+                      var_message3 = tra_msgguid;
+                  }
+              }
+              catch
+              {
 
-                }
+              }
 
-                if ((var_1 == "true") || (var_2 == "true") || (var_3 == "true"))
-                {
-                    if (!Erreur_Msg.IsBusy)
-                    {
-                        error_time = -1;
-                        error_code = 101;
-                        Erreur_Msg.RunWorkerAsync();
-                    }
+              if ((var_1 == "true") || (var_2 == "true") || (var_3 == "true"))
+              {
+                  if (!Erreur_Msg.IsBusy)
+                  {
+                      error_time = -1;
+                      error_code = 101;
+                      Erreur_Msg.RunWorkerAsync();
+                  }
 
-                    iTalk_ThemeContainer1.Visible = false;
-                    if ((var_1 == "true") && (var_message != ""))
-                    {
-                        MessageBox.Show(var_message , "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    }
-                    if ((var_2 == "true") && (var_message2 != ""))
-                    {
-                        MessageBox.Show(var_message2, "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    }
-                    if ((var_3 == "true") && (var_message3 != ""))
-                    {
-                        MessageBox.Show(var_message3, "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    }
-                }
-            }
-            catch 
-            {
+                  iTalk_ThemeContainer1.Visible = false;
+                  if ((var_1 == "true") && (var_message != ""))
+                  {
+                      MessageBox.Show(var_message , "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                  }
+                  if ((var_2 == "true") && (var_message2 != ""))
+                  {
+                      MessageBox.Show(var_message2, "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                  }
+                  if ((var_3 == "true") && (var_message3 != ""))
+                  {
+                      MessageBox.Show(var_message3, "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                  }
+              }
+          }
+          catch 
+          {
              
-            }
+          }
+           */
 
             News.RunWorkerAsync();
 
@@ -1038,7 +1090,7 @@ namespace Launcher_Arma3
 
         private void Close_Form(object sender, EventArgs e)
         {
-            // Fader animation */* Animation fader
+            // Fader animation /* Animation fader
             if (fader_statut == true)
             {
                 Close.Start();
@@ -1048,6 +1100,7 @@ namespace Launcher_Arma3
                 this.Opacity = 0;
             }
         }
+        
 
         private void Show_Launcher_Info(object sender, EventArgs e)
         {
@@ -1250,7 +1303,6 @@ namespace Launcher_Arma3
                                 double dTotal = (double)byteBuffer.Length;
                                 double dProgressPercentage = (dIndex / dTotal);
                                 int iProgressPercentage = (int)(dProgressPercentage * 100);
-                               
 
                                 // update the progress bar
                                 Download_Mods.ReportProgress(iProgressPercentage);
@@ -1280,21 +1332,13 @@ namespace Launcher_Arma3
             Download_Progressbar.Value = e.ProgressPercentage;
 
             Label_valu.Text = Trans_Progress + ": " + bytes + " / " + bytes_d;
-           
-    
-
         }
         private void backgroundWorker1_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
-
             counter++;
-
             Total_Progress.Value = counter * 100 / counter_total;
-            
-
             if (Total_Progress.Value == 100)
             {
-               
                 // Start Arma3 */* Lance Arma3
                 if (start_arma)
                 {
@@ -1316,13 +1360,7 @@ namespace Launcher_Arma3
 
                 return;
             } 
-            
-
-         
                 Download_Mods.RunWorkerAsync();
- 
-           
-
         }
 
         private void Erreur_Msg_DoWork(object sender, DoWorkEventArgs e)
@@ -1695,7 +1733,7 @@ namespace Launcher_Arma3
 
         private void CheckInternet_DoWork(object sender, DoWorkEventArgs e)
         {
-            System.Threading.Thread.Sleep(5000);
+            System.Threading.Thread.Sleep(7000);
             if (connection_label.Text == "Loading ..")
             {
                  if (!Erreur_Msg.IsBusy)
@@ -1704,6 +1742,11 @@ namespace Launcher_Arma3
                        error_time = -1;
                        Erreur_Msg.RunWorkerAsync();
                  }
+                 if (File.Exists(appdata + file_translate))
+                 {
+                     File.Delete(appdata + file_translate);
+                 }
+              
             }
           
         }
@@ -1820,10 +1863,56 @@ namespace Launcher_Arma3
                 }
             }
         }
-    
 
+        private void Force_Update_CheckedChanged(object sender)
+        {
+            
+            File.WriteAllText(appdata + dest_options + "\\" + "start_" + file_option, Force_Update.Checked.ToString());
 
-
+            if (Force_Update.Checked.ToString() == "True")
+            {
+                Force_Update_Label.ForeColor = Color.LightGreen;
+                if (download_finish != true)
+                {
+                    if (File.Exists(appdata + dest_options + "\\" + file_option))
+                    {
+                        string[] lines = File.ReadAllLines(appdata + dest_options + "\\" + file_option);
+                        if (lines[0] == "True")
+                        {
+                            Play_bouton.Text = Trans_Download2 + " / " + Trans_Play;
+                            Play_bouton.Font = new Font(Play_bouton.Text, Single.Parse("11"));
+                            start_arma = true;
+                        }
+                        else
+                        {
+                            Play_bouton.Text = Trans_Download2;
+                            Play_bouton.Font = new Font(Play_bouton.Text, Single.Parse("14"));
+                            start_arma = false;
+                        }
+                    }
+                    else
+                    {
+                        Play_bouton.Text = Trans_Download2;
+                        Play_bouton.Font = new Font(Play_bouton.Text, Single.Parse("11"));
+                        start_arma = false;
+                    }
+                }
+                force_download = true;
+            }
+            else
+            {
+                Force_Update_Label.ForeColor = Color.Red;
+                if (download_finish != true)
+                {
+                    if (!Change_Lang.IsBusy)
+                    {
+                        Change_Lang.RunWorkerAsync();
+                    }
+                    force_download = false;
+                }
+                
+            }
+        } 
     }
 }
 

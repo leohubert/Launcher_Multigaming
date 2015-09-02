@@ -44,7 +44,12 @@
             this.Download_CPP = new System.ComponentModel.BackgroundWorker();
             this.CheckInternet = new System.ComponentModel.BackgroundWorker();
             this.Changelogs = new System.ComponentModel.BackgroundWorker();
+            this.Check_Mods = new System.ComponentModel.BackgroundWorker();
+            this.Back_Test = new System.ComponentModel.BackgroundWorker();
             this.iTalk_ThemeContainer1 = new iTalk.iTalk_ThemeContainer();
+            this.Option_Group = new iTalk.iTalk_GroupBox();
+            this.Force_Update_Label = new iTalk.iTalk_Label();
+            this.Force_Update = new iTalk.iTalk_CheckBox();
             this.Maintenance_Label = new Ambiance.Ambiance_Label();
             this.Sound = new System.Windows.Forms.PictureBox();
             this.Download_Group = new iTalk.iTalk_GroupBox();
@@ -63,8 +68,8 @@
             this.iTalk_ControlBox1 = new iTalk.iTalk_ControlBox();
             this.imagebox = new System.Windows.Forms.PictureBox();
             this.Group_Link = new iTalk.iTalk_GroupBox();
-            this.WebSite_bouton = new MonoFlat.MonoFlat_Button();
-            this.Vocal_bouton = new MonoFlat.MonoFlat_Button();
+            this.Vocal_Icon = new System.Windows.Forms.PictureBox();
+            this.Web_Icon = new System.Windows.Forms.PictureBox();
             this.notif_1 = new MonoFlat.MonoFlat_NotificationBox();
             this.News_Notif = new MonoFlat.MonoFlat_NotificationBox();
             this.Panel = new iTalk.iTalk_TabControl();
@@ -74,13 +79,15 @@
             this.Changelogs_Launcher = new Ambiance.Ambiance_ListBox();
             this.Loading = new Ambiance.Ambiance_ProgressIndicator();
             this.Maintenance = new System.Windows.Forms.PictureBox();
-            this.Check_Mods = new System.ComponentModel.BackgroundWorker();
             this.iTalk_ThemeContainer1.SuspendLayout();
+            this.Option_Group.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Sound)).BeginInit();
             this.Download_Group.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picture_darma)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imagebox)).BeginInit();
             this.Group_Link.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.Vocal_Icon)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Web_Icon)).BeginInit();
             this.Panel.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
@@ -152,9 +159,14 @@
             // 
             this.Changelogs.DoWork += new System.ComponentModel.DoWorkEventHandler(this.Changelogs_DoWork);
             // 
+            // Check_Mods
+            // 
+            this.Check_Mods.DoWork += new System.ComponentModel.DoWorkEventHandler(this.Check_Mods_DoWork);
+            // 
             // iTalk_ThemeContainer1
             // 
             this.iTalk_ThemeContainer1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(246)))), ((int)(((byte)(246)))), ((int)(((byte)(246)))));
+            this.iTalk_ThemeContainer1.Controls.Add(this.Option_Group);
             this.iTalk_ThemeContainer1.Controls.Add(this.Maintenance_Label);
             this.iTalk_ThemeContainer1.Controls.Add(this.Sound);
             this.iTalk_ThemeContainer1.Controls.Add(this.Download_Group);
@@ -186,6 +198,44 @@
             this.iTalk_ThemeContainer1.TabIndex = 0;
             this.iTalk_ThemeContainer1.Text = "Launcher Arma 3";
             this.iTalk_ThemeContainer1.DoubleClick += new System.EventHandler(this.Show_Launcher_Info);
+            // 
+            // Option_Group
+            // 
+            this.Option_Group.BackColor = System.Drawing.Color.Transparent;
+            this.Option_Group.Controls.Add(this.Force_Update_Label);
+            this.Option_Group.Controls.Add(this.Force_Update);
+            this.Option_Group.Location = new System.Drawing.Point(786, 324);
+            this.Option_Group.MinimumSize = new System.Drawing.Size(136, 50);
+            this.Option_Group.Name = "Option_Group";
+            this.Option_Group.Padding = new System.Windows.Forms.Padding(5, 28, 5, 5);
+            this.Option_Group.Size = new System.Drawing.Size(212, 117);
+            this.Option_Group.TabIndex = 30;
+            this.Option_Group.Text = "Options";
+            // 
+            // Force_Update_Label
+            // 
+            this.Force_Update_Label.AutoSize = true;
+            this.Force_Update_Label.BackColor = System.Drawing.Color.Transparent;
+            this.Force_Update_Label.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Force_Update_Label.ForeColor = System.Drawing.Color.Red;
+            this.Force_Update_Label.Location = new System.Drawing.Point(31, 31);
+            this.Force_Update_Label.Name = "Force_Update_Label";
+            this.Force_Update_Label.Size = new System.Drawing.Size(111, 13);
+            this.Force_Update_Label.TabIndex = 35;
+            this.Force_Update_Label.Text = "Forcer la mise à jour";
+            // 
+            // Force_Update
+            // 
+            this.Force_Update.BackColor = System.Drawing.Color.Transparent;
+            this.Force_Update.Checked = false;
+            this.Force_Update.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.Force_Update.ForeColor = System.Drawing.Color.LightCoral;
+            this.Force_Update.Location = new System.Drawing.Point(6, 31);
+            this.Force_Update.Name = "Force_Update";
+            this.Force_Update.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.Force_Update.Size = new System.Drawing.Size(136, 15);
+            this.Force_Update.TabIndex = 34;
+            this.Force_Update.CheckedChanged += new iTalk.iTalk_CheckBox.CheckedChangedEventHandler(this.Force_Update_CheckedChanged);
             // 
             // Maintenance_Label
             // 
@@ -349,7 +399,7 @@
             this.destination_bouton.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.destination_bouton.Location = new System.Drawing.Point(12, 258);
             this.destination_bouton.Name = "destination_bouton";
-            this.destination_bouton.Size = new System.Drawing.Size(212, 60);
+            this.destination_bouton.Size = new System.Drawing.Size(212, 40);
             this.destination_bouton.TabIndex = 8;
             this.destination_bouton.Text = "Destination";
             this.destination_bouton.TextAlignment = System.Drawing.StringAlignment.Center;
@@ -361,7 +411,7 @@
             this.Option_Boutton.Font = new System.Drawing.Font("Segoe UI", 12F);
             this.Option_Boutton.Image = null;
             this.Option_Boutton.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.Option_Boutton.Location = new System.Drawing.Point(12, 324);
+            this.Option_Boutton.Location = new System.Drawing.Point(12, 304);
             this.Option_Boutton.Name = "Option_Boutton";
             this.Option_Boutton.Size = new System.Drawing.Size(212, 33);
             this.Option_Boutton.TabIndex = 7;
@@ -407,44 +457,38 @@
             // Group_Link
             // 
             this.Group_Link.BackColor = System.Drawing.Color.Transparent;
-            this.Group_Link.Controls.Add(this.WebSite_bouton);
-            this.Group_Link.Controls.Add(this.Vocal_bouton);
-            this.Group_Link.Location = new System.Drawing.Point(786, 324);
+            this.Group_Link.Controls.Add(this.Vocal_Icon);
+            this.Group_Link.Controls.Add(this.Web_Icon);
+            this.Group_Link.Location = new System.Drawing.Point(12, 343);
             this.Group_Link.MinimumSize = new System.Drawing.Size(136, 50);
             this.Group_Link.Name = "Group_Link";
             this.Group_Link.Padding = new System.Windows.Forms.Padding(5, 28, 5, 5);
-            this.Group_Link.Size = new System.Drawing.Size(212, 129);
+            this.Group_Link.Size = new System.Drawing.Size(212, 75);
             this.Group_Link.TabIndex = 2;
             this.Group_Link.Text = "Links";
             this.Group_Link.DoubleClick += new System.EventHandler(this.Show_Launcher_Info);
             // 
-            // WebSite_bouton
+            // Vocal_Icon
             // 
-            this.WebSite_bouton.BackColor = System.Drawing.Color.Transparent;
-            this.WebSite_bouton.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.WebSite_bouton.Image = null;
-            this.WebSite_bouton.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.WebSite_bouton.Location = new System.Drawing.Point(8, 78);
-            this.WebSite_bouton.Name = "WebSite_bouton";
-            this.WebSite_bouton.Size = new System.Drawing.Size(196, 41);
-            this.WebSite_bouton.TabIndex = 2;
-            this.WebSite_bouton.Text = "WebSite";
-            this.WebSite_bouton.TextAlignment = System.Drawing.StringAlignment.Center;
-            this.WebSite_bouton.Click += new System.EventHandler(this.WebSite_bouton_Click);
+            this.Vocal_Icon.Image = global::Launcher_Arma3.Properties.Resources.teamspeak_icon;
+            this.Vocal_Icon.Location = new System.Drawing.Point(154, 27);
+            this.Vocal_Icon.Name = "Vocal_Icon";
+            this.Vocal_Icon.Size = new System.Drawing.Size(50, 40);
+            this.Vocal_Icon.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.Vocal_Icon.TabIndex = 1;
+            this.Vocal_Icon.TabStop = false;
+            this.Vocal_Icon.Click += new System.EventHandler(this.Vocal_bouton_Click);
             // 
-            // Vocal_bouton
+            // Web_Icon
             // 
-            this.Vocal_bouton.BackColor = System.Drawing.Color.Transparent;
-            this.Vocal_bouton.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.Vocal_bouton.Image = null;
-            this.Vocal_bouton.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.Vocal_bouton.Location = new System.Drawing.Point(8, 31);
-            this.Vocal_bouton.Name = "Vocal_bouton";
-            this.Vocal_bouton.Size = new System.Drawing.Size(196, 41);
-            this.Vocal_bouton.TabIndex = 1;
-            this.Vocal_bouton.Text = "VocalServeur";
-            this.Vocal_bouton.TextAlignment = System.Drawing.StringAlignment.Center;
-            this.Vocal_bouton.Click += new System.EventHandler(this.Vocal_bouton_Click);
+            this.Web_Icon.Image = global::Launcher_Arma3.Properties.Resources.website_icon;
+            this.Web_Icon.Location = new System.Drawing.Point(8, 27);
+            this.Web_Icon.Name = "Web_Icon";
+            this.Web_Icon.Size = new System.Drawing.Size(50, 40);
+            this.Web_Icon.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.Web_Icon.TabIndex = 0;
+            this.Web_Icon.TabStop = false;
+            this.Web_Icon.Click += new System.EventHandler(this.WebSite_bouton_Click);
             // 
             // notif_1
             // 
@@ -566,10 +610,6 @@
             this.Maintenance.TabIndex = 28;
             this.Maintenance.TabStop = false;
             // 
-            // Check_Mods
-            // 
-            this.Check_Mods.DoWork += new System.ComponentModel.DoWorkEventHandler(this.Check_Mods_DoWork);
-            // 
             // Launch
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -590,12 +630,16 @@
             this.Click += new System.EventHandler(this.Close_Form);
             this.iTalk_ThemeContainer1.ResumeLayout(false);
             this.iTalk_ThemeContainer1.PerformLayout();
+            this.Option_Group.ResumeLayout(false);
+            this.Option_Group.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Sound)).EndInit();
             this.Download_Group.ResumeLayout(false);
             this.Download_Group.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picture_darma)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.imagebox)).EndInit();
             this.Group_Link.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.Vocal_Icon)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Web_Icon)).EndInit();
             this.Panel.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabPage2.ResumeLayout(false);
@@ -608,9 +652,7 @@
 
         private iTalk.iTalk_ThemeContainer iTalk_ThemeContainer1;
         private MonoFlat.MonoFlat_NotificationBox notif_1;
-        private MonoFlat.MonoFlat_Button Vocal_bouton;
         private iTalk.iTalk_GroupBox Group_Link;
-        private MonoFlat.MonoFlat_Button WebSite_bouton;
         private System.Windows.Forms.PictureBox imagebox;
         private iTalk.iTalk_ControlBox iTalk_ControlBox1;
         private iTalk.iTalk_Button_2 Play_bouton;
@@ -652,6 +694,12 @@
         private System.Windows.Forms.PictureBox Maintenance;
         private Ambiance.Ambiance_Label Maintenance_Label;
         private System.ComponentModel.BackgroundWorker Check_Mods;
+        private System.ComponentModel.BackgroundWorker Back_Test;
+        private System.Windows.Forms.PictureBox Vocal_Icon;
+        private System.Windows.Forms.PictureBox Web_Icon;
+        private iTalk.iTalk_GroupBox Option_Group;
+        private iTalk.iTalk_CheckBox Force_Update;
+        private iTalk.iTalk_Label Force_Update_Label;
 
     }
 }
