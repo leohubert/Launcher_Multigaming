@@ -1339,26 +1339,32 @@ namespace Launcher_Arma3
             Total_Progress.Value = counter * 100 / counter_total;
             if (Total_Progress.Value == 100)
             {
-                // Start Arma3 */* Lance Arma3
-                if (start_arma)
-                {
-                    Start_Arma.RunWorkerAsync();
-                }
-                else
-                {
-                        start_arma = true;
-                }
+                // Check if there is any mod to delete
+                Delete_Mods.RunWorkerAsync();
+                return;
+                
+                /* MOVED TO Delete_Mods_RunWorkerCompleted()
+                 */ 
+                    // Start Arma3 */* Lance Arma3
+                    /*if (start_arma)
+                    {
+                        Start_Arma.RunWorkerAsync();
+                    }
+                    else
+                    {
+                            start_arma = true;
+                    }
 
-                Play_bouton.Text = Trans_Play;
-                Play_bouton.Font = new Font(Play_bouton.Text, Single.Parse("14"));
-                File.WriteAllText(appdata + dest_version + "\\" + file_vmods, version_up);
-                download_finish = true;
-                download_progress = false;
-                Download_Group.Visible = false;
-                Panel.Visible = true;
+                    Play_bouton.Text = Trans_Play;
+                    Play_bouton.Font = new Font(Play_bouton.Text, Single.Parse("14"));
+                    File.WriteAllText(appdata + dest_version + "\\" + file_vmods, version_up);
+                    download_finish = true;
+                    download_progress = false;
+                    Download_Group.Visible = false;
+                    Panel.Visible = true;
               
 
-                return;
+                    return;*/
             } 
                 Download_Mods.RunWorkerAsync();
         }
@@ -1912,7 +1918,69 @@ namespace Launcher_Arma3
                 }
                 
             }
-        } 
+        }
+
+        private void Delete_Mods_DoWork(object sender, DoWorkEventArgs e)
+        {
+            // Read the file and display it line by line.
+            string[] lines = File.ReadAllLines(appdata + file_modslist);
+            
+            // Get all mods installed
+            String[] mods_installed = Directory.GetFiles(dest_arma + modsname + "\\addons\\");
+
+            // Allow to know if a mod is present in the modslist
+            // Otherwise, it will be deleted
+            bool present = false;
+
+            FileInfo fi;
+
+            // Browse list of mods installed
+            foreach(string _mod in mods_installed)
+            {
+                fi = new FileInfo(_mod);
+                
+                // Browse modslist received from the server
+                for (int i = 0; i < lines.Length; i++)
+                {
+                    if (fi.Name == lines[i].ToString())
+                    {
+                        present = true;
+                        break;
+                    }
+                }
+
+                // Delete the file
+                if (!present)
+                    File.Delete(fi.FullName);
+
+                // Reset variable
+                present = false;
+            }
+        }
+
+        private void Delete_mods_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            // Start Arma3 */* Lance Arma3
+            if (start_arma)
+            {
+                Start_Arma.RunWorkerAsync();
+            }
+            else
+            {
+                    start_arma = true;
+            }
+
+            Play_bouton.Text = Trans_Play;
+            Play_bouton.Font = new Font(Play_bouton.Text, Single.Parse("14"));
+            File.WriteAllText(appdata + dest_version + "\\" + file_vmods, version_up);
+            download_finish = true;
+            download_progress = false;
+            Download_Group.Visible = false;
+            Panel.Visible = true;
+              
+
+            return;
+        }
     }
 }
 
