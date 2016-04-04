@@ -79,6 +79,7 @@
             this.Changelogs_Launcher = new Ambiance.Ambiance_ListBox();
             this.Loading = new Ambiance.Ambiance_ProgressIndicator();
             this.Maintenance = new System.Windows.Forms.PictureBox();
+            this.Delete_Mods = new System.ComponentModel.BackgroundWorker();
             this.iTalk_ThemeContainer1.SuspendLayout();
             this.Option_Group.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Sound)).BeginInit();
@@ -370,11 +371,11 @@
             // 
             this.label_darma.AutoSize = true;
             this.label_darma.BackColor = System.Drawing.Color.Transparent;
-            this.label_darma.Font = new System.Drawing.Font("Adobe Fan Heiti Std B", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label_darma.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label_darma.ForeColor = System.Drawing.Color.Black;
             this.label_darma.Location = new System.Drawing.Point(32, 443);
             this.label_darma.Name = "label_darma";
-            this.label_darma.Size = new System.Drawing.Size(93, 14);
+            this.label_darma.Size = new System.Drawing.Size(105, 13);
             this.label_darma.TabIndex = 12;
             this.label_darma.Text = "Arma3 Directory: ";
             // 
@@ -382,11 +383,11 @@
             // 
             this.connection_label.AutoSize = true;
             this.connection_label.BackColor = System.Drawing.Color.Transparent;
-            this.connection_label.Font = new System.Drawing.Font("Segoe UI Emoji", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.connection_label.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.connection_label.ForeColor = System.Drawing.Color.RoyalBlue;
             this.connection_label.Location = new System.Drawing.Point(2, 421);
             this.connection_label.Name = "connection_label";
-            this.connection_label.Size = new System.Drawing.Size(83, 20);
+            this.connection_label.Size = new System.Drawing.Size(82, 18);
             this.connection_label.TabIndex = 11;
             this.connection_label.Text = "Loading ..";
             // 
@@ -610,6 +611,11 @@
             this.Maintenance.TabIndex = 28;
             this.Maintenance.TabStop = false;
             // 
+            // Delete_Mods
+            // 
+            this.Delete_Mods.DoWork += new System.ComponentModel.DoWorkEventHandler(this.Delete_Mods_DoWork);
+            this.Delete_Mods.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.Delete_mods_RunWorkerCompleted);
+            // 
             // Launch
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -700,6 +706,7 @@
         private iTalk.iTalk_GroupBox Option_Group;
         private iTalk.iTalk_CheckBox Force_Update;
         private iTalk.iTalk_Label Force_Update_Label;
+        private System.ComponentModel.BackgroundWorker Delete_Mods;
 
     }
 }
