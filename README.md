@@ -1,17 +1,17 @@
 # Launcher_Arma3
 Launcher_Arma3 
 
--------------[ Information Launcher ]-------------
+-------------[ Launcher Information ]-------------
 
 ###Last push:
 Version: Building 5.0.0.1
-Opérationnel: NON
-Date de sortie: 30/04/2016 à 21:36
+Functional: NO
+Release date: 30/04/2016 à 21:36
 
 
 ###Last functional version:
 Version: Release 4.0.0.0
-Opérationnel: OUI
+Functional: YES
 Date de sortie: 30/04/2016 à 14:20
 
 Copyright HUBERT Léo © 2014 - 2016
@@ -31,128 +31,127 @@ Building 5.0.0.1:
 --------------------------------------
 
 Clean Repo:
-Suppression de l'ancienne version 
-pour repartir sûr de nouvelles bases.
+Remove the old version
+sure to start anew.
 
-La v4.0.0.0 est téléchargeable dans la
-partie "release" sur github.com/MrDarkSkil/Launcher_Arma3 
+The v4.0.0.0 be downloaded in
+left "release" at github.com/MrDarkSkil/Launcher_Arma3 
 
 --------------------------------------
 
 Release 4.0.0.0:
-Preparation pour la v5.0.0.0 update
+Prepare for the v5.0.0.0 update
 
-Futures ajouts:
+Future additions:
 Pannel Admin
 API
-Nouveau système de téléchargement
-System de connexion ( désactivable )
-System d'ajout de plusieurs serveurs
+New download system
+Login system ( deactivate )
+Multiple serveur function
 
 --------------------------------------
 
 Release 3.0.0.0:
 - Add: Force Update.
-- Fix: Erreur 405.
-- Change: Bouton lien.
-- Preparation: Anti-Cheat Arma3.
-- Preparation: Download mods en .zip ou .rar.
+- Fix: Error 405.
+- Change: Button link.
+- Preparation: Anti-Cheat Arma 3.
+- Preparation: Download .zip or .rar mods.
 
 --------------------------------------
 
 Pre-Release 2.9.3.0:
-- Fix: Vérification si TaskForce est déjè  installer.
-- Fix: Quand on réinitialise les mods, les mods ce retélécharge ( avant non )
-- Optimisation: Optimisation du system de traduction.
-( Préparation du changement du script qui télécharge les mods)
-
+- Fix: Checking if TaskForce is DEJE install.
+- Fix: When you reset the mods, mods that retélécharge (not before)
+- Optimization: Optimization translation system.
+(Preparation of changing the script to download the mods)
 --------------------------------------
 
 Release 2.5.1.0:
-- Add: Vérification de la version des mods.
-- Add: Options d'activer les changelogs
-- Fix: Bug musique désactiver de base
-- Fix: Bug lancement d'arma3 après être passé par les options
-- Fix: Bug lancement TeamSpeak 3 après l'installation de TaskForce
-- Fix: Bug d'affichage des traduction du Panel de changelogs
-- Fix: Bug Changelogs inversé.
+- Add: Verify the version of mods.
+- Add: Options to activate changelogs
+- Fix: Bug music off base
+- Fix: Bug launching arma3 after going through the options
+- Fix: Bug launch TeamSpeak 3 after installing TaskForce
+- Fix: Bug display the translation of changelogs Panel
+- Fix: Bug Changelogs reversed.
 
 --------------------------------------
 
 Release_2.0.0.0:
-- Fix: Bug Taskforce ( destination TS3).
-- Fix: Bug quand la musique est désactiver de base.
-- Change: Stopper la musique quand Arma3 ce lance.
+- Fix: Bug Taskforce (TS3 destination).
+- Fix: Bug when the music is off base.
+- Change: Stop the music when it launches Arma3.
 - Add: Changelogs system.
-- Add: System de maintenance avec image en ligne.
-- Add: Traduction system TaskForce
-- Add: Ficher de traduction.
+- Add: System maintenance with online image.
+- Add: Translation system TaskForce
+- Add: translation of Fischer.
 
 --------------------------------------
 
 Release_1.0.0.0:
 - Add: Taskforce Radio Install
-- Add: Bouton Reset mods ( supprime tout les mods )
-- Add: Musique d'introduction ( option "on,off")
-- Add: Paramètres gestion musique
-- Add: Options lancer Arma3 quand le téléchargement est fini.
-- Add: Téléchargement des fichiers CPP.
+- Add: Reset Button mods (removes all the mods)
+- Add: Introductory Music (option "on, off")
+- Add: music management settings
+- Add: Options Arma3 launch when the download is finished.
+- Add Download the CPP files.
 
 --------------------------------------
 
 Beta_2.0.0.0:
-( dernière BETA ! )
-- Add: Le language Italien est pris en charge par le launcher
-- Add: Le language Chinois est pris en charge par le launcher
-- Fix: Les options du launcher sont 100% fonctionnelles
-- Add: Mémoire du choix des langues
-- Add: UserName set via les options du launcher
-- Add: Options de lancement ajouter au panel option du launcher
-- Fix: Lanteur au lancement du launcher
-- Fix: Bug bloquage de téléchargement des mods
+( last BETA ! )
+- Add: The Italian language is supported by the launcher
+- Add: The Chinese language is supported by the launcher
+- Fix: The launcher options are 100% functional
+- Add: Language selection Memory
+- Add: UserName set via the options in the launcher
+- Add: Launch Options add option Panel launcher
+- Fix: Lanteur the launch of the launcher
+- Fix: Bug download blocking mods
 
 --------------------------------------
 
 Beta_1.5.0.0:
-- Add: download information ( bytesdownloaded / bytes total).
-- Add: Download mods information ( modsname ).
-- Add: System de news.
+- Add: download information (bytesdownloaded / total bytes).
+- Add: Download mods information (modsname).
+- Add: System news.
 - Change: Start Arma3 options.
-- Change: Download Progress bar download ( Bar de progression droite ).
-- Fix: Message erreur quand le launcher s'ouvre
+- Change: Download download Progress Bar (Bar right progression).
+- Fix: Error message when the launcher opens
 
 --------------------------------------
 
 Beta_1.0.0.0:
-- Add: Lancement d'arma3 quand le téléchargement des mods est fini
+- Add: Launch of arma3 when the download is finished mods
 - Change: XML translate error
 - Change: XML translate launcher
 - Add: System offline launcher
-- Add: Plusieurs erreur messages
+- Add: Several error messages
 
-Remerciement aux beta-testeurs qui m'ont averti du bon
-fonctionnement du launcher et averti de plusieurs bugs.
+Thanks to beta testers who warned me good
+operation of the launcher and warned of several bugs.
 
 --------------------------------------
 
 Beta_0.0.2.0:
-- Add: Bannière erreur au lieu des Messages popup 
+- Add: Banner error instead of popup messages
 - Add: XML translate error
-- Add: Animation fader + option " on / off"
+- Add: Animation fader + option "on / off"
 
 --------------------------------------
 
 beta_0.0.0.1:
 - Add: Download mods
-- Add: Vérification mods
+- Add: Checking mods
 - Add: AutoUpdate mods
 
 --------------------------------------
 
 building_0.0.3.0:
-- Add: Translate With XML file
-- Add: Icon si la destination arma 3 est correct ou pas .
-- Add: Upload FTP dossier pour les building testeurs.
+- Add: With Translate XML file
+- Add: Icon arma 3 if the destination is correct or not.
+- Add: Upload FTP folder for building testers.
 
 --------------------------------------
 
@@ -162,16 +161,15 @@ building_0.0.2.75:
 --------------------------------------
 
 building_0.0.2.5:
-- Add: Launcher Paramètres
-- Add: Allemand language.
+- Add: Launcher Settings
+- Add: German language.
 
 --------------------------------------
 
 building_0.0.2.0:
-- Update Launcher 100% Fonctionnel !
-- Correction plusieurs bugs.
-- Add: Launcher_Updater Programme 
-
+- Update Launcher 100% Functional!
+- Fixed several bugs.
+- Add: Launcher Updater Program
 --------------------------------------
 
 building_0.0.1.6:
