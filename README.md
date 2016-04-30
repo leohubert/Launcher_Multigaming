@@ -3,6 +3,13 @@ Launcher_Arma3
 
 -------------[ Information Launcher ]-------------
 
+###Last push:
+Version: Building 5.0.0.1
+Opérationnel: NON
+Date de sortie: 30/04/2016 à 21:36
+
+
+###Last functional version:
 Version: Release 4.0.0.0
 Opérationnel: OUI
 Date de sortie: 30/04/2016 à 14:20
@@ -13,6 +20,15 @@ Copyright HUBERT Léo © 2014 - 2016
 
 
 ##Change Logs:
+
+
+Building 5.0.0.1:
+- New: Launcher (not functional).
+- Add: WebPanel Admin
+- Add: API
+- Add: Login system
+
+--------------------------------------
 
 Clean Repo:
 Suppression de l'ancienne version 
