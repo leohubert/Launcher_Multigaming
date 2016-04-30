@@ -5,9 +5,9 @@ Launcher_Arma3
 
 Version: Release 4.0.0.0
 Opérationnel: OUI
-Date de sortie: 02/09/2015
+Date de sortie: 30/04/2016 à 14:20
 
-Copyright HUBERT Léo © 2014 - 2015
+Copyright HUBERT Léo © 2014 - 2016
 
 --------------------------------------------------
 
@@ -16,9 +16,9 @@ Copyright HUBERT Léo © 2014 - 2015
 
 Clean Repo:
 Suppression de l'ancienne version 
-pour repartir s�r de nouvelles bases.
+pour repartir sûr de nouvelles bases.
 
-La v4.0.0.0 est t�l�chargeable dans la
+La v4.0.0.0 est téléchargeable dans la
 partie "release" sur github.com/MrDarkSkil/Launcher_Arma3 
 
 --------------------------------------
@@ -29,8 +29,8 @@ Preparation pour la v5.0.0.0 update
 Futures ajouts:
 Pannel Admin
 API
-Nouveau syst�me de t�l�chargement
-System de connexion ( d�sactivable )
+Nouveau système de téléchargement
+System de connexion ( désactivable )
 System d'ajout de plusieurs serveurs
 
 --------------------------------------
@@ -45,7 +45,7 @@ Release 3.0.0.0:
 --------------------------------------
 
 Pre-Release 2.9.3.0:
-- Fix: Vérification si TaskForce est déjà installer.
+- Fix: Vérification si TaskForce est déjè  installer.
 - Fix: Quand on réinitialise les mods, les mods ce retélécharge ( avant non )
 - Optimisation: Optimisation du system de traduction.
 ( Préparation du changement du script qui télécharge les mods)
