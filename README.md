@@ -12,7 +12,7 @@ Release date: 30/04/2016 à 21:36
 ###Last functional version:
 Version: Release 4.0.0.0
 Functional: YES
-Date de sortie: 30/04/2016 à 14:20
+Release date: 30/04/2016 à 14:20
 
 Copyright HUBERT Léo © 2014 - 2016
 
