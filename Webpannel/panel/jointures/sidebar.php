@@ -22,12 +22,12 @@
         <br />
         <br />
 
-<div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
+        <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
 
             <div class="menu_section">
               <h3>General</h3>
               <ul class="nav side-menu">
-                <li><a><i class="fa fa-settings"></i> Launcher settings<span class="fa fa-chevron-down"></span></a>
+                <li><a><i class="fa fa-cog fa-spin fa-3x fa-fw margin-bottom"></i> Launcher settings<span class="fa fa-chevron-down"></span></a>
                   <ul class="nav child_menu" style="display: none">
                     <li><a href="basic.php">Basic settings</a>
                     </li>

@@ -4,23 +4,29 @@ Launcher_Arma3
 -------------[ Launcher Information ]-------------
 
 ###Last push:
-Version: Building 5.0.0.1
+Version: Building 5.0.0.2
 Functional: NO
-Release date: 30/04/2016 Ã  21:36
+Release date: 02/05/2016 à 01:47
 
 
 ###Last functional version:
 Version: Release 4.0.0.0
 Functional: YES
-Release date: 30/04/2016 Ã  14:20
+Release date: 30/04/2016 à  14:20
 
-Copyright HUBERT LÃ©o Â© 2014 - 2016
+Copyright HUBERT Léo © 2014 - 2016
 
 --------------------------------------------------
 
 
 ##Change Logs:
 
+Building 5.0.0.2:
+- Add: Login system
+- Prepare: News System
+- Add: API register ( Wirk )
+
+-------------------------------------
 
 Building 5.0.0.1:
 - New: Launcher (not functional).

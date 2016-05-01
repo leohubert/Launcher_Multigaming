@@ -10,4 +10,5 @@ C:\Users\leohu\Documents\GitHub\Launcher_Arma3\Launcher Arma3\Launcher Arma3\obj
 C:\Users\leohu\Documents\GitHub\Launcher_Arma3\Launcher Arma3\Launcher Arma3\obj\Debug\Launcher Arma3.csproj.GenerateResource.Cache
 C:\Users\leohu\Documents\GitHub\Launcher_Arma3\Launcher Arma3\Launcher Arma3\obj\Debug\Launcher Arma3.exe
 C:\Users\leohu\Documents\GitHub\Launcher_Arma3\Launcher Arma3\Launcher Arma3\obj\Debug\Launcher Arma3.pdb
-C:\Users\leohu\Documents\GitHub\Launcher_Arma3\Launcher Arma3\Launcher Arma3\bin\Debug\Newtonsoft.Json.dll
+C:\Users\leohu\Documents\GitHub\Launcher_Arma3\Launcher Arma3\Launcher Arma3\bin\Debug\MetroFramework.Design.dll
+C:\Users\leohu\Documents\GitHub\Launcher_Arma3\Launcher Arma3\Launcher Arma3\bin\Debug\MetroFramework.Design.pdb

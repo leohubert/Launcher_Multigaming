@@ -8,9 +8,6 @@
 
 include "mysql.php";
 
-$email = $_POST['email'];
-$password = $_POST['password'];
-
 $requete = $db_trak->prepare('SELECT * FROM options WHERE id = 1');
 $requete->execute();
 $reponse = $requete->fetch();

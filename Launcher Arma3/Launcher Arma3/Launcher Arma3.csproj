@@ -39,6 +39,9 @@
     <Reference Include="MetroFramework">
       <HintPath>..\..\..\..\..\Desktop\thielj-MetroFramework-fb0d0c3\MetroFramework.Fonts\bin\Release\MetroFramework.dll</HintPath>
     </Reference>
+    <Reference Include="MetroFramework.Design">
+      <HintPath>..\..\..\..\..\Desktop\dennismagno-metroframework-modern-ui-cbe697a\MetroFramework.Design\bin\Release\MetroFramework.Design.dll</HintPath>
+    </Reference>
     <Reference Include="MetroFramework.Fonts">
       <HintPath>..\..\..\..\..\Desktop\thielj-MetroFramework-fb0d0c3\MetroFramework.Fonts\bin\Release\MetroFramework.Fonts.dll</HintPath>
     </Reference>
