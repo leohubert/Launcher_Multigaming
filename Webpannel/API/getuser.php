@@ -18,7 +18,7 @@ if (isset($_POST['token']))
     $reponse = $requete->fetch();
 
     if(empty($reponse)){
-        $arr = array('status' => 400, 'msg' => "toekn incorrect");
+        $arr = array('status' => 400, 'msg' => "token incorrect");
     } else {
         $arr = array('status' => 42, 'msg' => "Connected With token !", 'level' => $reponse['level'], 'email' => $reponse['email'], 'username' => $reponse['username']);
     }
