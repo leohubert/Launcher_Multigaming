@@ -33,6 +33,7 @@
             this.pictureBig = new System.Windows.Forms.PictureBox();
             this.notif = new System.Windows.Forms.NotifyIcon(this.components);
             this.loginBox = new System.Windows.Forms.GroupBox();
+            this.registerLink = new System.Windows.Forms.LinkLabel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.requestLogin = new System.ComponentModel.BackgroundWorker();
             this.tabPage2 = new System.Windows.Forms.TabPage();
@@ -41,7 +42,17 @@
             this.newsBox = new System.Windows.Forms.GroupBox();
             this.registerBox = new System.Windows.Forms.GroupBox();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
-            this.registerLink = new System.Windows.Forms.LinkLabel();
+            this.newsDate3 = new iTalk.iTalk_Label();
+            this.newsDate2 = new iTalk.iTalk_Label();
+            this.newsDate1 = new iTalk.iTalk_Label();
+            this.newsLabel3 = new iTalk.iTalk_Label();
+            this.newsLabel2 = new iTalk.iTalk_Label();
+            this.newsLabel1 = new iTalk.iTalk_Label();
+            this.newsLink3 = new iTalk.iTalk_Button_1();
+            this.newsLink2 = new iTalk.iTalk_Button_1();
+            this.newsLink1 = new iTalk.iTalk_Button_1();
+            this.iTalk_Separator3 = new iTalk.iTalk_Separator();
+            this.iTalk_Separator2 = new iTalk.iTalk_Separator();
             this.registerCancel = new FlatUI.FlatButton();
             this.registerPassConf = new FlatUI.FlatTextBox();
             this.registerEmail = new FlatUI.FlatTextBox();
@@ -105,6 +116,18 @@
             this.loginBox.TabStop = false;
             this.loginBox.Visible = false;
             // 
+            // registerLink
+            // 
+            this.registerLink.AutoSize = true;
+            this.registerLink.Location = new System.Drawing.Point(74, 180);
+            this.registerLink.Name = "registerLink";
+            this.registerLink.Size = new System.Drawing.Size(113, 21);
+            this.registerLink.TabIndex = 6;
+            this.registerLink.TabStop = true;
+            this.registerLink.Text = "ou s\'enregistrer";
+            this.registerLink.Visible = false;
+            this.registerLink.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.register_LinkClicked);
+            // 
             // pictureBox1
             // 
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
@@ -142,9 +165,9 @@
             // pictureBox2
             // 
             this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
-            this.pictureBox2.Location = new System.Drawing.Point(6, 0);
+            this.pictureBox2.Location = new System.Drawing.Point(0, 0);
             this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(499, 24);
+            this.pictureBox2.Size = new System.Drawing.Size(505, 24);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox2.TabIndex = 7;
             this.pictureBox2.TabStop = false;
@@ -152,10 +175,21 @@
             // newsBox
             // 
             this.newsBox.BackColor = System.Drawing.Color.Transparent;
+            this.newsBox.Controls.Add(this.newsDate3);
+            this.newsBox.Controls.Add(this.newsDate2);
+            this.newsBox.Controls.Add(this.newsDate1);
+            this.newsBox.Controls.Add(this.newsLabel3);
+            this.newsBox.Controls.Add(this.newsLabel2);
+            this.newsBox.Controls.Add(this.newsLabel1);
+            this.newsBox.Controls.Add(this.newsLink3);
+            this.newsBox.Controls.Add(this.newsLink2);
+            this.newsBox.Controls.Add(this.newsLink1);
+            this.newsBox.Controls.Add(this.iTalk_Separator3);
+            this.newsBox.Controls.Add(this.iTalk_Separator2);
             this.newsBox.Controls.Add(this.pictureBox2);
-            this.newsBox.Location = new System.Drawing.Point(20, 217);
+            this.newsBox.Location = new System.Drawing.Point(20, 256);
             this.newsBox.Name = "newsBox";
-            this.newsBox.Size = new System.Drawing.Size(505, 232);
+            this.newsBox.Size = new System.Drawing.Size(505, 187);
             this.newsBox.TabIndex = 6;
             this.newsBox.TabStop = false;
             this.newsBox.Visible = false;
@@ -189,17 +223,135 @@
             this.pictureBox3.TabIndex = 5;
             this.pictureBox3.TabStop = false;
             // 
-            // registerLink
+            // newsDate3
             // 
-            this.registerLink.AutoSize = true;
-            this.registerLink.Location = new System.Drawing.Point(74, 180);
-            this.registerLink.Name = "registerLink";
-            this.registerLink.Size = new System.Drawing.Size(113, 21);
-            this.registerLink.TabIndex = 6;
-            this.registerLink.TabStop = true;
-            this.registerLink.Text = "ou s\'enregistrer";
-            this.registerLink.Visible = false;
-            this.registerLink.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.register_LinkClicked);
+            this.newsDate3.AutoSize = true;
+            this.newsDate3.BackColor = System.Drawing.Color.Transparent;
+            this.newsDate3.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.newsDate3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(142)))), ((int)(((byte)(142)))), ((int)(((byte)(142)))));
+            this.newsDate3.Location = new System.Drawing.Point(351, 147);
+            this.newsDate3.Name = "newsDate3";
+            this.newsDate3.Size = new System.Drawing.Size(80, 21);
+            this.newsDate3.TabIndex = 20;
+            this.newsDate3.Text = "**/**/****";
+            // 
+            // newsDate2
+            // 
+            this.newsDate2.AutoSize = true;
+            this.newsDate2.BackColor = System.Drawing.Color.Transparent;
+            this.newsDate2.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.newsDate2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(142)))), ((int)(((byte)(142)))), ((int)(((byte)(142)))));
+            this.newsDate2.Location = new System.Drawing.Point(351, 87);
+            this.newsDate2.Name = "newsDate2";
+            this.newsDate2.Size = new System.Drawing.Size(80, 21);
+            this.newsDate2.TabIndex = 19;
+            this.newsDate2.Text = "**/**/****";
+            // 
+            // newsDate1
+            // 
+            this.newsDate1.AutoSize = true;
+            this.newsDate1.BackColor = System.Drawing.Color.Transparent;
+            this.newsDate1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.newsDate1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(142)))), ((int)(((byte)(142)))), ((int)(((byte)(142)))));
+            this.newsDate1.Location = new System.Drawing.Point(351, 32);
+            this.newsDate1.Name = "newsDate1";
+            this.newsDate1.Size = new System.Drawing.Size(80, 21);
+            this.newsDate1.TabIndex = 18;
+            this.newsDate1.Text = "**/**/****";
+            // 
+            // newsLabel3
+            // 
+            this.newsLabel3.AutoSize = true;
+            this.newsLabel3.BackColor = System.Drawing.Color.Transparent;
+            this.newsLabel3.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.newsLabel3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(142)))), ((int)(((byte)(142)))), ((int)(((byte)(142)))));
+            this.newsLabel3.Location = new System.Drawing.Point(6, 147);
+            this.newsLabel3.Name = "newsLabel3";
+            this.newsLabel3.Size = new System.Drawing.Size(126, 21);
+            this.newsLabel3.TabIndex = 17;
+            this.newsLabel3.Text = "Comming soon";
+            // 
+            // newsLabel2
+            // 
+            this.newsLabel2.AutoSize = true;
+            this.newsLabel2.BackColor = System.Drawing.Color.Transparent;
+            this.newsLabel2.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.newsLabel2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(142)))), ((int)(((byte)(142)))), ((int)(((byte)(142)))));
+            this.newsLabel2.Location = new System.Drawing.Point(6, 87);
+            this.newsLabel2.Name = "newsLabel2";
+            this.newsLabel2.Size = new System.Drawing.Size(126, 21);
+            this.newsLabel2.TabIndex = 16;
+            this.newsLabel2.Text = "Comming soon";
+            // 
+            // newsLabel1
+            // 
+            this.newsLabel1.AutoSize = true;
+            this.newsLabel1.BackColor = System.Drawing.Color.Transparent;
+            this.newsLabel1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.newsLabel1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(142)))), ((int)(((byte)(142)))), ((int)(((byte)(142)))));
+            this.newsLabel1.Location = new System.Drawing.Point(6, 32);
+            this.newsLabel1.Name = "newsLabel1";
+            this.newsLabel1.Size = new System.Drawing.Size(126, 21);
+            this.newsLabel1.TabIndex = 15;
+            this.newsLabel1.Text = "Comming soon";
+            // 
+            // newsLink3
+            // 
+            this.newsLink3.BackColor = System.Drawing.Color.Transparent;
+            this.newsLink3.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.newsLink3.Image = null;
+            this.newsLink3.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.newsLink3.Location = new System.Drawing.Point(453, 150);
+            this.newsLink3.Name = "newsLink3";
+            this.newsLink3.Size = new System.Drawing.Size(35, 18);
+            this.newsLink3.TabIndex = 14;
+            this.newsLink3.Text = "...";
+            this.newsLink3.TextAlignment = System.Drawing.StringAlignment.Center;
+            this.newsLink3.Click += new System.EventHandler(this.newsLink3_Click);
+            // 
+            // newsLink2
+            // 
+            this.newsLink2.BackColor = System.Drawing.Color.Transparent;
+            this.newsLink2.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.newsLink2.Image = null;
+            this.newsLink2.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.newsLink2.Location = new System.Drawing.Point(453, 90);
+            this.newsLink2.Name = "newsLink2";
+            this.newsLink2.Size = new System.Drawing.Size(35, 18);
+            this.newsLink2.TabIndex = 13;
+            this.newsLink2.Text = "...";
+            this.newsLink2.TextAlignment = System.Drawing.StringAlignment.Center;
+            this.newsLink2.Click += new System.EventHandler(this.newsLink2_Click);
+            // 
+            // newsLink1
+            // 
+            this.newsLink1.BackColor = System.Drawing.Color.Transparent;
+            this.newsLink1.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.newsLink1.Image = null;
+            this.newsLink1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.newsLink1.Location = new System.Drawing.Point(453, 35);
+            this.newsLink1.Name = "newsLink1";
+            this.newsLink1.Size = new System.Drawing.Size(35, 18);
+            this.newsLink1.TabIndex = 12;
+            this.newsLink1.Text = "...";
+            this.newsLink1.TextAlignment = System.Drawing.StringAlignment.Center;
+            this.newsLink1.Click += new System.EventHandler(this.newsLink1_Click);
+            // 
+            // iTalk_Separator3
+            // 
+            this.iTalk_Separator3.Location = new System.Drawing.Point(6, 64);
+            this.iTalk_Separator3.Name = "iTalk_Separator3";
+            this.iTalk_Separator3.Size = new System.Drawing.Size(493, 10);
+            this.iTalk_Separator3.TabIndex = 11;
+            this.iTalk_Separator3.Text = "iTalk_Separator3";
+            // 
+            // iTalk_Separator2
+            // 
+            this.iTalk_Separator2.Location = new System.Drawing.Point(6, 125);
+            this.iTalk_Separator2.Name = "iTalk_Separator2";
+            this.iTalk_Separator2.Size = new System.Drawing.Size(493, 10);
+            this.iTalk_Separator2.TabIndex = 10;
+            this.iTalk_Separator2.Text = "iTalk_Separator2";
             // 
             // registerCancel
             // 
@@ -451,9 +603,9 @@
             this.BackColor = System.Drawing.SystemColors.Control;
             this.BorderStyle = MetroFramework.Drawing.MetroBorderStyle.None;
             this.ClientSize = new System.Drawing.Size(923, 501);
+            this.Controls.Add(this.newsBox);
             this.Controls.Add(this.registerBox);
             this.Controls.Add(this.flatProgressBar1);
-            this.Controls.Add(this.newsBox);
             this.Controls.Add(this.staffMessage);
             this.Controls.Add(this.loginBox);
             this.Controls.Add(this.errorBox);
@@ -477,6 +629,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.newsBox.ResumeLayout(false);
+            this.newsBox.PerformLayout();
             this.registerBox.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             this.ResumeLayout(false);
@@ -513,6 +666,17 @@
         private FlatUI.FlatTextBox registerPassConf;
         private System.Windows.Forms.LinkLabel registerLink;
         private FlatUI.FlatButton registerCancel;
+        private iTalk.iTalk_Button_1 newsLink3;
+        private iTalk.iTalk_Button_1 newsLink2;
+        private iTalk.iTalk_Button_1 newsLink1;
+        private iTalk.iTalk_Separator iTalk_Separator3;
+        private iTalk.iTalk_Separator iTalk_Separator2;
+        private iTalk.iTalk_Label newsLabel3;
+        private iTalk.iTalk_Label newsLabel2;
+        private iTalk.iTalk_Label newsLabel1;
+        private iTalk.iTalk_Label newsDate3;
+        private iTalk.iTalk_Label newsDate2;
+        private iTalk.iTalk_Label newsDate1;
     }
 }
 

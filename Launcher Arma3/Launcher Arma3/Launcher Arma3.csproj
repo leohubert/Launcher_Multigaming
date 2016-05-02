@@ -141,6 +141,7 @@
     </Compile>
     <Compile Include="Themes\Flat UI\Helpers.cs" />
     <Compile Include="Themes\Flat UI\MouseState.cs" />
+    <Compile Include="Themes\Italk.cs" />
     <EmbeddedResource Include="launcherMain.resx">
       <DependentUpon>launcherMain.cs</DependentUpon>
     </EmbeddedResource>

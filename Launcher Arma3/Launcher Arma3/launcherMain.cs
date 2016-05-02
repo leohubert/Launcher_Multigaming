@@ -13,6 +13,7 @@ using MetroFramework.Components;
 using System.Collections.Specialized;
 using Newtonsoft.Json.Linq;
 using System.Net;
+using System.Diagnostics;
 
 namespace Launcher_Arma3
 {
@@ -21,6 +22,7 @@ namespace Launcher_Arma3
 
         /* Launcher basic config */
         string apiUrl = "http://localhost/API/";   /* Link to API launcher Arma 3 */
+        string webSite = "http://emodyz.com/";
 
 
         /* Variables globals */
@@ -28,6 +30,9 @@ namespace Launcher_Arma3
         bool login = false;
         bool connected = false;
         bool internet;
+        string news1;
+        string news2;
+        string news3;
 
         public launcherMain()
         {
@@ -84,6 +89,7 @@ namespace Launcher_Arma3
                 errorBox.Text = "Error #404: Internet or Serveur not found.";
                 internet = false;
                 pictureBig.Visible = false;
+                this.Style = "Red";
             }
 
         }
@@ -110,8 +116,9 @@ namespace Launcher_Arma3
                     loginBox.Visible = false;
                     newsBox.Visible = true;
                     succesBox.Visible = true;
-                    succesBox.Text = stuff.msg;
+                    succesBox.Text = stuff.msg;                   
                     this.Style = "Green";
+                    loadNews();
                 }
                 else
                 {
@@ -177,6 +184,68 @@ namespace Launcher_Arma3
                     errorBox.Visible = true;
                     errorBox.Text = stuff.msg;
                 }
+            }
+        }
+
+        private void newsLink1_Click(object sender, EventArgs e)
+        {
+            Process p = new Process();
+            if (news1 == null)
+                p.StartInfo.FileName = webSite;
+            else
+                p.StartInfo.FileName = news1;
+            p.Start();
+        }
+
+        private void newsLink2_Click(object sender, EventArgs e)
+        {
+            Process p = new Process();
+            if (news2 == null)
+                p.StartInfo.FileName = webSite;
+            else
+                p.StartInfo.FileName = news2;
+            p.Start();
+        }
+
+        private void newsLink3_Click(object sender, EventArgs e)
+        {
+            Process p = new Process();
+            if (news3 == null)
+                p.StartInfo.FileName = webSite;
+            else
+                p.StartInfo.FileName = news3;
+            p.Start();
+        }
+
+        void loadNews()
+        {
+            using (WebClient client = new WebClient())
+            {
+
+                byte[] response =
+                client.UploadValues(apiUrl + "news.php", new NameValueCollection());
+                string result = System.Text.Encoding.UTF8.GetString(response);
+                dynamic stuff = JObject.Parse(result);
+
+                if (stuff.total > "0")
+                {
+                    newsLabel1.Text = stuff.news0.title;
+                    newsDate1.Text = stuff.news0.date;
+                    news1 = stuff.news0.link;
+                }
+                if (stuff.total > "1")
+                {
+                    newsLabel2.Text = stuff.news1.title;
+                    newsDate2.Text = stuff.news1.date;
+                    news2 = stuff.news1.link;
+                }
+                if (stuff.total > "2")
+                {
+                    newsLabel3.Text = stuff.news2.title;
+                    newsDate3.Text = stuff.news2.date;
+                    news3 = stuff.news2.link;
+                }
+                
             }
         }
     }

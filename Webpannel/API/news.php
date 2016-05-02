@@ -18,7 +18,7 @@ while ($reponse = $requete->fetch())
 {
     $arr['news'.$i] = array();
     $arr['news'.$i]['title'] = $reponse['title'];
-    $arr['news'.$i]['message'] = $reponse['message'];
+    $arr['news'.$i]['date'] = $reponse['date'];
     $arr['news'.$i]['link'] = $reponse['link'];
     $i++;
 }
