@@ -65,6 +65,10 @@ namespace Launcher_Arma3
                         loginBox.Visible = true;
                         this.Style = "Red";
                     }
+                    if (stuff.register == "1")
+                    {                        
+                        registerLink.Visible = true;           
+                    }
                     if (stuff.news == "1")
                     {
                         staffMessage.Text = stuff.news_msg;
@@ -88,7 +92,6 @@ namespace Launcher_Arma3
         {
             using (WebClient client = new WebClient())
             {
-
                 byte[] response =
                 client.UploadValues(apiUrl + "login.php", new NameValueCollection()
                 {
@@ -105,6 +108,7 @@ namespace Launcher_Arma3
                 {
                     errorBox.Visible = false;
                     loginBox.Visible = false;
+                    newsBox.Visible = true;
                     succesBox.Visible = true;
                     succesBox.Text = stuff.msg;
                     this.Style = "Green";
@@ -126,6 +130,54 @@ namespace Launcher_Arma3
                 infoBox.Visible = false;
             if (succesBox.Visible == false)
                 succesBox.Visible = false;
+        }
+
+        private void register_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            loginBox.Visible = false;
+            registerBox.Visible = true;
+            this.Style = "Blue";
+        }
+
+        private void registerCancel_Click(object sender, EventArgs e)
+        {
+            loginBox.Visible = true;
+            registerBox.Visible = false;
+            this.Style = "Red";
+        }
+
+        private void registerButton_Click(object sender, EventArgs e)
+        {
+            using (WebClient client = new WebClient())
+            {
+                byte[] response =
+                client.UploadValues(apiUrl + "register.php", new NameValueCollection()
+                {
+                    { "username", registerUsername.Text},
+                    { "email", registerEmail.Text},
+                    { "password_conf", registerPassConf.Text},
+                    { "password", registerPass.Text}
+                });
+
+                string result = System.Text.Encoding.UTF8.GetString(response);
+                dynamic stuff = JObject.Parse(result);
+
+                checkNotif();
+
+                if (stuff.status == "42")
+                {
+                    succesBox.Visible = true;
+                    succesBox.Text = stuff.msg;
+                    registerBox.Visible = false;
+                    loginBox.Visible = true;                 
+                    this.Style = "Red";
+                }
+                else
+                {
+                    errorBox.Visible = true;
+                    errorBox.Text = stuff.msg;
+                }
+            }
         }
     }
 }

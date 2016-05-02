@@ -12,3 +12,14 @@ C:\Users\leohu\Documents\GitHub\Launcher_Arma3\Launcher Arma3\Launcher Arma3\obj
 C:\Users\leohu\Documents\GitHub\Launcher_Arma3\Launcher Arma3\Launcher Arma3\obj\Debug\Launcher Arma3.pdb
 C:\Users\leohu\Documents\GitHub\Launcher_Arma3\Launcher Arma3\Launcher Arma3\bin\Debug\MetroFramework.Design.dll
 C:\Users\leohu\Documents\GitHub\Launcher_Arma3\Launcher Arma3\Launcher Arma3\bin\Debug\MetroFramework.Design.pdb
+C:\Users\Hubert Léo\Documents\GitHub\Launcher_Arma3\Launcher Arma3\Launcher Arma3\bin\Debug\Launcher Arma3.exe.config
+C:\Users\Hubert Léo\Documents\GitHub\Launcher_Arma3\Launcher Arma3\Launcher Arma3\obj\Debug\Launcher Arma3.exe
+C:\Users\Hubert Léo\Documents\GitHub\Launcher_Arma3\Launcher Arma3\Launcher Arma3\obj\Debug\Launcher Arma3.pdb
+C:\Users\Hubert Léo\Documents\GitHub\Launcher_Arma3\Launcher Arma3\Launcher Arma3\bin\Debug\Launcher Arma3.exe
+C:\Users\Hubert Léo\Documents\GitHub\Launcher_Arma3\Launcher Arma3\Launcher Arma3\bin\Debug\Launcher Arma3.pdb
+C:\Users\Hubert Léo\Documents\GitHub\Launcher_Arma3\Launcher Arma3\Launcher Arma3\bin\Debug\MetroFramework.Design.pdb
+C:\Users\Hubert Léo\Documents\GitHub\Launcher_Arma3\Launcher Arma3\Launcher Arma3\bin\Debug\MetroFramework.Fonts.pdb
+C:\Users\Hubert Léo\Documents\GitHub\Launcher_Arma3\Launcher Arma3\Launcher Arma3\obj\Debug\Launcher Arma3.csprojResolveAssemblyReference.cache
+C:\Users\Hubert Léo\Documents\GitHub\Launcher_Arma3\Launcher Arma3\Launcher Arma3\obj\Debug\Launcher_Arma3.launcherMain.resources
+C:\Users\Hubert Léo\Documents\GitHub\Launcher_Arma3\Launcher Arma3\Launcher Arma3\obj\Debug\Launcher_Arma3.Properties.Resources.resources
+C:\Users\Hubert Léo\Documents\GitHub\Launcher_Arma3\Launcher Arma3\Launcher Arma3\obj\Debug\Launcher Arma3.csproj.GenerateResource.Cache

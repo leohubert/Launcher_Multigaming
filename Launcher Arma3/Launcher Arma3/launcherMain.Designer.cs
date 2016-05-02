@@ -35,6 +35,20 @@
             this.loginBox = new System.Windows.Forms.GroupBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.requestLogin = new System.ComponentModel.BackgroundWorker();
+            this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.newsBox = new System.Windows.Forms.GroupBox();
+            this.registerBox = new System.Windows.Forms.GroupBox();
+            this.pictureBox3 = new System.Windows.Forms.PictureBox();
+            this.registerLink = new System.Windows.Forms.LinkLabel();
+            this.registerCancel = new FlatUI.FlatButton();
+            this.registerPassConf = new FlatUI.FlatTextBox();
+            this.registerEmail = new FlatUI.FlatTextBox();
+            this.registerButton = new FlatUI.FlatButton();
+            this.registerLabel = new FlatUI.FlatLabel();
+            this.registerPass = new FlatUI.FlatTextBox();
+            this.registerUsername = new FlatUI.FlatTextBox();
             this.flatProgressBar1 = new FlatUI.FlatProgressBar();
             this.staffMessage = new FlatUI.FlatTextBox();
             this.loginButton = new FlatUI.FlatButton();
@@ -44,15 +58,13 @@
             this.errorBox = new FlatUI.FlatAlertBox();
             this.succesBox = new FlatUI.FlatAlertBox();
             this.infoBox = new FlatUI.FlatAlertBox();
-            this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.newsBox = new System.Windows.Forms.GroupBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBig)).BeginInit();
             this.loginBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.newsBox.SuspendLayout();
+            this.registerBox.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             this.SuspendLayout();
             // 
             // pictureBig
@@ -79,6 +91,7 @@
             // loginBox
             // 
             this.loginBox.BackColor = System.Drawing.Color.Transparent;
+            this.loginBox.Controls.Add(this.registerLink);
             this.loginBox.Controls.Add(this.pictureBox1);
             this.loginBox.Controls.Add(this.loginButton);
             this.loginBox.Controls.Add(this.loginLabel);
@@ -87,7 +100,7 @@
             this.loginBox.Font = new System.Drawing.Font("Franklin Gothic Medium", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.loginBox.Location = new System.Drawing.Point(321, 151);
             this.loginBox.Name = "loginBox";
-            this.loginBox.Size = new System.Drawing.Size(258, 212);
+            this.loginBox.Size = new System.Drawing.Size(258, 204);
             this.loginBox.TabIndex = 4;
             this.loginBox.TabStop = false;
             this.loginBox.Visible = false;
@@ -101,6 +114,200 @@
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 5;
             this.pictureBox1.TabStop = false;
+            // 
+            // tabPage2
+            // 
+            this.tabPage2.BackColor = System.Drawing.Color.White;
+            this.tabPage2.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.tabPage2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(79)))), ((int)(((byte)(90)))));
+            this.tabPage2.Location = new System.Drawing.Point(44, 4);
+            this.tabPage2.Name = "tabPage2";
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage2.Size = new System.Drawing.Size(835, 230);
+            this.tabPage2.TabIndex = 1;
+            this.tabPage2.Text = "tabPage2";
+            // 
+            // tabPage1
+            // 
+            this.tabPage1.BackColor = System.Drawing.Color.White;
+            this.tabPage1.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.tabPage1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(79)))), ((int)(((byte)(90)))));
+            this.tabPage1.Location = new System.Drawing.Point(44, 4);
+            this.tabPage1.Name = "tabPage1";
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage1.Size = new System.Drawing.Size(835, 230);
+            this.tabPage1.TabIndex = 0;
+            this.tabPage1.Text = "tabPage1";
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
+            this.pictureBox2.Location = new System.Drawing.Point(6, 0);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(499, 24);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox2.TabIndex = 7;
+            this.pictureBox2.TabStop = false;
+            // 
+            // newsBox
+            // 
+            this.newsBox.BackColor = System.Drawing.Color.Transparent;
+            this.newsBox.Controls.Add(this.pictureBox2);
+            this.newsBox.Location = new System.Drawing.Point(20, 217);
+            this.newsBox.Name = "newsBox";
+            this.newsBox.Size = new System.Drawing.Size(505, 232);
+            this.newsBox.TabIndex = 6;
+            this.newsBox.TabStop = false;
+            this.newsBox.Visible = false;
+            // 
+            // registerBox
+            // 
+            this.registerBox.BackColor = System.Drawing.Color.Transparent;
+            this.registerBox.Controls.Add(this.registerCancel);
+            this.registerBox.Controls.Add(this.registerPassConf);
+            this.registerBox.Controls.Add(this.registerEmail);
+            this.registerBox.Controls.Add(this.pictureBox3);
+            this.registerBox.Controls.Add(this.registerButton);
+            this.registerBox.Controls.Add(this.registerLabel);
+            this.registerBox.Controls.Add(this.registerPass);
+            this.registerBox.Controls.Add(this.registerUsername);
+            this.registerBox.Font = new System.Drawing.Font("Franklin Gothic Medium", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.registerBox.Location = new System.Drawing.Point(322, 136);
+            this.registerBox.Name = "registerBox";
+            this.registerBox.Size = new System.Drawing.Size(257, 252);
+            this.registerBox.TabIndex = 6;
+            this.registerBox.TabStop = false;
+            this.registerBox.Visible = false;
+            // 
+            // pictureBox3
+            // 
+            this.pictureBox3.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox3.Image")));
+            this.pictureBox3.Location = new System.Drawing.Point(0, 0);
+            this.pictureBox3.Name = "pictureBox3";
+            this.pictureBox3.Size = new System.Drawing.Size(258, 24);
+            this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox3.TabIndex = 5;
+            this.pictureBox3.TabStop = false;
+            // 
+            // registerLink
+            // 
+            this.registerLink.AutoSize = true;
+            this.registerLink.Location = new System.Drawing.Point(74, 180);
+            this.registerLink.Name = "registerLink";
+            this.registerLink.Size = new System.Drawing.Size(113, 21);
+            this.registerLink.TabIndex = 6;
+            this.registerLink.TabStop = true;
+            this.registerLink.Text = "ou s\'enregistrer";
+            this.registerLink.Visible = false;
+            this.registerLink.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.register_LinkClicked);
+            // 
+            // registerCancel
+            // 
+            this.registerCancel.BackColor = System.Drawing.Color.Transparent;
+            this.registerCancel.BaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(168)))), ((int)(((byte)(109)))));
+            this.registerCancel.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.registerCancel.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.registerCancel.Location = new System.Drawing.Point(6, 210);
+            this.registerCancel.Name = "registerCancel";
+            this.registerCancel.Rounded = false;
+            this.registerCancel.Size = new System.Drawing.Size(117, 32);
+            this.registerCancel.TabIndex = 8;
+            this.registerCancel.Text = "Annuler";
+            this.registerCancel.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(243)))), ((int)(((byte)(243)))));
+            this.registerCancel.Click += new System.EventHandler(this.registerCancel_Click);
+            // 
+            // registerPassConf
+            // 
+            this.registerPassConf.BackColor = System.Drawing.Color.Transparent;
+            this.registerPassConf.FocusOnHover = false;
+            this.registerPassConf.Location = new System.Drawing.Point(5, 175);
+            this.registerPassConf.MaxLength = 32767;
+            this.registerPassConf.Multiline = false;
+            this.registerPassConf.Name = "registerPassConf";
+            this.registerPassConf.ReadOnly = false;
+            this.registerPassConf.Size = new System.Drawing.Size(246, 29);
+            this.registerPassConf.TabIndex = 7;
+            this.registerPassConf.Text = "0000";
+            this.registerPassConf.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.registerPassConf.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.registerPassConf.UseSystemPasswordChar = true;
+            // 
+            // registerEmail
+            // 
+            this.registerEmail.BackColor = System.Drawing.Color.Transparent;
+            this.registerEmail.FocusOnHover = false;
+            this.registerEmail.Location = new System.Drawing.Point(6, 105);
+            this.registerEmail.MaxLength = 32767;
+            this.registerEmail.Multiline = false;
+            this.registerEmail.Name = "registerEmail";
+            this.registerEmail.ReadOnly = false;
+            this.registerEmail.Size = new System.Drawing.Size(246, 29);
+            this.registerEmail.TabIndex = 6;
+            this.registerEmail.Text = "Email";
+            this.registerEmail.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.registerEmail.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.registerEmail.UseSystemPasswordChar = false;
+            // 
+            // registerButton
+            // 
+            this.registerButton.BackColor = System.Drawing.Color.Transparent;
+            this.registerButton.BaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(168)))), ((int)(((byte)(109)))));
+            this.registerButton.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.registerButton.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.registerButton.Location = new System.Drawing.Point(134, 210);
+            this.registerButton.Name = "registerButton";
+            this.registerButton.Rounded = false;
+            this.registerButton.Size = new System.Drawing.Size(117, 32);
+            this.registerButton.TabIndex = 4;
+            this.registerButton.Text = "S\'enregitrer";
+            this.registerButton.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(243)))), ((int)(((byte)(243)))));
+            this.registerButton.Click += new System.EventHandler(this.registerButton_Click);
+            // 
+            // registerLabel
+            // 
+            this.registerLabel.BackColor = System.Drawing.Color.Transparent;
+            this.registerLabel.Cursor = System.Windows.Forms.Cursors.Default;
+            this.registerLabel.Font = new System.Drawing.Font("Arial Black", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.registerLabel.ForeColor = System.Drawing.SystemColors.WindowFrame;
+            this.registerLabel.Location = new System.Drawing.Point(6, 27);
+            this.registerLabel.Name = "registerLabel";
+            this.registerLabel.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.registerLabel.Size = new System.Drawing.Size(246, 36);
+            this.registerLabel.TabIndex = 3;
+            this.registerLabel.Text = "Toujours pas enregistré ?\r\nQu\'attendez vous ?";
+            this.registerLabel.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // registerPass
+            // 
+            this.registerPass.BackColor = System.Drawing.Color.Transparent;
+            this.registerPass.FocusOnHover = false;
+            this.registerPass.Location = new System.Drawing.Point(5, 140);
+            this.registerPass.MaxLength = 32767;
+            this.registerPass.Multiline = false;
+            this.registerPass.Name = "registerPass";
+            this.registerPass.ReadOnly = false;
+            this.registerPass.Size = new System.Drawing.Size(246, 29);
+            this.registerPass.TabIndex = 2;
+            this.registerPass.Text = "1234";
+            this.registerPass.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.registerPass.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.registerPass.UseSystemPasswordChar = true;
+            // 
+            // registerUsername
+            // 
+            this.registerUsername.BackColor = System.Drawing.Color.Transparent;
+            this.registerUsername.FocusOnHover = false;
+            this.registerUsername.Location = new System.Drawing.Point(6, 70);
+            this.registerUsername.MaxLength = 32767;
+            this.registerUsername.Multiline = false;
+            this.registerUsername.Name = "registerUsername";
+            this.registerUsername.ReadOnly = false;
+            this.registerUsername.Size = new System.Drawing.Size(246, 29);
+            this.registerUsername.TabIndex = 1;
+            this.registerUsername.Text = "Username";
+            this.registerUsername.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.registerUsername.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.registerUsername.UseSystemPasswordChar = false;
             // 
             // flatProgressBar1
             // 
@@ -117,6 +324,7 @@
             this.flatProgressBar1.TabIndex = 8;
             this.flatProgressBar1.Text = "flatProgressBar1";
             this.flatProgressBar1.Value = 50;
+            this.flatProgressBar1.Visible = false;
             // 
             // staffMessage
             // 
@@ -142,7 +350,7 @@
             this.loginButton.BaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(168)))), ((int)(((byte)(109)))));
             this.loginButton.Cursor = System.Windows.Forms.Cursors.Hand;
             this.loginButton.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.loginButton.Location = new System.Drawing.Point(45, 163);
+            this.loginButton.Location = new System.Drawing.Point(45, 147);
             this.loginButton.Name = "loginButton";
             this.loginButton.Rounded = false;
             this.loginButton.Size = new System.Drawing.Size(162, 32);
@@ -169,7 +377,7 @@
             // 
             this.loginPassword.BackColor = System.Drawing.Color.Transparent;
             this.loginPassword.FocusOnHover = false;
-            this.loginPassword.Location = new System.Drawing.Point(6, 115);
+            this.loginPassword.Location = new System.Drawing.Point(6, 105);
             this.loginPassword.MaxLength = 32767;
             this.loginPassword.Multiline = false;
             this.loginPassword.Name = "loginPassword";
@@ -236,50 +444,6 @@
             this.infoBox.TabIndex = 0;
             this.infoBox.Visible = false;
             // 
-            // tabPage2
-            // 
-            this.tabPage2.BackColor = System.Drawing.Color.White;
-            this.tabPage2.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.tabPage2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(79)))), ((int)(((byte)(90)))));
-            this.tabPage2.Location = new System.Drawing.Point(44, 4);
-            this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(835, 230);
-            this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "tabPage2";
-            // 
-            // tabPage1
-            // 
-            this.tabPage1.BackColor = System.Drawing.Color.White;
-            this.tabPage1.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.tabPage1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(79)))), ((int)(((byte)(90)))));
-            this.tabPage1.Location = new System.Drawing.Point(44, 4);
-            this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(835, 230);
-            this.tabPage1.TabIndex = 0;
-            this.tabPage1.Text = "tabPage1";
-            // 
-            // pictureBox2
-            // 
-            this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
-            this.pictureBox2.Location = new System.Drawing.Point(6, 0);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(499, 24);
-            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox2.TabIndex = 7;
-            this.pictureBox2.TabStop = false;
-            // 
-            // newsBox
-            // 
-            this.newsBox.BackColor = System.Drawing.Color.Transparent;
-            this.newsBox.Controls.Add(this.pictureBox2);
-            this.newsBox.Location = new System.Drawing.Point(20, 221);
-            this.newsBox.Name = "newsBox";
-            this.newsBox.Size = new System.Drawing.Size(505, 232);
-            this.newsBox.TabIndex = 6;
-            this.newsBox.TabStop = false;
-            // 
             // launcherMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -287,6 +451,7 @@
             this.BackColor = System.Drawing.SystemColors.Control;
             this.BorderStyle = MetroFramework.Drawing.MetroBorderStyle.None;
             this.ClientSize = new System.Drawing.Size(923, 501);
+            this.Controls.Add(this.registerBox);
             this.Controls.Add(this.flatProgressBar1);
             this.Controls.Add(this.newsBox);
             this.Controls.Add(this.staffMessage);
@@ -308,9 +473,12 @@
             this.VisibleChanged += new System.EventHandler(this.checkOptions);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBig)).EndInit();
             this.loginBox.ResumeLayout(false);
+            this.loginBox.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.newsBox.ResumeLayout(false);
+            this.registerBox.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -335,6 +503,16 @@
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.GroupBox newsBox;
+        private System.Windows.Forms.GroupBox registerBox;
+        private FlatUI.FlatTextBox registerEmail;
+        private System.Windows.Forms.PictureBox pictureBox3;
+        private FlatUI.FlatButton registerButton;
+        private FlatUI.FlatLabel registerLabel;
+        private FlatUI.FlatTextBox registerPass;
+        private FlatUI.FlatTextBox registerUsername;
+        private FlatUI.FlatTextBox registerPassConf;
+        private System.Windows.Forms.LinkLabel registerLink;
+        private FlatUI.FlatButton registerCancel;
     }
 }
 
