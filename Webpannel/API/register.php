@@ -35,11 +35,12 @@ if (isset($_POST['username']) && isset($_POST['password']) && isset($_POST['pass
         if($user){
             $arr = array('status' => 903, 'msg' => "Cette Utilisateur ou E-mail existe deja");
         } else {
-            $req2 = $db_trak->prepare("INSERT INTO users SET username = ?, password = ?, email = ?, level = 0, ip = 0");
+            $token = troll_token();
+            $req2 = $db_trak->prepare("INSERT INTO users SET username = ?, password = ?, email = ?, level = 0, ip = 0, remember_token = ?");
             $password = password_hash($password, PASSWORD_DEFAULT, ['cost' => 12]);
-            $req2->execute([$username, $password, $email]);
+            $req2->execute([$username, $password, $email, $token]);
 
-            $arr = array('status' => 42, 'msg' => "Registered !", 'email' => $email, 'username' => $username);
+            $arr = array('status' => 42, 'msg' => "Registered !", 'email' => $email, 'username' => $username, 'token' => $token);
         }
     }
 }

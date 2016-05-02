@@ -11,11 +11,16 @@
 $db_host = "localhost";
 $db_user = "root";
 $db_pass = "root";
-$db_name = "launcher";
+$db_name = "launcher_old";
 
 /** Basic config */
 
 $siteName = "NomDeTeam";
-$apiUrl = "http://localhost/API/";
+$apiUrl = "http://localhost:8000/API/";
+
+function troll_token()
+{
+    return bin2hex(base64_encode(md5(sha1(openssl_random_pseudo_bytes(16)))));
+};
 
 
