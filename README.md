@@ -6,15 +6,15 @@ Launcher_Arma3
 ###Last push:
 Version: Building 5.0.0.2
 Functional: NO
-Release date: 02/05/2016 �01:47
+Release date: 02/05/2016 à 01:47
 
 
 ###Last functional version:
 Version: Release 4.0.0.0
 Functional: YES
-Release date: 30/04/2016 � 14:20
+Release date: 30/04/2016 à  14:20
 
-Copyright HUBERT L�o � 2014 - 2016
+Copyright HUBERT Léo © 2014 - 2016
 
 --------------------------------------------------
 
@@ -67,8 +67,8 @@ Release 3.0.0.0:
 --------------------------------------
 
 Pre-Release 2.9.3.0:
-- Fix: Checking if TaskForce is DEJE install.
-- Fix: When you reset the mods, mods that retélécharge (not before)
+- Fix: Checking if TaskForce is already installed.
+- Fix: When you reset the mods, mods that retÃ©lÃ©charge (not before)
 - Optimization: Optimization translation system.
 (Preparation of changing the script to download the mods)
 --------------------------------------
