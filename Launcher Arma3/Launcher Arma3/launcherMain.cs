@@ -14,6 +14,7 @@ using System.Collections.Specialized;
 using Newtonsoft.Json.Linq;
 using System.Net;
 using System.Diagnostics;
+using System.IO;
 
 namespace Launcher_Arma3
 {
@@ -23,16 +24,23 @@ namespace Launcher_Arma3
         /* Launcher basic config */
         string apiUrl = "http://localhost/API/";   /* Link to API launcher Arma 3 */
         string webSite = "http://emodyz.com/";
+        string serverName = "Emodyz";
 
 
         /* Variables globals */
 
+        string appdata = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "/v5.";
         bool login = false;
         bool connected = false;
         bool internet;
         string news1;
         string news2;
         string news3;
+
+        /* Session info */
+        string sessionToken = null;
+        string username = null;
+        string email = null;
 
         public launcherMain()
         {
@@ -41,7 +49,10 @@ namespace Launcher_Arma3
 
         private void launcherMain_Load(object sender, EventArgs e)
         {
-
+            if (!Directory.Exists(appdata + serverName))
+                Directory.CreateDirectory(appdata + serverName);
+            if (File.Exists(appdata + serverName + "/token.bin2hex"))
+                sessionToken = File.ReadAllText(appdata + serverName + "/token.bin2hex");
         }
 
         private void checkOptions(object sender, EventArgs e)
@@ -79,6 +90,10 @@ namespace Launcher_Arma3
                         staffMessage.Text = stuff.news_msg;
                         staffMessage.Visible = true;
                     }
+                    if (sessionToken != null)
+                    {
+                        loginWithToken();
+                    }
                     pictureBig.Visible = false;
                     internet = true;
                 }
@@ -92,6 +107,51 @@ namespace Launcher_Arma3
                 this.Style = "Red";
             }
 
+        }
+
+        void loginWithToken()
+        {
+            using (WebClient client = new WebClient())
+            {
+                byte[] response =
+                client.UploadValues(apiUrl + "getuser.php", new NameValueCollection()
+                {
+                    { "token", sessionToken}
+                });
+
+                string result = System.Text.Encoding.UTF8.GetString(response);
+                dynamic stuff = JObject.Parse(result);
+
+                checkNotif();
+
+                if (stuff.status == "42")
+                {
+                    username = stuff.username;
+                    email = stuff.email;
+                    connected = true;
+                    errorBox.Visible = false;
+                    loginBox.Visible = false;
+                    newsBox.Visible = true;
+                    succesBox.Visible = true;
+                    playerBox.Visible = true;
+                    succesBox.Text = stuff.msg;
+                    this.Style = "Green";
+                    loadNews();
+                    refreshSession();
+                }
+                else
+                {
+                    errorBox.Visible = true;
+                    errorBox.Text = stuff.msg;
+                    if (File.Exists(appdata + serverName + "/token.bin2hex"))
+                        File.Delete(appdata + serverName + "/token.bin2hex");
+                }
+            }
+        }
+
+        void refreshSession()
+        {
+            connectedAs.Text = username;
         }
 
         private void loginButton_Click(object sender, EventArgs e)
@@ -112,13 +172,24 @@ namespace Launcher_Arma3
 
                 if (stuff.status == "42")
                 {
+                    username = stuff.username;
+                    email = stuff.email;
+                    connected = true;
+                    sessionToken = stuff.token;
                     errorBox.Visible = false;
                     loginBox.Visible = false;
                     newsBox.Visible = true;
                     succesBox.Visible = true;
-                    succesBox.Text = stuff.msg;                   
+                    playerBox.Visible = true;
+                    succesBox.Text = stuff.msg;
                     this.Style = "Green";
                     loadNews();
+                    refreshSession();
+                    if (loginRemember.Checked == true)
+                    {
+                        string token = stuff.token;
+                        File.WriteAllText(appdata + serverName + "/token.bin2hex", token);
+                    }
                 }
                 else
                 {
@@ -247,6 +318,25 @@ namespace Launcher_Arma3
                 }
                 
             }
+        }
+
+        private void disconnectButton_Click(object sender, EventArgs e)
+        {
+            if (File.Exists(appdata + serverName + "/token.bin2hex"))
+                File.Delete(appdata + serverName + "/token.bin2hex");
+            loginBox.Visible = true;
+            newsBox.Visible = false;
+            playerBox.Visible = false;
+            checkNotif();
+            succesBox.Visible = true;
+            succesBox.Text = "Vous êtes bien déconnecter";
+            this.Style = "Red";
+            connected = false;
+        }
+
+        private void playerBox_Enter(object sender, EventArgs e)
+        {
+
         }
     }
 }

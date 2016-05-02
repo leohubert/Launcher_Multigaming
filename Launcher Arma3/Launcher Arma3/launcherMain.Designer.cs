@@ -42,6 +42,8 @@
             this.newsBox = new System.Windows.Forms.GroupBox();
             this.registerBox = new System.Windows.Forms.GroupBox();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
+            this.playerBox = new System.Windows.Forms.GroupBox();
+            this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.newsDate3 = new iTalk.iTalk_Label();
             this.newsDate2 = new iTalk.iTalk_Label();
             this.newsDate1 = new iTalk.iTalk_Label();
@@ -53,15 +55,11 @@
             this.newsLink1 = new iTalk.iTalk_Button_1();
             this.iTalk_Separator3 = new iTalk.iTalk_Separator();
             this.iTalk_Separator2 = new iTalk.iTalk_Separator();
-            this.registerCancel = new FlatUI.FlatButton();
-            this.registerPassConf = new FlatUI.FlatTextBox();
-            this.registerEmail = new FlatUI.FlatTextBox();
-            this.registerButton = new FlatUI.FlatButton();
-            this.registerLabel = new FlatUI.FlatLabel();
-            this.registerPass = new FlatUI.FlatTextBox();
-            this.registerUsername = new FlatUI.FlatTextBox();
+            this.disconnectButton = new MonoFlat.MonoFlat_Button();
             this.flatProgressBar1 = new FlatUI.FlatProgressBar();
             this.staffMessage = new FlatUI.FlatTextBox();
+            this.loginRememberLabel = new FlatUI.FlatLabel();
+            this.loginRemember = new FlatUI.FlatCheckBox();
             this.loginButton = new FlatUI.FlatButton();
             this.loginLabel = new FlatUI.FlatLabel();
             this.loginPassword = new FlatUI.FlatTextBox();
@@ -69,6 +67,15 @@
             this.errorBox = new FlatUI.FlatAlertBox();
             this.succesBox = new FlatUI.FlatAlertBox();
             this.infoBox = new FlatUI.FlatAlertBox();
+            this.registerCancel = new FlatUI.FlatButton();
+            this.registerPassConf = new FlatUI.FlatTextBox();
+            this.registerEmail = new FlatUI.FlatTextBox();
+            this.registerButton = new FlatUI.FlatButton();
+            this.registerLabel = new FlatUI.FlatLabel();
+            this.registerPass = new FlatUI.FlatTextBox();
+            this.registerUsername = new FlatUI.FlatTextBox();
+            this.connectedLabel = new FlatUI.FlatLabel();
+            this.connectedAs = new FlatUI.FlatLabel();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBig)).BeginInit();
             this.loginBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -76,6 +83,8 @@
             this.newsBox.SuspendLayout();
             this.registerBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
+            this.playerBox.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             this.SuspendLayout();
             // 
             // pictureBig
@@ -102,6 +111,8 @@
             // loginBox
             // 
             this.loginBox.BackColor = System.Drawing.Color.Transparent;
+            this.loginBox.Controls.Add(this.loginRememberLabel);
+            this.loginBox.Controls.Add(this.loginRemember);
             this.loginBox.Controls.Add(this.registerLink);
             this.loginBox.Controls.Add(this.pictureBox1);
             this.loginBox.Controls.Add(this.loginButton);
@@ -111,7 +122,7 @@
             this.loginBox.Font = new System.Drawing.Font("Franklin Gothic Medium", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.loginBox.Location = new System.Drawing.Point(321, 151);
             this.loginBox.Name = "loginBox";
-            this.loginBox.Size = new System.Drawing.Size(258, 204);
+            this.loginBox.Size = new System.Drawing.Size(258, 227);
             this.loginBox.TabIndex = 4;
             this.loginBox.TabStop = false;
             this.loginBox.Visible = false;
@@ -119,7 +130,7 @@
             // registerLink
             // 
             this.registerLink.AutoSize = true;
-            this.registerLink.Location = new System.Drawing.Point(74, 180);
+            this.registerLink.Location = new System.Drawing.Point(71, 201);
             this.registerLink.Name = "registerLink";
             this.registerLink.Size = new System.Drawing.Size(113, 21);
             this.registerLink.TabIndex = 6;
@@ -222,6 +233,30 @@
             this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox3.TabIndex = 5;
             this.pictureBox3.TabStop = false;
+            // 
+            // playerBox
+            // 
+            this.playerBox.Controls.Add(this.connectedAs);
+            this.playerBox.Controls.Add(this.connectedLabel);
+            this.playerBox.Controls.Add(this.disconnectButton);
+            this.playerBox.Controls.Add(this.pictureBox4);
+            this.playerBox.Location = new System.Drawing.Point(20, 111);
+            this.playerBox.Name = "playerBox";
+            this.playerBox.Size = new System.Drawing.Size(282, 139);
+            this.playerBox.TabIndex = 9;
+            this.playerBox.TabStop = false;
+            this.playerBox.Visible = false;
+            // 
+            // pictureBox4
+            // 
+            this.pictureBox4.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBox4.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox4.Image")));
+            this.pictureBox4.Location = new System.Drawing.Point(-3, 0);
+            this.pictureBox4.Name = "pictureBox4";
+            this.pictureBox4.Size = new System.Drawing.Size(285, 24);
+            this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox4.TabIndex = 10;
+            this.pictureBox4.TabStop = false;
             // 
             // newsDate3
             // 
@@ -353,6 +388,185 @@
             this.iTalk_Separator2.TabIndex = 10;
             this.iTalk_Separator2.Text = "iTalk_Separator2";
             // 
+            // disconnectButton
+            // 
+            this.disconnectButton.BackColor = System.Drawing.Color.Transparent;
+            this.disconnectButton.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.disconnectButton.Image = null;
+            this.disconnectButton.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.disconnectButton.Location = new System.Drawing.Point(6, 94);
+            this.disconnectButton.Name = "disconnectButton";
+            this.disconnectButton.Size = new System.Drawing.Size(270, 39);
+            this.disconnectButton.TabIndex = 11;
+            this.disconnectButton.Text = "Se déconnecter";
+            this.disconnectButton.TextAlignment = System.Drawing.StringAlignment.Center;
+            this.disconnectButton.Click += new System.EventHandler(this.disconnectButton_Click);
+            // 
+            // flatProgressBar1
+            // 
+            this.flatProgressBar1.BackColor = System.Drawing.SystemColors.Control;
+            this.flatProgressBar1.DarkerProgress = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(148)))), ((int)(((byte)(92)))));
+            this.flatProgressBar1.Location = new System.Drawing.Point(20, 439);
+            this.flatProgressBar1.Maximum = 100;
+            this.flatProgressBar1.Name = "flatProgressBar1";
+            this.flatProgressBar1.Pattern = true;
+            this.flatProgressBar1.PercentSign = false;
+            this.flatProgressBar1.ProgressColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(168)))), ((int)(((byte)(109)))));
+            this.flatProgressBar1.ShowBalloon = true;
+            this.flatProgressBar1.Size = new System.Drawing.Size(883, 42);
+            this.flatProgressBar1.TabIndex = 8;
+            this.flatProgressBar1.Text = "flatProgressBar1";
+            this.flatProgressBar1.Value = 50;
+            this.flatProgressBar1.Visible = false;
+            // 
+            // staffMessage
+            // 
+            this.staffMessage.BackColor = System.Drawing.Color.Transparent;
+            this.staffMessage.FocusOnHover = false;
+            this.staffMessage.Font = new System.Drawing.Font("Arial Black", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.staffMessage.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.staffMessage.Location = new System.Drawing.Point(215, 25);
+            this.staffMessage.MaxLength = 32767;
+            this.staffMessage.Multiline = false;
+            this.staffMessage.Name = "staffMessage";
+            this.staffMessage.ReadOnly = true;
+            this.staffMessage.Size = new System.Drawing.Size(639, 27);
+            this.staffMessage.TabIndex = 5;
+            this.staffMessage.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.staffMessage.TextColor = System.Drawing.Color.Gray;
+            this.staffMessage.UseSystemPasswordChar = false;
+            this.staffMessage.Visible = false;
+            // 
+            // loginRememberLabel
+            // 
+            this.loginRememberLabel.BackColor = System.Drawing.Color.Transparent;
+            this.loginRememberLabel.Cursor = System.Windows.Forms.Cursors.Default;
+            this.loginRememberLabel.Font = new System.Drawing.Font("Arial Black", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.loginRememberLabel.ForeColor = System.Drawing.SystemColors.WindowFrame;
+            this.loginRememberLabel.Location = new System.Drawing.Point(34, 140);
+            this.loginRememberLabel.Name = "loginRememberLabel";
+            this.loginRememberLabel.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.loginRememberLabel.Size = new System.Drawing.Size(199, 22);
+            this.loginRememberLabel.TabIndex = 9;
+            this.loginRememberLabel.Text = "Se souvenir de moi\r\n";
+            // 
+            // loginRemember
+            // 
+            this.loginRemember.BackColor = System.Drawing.SystemColors.Control;
+            this.loginRemember.BaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(47)))), ((int)(((byte)(49)))));
+            this.loginRemember.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(168)))), ((int)(((byte)(109)))));
+            this.loginRemember.Checked = false;
+            this.loginRemember.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.loginRemember.Font = new System.Drawing.Font("Segoe Script", 10F);
+            this.loginRemember.ForeColor = System.Drawing.Color.YellowGreen;
+            this.loginRemember.Location = new System.Drawing.Point(7, 136);
+            this.loginRemember.Name = "loginRemember";
+            this.loginRemember.Options = FlatUI.FlatCheckBox._Options.Style1;
+            this.loginRemember.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.loginRemember.Size = new System.Drawing.Size(22, 22);
+            this.loginRemember.TabIndex = 7;
+            this.loginRemember.Text = "Bite";
+            // 
+            // loginButton
+            // 
+            this.loginButton.BackColor = System.Drawing.Color.Transparent;
+            this.loginButton.BaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(168)))), ((int)(((byte)(109)))));
+            this.loginButton.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.loginButton.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.loginButton.Location = new System.Drawing.Point(42, 168);
+            this.loginButton.Name = "loginButton";
+            this.loginButton.Rounded = false;
+            this.loginButton.Size = new System.Drawing.Size(162, 32);
+            this.loginButton.TabIndex = 4;
+            this.loginButton.Text = "Se connecter";
+            this.loginButton.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(243)))), ((int)(((byte)(243)))));
+            this.loginButton.Click += new System.EventHandler(this.loginButton_Click);
+            // 
+            // loginLabel
+            // 
+            this.loginLabel.BackColor = System.Drawing.Color.Transparent;
+            this.loginLabel.Cursor = System.Windows.Forms.Cursors.Default;
+            this.loginLabel.Font = new System.Drawing.Font("Arial Black", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.loginLabel.ForeColor = System.Drawing.SystemColors.WindowFrame;
+            this.loginLabel.Location = new System.Drawing.Point(6, 27);
+            this.loginLabel.Name = "loginLabel";
+            this.loginLabel.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.loginLabel.Size = new System.Drawing.Size(246, 36);
+            this.loginLabel.TabIndex = 3;
+            this.loginLabel.Text = "Afin de rejoindre notre serveur\r\n veuillez vous connecter\r\n";
+            this.loginLabel.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // loginPassword
+            // 
+            this.loginPassword.BackColor = System.Drawing.Color.Transparent;
+            this.loginPassword.FocusOnHover = false;
+            this.loginPassword.Location = new System.Drawing.Point(6, 105);
+            this.loginPassword.MaxLength = 32767;
+            this.loginPassword.Multiline = false;
+            this.loginPassword.Name = "loginPassword";
+            this.loginPassword.ReadOnly = false;
+            this.loginPassword.Size = new System.Drawing.Size(246, 29);
+            this.loginPassword.TabIndex = 2;
+            this.loginPassword.Text = "0000";
+            this.loginPassword.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.loginPassword.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.loginPassword.UseSystemPasswordChar = true;
+            // 
+            // loginUsername
+            // 
+            this.loginUsername.BackColor = System.Drawing.Color.Transparent;
+            this.loginUsername.FocusOnHover = false;
+            this.loginUsername.Location = new System.Drawing.Point(6, 70);
+            this.loginUsername.MaxLength = 32767;
+            this.loginUsername.Multiline = false;
+            this.loginUsername.Name = "loginUsername";
+            this.loginUsername.ReadOnly = false;
+            this.loginUsername.Size = new System.Drawing.Size(246, 29);
+            this.loginUsername.TabIndex = 1;
+            this.loginUsername.Text = "Username or Email";
+            this.loginUsername.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.loginUsername.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.loginUsername.UseSystemPasswordChar = false;
+            // 
+            // errorBox
+            // 
+            this.errorBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(70)))), ((int)(((byte)(73)))));
+            this.errorBox.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.errorBox.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
+            this.errorBox.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.errorBox.kind = FlatUI.FlatAlertBox._Kind.Error;
+            this.errorBox.Location = new System.Drawing.Point(249, 63);
+            this.errorBox.Name = "errorBox";
+            this.errorBox.Size = new System.Drawing.Size(426, 42);
+            this.errorBox.TabIndex = 2;
+            this.errorBox.Visible = false;
+            // 
+            // succesBox
+            // 
+            this.succesBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(70)))), ((int)(((byte)(73)))));
+            this.succesBox.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.succesBox.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.succesBox.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.succesBox.kind = FlatUI.FlatAlertBox._Kind.Success;
+            this.succesBox.Location = new System.Drawing.Point(249, 63);
+            this.succesBox.Name = "succesBox";
+            this.succesBox.Size = new System.Drawing.Size(426, 42);
+            this.succesBox.TabIndex = 1;
+            this.succesBox.Visible = false;
+            // 
+            // infoBox
+            // 
+            this.infoBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(70)))), ((int)(((byte)(73)))));
+            this.infoBox.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.infoBox.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.infoBox.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.infoBox.kind = FlatUI.FlatAlertBox._Kind.Info;
+            this.infoBox.Location = new System.Drawing.Point(249, 63);
+            this.infoBox.Name = "infoBox";
+            this.infoBox.Size = new System.Drawing.Size(426, 42);
+            this.infoBox.TabIndex = 0;
+            this.infoBox.Visible = false;
+            // 
             // registerCancel
             // 
             this.registerCancel.BackColor = System.Drawing.Color.Transparent;
@@ -461,140 +675,31 @@
             this.registerUsername.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
             this.registerUsername.UseSystemPasswordChar = false;
             // 
-            // flatProgressBar1
+            // connectedLabel
             // 
-            this.flatProgressBar1.BackColor = System.Drawing.SystemColors.Control;
-            this.flatProgressBar1.DarkerProgress = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(148)))), ((int)(((byte)(92)))));
-            this.flatProgressBar1.Location = new System.Drawing.Point(20, 439);
-            this.flatProgressBar1.Maximum = 100;
-            this.flatProgressBar1.Name = "flatProgressBar1";
-            this.flatProgressBar1.Pattern = true;
-            this.flatProgressBar1.PercentSign = false;
-            this.flatProgressBar1.ProgressColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(168)))), ((int)(((byte)(109)))));
-            this.flatProgressBar1.ShowBalloon = true;
-            this.flatProgressBar1.Size = new System.Drawing.Size(883, 42);
-            this.flatProgressBar1.TabIndex = 8;
-            this.flatProgressBar1.Text = "flatProgressBar1";
-            this.flatProgressBar1.Value = 50;
-            this.flatProgressBar1.Visible = false;
+            this.connectedLabel.AutoSize = true;
+            this.connectedLabel.BackColor = System.Drawing.Color.Transparent;
+            this.connectedLabel.Font = new System.Drawing.Font("Microsoft Tai Le", 8F, System.Drawing.FontStyle.Bold);
+            this.connectedLabel.ForeColor = System.Drawing.Color.Green;
+            this.connectedLabel.Location = new System.Drawing.Point(6, 36);
+            this.connectedLabel.Name = "connectedLabel";
+            this.connectedLabel.Size = new System.Drawing.Size(125, 14);
+            this.connectedLabel.TabIndex = 12;
+            this.connectedLabel.Text = "Connecté en tant que :";
             // 
-            // staffMessage
+            // connectedAs
             // 
-            this.staffMessage.BackColor = System.Drawing.Color.Transparent;
-            this.staffMessage.FocusOnHover = false;
-            this.staffMessage.Font = new System.Drawing.Font("Arial Black", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.staffMessage.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.staffMessage.Location = new System.Drawing.Point(215, 25);
-            this.staffMessage.MaxLength = 32767;
-            this.staffMessage.Multiline = false;
-            this.staffMessage.Name = "staffMessage";
-            this.staffMessage.ReadOnly = true;
-            this.staffMessage.Size = new System.Drawing.Size(639, 27);
-            this.staffMessage.TabIndex = 5;
-            this.staffMessage.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.staffMessage.TextColor = System.Drawing.Color.Gray;
-            this.staffMessage.UseSystemPasswordChar = false;
-            this.staffMessage.Visible = false;
-            // 
-            // loginButton
-            // 
-            this.loginButton.BackColor = System.Drawing.Color.Transparent;
-            this.loginButton.BaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(168)))), ((int)(((byte)(109)))));
-            this.loginButton.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.loginButton.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.loginButton.Location = new System.Drawing.Point(45, 147);
-            this.loginButton.Name = "loginButton";
-            this.loginButton.Rounded = false;
-            this.loginButton.Size = new System.Drawing.Size(162, 32);
-            this.loginButton.TabIndex = 4;
-            this.loginButton.Text = "Se connecter";
-            this.loginButton.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(243)))), ((int)(((byte)(243)))));
-            this.loginButton.Click += new System.EventHandler(this.loginButton_Click);
-            // 
-            // loginLabel
-            // 
-            this.loginLabel.BackColor = System.Drawing.Color.Transparent;
-            this.loginLabel.Cursor = System.Windows.Forms.Cursors.Default;
-            this.loginLabel.Font = new System.Drawing.Font("Arial Black", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.loginLabel.ForeColor = System.Drawing.SystemColors.WindowFrame;
-            this.loginLabel.Location = new System.Drawing.Point(6, 27);
-            this.loginLabel.Name = "loginLabel";
-            this.loginLabel.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.loginLabel.Size = new System.Drawing.Size(246, 36);
-            this.loginLabel.TabIndex = 3;
-            this.loginLabel.Text = "Afin de rejoindre notre serveur\r\n veuillez vous connecter\r\n";
-            this.loginLabel.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            // 
-            // loginPassword
-            // 
-            this.loginPassword.BackColor = System.Drawing.Color.Transparent;
-            this.loginPassword.FocusOnHover = false;
-            this.loginPassword.Location = new System.Drawing.Point(6, 105);
-            this.loginPassword.MaxLength = 32767;
-            this.loginPassword.Multiline = false;
-            this.loginPassword.Name = "loginPassword";
-            this.loginPassword.ReadOnly = false;
-            this.loginPassword.Size = new System.Drawing.Size(246, 29);
-            this.loginPassword.TabIndex = 2;
-            this.loginPassword.Text = "0000";
-            this.loginPassword.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.loginPassword.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
-            this.loginPassword.UseSystemPasswordChar = true;
-            // 
-            // loginUsername
-            // 
-            this.loginUsername.BackColor = System.Drawing.Color.Transparent;
-            this.loginUsername.FocusOnHover = false;
-            this.loginUsername.Location = new System.Drawing.Point(6, 70);
-            this.loginUsername.MaxLength = 32767;
-            this.loginUsername.Multiline = false;
-            this.loginUsername.Name = "loginUsername";
-            this.loginUsername.ReadOnly = false;
-            this.loginUsername.Size = new System.Drawing.Size(246, 29);
-            this.loginUsername.TabIndex = 1;
-            this.loginUsername.Text = "Username or Email";
-            this.loginUsername.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.loginUsername.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
-            this.loginUsername.UseSystemPasswordChar = false;
-            // 
-            // errorBox
-            // 
-            this.errorBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(70)))), ((int)(((byte)(73)))));
-            this.errorBox.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.errorBox.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
-            this.errorBox.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.errorBox.kind = FlatUI.FlatAlertBox._Kind.Error;
-            this.errorBox.Location = new System.Drawing.Point(249, 63);
-            this.errorBox.Name = "errorBox";
-            this.errorBox.Size = new System.Drawing.Size(426, 42);
-            this.errorBox.TabIndex = 2;
-            this.errorBox.Visible = false;
-            // 
-            // succesBox
-            // 
-            this.succesBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(70)))), ((int)(((byte)(73)))));
-            this.succesBox.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.succesBox.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.succesBox.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.succesBox.kind = FlatUI.FlatAlertBox._Kind.Success;
-            this.succesBox.Location = new System.Drawing.Point(249, 63);
-            this.succesBox.Name = "succesBox";
-            this.succesBox.Size = new System.Drawing.Size(426, 42);
-            this.succesBox.TabIndex = 1;
-            this.succesBox.Visible = false;
-            // 
-            // infoBox
-            // 
-            this.infoBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(70)))), ((int)(((byte)(73)))));
-            this.infoBox.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.infoBox.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.infoBox.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.infoBox.kind = FlatUI.FlatAlertBox._Kind.Info;
-            this.infoBox.Location = new System.Drawing.Point(249, 63);
-            this.infoBox.Name = "infoBox";
-            this.infoBox.Size = new System.Drawing.Size(426, 42);
-            this.infoBox.TabIndex = 0;
-            this.infoBox.Visible = false;
+            this.connectedAs.BackColor = System.Drawing.Color.Transparent;
+            this.connectedAs.Cursor = System.Windows.Forms.Cursors.Default;
+            this.connectedAs.Font = new System.Drawing.Font("Arial Black", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.connectedAs.ForeColor = System.Drawing.SystemColors.WindowFrame;
+            this.connectedAs.Location = new System.Drawing.Point(137, 33);
+            this.connectedAs.Name = "connectedAs";
+            this.connectedAs.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.connectedAs.Size = new System.Drawing.Size(139, 22);
+            this.connectedAs.TabIndex = 10;
+            this.connectedAs.Text = "NULL";
+            this.connectedAs.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // launcherMain
             // 
@@ -604,7 +709,7 @@
             this.BorderStyle = MetroFramework.Drawing.MetroBorderStyle.None;
             this.ClientSize = new System.Drawing.Size(923, 501);
             this.Controls.Add(this.newsBox);
-            this.Controls.Add(this.registerBox);
+            this.Controls.Add(this.playerBox);
             this.Controls.Add(this.flatProgressBar1);
             this.Controls.Add(this.staffMessage);
             this.Controls.Add(this.loginBox);
@@ -612,6 +717,7 @@
             this.Controls.Add(this.succesBox);
             this.Controls.Add(this.infoBox);
             this.Controls.Add(this.pictureBig);
+            this.Controls.Add(this.registerBox);
             this.ForeColor = System.Drawing.Color.Black;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
@@ -632,6 +738,9 @@
             this.newsBox.PerformLayout();
             this.registerBox.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
+            this.playerBox.ResumeLayout(false);
+            this.playerBox.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -677,6 +786,13 @@
         private iTalk.iTalk_Label newsDate3;
         private iTalk.iTalk_Label newsDate2;
         private iTalk.iTalk_Label newsDate1;
+        private FlatUI.FlatCheckBox loginRemember;
+        private FlatUI.FlatLabel loginRememberLabel;
+        private System.Windows.Forms.GroupBox playerBox;
+        private System.Windows.Forms.PictureBox pictureBox4;
+        private MonoFlat.MonoFlat_Button disconnectButton;
+        private FlatUI.FlatLabel connectedLabel;
+        private FlatUI.FlatLabel connectedAs;
     }
 }
 

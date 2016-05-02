@@ -117,7 +117,7 @@ namespace FlatUI
 			BackColor = Color.FromArgb(60, 70, 73);
 			Cursor = Cursors.Hand;
 			Font = new Font("Segoe UI", 10);
-			Size = new Size(112, 22);
+            Size = new Size(112, 22);
 		}
 
 		protected override void OnPaint(PaintEventArgs e)
