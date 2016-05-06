@@ -36,8 +36,9 @@
     <ApplicationIcon>favicon.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="MetroFramework">
-      <HintPath>..\..\..\..\..\Desktop\thielj-MetroFramework-fb0d0c3\MetroFramework.Fonts\bin\Release\MetroFramework.dll</HintPath>
+    <Reference Include="MetroFramework, Version=1.2.0.3, Culture=neutral, PublicKeyToken=5f91a84759bf584a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\Desktop\MetroFramework.dll</HintPath>
     </Reference>
     <Reference Include="MetroFramework.Design">
       <HintPath>..\..\..\..\..\Desktop\dennismagno-metroframework-modern-ui-cbe697a\MetroFramework.Design\bin\Release\MetroFramework.Design.dll</HintPath>
@@ -47,6 +48,9 @@
     </Reference>
     <Reference Include="Newtonsoft.Json">
       <HintPath>D:\Manda Game\LauncherMandaGame\theme\bin\Debug\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="RestSharp">
+      <HintPath>..\..\..\..\..\Desktop\RestSharp.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -171,6 +175,9 @@
   <ItemGroup>
     <Content Include="favicon.ico" />
     <Content Include="Themes\Flat UI\FlatUI.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

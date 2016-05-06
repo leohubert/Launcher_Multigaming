@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using MetroFramework.Forms;
 using MetroFramework;
 using MetroFramework.Animation;
 using MetroFramework.Components;
@@ -15,6 +16,7 @@ using Newtonsoft.Json.Linq;
 using System.Net;
 using System.Diagnostics;
 using System.IO;
+using RestSharp;
 
 namespace Launcher_Arma3
 {
@@ -22,7 +24,7 @@ namespace Launcher_Arma3
     {
 
         /* Launcher basic config */
-        string apiUrl = "http://localhost/API/";   /* Link to API launcher Arma 3 */
+        string apiUrl = "http://localhost/public/api/";   /* Link to API launcher Arma 3 */
         string webSite = "http://emodyz.com/";
         string serverName = "Emodyz";
 
@@ -41,6 +43,7 @@ namespace Launcher_Arma3
         string sessionToken = null;
         string username = null;
         string email = null;
+        string level = null;
 
         public launcherMain()
         {
@@ -59,44 +62,44 @@ namespace Launcher_Arma3
         {
             try
             {
-                using (WebClient client = new WebClient())
+                var client = new RestClient(apiUrl);
+
+                var request = new RestRequest("options", Method.GET);
+
+                IRestResponse response = client.Execute(request);
+                var content = response.Content;
+
+                dynamic res = JObject.Parse(content.ToString());
+
+                if (res.maintenance == "1")
                 {
-
-                    byte[] response =
-                    client.UploadValues(apiUrl + "options.php", new NameValueCollection());
-                    string result = System.Text.Encoding.UTF8.GetString(response);
-                    dynamic stuff = JObject.Parse(result);
-
-                    if (stuff.maintenance == "1")
-                    {
-                        infoBox.Visible = true;
-                        infoBox.Text = stuff.maintenance_msg;
-                        pictureBig.ImageLocation = stuff.maintenance_image;
-                        this.Style = "Orange";
-                        return;
-                    }
-                    if (stuff.login == "1")
-                    {
-                        login = true;
-                        loginBox.Visible = true;
-                        this.Style = "Red";
-                    }
-                    if (stuff.register == "1")
-                    {                        
-                        registerLink.Visible = true;           
-                    }
-                    if (stuff.news == "1")
-                    {
-                        staffMessage.Text = stuff.news_msg;
-                        staffMessage.Visible = true;
-                    }
-                    if (sessionToken != null)
-                    {
-                        loginWithToken();
-                    }
-                    pictureBig.Visible = false;
-                    internet = true;
+                    infoBox.Visible = true;
+                    infoBox.Text = res.maintenance_msg;
+                    pictureBig.ImageLocation = res.maintenance_image;
+                    changeStatus("Orange");
+                    return;
                 }
+                if (res.login == "1")
+                {
+                    login = true;
+                    loginBox.Visible = true;
+                    changeStatus("Red");
+                }
+                if (res.register == "1")
+                {
+                    registerLink.Visible = true;
+                }
+                if (res.news == "1")
+                {
+                    staffMessage.Text = res.news_msg;
+                    staffMessage.Visible = true;
+                }
+                if (sessionToken != null)
+                {
+                    loginWithToken();
+                }
+                pictureBig.Visible = false;
+                internet = true;
             }
             catch
             {
@@ -104,109 +107,124 @@ namespace Launcher_Arma3
                 errorBox.Text = "Error #404: Internet or Serveur not found.";
                 internet = false;
                 pictureBig.Visible = false;
-                this.Style = "Red";
+                changeStatus("Red");
             }
 
         }
 
         void loginWithToken()
         {
-            using (WebClient client = new WebClient())
+            var client = new RestClient(apiUrl);
+
+            var request = new RestRequest("user/get", Method.POST);
+
+            request.AddParameter("token", sessionToken);
+
+            IRestResponse response = client.Execute(request);
+            var content = response.Content;
+
+            dynamic res = JObject.Parse(content.ToString());
+
+            checkNotif();
+
+            if (res.status == "42")
             {
-                byte[] response =
-                client.UploadValues(apiUrl + "getuser.php", new NameValueCollection()
-                {
-                    { "token", sessionToken}
-                });
-
-                string result = System.Text.Encoding.UTF8.GetString(response);
-                dynamic stuff = JObject.Parse(result);
-
-                checkNotif();
-
-                if (stuff.status == "42")
-                {
-                    username = stuff.username;
-                    email = stuff.email;
-                    connected = true;
-                    errorBox.Visible = false;
-                    loginBox.Visible = false;
-                    newsBox.Visible = true;
-                    succesBox.Visible = true;
-                    playerBox.Visible = true;
-                    succesBox.Text = stuff.msg;
-                    this.Style = "Green";
-                    loadNews();
-                    refreshSession();
-                }
-                else
-                {
-                    errorBox.Visible = true;
-                    errorBox.Text = stuff.msg;
-                    if (File.Exists(appdata + serverName + "/token.bin2hex"))
-                        File.Delete(appdata + serverName + "/token.bin2hex");
-                }
+                username = res.user.username;
+                email = res.user.email;
+                level = res.user.level;
+                connected = true;
+                loginBox.Visible = false;
+                newsBox.Visible = true;
+                succesBox.Visible = true;
+                playerBox.Visible = true;
+                succesBox.Text = res.msg;
+                changeStatus("Green");
+                loadNews();
+                refreshSession();
+            }
+            else
+            {
+                errorBox.Visible = true;
+                errorBox.Text = res.msg;
+                if (File.Exists(appdata + serverName + "/token.bin2hex"))
+                    File.Delete(appdata + serverName + "/token.bin2hex");
             }
         }
 
         void refreshSession()
         {
             connectedAs.Text = username;
+            userEmailLabel.Text = email;
+            switch (level)
+            {
+                case "0":
+                    playerAdminLabel.Text = "Joueur";
+                    playerAdminLabel.ForeColor = Color.BlueViolet;
+                    break;
+                case "1":
+                    playerAdminLabel.Text = "Admin";
+                    playerAdminLabel.ForeColor = Color.Red;
+                    break;
+                default:
+                    playerAdminLabel.Text = "INCONNU";
+                    playerAdminLabel.ForeColor = Color.OrangeRed;
+                    break;
+            }
         }
 
         private void loginButton_Click(object sender, EventArgs e)
         {
-            using (WebClient client = new WebClient())
+            var client = new RestClient(apiUrl);
+
+            var request = new RestRequest("user/login", Method.POST);
+
+            request.AddParameter("username", loginUsername.Text);
+            request.AddParameter("password", loginPassword.Text);
+
+            IRestResponse response = client.Execute(request);
+            var content = response.Content;
+
+            dynamic res = JObject.Parse(content.ToString());
+
+            checkNotif();
+
+            if (res.status == "42")
             {
-                byte[] response =
-                client.UploadValues(apiUrl + "login.php", new NameValueCollection()
+                username = res.user.username;
+                email = res.user.email;
+                level = res.user.level;
+                sessionToken = res.user.token;
+                connected = true;
+                loginBox.Visible = false;
+                newsBox.Visible = true;
+                succesBox.Visible = true;
+                playerBox.Visible = true;
+                succesBox.Text = res.msg;
+                changeStatus("Green");
+                loadNews();
+                refreshSession();
+                if (loginRemember.Checked == true)
                 {
-                    { "login", loginUsername.Text},
-                    { "password", loginPassword.Text}
-                });
-
-                string result = System.Text.Encoding.UTF8.GetString(response);
-                dynamic stuff = JObject.Parse(result);
-
-                checkNotif();
-
-                if (stuff.status == "42")
-                {
-                    username = stuff.username;
-                    email = stuff.email;
-                    connected = true;
-                    sessionToken = stuff.token;
-                    errorBox.Visible = false;
-                    loginBox.Visible = false;
-                    newsBox.Visible = true;
-                    succesBox.Visible = true;
-                    playerBox.Visible = true;
-                    succesBox.Text = stuff.msg;
-                    this.Style = "Green";
-                    loadNews();
-                    refreshSession();
-                    if (loginRemember.Checked == true)
-                    {
-                        string token = stuff.token;
-                        File.WriteAllText(appdata + serverName + "/token.bin2hex", token);
-                    }
-                }
-                else
-                {
-                    errorBox.Visible = true;
-                    errorBox.Text = stuff.msg;
+                    string token = res.user.token;
+                    File.WriteAllText(appdata + serverName + "/token.bin2hex", token);
                 }
             }
+            else
+            {
+                errorBox.Visible = true;
+                errorBox.Text = res.msg;
+            }
+
         }
 
         void checkNotif()
         {
             /* Ne me demandez pas pourquoi ça marche moi même je ne pige pas xD */
-            if (errorBox.Visible == false)
+            if (errorBox.Visible == true)
                 errorBox.Visible = false;
-            if (infoBox.Visible == false)
+            if (infoBox.Visible == true)
                 infoBox.Visible = false;
-            if (succesBox.Visible == false)
+            if (succesBox.Visible == true)
                 succesBox.Visible = false;
         }
 
@@ -214,47 +232,49 @@ namespace Launcher_Arma3
         {
             loginBox.Visible = false;
             registerBox.Visible = true;
-            this.Style = "Blue";
+            changeStatus("Blue");
         }
 
         private void registerCancel_Click(object sender, EventArgs e)
         {
             loginBox.Visible = true;
             registerBox.Visible = false;
-            this.Style = "Red";
+            changeStatus("Red");
         }
 
         private void registerButton_Click(object sender, EventArgs e)
         {
-            using (WebClient client = new WebClient())
+            var client = new RestClient(apiUrl);
+
+            var request = new RestRequest("user", Method.POST);
+
+            request.AddParameter("launcher", 1);
+            request.AddParameter("username", registerUsername.Text);
+            request.AddParameter("email", registerEmail.Text);
+            request.AddParameter("password", registerPass.Text);
+            request.AddParameter("password_confirmation", registerPassConf.Text);
+
+            IRestResponse response = client.Execute(request);
+            var content = response.Content;
+
+            dynamic res = JObject.Parse(content.ToString());
+
+            checkNotif();
+
+            if (res.status == "42")
             {
-                byte[] response =
-                client.UploadValues(apiUrl + "register.php", new NameValueCollection()
-                {
-                    { "username", registerUsername.Text},
-                    { "email", registerEmail.Text},
-                    { "password_conf", registerPassConf.Text},
-                    { "password", registerPass.Text}
-                });
-
-                string result = System.Text.Encoding.UTF8.GetString(response);
-                dynamic stuff = JObject.Parse(result);
-
-                checkNotif();
-
-                if (stuff.status == "42")
-                {
-                    succesBox.Visible = true;
-                    succesBox.Text = stuff.msg;
-                    registerBox.Visible = false;
-                    loginBox.Visible = true;                 
-                    this.Style = "Red";
-                }
-                else
-                {
-                    errorBox.Visible = true;
-                    errorBox.Text = stuff.msg;
-                }
+                succesBox.Visible = true;
+                succesBox.Text = res.msg;
+                registerBox.Visible = false;
+                loginBox.Visible = true;
+                changeStatus("Red");
+                sessionToken = res.user.token;
+                loginWithToken();
+            }
+            else
+            {
+                errorBox.Visible = true;
+                errorBox.Text = res.msg;
             }
         }
 
@@ -289,35 +309,34 @@ namespace Launcher_Arma3
         }
 
         void loadNews()
-        {
-            using (WebClient client = new WebClient())
+        {/*
+            var client = new RestClient(apiUrl);
+
+            var request = new RestRequest("user", Method.POST);
+
+            IRestResponse response = client.Execute(request);
+            var content = response.Content;
+
+            dynamic res = JObject.Parse(content.ToString());
+
+            if (res.total > "0")
             {
-
-                byte[] response =
-                client.UploadValues(apiUrl + "news.php", new NameValueCollection());
-                string result = System.Text.Encoding.UTF8.GetString(response);
-                dynamic stuff = JObject.Parse(result);
-
-                if (stuff.total > "0")
-                {
-                    newsLabel1.Text = stuff.news0.title;
-                    newsDate1.Text = stuff.news0.date;
-                    news1 = stuff.news0.link;
-                }
-                if (stuff.total > "1")
-                {
-                    newsLabel2.Text = stuff.news1.title;
-                    newsDate2.Text = stuff.news1.date;
-                    news2 = stuff.news1.link;
-                }
-                if (stuff.total > "2")
-                {
-                    newsLabel3.Text = stuff.news2.title;
-                    newsDate3.Text = stuff.news2.date;
-                    news3 = stuff.news2.link;
-                }
-                
+                newsLabel1.Text = res.news0.title;
+                newsDate1.Text = res.news0.date;
+                news1 = res.news0.link;
             }
+            if (res.total > "1")
+            {
+                newsLabel2.Text = res.news1.title;
+                newsDate2.Text = res.news1.date;
+                news2 = res.news1.link;
+            }
+            if (res.total > "2")
+            {
+                newsLabel3.Text = res.news2.title;
+                newsDate3.Text = res.news2.date;
+                news3 = res.news2.link;
+            }*/
         }
 
         private void disconnectButton_Click(object sender, EventArgs e)
@@ -325,18 +344,39 @@ namespace Launcher_Arma3
             if (File.Exists(appdata + serverName + "/token.bin2hex"))
                 File.Delete(appdata + serverName + "/token.bin2hex");
             loginBox.Visible = true;
+            loginPassword.Text = "0000";
+            loginRemember.Checked = false;
+            loginUsername.Text = "Username";
             newsBox.Visible = false;
             playerBox.Visible = false;
             checkNotif();
             succesBox.Visible = true;
             succesBox.Text = "Vous êtes bien déconnecter";
-            this.Style = "Red";
             connected = false;
+            changeStatus("Red");
         }
 
-        private void playerBox_Enter(object sender, EventArgs e)
+        void changeStatus(string style)
         {
-
+            switch (style)
+            {
+                case "Red":
+                    this.Style = MetroColorStyle.Red;
+                    break;
+                case "Green":
+                    this.Style = MetroColorStyle.Green;
+                    break;
+                case "Blue":
+                    this.Style = MetroColorStyle.Blue;
+                    break;
+                case "Orange":
+                    this.Style = MetroColorStyle.Orange;
+                    break;
+                default:
+                    this.Style = MetroColorStyle.Teal;
+                    break;
+            }
+            this.Refresh();
         }
     }
 }

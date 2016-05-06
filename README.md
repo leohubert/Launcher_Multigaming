@@ -4,9 +4,9 @@ Launcher_Arma3
 -------------[ Launcher Information ]-------------
 
 ###Last push:
-Version: Building 5.0.0.2
+Version: Building 5.0.0.3
 Functional: NO
-Release date: 02/05/2016 à 01:47
+Release date: 06/05/2016 à 03:37
 
 
 ###Last functional version:
@@ -20,6 +20,15 @@ Copyright HUBERT Léo © 2014 - 2016
 
 
 ##Change Logs:
+
+Building 5.0.0.3:
+- Add: News system
+- Add: Auto connexion
+- Add: MetroFramework
+- Add: New API system (Wirk)
+- Add: Pannel v2.0
+ 
+-------------------------------------
 
 Building 5.0.0.2:
 - Add: Login system
