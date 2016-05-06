@@ -309,10 +309,10 @@ namespace Launcher_Arma3
         }
 
         void loadNews()
-        {/*
+        {
             var client = new RestClient(apiUrl);
 
-            var request = new RestRequest("user", Method.POST);
+            var request = new RestRequest("news", Method.GET);
 
             IRestResponse response = client.Execute(request);
             var content = response.Content;
@@ -321,22 +321,22 @@ namespace Launcher_Arma3
 
             if (res.total > "0")
             {
-                newsLabel1.Text = res.news0.title;
-                newsDate1.Text = res.news0.date;
-                news1 = res.news0.link;
+                newsLabel1.Text = res.news[0].title;
+                newsDate1.Text = res.news[0].date;
+                news1 = res.news[0].link;
             }
             if (res.total > "1")
             {
-                newsLabel2.Text = res.news1.title;
-                newsDate2.Text = res.news1.date;
-                news2 = res.news1.link;
+                newsLabel2.Text = res.news[1].title;
+                newsDate2.Text = res.news[1].date;
+                news2 = res.news[1].link;
             }
             if (res.total > "2")
             {
-                newsLabel3.Text = res.news2.title;
-                newsDate3.Text = res.news2.date;
-                news3 = res.news2.link;
-            }*/
+                newsLabel3.Text = res.news[2].title;
+                newsDate3.Text = res.news[2].date;
+                news3 = res.news[2].link;
+            }
         }
 
         private void disconnectButton_Click(object sender, EventArgs e)
