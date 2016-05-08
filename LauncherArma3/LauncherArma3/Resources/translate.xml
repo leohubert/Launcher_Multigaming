@@ -1,0 +1,124 @@
+<?xml version="1.0"?>
+<user>
+	<FR language="Français">
+		<languageTitle>Choisissez votre language</languageTitle>
+		<contry>France</contry>
+		<logIn>Se connecter</logIn>
+		<logOut>Se deconnecter</logOut>
+		<remember>Se rappeler de moi</remember>
+		<loginMsg>Pour rejoindre notre serveur
+		connectez-vous.</loginMsg>
+		<registerLink>ou s'enregistré</registerLink>
+		<commingSoon>Prochainement</commingSoon>
+		<registerMsg>Toujours pas enregistré ? 
+		Qu'attendez vous ?</registerMsg>
+		<username>Nom d'utilisateur</username>
+		<email>E-mail</email>
+		<cancel>Annuler</cancel>
+		<register>S'enregistré</register>
+		<forgotPass>J'ai oublié mon mot de passe</forgotPass>
+		<status>Statut</status>
+		<disconnectMsg>Vous êtes bien déconnecté</disconnectMsg>
+	</FR>
+	<EN language="English">
+		<languageTitle>Select your language</languageTitle>
+		<contry>England</contry>
+		<logIn>Log In</logIn>
+		<logOut>Log Out</logOut>
+		<remember>Remember me</remember>
+		<loginMsg>To join our server
+		please sign in.</loginMsg>
+		<registerLink>or register</registerLink>
+		<commingSoon>Coming Soon</commingSoon>
+		<registerMsg>Still not registered?
+		What do you expect?</registerMsg>
+		<username>Username</username>
+		<email>Email</email>
+		<cancel>Cancel</cancel>
+		<register>Register</register>
+		<forgotPass>I forgot my password</forgotPass>
+		<status>Status</status>
+		<disconnectMsg>You are logged out</disconnectMsg>
+	</EN>
+	<DE language="Deutch">
+		<languageTitle>Wähle deine Sprache</languageTitle>
+		<contry>Deutschland</contry>
+		<logIn>Anmeldung</logIn>
+		<logOut>Logout</logOut>
+		<remember>Erinnere dich an mich</remember>
+		<loginMsg>Um an unserem Server 
+		Bitte einloggen.</loginMsg>
+		<registerLink>oder registrieren</registerLink>
+		<commingSoon>demnächst</commingSoon>
+		<registerMsg>Noch nicht registriert? 
+		Was erwarten Sie?</registerMsg>
+		<username>Benutzername</username>
+		<email>Email</email>
+		<cancel>stornieren</cancel>
+		<register>Neu registrieren</register>
+		<forgotPass>Passwort vergessen</forgotPass>
+		<status>Status</status>
+		<disconnectMsg>Sie sind abgemeldet</disconnectMsg>
+	</DE>
+	<SP language="Spanish">
+		<languageTitle>Elige tu idioma</languageTitle>
+		<contry>Spain</contry>
+		<logIn>Iniciar sesión</logIn>
+		<logOut>Cerrar sesión</logOut>
+		<remember>Recuérdame</remember>
+		<loginMsg>Para unirse a nuestro servidor
+		Por Favor regístrese.</loginMsg>
+		<registerLink>o registrarse</registerLink>
+		<commingSoon>Próximamente</commingSoon>
+		<registerMsg>Todavía no está registrado?
+		¿Qué esperas?</registerMsg>
+		<username>Nombre de usuario</username>
+		<email>Correo electrónico</email>
+		<cancel>Cancelar</cancel>
+		<register>Registro</register>
+		<forgotPass>he olvidado mi contraseña</forgotPass>
+		<status>Estado</status>
+		<disconnectMsg>Se desconectará</disconnectMsg>
+	</SP>
+	<MT language="Canadiens">
+		<languageTitle>Choisi ta langue tabernacle</languageTitle>
+		<contry>Montréal</contry>
+		<logIn>Se connecter</logIn>
+		<logOut>Se deconnecter</logOut>
+		<remember>Se rappeler de moi</remember>
+		<loginMsg>Pour rejoindre notre serveur
+		connecte toi câlisse.</loginMsg>
+		<registerLink>ou s'enregistré</registerLink>
+		<commingSoon>Prochainement</commingSoon>
+		<registerMsg>Toujours pas enregistré ? 
+		Qu'attends tu ?</registerMsg>
+		<username>Nom d'utilisateur</username>
+		<email>E-mail</email>
+		<cancel>Annuler</cancel>
+		<register>S'enregistré</register>
+		<forgotPass>Quel con j'ai oublier mon mot de passe</forgotPass>
+		<status>J'sui qui :</status>
+		<disconnectMsg>Câlisse je me suis déconnectéë</disconnectMsg>
+	</MT>
+	<JP language="Japanese">
+		<languageTitle>言語を選択</languageTitle>
+		<contry>日本</contry>
+		<logIn>ログイン</logIn>
+		<logOut>ログアウト</logOut>
+		<remember>私を覚えてますか</remember>
+		<loginMsg>当社のサーバーに参加するには
+		サインインしてください</loginMsg>
+		<registerLink>または登録</registerLink>
+		<commingSoon>近日公開</commingSoon>
+		<registerMsg>まだ登録されていませんか？
+		あなたは何を期待したのですか？</registerMsg>
+		<username>ユーザー名</username>
+		<email>Eメール</email>
+		<cancel>キャンセル</cancel>
+		<register>登録</register>
+		<forgotPass>ドを忘れた</forgotPass>
+		<status>状態</status>
+		<disconnectMsg>あなたがログアウトしています</disconnectMsg>
+	</JP>
+</user>
+
