@@ -147,6 +147,7 @@
             this.Text = "Select your language";
             this.TextAlign = MetroFramework.Forms.MetroFormTextAlign.Center;
             this.Theme = MetroFramework.MetroThemeStyle.Dark;
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.close);
             this.Load += new System.EventHandler(this.languageChoice_Load);
             ((System.ComponentModel.ISupportInitialize)(this.japanFlag)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.germanFlag)).EndInit();

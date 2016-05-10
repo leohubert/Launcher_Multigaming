@@ -24,6 +24,7 @@ namespace LauncherArma3
             /* ANOTHER VARIABLE */
 
             string appdata = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "/v5.";
+            string sessionToken = null;
 
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
@@ -31,12 +32,12 @@ namespace LauncherArma3
                 Directory.CreateDirectory(appdata + serverName);
             if (File.Exists(appdata + serverName + "/language.lang"))
             {
-                Application.Run(new launcherMain(serverName, apiUrl, webSite));
+                Application.Run(new loginForm(serverName, apiUrl, webSite));
             }
             else
             {
                 Application.Run(new languageChoice(serverName));
-                Application.Run(new launcherMain(serverName, apiUrl, webSite));
+                Application.Run(new loginForm(serverName, apiUrl, webSite));
             }
         }
     }

@@ -13,6 +13,7 @@
 		<registerMsg>Toujours pas enregistré ? 
 		Qu'attendez vous ?</registerMsg>
 		<username>Nom d'utilisateur</username>
+		<password>Mot de passe</password>
 		<email>E-mail</email>
 		<cancel>Annuler</cancel>
 		<register>S'enregistré</register>
@@ -33,6 +34,7 @@
 		<registerMsg>Still not registered?
 		What do you expect?</registerMsg>
 		<username>Username</username>
+		<password>Password</password>
 		<email>Email</email>
 		<cancel>Cancel</cancel>
 		<register>Register</register>
@@ -53,6 +55,7 @@
 		<registerMsg>Noch nicht registriert? 
 		Was erwarten Sie?</registerMsg>
 		<username>Benutzername</username>
+		<password>Kennwort</password>
 		<email>Email</email>
 		<cancel>stornieren</cancel>
 		<register>Neu registrieren</register>
@@ -73,6 +76,7 @@
 		<registerMsg>Todavía no está registrado?
 		¿Qué esperas?</registerMsg>
 		<username>Nombre de usuario</username>
+		<password>Contraseña</password>
 		<email>Correo electrónico</email>
 		<cancel>Cancelar</cancel>
 		<register>Registro</register>
@@ -93,6 +97,7 @@
 		<registerMsg>Toujours pas enregistré ? 
 		Qu'attends tu ?</registerMsg>
 		<username>Nom d'utilisateur</username>
+		<password>Mot de passe</password>
 		<email>E-mail</email>
 		<cancel>Annuler</cancel>
 		<register>S'enregistré</register>
@@ -113,6 +118,7 @@
 		<registerMsg>まだ登録されていませんか？
 		あなたは何を期待したのですか？</registerMsg>
 		<username>ユーザー名</username>
+		<password>パスワード</password>
 		<email>Eメール</email>
 		<cancel>キャンセル</cancel>
 		<register>登録</register>

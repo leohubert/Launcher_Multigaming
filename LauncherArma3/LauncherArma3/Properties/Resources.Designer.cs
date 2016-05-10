@@ -82,5 +82,23 @@ namespace LauncherArma3.Properties {
                 return ResourceManager.GetString("translate", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à {
+        ///  &quot;FR&quot;: [
+        ///    {
+        ///      &quot;password&quot;: &quot;Mot de passe&quot;,
+        ///      &quot;logIn&quot;: &quot;Se connecter&quot;,
+        ///      &quot;logOut&quot;: &quot;Se déconnecter&quot;,
+        ///      &quot;username&quot;: &quot;Non d&apos;utilisateur&quot;
+        ///    }
+        ///  ]
+        ///}.
+        /// </summary>
+        internal static string translatejson {
+            get {
+                return ResourceManager.GetString("translatejson", resourceCulture);
+            }
+        }
     }
 }

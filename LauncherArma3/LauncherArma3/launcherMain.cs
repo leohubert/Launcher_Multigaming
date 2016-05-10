@@ -43,6 +43,7 @@ namespace LauncherArma3
         bool showLogin = false;
         bool showRegister = false;
         string language;
+        bool normayClose = false;
 
         /* Session info */
         string sessionToken = null;
@@ -56,85 +57,30 @@ namespace LauncherArma3
         string tr_email;
         string tr_disconnectMsg;
 
-        public launcherMain(string server, string api, string website)
+        public launcherMain(string server, string api, string website, string session)
         {
             InitializeComponent();
             serverName = server;
             apiUrl = api;
             webSite = website;
+            sessionToken = session;
         }
 
         private void launcherMain_Load(object sender, EventArgs e)
         {
-            if (!Directory.Exists(appdata + serverName))
-                Directory.CreateDirectory(appdata + serverName);
-            if (File.Exists(appdata + serverName + "/token.bin2hex"))
-                sessionToken = File.ReadAllText(appdata + serverName + "/token.bin2hex");
             if (File.Exists(appdata + serverName + "/language.lang"))
             {
                 language = File.ReadAllText(appdata + serverName + "/language.lang");
                 setLanguage(language);
             }
-        }
-
-        private void checkOptions(object sender, EventArgs e)
-        {
-            try
+            if (sessionToken != null)
             {
-                var client = new RestClient(apiUrl);
-
-                var request = new RestRequest("api/options", Method.GET);
-
-                IRestResponse response = client.Execute(request);
-                var content = response.Content;
-
-                dynamic res = JObject.Parse(content.ToString());
-
-                if (res.maintenance == "1")
-                {
-                    infoBox.Visible = true;
-                    infoBox.Text = res.maintenance_msg;
-                    pictureBig.ImageLocation = res.maintenance_image;
-                    changeStatus("Orange");
-                    return;
-                }
-                if (res.login == "1")
-                {
-                    changeStatus("Red");
-                    showLogin = true;
-                    disconnectedView();
-                }
-                else
-                {
-                    connected = true;
-                    disconnectButton.Enabled = false;
-                    loggedView();
-                }
-                if (res.register == "1")
-                {
-                    registerLink.Visible = true;
-                }
-                if (res.news == "1")
-                {
-                    staffMessage.Text = res.news_msg;
-                    staffMessage.Visible = true;
-                }
-                if (sessionToken != null)
-                {
-                    loginWithToken();
-                }
-                pictureBig.Visible = false;
-                internet = true;
+                loginWithToken();
             }
-            catch
+            else
             {
-                errorBox.Visible = true;
-                errorBox.Text = "Error #404: Internet or Serveur not found.";
-                internet = false;
-                pictureBig.Visible = false;
-                changeStatus("Red");
+                disconnectButton.Enabled = false;
             }
-
         }
 
         void loginWithToken()
@@ -163,7 +109,6 @@ namespace LauncherArma3
                 changeStatus("Green");
                 loadNews();
                 refreshSession();
-                loggedView();
             }
             else
             {
@@ -193,50 +138,7 @@ namespace LauncherArma3
                     playerStatus.ForeColor = Color.OrangeRed;
                     break;
             }
-        }
-
-        private void loginButton_Click(object sender, EventArgs e)
-        {
-            var client = new RestClient(apiUrl);
-
-            var request = new RestRequest("api/user/login", Method.POST);
-
-            request.AddParameter("username", loginUsername.Text);
-            request.AddParameter("password", loginPassword.Text);
-
-            IRestResponse response = client.Execute(request);
-            var content = response.Content;
-
-            dynamic res = JObject.Parse(content.ToString());
-
-            checkNotif();
-
-            if (res.status == "42")
-            {
-                username = res.user.username;
-                email = res.user.email;
-                level = res.user.level;
-                sessionToken = res.user.token;
-                connected = true;
-                succesBox.Visible = true;
-                succesBox.Text = res.msg;
-                changeStatus("Green");
-                loadNews();
-                refreshSession();
-                loggedView();
-                if (loginRemember.Checked == true)
-                {
-                    string token = res.user.token;
-                    File.WriteAllText(appdata + serverName + "/token.bin2hex", token);
-                }
-            }
-            else
-            {
-                errorBox.Visible = true;
-                errorBox.Text = res.msg;
-            }
-
-        }
+        }     
 
         void checkNotif()
         {
@@ -249,54 +151,7 @@ namespace LauncherArma3
             this.Refresh();
         }
 
-        private void register_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
-        {
-            loginBox.Visible = false;
-            registerBox.Visible = true;
-            changeStatus("Blue");
-        }
-
-        private void registerCancel_Click(object sender, EventArgs e)
-        {
-            loginBox.Visible = true;
-            registerBox.Visible = false;
-            changeStatus("Red");
-        }
-
-        private void registerButton_Click(object sender, EventArgs e)
-        {
-            var client = new RestClient(apiUrl);
-
-            var request = new RestRequest("api/user", Method.POST);
-
-            request.AddParameter("launcher", 1);
-            request.AddParameter("username", registerUsername.Text);
-            request.AddParameter("email", registerEmail.Text);
-            request.AddParameter("password", registerPass.Text);
-            request.AddParameter("password_confirmation", registerPassConf.Text);
-
-            IRestResponse response = client.Execute(request);
-            var content = response.Content;
-
-            dynamic res = JObject.Parse(content.ToString());
-
-            checkNotif();
-
-            if (res.status == "42")
-            {
-                succesBox.Visible = true;
-                succesBox.Text = res.msg;
-                sessionToken = res.user.token;
-                changeStatus("Red");
-                loginWithToken();
-            }
-            else
-            {
-                errorBox.Visible = true;
-                errorBox.Text = res.msg;
-            }
-        }
-
+   
         private void newsLink1_Click(object sender, EventArgs e)
         {
             Process p = new Process();
@@ -358,37 +213,17 @@ namespace LauncherArma3
             }
         }
 
-        void disconnectedView()
-        {
-            newsBox.Visible = false;
-            playerBox.Visible = false;
-            if (showLogin == true)
-                loginBox.Visible = true;
-        }
-
-        void loggedView()
-        {
-            newsBox.Visible = true;
-            playerBox.Visible = true;
-            loginBox.Visible = false;
-            registerBox.Visible = false;
-        }
-
         private void disconnectButton_Click(object sender, EventArgs e)
         {
             if (File.Exists(appdata + serverName + "/token.bin2hex"))
                 File.Delete(appdata + serverName + "/token.bin2hex");
-            loginPassword.Text = "0000";
-            loginRemember.Checked = false;
-            loginUsername.Text = tr_username;
-            registerEmail.Text = tr_email;
-            registerUsername.Text = tr_username;
             checkNotif();
             succesBox.Visible = true;
             succesBox.Text = tr_disconnectMsg;
             connected = false;
             changeStatus("Red");
-            disconnectedView();
+            normayClose = true;
+            this.Close();
         }
 
         void changeStatus(string style)
@@ -423,40 +258,21 @@ namespace LauncherArma3
                 XmlReader translate = XmlReader.Create(new StringReader(translateFile));
 
                 translate.ReadToFollowing(language);
-                translate.ReadToFollowing("logIn");
-                loginButton.Text = translate.ReadElementContentAsString();
                 translate.ReadToFollowing("logOut");
-                disconnectButton.Text = translate.ReadElementContentAsString();
-                translate.ReadToFollowing("remember");
-                loginRememberLabel.Text = translate.ReadElementContentAsString();
-                translate.ReadToFollowing("loginMsg");
-                loginLabel.Text = translate.ReadElementContentAsString();
-                translate.ReadToFollowing("registerLink");
-                registerLink.Text = translate.ReadElementContentAsString();
+                disconnectButton.Text = translate.ReadElementContentAsString();                          
                 translate.ReadToFollowing("commingSoon");
                 tmp = translate.ReadElementContentAsString();
                 newsLabel1.Text = tmp;
                 newsLabel2.Text = tmp;
                 newsLabel3.Text = tmp;
-                translate.ReadToFollowing("registerMsg");
-                registerLabel.Text = translate.ReadElementContentAsString();
                 translate.ReadToFollowing("username");
                 tmp = translate.ReadElementContentAsString();
-                loginUsername.Text = tmp;
                 tr_username = tmp;
-                registerUsername.Text = tmp;
                 playerUsernameLabel.Text = tmp + " :";
                 translate.ReadToFollowing("email");
                 tmp = translate.ReadElementContentAsString();
-                registerEmail.Text = tmp;
                 tr_email = tmp;
                 playerEmailLabel.Text = tmp + " :";
-                translate.ReadToFollowing("cancel");
-                registerCancel.Text = translate.ReadElementContentAsString();
-                translate.ReadToFollowing("register");
-                registerButton.Text = translate.ReadElementContentAsString();
-                translate.ReadToFollowing("forgotPass");
-                loginForgot.Text = translate.ReadElementContentAsString();
                 translate.ReadToFollowing("status");
                 playerStatusLabel.Text = translate.ReadElementContentAsString();
                 translate.ReadToFollowing("disconnectMsg");
@@ -496,9 +312,12 @@ namespace LauncherArma3
 
         }
 
-        private void flatAlertBox1_Click(object sender, EventArgs e)
+        private void close(object sender, FormClosedEventArgs e)
         {
-
+            if (normayClose == false)
+            {
+                Environment.Exit(42);
+            }
         }
     }
 }
