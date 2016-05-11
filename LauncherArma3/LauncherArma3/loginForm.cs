@@ -124,6 +124,7 @@ namespace LauncherArma3
                 internet = false;
                 newsTitle.Text = "Error 404 internet not found !";
                 notifView("Internet not found !");
+                errorImage.BringToFront();
             }
 
         }
@@ -266,6 +267,7 @@ namespace LauncherArma3
                 loginRemember.Location = new Point(loginRemember.Location.X, loginRemember.Location.Y + 50);
                 loginUsername.Location = new Point(loginUsername.Location.X, loginUsername.Location.Y + 50);
                 loginPassword.Location = new Point(loginPassword.Location.X, loginPassword.Location.Y + 50);
+                errorImage.Location = new Point(errorImage.Location.X, errorImage.Location.Y + 25);
                 errorBox.Visible = true;
                 notif = true;
                 errorBox.Location = new Point(errorBox.Location.X, errorBox.Location.Y + 50);
@@ -284,6 +286,7 @@ namespace LauncherArma3
             loginRemember.Location = new Point(loginRemember.Location.X, loginRemember.Location.Y - 50);
             loginUsername.Location = new Point(loginUsername.Location.X, loginUsername.Location.Y - 50);
             loginPassword.Location = new Point(loginPassword.Location.X, loginPassword.Location.Y - 50);
+            errorImage.Location = new Point(errorImage.Location.X, errorImage.Location.Y - 25);
             errorBox.Visible = false;
             errorBox.Location = new Point(errorBox.Location.X, errorBox.Location.Y - 50);
             notif = false;

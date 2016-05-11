@@ -41,8 +41,10 @@
             this.newsContent = new MaterialSkin.Controls.MaterialLabel();
             this.loginLogo = new System.Windows.Forms.PictureBox();
             this.loginRemember = new MaterialSkin.Controls.MaterialCheckBox();
+            this.errorImage = new System.Windows.Forms.PictureBox();
             this.errorBox = new FlatUI.FlatAlertBox();
             ((System.ComponentModel.ISupportInitialize)(this.loginLogo)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorImage)).BeginInit();
             this.SuspendLayout();
             // 
             // loginButton
@@ -109,7 +111,7 @@
             // 
             this.registerMessage.BackColor = System.Drawing.Color.Transparent;
             this.registerMessage.Depth = 0;
-            this.registerMessage.Font = new System.Drawing.Font("Roboto", 11F);
+            this.registerMessage.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
             this.registerMessage.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.registerMessage.Location = new System.Drawing.Point(362, 327);
             this.registerMessage.MouseState = MaterialSkin.MouseState.HOVER;
@@ -126,7 +128,7 @@
             this.separator2.Location = new System.Drawing.Point(323, 5);
             this.separator2.MouseState = MaterialSkin.MouseState.HOVER;
             this.separator2.Name = "separator2";
-            this.separator2.Size = new System.Drawing.Size(1, 443);
+            this.separator2.Size = new System.Drawing.Size(3, 443);
             this.separator2.TabIndex = 18;
             this.separator2.Text = "separator";
             // 
@@ -137,7 +139,7 @@
             this.separator1.Location = new System.Drawing.Point(323, 297);
             this.separator1.MouseState = MaterialSkin.MouseState.HOVER;
             this.separator1.Name = "separator1";
-            this.separator1.Size = new System.Drawing.Size(325, 1);
+            this.separator1.Size = new System.Drawing.Size(325, 2);
             this.separator1.TabIndex = 19;
             this.separator1.Text = "materialTabSelector1";
             // 
@@ -148,14 +150,14 @@
             this.separator3.Location = new System.Drawing.Point(-1, 82);
             this.separator3.MouseState = MaterialSkin.MouseState.HOVER;
             this.separator3.Name = "separator3";
-            this.separator3.Size = new System.Drawing.Size(325, 1);
+            this.separator3.Size = new System.Drawing.Size(325, 2);
             this.separator3.TabIndex = 20;
             this.separator3.Text = "materialTabSelector2";
             // 
             // newsTitle
             // 
             this.newsTitle.Depth = 0;
-            this.newsTitle.Font = new System.Drawing.Font("Roboto", 11F);
+            this.newsTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
             this.newsTitle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.newsTitle.Location = new System.Drawing.Point(23, 30);
             this.newsTitle.MouseState = MaterialSkin.MouseState.HOVER;
@@ -168,7 +170,7 @@
             // newsContent
             // 
             this.newsContent.Depth = 0;
-            this.newsContent.Font = new System.Drawing.Font("Roboto", 11F);
+            this.newsContent.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
             this.newsContent.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.newsContent.Location = new System.Drawing.Point(23, 96);
             this.newsContent.MouseState = MaterialSkin.MouseState.HOVER;
@@ -191,7 +193,7 @@
             // 
             this.loginRemember.AutoSize = true;
             this.loginRemember.Depth = 0;
-            this.loginRemember.Font = new System.Drawing.Font("Roboto", 10F);
+            this.loginRemember.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.loginRemember.Location = new System.Drawing.Point(362, 177);
             this.loginRemember.Margin = new System.Windows.Forms.Padding(0);
             this.loginRemember.MouseLocation = new System.Drawing.Point(-1, -1);
@@ -202,6 +204,16 @@
             this.loginRemember.TabIndex = 24;
             this.loginRemember.Text = "Remember me";
             this.loginRemember.UseVisualStyleBackColor = true;
+            // 
+            // errorImage
+            // 
+            this.errorImage.Image = ((System.Drawing.Image)(resources.GetObject("errorImage.Image")));
+            this.errorImage.Location = new System.Drawing.Point(23, 111);
+            this.errorImage.Name = "errorImage";
+            this.errorImage.Size = new System.Drawing.Size(272, 310);
+            this.errorImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.errorImage.TabIndex = 26;
+            this.errorImage.TabStop = false;
             // 
             // errorBox
             // 
@@ -234,6 +246,7 @@
             this.Controls.Add(this.loginPassword);
             this.Controls.Add(this.loginUsername);
             this.Controls.Add(this.errorBox);
+            this.Controls.Add(this.errorImage);
             this.DisplayHeader = false;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
@@ -247,6 +260,7 @@
             this.Load += new System.EventHandler(this.loginForm_Load);
             this.VisibleChanged += new System.EventHandler(this.checkOptions);
             ((System.ComponentModel.ISupportInitialize)(this.loginLogo)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorImage)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -267,5 +281,6 @@
         private System.Windows.Forms.PictureBox loginLogo;
         private MaterialSkin.Controls.MaterialCheckBox loginRemember;
         private FlatUI.FlatAlertBox errorBox;
+        private System.Windows.Forms.PictureBox errorImage;
     }
 }
