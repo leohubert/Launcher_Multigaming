@@ -120,7 +120,7 @@ namespace LauncherArma3
             catch
             {
                 this.Style = MetroColorStyle.Red;
-                materialSkinManager.ColorScheme = new ColorScheme(Primary.Red400, Primary.Indigo700, Primary.Indigo100, Accent.LightGreen200, TextShade.WHITE);
+                materialSkinManager.ColorScheme = new ColorScheme(Primary.Red600, Primary.Indigo700, Primary.Indigo100, Accent.LightGreen200, TextShade.WHITE);
                 internet = false;
                 newsTitle.Text = "Error 404 internet not found !";
                 notifView("Internet not found !");
