@@ -35,8 +35,6 @@
             this.newsBox = new System.Windows.Forms.GroupBox();
             this.playerBox = new System.Windows.Forms.GroupBox();
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
-            this.flatProgressBar1 = new FlatUI.FlatProgressBar();
-            this.staffMessage = new FlatUI.FlatTextBox();
             this.newsDate3 = new iTalk.iTalk_Label();
             this.newsDate2 = new iTalk.iTalk_Label();
             this.newsDate1 = new iTalk.iTalk_Label();
@@ -56,6 +54,7 @@
             this.playerEmail = new FlatUI.FlatLabel();
             this.playerUsername = new FlatUI.FlatLabel();
             this.disconnectButton = new MonoFlat.MonoFlat_Button();
+            this.flatProgressBar1 = new FlatUI.FlatProgressBar();
             this.errorBox = new FlatUI.FlatAlertBox();
             this.succesBox = new FlatUI.FlatAlertBox();
             this.infoBox = new FlatUI.FlatAlertBox();
@@ -91,6 +90,7 @@
             // 
             // pictureBox2
             // 
+            this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
             this.pictureBox2.Location = new System.Drawing.Point(0, 0);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(505, 24);
@@ -130,56 +130,22 @@
             this.playerBox.Controls.Add(this.playerUsername);
             this.playerBox.Controls.Add(this.disconnectButton);
             this.playerBox.Controls.Add(this.pictureBox4);
-            this.playerBox.Location = new System.Drawing.Point(20, 63);
+            this.playerBox.Location = new System.Drawing.Point(531, 250);
             this.playerBox.Name = "playerBox";
-            this.playerBox.Size = new System.Drawing.Size(282, 182);
+            this.playerBox.Size = new System.Drawing.Size(282, 187);
             this.playerBox.TabIndex = 9;
             this.playerBox.TabStop = false;
             // 
             // pictureBox4
             // 
             this.pictureBox4.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBox4.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox4.Image")));
             this.pictureBox4.Location = new System.Drawing.Point(-3, 0);
             this.pictureBox4.Name = "pictureBox4";
             this.pictureBox4.Size = new System.Drawing.Size(285, 24);
             this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox4.TabIndex = 10;
             this.pictureBox4.TabStop = false;
-            // 
-            // flatProgressBar1
-            // 
-            this.flatProgressBar1.BackColor = System.Drawing.SystemColors.Control;
-            this.flatProgressBar1.DarkerProgress = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(148)))), ((int)(((byte)(92)))));
-            this.flatProgressBar1.Location = new System.Drawing.Point(20, 439);
-            this.flatProgressBar1.Maximum = 100;
-            this.flatProgressBar1.Name = "flatProgressBar1";
-            this.flatProgressBar1.Pattern = true;
-            this.flatProgressBar1.PercentSign = false;
-            this.flatProgressBar1.ProgressColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(168)))), ((int)(((byte)(109)))));
-            this.flatProgressBar1.ShowBalloon = true;
-            this.flatProgressBar1.Size = new System.Drawing.Size(883, 42);
-            this.flatProgressBar1.TabIndex = 8;
-            this.flatProgressBar1.Text = "flatProgressBar1";
-            this.flatProgressBar1.Value = 50;
-            this.flatProgressBar1.Visible = false;
-            // 
-            // staffMessage
-            // 
-            this.staffMessage.BackColor = System.Drawing.Color.Transparent;
-            this.staffMessage.FocusOnHover = false;
-            this.staffMessage.Font = new System.Drawing.Font("Arial Black", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.staffMessage.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.staffMessage.Location = new System.Drawing.Point(215, 25);
-            this.staffMessage.MaxLength = 32767;
-            this.staffMessage.Multiline = false;
-            this.staffMessage.Name = "staffMessage";
-            this.staffMessage.ReadOnly = true;
-            this.staffMessage.Size = new System.Drawing.Size(639, 27);
-            this.staffMessage.TabIndex = 5;
-            this.staffMessage.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.staffMessage.TextColor = System.Drawing.Color.Gray;
-            this.staffMessage.UseSystemPasswordChar = false;
-            this.staffMessage.Visible = false;
             // 
             // newsDate3
             // 
@@ -415,6 +381,23 @@
             this.disconnectButton.TextAlignment = System.Drawing.StringAlignment.Center;
             this.disconnectButton.Click += new System.EventHandler(this.disconnectButton_Click);
             // 
+            // flatProgressBar1
+            // 
+            this.flatProgressBar1.BackColor = System.Drawing.SystemColors.Control;
+            this.flatProgressBar1.DarkerProgress = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(148)))), ((int)(((byte)(92)))));
+            this.flatProgressBar1.Location = new System.Drawing.Point(20, 439);
+            this.flatProgressBar1.Maximum = 100;
+            this.flatProgressBar1.Name = "flatProgressBar1";
+            this.flatProgressBar1.Pattern = true;
+            this.flatProgressBar1.PercentSign = false;
+            this.flatProgressBar1.ProgressColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(168)))), ((int)(((byte)(109)))));
+            this.flatProgressBar1.ShowBalloon = true;
+            this.flatProgressBar1.Size = new System.Drawing.Size(883, 42);
+            this.flatProgressBar1.TabIndex = 8;
+            this.flatProgressBar1.Text = "flatProgressBar1";
+            this.flatProgressBar1.Value = 50;
+            this.flatProgressBar1.Visible = false;
+            // 
             // errorBox
             // 
             this.errorBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(70)))), ((int)(((byte)(73)))));
@@ -422,9 +405,9 @@
             this.errorBox.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
             this.errorBox.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.errorBox.kind = FlatUI.FlatAlertBox._Kind.Error;
-            this.errorBox.Location = new System.Drawing.Point(301, 63);
+            this.errorBox.Location = new System.Drawing.Point(20, 63);
             this.errorBox.Name = "errorBox";
-            this.errorBox.Size = new System.Drawing.Size(327, 42);
+            this.errorBox.Size = new System.Drawing.Size(883, 42);
             this.errorBox.TabIndex = 2;
             this.errorBox.Visible = false;
             // 
@@ -435,9 +418,9 @@
             this.succesBox.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.succesBox.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.succesBox.kind = FlatUI.FlatAlertBox._Kind.Success;
-            this.succesBox.Location = new System.Drawing.Point(302, 63);
+            this.succesBox.Location = new System.Drawing.Point(20, 63);
             this.succesBox.Name = "succesBox";
-            this.succesBox.Size = new System.Drawing.Size(327, 42);
+            this.succesBox.Size = new System.Drawing.Size(883, 42);
             this.succesBox.TabIndex = 1;
             this.succesBox.Visible = false;
             // 
@@ -448,9 +431,9 @@
             this.infoBox.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.infoBox.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.infoBox.kind = FlatUI.FlatAlertBox._Kind.Info;
-            this.infoBox.Location = new System.Drawing.Point(301, 63);
+            this.infoBox.Location = new System.Drawing.Point(20, 63);
             this.infoBox.Name = "infoBox";
-            this.infoBox.Size = new System.Drawing.Size(327, 42);
+            this.infoBox.Size = new System.Drawing.Size(883, 42);
             this.infoBox.TabIndex = 0;
             this.infoBox.Visible = false;
             // 
@@ -462,7 +445,6 @@
             this.Controls.Add(this.newsBox);
             this.Controls.Add(this.playerBox);
             this.Controls.Add(this.flatProgressBar1);
-            this.Controls.Add(this.staffMessage);
             this.Controls.Add(this.errorBox);
             this.Controls.Add(this.succesBox);
             this.Controls.Add(this.infoBox);
@@ -491,7 +473,6 @@
         private FlatUI.FlatAlertBox infoBox;
         private FlatUI.FlatAlertBox succesBox;
         private FlatUI.FlatAlertBox errorBox;
-        private FlatUI.FlatTextBox staffMessage;
         private FlatUI.FlatProgressBar flatProgressBar1;
         private System.Windows.Forms.TabPage tabPage2;
         private System.Windows.Forms.TabPage tabPage1;

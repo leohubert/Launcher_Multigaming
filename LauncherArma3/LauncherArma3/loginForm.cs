@@ -8,9 +8,11 @@ using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -39,10 +41,11 @@ namespace LauncherArma3
         string sessionToken;
         string language;
         bool internet;
+        bool maintenance;
         bool loaded = false;
         bool notif = false;
 
-       XmlReader translate = XmlReader.Create(new StringReader(Resources.translate));
+        XmlReader translate = XmlReader.Create(new StringReader(Resources.translate));
 
 
         public loginForm(string server, string api, string website)
@@ -82,17 +85,24 @@ namespace LauncherArma3
 
                 dynamic res = JObject.Parse(content.ToString());
 
-                newsTitle.Text = res.msg_title;
-                newsContent.Text = res.msg_content;
                 loaded = true;
                 if (res.maintenance == "1")
                 {
+                    maintenance = true;
                     newsTitle.Text = "Maintenance en cours !";
                     newsContent.Text = res.maintenance_msg;
                     loginButton.Enabled = false;
                     registerLink.Enabled = false;
                     materialSkinManager.ColorScheme = new ColorScheme(Primary.Orange400, Primary.Indigo700, Primary.Indigo100, Accent.LightGreen200, TextShade.WHITE);
                     this.Style = MetroColorStyle.Orange;
+                    maintenanceRefresh.RunWorkerAsync();
+                    return;
+                }
+                newsTitle.Text = res.msg_title;
+                newsContent.Text = res.msg_content;
+                if (res.launcher_md5 != getLauncherMd5())
+                {
+                    launcherUpdate();
                     return;
                 }
                 if (res.login == "0")
@@ -169,7 +179,6 @@ namespace LauncherArma3
             }
             else
             {
-                // MessageBox.Show("Pass or email not good !");
                 string message = res.msg;
                 notifView(message);
             }
@@ -199,7 +208,8 @@ namespace LauncherArma3
             }
             else
             {
-                MessageBox.Show("error token");
+                string msg = res.msg;
+                notifView(msg);
                 if (File.Exists(appdata + serverName + "/token.bin2hex"))
                     File.Delete(appdata + serverName + "/token.bin2hex");
             }
@@ -227,13 +237,13 @@ namespace LauncherArma3
         void setLanguage()
         {
             try
-            {               
+            {
                 loginButton.Text = getTranslate("logIn");
                 registerLink.Text = getTranslate("registerLink");
                 loginUsername.Hint = getTranslate("username");
                 loginPassword.Hint = getTranslate("password");
                 loginRemember.Text = getTranslate("remember");
-              
+
 
                 this.Refresh();
             }
@@ -272,7 +282,7 @@ namespace LauncherArma3
                 notif = true;
                 errorBox.Location = new Point(errorBox.Location.X, errorBox.Location.Y + 50);
             }
-            errorBox.Text = msg;       
+            errorBox.Text = msg;
         }
 
         private void normalView(object sender, EventArgs e)
@@ -291,5 +301,75 @@ namespace LauncherArma3
             errorBox.Location = new Point(errorBox.Location.X, errorBox.Location.Y - 50);
             notif = false;
         }
+
+        private void maintenanceRefresh_DoWork(object sender, DoWorkEventArgs e)
+        {
+            System.Threading.Thread.Sleep(30000);
+            try
+            {
+                var client = new RestClient(apiUrl);
+
+                var request = new RestRequest("api/options", Method.GET);
+
+                IRestResponse response = client.Execute(request);
+                var content = response.Content;
+
+                dynamic res = JObject.Parse(content.ToString());
+
+                if (res.maintenance == "0")
+                {
+                    maintenance = false;
+                }
+                loaded = false;
+            }
+            catch
+            {
+
+            }
+        }
+
+        private void callRefresh(object sender, RunWorkerCompletedEventArgs e)
+        {
+            if (maintenance == false)
+            {
+                loginButton.Enabled = true;
+                registerLink.Enabled = true;
+                materialSkinManager.ColorScheme = new ColorScheme(Primary.Cyan400, Primary.Indigo700, Primary.Indigo100, Accent.LightGreen200, TextShade.WHITE);
+                this.Style = MetroColorStyle.Blue;
+                checkOptions(null, null);
+                this.Refresh();
+            }
+            else
+                maintenanceRefresh.RunWorkerAsync();
+
+        }
+
+        void launcherUpdate()
+        {
+            if (!File.Exists("launcherUpdate.exe"))
+            {
+                notifView("Error launcherUpdate.exe not found !");
+                return;
+            }
+            loginButton.Enabled = false;
+            registerLink.Enabled = false;
+            Process update = new Process();
+            update.StartInfo.FileName = "launcherUpdate.exe";
+            update.StartInfo.Arguments = apiUrl + "../../update/launcher.exe" + " " + System.Windows.Forms.Application.ExecutablePath;
+            update.Start();
+            this.Close();
+        }
+
+        protected string getLauncherMd5()
+        {
+            using (var md5 = MD5.Create())
+            {
+                using (var stream = File.OpenRead(System.Windows.Forms.Application.ExecutablePath))
+                {
+                    return BitConverter.ToString(md5.ComputeHash(stream)).Replace("-", string.Empty);
+                }
+            }
+        }
+
     }
 }

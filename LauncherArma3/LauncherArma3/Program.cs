@@ -28,6 +28,7 @@ namespace LauncherArma3
 
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
+
             if (!Directory.Exists(appdata + serverName))
                 Directory.CreateDirectory(appdata + serverName);
             if (File.Exists(appdata + serverName + "/language.lang"))

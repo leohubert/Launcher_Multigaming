@@ -43,6 +43,7 @@
             this.loginRemember = new MaterialSkin.Controls.MaterialCheckBox();
             this.errorImage = new System.Windows.Forms.PictureBox();
             this.errorBox = new FlatUI.FlatAlertBox();
+            this.maintenanceRefresh = new System.ComponentModel.BackgroundWorker();
             ((System.ComponentModel.ISupportInitialize)(this.loginLogo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorImage)).BeginInit();
             this.SuspendLayout();
@@ -111,7 +112,7 @@
             // 
             this.registerMessage.BackColor = System.Drawing.Color.Transparent;
             this.registerMessage.Depth = 0;
-            this.registerMessage.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
+            this.registerMessage.Font = new System.Drawing.Font("Roboto", 11F);
             this.registerMessage.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.registerMessage.Location = new System.Drawing.Point(362, 327);
             this.registerMessage.MouseState = MaterialSkin.MouseState.HOVER;
@@ -157,7 +158,7 @@
             // newsTitle
             // 
             this.newsTitle.Depth = 0;
-            this.newsTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
+            this.newsTitle.Font = new System.Drawing.Font("Roboto", 11F);
             this.newsTitle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.newsTitle.Location = new System.Drawing.Point(23, 30);
             this.newsTitle.MouseState = MaterialSkin.MouseState.HOVER;
@@ -170,7 +171,7 @@
             // newsContent
             // 
             this.newsContent.Depth = 0;
-            this.newsContent.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
+            this.newsContent.Font = new System.Drawing.Font("Roboto", 11F);
             this.newsContent.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.newsContent.Location = new System.Drawing.Point(23, 96);
             this.newsContent.MouseState = MaterialSkin.MouseState.HOVER;
@@ -193,7 +194,7 @@
             // 
             this.loginRemember.AutoSize = true;
             this.loginRemember.Depth = 0;
-            this.loginRemember.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.loginRemember.Font = new System.Drawing.Font("Roboto", 10F);
             this.loginRemember.Location = new System.Drawing.Point(362, 177);
             this.loginRemember.Margin = new System.Windows.Forms.Padding(0);
             this.loginRemember.MouseLocation = new System.Drawing.Point(-1, -1);
@@ -227,6 +228,11 @@
             this.errorBox.TabIndex = 25;
             this.errorBox.Visible = false;
             this.errorBox.Click += new System.EventHandler(this.normalView);
+            // 
+            // maintenanceRefresh
+            // 
+            this.maintenanceRefresh.DoWork += new System.ComponentModel.DoWorkEventHandler(this.maintenanceRefresh_DoWork);
+            this.maintenanceRefresh.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.callRefresh);
             // 
             // loginForm
             // 
@@ -282,5 +288,6 @@
         private MaterialSkin.Controls.MaterialCheckBox loginRemember;
         private FlatUI.FlatAlertBox errorBox;
         private System.Windows.Forms.PictureBox errorImage;
+        private System.ComponentModel.BackgroundWorker maintenanceRefresh;
     }
 }

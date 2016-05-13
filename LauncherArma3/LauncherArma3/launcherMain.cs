@@ -1,25 +1,12 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using MetroFramework.Forms;
 using MetroFramework;
-using MetroFramework.Animation;
-using MetroFramework.Components;
-using System.Collections.Specialized;
-using Newtonsoft.Json.Linq;
-using System.Net;
 using System.Diagnostics;
 using System.IO;
-using RestSharp;
-using System.Reflection;
 using System.Xml;
-
+using RestSharp;
+using Newtonsoft.Json.Linq;
 
 namespace LauncherArma3
 {
@@ -319,5 +306,7 @@ namespace LauncherArma3
                 Environment.Exit(42);
             }
         }
+
+
     }
 }
