@@ -4,9 +4,9 @@ Launcher_Arma3
 -------------[ Launcher Information ]-------------
 
 ###Last push:
-Version: Building 5.0.1.0
-Functional: NO
-Release date: 10/05/2016 à 22:28
+Version: Pre-Alpha 5.0.1.5
+Functional: YES  |    Not for production
+Release date: 19/05/2016 à 03:43
 
 
 ###Last functional version:
@@ -14,12 +14,23 @@ Version: Release 4.0.0.0
 Functional: YES
 Release date: 30/04/2016 à  14:20
 
-Copyright HUBERT Léo © 2014 - 2016
+Copyright HUBERT Léo & Wirk © 2014 - 2016
 
 --------------------------------------------------
 
 
 ##Change Logs:
+
+Pre-Alpha 5.0.1.5:
+- New downloading system
+- More speed download
+- Listing mods,cpp and other file with md5
+- Add: API download system
+- Add: API listing addons and another file
+- FIX: API Install system
+- Add: Autoinstall script bash.
+
+------------------------------------
 
 Building 5.0.1.0:
 - New design for login and register.

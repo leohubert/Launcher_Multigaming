@@ -37,7 +37,7 @@
             // quitButton
             // 
             this.quitButton.Depth = 0;
-            this.quitButton.Location = new System.Drawing.Point(422, 60);
+            this.quitButton.Location = new System.Drawing.Point(351, 63);
             this.quitButton.MouseState = MaterialSkin.MouseState.HOVER;
             this.quitButton.Name = "quitButton";
             this.quitButton.Primary = true;
@@ -58,7 +58,7 @@
             this.downloadProgress.PercentSign = false;
             this.downloadProgress.ProgressColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(168)))), ((int)(((byte)(109)))));
             this.downloadProgress.ShowBalloon = true;
-            this.downloadProgress.Size = new System.Drawing.Size(548, 42);
+            this.downloadProgress.Size = new System.Drawing.Size(477, 42);
             this.downloadProgress.TabIndex = 1;
             this.downloadProgress.Text = "downloadProgress";
             this.downloadProgress.Value = 0;
@@ -69,7 +69,7 @@
             this.downloadLabel.BackColor = System.Drawing.Color.Transparent;
             this.downloadLabel.Font = new System.Drawing.Font("Berlin Sans FB Demi", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.downloadLabel.ForeColor = System.Drawing.Color.DimGray;
-            this.downloadLabel.Location = new System.Drawing.Point(23, 60);
+            this.downloadLabel.Location = new System.Drawing.Point(20, 63);
             this.downloadLabel.Name = "downloadLabel";
             this.downloadLabel.Size = new System.Drawing.Size(163, 18);
             this.downloadLabel.TabIndex = 2;
@@ -79,8 +79,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackImage = ((System.Drawing.Image)(resources.GetObject("$this.BackImage")));
-            this.ClientSize = new System.Drawing.Size(594, 119);
+            this.ClientSize = new System.Drawing.Size(523, 125);
             this.ControlBox = false;
             this.Controls.Add(this.downloadLabel);
             this.Controls.Add(this.downloadProgress);
@@ -91,7 +90,6 @@
             this.Name = "updateMain";
             this.Padding = new System.Windows.Forms.Padding(20, 30, 20, 20);
             this.Resizable = false;
-            this.Style = MetroFramework.MetroColorStyle.Red;
             this.Text = "Launcher update";
             this.Load += new System.EventHandler(this.updateMain_Load);
             this.ResumeLayout(false);

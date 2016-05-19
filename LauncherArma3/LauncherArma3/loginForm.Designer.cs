@@ -44,6 +44,7 @@
             this.errorImage = new System.Windows.Forms.PictureBox();
             this.errorBox = new FlatUI.FlatAlertBox();
             this.maintenanceRefresh = new System.ComponentModel.BackgroundWorker();
+            this.newPassword = new MaterialSkin.Controls.MaterialLabel();
             ((System.ComponentModel.ISupportInitialize)(this.loginLogo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorImage)).BeginInit();
             this.SuspendLayout();
@@ -234,11 +235,29 @@
             this.maintenanceRefresh.DoWork += new System.ComponentModel.DoWorkEventHandler(this.maintenanceRefresh_DoWork);
             this.maintenanceRefresh.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.callRefresh);
             // 
+            // newPassword
+            // 
+            this.newPassword.BackColor = System.Drawing.Color.Transparent;
+            this.newPassword.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.newPassword.Depth = 0;
+            this.newPassword.Font = new System.Drawing.Font("Roboto", 11F);
+            this.newPassword.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.newPassword.Location = new System.Drawing.Point(332, 266);
+            this.newPassword.MouseState = MaterialSkin.MouseState.HOVER;
+            this.newPassword.Name = "newPassword";
+            this.newPassword.Size = new System.Drawing.Size(308, 18);
+            this.newPassword.TabIndex = 27;
+            this.newPassword.Text = "Need a new password ?";
+            this.newPassword.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.newPassword.Click += new System.EventHandler(this.newPassword_Click);
+            // 
             // loginForm
             // 
+            this.AcceptButton = this.loginButton;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(646, 444);
+            this.Controls.Add(this.newPassword);
             this.Controls.Add(this.loginRemember);
             this.Controls.Add(this.loginLogo);
             this.Controls.Add(this.newsContent);
@@ -289,5 +308,6 @@
         private FlatUI.FlatAlertBox errorBox;
         private System.Windows.Forms.PictureBox errorImage;
         private System.ComponentModel.BackgroundWorker maintenanceRefresh;
+        private MaterialSkin.Controls.MaterialLabel newPassword;
     }
 }

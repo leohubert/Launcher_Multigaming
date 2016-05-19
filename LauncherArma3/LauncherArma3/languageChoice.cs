@@ -1,4 +1,5 @@
-﻿using MetroFramework;
+﻿using LauncherArma3.Properties;
+using MetroFramework;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -40,8 +41,8 @@ namespace LauncherArma3
 
         void setLanguage()
         {
-            string translateFile = Properties.Resources.translate;
-            XmlReader translate = XmlReader.Create(new StringReader(translateFile));
+           // string translateFile = Properties.Resources.translate;
+            XmlReader translate = XmlReader.Create(new StringReader(Resources.translate));
 
             translate.ReadToFollowing(language);
             translate.ReadToFollowing("languageTitle");

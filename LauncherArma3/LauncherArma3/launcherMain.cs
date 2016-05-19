@@ -7,30 +7,46 @@ using System.IO;
 using System.Xml;
 using RestSharp;
 using Newtonsoft.Json.Linq;
+using MaterialSkin;
+using Microsoft.Win32;
+using System.Collections;
+using System.Net;
+using System.Threading.Tasks;
+using System.Threading;
+using System.Security.Cryptography;
+using System.ComponentModel;
 
 namespace LauncherArma3
 {
     public partial class launcherMain : MetroFramework.Forms.MetroForm
-    { 
+    {
 
         /* Launcher basic config */
         string apiUrl;
         string webSite;
         string serverName;
+        string ftp_url;
+        string ftp_user;
+        string ftp_pass;
 
 
         /* Variables globals */
 
         string appdata = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "/v5.";
-        bool connected = false;
-        bool internet;
+        private MaterialSkinManager materialSkinManager;
         string news1;
         string news2;
         string news3;
-        bool showLogin = false;
-        bool showRegister = false;
         string language;
         bool normayClose = false;
+        bool onDownload = false;
+        bool pause = false;
+        bool cancel = false;
+        int stat = 0;
+        dynamic result = null;
+
+        /* STEAM VARIABLE */
+        string armaDirectory = @"c:\Program Files (x86)\Steam\steamapps\common\Arma 3";
 
         /* Session info */
         string sessionToken = null;
@@ -39,18 +55,21 @@ namespace LauncherArma3
         string level = null;
 
         /* GENERAL TRANSLATE */
-    
+
         string tr_username;
         string tr_email;
         string tr_disconnectMsg;
 
-        public launcherMain(string server, string api, string website, string session)
+        public launcherMain(string server, string api, string website, string session, string ftpUrl, string ftpUser, string ftpPass)
         {
             InitializeComponent();
             serverName = server;
             apiUrl = api;
             webSite = website;
             sessionToken = session;
+            ftp_url = ftpUrl;
+            ftp_user = ftpUser;
+            ftp_pass = ftpPass;
         }
 
         private void launcherMain_Load(object sender, EventArgs e)
@@ -66,8 +85,12 @@ namespace LauncherArma3
             }
             else
             {
-                disconnectButton.Enabled = false;
+                logoutButton.Enabled = false;
             }
+            checkArmaDirectory(armaDirectory);
+            materialSkinManager = MaterialSkinManager.Instance;
+            materialSkinManager.Theme = MaterialSkinManager.Themes.DARK;
+            materialSkinManager.ColorScheme = new ColorScheme(Primary.Blue500, Primary.Blue700, Primary.Blue100, Accent.LightGreen200, TextShade.WHITE);
         }
 
         void loginWithToken()
@@ -83,14 +106,13 @@ namespace LauncherArma3
 
             dynamic res = JObject.Parse(content.ToString());
 
-            checkNotif();
+            clearNotif();
 
             if (res.status == "42")
             {
                 username = res.user.username;
                 email = res.user.email;
                 level = res.user.level;
-                connected = true;
                 succesBox.Visible = true;
                 succesBox.Text = res.msg;
                 changeStatus("Green");
@@ -125,20 +147,8 @@ namespace LauncherArma3
                     playerStatus.ForeColor = Color.OrangeRed;
                     break;
             }
-        }     
-
-        void checkNotif()
-        {
-            if (errorBox.Visible == true)
-                errorBox.Visible = false;
-            if (infoBox.Visible == true)
-                infoBox.Visible = false;
-            if (succesBox.Visible == true)
-                succesBox.Visible = false;
-            this.Refresh();
         }
 
-   
         private void newsLink1_Click(object sender, EventArgs e)
         {
             Process p = new Process();
@@ -202,12 +212,18 @@ namespace LauncherArma3
 
         private void disconnectButton_Click(object sender, EventArgs e)
         {
+            if (onDownload == true)
+            {
+                clearNotif();
+                errorBox.Visible = true;
+                errorBox.Text = "Download in progress";
+                return;
+            }
             if (File.Exists(appdata + serverName + "/token.bin2hex"))
                 File.Delete(appdata + serverName + "/token.bin2hex");
-            checkNotif();
+            clearNotif();
             succesBox.Visible = true;
             succesBox.Text = tr_disconnectMsg;
-            connected = false;
             changeStatus("Red");
             normayClose = true;
             this.Close();
@@ -246,7 +262,7 @@ namespace LauncherArma3
 
                 translate.ReadToFollowing(language);
                 translate.ReadToFollowing("logOut");
-                disconnectButton.Text = translate.ReadElementContentAsString();                          
+                logoutButton.Text = translate.ReadElementContentAsString();
                 translate.ReadToFollowing("commingSoon");
                 tmp = translate.ReadElementContentAsString();
                 newsLabel1.Text = tmp;
@@ -283,13 +299,6 @@ namespace LauncherArma3
 
         }
 
-        private void loginForgot_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
-        {
-            Process p = new Process();
-            p.StartInfo.FileName = apiUrl + "password/reset";
-            p.Start();
-        }
-
         private void settingsButton_Click(object sender, EventArgs e)
         {
             settingsForm settings = new settingsForm(serverName);
@@ -307,6 +316,429 @@ namespace LauncherArma3
             }
         }
 
+        void clearNotif()
+        {
+            if (errorBox.Text != null)
+            {
+                errorBox.Text = null;
+                errorBox.Visible = false;
+            }
+            if (succesBox.Text != null)
+            {
+                succesBox.Text = null;
+                succesBox.Visible = false;
+            }
+            if (infoBox.Text != null)
+            {
+                infoBox.Text = null;
+                infoBox.Visible = false;
+            }
+        }
 
+        bool checkArmaDirectory(string path)
+        {
+            if (File.Exists(path + @"\arma3.exe"))
+            {
+                directoryLabel.Text = "Arma directory: " + path;
+                armaDirectory = path;
+                return true;
+            }
+            else
+            {
+                directoryLabel.Text = "Reselect arma diretory !";
+                armaDirectory = null;
+                return false;
+            }
+        }
+
+        private void chooseButton_Click(object sender, EventArgs e)
+        {
+            if (onDownload == true)
+            {
+                clearNotif();
+                errorBox.Visible = true;
+                errorBox.Text = "Download in progress";
+                return;
+            }
+            directoryChooser.ShowDialog();
+            clearNotif();
+            if (checkArmaDirectory(directoryChooser.SelectedPath) == true)
+            {
+                succesBox.Visible = true;
+                succesBox.Text = "Success !";
+            }
+            else
+            {
+                errorBox.Visible = true;
+                errorBox.Text = "Arma directory not good ! ";
+            }
+        }
+
+        Queue listAddons(dynamic res)
+        {
+
+            Queue modList = new Queue();
+
+            Thread thread = new Thread(() =>
+            {
+                /* VARIABLES */
+
+                string remote_addons_md5;
+                string local_addons_md5;
+                string currentAddons;
+                int i = 0;
+                int total_addons = res.total_addons;
+
+                /* LIST DES MODS A TELECHARGER */
+                while (i < total_addons)
+                {
+                    currentAddons = res.addons[i].name;
+                    local_addons_md5 = getFileMd5(armaDirectory + "/@" + serverName + "/addons/" + currentAddons).ToLower();
+                    remote_addons_md5 = res.addons[i].md5;
+                    if (remote_addons_md5 != local_addons_md5)
+                    {
+                        modList.Enqueue(currentAddons);
+                    }
+                    i++;
+                }
+                stat = 1;
+            });
+            thread.Start();
+            return (modList);
+        }
+
+        Queue listCpp(dynamic res)
+        {
+
+            Queue cppList = new Queue();
+            Thread thread = new Thread(() =>
+            {
+                /* VARIABLES */
+
+                string remote_cpp_md5;
+                string local_cpp_md5;
+                string currentCpp;
+                int i = 0;
+                int total_cpp = res.total_cpps;
+
+                /* LIST DES CPP A TELECHARGER */
+                while (i < total_cpp)
+                {
+                    currentCpp = res.cpps[i].name;
+                    local_cpp_md5 = getFileMd5(armaDirectory + "/@" + serverName + "/" + currentCpp).ToLower();
+                    remote_cpp_md5 = res.cpps[i].md5;
+                    if (remote_cpp_md5 != local_cpp_md5)
+                    {
+                        cppList.Enqueue(currentCpp);
+                    }
+                    i++;
+                }
+                stat = 1;
+            });
+            thread.Start();
+            return (cppList);
+        }
+
+        Queue listUserconfigs(dynamic res)
+        {
+
+            Queue userconfigList = new Queue();
+
+            Thread thread = new Thread(() =>
+            {
+                /* VARIABLES */
+
+                string remote_userconfigs_md5;
+                string local_userconfigs_md5;
+                string currentUserconfigs;
+                int i = 0;
+                int total_userconfigs = res.total_userconfigs;
+
+                /* LIST DES USERSCONFIGS A TELECHARGER */
+                while (i < total_userconfigs)
+                {
+                    currentUserconfigs = res.userconfigs[i].name;
+                    local_userconfigs_md5 = getFileMd5(armaDirectory + "/" + currentUserconfigs).ToLower();
+                    remote_userconfigs_md5 = res.userconfigs[i].md5;
+                    if (remote_userconfigs_md5 != local_userconfigs_md5)
+                    {
+                        userconfigList.Enqueue(currentUserconfigs);
+                    }
+                    i++;
+                }
+                stat = 1;
+            });
+            thread.Start();
+            return (userconfigList);
+        }
+
+        private async void playButton_Click(object sender, EventArgs e)
+        {
+            if (armaDirectory == null)
+            {
+                clearNotif();
+                infoBox.Visible = true;
+                infoBox.Text = "Please select arma directory.";
+                return;
+            }
+            if (onDownload == true)
+            {
+                clearNotif();
+                infoBox.Visible = true;
+                infoBox.Text = "Wait until the end of the current download.";
+                return;
+            }
+
+            /* INIT DOWNLOAD */
+
+            downloadProgress.Visible = true;
+            downloadProgressLabel.Visible = true;
+            pauseButton.Visible = true;
+            cancelButton.Visible = true;
+            onDownload = true;
+            clearNotif();
+            succesBox.Visible = true;
+            succesBox.Text = "Download started";
+            this.Refresh();
+
+
+            if (!Directory.Exists(armaDirectory + "/@" + serverName))
+            {
+                Directory.CreateDirectory(armaDirectory + "/@" + serverName);
+            }
+            if (!Directory.Exists(armaDirectory + "/@" + serverName + "/addons"))
+            {
+                Directory.CreateDirectory(armaDirectory + "/@" + serverName + "/addons");
+            }
+
+
+            /* START LISTING */
+
+            initDownload.RunWorkerAsync();
+
+            while (result == null)
+                await Task.Delay(1000);
+
+
+            dynamic res = result;
+
+            /* LISTING ADDONS */
+
+            Queue addonsList = new Queue();
+            stat = 0;
+            downloadMessage.Text = "Listing des mods à télécharger.";
+            addonsList = listAddons(res);
+
+            while (stat == 0)
+                await Task.Delay(1000);
+
+            /* LISTING CPP */
+
+            Queue cppList = new Queue();
+            stat = 0;
+            downloadMessage.Text = "Listing des ccp à télécharger.";
+            cppList = listCpp(res);
+
+            while (stat == 0)
+                await Task.Delay(1000);
+
+            /* LISTING USERCONFIG */
+
+            Queue userconfigList = new Queue();
+            stat = 0;
+            downloadMessage.Text = "Listing des fichier anexes à télécharger.";
+            userconfigList = listUserconfigs(res);
+
+            while (stat == 0)
+                await Task.Delay(1000);
+
+
+
+            /* DOWNLOAD ADDONS */
+
+            int i;
+            string current;
+
+            i = addonsList.Count;
+
+            while (i > 0)
+            {
+                stat = 0;
+                current = addonsList.Dequeue().ToString();
+                downloadMessage.Text = "Téléchargement du mod: " + current + "en cours.";
+                startDownload(apiUrl + "api/arma3/addons/download/" + current, armaDirectory + "/@" + serverName + "/addons/" + current);
+                while (stat == 0)
+                    await Task.Delay(1000);
+                i--;
+            }
+
+            /* END DOWNLOAD ADDONS */
+
+
+            /* DOWNLOAD CPP */
+
+            i = cppList.Count;
+
+            while (i > 0)
+            {
+                stat = 0;
+                current = cppList.Dequeue().ToString();
+                downloadMessage.Text = "Téléchargement du fichier: " + current + "en cours.";
+                startDownload(apiUrl + "api/arma3/cpps/download/" + current, armaDirectory + "/@" + serverName + "/" + current);
+                while (stat == 0)
+                    await Task.Delay(1000);
+                i--;
+            }
+
+            /* END DOWNLOADCPP */
+
+
+            /* DOWNLOAD USERCONFIGS */
+
+            i = userconfigList.Count;
+
+            while (i > 0)
+            {
+                stat = 0;
+                current = userconfigList.Dequeue().ToString();
+                downloadMessage.Text = "Téléchargement du fichier: " + current + "en cours.";
+                startDownload(apiUrl + "api/arma3/userconfigs/download/" + current, armaDirectory + "/" + current);
+                while (stat == 0)
+                    await Task.Delay(1000);
+                i--;
+            }
+
+            /* END DOWNLOAD USERCONFIGS */
+
+
+            /* CHECK IF ALREADY UP TO DATE */
+
+            if (addonsList.Count == 0 && cppList.Count == 0
+               && userconfigList.Count == 0)
+            {
+                downloadMessage.Text = "Already up to date, you can play !";
+            }
+
+
+
+            /* END DOWNLOAD */
+            /*
+            downloadProgress.Visible = false;
+            downloadProgressLabel.Visible = false;
+            pauseButton.Visible = false;
+            cancelButton.Visible = false;
+            clearNotif();
+            if (cancel == true)
+            {
+                infoBox.Visible = true;
+                infoBox.Text = "Download stoped ";
+            }
+            else
+            {
+                succesBox.Visible = true;
+                succesBox.Text = "Download finish !";
+            }
+            */
+            onDownload = false;
+            cancel = false;
+            pause = false;
+
+        }
+
+
+        private void pauseButton_Click(object sender, EventArgs e)
+        {
+            if (pause == true)
+            {
+                pause = false;
+                pauseButton.Text = "Pause";
+                clearNotif();
+                infoBox.Visible = true;
+                infoBox.Text = "Le téléchargement se mettra en pause après avoir tétécharger le fichier en cours .";
+
+            }
+            else
+            {
+                pauseButton.Text = "Resume";
+                pause = true;
+            }
+        }
+
+        private void cancelButton_Click(object sender, EventArgs e)
+        {
+            cancel = true;
+        }
+
+        protected string getFileMd5(string filePath)
+        {
+            try
+            {
+                using (var md5 = MD5.Create())
+                {
+                    using (var stream = File.OpenRead(filePath))
+                    {
+                        return BitConverter.ToString(md5.ComputeHash(stream)).Replace("-", string.Empty);
+                    }
+                }
+            }
+            catch
+            {
+                return "errormd5";
+            }
+            return (null);
+        }
+
+        private async void startDownload(string remote, string local)
+        {
+            while (pause == true)
+                await Task.Delay(1000);
+            Thread thread = new Thread(() =>
+            {
+                WebClient client = new WebClient();
+                client.DownloadProgressChanged += new DownloadProgressChangedEventHandler(client_DownloadProgressChanged);
+                client.DownloadFileCompleted += new AsyncCompletedEventHandler(client_DownloadFileCompleted);
+                client.DownloadFileAsync(new Uri(remote), local);
+            });
+            thread.Start();
+
+        }
+        void client_DownloadProgressChanged(object sender, DownloadProgressChangedEventArgs e)
+        {
+            this.BeginInvoke((MethodInvoker)delegate
+            {
+                double bytesIn = double.Parse(e.BytesReceived.ToString());
+                double totalBytes = double.Parse(e.TotalBytesToReceive.ToString());
+                double percentage = bytesIn / totalBytes * 100;
+                downloadProgressLabel.Text = "Downloaded " + e.BytesReceived + " of " + e.TotalBytesToReceive;
+                downloadProgress.Value = int.Parse(Math.Truncate(percentage).ToString());
+            });
+        }
+        void client_DownloadFileCompleted(object sender, AsyncCompletedEventArgs e)
+        {
+            this.BeginInvoke((MethodInvoker)delegate
+            {
+                stat = 1;
+            });
+        }
+
+        private void initDownload_DoWork(object sender, DoWorkEventArgs e)
+        {
+            try
+            {
+                var client = new RestClient(apiUrl);
+                var request = new RestRequest("api/arma3/addons", Method.GET);
+
+                IRestResponse response = client.Execute(request);
+                var content = response.Content;
+
+                result = JObject.Parse(content.ToString());
+            }
+            catch
+            {
+                clearNotif();
+                errorBox.Visible = true;
+                errorBox.Text = "Error when start listing mods";
+            }
+        }
     }
 }

@@ -34,7 +34,20 @@
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.newsBox = new System.Windows.Forms.GroupBox();
             this.playerBox = new System.Windows.Forms.GroupBox();
+            this.settingsButton = new MaterialSkin.Controls.MaterialRaisedButton();
+            this.logoutButton = new MaterialSkin.Controls.MaterialRaisedButton();
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
+            this.playButton = new MaterialSkin.Controls.MaterialRaisedButton();
+            this.chooseButton = new MaterialSkin.Controls.MaterialRaisedButton();
+            this.directoryChooser = new System.Windows.Forms.FolderBrowserDialog();
+            this.pauseButton = new MaterialSkin.Controls.MaterialRaisedButton();
+            this.cancelButton = new MaterialSkin.Controls.MaterialRaisedButton();
+            this.initDownload = new System.ComponentModel.BackgroundWorker();
+            this.downloadMessage = new FlatUI.FlatLabel();
+            this.modsDownloaded = new FlatUI.FlatLabel();
+            this.modsTotal = new FlatUI.FlatLabel();
+            this.downloadProgressLabel = new FlatUI.FlatLabel();
+            this.directoryLabel = new FlatUI.FlatLabel();
             this.newsDate3 = new iTalk.iTalk_Label();
             this.newsDate2 = new iTalk.iTalk_Label();
             this.newsDate1 = new iTalk.iTalk_Label();
@@ -46,15 +59,13 @@
             this.newsLink1 = new iTalk.iTalk_Button_1();
             this.iTalk_Separator3 = new iTalk.iTalk_Separator();
             this.iTalk_Separator2 = new iTalk.iTalk_Separator();
-            this.settingsButton = new iTalk.iTalk_Button_1();
             this.playerStatusLabel = new FlatUI.FlatLabel();
             this.playerEmailLabel = new FlatUI.FlatLabel();
             this.playerUsernameLabel = new FlatUI.FlatLabel();
             this.playerStatus = new FlatUI.FlatLabel();
             this.playerEmail = new FlatUI.FlatLabel();
             this.playerUsername = new FlatUI.FlatLabel();
-            this.disconnectButton = new MonoFlat.MonoFlat_Button();
-            this.flatProgressBar1 = new FlatUI.FlatProgressBar();
+            this.downloadProgress = new FlatUI.FlatProgressBar();
             this.errorBox = new FlatUI.FlatAlertBox();
             this.succesBox = new FlatUI.FlatAlertBox();
             this.infoBox = new FlatUI.FlatAlertBox();
@@ -113,7 +124,7 @@
             this.newsBox.Controls.Add(this.iTalk_Separator3);
             this.newsBox.Controls.Add(this.iTalk_Separator2);
             this.newsBox.Controls.Add(this.pictureBox2);
-            this.newsBox.Location = new System.Drawing.Point(20, 250);
+            this.newsBox.Location = new System.Drawing.Point(322, 60);
             this.newsBox.Name = "newsBox";
             this.newsBox.Size = new System.Drawing.Size(505, 187);
             this.newsBox.TabIndex = 6;
@@ -122,19 +133,45 @@
             // playerBox
             // 
             this.playerBox.Controls.Add(this.settingsButton);
+            this.playerBox.Controls.Add(this.logoutButton);
             this.playerBox.Controls.Add(this.playerStatusLabel);
             this.playerBox.Controls.Add(this.playerEmailLabel);
             this.playerBox.Controls.Add(this.playerUsernameLabel);
             this.playerBox.Controls.Add(this.playerStatus);
             this.playerBox.Controls.Add(this.playerEmail);
             this.playerBox.Controls.Add(this.playerUsername);
-            this.playerBox.Controls.Add(this.disconnectButton);
             this.playerBox.Controls.Add(this.pictureBox4);
-            this.playerBox.Location = new System.Drawing.Point(531, 250);
+            this.playerBox.Location = new System.Drawing.Point(20, 60);
             this.playerBox.Name = "playerBox";
             this.playerBox.Size = new System.Drawing.Size(282, 187);
             this.playerBox.TabIndex = 9;
             this.playerBox.TabStop = false;
+            // 
+            // settingsButton
+            // 
+            this.settingsButton.Depth = 0;
+            this.settingsButton.Location = new System.Drawing.Point(6, 145);
+            this.settingsButton.MouseState = MaterialSkin.MouseState.HOVER;
+            this.settingsButton.Name = "settingsButton";
+            this.settingsButton.Primary = true;
+            this.settingsButton.Size = new System.Drawing.Size(126, 36);
+            this.settingsButton.TabIndex = 18;
+            this.settingsButton.Text = "Settings";
+            this.settingsButton.UseVisualStyleBackColor = true;
+            this.settingsButton.Click += new System.EventHandler(this.settingsButton_Click);
+            // 
+            // logoutButton
+            // 
+            this.logoutButton.Depth = 0;
+            this.logoutButton.Location = new System.Drawing.Point(140, 145);
+            this.logoutButton.MouseState = MaterialSkin.MouseState.HOVER;
+            this.logoutButton.Name = "logoutButton";
+            this.logoutButton.Primary = true;
+            this.logoutButton.Size = new System.Drawing.Size(134, 36);
+            this.logoutButton.TabIndex = 17;
+            this.logoutButton.Text = "Log Out";
+            this.logoutButton.UseVisualStyleBackColor = true;
+            this.logoutButton.Click += new System.EventHandler(this.disconnectButton_Click);
             // 
             // pictureBox4
             // 
@@ -146,6 +183,139 @@
             this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox4.TabIndex = 10;
             this.pictureBox4.TabStop = false;
+            // 
+            // playButton
+            // 
+            this.playButton.Depth = 0;
+            this.playButton.Location = new System.Drawing.Point(819, 431);
+            this.playButton.MouseState = MaterialSkin.MouseState.HOVER;
+            this.playButton.Name = "playButton";
+            this.playButton.Primary = true;
+            this.playButton.Size = new System.Drawing.Size(158, 46);
+            this.playButton.TabIndex = 17;
+            this.playButton.Text = "Play";
+            this.playButton.UseVisualStyleBackColor = true;
+            this.playButton.Click += new System.EventHandler(this.playButton_Click);
+            // 
+            // chooseButton
+            // 
+            this.chooseButton.Depth = 0;
+            this.chooseButton.Location = new System.Drawing.Point(23, 431);
+            this.chooseButton.MouseState = MaterialSkin.MouseState.HOVER;
+            this.chooseButton.Name = "chooseButton";
+            this.chooseButton.Primary = true;
+            this.chooseButton.Size = new System.Drawing.Size(214, 46);
+            this.chooseButton.TabIndex = 18;
+            this.chooseButton.Text = "Choose arma directory";
+            this.chooseButton.UseVisualStyleBackColor = true;
+            this.chooseButton.Click += new System.EventHandler(this.chooseButton_Click);
+            // 
+            // pauseButton
+            // 
+            this.pauseButton.Depth = 0;
+            this.pauseButton.Location = new System.Drawing.Point(819, 378);
+            this.pauseButton.MouseState = MaterialSkin.MouseState.HOVER;
+            this.pauseButton.Name = "pauseButton";
+            this.pauseButton.Primary = true;
+            this.pauseButton.Size = new System.Drawing.Size(158, 46);
+            this.pauseButton.TabIndex = 20;
+            this.pauseButton.Text = "Pause";
+            this.pauseButton.UseVisualStyleBackColor = true;
+            this.pauseButton.Visible = false;
+            this.pauseButton.Click += new System.EventHandler(this.pauseButton_Click);
+            // 
+            // cancelButton
+            // 
+            this.cancelButton.Depth = 0;
+            this.cancelButton.Location = new System.Drawing.Point(819, 325);
+            this.cancelButton.MouseState = MaterialSkin.MouseState.HOVER;
+            this.cancelButton.Name = "cancelButton";
+            this.cancelButton.Primary = true;
+            this.cancelButton.Size = new System.Drawing.Size(158, 46);
+            this.cancelButton.TabIndex = 23;
+            this.cancelButton.Text = "Cancel";
+            this.cancelButton.UseVisualStyleBackColor = true;
+            this.cancelButton.Visible = false;
+            this.cancelButton.Click += new System.EventHandler(this.cancelButton_Click);
+            // 
+            // initDownload
+            // 
+            this.initDownload.DoWork += new System.ComponentModel.DoWorkEventHandler(this.initDownload_DoWork);
+            // 
+            // downloadMessage
+            // 
+            this.downloadMessage.AutoSize = true;
+            this.downloadMessage.BackColor = System.Drawing.Color.Transparent;
+            this.downloadMessage.Cursor = System.Windows.Forms.Cursors.Default;
+            this.downloadMessage.Font = new System.Drawing.Font("Arial Black", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.downloadMessage.ForeColor = System.Drawing.SystemColors.WindowFrame;
+            this.downloadMessage.Location = new System.Drawing.Point(397, 421);
+            this.downloadMessage.Name = "downloadMessage";
+            this.downloadMessage.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.downloadMessage.Size = new System.Drawing.Size(138, 18);
+            this.downloadMessage.TabIndex = 24;
+            this.downloadMessage.Text = "Wait for download";
+            this.downloadMessage.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // modsDownloaded
+            // 
+            this.modsDownloaded.AutoSize = true;
+            this.modsDownloaded.BackColor = System.Drawing.Color.Transparent;
+            this.modsDownloaded.Cursor = System.Windows.Forms.Cursors.Default;
+            this.modsDownloaded.Font = new System.Drawing.Font("Arial Black", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.modsDownloaded.ForeColor = System.Drawing.SystemColors.WindowFrame;
+            this.modsDownloaded.Location = new System.Drawing.Point(23, 328);
+            this.modsDownloaded.Name = "modsDownloaded";
+            this.modsDownloaded.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.modsDownloaded.Size = new System.Drawing.Size(48, 18);
+            this.modsDownloaded.TabIndex = 22;
+            this.modsDownloaded.Text = "NULL";
+            this.modsDownloaded.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // modsTotal
+            // 
+            this.modsTotal.AutoSize = true;
+            this.modsTotal.BackColor = System.Drawing.Color.Transparent;
+            this.modsTotal.Cursor = System.Windows.Forms.Cursors.Default;
+            this.modsTotal.Font = new System.Drawing.Font("Arial Black", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.modsTotal.ForeColor = System.Drawing.SystemColors.WindowFrame;
+            this.modsTotal.Location = new System.Drawing.Point(23, 312);
+            this.modsTotal.Name = "modsTotal";
+            this.modsTotal.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.modsTotal.Size = new System.Drawing.Size(48, 18);
+            this.modsTotal.TabIndex = 21;
+            this.modsTotal.Text = "NULL";
+            this.modsTotal.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // downloadProgressLabel
+            // 
+            this.downloadProgressLabel.AutoSize = true;
+            this.downloadProgressLabel.BackColor = System.Drawing.Color.Transparent;
+            this.downloadProgressLabel.Cursor = System.Windows.Forms.Cursors.Default;
+            this.downloadProgressLabel.Font = new System.Drawing.Font("Arial Black", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.downloadProgressLabel.ForeColor = System.Drawing.SystemColors.WindowFrame;
+            this.downloadProgressLabel.Location = new System.Drawing.Point(384, 439);
+            this.downloadProgressLabel.Name = "downloadProgressLabel";
+            this.downloadProgressLabel.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.downloadProgressLabel.Size = new System.Drawing.Size(170, 18);
+            this.downloadProgressLabel.TabIndex = 19;
+            this.downloadProgressLabel.Text = "Total: xxx mb / xxx mb";
+            this.downloadProgressLabel.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // directoryLabel
+            // 
+            this.directoryLabel.AutoSize = true;
+            this.directoryLabel.BackColor = System.Drawing.Color.Transparent;
+            this.directoryLabel.Cursor = System.Windows.Forms.Cursors.Default;
+            this.directoryLabel.Font = new System.Drawing.Font("Arial Black", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.directoryLabel.ForeColor = System.Drawing.SystemColors.WindowFrame;
+            this.directoryLabel.Location = new System.Drawing.Point(23, 406);
+            this.directoryLabel.Name = "directoryLabel";
+            this.directoryLabel.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.directoryLabel.Size = new System.Drawing.Size(180, 18);
+            this.directoryLabel.TabIndex = 19;
+            this.directoryLabel.Text = "Select a arma directory";
+            this.directoryLabel.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // newsDate3
             // 
@@ -263,6 +433,7 @@
             // 
             // iTalk_Separator3
             // 
+            this.iTalk_Separator3.BackColor = System.Drawing.Color.White;
             this.iTalk_Separator3.Location = new System.Drawing.Point(6, 64);
             this.iTalk_Separator3.Name = "iTalk_Separator3";
             this.iTalk_Separator3.Size = new System.Drawing.Size(493, 10);
@@ -271,26 +442,12 @@
             // 
             // iTalk_Separator2
             // 
+            this.iTalk_Separator2.BackColor = System.Drawing.Color.White;
             this.iTalk_Separator2.Location = new System.Drawing.Point(6, 125);
             this.iTalk_Separator2.Name = "iTalk_Separator2";
             this.iTalk_Separator2.Size = new System.Drawing.Size(493, 10);
             this.iTalk_Separator2.TabIndex = 10;
             this.iTalk_Separator2.Text = "iTalk_Separator2";
-            // 
-            // settingsButton
-            // 
-            this.settingsButton.BackColor = System.Drawing.Color.Transparent;
-            this.settingsButton.Cursor = System.Windows.Forms.Cursors.Default;
-            this.settingsButton.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.settingsButton.Image = null;
-            this.settingsButton.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.settingsButton.Location = new System.Drawing.Point(10, 132);
-            this.settingsButton.Name = "settingsButton";
-            this.settingsButton.Size = new System.Drawing.Size(124, 40);
-            this.settingsButton.TabIndex = 17;
-            this.settingsButton.Text = "Settings";
-            this.settingsButton.TextAlignment = System.Drawing.StringAlignment.Center;
-            this.settingsButton.Click += new System.EventHandler(this.settingsButton_Click);
             // 
             // playerStatusLabel
             // 
@@ -367,36 +524,22 @@
             this.playerUsername.Text = "NULL";
             this.playerUsername.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
-            // disconnectButton
+            // downloadProgress
             // 
-            this.disconnectButton.BackColor = System.Drawing.Color.Transparent;
-            this.disconnectButton.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.disconnectButton.Image = null;
-            this.disconnectButton.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.disconnectButton.Location = new System.Drawing.Point(140, 133);
-            this.disconnectButton.Name = "disconnectButton";
-            this.disconnectButton.Size = new System.Drawing.Size(136, 39);
-            this.disconnectButton.TabIndex = 11;
-            this.disconnectButton.Text = "Log Out";
-            this.disconnectButton.TextAlignment = System.Drawing.StringAlignment.Center;
-            this.disconnectButton.Click += new System.EventHandler(this.disconnectButton_Click);
-            // 
-            // flatProgressBar1
-            // 
-            this.flatProgressBar1.BackColor = System.Drawing.SystemColors.Control;
-            this.flatProgressBar1.DarkerProgress = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(148)))), ((int)(((byte)(92)))));
-            this.flatProgressBar1.Location = new System.Drawing.Point(20, 439);
-            this.flatProgressBar1.Maximum = 100;
-            this.flatProgressBar1.Name = "flatProgressBar1";
-            this.flatProgressBar1.Pattern = true;
-            this.flatProgressBar1.PercentSign = false;
-            this.flatProgressBar1.ProgressColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(168)))), ((int)(((byte)(109)))));
-            this.flatProgressBar1.ShowBalloon = true;
-            this.flatProgressBar1.Size = new System.Drawing.Size(883, 42);
-            this.flatProgressBar1.TabIndex = 8;
-            this.flatProgressBar1.Text = "flatProgressBar1";
-            this.flatProgressBar1.Value = 50;
-            this.flatProgressBar1.Visible = false;
+            this.downloadProgress.BackColor = System.Drawing.Color.White;
+            this.downloadProgress.DarkerProgress = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(148)))), ((int)(((byte)(92)))));
+            this.downloadProgress.Location = new System.Drawing.Point(0, 458);
+            this.downloadProgress.Maximum = 100;
+            this.downloadProgress.Name = "downloadProgress";
+            this.downloadProgress.Pattern = true;
+            this.downloadProgress.PercentSign = false;
+            this.downloadProgress.ProgressColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(168)))), ((int)(((byte)(109)))));
+            this.downloadProgress.ShowBalloon = false;
+            this.downloadProgress.Size = new System.Drawing.Size(1001, 42);
+            this.downloadProgress.TabIndex = 8;
+            this.downloadProgress.Text = "downloadProgress";
+            this.downloadProgress.Value = 0;
+            this.downloadProgress.Visible = false;
             // 
             // errorBox
             // 
@@ -405,9 +548,9 @@
             this.errorBox.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
             this.errorBox.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.errorBox.kind = FlatUI.FlatAlertBox._Kind.Error;
-            this.errorBox.Location = new System.Drawing.Point(20, 63);
+            this.errorBox.Location = new System.Drawing.Point(250, 12);
             this.errorBox.Name = "errorBox";
-            this.errorBox.Size = new System.Drawing.Size(883, 42);
+            this.errorBox.Size = new System.Drawing.Size(500, 42);
             this.errorBox.TabIndex = 2;
             this.errorBox.Visible = false;
             // 
@@ -418,9 +561,9 @@
             this.succesBox.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.succesBox.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.succesBox.kind = FlatUI.FlatAlertBox._Kind.Success;
-            this.succesBox.Location = new System.Drawing.Point(20, 63);
+            this.succesBox.Location = new System.Drawing.Point(250, 12);
             this.succesBox.Name = "succesBox";
-            this.succesBox.Size = new System.Drawing.Size(883, 42);
+            this.succesBox.Size = new System.Drawing.Size(500, 42);
             this.succesBox.TabIndex = 1;
             this.succesBox.Visible = false;
             // 
@@ -431,9 +574,9 @@
             this.infoBox.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.infoBox.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.infoBox.kind = FlatUI.FlatAlertBox._Kind.Info;
-            this.infoBox.Location = new System.Drawing.Point(20, 63);
+            this.infoBox.Location = new System.Drawing.Point(250, 12);
             this.infoBox.Name = "infoBox";
-            this.infoBox.Size = new System.Drawing.Size(883, 42);
+            this.infoBox.Size = new System.Drawing.Size(500, 42);
             this.infoBox.TabIndex = 0;
             this.infoBox.Visible = false;
             // 
@@ -441,10 +584,19 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(923, 501);
+            this.ClientSize = new System.Drawing.Size(1000, 500);
+            this.Controls.Add(this.downloadMessage);
+            this.Controls.Add(this.cancelButton);
+            this.Controls.Add(this.modsDownloaded);
+            this.Controls.Add(this.modsTotal);
+            this.Controls.Add(this.downloadProgressLabel);
+            this.Controls.Add(this.pauseButton);
+            this.Controls.Add(this.directoryLabel);
+            this.Controls.Add(this.chooseButton);
+            this.Controls.Add(this.playButton);
             this.Controls.Add(this.newsBox);
             this.Controls.Add(this.playerBox);
-            this.Controls.Add(this.flatProgressBar1);
+            this.Controls.Add(this.downloadProgress);
             this.Controls.Add(this.errorBox);
             this.Controls.Add(this.succesBox);
             this.Controls.Add(this.infoBox);
@@ -464,6 +616,7 @@
             this.playerBox.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -473,7 +626,6 @@
         private FlatUI.FlatAlertBox infoBox;
         private FlatUI.FlatAlertBox succesBox;
         private FlatUI.FlatAlertBox errorBox;
-        private FlatUI.FlatProgressBar flatProgressBar1;
         private System.Windows.Forms.TabPage tabPage2;
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.PictureBox pictureBox2;
@@ -491,13 +643,25 @@
         private iTalk.iTalk_Label newsDate1;
         private System.Windows.Forms.GroupBox playerBox;
         private System.Windows.Forms.PictureBox pictureBox4;
-        private MonoFlat.MonoFlat_Button disconnectButton;
         private FlatUI.FlatLabel playerUsernameLabel;
         private FlatUI.FlatLabel playerUsername;
         private FlatUI.FlatLabel playerEmail;
         private FlatUI.FlatLabel playerEmailLabel;
         private FlatUI.FlatLabel playerStatus;
         private FlatUI.FlatLabel playerStatusLabel;
-        private iTalk.iTalk_Button_1 settingsButton;
+        private MaterialSkin.Controls.MaterialRaisedButton playButton;
+        private MaterialSkin.Controls.MaterialRaisedButton logoutButton;
+        private MaterialSkin.Controls.MaterialRaisedButton settingsButton;
+        private MaterialSkin.Controls.MaterialRaisedButton chooseButton;
+        private System.Windows.Forms.FolderBrowserDialog directoryChooser;
+        private FlatUI.FlatLabel directoryLabel;
+        private MaterialSkin.Controls.MaterialRaisedButton pauseButton;
+        private FlatUI.FlatLabel downloadProgressLabel;
+        private FlatUI.FlatLabel modsTotal;
+        private FlatUI.FlatLabel modsDownloaded;
+        private MaterialSkin.Controls.MaterialRaisedButton cancelButton;
+        public FlatUI.FlatProgressBar downloadProgress;
+        private System.ComponentModel.BackgroundWorker initDownload;
+        private FlatUI.FlatLabel downloadMessage;
     }
 }

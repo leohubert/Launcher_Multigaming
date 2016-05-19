@@ -19,13 +19,14 @@ namespace launcherUpdate
         private MaterialSkinManager materialSkinManager;
         string webUrl;
         string localUrl;
+        string process;    
 
-
-        public updateMain(string web, string local)
+        public updateMain(string web, string local, string proc)
         {
             InitializeComponent();
             webUrl = web;
             localUrl = local;
+            process = proc;
         }
 
         private void updateMain_Load(object sender, EventArgs e)
@@ -38,14 +39,28 @@ namespace launcherUpdate
 
         void download_update()
         {
-            Thread thread = new Thread(() =>
+            bool ok = false;
+            while (ok != true)
             {
-                WebClient client = new WebClient();
-                client.DownloadProgressChanged += new DownloadProgressChangedEventHandler(client_DownloadProgressChanged);
-                client.DownloadFileCompleted += new AsyncCompletedEventHandler(client_DownloadFileCompleted);
-                client.DownloadFileAsync(new Uri(webUrl), localUrl);
-            });
-            thread.Start();
+                try
+                {
+                    Process[] proc = Process.GetProcessesByName(process);
+                    proc[0].Kill();
+                }
+                catch
+                {
+                    Thread thread = new Thread(() =>
+                    {
+                        WebClient client = new WebClient();
+                        client.DownloadProgressChanged += new DownloadProgressChangedEventHandler(client_DownloadProgressChanged);
+                        client.DownloadFileCompleted += new AsyncCompletedEventHandler(client_DownloadFileCompleted);
+                        client.DownloadFileAsync(new Uri(webUrl), localUrl);
+                    });
+                    thread.Start();
+                    ok = true;
+                }
+            }
+
 
         }
 

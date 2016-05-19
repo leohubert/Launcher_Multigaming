@@ -26,17 +26,27 @@ namespace LauncherArma3
         bool notif = false;
         string notifStyle = null;
 
-        public registerForm(string server, string api, string website)
+        /* TRANSLATE */
+        Dictionary<string, string> translateDic = new Dictionary<string, string>();
+
+        public registerForm(string server, string api, string website, Dictionary<string, string> translate)
         {
             InitializeComponent();
             serverName = server;
             apiUrl = api;
             webSite = website;
+            translateDic = translate;
         }
 
         private void registerForm_Load(object sender, EventArgs e)
         {
-
+            registerButton.Text = translateDic["register"];
+            registerEmail.Hint = translateDic["email"];
+            registerUsername.Hint = translateDic["username"];
+            registerPass.Hint = translateDic["password"];
+            registerPassConfirm.Hint = translateDic["passwordConfirm"];
+            loginLink.Text = translateDic["logIn"];
+            loginMessage.Text = translateDic["loginMsg"];
         }
 
         private void registerLink_Click(object sender, EventArgs e)
@@ -49,6 +59,8 @@ namespace LauncherArma3
             var client = new RestClient(apiUrl);
 
             var request = new RestRequest("api/user", Method.POST);
+
+            request.AddHeader("Accept", "application/json");
 
             request.AddParameter("launcher", 1);
             request.AddParameter("username", registerUsername.Text);
@@ -130,5 +142,6 @@ namespace LauncherArma3
             notifStyle = null;
             notif = false;
         }
+
     }
 }

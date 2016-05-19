@@ -14,15 +14,14 @@ namespace launcherUpdate
         [STAThread]
         static void Main(string[] av)
         {
-            if (av.Length != 2)
-            {
-                MessageBox.Show("You can't open manually this software.");
-                return;
-            }
+            if (av.Length != 3)
+             {
+                 MessageBox.Show("You can't open manually this software.");
+                 return;
+             }       
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new splash());
-            Application.Run(new updateMain(av[0], av[1]));
+            Application.Run(new updateMain(av[0], av[1], av[2]));
         }
     }
 }

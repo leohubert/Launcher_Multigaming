@@ -18,8 +18,11 @@ namespace LauncherArma3
             /* GENERAL OPTIONS */
 
             string serverName = "Emodyz";  /* Your serverName */
-            string apiUrl = "http://localhost/public/"; /* Link to API launcher Arma 3 */
+            string apiUrl = "http://192.168.184.129/"; /* Link to API launcher Arma 3 */
             string webSite = "http://emodyz.com/"; /* Your webSite */
+            string ftp_url = "ftp://localhost"; /* Your ftp server */
+            string ftp_user = "launcher";
+            string ftp_pass = "20071997";
 
             /* ANOTHER VARIABLE */
 
@@ -33,12 +36,12 @@ namespace LauncherArma3
                 Directory.CreateDirectory(appdata + serverName);
             if (File.Exists(appdata + serverName + "/language.lang"))
             {
-                Application.Run(new loginForm(serverName, apiUrl, webSite));
+                Application.Run(new loginForm(serverName, apiUrl, webSite, ftp_url, ftp_user, ftp_pass));
             }
             else
             {
                 Application.Run(new languageChoice(serverName));
-                Application.Run(new loginForm(serverName, apiUrl, webSite));
+                Application.Run(new loginForm(serverName, apiUrl, webSite, ftp_url, ftp_user, ftp_pass));
             }
         }
     }

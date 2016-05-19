@@ -6,20 +6,24 @@
 		<logIn>Se connecter</logIn>
 		<logOut>Se deconnecter</logOut>
 		<remember>Se rappeler de moi</remember>
-		<loginMsg>Pour rejoindre notre serveur
-		connectez-vous.</loginMsg>
+		<loginMsg>Déjà enregistré ?</loginMsg>
 		<registerLink>ou s'enregistré</registerLink>
 		<commingSoon>Prochainement</commingSoon>
-		<registerMsg>Toujours pas enregistré ? 
-		Qu'attendez vous ?</registerMsg>
+		<registerMsg>Nouveau sur notre communautée ?</registerMsg>
 		<username>Nom d'utilisateur</username>
 		<password>Mot de passe</password>
+		<passwordConfirm>Confirmez le mot de passe</passwordConfirm>
 		<email>E-mail</email>
 		<cancel>Annuler</cancel>
 		<register>S'enregistré</register>
 		<forgotPass>J'ai oublié mon mot de passe</forgotPass>
 		<status>Statut</status>
 		<disconnectMsg>Vous êtes bien déconnecté</disconnectMsg>
+		<maintenanceTitle>Maintenance en cours !</maintenanceTitle>
+		<registerDisabled>Enregistrement désactivé</registerDisabled>
+		<error404>Le serveur n'est pas accéssible.</error404>
+		<errorInternet>Vous n'avez pas internet.</errorInternet>
+		<errorUpdate>Erreur launcherUpdate.exe manquant !</errorUpdate>
 	</FR>
 	<EN language="English">
 		<languageTitle>Select your language</languageTitle>
@@ -27,20 +31,24 @@
 		<logIn>Log In</logIn>
 		<logOut>Log Out</logOut>
 		<remember>Remember me</remember>
-		<loginMsg>To join our server
-		please sign in.</loginMsg>
+		<loginMsg>Already registered ?</loginMsg>
 		<registerLink>or register</registerLink>
 		<commingSoon>Coming Soon</commingSoon>
-		<registerMsg>Still not registered?
-		What do you expect?</registerMsg>
+		<registerMsg>New in our community ?</registerMsg>
 		<username>Username</username>
 		<password>Password</password>
+		<passwordConfirm>Confirm password</passwordConfirm>
 		<email>Email</email>
 		<cancel>Cancel</cancel>
 		<register>Register</register>
 		<forgotPass>I forgot my password</forgotPass>
 		<status>Status</status>
 		<disconnectMsg>You are logged out</disconnectMsg>
+		<maintenanceTitle>Maintenance in progress !</maintenanceTitle>
+		<registerDisabled>Register disabled</registerDisabled>
+		<error404>The server is not accessible.</error404>
+		<errorInternet>You don't have internet</errorInternet>
+		<errorUpdate>Error launcherUpdate.exe not found !</errorUpdate>
 	</EN>
 	<DE language="Deutch">
 		<languageTitle>Wähle deine Sprache</languageTitle>
@@ -48,20 +56,24 @@
 		<logIn>Anmeldung</logIn>
 		<logOut>Logout</logOut>
 		<remember>Erinnere dich an mich</remember>
-		<loginMsg>Um an unserem Server 
-		Bitte einloggen.</loginMsg>
+		<loginMsg>Bereits registriert ?</loginMsg>
 		<registerLink>oder registrieren</registerLink>
 		<commingSoon>demnächst</commingSoon>
-		<registerMsg>Noch nicht registriert? 
-		Was erwarten Sie?</registerMsg>
+		<registerMsg>Neu in unserer Gemeinde ?</registerMsg>
 		<username>Benutzername</username>
 		<password>Kennwort</password>
+		<passwordConfirm>Bestätige das Passwort</passwordConfirm>
 		<email>Email</email>
 		<cancel>stornieren</cancel>
 		<register>Neu registrieren</register>
 		<forgotPass>Passwort vergessen</forgotPass>
 		<status>Status</status>
 		<disconnectMsg>Sie sind abgemeldet</disconnectMsg>
+		<maintenanceTitle>Wartung im Gange!</maintenanceTitle>
+		<registerDisabled>Registrieren deaktiviert</registerDisabled>
+		<error404>Der Server ist nicht verfügbar.</error404>
+		<errorInternet>Sie haben keine Internet.</errorInternet>
+		<errorUpdate>Error launcherUpdate.exe wurde nicht gefunden!</errorUpdate>
 	</DE>
 	<SP language="Spanish">
 		<languageTitle>Elige tu idioma</languageTitle>
@@ -69,41 +81,50 @@
 		<logIn>Iniciar sesión</logIn>
 		<logOut>Cerrar sesión</logOut>
 		<remember>Recuérdame</remember>
-		<loginMsg>Para unirse a nuestro servidor
-		Por Favor regístrese.</loginMsg>
+		<loginMsg>Ya registrado ?</loginMsg>
 		<registerLink>o registrarse</registerLink>
 		<commingSoon>Próximamente</commingSoon>
-		<registerMsg>Todavía no está registrado?
-		¿Qué esperas?</registerMsg>
+		<registerMsg>Nuevo en nuestra comunidad ?</registerMsg>
 		<username>Nombre de usuario</username>
 		<password>Contraseña</password>
+		<passwordConfirm>Confirmar contraseña</passwordConfirm>
 		<email>Correo electrónico</email>
 		<cancel>Cancelar</cancel>
 		<register>Registro</register>
 		<forgotPass>he olvidado mi contraseña</forgotPass>
 		<status>Estado</status>
 		<disconnectMsg>Se desconectará</disconnectMsg>
+		<maintenanceTitle>Mantenimiento en curso!</maintenanceTitle>
+		<registerDisabled>Register desactivado</registerDisabled>
+		<error404>El servidor no es accesible.</error404>
+		<errorInternet>Usted no tiene internet.</errorInternet>
+		<errorUpdate>Error launcherUpdate.exe no encontrado!</errorUpdate>
 	</SP>
 	<MT language="Canadiens">
-		<languageTitle>Choisi ta langue tabernacle</languageTitle>
+		<languageTitle>Choisi ta langue tabernack</languageTitle>
 		<contry>Montréal</contry>
 		<logIn>Se connecter</logIn>
 		<logOut>Se deconnecter</logOut>
 		<remember>Se rappeler de moi</remember>
-		<loginMsg>Pour rejoindre notre serveur
-		connecte toi câlisse.</loginMsg>
+		<loginMsg>Tu es déjà enregistré ? 
+		Pourquoi tu es venu là alors !</loginMsg>
 		<registerLink>ou s'enregistré</registerLink>
 		<commingSoon>Prochainement</commingSoon>
-		<registerMsg>Toujours pas enregistré ? 
-		Qu'attends tu ?</registerMsg>
+		<registerMsg>Tu es nouveaux ici ?</registerMsg>
 		<username>Nom d'utilisateur</username>
 		<password>Mot de passe</password>
+		<passwordConfirm>Confirmez le mot de passe</passwordConfirm>
 		<email>E-mail</email>
 		<cancel>Annuler</cancel>
-		<register>S'enregistré</register>
+		<register>Bah clique ici</register>
 		<forgotPass>Quel con j'ai oublier mon mot de passe</forgotPass>
 		<status>J'sui qui :</status>
 		<disconnectMsg>Câlisse je me suis déconnectéë</disconnectMsg>
+		<maintenanceTitle>Et merde c'est en maintenance ...</maintenanceTitle>
+		<registerDisabled>Enregistrement désactivé</registerDisabled>
+		<error404>Le serveur n'est pas accéssible.</error404>
+		<errorInternet>Verifie ta wifi tu n'a pas internet</errorInternet>
+		<errorUpdate>Erreur launcherUpdate.exe manquant !</errorUpdate>
 	</MT>
 	<JP language="Japanese">
 		<languageTitle>言語を選択</languageTitle>
@@ -111,20 +132,24 @@
 		<logIn>ログイン</logIn>
 		<logOut>ログアウト</logOut>
 		<remember>私を覚えてますか</remember>
-		<loginMsg>当社のサーバーに参加するには
-		サインインしてください</loginMsg>
+		<loginMsg>すでに登録 ？</loginMsg>
 		<registerLink>または登録</registerLink>
 		<commingSoon>近日公開</commingSoon>
-		<registerMsg>まだ登録されていませんか？
-		あなたは何を期待したのですか？</registerMsg>
+		<registerMsg>私たちのコミュニティの新？</registerMsg>
 		<username>ユーザー名</username>
 		<password>パスワード</password>
+		<passwordConfirm>パスワードを認証する</passwordConfirm>
 		<email>Eメール</email>
 		<cancel>キャンセル</cancel>
 		<register>登録</register>
 		<forgotPass>ドを忘れた</forgotPass>
 		<status>状態</status>
 		<disconnectMsg>あなたがログアウトしています</disconnectMsg>
+		<maintenanceTitle>進行中のメンテナンス！</maintenanceTitle>
+		<registerDisabled>登録無効に</registerDisabled>
+		<error404>サーバーにアクセスできません。</error404>
+		<errorInternet>あなたはインターネットを持っていません。</errorInternet>
+		<errorUpdate>エラー launcherUpdate.exe が見つかりません！</errorUpdate>
 	</JP>
 </user>
 
