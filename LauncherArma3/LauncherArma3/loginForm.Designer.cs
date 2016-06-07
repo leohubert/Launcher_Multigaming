@@ -42,11 +42,13 @@
             this.loginLogo = new System.Windows.Forms.PictureBox();
             this.loginRemember = new MaterialSkin.Controls.MaterialCheckBox();
             this.errorImage = new System.Windows.Forms.PictureBox();
-            this.errorBox = new FlatUI.FlatAlertBox();
             this.maintenanceRefresh = new System.ComponentModel.BackgroundWorker();
             this.newPassword = new MaterialSkin.Controls.MaterialLabel();
+            this.newsImage = new System.Windows.Forms.PictureBox();
+            this.errorBox = new FlatUI.FlatAlertBox();
             ((System.ComponentModel.ISupportInitialize)(this.loginLogo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorImage)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.newsImage)).BeginInit();
             this.SuspendLayout();
             // 
             // loginButton
@@ -122,6 +124,8 @@
             this.registerMessage.TabIndex = 17;
             this.registerMessage.Text = "New in our community ?";
             this.registerMessage.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.registerMessage.MouseDown += new System.Windows.Forms.MouseEventHandler(this.mouse_MouseDown);
+            this.registerMessage.MouseMove += new System.Windows.Forms.MouseEventHandler(this.mouse_MouseMove);
             // 
             // separator2
             // 
@@ -168,6 +172,8 @@
             this.newsTitle.TabIndex = 21;
             this.newsTitle.Text = "News loading";
             this.newsTitle.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.newsTitle.MouseDown += new System.Windows.Forms.MouseEventHandler(this.mouse_MouseDown);
+            this.newsTitle.MouseMove += new System.Windows.Forms.MouseEventHandler(this.mouse_MouseMove);
             // 
             // newsContent
             // 
@@ -180,6 +186,8 @@
             this.newsContent.Size = new System.Drawing.Size(272, 325);
             this.newsContent.TabIndex = 22;
             this.newsContent.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.newsContent.MouseDown += new System.Windows.Forms.MouseEventHandler(this.mouse_MouseDown);
+            this.newsContent.MouseMove += new System.Windows.Forms.MouseEventHandler(this.mouse_MouseMove);
             // 
             // loginLogo
             // 
@@ -190,6 +198,8 @@
             this.loginLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.loginLogo.TabIndex = 23;
             this.loginLogo.TabStop = false;
+            this.loginLogo.MouseDown += new System.Windows.Forms.MouseEventHandler(this.mouse_MouseDown);
+            this.loginLogo.MouseMove += new System.Windows.Forms.MouseEventHandler(this.mouse_MouseMove);
             // 
             // loginRemember
             // 
@@ -217,19 +227,6 @@
             this.errorImage.TabIndex = 26;
             this.errorImage.TabStop = false;
             // 
-            // errorBox
-            // 
-            this.errorBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(70)))), ((int)(((byte)(73)))));
-            this.errorBox.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.errorBox.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.errorBox.kind = FlatUI.FlatAlertBox._Kind.Error;
-            this.errorBox.Location = new System.Drawing.Point(323, 46);
-            this.errorBox.Name = "errorBox";
-            this.errorBox.Size = new System.Drawing.Size(325, 42);
-            this.errorBox.TabIndex = 25;
-            this.errorBox.Visible = false;
-            this.errorBox.Click += new System.EventHandler(this.normalView);
-            // 
             // maintenanceRefresh
             // 
             this.maintenanceRefresh.DoWork += new System.ComponentModel.DoWorkEventHandler(this.maintenanceRefresh_DoWork);
@@ -251,12 +248,40 @@
             this.newPassword.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             this.newPassword.Click += new System.EventHandler(this.newPassword_Click);
             // 
+            // newsImage
+            // 
+            this.newsImage.ErrorImage = ((System.Drawing.Image)(resources.GetObject("newsImage.ErrorImage")));
+            this.newsImage.Image = ((System.Drawing.Image)(resources.GetObject("newsImage.Image")));
+            this.newsImage.Location = new System.Drawing.Point(-1, 5);
+            this.newsImage.Name = "newsImage";
+            this.newsImage.Size = new System.Drawing.Size(325, 490);
+            this.newsImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.newsImage.TabIndex = 28;
+            this.newsImage.TabStop = false;
+            this.newsImage.Visible = false;
+            this.newsImage.MouseDown += new System.Windows.Forms.MouseEventHandler(this.mouse_MouseDown);
+            this.newsImage.MouseMove += new System.Windows.Forms.MouseEventHandler(this.mouse_MouseMove);
+            // 
+            // errorBox
+            // 
+            this.errorBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(70)))), ((int)(((byte)(73)))));
+            this.errorBox.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.errorBox.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.errorBox.kind = FlatUI.FlatAlertBox._Kind.Error;
+            this.errorBox.Location = new System.Drawing.Point(323, 46);
+            this.errorBox.Name = "errorBox";
+            this.errorBox.Size = new System.Drawing.Size(325, 42);
+            this.errorBox.TabIndex = 25;
+            this.errorBox.Visible = false;
+            this.errorBox.Click += new System.EventHandler(this.normalView);
+            // 
             // loginForm
             // 
             this.AcceptButton = this.loginButton;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(646, 444);
+            this.Controls.Add(this.newsImage);
             this.Controls.Add(this.newPassword);
             this.Controls.Add(this.loginRemember);
             this.Controls.Add(this.loginLogo);
@@ -286,6 +311,7 @@
             this.VisibleChanged += new System.EventHandler(this.checkOptions);
             ((System.ComponentModel.ISupportInitialize)(this.loginLogo)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorImage)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.newsImage)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -309,5 +335,6 @@
         private System.Windows.Forms.PictureBox errorImage;
         private System.ComponentModel.BackgroundWorker maintenanceRefresh;
         private MaterialSkin.Controls.MaterialLabel newPassword;
+        private System.Windows.Forms.PictureBox newsImage;
     }
 }

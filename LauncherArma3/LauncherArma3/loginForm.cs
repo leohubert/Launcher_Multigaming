@@ -15,6 +15,7 @@ using System.Linq;
 using System.Net.NetworkInformation;
 using System.Security.Cryptography;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Xml;
@@ -44,6 +45,10 @@ namespace LauncherArma3
         private readonly MaterialSkinManager materialSkinManager;
         string sessionToken;
         string language;
+        string vLast;
+        int stat = 0;
+        bool startLauncher = false;
+        bool modDev;
         bool internet;
         bool server;
         bool maintenance;
@@ -56,8 +61,7 @@ namespace LauncherArma3
         Dictionary<string, string> translateDic = new Dictionary<string, string>();
 
 
-
-        public loginForm(string server, string api, string website, string ftpUrl, string ftpUser, string ftpPass)
+        public loginForm(string server, string api, string website, string ftpUrl, string ftpUser, string ftpPass, bool mod)
         {
             InitializeComponent();
             materialSkinManager = MaterialSkinManager.Instance;
@@ -69,12 +73,15 @@ namespace LauncherArma3
             ftp_url = ftpUrl;
             ftp_user = ftpUser;
             ftp_pass = ftpPass;
+            modDev = mod;
         }
 
         private void loginForm_Load(object sender, EventArgs e)
         {
             if (File.Exists(appdata + serverName + "/token.bin2hex"))
+            {
                 sessionToken = File.ReadAllText(appdata + serverName + "/token.bin2hex");
+            }
             if (File.Exists(appdata + serverName + "/language.lang"))
             {
                 language = File.ReadAllText(appdata + serverName + "/language.lang");
@@ -87,6 +94,7 @@ namespace LauncherArma3
             if (loaded == true)
             {
                 materialSkinManager.ColorScheme = new ColorScheme(Primary.Cyan400, Primary.Indigo700, Primary.Indigo100, Accent.LightGreen200, TextShade.WHITE);
+                materialSkinManager.Theme = MaterialSkinManager.Themes.DARK;
                 return;
             }
             loaded = true;
@@ -115,7 +123,7 @@ namespace LauncherArma3
                 var client = new RestClient(apiUrl);
 
                 var request = new RestRequest("api/options", Method.GET);
-                
+
                 IRestResponse response = client.Execute(request);
                 var content = response.Content;
 
@@ -133,22 +141,31 @@ namespace LauncherArma3
                     maintenanceRefresh.RunWorkerAsync();
                     return;
                 }
+
+                if (res.msg_title == "{picture}")
+                {
+                    newsImage.Visible = true;
+                    newsImage.ImageLocation = res.msg_content;
+                    newsImage.BringToFront();
+                }
+
                 newsTitle.Text = res.msg_title;
                 newsContent.Text = res.msg_content;
-                    
-                /*if (res.v_launcher != getLauncherMd5().ToLower())
+
+                if (modDev == false && res.v_launcher != getLauncherMd5().ToLower())
                 {
                     launcherUpdate();
                     return;
-                }*/
+                }
+                vLast = res.v_mod;
                 if (res.login == "0")
                 {
                     sessionToken = null;
-                    launcherMain launcher = new launcherMain(serverName, apiUrl, webSite, sessionToken, ftp_url, ftp_user, ftp_pass);
+                    launcherMain launcher = new launcherMain(serverName, apiUrl, webSite, sessionToken, ftp_url, ftp_user, ftp_pass, vLast);
 
                     // Show the laguage choice
                     this.Visible = false;
-                    launcher.ShowDialog();
+                    launcher.ShowDialog();                    
                     this.Visible = true;
 
                 }
@@ -170,47 +187,75 @@ namespace LauncherArma3
                 server = false;
                 newsTitle.Text = translateDic["error404"];
                 notifView(translateDic["error404"]);
+                newsImage.Visible = false;
                 errorImage.BringToFront();
             }
-
         }
 
 
-        private void loginButton_Click(object sender, EventArgs e)
+        private async void loginButton_Click(object sender, EventArgs e)
         {
-            if (internet == false)
+            stat = 0;
+            Thread thread = new Thread(() =>
             {
-                notifView(translateDic["errorInternet"]);
-                return;
-            }
-            if (server == false)
-            {
-                notifView(translateDic["error404"]);
-                return;
-            }
-            var client = new RestClient(apiUrl);
-
-            var request = new RestRequest("api/user/login", Method.POST);
-
-            request.AddParameter("username", loginUsername.Text);
-            request.AddParameter("password", loginPassword.Text);
-
-            IRestResponse response = client.Execute(request);
-            var content = response.Content;
-
-            dynamic res = JObject.Parse(content.ToString());
-
-            if (res.status == "42")
-            {
-                sessionToken = res.user.token;
-                if (loginRemember.Checked == true)
+                this.BeginInvoke((MethodInvoker)delegate
                 {
-                    string token = res.user.token;
-                    File.WriteAllText(appdata + serverName + "/token.bin2hex", token);
-                }
-                launcherMain launcher = new launcherMain(serverName, apiUrl, webSite, sessionToken, ftp_url, ftp_user, ftp_pass);
+                    try
+                    {
+                        if (internet == false)
+                        {
+                            notifView(translateDic["errorInternet"]);
+                            return;
+                        }
+                        if (server == false)
+                        {
+                            notifView(translateDic["error404"]);
+                            return;
+                        }
+                        var client = new RestClient(apiUrl);
 
-                // Reset form
+                        var request = new RestRequest("api/user/login", Method.POST);
+
+                        request.AddParameter("username", loginUsername.Text);
+                        request.AddParameter("password", loginPassword.Text);
+
+                        IRestResponse response = client.Execute(request);
+                        var content = response.Content;
+
+                        dynamic res = JObject.Parse(content.ToString());
+
+                        if (res.status == "42")
+                        {
+                            sessionToken = res.user.token;
+                            if (loginRemember.Checked == true)
+                            {
+                                string token = res.user.token;
+                                File.WriteAllText(appdata + serverName + "/token.bin2hex", token);
+                            }
+
+                            // Reset form
+                            startLauncher = true;
+                            stat = 1;
+                        }
+                        else
+                        {
+                            string message = res.msg;
+                            notifView(message);
+                        }
+                    }
+                    catch
+                    {
+                        notifView(translateDic["error404"]);
+                    }
+                });
+            });
+            thread.Start();
+            while (stat == 0)
+                await Task.Delay(1000);
+            if (startLauncher == true)
+            {
+                launcherMain launcher = new launcherMain(serverName, apiUrl, webSite, sessionToken, ftp_url, ftp_user, ftp_pass, vLast);
+                startLauncher = false;
                 loginUsername.Text = "";
                 loginPassword.Text = "";
                 loginRemember.Checked = false;
@@ -218,41 +263,44 @@ namespace LauncherArma3
                 launcher.ShowDialog();
                 this.Visible = true;
             }
-            else
-            {
-                string message = res.msg;
-                notifView(message);
-            }
         }
 
         void loginWithToken()
         {
-            var client = new RestClient(apiUrl);
-
-            var request = new RestRequest("api/user/get", Method.POST);
-
-            request.AddParameter("token", sessionToken);
-
-            IRestResponse response = client.Execute(request);
-            var content = response.Content;
-
-            dynamic res = JObject.Parse(content.ToString());
-
-            if (res.status == "42")
+            stat = 0;
+            try
             {
-                launcherMain launcher = new launcherMain(serverName, apiUrl, webSite, sessionToken, ftp_url, ftp_user, ftp_pass);
+                var client = new RestClient(apiUrl);
 
-                // Show the laguage choice
-                this.Visible = false;
-                launcher.ShowDialog();
-                this.Visible = true;
+                var request = new RestRequest("api/user/get", Method.POST);
+
+                request.AddParameter("token", sessionToken);
+
+                IRestResponse response = client.Execute(request);
+                var content = response.Content;
+
+                dynamic res = JObject.Parse(content.ToString());
+
+                if (res.status == "42")
+                {
+                    // Login
+                    launcherMain launcher = new launcherMain(serverName, apiUrl, webSite, sessionToken, ftp_url, ftp_user, ftp_pass, vLast);
+                    startLauncher = false;
+                    this.Visible = false;
+                    launcher.ShowDialog();
+                    this.Visible = true;
+                }
+                else
+                {
+                    string msg = res.msg;
+                    notifView(msg);
+                    if (File.Exists(appdata + serverName + "/token.bin2hex"))
+                        File.Delete(appdata + serverName + "/token.bin2hex");
+                }
             }
-            else
+            catch
             {
-                string msg = res.msg;
-                notifView(msg);
-                if (File.Exists(appdata + serverName + "/token.bin2hex"))
-                    File.Delete(appdata + serverName + "/token.bin2hex");
+                notifView(translateDic["error404"]);
             }
         }
 
@@ -463,5 +511,25 @@ namespace LauncherArma3
             newPass.StartInfo.FileName = apiUrl + "password/reset";
             newPass.Start();
         }
+
+        private Point MouseDownLocation;
+
+        private void mouse_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (e.Button == System.Windows.Forms.MouseButtons.Left)
+            {
+                MouseDownLocation = e.Location;
+            }
+        }
+
+        private void mouse_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (e.Button == System.Windows.Forms.MouseButtons.Left)
+            {
+                this.Left = e.X + this.Left - MouseDownLocation.X;
+                this.Top = e.Y + this.Top - MouseDownLocation.Y;
+            }
+        }
+
     }
 }

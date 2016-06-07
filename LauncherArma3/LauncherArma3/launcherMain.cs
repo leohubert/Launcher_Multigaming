@@ -15,6 +15,8 @@ using System.Threading.Tasks;
 using System.Threading;
 using System.Security.Cryptography;
 using System.ComponentModel;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace LauncherArma3
 {
@@ -29,6 +31,10 @@ namespace LauncherArma3
         string ftp_user;
         string ftp_pass;
 
+        /* ARMA CONFIG */
+
+        string serverArmaIp = "0.0.0.0";
+
 
         /* Variables globals */
 
@@ -38,12 +44,25 @@ namespace LauncherArma3
         string news2;
         string news3;
         string language;
-        bool normayClose = false;
+        string vLast_mod;
+        string vThis_mod;
+        string launchOptions;
+        bool normalyClose = false;
+        bool update = false;
         bool onDownload = false;
         bool pause = false;
         bool cancel = false;
         int stat = 0;
         dynamic result = null;
+
+        /* TIME CALCUL */
+        DateTime startTimeDownload;
+        long kbPerSecond;
+        long totalRecieved = 0;
+        DateTime lastProgressChange = DateTime.Now;
+        Stack<int> timeSatck = new Stack<int>(5);
+        Stack<long> byteSatck = new Stack<long>(5);
+
 
         /* STEAM VARIABLE */
         string armaDirectory = @"c:\Program Files (x86)\Steam\steamapps\common\Arma 3";
@@ -60,7 +79,7 @@ namespace LauncherArma3
         string tr_email;
         string tr_disconnectMsg;
 
-        public launcherMain(string server, string api, string website, string session, string ftpUrl, string ftpUser, string ftpPass)
+        public launcherMain(string server, string api, string website, string session, string ftpUrl, string ftpUser, string ftpPass, string vmod)
         {
             InitializeComponent();
             serverName = server;
@@ -70,6 +89,7 @@ namespace LauncherArma3
             ftp_url = ftpUrl;
             ftp_user = ftpUser;
             ftp_pass = ftpPass;
+            vLast_mod = vmod;
         }
 
         private void launcherMain_Load(object sender, EventArgs e)
@@ -79,6 +99,22 @@ namespace LauncherArma3
                 language = File.ReadAllText(appdata + serverName + "/language.lang");
                 setLanguage(language);
             }
+            if (File.Exists(appdata + serverName + "/armaDest"))
+            {
+                armaDirectory = File.ReadAllText(appdata + serverName + "/armaDest");
+                checkArmaDirectory(armaDirectory);
+            }
+            if (armaDirectory != null && !Directory.Exists(armaDirectory + "/@" + serverName))
+            {
+                if (File.Exists(appdata + serverName + "/vMod"))
+                    File.Delete(appdata + serverName + "/vMod");
+            }
+            if (File.Exists(appdata + serverName + "/vMod"))
+                vThis_mod = File.ReadAllText(appdata + serverName + "/vMod");
+            else
+                vThis_mod = "-42";
+            if (File.Exists(appdata + serverName + "/launchOptions"))
+                launchOptions = File.ReadAllText(appdata + serverName + "/launchOptions");
             if (sessionToken != null)
             {
                 loginWithToken();
@@ -89,8 +125,9 @@ namespace LauncherArma3
             }
             checkArmaDirectory(armaDirectory);
             materialSkinManager = MaterialSkinManager.Instance;
-            materialSkinManager.Theme = MaterialSkinManager.Themes.DARK;
-            materialSkinManager.ColorScheme = new ColorScheme(Primary.Blue500, Primary.Blue700, Primary.Blue100, Accent.LightGreen200, TextShade.WHITE);
+            materialSkinManager.Theme = MaterialSkinManager.Themes.LIGHT;
+            materialSkinManager.ColorScheme = new ColorScheme(Primary.Blue500, Primary.Blue700, Primary.Blue100, Accent.Red400, TextShade.WHITE);
+            checkUpdate();
         }
 
         void loginWithToken()
@@ -225,7 +262,7 @@ namespace LauncherArma3
             succesBox.Visible = true;
             succesBox.Text = tr_disconnectMsg;
             changeStatus("Red");
-            normayClose = true;
+            normalyClose = true;
             this.Close();
         }
 
@@ -294,23 +331,34 @@ namespace LauncherArma3
                     language = File.ReadAllText(appdata + serverName + "/language.lang");
                     setLanguage(language);
                 }
-
             }
-
         }
 
         private void settingsButton_Click(object sender, EventArgs e)
         {
-            settingsForm settings = new settingsForm(serverName);
-
-            // Show the laguage choice
-            settings.ShowDialog();
-
+            using (var form = new settingsForm(serverName, armaDirectory, onDownload))
+            {
+                materialSkinManager.Theme = MaterialSkinManager.Themes.DARK;
+                var result = form.ShowDialog();
+                materialSkinManager.Theme = MaterialSkinManager.Themes.LIGHT;
+                if (result == DialogResult.OK)
+                {
+                    if (form.refreshMods == true)
+                    {
+                        if (File.Exists(appdata + serverName + "/vMod"))
+                            vThis_mod = File.ReadAllText(appdata + serverName + "/vMod");
+                        else
+                            vThis_mod = "-42";
+                        checkUpdate();
+                    }
+                    launchOptions = form.launchOptions;
+                }
+            }
         }
 
         private void close(object sender, FormClosedEventArgs e)
         {
-            if (normayClose == false)
+            if (normalyClose == false)
             {
                 Environment.Exit(42);
             }
@@ -339,7 +387,7 @@ namespace LauncherArma3
         {
             if (File.Exists(path + @"\arma3.exe"))
             {
-                directoryLabel.Text = "Arma directory: " + path;
+                directoryLabel.Text = "Arma directory ok";
                 armaDirectory = path;
                 return true;
             }
@@ -372,6 +420,9 @@ namespace LauncherArma3
                 errorBox.Visible = true;
                 errorBox.Text = "Arma directory not good ! ";
             }
+            if (File.Exists(appdata + serverName + "/armaDest"))
+                File.Delete(appdata + serverName + "/armaDest");
+            File.WriteAllText(appdata + serverName + "/armaDest", directoryChooser.SelectedPath);
         }
 
         Queue listAddons(dynamic res)
@@ -392,9 +443,12 @@ namespace LauncherArma3
                 /* LIST DES MODS A TELECHARGER */
                 while (i < total_addons)
                 {
+                    if (cancel == true)
+                        break;
                     currentAddons = res.addons[i].name;
                     local_addons_md5 = getFileMd5(armaDirectory + "/@" + serverName + "/addons/" + currentAddons).ToLower();
                     remote_addons_md5 = res.addons[i].md5;
+
                     if (remote_addons_md5 != local_addons_md5)
                     {
                         modList.Enqueue(currentAddons);
@@ -424,6 +478,8 @@ namespace LauncherArma3
                 /* LIST DES CPP A TELECHARGER */
                 while (i < total_cpp)
                 {
+                    if (cancel == true)
+                        break;
                     currentCpp = res.cpps[i].name;
                     local_cpp_md5 = getFileMd5(armaDirectory + "/@" + serverName + "/" + currentCpp).ToLower();
                     remote_cpp_md5 = res.cpps[i].md5;
@@ -457,6 +513,8 @@ namespace LauncherArma3
                 /* LIST DES USERSCONFIGS A TELECHARGER */
                 while (i < total_userconfigs)
                 {
+                    if (cancel == true)
+                        break;
                     currentUserconfigs = res.userconfigs[i].name;
                     local_userconfigs_md5 = getFileMd5(armaDirectory + "/" + currentUserconfigs).ToLower();
                     remote_userconfigs_md5 = res.userconfigs[i].md5;
@@ -474,6 +532,8 @@ namespace LauncherArma3
 
         private async void playButton_Click(object sender, EventArgs e)
         {
+            bool alreadyUp = false;
+
             if (armaDirectory == null)
             {
                 clearNotif();
@@ -488,6 +548,11 @@ namespace LauncherArma3
                 infoBox.Text = "Wait until the end of the current download.";
                 return;
             }
+            if (update == false && forceUpdate.Checked == false)
+            {
+                startArma();
+                return;
+            }
 
             /* INIT DOWNLOAD */
 
@@ -496,9 +561,13 @@ namespace LauncherArma3
             pauseButton.Visible = true;
             cancelButton.Visible = true;
             onDownload = true;
+            forceUpdate.Visible = false;
             clearNotif();
             succesBox.Visible = true;
             succesBox.Text = "Download started";
+            playButton.Text = "Download in progress";
+            estimedTime.Text = "Initalisation du téléchargement";
+            downloadProgress.Maximum = 100;
             this.Refresh();
 
 
@@ -513,46 +582,89 @@ namespace LauncherArma3
 
 
             /* START LISTING */
+            dynamic res;
 
-            initDownload.RunWorkerAsync();
+            stat = 0;
 
-            while (result == null)
+            downloadProgress.Value += 5;
+
+            if (cancel == true)
+                downloadMessage.Text = "Annulation en cours...";
+            else
+                downloadMessage.Text = "Requete au serveur en cours...";
+            serverRequest.RunWorkerAsync();
+
+            while (stat == 0)
                 await Task.Delay(1000);
 
+            res = result;
 
-            dynamic res = result;
+            downloadProgress.Value += 15;
+
 
             /* LISTING ADDONS */
 
             Queue addonsList = new Queue();
             stat = 0;
-            downloadMessage.Text = "Listing des mods à télécharger.";
+            downloadProgress.Value += 15;
+            if (cancel == true)
+                downloadMessage.Text = "Annulation en cours...";
+            else
+                downloadMessage.Text = "Listing des mods à télécharger.";
             addonsList = listAddons(res);
 
             while (stat == 0)
                 await Task.Delay(1000);
+            downloadProgress.Value += 15;
+
 
             /* LISTING CPP */
 
             Queue cppList = new Queue();
             stat = 0;
-            downloadMessage.Text = "Listing des ccp à télécharger.";
+            downloadProgress.Value += 15;
+            if (cancel == true)
+                downloadMessage.Text = "Annulation en cours...";
+            else
+                downloadMessage.Text = "Listing des ccp à télécharger.";
             cppList = listCpp(res);
 
             while (stat == 0)
                 await Task.Delay(1000);
+            downloadProgress.Value += 15;
 
             /* LISTING USERCONFIG */
 
             Queue userconfigList = new Queue();
             stat = 0;
-            downloadMessage.Text = "Listing des fichier anexes à télécharger.";
+            downloadProgress.Value += 15;
+            if (cancel == true)
+                downloadMessage.Text = "Annulation en cours...";
+            else
+                downloadMessage.Text = "Listing des fichier anexes à télécharger.";
             userconfigList = listUserconfigs(res);
 
             while (stat == 0)
                 await Task.Delay(1000);
+            downloadProgress.Value += 15;
 
 
+            /* CHECK IF ALREADY UP TO DATE */
+
+            if (addonsList.Count == 0 && cppList.Count == 0
+               && userconfigList.Count == 0)
+            {
+                downloadMessage.Text = "Already up to date, you can play !";
+                alreadyUp = true;
+            }
+
+
+            /* SHOW TOTAL FILES */
+
+            int total_files = addonsList.Count + cppList.Count + userconfigList.Count;
+            int downloaded = 0;
+
+            totalFiles.Text = "Fichier à télécharger: " + total_files;
 
             /* DOWNLOAD ADDONS */
 
@@ -563,12 +675,19 @@ namespace LauncherArma3
 
             while (i > 0)
             {
+                if (cancel == true)
+                    break;
                 stat = 0;
                 current = addonsList.Dequeue().ToString();
-                downloadMessage.Text = "Téléchargement du mod: " + current + "en cours.";
+                if (cancel == true)
+                    downloadMessage.Text = "Annulation en cours...";
+                else
+                    downloadMessage.Text = "Téléchargement du mod: " + current + " en cours.";
                 startDownload(apiUrl + "api/arma3/addons/download/" + current, armaDirectory + "/@" + serverName + "/addons/" + current);
                 while (stat == 0)
                     await Task.Delay(1000);
+                downloaded++;
+                downloadedFiles.Text = "Fichier télécharger: " + downloaded;
                 i--;
             }
 
@@ -581,12 +700,19 @@ namespace LauncherArma3
 
             while (i > 0)
             {
+                if (cancel == true)
+                    break;
                 stat = 0;
                 current = cppList.Dequeue().ToString();
-                downloadMessage.Text = "Téléchargement du fichier: " + current + "en cours.";
-                startDownload(apiUrl + "api/arma3/cpps/download/" + current, armaDirectory + "/@" + serverName + "/" + current);
+                if (cancel == true)
+                    downloadMessage.Text = "Annulation en cours...";
+                else
+                    downloadMessage.Text = "Téléchargement du fichier: " + current + " en cours.";
+                startDownload(apiUrl + "api/arma3/cpp/download/" + current, armaDirectory + "/@" + serverName + "/" + current);
                 while (stat == 0)
                     await Task.Delay(1000);
+                downloaded++;
+                downloadedFiles.Text = "Fichier télécharger: " + downloaded;
                 i--;
             }
 
@@ -599,52 +725,137 @@ namespace LauncherArma3
 
             while (i > 0)
             {
+                if (cancel == true)
+                    break;
                 stat = 0;
                 current = userconfigList.Dequeue().ToString();
-                downloadMessage.Text = "Téléchargement du fichier: " + current + "en cours.";
+                if (cancel == true)
+                    downloadMessage.Text = "Annulation en cours...";
+                else
+                    downloadMessage.Text = "Téléchargement du fichier: " + current + " en cours.";
                 startDownload(apiUrl + "api/arma3/userconfigs/download/" + current, armaDirectory + "/" + current);
                 while (stat == 0)
                     await Task.Delay(1000);
+                downloaded++;
+                downloadedFiles.Text = "Fichier télécharger: " + downloaded;
                 i--;
             }
 
             /* END DOWNLOAD USERCONFIGS */
 
 
-            /* CHECK IF ALREADY UP TO DATE */
+            /* DELETE INUTILES MODS AND CPP */
 
-            if (addonsList.Count == 0 && cppList.Count == 0
-               && userconfigList.Count == 0)
+            if (cancel == true)
+                downloadMessage.Text = "Annulation en cours...";
+            else
             {
-                downloadMessage.Text = "Already up to date, you can play !";
+                downloadMessage.Text = "Verification des mods en cours...";
+
+                string addonsName;
+                string[] files = Directory.GetFiles(armaDirectory + "/@" + serverName + "/addons/", "*", SearchOption.TopDirectoryOnly);
+                foreach (string file in files)
+                {
+                    addonsName = Path.GetFileName(file);
+                    if (addonsExits(addonsName, res) == false)
+                        File.Delete(file);
+                }
             }
 
+            if (cancel == true)
+                downloadMessage.Text = "Annulation en cours...";
+            else
+            {
+                downloadMessage.Text = "Verification des cpp en cours...";
 
+                string cppName;
+                string[] files = Directory.GetFiles(armaDirectory + "/@" + serverName + "/", "*", SearchOption.TopDirectoryOnly);
+                foreach (string file in files)
+                {
+                    cppName = Path.GetFileName(file);
+                    if (cppExits(cppName, res) == false)
+                        File.Delete(file);
+                }
+            }
+
+            /* END DELETE MODS */
 
             /* END DOWNLOAD */
-            /*
+
             downloadProgress.Visible = false;
             downloadProgressLabel.Visible = false;
             pauseButton.Visible = false;
             cancelButton.Visible = false;
+            forceUpdate.Checked = false;
             clearNotif();
             if (cancel == true)
             {
                 infoBox.Visible = true;
                 infoBox.Text = "Download stoped ";
+                checkUpdate();
             }
             else
             {
-                succesBox.Visible = true;
-                succesBox.Text = "Download finish !";
+                if (alreadyUp == false)
+                {
+                    succesBox.Text = "Download finish !";
+                    succesBox.Visible = true;
+                }
+                if (File.Exists(appdata + serverName + "/vMod"))
+                    File.Delete(appdata + serverName + "/vMod");
+                File.WriteAllText(appdata + serverName + "/vMod", vLast_mod);
+                vThis_mod = vLast_mod;
+                checkUpdate();
             }
-            */
+            downloadProgress.Value = 0;
+            downloadProgressLabel.Text = "";
             onDownload = false;
+            estimedTime.Text = "";
+            totalFiles.Text = "";
+            downloadedFiles.Text = "";
             cancel = false;
             pause = false;
-
+            result = null;
+            pauseButton.Text = "Pause";
         }
 
+        private void startArma()
+        {
+            if (launchOptions != null)
+                Process.Start(armaDirectory + "/arma3.exe", "0 1 -mod=@" + serverName + " -connect=" + serverArmaIp);
+            else
+                Process.Start(armaDirectory + "/arma3.exe", "0 1 -mod=@" + serverName + " -connect=" + serverArmaIp + " " + launchOptions);
+        }
+
+        private bool addonsExits(string addonsName, dynamic res)
+        {
+            int totalAddons = res.total_addons;
+            int i = 0;
+            string currentAddons = null;
+            while (i < totalAddons)
+            {
+                currentAddons = res.addons[i].name;
+                if (addonsName == currentAddons)
+                    return (true);
+                i++;
+            }
+            return (false);
+        }
+
+        private bool cppExits(string cppName, dynamic res)
+        {
+            int totalCpp = res.total_cpps;
+            int i = 0;
+            string currentCpp = null;
+            while (i < totalCpp)
+            {
+                currentCpp = res.cpps[i].name;
+                if (cppName == currentCpp)
+                    return (true);
+                i++;
+            }
+            return (false);
+        }
 
         private void pauseButton_Click(object sender, EventArgs e)
         {
@@ -652,15 +863,14 @@ namespace LauncherArma3
             {
                 pause = false;
                 pauseButton.Text = "Pause";
-                clearNotif();
-                infoBox.Visible = true;
-                infoBox.Text = "Le téléchargement se mettra en pause après avoir tétécharger le fichier en cours .";
-
             }
             else
             {
                 pauseButton.Text = "Resume";
                 pause = true;
+                clearNotif();
+                infoBox.Visible = true;
+                infoBox.Text = "Le téléchargement se mettra en pause après avoir tétécharger le fichier en cours .";
             }
         }
 
@@ -671,6 +881,8 @@ namespace LauncherArma3
 
         protected string getFileMd5(string filePath)
         {
+            if (!File.Exists(filePath))
+                return ("errorMd5");
             try
             {
                 using (var md5 = MD5.Create())
@@ -685,23 +897,57 @@ namespace LauncherArma3
             {
                 return "errormd5";
             }
-            return (null);
         }
 
         private async void startDownload(string remote, string local)
         {
-            while (pause == true)
-                await Task.Delay(1000);
+            if (pause == true)
+            {
+                downloadProgressLabel.Text = "";
+                downloadMessage.Text = "Download paused";
+                while (pause == true)
+                {
+                    await Task.Delay(1000);
+                    if (cancel == true)
+                        break;
+                }
+            }
+            WebClient client = new WebClient();
             Thread thread = new Thread(() =>
             {
-                WebClient client = new WebClient();
                 client.DownloadProgressChanged += new DownloadProgressChangedEventHandler(client_DownloadProgressChanged);
                 client.DownloadFileCompleted += new AsyncCompletedEventHandler(client_DownloadFileCompleted);
+                startTimeDownload = DateTime.Now;
                 client.DownloadFileAsync(new Uri(remote), local);
             });
             thread.Start();
-
+            while (stat == 0)
+            {
+                if (cancel == true)
+                {
+                    downloadMessage.Text = "Annulation en cours...";
+                    client.CancelAsync();
+                }
+                await Task.Delay(1000);
+            }
         }
+
+        public string FormatBytes(long bytes)
+        {
+            const int scale = 1024;
+            string[] orders = new string[] { "GB", "MB", "KB", "Bytes" };
+            long max = (long)Math.Pow(scale, orders.Length - 1);
+
+            foreach (string order in orders)
+            {
+                if (bytes > max)
+                    return string.Format("{0:##.##} {1}", decimal.Divide(bytes, max), order);
+
+                max /= scale;
+            }
+            return "0 Bytes";
+        }
+
         void client_DownloadProgressChanged(object sender, DownloadProgressChangedEventArgs e)
         {
             this.BeginInvoke((MethodInvoker)delegate
@@ -709,10 +955,45 @@ namespace LauncherArma3
                 double bytesIn = double.Parse(e.BytesReceived.ToString());
                 double totalBytes = double.Parse(e.TotalBytesToReceive.ToString());
                 double percentage = bytesIn / totalBytes * 100;
-                downloadProgressLabel.Text = "Downloaded " + e.BytesReceived + " of " + e.TotalBytesToReceive;
-                downloadProgress.Value = int.Parse(Math.Truncate(percentage).ToString());
+                string received = FormatBytes(e.BytesReceived);
+                string total = FormatBytes(e.TotalBytesToReceive);
+                downloadProgressLabel.Text = "Downloaded " + received + " of " + total;
+                downloadProgress.Maximum = (int)e.TotalBytesToReceive;
+                downloadProgress.Value = (int)e.BytesReceived;
+
+
+                /* CALCULE TIME */
+                DateTime now;
+
+                now = DateTime.Now;
+
+                if ((now.Second - startTimeDownload.Second) > 0)
+                {
+                    kbPerSecond = (int)((100 * 1000) / 8);
+                }
+                long sent = (e.TotalBytesToReceive - e.BytesReceived);
+                if (sent != 0 && kbPerSecond != 0)
+                {
+                    long remainingseconds = sent / kbPerSecond;
+                    estimedTime.Text = "Temps estimé: " + FormatDurationSeconds((int)remainingseconds / 1000);
+                }
+
             });
         }
+
+        public static string FormatDurationSeconds(int seconds)
+        {
+            var duration = TimeSpan.FromSeconds(seconds);
+            string result = "";
+
+            if (duration.TotalHours >= 1)
+                result += (int)duration.TotalHours + " Hours, ";
+
+            result += String.Format("{0:%m} Minutes, {0:%s} Seconds", duration);
+            return result;
+        }
+
+
         void client_DownloadFileCompleted(object sender, AsyncCompletedEventArgs e)
         {
             this.BeginInvoke((MethodInvoker)delegate
@@ -721,7 +1002,44 @@ namespace LauncherArma3
             });
         }
 
-        private void initDownload_DoWork(object sender, DoWorkEventArgs e)
+        void checkUpdate()
+        {
+            if (vLast_mod != vThis_mod)
+            {
+                update = true;
+                if (File.Exists(appdata + serverName + "/vMod"))
+                {
+                    playButton.Text = "Update";
+                    downloadMessage.Text = "An update is available";
+                    forceUpdate.Visible = false;
+                }
+                else
+                {
+                    playButton.Text = "Download";
+                    downloadMessage.Text = "Wait for download";
+                    forceUpdate.Visible = false;
+                }
+            }
+            else
+            {
+                update = false;
+                playButton.Text = "Play";
+                downloadMessage.Text = "Already up to date, you can play !";
+                forceUpdate.Visible = true;
+            }
+        }
+
+        private void forceUpdate_CheckedChanged(object sender, EventArgs e)
+        {
+            if (forceUpdate.Checked == true)
+            {
+                playButton.Text = "Force Update";
+            }
+            else
+                checkUpdate();
+        }
+
+        private void serverRequest_DoWork(object sender, DoWorkEventArgs e)
         {
             try
             {
@@ -732,6 +1050,7 @@ namespace LauncherArma3
                 var content = response.Content;
 
                 result = JObject.Parse(content.ToString());
+                stat = 1;
             }
             catch
             {

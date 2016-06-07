@@ -77,9 +77,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="FTPdownloader.cs">
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Include="languageChoice.cs">
       <SubType>Form</SubType>
     </Compile>
