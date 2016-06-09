@@ -21,7 +21,6 @@ using System.Windows.Forms;
 using System.Xml;
 using System.Xml.Linq;
 using System.Xml.XPath;
-using static System.Net.Mime.MediaTypeNames;
 
 namespace LauncherArma3
 {
