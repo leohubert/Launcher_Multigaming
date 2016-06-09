@@ -28,15 +28,3 @@ C:\Users\Hubert Léo\Documents\GitHub\Launcher_Arma3\LauncherArma3\LauncherArma3
 C:\Users\Hubert Léo\Documents\GitHub\Launcher_Arma3\LauncherArma3\LauncherArma3\obj\Debug\LauncherArma3.csproj.GenerateResource.Cache
 C:\Users\Hubert Léo\Documents\GitHub\Launcher_Arma3\LauncherArma3\LauncherArma3\obj\Debug\LauncherArma3.exe
 C:\Users\Hubert Léo\Documents\GitHub\Launcher_Arma3\LauncherArma3\LauncherArma3\obj\Debug\LauncherArma3.pdb
-C:\Users\leohu\Documents\GitHub\Launcher_Arma3\Debug\LauncherArma3.exe.config
-C:\Users\leohu\Documents\GitHub\Launcher_Arma3\Debug\LauncherArma3.exe
-C:\Users\leohu\Documents\GitHub\Launcher_Arma3\Debug\LauncherArma3.pdb
-C:\Users\leohu\Documents\GitHub\Launcher_Arma3\LauncherArma3\LauncherArma3\obj\Debug\LauncherArma3.languageChoice.resources
-C:\Users\leohu\Documents\GitHub\Launcher_Arma3\LauncherArma3\LauncherArma3\obj\Debug\LauncherArma3.launcherMain.resources
-C:\Users\leohu\Documents\GitHub\Launcher_Arma3\LauncherArma3\LauncherArma3\obj\Debug\LauncherArma3.loginForm.resources
-C:\Users\leohu\Documents\GitHub\Launcher_Arma3\LauncherArma3\LauncherArma3\obj\Debug\LauncherArma3.Properties.Resources.resources
-C:\Users\leohu\Documents\GitHub\Launcher_Arma3\LauncherArma3\LauncherArma3\obj\Debug\LauncherArma3.registerForm.resources
-C:\Users\leohu\Documents\GitHub\Launcher_Arma3\LauncherArma3\LauncherArma3\obj\Debug\LauncherArma3.settingsForm.resources
-C:\Users\leohu\Documents\GitHub\Launcher_Arma3\LauncherArma3\LauncherArma3\obj\Debug\LauncherArma3.csproj.GenerateResource.Cache
-C:\Users\leohu\Documents\GitHub\Launcher_Arma3\LauncherArma3\LauncherArma3\obj\Debug\LauncherArma3.exe
-C:\Users\leohu\Documents\GitHub\Launcher_Arma3\LauncherArma3\LauncherArma3\obj\Debug\LauncherArma3.pdb

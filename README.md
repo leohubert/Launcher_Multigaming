@@ -4,9 +4,9 @@ Launcher_Arma3
 -------------[ Launcher Information ]-------------
 
 ###Last push:
-Version: Pre-Alpha 5.0.1.5
+Version: Pre-Alpha 5.0.2.0
 Functional: YES  |    Not for production
-Release date: 19/05/2016 à 03:43
+Release date: 09/06/2016 à 04:12
 
 
 ###Last functional version:
@@ -20,6 +20,25 @@ Copyright HUBERT Léo & Wirk © 2014 - 2016
 
 
 ##Change Logs:
+
+Pre-Alpha 5.0.2.0:
+- Add: Image news on login form
+- Add: Estimed time download
+- Add: Downloaded mods size
+- Add: Prepare download progress bar
+- Add: Panel options settings
+- Add: New design settings form
+- Add: Pause download
+- Add: Cancel download
+- Add: Reset modspack button (in settings)
+- Add: Change language button (in settings)
+- Add: Arma3 Launch options (in settings)
+- Add: Admin account for panel (email: owner@demo.com pass: owner)
+- Fix: Launcher update (destination with space)
+- Fix: Change language closing form
+And more ...
+
+------------------------------------
 
 Pre-Alpha 5.0.1.5:
 - New downloading system

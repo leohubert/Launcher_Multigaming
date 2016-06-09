@@ -57,7 +57,7 @@ namespace LauncherArma3
 
         private void changeLanguageButon_Click(object sender, EventArgs e)
         {
-            languageChoice settings = new languageChoice(serverName);
+            languageChoice settings = new languageChoice(serverName, true);
 
             // Show the laguage choice
             settings.ShowDialog();

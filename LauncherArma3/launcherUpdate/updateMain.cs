@@ -37,7 +37,7 @@ namespace launcherUpdate
             download_update();
         }
 
-        void download_update()
+        async void download_update()
         {
             bool ok = false;
             while (ok != true)
@@ -59,6 +59,7 @@ namespace launcherUpdate
                     thread.Start();
                     ok = true;
                 }
+                await Task.Delay(1000);
             }
 
 

@@ -71,6 +71,7 @@
             this.downloadMessage = new FlatUI.FlatLabel();
             this.estimedTime = new FlatUI.FlatLabel();
             this.serverRequest = new System.ComponentModel.BackgroundWorker();
+            this.sizeLabel = new FlatUI.FlatLabel();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.newsBox.SuspendLayout();
             this.playerBox.SuspendLayout();
@@ -126,7 +127,7 @@
             this.newsBox.Controls.Add(this.iTalk_Separator3);
             this.newsBox.Controls.Add(this.iTalk_Separator2);
             this.newsBox.Controls.Add(this.pictureBox2);
-            this.newsBox.Location = new System.Drawing.Point(322, 60);
+            this.newsBox.Location = new System.Drawing.Point(308, 60);
             this.newsBox.Name = "newsBox";
             this.newsBox.Size = new System.Drawing.Size(506, 187);
             this.newsBox.TabIndex = 6;
@@ -608,6 +609,19 @@
             // 
             this.serverRequest.DoWork += new System.ComponentModel.DoWorkEventHandler(this.serverRequest_DoWork);
             // 
+            // sizeLabel
+            // 
+            this.sizeLabel.BackColor = System.Drawing.Color.Transparent;
+            this.sizeLabel.Cursor = System.Windows.Forms.Cursors.Default;
+            this.sizeLabel.Font = new System.Drawing.Font("Arial Black", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.sizeLabel.ForeColor = System.Drawing.SystemColors.WindowFrame;
+            this.sizeLabel.Location = new System.Drawing.Point(0, 398);
+            this.sizeLabel.Name = "sizeLabel";
+            this.sizeLabel.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.sizeLabel.Size = new System.Drawing.Size(1001, 18);
+            this.sizeLabel.TabIndex = 29;
+            this.sizeLabel.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
             // launcherMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -630,6 +644,7 @@
             this.Controls.Add(this.downloadProgress);
             this.Controls.Add(this.downloadMessage);
             this.Controls.Add(this.estimedTime);
+            this.Controls.Add(this.sizeLabel);
             this.ForeColor = System.Drawing.Color.Black;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
@@ -695,5 +710,6 @@
         private FlatUI.FlatLabel totalFiles;
         private FlatUI.FlatLabel estimedTime;
         private System.ComponentModel.BackgroundWorker serverRequest;
+        private FlatUI.FlatLabel sizeLabel;
     }
 }

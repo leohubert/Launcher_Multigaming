@@ -54,6 +54,8 @@ namespace LauncherArma3
         bool cancel = false;
         int stat = 0;
         dynamic result = null;
+        long downloaded_bytes = 0;
+        long need_to_download = 0;
 
         /* TIME CALCUL */
         DateTime startTimeDownload;
@@ -321,7 +323,7 @@ namespace LauncherArma3
             }
             catch
             {
-                languageChoice formLanguage = new languageChoice(serverName);
+                languageChoice formLanguage = new languageChoice(serverName, true);
 
                 // Show the laguage choice
                 formLanguage.ShowDialog();
@@ -439,6 +441,7 @@ namespace LauncherArma3
                 string currentAddons;
                 int i = 0;
                 int total_addons = res.total_addons;
+                long currentSize;
 
                 /* LIST DES MODS A TELECHARGER */
                 while (i < total_addons)
@@ -446,11 +449,13 @@ namespace LauncherArma3
                     if (cancel == true)
                         break;
                     currentAddons = res.addons[i].name;
+                    currentSize = res.addons[i].size;
                     local_addons_md5 = getFileMd5(armaDirectory + "/@" + serverName + "/addons/" + currentAddons).ToLower();
                     remote_addons_md5 = res.addons[i].md5;
 
                     if (remote_addons_md5 != local_addons_md5)
                     {
+                        need_to_download += currentSize;
                         modList.Enqueue(currentAddons);
                     }
                     i++;
@@ -474,6 +479,7 @@ namespace LauncherArma3
                 string currentCpp;
                 int i = 0;
                 int total_cpp = res.total_cpps;
+                long currentSize;
 
                 /* LIST DES CPP A TELECHARGER */
                 while (i < total_cpp)
@@ -481,10 +487,12 @@ namespace LauncherArma3
                     if (cancel == true)
                         break;
                     currentCpp = res.cpps[i].name;
+                    currentSize = res.cpps[i].size;
                     local_cpp_md5 = getFileMd5(armaDirectory + "/@" + serverName + "/" + currentCpp).ToLower();
                     remote_cpp_md5 = res.cpps[i].md5;
                     if (remote_cpp_md5 != local_cpp_md5)
                     {
+                        need_to_download += currentSize;
                         cppList.Enqueue(currentCpp);
                     }
                     i++;
@@ -509,6 +517,7 @@ namespace LauncherArma3
                 string currentUserconfigs;
                 int i = 0;
                 int total_userconfigs = res.total_userconfigs;
+                long currentSize;
 
                 /* LIST DES USERSCONFIGS A TELECHARGER */
                 while (i < total_userconfigs)
@@ -516,10 +525,12 @@ namespace LauncherArma3
                     if (cancel == true)
                         break;
                     currentUserconfigs = res.userconfigs[i].name;
+                    currentSize = res.userconfigs[i].size;
                     local_userconfigs_md5 = getFileMd5(armaDirectory + "/" + currentUserconfigs).ToLower();
                     remote_userconfigs_md5 = res.userconfigs[i].md5;
                     if (remote_userconfigs_md5 != local_userconfigs_md5)
                     {
+                        need_to_download += currentSize;
                         userconfigList.Enqueue(currentUserconfigs);
                     }
                     i++;
@@ -586,8 +597,6 @@ namespace LauncherArma3
 
             stat = 0;
 
-            downloadProgress.Value += 5;
-
             if (cancel == true)
                 downloadMessage.Text = "Annulation en cours...";
             else
@@ -595,18 +604,21 @@ namespace LauncherArma3
             serverRequest.RunWorkerAsync();
 
             while (stat == 0)
+            {
                 await Task.Delay(1000);
+                if (downloadProgress.Value < 30)
+                    downloadProgress.Value += 1;
+            }
 
             res = result;
 
-            downloadProgress.Value += 15;
 
 
             /* LISTING ADDONS */
 
             Queue addonsList = new Queue();
             stat = 0;
-            downloadProgress.Value += 15;
+
             if (cancel == true)
                 downloadMessage.Text = "Annulation en cours...";
             else
@@ -614,15 +626,17 @@ namespace LauncherArma3
             addonsList = listAddons(res);
 
             while (stat == 0)
+            {
                 await Task.Delay(1000);
-            downloadProgress.Value += 15;
+                if (downloadProgress.Value < 60)
+                    downloadProgress.Value += 1;
+            }
 
 
             /* LISTING CPP */
 
             Queue cppList = new Queue();
             stat = 0;
-            downloadProgress.Value += 15;
             if (cancel == true)
                 downloadMessage.Text = "Annulation en cours...";
             else
@@ -630,14 +644,16 @@ namespace LauncherArma3
             cppList = listCpp(res);
 
             while (stat == 0)
+            {
                 await Task.Delay(1000);
-            downloadProgress.Value += 15;
+                if (downloadProgress.Value < 70)
+                    downloadProgress.Value += 1;
+            }
 
             /* LISTING USERCONFIG */
 
             Queue userconfigList = new Queue();
             stat = 0;
-            downloadProgress.Value += 15;
             if (cancel == true)
                 downloadMessage.Text = "Annulation en cours...";
             else
@@ -645,9 +661,11 @@ namespace LauncherArma3
             userconfigList = listUserconfigs(res);
 
             while (stat == 0)
+            {
                 await Task.Delay(1000);
-            downloadProgress.Value += 15;
-
+                if (downloadProgress.Value < 70)
+                    downloadProgress.Value += 1;
+            }
 
             /* CHECK IF ALREADY UP TO DATE */
 
@@ -658,6 +676,11 @@ namespace LauncherArma3
                 alreadyUp = true;
             }
 
+            while (downloadProgress.Value < 100)
+            {
+                await Task.Delay(100);
+                downloadProgress.Value += 1;
+            }
 
             /* SHOW TOTAL FILES */
 
@@ -811,6 +834,7 @@ namespace LauncherArma3
             downloadProgressLabel.Text = "";
             onDownload = false;
             estimedTime.Text = "";
+            sizeLabel.Text = "";
             totalFiles.Text = "";
             downloadedFiles.Text = "";
             cancel = false;
@@ -912,6 +936,7 @@ namespace LauncherArma3
                         break;
                 }
             }
+            tmp = 0;
             WebClient client = new WebClient();
             Thread thread = new Thread(() =>
             {
@@ -948,19 +973,21 @@ namespace LauncherArma3
             return "0 Bytes";
         }
 
+        long tmp = 0;
+
         void client_DownloadProgressChanged(object sender, DownloadProgressChangedEventArgs e)
         {
             this.BeginInvoke((MethodInvoker)delegate
             {
-                double bytesIn = double.Parse(e.BytesReceived.ToString());
-                double totalBytes = double.Parse(e.TotalBytesToReceive.ToString());
-                double percentage = bytesIn / totalBytes * 100;
                 string received = FormatBytes(e.BytesReceived);
                 string total = FormatBytes(e.TotalBytesToReceive);
                 downloadProgressLabel.Text = "Downloaded " + received + " of " + total;
                 downloadProgress.Maximum = (int)e.TotalBytesToReceive;
                 downloadProgress.Value = (int)e.BytesReceived;
+                sizeLabel.Text = "Downloaded " + FormatBytes(downloaded_bytes) + " to " + FormatBytes(need_to_download);
 
+                downloaded_bytes += e.BytesReceived - tmp;
+                tmp = e.BytesReceived;
 
                 /* CALCULE TIME */
                 DateTime now;
@@ -969,9 +996,9 @@ namespace LauncherArma3
 
                 if ((now.Second - startTimeDownload.Second) > 0)
                 {
-                    kbPerSecond = (int)((100 * 1000) / 8);
+                    kbPerSecond = (int)((100 * 1000) / 8);                    
                 }
-                long sent = (e.TotalBytesToReceive - e.BytesReceived);
+                long sent = (need_to_download - downloaded_bytes);
                 if (sent != 0 && kbPerSecond != 0)
                 {
                     long remainingseconds = sent / kbPerSecond;

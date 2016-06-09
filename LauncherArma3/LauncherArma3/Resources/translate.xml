@@ -24,6 +24,7 @@
 		<error404>Le serveur n'est pas accéssible.</error404>
 		<errorInternet>Vous n'avez pas internet.</errorInternet>
 		<errorUpdate>Erreur launcherUpdate.exe manquant !</errorUpdate>
+    <updateCancel>Mise à jour annulé</updateCancel>
 	</FR>
 	<EN language="English">
 		<languageTitle>Select your language</languageTitle>
@@ -49,7 +50,8 @@
 		<error404>The server is not accessible.</error404>
 		<errorInternet>You don't have internet</errorInternet>
 		<errorUpdate>Error launcherUpdate.exe not found !</errorUpdate>
-	</EN>
+    <updateCancel>Update canceled</updateCancel>
+  </EN>
 	<DE language="Deutch">
 		<languageTitle>Wähle deine Sprache</languageTitle>
 		<contry>Deutschland</contry>
@@ -74,6 +76,7 @@
 		<error404>Der Server ist nicht verfügbar.</error404>
 		<errorInternet>Sie haben keine Internet.</errorInternet>
 		<errorUpdate>Error launcherUpdate.exe wurde nicht gefunden!</errorUpdate>
+    <updateCancel>Aktualisierung abgebrochen</updateCancel>
 	</DE>
 	<SP language="Spanish">
 		<languageTitle>Elige tu idioma</languageTitle>
@@ -99,6 +102,7 @@
 		<error404>El servidor no es accesible.</error404>
 		<errorInternet>Usted no tiene internet.</errorInternet>
 		<errorUpdate>Error launcherUpdate.exe no encontrado!</errorUpdate>
+    <updateCancel>Actualización cancelada</updateCancel>
 	</SP>
 	<MT language="Canadiens">
 		<languageTitle>Choisi ta langue tabernack</languageTitle>
@@ -125,6 +129,7 @@
 		<error404>Le serveur n'est pas accéssible.</error404>
 		<errorInternet>Verifie ta wifi tu n'a pas internet</errorInternet>
 		<errorUpdate>Erreur launcherUpdate.exe manquant !</errorUpdate>
+    <updateCancel>Hey mec ta annulé la mise à jour</updateCancel>
 	</MT>
 	<JP language="Japanese">
 		<languageTitle>言語を選択</languageTitle>
@@ -150,6 +155,7 @@
 		<error404>サーバーにアクセスできません。</error404>
 		<errorInternet>あなたはインターネットを持っていません。</errorInternet>
 		<errorUpdate>エラー launcherUpdate.exe が見つかりません！</errorUpdate>
+    <updateCancel>更新キャンセル</updateCancel>
 	</JP>
 </user>
 

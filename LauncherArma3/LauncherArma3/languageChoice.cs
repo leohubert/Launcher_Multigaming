@@ -20,6 +20,7 @@ namespace LauncherArma3
 
         string language = "EN";  // Default language
         string serverName;
+        bool startLauncher;
 
         /* GLOBAL VARIABLE */
 
@@ -27,10 +28,11 @@ namespace LauncherArma3
         int status = 0;
         bool normalyClose = false;
 
-        public languageChoice(string server)
+        public languageChoice(string server, bool launcher)
         {
             InitializeComponent();
             serverName = server;
+            startLauncher = launcher;
         }
 
         private void languageChoice_Load(object sender, EventArgs e)
@@ -338,7 +340,8 @@ namespace LauncherArma3
         {
             if (normalyClose == false)
             {
-                Environment.Exit(42);
+                if (startLauncher == false)
+                    Environment.Exit(42);
             }
         }
     }

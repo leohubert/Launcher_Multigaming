@@ -187,6 +187,7 @@ namespace LauncherArma3
                 server = false;
                 newsTitle.Text = translateDic["error404"];
                 notifView(translateDic["error404"]);
+                newsContent.Visible = false;
                 newsImage.Visible = false;
                 errorImage.BringToFront();
             }
@@ -368,6 +369,8 @@ namespace LauncherArma3
                 translateDic.Add("error404", translate.ReadElementContentAsString());
                 translate.ReadToFollowing("errorUpdate");
                 translateDic.Add("errorUpdate", translate.ReadElementContentAsString());
+                translate.ReadToFollowing("updateCancel");
+                translateDic.Add("updateCancel", translate.ReadElementContentAsString());
 
                 loginButton.Text = translateDic["logIn"];
                 registerLink.Text = translateDic["registerLink"];
@@ -382,7 +385,7 @@ namespace LauncherArma3
             }
             catch
             {
-                languageChoice formLanguage = new languageChoice(serverName);
+                languageChoice formLanguage = new languageChoice(serverName, true);
 
                 // Show the laguage choice
                 formLanguage.ShowDialog();
@@ -486,13 +489,20 @@ namespace LauncherArma3
                 notifView(translateDic["errorUpdate"]);
                 return;
             }
-            loginButton.Enabled = false;
-            registerLink.Enabled = false;
-            Process update = new Process();
-            update.StartInfo.FileName = "launcherUpdate.exe";
-            update.StartInfo.Arguments = apiUrl + "api/launcher/download" + " " + System.Windows.Forms.Application.ExecutablePath + " " + System.Diagnostics.Process.GetCurrentProcess().ProcessName;
-            update.Start();
-            this.Close();
+            try
+            {
+                loginButton.Enabled = false;
+                registerLink.Enabled = false;
+                Process update = new Process();
+                update.StartInfo.FileName = "launcherUpdate.exe";
+                update.StartInfo.Arguments = apiUrl + "api/launcher/download" + " \"" + System.Windows.Forms.Application.ExecutablePath + "\" \"" + System.Diagnostics.Process.GetCurrentProcess().ProcessName + "\"";
+                update.Start();
+                this.Close();
+            }
+            catch
+            {
+                notifView(translateDic["updateCancel"]);
+            }
         }
 
         protected string getLauncherMd5()

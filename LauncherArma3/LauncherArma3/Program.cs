@@ -24,7 +24,7 @@ namespace LauncherArma3
             string ftp_user = "launcher";
             string ftp_pass = "20071997";
 
-            bool modDev = false;  /* enable or disable modDev */
+            bool modDev = true;  /* enable or disable modDev */
 
             /* ANOTHER VARIABLE */
 
@@ -42,7 +42,7 @@ namespace LauncherArma3
             }
             else
             {
-                Application.Run(new languageChoice(serverName));
+                Application.Run(new languageChoice(serverName, false));
                 Application.Run(new loginForm(serverName, apiUrl, webSite, ftp_url, ftp_user, ftp_pass, modDev));
             }
         }
