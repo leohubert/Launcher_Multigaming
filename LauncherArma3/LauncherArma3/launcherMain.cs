@@ -591,6 +591,13 @@ namespace LauncherArma3
                 Directory.CreateDirectory(armaDirectory + "/@" + serverName + "/addons");
             }
 
+            while (serverRequest.IsBusy)
+            {
+                await Task.Delay(1000);
+                serverRequest.Dispose();
+                downloadMessage.Text = "Veuillez patientez...";
+            }
+
 
             /* START LISTING */
             dynamic res;
@@ -600,14 +607,22 @@ namespace LauncherArma3
             if (cancel == true)
                 downloadMessage.Text = "Annulation en cours...";
             else
+            {
                 downloadMessage.Text = "Requete au serveur en cours...";
-            serverRequest.RunWorkerAsync();
+                serverRequest.RunWorkerAsync();
+            }
+          
 
             while (stat == 0)
             {
                 await Task.Delay(1000);
                 if (downloadProgress.Value < 30)
                     downloadProgress.Value += 1;
+                if (cancel == true)
+                {
+                    downloadMessage.Text = "Annulation en cours...";
+                    stat = 1;
+                }
             }
 
             res = result;
@@ -622,14 +637,22 @@ namespace LauncherArma3
             if (cancel == true)
                 downloadMessage.Text = "Annulation en cours...";
             else
+            {
                 downloadMessage.Text = "Listing des mods à télécharger.";
-            addonsList = listAddons(res);
+                addonsList = listAddons(res);
+            }
+       
 
             while (stat == 0)
             {
                 await Task.Delay(1000);
                 if (downloadProgress.Value < 60)
                     downloadProgress.Value += 1;
+                if (cancel == true)
+                {
+                    downloadMessage.Text = "Annulation en cours...";
+                    stat = 1;
+                }
             }
 
 
@@ -640,14 +663,21 @@ namespace LauncherArma3
             if (cancel == true)
                 downloadMessage.Text = "Annulation en cours...";
             else
+            {
                 downloadMessage.Text = "Listing des ccp à télécharger.";
-            cppList = listCpp(res);
-
+                cppList = listCpp(res);
+            }
+         
             while (stat == 0)
             {
                 await Task.Delay(1000);
                 if (downloadProgress.Value < 70)
                     downloadProgress.Value += 1;
+                if (cancel == true)
+                {
+                    downloadMessage.Text = "Annulation en cours...";
+                    stat = 1;
+                }
             }
 
             /* LISTING USERCONFIG */
@@ -657,14 +687,21 @@ namespace LauncherArma3
             if (cancel == true)
                 downloadMessage.Text = "Annulation en cours...";
             else
+            {
                 downloadMessage.Text = "Listing des fichier anexes à télécharger.";
-            userconfigList = listUserconfigs(res);
+                userconfigList = listUserconfigs(res);
+            }           
 
             while (stat == 0)
             {
                 await Task.Delay(1000);
                 if (downloadProgress.Value < 70)
                     downloadProgress.Value += 1;
+                if (cancel == true)
+                {
+                    downloadMessage.Text = "Annulation en cours...";
+                    stat = 1;
+                }
             }
 
             /* CHECK IF ALREADY UP TO DATE */
@@ -680,6 +717,11 @@ namespace LauncherArma3
             {
                 await Task.Delay(100);
                 downloadProgress.Value += 1;
+                if (cancel == true)
+                {
+                    downloadMessage.Text = "Annulation en cours...";
+                    break;
+                }
             }
 
             /* SHOW TOTAL FILES */
