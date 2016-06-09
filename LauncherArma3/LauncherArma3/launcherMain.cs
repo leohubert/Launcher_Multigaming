@@ -56,10 +56,11 @@ namespace LauncherArma3
         dynamic result = null;
         long downloaded_bytes = 0;
         long need_to_download = 0;
+        long oldBytes = 0;
 
         /* TIME CALCUL */
         DateTime startTimeDownload;
-        long kbPerSecond;
+        long bytesPerSecond;
         long totalRecieved = 0;
         DateTime lastProgressChange = DateTime.Now;
         Stack<int> timeSatck = new Stack<int>(5);
@@ -593,9 +594,9 @@ namespace LauncherArma3
 
             while (serverRequest.IsBusy)
             {
-                await Task.Delay(1000);
                 serverRequest.Dispose();
                 downloadMessage.Text = "Veuillez patientez...";
+                await Task.Delay(1000);
             }
 
 
@@ -611,11 +612,10 @@ namespace LauncherArma3
                 downloadMessage.Text = "Requete au serveur en cours...";
                 serverRequest.RunWorkerAsync();
             }
-          
+
 
             while (stat == 0)
             {
-                await Task.Delay(1000);
                 if (downloadProgress.Value < 30)
                     downloadProgress.Value += 1;
                 if (cancel == true)
@@ -623,6 +623,8 @@ namespace LauncherArma3
                     downloadMessage.Text = "Annulation en cours...";
                     stat = 1;
                 }
+                else
+                    await Task.Delay(1000);
             }
 
             res = result;
@@ -641,11 +643,10 @@ namespace LauncherArma3
                 downloadMessage.Text = "Listing des mods à télécharger.";
                 addonsList = listAddons(res);
             }
-       
+
 
             while (stat == 0)
             {
-                await Task.Delay(1000);
                 if (downloadProgress.Value < 60)
                     downloadProgress.Value += 1;
                 if (cancel == true)
@@ -653,6 +654,8 @@ namespace LauncherArma3
                     downloadMessage.Text = "Annulation en cours...";
                     stat = 1;
                 }
+                else
+                    await Task.Delay(1000);
             }
 
 
@@ -667,10 +670,9 @@ namespace LauncherArma3
                 downloadMessage.Text = "Listing des ccp à télécharger.";
                 cppList = listCpp(res);
             }
-         
+
             while (stat == 0)
             {
-                await Task.Delay(1000);
                 if (downloadProgress.Value < 70)
                     downloadProgress.Value += 1;
                 if (cancel == true)
@@ -678,6 +680,8 @@ namespace LauncherArma3
                     downloadMessage.Text = "Annulation en cours...";
                     stat = 1;
                 }
+                else
+                    await Task.Delay(1000);
             }
 
             /* LISTING USERCONFIG */
@@ -690,11 +694,10 @@ namespace LauncherArma3
             {
                 downloadMessage.Text = "Listing des fichier anexes à télécharger.";
                 userconfigList = listUserconfigs(res);
-            }           
+            }
 
             while (stat == 0)
             {
-                await Task.Delay(1000);
                 if (downloadProgress.Value < 70)
                     downloadProgress.Value += 1;
                 if (cancel == true)
@@ -702,6 +705,8 @@ namespace LauncherArma3
                     downloadMessage.Text = "Annulation en cours...";
                     stat = 1;
                 }
+                else
+                    await Task.Delay(1000);
             }
 
             /* CHECK IF ALREADY UP TO DATE */
@@ -715,13 +720,14 @@ namespace LauncherArma3
 
             while (downloadProgress.Value < 100)
             {
-                await Task.Delay(100);
                 downloadProgress.Value += 1;
                 if (cancel == true)
                 {
                     downloadMessage.Text = "Annulation en cours...";
                     break;
                 }
+                else
+                    await Task.Delay(50);
             }
 
             /* SHOW TOTAL FILES */
@@ -978,7 +984,9 @@ namespace LauncherArma3
                         break;
                 }
             }
-            tmp = 0;
+            oldBytes = 0;
+            oldTime = DateTime.Now.Second;
+            oldBytesPerSeconds = 0;
             WebClient client = new WebClient();
             Thread thread = new Thread(() =>
             {
@@ -1015,38 +1023,39 @@ namespace LauncherArma3
             return "0 Bytes";
         }
 
-        long tmp = 0;
+        int oldTime;
+        long oldBytesPerSeconds;
 
         void client_DownloadProgressChanged(object sender, DownloadProgressChangedEventArgs e)
         {
             this.BeginInvoke((MethodInvoker)delegate
             {
+                downloaded_bytes += e.BytesReceived - oldBytes;
+                oldBytes = e.BytesReceived;
+
                 string received = FormatBytes(e.BytesReceived);
                 string total = FormatBytes(e.TotalBytesToReceive);
                 downloadProgressLabel.Text = "Downloaded " + received + " of " + total;
                 downloadProgress.Maximum = (int)e.TotalBytesToReceive;
                 downloadProgress.Value = (int)e.BytesReceived;
-                sizeLabel.Text = "Downloaded " + FormatBytes(downloaded_bytes) + " to " + FormatBytes(need_to_download);
+                sizeLabel.Text = "Downloaded " + FormatBytes(downloaded_bytes) + " of " + FormatBytes(need_to_download);
 
-                downloaded_bytes += e.BytesReceived - tmp;
-                tmp = e.BytesReceived;
+
 
                 /* CALCULE TIME */
-                DateTime now;
 
-                now = DateTime.Now;
-
-                if ((now.Second - startTimeDownload.Second) > 0)
+                if (DateTime.Now.Second != oldTime)
                 {
-                    kbPerSecond = (int)((100 * 1000) / 8);                    
+                    bytesPerSecond = (e.BytesReceived - oldBytesPerSeconds);
+                    oldBytesPerSeconds = e.BytesReceived;
+                    oldTime = DateTime.Now.Second;
+                    long sent = (need_to_download - downloaded_bytes);
+                    if (sent != 0 && bytesPerSecond != 0)
+                    {
+                        long remainingseconds = (sent / 1000) / (bytesPerSecond / 1000);
+                        estimedTime.Text = "Temps estimé: " + FormatDurationSeconds((int)remainingseconds);
+                    }
                 }
-                long sent = (need_to_download - downloaded_bytes);
-                if (sent != 0 && kbPerSecond != 0)
-                {
-                    long remainingseconds = sent / kbPerSecond;
-                    estimedTime.Text = "Temps estimé: " + FormatDurationSeconds((int)remainingseconds / 1000);
-                }
-
             });
         }
 

@@ -11,3 +11,12 @@ C:\Users\leohu\Documents\GitHub\Launcher_Arma3\LauncherArma3\launcherUpdate\obj\
 C:\Users\leohu\Documents\GitHub\Launcher_Arma3\LauncherArma3\launcherUpdate\obj\Debug\launcherUpdate.csproj.GenerateResource.Cache
 C:\Users\leohu\Documents\GitHub\Launcher_Arma3\LauncherArma3\launcherUpdate\obj\Debug\launcherUpdate.exe
 C:\Users\leohu\Documents\GitHub\Launcher_Arma3\LauncherArma3\launcherUpdate\obj\Debug\launcherUpdate.pdb
+C:\Users\Hubert Léo\Documents\GitHub\Launcher_Arma3\Debug\launcherUpdate.exe.config
+C:\Users\Hubert Léo\Documents\GitHub\Launcher_Arma3\Debug\launcherUpdate.exe
+C:\Users\Hubert Léo\Documents\GitHub\Launcher_Arma3\Debug\launcherUpdate.pdb
+C:\Users\Hubert Léo\Documents\GitHub\Launcher_Arma3\LauncherArma3\launcherUpdate\obj\Debug\launcherUpdate.Properties.Resources.resources
+C:\Users\Hubert Léo\Documents\GitHub\Launcher_Arma3\LauncherArma3\launcherUpdate\obj\Debug\launcherUpdate.updateMain.resources
+C:\Users\Hubert Léo\Documents\GitHub\Launcher_Arma3\LauncherArma3\launcherUpdate\obj\Debug\launcherUpdate.csproj.GenerateResource.Cache
+C:\Users\Hubert Léo\Documents\GitHub\Launcher_Arma3\LauncherArma3\launcherUpdate\obj\Debug\launcherUpdate.exe
+C:\Users\Hubert Léo\Documents\GitHub\Launcher_Arma3\LauncherArma3\launcherUpdate\obj\Debug\launcherUpdate.pdb
+C:\Users\Hubert Léo\Documents\GitHub\Launcher_Arma3\LauncherArma3\launcherUpdate\obj\Debug\launcherUpdate.csprojResolveAssemblyReference.cache

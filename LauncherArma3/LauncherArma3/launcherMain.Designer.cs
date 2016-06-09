@@ -60,17 +60,17 @@
             this.pauseButton = new MaterialSkin.Controls.MaterialRaisedButton();
             this.cancelButton = new MaterialSkin.Controls.MaterialRaisedButton();
             this.forceUpdate = new MaterialSkin.Controls.MaterialCheckBox();
-            this.totalFiles = new FlatUI.FlatLabel();
-            this.downloadedFiles = new FlatUI.FlatLabel();
-            this.directoryLabel = new FlatUI.FlatLabel();
             this.errorBox = new FlatUI.FlatAlertBox();
             this.succesBox = new FlatUI.FlatAlertBox();
             this.infoBox = new FlatUI.FlatAlertBox();
+            this.serverRequest = new System.ComponentModel.BackgroundWorker();
+            this.totalFiles = new FlatUI.FlatLabel();
+            this.downloadedFiles = new FlatUI.FlatLabel();
+            this.directoryLabel = new FlatUI.FlatLabel();
             this.downloadProgressLabel = new FlatUI.FlatLabel();
             this.downloadProgress = new FlatUI.FlatProgressBar();
             this.downloadMessage = new FlatUI.FlatLabel();
             this.estimedTime = new FlatUI.FlatLabel();
-            this.serverRequest = new System.ComponentModel.BackgroundWorker();
             this.sizeLabel = new FlatUI.FlatLabel();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.newsBox.SuspendLayout();
@@ -466,6 +466,49 @@
             this.forceUpdate.Visible = false;
             this.forceUpdate.CheckedChanged += new System.EventHandler(this.forceUpdate_CheckedChanged);
             // 
+            // errorBox
+            // 
+            this.errorBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(70)))), ((int)(((byte)(73)))));
+            this.errorBox.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.errorBox.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
+            this.errorBox.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.errorBox.kind = FlatUI.FlatAlertBox._Kind.Error;
+            this.errorBox.Location = new System.Drawing.Point(250, 12);
+            this.errorBox.Name = "errorBox";
+            this.errorBox.Size = new System.Drawing.Size(500, 42);
+            this.errorBox.TabIndex = 2;
+            this.errorBox.Visible = false;
+            // 
+            // succesBox
+            // 
+            this.succesBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(70)))), ((int)(((byte)(73)))));
+            this.succesBox.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.succesBox.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.succesBox.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.succesBox.kind = FlatUI.FlatAlertBox._Kind.Success;
+            this.succesBox.Location = new System.Drawing.Point(250, 12);
+            this.succesBox.Name = "succesBox";
+            this.succesBox.Size = new System.Drawing.Size(500, 42);
+            this.succesBox.TabIndex = 1;
+            this.succesBox.Visible = false;
+            // 
+            // infoBox
+            // 
+            this.infoBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(70)))), ((int)(((byte)(73)))));
+            this.infoBox.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.infoBox.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.infoBox.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.infoBox.kind = FlatUI.FlatAlertBox._Kind.Info;
+            this.infoBox.Location = new System.Drawing.Point(250, 12);
+            this.infoBox.Name = "infoBox";
+            this.infoBox.Size = new System.Drawing.Size(500, 42);
+            this.infoBox.TabIndex = 0;
+            this.infoBox.Visible = false;
+            // 
+            // serverRequest
+            // 
+            this.serverRequest.DoWork += new System.ComponentModel.DoWorkEventHandler(this.serverRequest_DoWork);
+            // 
             // totalFiles
             // 
             this.totalFiles.AutoSize = true;
@@ -508,45 +551,6 @@
             this.directoryLabel.TabIndex = 19;
             this.directoryLabel.Text = "Select a arma directory";
             this.directoryLabel.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            // 
-            // errorBox
-            // 
-            this.errorBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(70)))), ((int)(((byte)(73)))));
-            this.errorBox.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.errorBox.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
-            this.errorBox.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.errorBox.kind = FlatUI.FlatAlertBox._Kind.Error;
-            this.errorBox.Location = new System.Drawing.Point(250, 12);
-            this.errorBox.Name = "errorBox";
-            this.errorBox.Size = new System.Drawing.Size(500, 42);
-            this.errorBox.TabIndex = 2;
-            this.errorBox.Visible = false;
-            // 
-            // succesBox
-            // 
-            this.succesBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(70)))), ((int)(((byte)(73)))));
-            this.succesBox.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.succesBox.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.succesBox.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.succesBox.kind = FlatUI.FlatAlertBox._Kind.Success;
-            this.succesBox.Location = new System.Drawing.Point(250, 12);
-            this.succesBox.Name = "succesBox";
-            this.succesBox.Size = new System.Drawing.Size(500, 42);
-            this.succesBox.TabIndex = 1;
-            this.succesBox.Visible = false;
-            // 
-            // infoBox
-            // 
-            this.infoBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(70)))), ((int)(((byte)(73)))));
-            this.infoBox.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.infoBox.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.infoBox.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.infoBox.kind = FlatUI.FlatAlertBox._Kind.Info;
-            this.infoBox.Location = new System.Drawing.Point(250, 12);
-            this.infoBox.Name = "infoBox";
-            this.infoBox.Size = new System.Drawing.Size(500, 42);
-            this.infoBox.TabIndex = 0;
-            this.infoBox.Visible = false;
             // 
             // downloadProgressLabel
             // 
@@ -605,10 +609,6 @@
             this.estimedTime.TabIndex = 28;
             this.estimedTime.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
-            // serverRequest
-            // 
-            this.serverRequest.DoWork += new System.ComponentModel.DoWorkEventHandler(this.serverRequest_DoWork);
-            // 
             // sizeLabel
             // 
             this.sizeLabel.BackColor = System.Drawing.Color.Transparent;
@@ -627,6 +627,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1000, 500);
+            this.Controls.Add(this.playerBox);
             this.Controls.Add(this.totalFiles);
             this.Controls.Add(this.downloadedFiles);
             this.Controls.Add(this.forceUpdate);
@@ -636,7 +637,6 @@
             this.Controls.Add(this.chooseButton);
             this.Controls.Add(this.playButton);
             this.Controls.Add(this.newsBox);
-            this.Controls.Add(this.playerBox);
             this.Controls.Add(this.errorBox);
             this.Controls.Add(this.succesBox);
             this.Controls.Add(this.infoBox);
