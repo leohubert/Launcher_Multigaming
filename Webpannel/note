@@ -1,3 +1,0 @@
-Ne pas oublier d'allow all les .htaccess dans /etc/apache2/apache2.conf
-
-et de taper "sudo a2enmod rewrite"
