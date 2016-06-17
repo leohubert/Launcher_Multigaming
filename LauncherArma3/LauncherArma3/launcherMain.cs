@@ -8,7 +8,6 @@ using System.Xml;
 using RestSharp;
 using Newtonsoft.Json.Linq;
 using MaterialSkin;
-using Microsoft.Win32;
 using System.Collections;
 using System.Net;
 using System.Threading.Tasks;
@@ -16,7 +15,6 @@ using System.Threading;
 using System.Security.Cryptography;
 using System.ComponentModel;
 using System.Collections.Generic;
-using System.Linq;
 
 namespace LauncherArma3
 {
@@ -75,7 +73,9 @@ namespace LauncherArma3
         string username = null;
         string email = null;
         string level = null;
-
+        string uid = null;
+        string picture = null;
+    
         /* GENERAL TRANSLATE */
 
         string tr_username;
@@ -137,7 +137,7 @@ namespace LauncherArma3
         {
             var client = new RestClient(apiUrl);
 
-            var request = new RestRequest("api/user/get", Method.POST);
+            var request = new RestRequest("api/users/client/get", Method.POST);
 
             request.AddParameter("token", sessionToken);
 
@@ -150,11 +150,11 @@ namespace LauncherArma3
 
             if (res.status == "42")
             {
-                username = res.user.username;
-                email = res.user.email;
-                level = res.user.level;
-                succesBox.Visible = true;
-                succesBox.Text = res.msg;
+                username = res.username;
+                email = res.email;
+                level = res.level;
+                uid = res.uid;
+                picture = res.picture;
                 changeStatus("Green");
                 loadNews();
                 refreshSession();
@@ -162,7 +162,7 @@ namespace LauncherArma3
             else
             {
                 errorBox.Visible = true;
-                errorBox.Text = res.msg;
+                errorBox.Text = res.message;
                 if (File.Exists(appdata + serverName + "/token.bin2hex"))
                     File.Delete(appdata + serverName + "/token.bin2hex");
             }
@@ -172,15 +172,48 @@ namespace LauncherArma3
         {
             playerUsername.Text = username;
             playerEmail.Text = email;
+            playerUID.Text = uid;
             switch (level)
             {
-                case "0":
-                    playerStatus.Text = "Joueur";
+                case "1":
+                    playerStatus.Text = "Player";
+                    playerStatus.ForeColor = Color.CadetBlue;
+                    break;
+                case "2":
+                    playerStatus.Text = "Policeman";
+                    playerStatus.ForeColor = Color.DodgerBlue;
+                    break;
+                case "3":
+                    playerStatus.Text = "Medic";
+                    playerStatus.ForeColor = Color.Green;
+                    break;
+                case "4":
+                    playerStatus.Text = "Rebel";
+                    playerStatus.ForeColor = Color.DarkRed;
+                    break;
+                case "5":
+                    playerStatus.Text = "VIP";
                     playerStatus.ForeColor = Color.BlueViolet;
                     break;
-                case "1":
+                case "6":
+                    playerStatus.Text = "Support";
+                    playerStatus.ForeColor = Color.YellowGreen;
+                    break;
+                case "7":
+                    playerStatus.Text = "Moderator";
+                    playerStatus.ForeColor = Color.DarkOrange;
+                    break;
+                case "8":
                     playerStatus.Text = "Admin";
                     playerStatus.ForeColor = Color.Red;
+                    break;
+                case "9":
+                    playerStatus.Text = "Developer";
+                    playerStatus.ForeColor = Color.DarkBlue;
+                    break;
+                case "10":
+                    playerStatus.Text = "Founder";
+                    playerStatus.ForeColor = Color.Blue;
                     break;
                 default:
                     playerStatus.Text = "INCONNU";
@@ -779,7 +812,7 @@ namespace LauncherArma3
                     downloadMessage.Text = "Annulation en cours...";
                 else
                     downloadMessage.Text = "Téléchargement du fichier: " + current + " en cours.";
-                startDownload(apiUrl + "api/arma3/cpp/download/" + current, armaDirectory + "/@" + serverName + "/" + current);
+                startDownload(apiUrl + "api/arma3/cpps/download/" + current, armaDirectory + "/@" + serverName + "/" + current);
                 while (stat == 0)
                     await Task.Delay(1000);
                 downloaded++;

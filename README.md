@@ -4,9 +4,9 @@ Launcher_Arma3
 -------------[ Launcher Information ]-------------
 
 ###Last push:
-Version: Pre-Alpha 5.0.2.0
-Functional: YES  |    Not for production
-Release date: 09/06/2016 à 04:12
+Version: Alpha 5.0.3.0
+Functional: YES
+Release date: 18/06/2016 00:16
 
 
 ###Last functional version:
@@ -14,12 +14,24 @@ Version: Release 4.0.0.0
 Functional: YES
 Release date: 30/04/2016 à  14:20
 
-Copyright HUBERT Léo & Wirk © 2014 - 2016
+Copyright HUBERT Léo © 2014 - 2016
 
 --------------------------------------------------
 
 
 ##Change Logs:
+
+Alpha 5.0.3.0:
+- Add: New panel
+- Add: New api
+- Add: Maintenance on live (maintenance edit on live)
+- Add: Maintenance picture possibilities
+- Add: Support with direct chat on new panel.
+- Add: Steam UID for prepare statistique about in game account
+- Update: Update Launche with new api
+And more, more, more ...
+
+------------------------------------
 
 Pre-Alpha 5.0.2.0:
 - Add: Image news on login form
@@ -33,7 +45,7 @@ Pre-Alpha 5.0.2.0:
 - Add: Reset modspack button (in settings)
 - Add: Change language button (in settings)
 - Add: Arma3 Launch options (in settings)
-- Add: Admin account for panel (email: owner@demo.com pass: owner)
+- Add: Admin account for panel (email: ownerdemo pass: ownerdemo123A)
 - Fix: Launcher update (destination with space)
 - Fix: Change language closing form
 And more ...

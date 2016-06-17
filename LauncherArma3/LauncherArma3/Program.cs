@@ -20,11 +20,16 @@ namespace LauncherArma3
             string serverName = "Emodyz";  /* Your serverName */
             string apiUrl = "http://164.132.98.164/"; /* Link to API launcher Arma 3 */
             string webSite = "http://emodyz.com/"; /* Your webSite */
-            string ftp_url = "ftp://localhost"; /* Your ftp server */
-            string ftp_user = "launcher";
-            string ftp_pass = "20071997";
+                        
+            /* FTP NO FUNCTIONAL */
 
-            bool modDev = true;  /* enable or disable modDev */
+            string ftp_url = "ftp://yoururl";
+            string ftp_user = "username";
+            string ftp_pass = "passwd";
+           
+            /* FTP NO FUNCTIONAL */
+
+            bool modDev = false;  /* enable or disable modDev */
 
             /* ANOTHER VARIABLE */
 

@@ -59,7 +59,7 @@ namespace LauncherArma3
         {
             var client = new RestClient(apiUrl);
 
-            var request = new RestRequest("api/user", Method.POST);
+            var request = new RestRequest("api/register", Method.POST);
 
             request.AddHeader("Accept", "application/json");
 
@@ -67,14 +67,14 @@ namespace LauncherArma3
             request.AddParameter("username", registerUsername.Text);
             request.AddParameter("email", registerEmail.Text);
             request.AddParameter("password", registerPass.Text);
-            request.AddParameter("password_confirmation", registerPassConfirm.Text);
+            request.AddParameter("confirm_password", registerPassConfirm.Text);
 
             IRestResponse response = client.Execute(request);
             var content = response.Content;
 
             dynamic res = JObject.Parse(content.ToString());
 
-            string message = res.msg;
+            string message = res.message;
 
             if (res.status == "42")
             {

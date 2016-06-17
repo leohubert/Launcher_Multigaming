@@ -4,23 +4,17 @@ using MetroFramework;
 using Newtonsoft.Json.Linq;
 using RestSharp;
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Data;
 using System.Diagnostics;
 using System.Drawing;
 using System.IO;
-using System.Linq;
 using System.Net.NetworkInformation;
 using System.Security.Cryptography;
-using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Xml;
-using System.Xml.Linq;
-using System.Xml.XPath;
 
 namespace LauncherArma3
 {
@@ -160,12 +154,12 @@ namespace LauncherArma3
                 newsTitle.Text = res.msg_title;
                 newsContent.Text = res.msg_content;
 
-                if (modDev == false && res.v_launcher != getLauncherMd5().ToLower())
+                if (modDev == false && res.vlauncher != getLauncherMd5().ToLower())
                 {
                     launcherUpdate();
                     return;
                 }
-                vLast = res.v_mod;
+                vLast = res.vmod;
                 if (res.login == "0")
                 {
                     sessionToken = null;
@@ -282,7 +276,7 @@ namespace LauncherArma3
             {
                 var client = new RestClient(apiUrl);
 
-                var request = new RestRequest("api/user/get", Method.POST);
+                var request = new RestRequest("api/users/client/get", Method.POST);
 
                 request.AddParameter("token", sessionToken);
 
@@ -522,7 +516,7 @@ namespace LauncherArma3
                 registerLink.Enabled = false;
                 Process update = new Process();
                 update.StartInfo.FileName = "launcherUpdate.exe";
-                update.StartInfo.Arguments = apiUrl + "api/launcher/download" + " \"" + System.Windows.Forms.Application.ExecutablePath + "\" \"" + System.Diagnostics.Process.GetCurrentProcess().ProcessName + "\"";
+                update.StartInfo.Arguments = apiUrl + "api/arma3/launcher/download" + " \"" + System.Windows.Forms.Application.ExecutablePath + "\" \"" + System.Diagnostics.Process.GetCurrentProcess().ProcessName + "\"";
                 update.Start();
                 this.Close();
             }
