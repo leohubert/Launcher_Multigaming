@@ -18,15 +18,6 @@ C:\Users\Hubert Léo\Documents\GitHub\Launcher_Arma3\LauncherArma3\LauncherArma3
 C:\Users\Hubert Léo\Documents\GitHub\Launcher_Arma3\LauncherArma3\LauncherArma3\bin\Debug\Newtonsoft.Json.dll
 C:\Users\Hubert Léo\Documents\GitHub\Launcher_Arma3\LauncherArma3\LauncherArma3\bin\Debug\MetroFramework.Design.pdb
 C:\Users\Hubert Léo\Documents\GitHub\Launcher_Arma3\LauncherArma3\LauncherArma3\bin\Debug\MetroFramework.Fonts.pdb
-C:\Users\Hubert Léo\Documents\GitHub\Launcher_Arma3\LauncherArma3\LauncherArma3\obj\Debug\LauncherArma3.languageChoice.resources
-C:\Users\Hubert Léo\Documents\GitHub\Launcher_Arma3\LauncherArma3\LauncherArma3\obj\Debug\LauncherArma3.launcherMain.resources
-C:\Users\Hubert Léo\Documents\GitHub\Launcher_Arma3\LauncherArma3\LauncherArma3\obj\Debug\LauncherArma3.loginForm.resources
-C:\Users\Hubert Léo\Documents\GitHub\Launcher_Arma3\LauncherArma3\LauncherArma3\obj\Debug\LauncherArma3.Properties.Resources.resources
-C:\Users\Hubert Léo\Documents\GitHub\Launcher_Arma3\LauncherArma3\LauncherArma3\obj\Debug\LauncherArma3.registerForm.resources
-C:\Users\Hubert Léo\Documents\GitHub\Launcher_Arma3\LauncherArma3\LauncherArma3\obj\Debug\LauncherArma3.settingsForm.resources
-C:\Users\Hubert Léo\Documents\GitHub\Launcher_Arma3\LauncherArma3\LauncherArma3\obj\Debug\LauncherArma3.csproj.GenerateResource.Cache
-C:\Users\Hubert Léo\Documents\GitHub\Launcher_Arma3\LauncherArma3\LauncherArma3\obj\Debug\LauncherArma3.exe
-C:\Users\Hubert Léo\Documents\GitHub\Launcher_Arma3\LauncherArma3\LauncherArma3\obj\Debug\LauncherArma3.pdb
 C:\Users\leohu\Documents\GitHub\Launcher_Arma3\Debug\LauncherArma3.exe.config
 C:\Users\leohu\Documents\GitHub\Launcher_Arma3\Debug\LauncherArma3.exe.manifest
 C:\Users\leohu\Documents\GitHub\Launcher_Arma3\Debug\LauncherArma3.application
@@ -48,8 +39,16 @@ C:\Users\Hubert Léo\Documents\GitHub\Launcher_Arma3\Debug\LauncherArma3.exe.con
 C:\Users\Hubert Léo\Documents\GitHub\Launcher_Arma3\Debug\LauncherArma3.exe.manifest
 C:\Users\Hubert Léo\Documents\GitHub\Launcher_Arma3\Debug\LauncherArma3.application
 C:\Users\Hubert Léo\Documents\GitHub\Launcher_Arma3\Debug\LauncherArma3.exe
+C:\Users\Hubert Léo\Documents\GitHub\Launcher_Arma3\Debug\LauncherArma3.pdb
+C:\Users\Hubert Léo\Documents\GitHub\Launcher_Arma3\LauncherArma3\LauncherArma3\obj\Debug\LauncherArma3.languageChoice.resources
+C:\Users\Hubert Léo\Documents\GitHub\Launcher_Arma3\LauncherArma3\LauncherArma3\obj\Debug\LauncherArma3.launcherMain.resources
+C:\Users\Hubert Léo\Documents\GitHub\Launcher_Arma3\LauncherArma3\LauncherArma3\obj\Debug\LauncherArma3.loginForm.resources
+C:\Users\Hubert Léo\Documents\GitHub\Launcher_Arma3\LauncherArma3\LauncherArma3\obj\Debug\LauncherArma3.Properties.Resources.resources
+C:\Users\Hubert Léo\Documents\GitHub\Launcher_Arma3\LauncherArma3\LauncherArma3\obj\Debug\LauncherArma3.registerForm.resources
+C:\Users\Hubert Léo\Documents\GitHub\Launcher_Arma3\LauncherArma3\LauncherArma3\obj\Debug\LauncherArma3.settingsForm.resources
+C:\Users\Hubert Léo\Documents\GitHub\Launcher_Arma3\LauncherArma3\LauncherArma3\obj\Debug\LauncherArma3.csproj.GenerateResource.Cache
 C:\Users\Hubert Léo\Documents\GitHub\Launcher_Arma3\LauncherArma3\LauncherArma3\obj\Debug\LauncherArma3.TrustInfo.xml
 C:\Users\Hubert Léo\Documents\GitHub\Launcher_Arma3\LauncherArma3\LauncherArma3\obj\Debug\LauncherArma3.exe.manifest
 C:\Users\Hubert Léo\Documents\GitHub\Launcher_Arma3\LauncherArma3\LauncherArma3\obj\Debug\LauncherArma3.application
-C:\Users\Hubert Léo\Documents\GitHub\Launcher_Arma3\Debug\LauncherArma3.pdb
-C:\Users\Hubert Léo\Documents\GitHub\Launcher_Arma3\LauncherArma3\LauncherArma3\obj\Debug\LauncherArma3.csprojResolveAssemblyReference.cache
+C:\Users\Hubert Léo\Documents\GitHub\Launcher_Arma3\LauncherArma3\LauncherArma3\obj\Debug\LauncherArma3.exe
+C:\Users\Hubert Léo\Documents\GitHub\Launcher_Arma3\LauncherArma3\LauncherArma3\obj\Debug\LauncherArma3.pdb
