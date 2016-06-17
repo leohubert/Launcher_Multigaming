@@ -121,7 +121,7 @@ namespace LauncherArma3
             {
                 var client = new RestClient(apiUrl);
 
-                var request = new RestRequest("api/options", Method.GET);
+                var request = new RestRequest("api/settings", Method.GET);
 
                 IRestResponse response = client.Execute(request);
                 var content = response.Content;
@@ -131,13 +131,22 @@ namespace LauncherArma3
                 if (res.maintenance == "1")
                 {
                     maintenance = true;
-                    newsTitle.Text = translateDic["maintenanceTitle"];
-                    newsContent.Text = res.maintenance_msg;
                     loginButton.Enabled = false;
                     registerLink.Enabled = false;
                     materialSkinManager.ColorScheme = new ColorScheme(Primary.Orange400, Primary.Indigo700, Primary.Indigo100, Accent.LightGreen200, TextShade.WHITE);
                     this.Style = MetroColorStyle.Orange;
-                    maintenanceRefresh.RunWorkerAsync();
+                    if (res.maintenance_title == "{picture}")
+                    {
+                        newsImage.Visible = true;
+                        newsImage.ImageLocation = res.maintenance_content;
+                        newsImage.BringToFront();
+                    }
+                    else
+                    {
+                        newsTitle.Text = res.maintenance_title;
+                        newsContent.Text = res.maintenance_content;
+                    }
+                    maintenanceRefresh.RunWorkerAsync();                
                     return;
                 }
 
@@ -214,32 +223,33 @@ namespace LauncherArma3
                         }
                         var client = new RestClient(apiUrl);
 
-                        var request = new RestRequest("api/user/login", Method.POST);
+                        var request = new RestRequest("api/login", Method.POST);
 
-                        request.AddParameter("username", loginUsername.Text);
+                        request.AddParameter("login", loginUsername.Text);
                         request.AddParameter("password", loginPassword.Text);
+                        request.AddParameter("launcher", 1);
 
                         IRestResponse response = client.Execute(request);
                         var content = response.Content;
-
+                    
                         dynamic res = JObject.Parse(content.ToString());
 
                         if (res.status == "42")
                         {
-                            sessionToken = res.user.token;
+                            sessionToken = res.token;
                             if (loginRemember.Checked == true)
                             {
-                                string token = res.user.token;
+                                string token = res.token;
                                 File.WriteAllText(appdata + serverName + "/token.bin2hex", token);
                             }
 
                             // Reset form
                             startLauncher = true;
                             stat = 1;
-                        }
+                        }                        
                         else
                         {
-                            string message = res.msg;
+                            string message = res.message;
                             notifView(message);
                         }
                     }
@@ -292,7 +302,7 @@ namespace LauncherArma3
                 }
                 else
                 {
-                    string msg = res.msg;
+                    string msg = res.message;
                     notifView(msg);
                     if (File.Exists(appdata + serverName + "/token.bin2hex"))
                         File.Delete(appdata + serverName + "/token.bin2hex");
@@ -441,18 +451,36 @@ namespace LauncherArma3
 
         private void maintenanceRefresh_DoWork(object sender, DoWorkEventArgs e)
         {
-            System.Threading.Thread.Sleep(30000);
+            System.Threading.Thread.Sleep(5000);
             try
             {
                 var client = new RestClient(apiUrl);
 
-                var request = new RestRequest("api/options", Method.GET);
+                var request = new RestRequest("api/settings", Method.GET);
 
                 IRestResponse response = client.Execute(request);
                 var content = response.Content;
 
                 dynamic res = JObject.Parse(content.ToString());
 
+                this.BeginInvoke((MethodInvoker)delegate
+                {
+                    if (res.maintenance == "1")
+                    {
+                        if (res.maintenance_title == "{picture}")
+                        {
+                            newsImage.Visible = true;
+                            newsImage.ImageLocation = res.maintenance_content;
+                            newsImage.BringToFront();
+                        }
+                        else
+                        {
+                            newsImage.Visible = false;
+                            newsTitle.Text = res.maintenance_title;
+                            newsContent.Text = res.maintenance_content;
+                        }
+                    }
+                });           
                 if (res.maintenance == "0")
                 {
                     maintenance = false;

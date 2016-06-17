@@ -52,3 +52,4 @@ C:\Users\Hubert Léo\Documents\GitHub\Launcher_Arma3\LauncherArma3\LauncherArma3
 C:\Users\Hubert Léo\Documents\GitHub\Launcher_Arma3\LauncherArma3\LauncherArma3\obj\Debug\LauncherArma3.application
 C:\Users\Hubert Léo\Documents\GitHub\Launcher_Arma3\LauncherArma3\LauncherArma3\obj\Debug\LauncherArma3.exe
 C:\Users\Hubert Léo\Documents\GitHub\Launcher_Arma3\LauncherArma3\LauncherArma3\obj\Debug\LauncherArma3.pdb
+C:\Users\Hubert Léo\Documents\GitHub\Launcher_Arma3\LauncherArma3\LauncherArma3\obj\Debug\LauncherArma3.csprojResolveAssemblyReference.cache
