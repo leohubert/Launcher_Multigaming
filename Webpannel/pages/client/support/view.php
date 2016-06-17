@@ -119,6 +119,7 @@ $id = $match['params']['id'];
                                 document.getElementById("admin_email").innerHTML = obj.support_admin_email;
                                 var status = document.getElementById("admin_status");
                                 switch (obj.support_admin_level)
+								{
                                     case "1":
                                         status.innerHTML += '<small class="text-primary"><b>Player</b></small>';
                                         break;
