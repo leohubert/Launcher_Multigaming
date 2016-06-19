@@ -37,66 +37,11 @@
 
 
 
-    <body onload="loadAll()">
+    <body>
 
         <!-- Navigation Bar-->
         <?php include "jointures/header_admin.php"?>
         <!-- End Navigation Bar-->
-
-        <script>
-            function loadAll()
-            {
-                $.get(
-                    '/api/settings',
-                    {
-                        launcher : 0
-                    },
-
-                    function(data){
-                        var obj = JSON.parse(data);
-
-                            if (obj.maintenance == 0)
-                            {
-                                var button = document.getElementById("maintenance");
-                                var label = document.getElementById("maintenance_state");
-
-                                button.className = "btn btn-danger waves-effect w-md waves-light m-b-5";
-                                button.textContent = "Active maintenance";
-                                label.className = "label label-danger";
-                                label.textContent = "Deactivated";
-                            }
-                            if (obj.login == 0)
-                            {
-                                var button = document.getElementById("login");
-                                var label = document.getElementById("login_state");
-
-                                button.className = "btn btn-success waves-effect w-md waves-light m-b-5";
-                                button.textContent = "Active login";
-                                label.className = "label label-danger";
-                                label.textContent = "Deactivated";
-                            }
-                            if (obj.register == 0)
-                            {
-                                var button = document.getElementById("register");
-                                var label = document.getElementById("register_state");
-
-                                button.className = "btn btn-success waves-effect w-md waves-light m-b-5";
-                                button.textContent = "Active register";
-                                label.className = "label label-danger";
-                                label.textContent = "Deactivated";
-                            }
-                            document.getElementById("maintenance_title").value= obj.maintenance_title;
-                            document.getElementById("maintenance_content").value = obj.maintenance_content;
-                            document.getElementById("msg_title").value= obj.msg_title;
-                            document.getElementById("msg_content").value = obj.msg_content;
-                            document.getElementById("vmod").textContent = obj.vmod;
-
-                    },
-
-                    'text'
-                );
-            }
-        </script>
 
         <div class="wrapper">
             <div class="container">
@@ -247,6 +192,55 @@
                                                         .replace( />/g, '&gt;' );
                                                 }
                                                 window.onload = function() {
+                                                    $.get(
+                                                        '/api/settings',
+                                                        {
+                                                            launcher : 0
+                                                        },
+
+                                                        function(data){
+                                                            var obj = JSON.parse(data);
+
+                                                            if (obj.maintenance == 0)
+                                                            {
+                                                                var button = document.getElementById("maintenance");
+                                                                var label = document.getElementById("maintenance_state");
+
+                                                                button.className = "btn btn-danger waves-effect w-md waves-light m-b-5";
+                                                                button.textContent = "Active maintenance";
+                                                                label.className = "label label-danger";
+                                                                label.textContent = "Deactivated";
+                                                            }
+                                                            if (obj.login == 0)
+                                                            {
+                                                                var button = document.getElementById("login");
+                                                                var label = document.getElementById("login_state");
+
+                                                                button.className = "btn btn-success waves-effect w-md waves-light m-b-5";
+                                                                button.textContent = "Active login";
+                                                                label.className = "label label-danger";
+                                                                label.textContent = "Deactivated";
+                                                            }
+                                                            if (obj.register == 0)
+                                                            {
+                                                                var button = document.getElementById("register");
+                                                                var label = document.getElementById("register_state");
+
+                                                                button.className = "btn btn-success waves-effect w-md waves-light m-b-5";
+                                                                button.textContent = "Active register";
+                                                                label.className = "label label-danger";
+                                                                label.textContent = "Deactivated";
+                                                            }
+                                                            document.getElementById("maintenance_title").value = obj.maintenance_title;
+                                                            document.getElementById("maintenance_content").value = obj.maintenance_content;
+                                                            document.getElementById("msg_title").value = obj.msg_title;
+                                                            document.getElementById("msg_content").value = obj.msg_content;
+                                                            document.getElementById("vmod").textContent = obj.vmod;
+
+                                                        },
+
+                                                        'text'
+                                                    );
                                                     if (level < 9)
                                                         disable();
                                                     var btn = document.getElementById('uploadBtn'),

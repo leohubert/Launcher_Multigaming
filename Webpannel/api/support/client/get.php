@@ -49,7 +49,7 @@ if (isset($_POST['token']) && isset($_POST['id']) && is_numeric($_POST['id']))
                         } else {
                             $result['support_admin_name'] = "No assigned";
                             $result['support_admin_email'] = "Wait for support";
-                            $result['support_admin_level'] = "0";
+                            $result['support_admin_level'] = 0;
                             $result['support_admin_picture'] = "/assets/image/default_user.png";
                         }
                         $result['messages'] = array();

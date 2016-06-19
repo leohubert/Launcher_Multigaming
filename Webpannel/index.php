@@ -3,8 +3,9 @@
     $root_path = dirname(__FILE__);
 
     include dirname(__FILE__) . '/class/altoRooter.class.php';
-    include dirname(__FILE__) . '/configs/config_general.php';
     include dirname(__FILE__) . '/class/encryption.php';
+    include dirname(__FILE__) . '/configs/config_general.php';
+
 
     $router = new AltoRouter();
     $router->setBasePath('');
@@ -13,10 +14,19 @@
     // Main routes that non-customers see
     session_start();
 
-    if (!file_exists("configs/config_general.php")){
+    if (!file_exists("configs/config_mysql.php") || $is_config == null)
+    {
+        if (file_exists("configs/config_mysql.php"))
+            include dirname(__FILE__) . '/configs/config_mysql.php';
         $router->map('GET', '/', 'install/index.php', 'install');
+        $router->map('POST', '/test_mysql', 'install/mysql_test.php', 'install-mysql-test');
+        $router->map('POST', '/inject_mysql', 'install/mysql_inject.php', 'install-mysql-inject');
+        $router->map('POST', '/save_config', 'install/save_config.php', 'install-save-config');
+        $router->map('POST', '/finish_install', 'install/finish_config.php', 'install-finish-config');
     }
     else {
+        include dirname(__FILE__) . '/configs/config_mysql.php';
+        include dirname(__FILE__) . '/configs/mysql_connect.php';
         if (!isset($_SESSION['token'])) {
             $router->map('GET', '/', 'pages/auth/login.php', 'home');
         } else {
@@ -37,6 +47,7 @@
     $router->map('GET','/logout', 'pages/auth/logout.php', 'logout');
     $router->map('GET','/register', 'pages/auth/register.php', 'register');
     $router->map('GET','/recover', 'pages/auth/recover.php', 'recover');
+    $router->map('GET', '/install_finish', 'install/install_finish.php', 'install-finish');
 
     /** @var API route */
     $router->map('POST','/api/login', 'api/login.php', 'api-login');

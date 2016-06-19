@@ -13,6 +13,7 @@ $RECYCLE.BIN/
 *.msi
 *.msm
 *.msp
+*.exe
 
 # Windows shortcuts
 *.lnk
@@ -44,3 +45,8 @@ Temporary Items
 
 # PHPSTORM
 .idea/*
+
+# INGNORE LAUNCHER FILE
+
+theme/*
+configs/config_mysql.php

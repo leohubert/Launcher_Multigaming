@@ -1,4 +1,10 @@
-
+<?php
+    $mysql = false;
+    if (file_exists("configs/config_mysql.php"))
+        $mysql = true;
+    if (file_exists("configs/config_general.php"))
+        $general = true;
+?>
 <!DOCTYPE html>
 <html>
     <head>
@@ -19,6 +25,9 @@
         <link href="assets/css/menu.css" rel="stylesheet" type="text/css" />
         <link href="assets/css/responsive.css" rel="stylesheet" type="text/css" />
 
+        <link href="assets/plugins/sweetalert/dist/sweetalert.css" rel="stylesheet" type="text/css">
+        <link href="assets/plugins/jquery-circliful/css/jquery.circliful.css" rel="stylesheet" type="text/css" />
+
         <!-- HTML5 Shiv and Respond.js IE8 support of HTML5 elements and media queries -->
         <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
         <!--[if lt IE 9]>
@@ -27,20 +36,158 @@
         <![endif]-->
 
         <script src="assets/js/modernizr.min.js"></script>
-<script>
-    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-    })(window,document,'script','../../../www.google-analytics.com/analytics.js','ga');
-
-    ga('create', 'UA-72255993-1', 'auto');
-    ga('send', 'pageview');
-
-</script>
-
 
     </head>
 
+    <script type="application/javascript">
+        var inprogress = 0;
+        function testMysql() {
+            if (inprogress == 1)
+            {
+                sweetAlert("Test already in progress", "You can not run two tests simultaneously", "error");
+                return;
+            }
+            inprogress = 1;
+            var obj;
+            var loading = document.getElementById("mysql_loading");
+            var status = document.getElementById("mysql_status");
+            var save_button = document.getElementById("mysql_save");
+
+            save_button.innerHTML = "";
+
+            loading.className = "md md-cached text-primary fa-spin";
+            status.innerHTML = '<small class="text-info"><b>Test in progress</b></small>';
+            $.post(
+                '/test_mysql',
+                {
+                    db_host : document.getElementById("mysql_host").value,
+                    db_name : document.getElementById("mysql_name").value,
+                    db_user : document.getElementById("mysql_user").value,
+                    db_pass : document.getElementById("mysql_pass").value
+                },
+
+                function(data){
+                    obj = JSON.parse(data);
+                },
+
+                'text'
+            );
+
+            setTimeout(function() {
+                loading.className = "md md-cached text-primary";
+                switch (obj.status)
+                {
+                    case 42:
+                        status.innerHTML = '<small class="text-success"><b>Success</b></small>';
+                        save_button.innerHTML = '<br><button onclick="saveMysql()" type="button" class="btn btn-success btn-rounded w-md waves-effect waves-light m-b-5">Save & inject</button>';
+                        break;
+                    default:
+                        status.innerHTML = '<small class="text-danger"><b>Error | '+ obj.message +'</b></small>';
+                        break;
+                }
+                inprogress = 0;
+            }, 2000);
+        }
+        function saveMysql()
+        {
+            $.post(
+                '/inject_mysql',
+                {
+                    db_host : document.getElementById("mysql_host").value,
+                    db_name : document.getElementById("mysql_name").value,
+                    db_user : document.getElementById("mysql_user").value,
+                    db_pass : document.getElementById("mysql_pass").value
+                },
+
+                function(data){
+                    obj = JSON.parse(data)
+                    if (obj.status == 42)
+                        sweetAlert("Save & Inject successfully", obj.message, "success");
+                    else
+                        sweetAlert("Oops...", "Error | " + obj.message, "error");
+                },
+
+                'text'
+            );
+        }
+        function finishInstall() {
+            var token = "<?php echo base64_encode(openssl_random_pseudo_bytes(3 * (24 >> 2))); ?>";
+            var obj;
+            $.post(
+                '/test_mysql',
+                {
+                    db_host : document.getElementById("mysql_host").value,
+                    db_name : document.getElementById("mysql_name").value,
+                    db_user : document.getElementById("mysql_user").value,
+                    db_pass : document.getElementById("mysql_pass").value
+                },
+
+                function(data){
+                    obj = JSON.parse(data);
+                    if (obj.status == 42)
+                    {
+                        $.post(
+                            '/finish_install',
+                            {
+                                user_email : document.getElementById("user_email").value,
+                                user_name : document.getElementById("user_name").value,
+                                user_password : document.getElementById("user_password").value,
+                                user_confpassword : document.getElementById("user_confpassword").value,
+                                user_uid : document.getElementById("user_uid").value,
+                                token : token,
+                                db_host : document.getElementById("mysql_host").value,
+                                db_name : document.getElementById("mysql_name").value,
+                                db_user : document.getElementById("mysql_user").value,
+                                db_pass : document.getElementById("mysql_pass").value
+                            },
+
+                            function(data){
+                                obj = JSON.parse(data);
+                                if (obj.status == 42)
+                                {
+                                    $.post(
+                                        '/save_config',
+                                        {
+                                            token : token,
+                                            server_name : document.getElementById("server_name").value,
+                                            server_ip : document.getElementById("server_ip").value,
+                                            server_port : document.getElementById("server_port").value
+                                        },
+
+                                        function(data){
+                                            obj = JSON.parse(data);
+                                            if (obj.status == 42)
+                                            {
+                                                window.location = "/install_finish";
+                                            }
+                                            else
+                                            {
+                                                sweetAlert("Oops...", "Error | " + obj.message, "error");
+                                            }
+                                        },
+
+                                        'text'
+                                    );
+                                }
+                                else
+                                {
+                                    sweetAlert("Oops...", "Error | " + obj.message, "error");
+                                }
+                            },
+
+                            'text'
+                        );
+                    }
+                    else
+                    {
+                        sweetAlert("Oops...", "Error | " + obj.message, "error");
+                    }
+                },
+
+                'text'
+            );
+        }
+    </script>
 
     <body>
     <header id="topnav">
@@ -57,7 +204,7 @@
 
                     <ul class="nav navbar-nav navbar-right pull-right">
                         <li class="dropdown">
-                            <a href="#" class="dropdown-toggle waves-effect waves-light profile" data-toggle="dropdown" aria-expanded="true"><img src="/assets/images/install/install.png" alt="user-img" class="img-circle"> </a>
+                            <a href="#" class="dropdown-toggle waves-effect waves-light profile" data-toggle="dropdown" aria-expanded="true"><img src="/install/images/install_logo.png" alt="user-img" class="img-circle"> </a>
                         </li>
                     </ul>
                     </div>
@@ -67,57 +214,135 @@
         <div class="navbar-custom">
 
                     <!-- Navigation Menu-->
-                        <div class="col-lg-14">
-                            <ul class="nav nav-tabs tabs">
-                                <li class="active tab">
-                                    <a href="#step-1" data-toggle="tab" aria-expanded="false">
-                                        <span class="visible-xs"><i class="fa fa fa-battery-empty"></i></span>
-                                        <span class="hidden-xs">Step 1</span>
-                                    </a>
-                                </li>
-                                <li class="tab">
-                                    <a href="#step-2" data-toggle="tab" aria-expanded="false">
-                                        <span class="visible-xs"><i class="fa fa-battery-1"></i></span>
-                                        <span class="hidden-xs">Step 2</span>
-                                    </a>
-                                </li>
-                                <li class="tab">
-                                    <a href="#step-3" data-toggle="tab" aria-expanded="true">
-                                        <span class="visible-xs"><i class="fa fa-battery-2"></i></span>
-                                        <span class="hidden-xs">Step 3</span>
-                                    </a>
-                                </li>
-                                <li class="tab">
-                                    <a href="#step-4" data-toggle="tab" aria-expanded="false">
-                                        <span class="visible-xs"><i class="fa fa-battery-3"></i></span>
-                                        <span class="hidden-xs">Step 4</span>
-                                    </a>
-                                </li>
-                                <li class="tab">
-                                    <a href="#step-5" data-toggle="tab" aria-expanded="false">
-                                        <span class="visible-xs"><i class="fa fa-battery-4"></i></span>
-                                        <span class="hidden-xs">Step 5</span>
-                                    </a>
-                                </li>
-                            </ul>
-                            <div class="tab-content">
-                                <div class="tab-pane active" id="step-1">
+            <div class="col-lg-12">
 
-                                </div>
-                                <div class="tab-pane" id="step-2">
+                    <div id="progressbarwizard" class="pull-in">
+                        <ul>
+                            <li><a href="#mysql" data-toggle="tab">Mysql settings</a></li>
+                            <li><a href="#settings" data-toggle="tab">General settings</a></li>
+                            <li><a href="#useradmin" data-toggle="tab">Create user admin</a></li>
+                        </ul>
 
-                                </div>
-                                <div class="tab-pane" id="step-3">
+                        <div class="tab-content bx-s-0 m-b-0">
 
-                                </div>
-                                <div class="tab-pane" id="step-4">
+                            <div id="bar" class="progress progress-striped active">
+                                <div class="bar progress-bar progress-bar-primary"></div>
+                            </div>
 
-                                </div>
-                                <div class="tab-pane" id="step-5">
+                            <div class="tab-pane p-t-10 fade" id="mysql">
+                                <div class="row">
+                                    <div class="col-md-8">
+                                        <div class="form-group clearfix">
+                                            <label class="col-md-2 control-label " for="mysql_host">MySql host</label>
+                                            <div class="col-md-5">
+                                                <input class="form-control required" id="mysql_host" name="mysql_host" type="text" <?php if ($mysql == true) { echo 'value="'.$mysql_host.'"'; };?>>
+                                            </div>
+                                        </div>
+                                        <div class="form-group clearfix">
+                                            <label class="col-md-2 control-label " for="mysql_name">MySql database name</label>
+                                            <div class="col-md-5">
+                                                <input id="mysql_name" name="mysql_name" type="text" class="required form-control" <?php if ($mysql == true) { echo 'value="'.$mysql_dbname.'"'; };?>>
+                                            </div>
+                                        </div>
 
+                                        <div class="form-group clearfix">
+                                            <label class="col-md-2 control-label " for="mysql_user">MySql username</label>
+                                            <div class="col-md-5">
+                                                 <input id="mysql_user" name="mysql_user" type="text" class="required form-control" <?php if ($mysql == true) { echo 'value="'.$mysql_user.'"'; };?>>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group clearfix">
+                                            <label class="col-md-2 control-label " for="mysql_pass">MySql password</label>
+                                            <div class="col-md-5">
+                                                <input id="mysql_pass" name="mysql_pass" type="password" class="required form-control" <?php if ($mysql == true) { echo 'value="'.$mysql_pass.'"'; };?>>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="col-md-7">
+                                            <div class="card-box widget-icon">
+                                                <div>
+                                                    <i class="md md-cached text-primary" id="mysql_loading"></i>
+                                                    <div class="wid-icon-info">
+                                                        <p class="text-muted m-b-5 font-13 text-uppercase">Mysql status</p><br>
+                                                        <button onclick="testMysql()" type="button" class="btn btn-primary btn-rounded w-md waves-effect waves-light m-b-5">Test connection</button><br><br>
+                                                        <div id="mysql_status"><?php if ($mysql == true) { echo '<small class="text-success">Already configured<b></b>'; } else { echo '<small class="text-pink"><b>No set</b>';};?></small></div>
+                                                        <div id="mysql_save"></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
+                            <div class="tab-pane p-t-10 fade" id="settings">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group clearfix">
+                                            <label class="col-md-2 control-label " for="server_name">Server name</label>
+                                            <div class="col-md-6">
+                                                <input class="form-control required" id="server_name" name="server_name" type="text" <?php if ($general == true) { echo 'value="'.$site.'"'; };?>>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-5">
+                                        <div class="card-box widget-icon">
+                                            <div>
+                                                <i class="md md-domain text-primary"></i>
+                                                <div class="wid-icon-info">
+                                                    <label class="col-md-2 control-label " for="server_ip">Server ip</label>
+                                                    <input class="form-control required" id="server_ip" name="server_ip" type="text" <?php if ($general == true) { echo 'value="'.$arma_ip.'"'; };?>>
+                                                    <label class="col-md-2 control-label " for="server_port">Server port</label>
+                                                    <input class="form-control required" id="server_port" name="server_port" type="text" <?php if ($general == true) { echo 'value="'.$arma_port.'"'; };?>>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="tab-pane p-t-10 fade" id="useradmin">
+                                    <div class="row">
+                                        <div class="form-group clearfix">
+                                            <div class="col-lg-12">
+                                                <div class="col-md-3">
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="card-box widget-icon">
+                                                        <div>
+                                                            <i class="md md-accessibility text-primary"></i>
+                                                            <div class="wid-icon-info">
+                                                                <label class="col-md-4 control-label " for="user_email">User email *</label>
+                                                                <input class="form-control required" id="user_email" name="user_email" type="text">
+                                                                <label class="col-md-4 control-label " for="user_name">User name *</label>
+                                                                <input class="form-control required" id="user_name" name="user_name" type="text">
+                                                                <label class="col-md-4 control-label " for="user_uid">User steam uid</label>
+                                                                <input class="form-control required" id="user_uid" name="user_uid" type="text">
+                                                                <label class="col-md-4 control-label " for="user_password">User password *</label>
+                                                                <input class="form-control required" id="user_password" name="user_password" type="password">
+                                                                <label class="col-md-4 control-label " for="user_confpassword">Confirm password *</label>
+                                                                <input class="form-control required" id="user_confpassword" name="user_confpassword" type="password"><br>
+                                                                <center><button type="button" class="btn btn-success btn-rounded w-md waves-effect waves-light m-b-5" onclick="finishInstall()">Finish install</button></center>
+                                                                <br>
+                                                                <h4>*: required</h4>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-3">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <ul class="pager m-b-0 wizard">
+                                    <li class="previous"><a href="#" class="btn btn-primary waves-effect waves-light">Previous</a></li>
+                                    <li class="next"><a href="#" class="btn btn-primary waves-effect waves-light">Next</a></li>
+                                </ul>
+                            </div>
                         </div>
+                    </div>
+            </div>
                     <!-- End navigation menu -->
         </div>
         <!-- End topbar -->
@@ -150,9 +375,63 @@
         <script src="assets/js/jquery.nicescroll.js"></script>
         <script src="assets/js/jquery.scrollTo.min.js"></script>
 
+        <script src="assets/plugins/bootstrap-wizard/jquery.bootstrap.wizard.js"></script>
+        <script src="assets/plugins/jquery-validation/dist/jquery.validate.min.js"></script>
+
         <!-- Custom main Js -->
         <script src="assets/js/jquery.core.js"></script>
         <script src="assets/js/jquery.app.js"></script>
+
+        <!-- Sweet-Alert  -->
+        <script src="assets/plugins/sweetalert/dist/sweetalert.min.js"></script>
+        <script src="assets/pages/jquery.sweet-alert.init.js"></script>
+
+        <script type="text/javascript">
+            $(document).ready(function() {
+                $('#basicwizard').bootstrapWizard({'tabClass': 'nav nav-tabs navtab-custom nav-justified'});
+
+                $('#progressbarwizard').bootstrapWizard({onTabShow: function(tab, navigation, index) {
+                    var $total = navigation.find('li').length;
+                    var $current = index+1;
+                    var $percent = ($current/$total) * 100;
+                    $('#progressbarwizard').find('.bar').css({width:$percent+'%'});
+                },
+                    'tabClass': 'nav nav-tabs navtab-custom nav-justified'});
+
+                $('#btnwizard').bootstrapWizard({'tabClass': 'nav nav-tabs navtab-custom nav-justified','nextSelector': '.button-next', 'previousSelector': '.button-previous', 'firstSelector': '.button-first', 'lastSelector': '.button-last'});
+
+                var $validator = $("#commentForm").validate({
+                    rules: {
+                        emailfield: {
+                            required: true,
+                            email: true,
+                            minlength: 3
+                        },
+                        namefield: {
+                            required: true,
+                            minlength: 3
+                        },
+                        urlfield: {
+                            required: true,
+                            minlength: 3,
+                            url: true
+                        }
+                    }
+                });
+
+                $('#rootwizard').bootstrapWizard({
+                    'tabClass': 'nav nav-tabs navtab-custom nav-justified',
+                    'onNext': function (tab, navigation, index) {
+                        var $valid = $("#commentForm").valid();
+                        if (!$valid) {
+                            $validator.focusInvalid();
+                            return false;
+                        }
+                    }
+                });
+            });
+
+        </script>
 
 
     </body>

@@ -18,7 +18,7 @@ namespace LauncherArma3
             /* GENERAL OPTIONS */
 
             string serverName = "Emodyz";  /* Your serverName */
-            string apiUrl = "http://164.132.98.164/"; /* Link to API launcher Arma 3 */
+            string apiUrl = "http://cms.isynergy.fr/"; /* Link to API launcher Arma 3 */
             string webSite = "http://emodyz.com/"; /* Your webSite */
                         
             /* FTP NO FUNCTIONAL */

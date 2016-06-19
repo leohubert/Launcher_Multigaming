@@ -21,6 +21,14 @@ Copyright HUBERT Léo © 2014 - 2016
 
 ##Change Logs:
 
+Launcher update:
+- Add: AutoInstall page
+- Fix: Register page
+- Fix: Settings page
+And more...
+
+------------------------------------
+
 Alpha 5.0.3.0:
 - Add: New panel
 - Add: New api
