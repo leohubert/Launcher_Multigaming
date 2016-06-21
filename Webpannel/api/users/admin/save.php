@@ -29,17 +29,26 @@ if (isset($_POST['token']) && isset($_POST['id']) && isset($_POST['email']) && i
     {
         $userLevel->execute(array('id' => $res['user_id']));
         $my = $userLevel->fetch();
-        if ((int)$my['level'] >= 9 && (int)$my['banned'] != 1)
+        if ((int)$my['level'] >= 8 && (int)$my['banned'] != 1)
         {
             if ($getSettings = $database->prepare('SELECT * FROM `users` WHERE id=:id'))
             {
                 $getSettings->execute(array('id' => $id));
                 if ($getSettings->rowCount() != 0)
                 {
-                    $saveUser = $database->prepare('UPDATE `users` SET `email`=:email,`username`=:username,`banned`=:banned,`level`=:level,`picture`=:picture,`uid`=:uid WHERE id=:id');
-                    $saveUser->execute(array('email' => $email, 'username' => $username, 'banned' => $banned, 'level' => $level, 'picture' => $picture, 'uid' => $uid, 'id' => $id));
-                    $result['status'] = 42;
-                    $result['message'] = "User successfully saved";
+                    $user = $getSettings->fetch();
+                    if (((int)$my['level'] > (int)$user['level'] && (int)$level < (int)$my['level']) || (int)$my['level'] >= 9)
+                    {
+                        $saveUser = $database->prepare('UPDATE `users` SET `email`=:email,`username`=:username,`banned`=:banned,`level`=:level,`picture`=:picture,`uid`=:uid WHERE id=:id');
+                        $saveUser->execute(array('email' => $email, 'username' => $username, 'banned' => $banned, 'level' => $level, 'picture' => $picture, 'uid' => $uid, 'id' => $id));
+                        $result['status'] = 42;
+                        $result['message'] = "User successfully saved";
+                    }
+                    else
+                    {
+                        $result['status'] = 44;
+                        $result['message'] = "You don't have right to create this request !";
+                    }
                 }
                 else
                 {

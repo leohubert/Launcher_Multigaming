@@ -145,7 +145,10 @@
             function(data){
                 var obj = JSON.parse(data);
                 if (obj.status == 42)
+                {
+                    loadUser();
                     $.Notification.notify('success','top right','Saved', obj.message);
+                }
                 else if (obj.status == 41)
                     window.location="/logout";
                 else
@@ -154,7 +157,6 @@
 
             'text'
         );
-        loadUser();
     }
 </script>
 

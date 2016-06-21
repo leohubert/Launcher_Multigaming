@@ -135,6 +135,8 @@ $id = $match['params']['id'];
                     var chat = document.getElementById("chat");
                     if (obj.status == 41)
                         window.location="/logout";
+                    else if (obj.status == 42)
+                        total_messages++;
                     else if (obj.status == 44)
                         sweetAlert("Missing permission", obj.message, "error");
                     else if (obj.status != 42)
