@@ -499,8 +499,7 @@ namespace LauncherArma3
                 this.Refresh();
             }
             else
-                maintenanceRefresh.RunWorkerAsync();
-
+                maintenanceRefresh.RunWorkerAsync();    
         }
 
         void launcherUpdate()

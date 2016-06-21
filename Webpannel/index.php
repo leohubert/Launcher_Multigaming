@@ -35,6 +35,8 @@
                 $router->map('GET', '/settings', 'pages/admin/settings/settings.php', 'settings-admin');
                 $router->map('GET', '/support/view/[i:id]', 'pages/admin/support/view.php', 'support-view-admin');
                 $router->map('GET', '/users/all', 'pages/admin/users/all.php', 'users-all');
+                $router->map('GET', '/users/admins', 'pages/admin/users/admins.php', 'users-admins');
+                $router->map('GET', '/users/banned', 'pages/admin/users/banned.php', 'users-banned');
                 $router->map('GET', '/users/view/[i:id]', 'pages/admin/users/view.php', 'users-view-admin');
             } else {
                 $router->map('GET', '/', 'pages/client/index.php', 'home-client');
@@ -55,7 +57,6 @@
     $router->map('GET','/api/settings', 'api/settings.php', 'api-settings');
     $router->map('GET','/api/news', 'api/news.php', 'api-news');
 
-
     /** @var API switch route */
     $router->map('POST','/api/switch/maintenance', 'api/switch/maintenance.php', 'api-switch-maintenance');
     $router->map('POST','/api/switch/login', 'api/switch/login.php', 'api-switch-login');
@@ -71,6 +72,7 @@
 
     /** @var API support admin route */
     $router->map('POST','/api/support/admin/list', 'api/support/admin/list.php', 'api-support-admin-list');
+    $router->map('POST','/api/support/admin/create', 'api/support/admin/create.php', 'api-support-admin-create');
     $router->map('POST','/api/support/admin/get', 'api/support/admin/get.php', 'api-support-admin-get');
     $router->map('POST','/api/support/admin/remove', 'api/support/admin/remove.php', 'api-support-admin-remove');
     $router->map('POST','/api/support/admin/send', 'api/support/admin/send.php', 'api-support-admin-send');
@@ -85,6 +87,8 @@
 
     /** @var API users admin route $match */
     $router->map('POST','/api/users/admin/all', 'api/users/admin/all.php', 'api-users-admin-all');
+    $router->map('POST','/api/users/admin/admins', 'api/users/admin/admins.php', 'api-users-admin-admins');
+    $router->map('POST','/api/users/admin/banned', 'api/users/admin/banned.php', 'api-users-admin-banned');
     $router->map('POST','/api/users/admin/get', 'api/users/admin/get.php', 'api-users-admin-get');
     $router->map('POST','/api/users/admin/save', 'api/users/admin/save.php', 'api-users-admin-save');
 

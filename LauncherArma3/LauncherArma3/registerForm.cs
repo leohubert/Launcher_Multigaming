@@ -144,5 +144,9 @@ namespace LauncherArma3
             notif = false;
         }
 
+        private void registerLogo_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

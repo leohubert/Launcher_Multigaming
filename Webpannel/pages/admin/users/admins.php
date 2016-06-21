@@ -47,7 +47,6 @@
 <?php include "jointures/header_admin.php"?>
 
 
-
 <!-- =======================
      ===== START PAGE ======
      ======================= -->
@@ -58,7 +57,7 @@
         <!-- Page-Title -->
         <div class="row">
             <div class="col-sm-12">
-                <h4 class="page-title">All users control</h4>
+                <h4 class="page-title">All admins users</h4>
             </div>
         </div>
         <!-- Page-Title -->
@@ -67,7 +66,7 @@
             function loadSupport()
             {
                 $.post(
-                    '/api/users/admin/all',
+                    '/api/users/admin/admins',
                     {
                         token : "<?php echo $_SESSION['token'];?>",
                         show : 1000

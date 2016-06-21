@@ -109,10 +109,9 @@
                     <li class="has-submenu">
                         <a href="#"><i class="md md-verified-user"></i>Users</a>
                         <ul class="submenu">
-                            <li><a href="#">Add user</a></li>
                             <li><a href="/users/all">List of all users</a></li>
-                            <li><a href="#">List banned users</a></li>
-                            <li><a href="#">List of all admins</a></li>
+                            <li><a href="/users/banned">List banned users</a></li>
+                            <li><a href="/users/admins">List of all admins</a></li>
                         </ul>
                     </li>
                 </ul>

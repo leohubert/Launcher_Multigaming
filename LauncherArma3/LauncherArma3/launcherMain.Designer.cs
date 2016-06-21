@@ -33,26 +33,6 @@
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.newsBox = new System.Windows.Forms.GroupBox();
-            this.playerBox = new System.Windows.Forms.GroupBox();
-            this.settingsButton = new MaterialSkin.Controls.MaterialRaisedButton();
-            this.logoutButton = new MaterialSkin.Controls.MaterialRaisedButton();
-            this.pictureBox4 = new System.Windows.Forms.PictureBox();
-            this.playButton = new MaterialSkin.Controls.MaterialRaisedButton();
-            this.chooseButton = new MaterialSkin.Controls.MaterialRaisedButton();
-            this.directoryChooser = new System.Windows.Forms.FolderBrowserDialog();
-            this.pauseButton = new MaterialSkin.Controls.MaterialRaisedButton();
-            this.cancelButton = new MaterialSkin.Controls.MaterialRaisedButton();
-            this.forceUpdate = new MaterialSkin.Controls.MaterialCheckBox();
-            this.serverRequest = new System.ComponentModel.BackgroundWorker();
-            this.playerStatusLabel = new FlatUI.FlatLabel();
-            this.playerEmailLabel = new FlatUI.FlatLabel();
-            this.playerUsernameLabel = new FlatUI.FlatLabel();
-            this.playerStatus = new FlatUI.FlatLabel();
-            this.playerEmail = new FlatUI.FlatLabel();
-            this.playerUsername = new FlatUI.FlatLabel();
-            this.totalFiles = new FlatUI.FlatLabel();
-            this.downloadedFiles = new FlatUI.FlatLabel();
-            this.directoryLabel = new FlatUI.FlatLabel();
             this.newsDate3 = new iTalk.iTalk_Label();
             this.newsDate2 = new iTalk.iTalk_Label();
             this.newsDate1 = new iTalk.iTalk_Label();
@@ -64,6 +44,28 @@
             this.newsLink1 = new iTalk.iTalk_Button_1();
             this.iTalk_Separator3 = new iTalk.iTalk_Separator();
             this.iTalk_Separator2 = new iTalk.iTalk_Separator();
+            this.playerBox = new System.Windows.Forms.GroupBox();
+            this.playerUIDLabel = new FlatUI.FlatLabel();
+            this.playerUID = new FlatUI.FlatLabel();
+            this.playerStatusLabel = new FlatUI.FlatLabel();
+            this.playerEmailLabel = new FlatUI.FlatLabel();
+            this.playerUsernameLabel = new FlatUI.FlatLabel();
+            this.settingsButton = new MaterialSkin.Controls.MaterialRaisedButton();
+            this.logoutButton = new MaterialSkin.Controls.MaterialRaisedButton();
+            this.playerStatus = new FlatUI.FlatLabel();
+            this.playerEmail = new FlatUI.FlatLabel();
+            this.playerUsername = new FlatUI.FlatLabel();
+            this.pictureBox4 = new System.Windows.Forms.PictureBox();
+            this.playButton = new MaterialSkin.Controls.MaterialRaisedButton();
+            this.chooseButton = new MaterialSkin.Controls.MaterialRaisedButton();
+            this.directoryChooser = new System.Windows.Forms.FolderBrowserDialog();
+            this.pauseButton = new MaterialSkin.Controls.MaterialRaisedButton();
+            this.cancelButton = new MaterialSkin.Controls.MaterialRaisedButton();
+            this.forceUpdate = new MaterialSkin.Controls.MaterialCheckBox();
+            this.serverRequest = new System.ComponentModel.BackgroundWorker();
+            this.totalFiles = new FlatUI.FlatLabel();
+            this.downloadedFiles = new FlatUI.FlatLabel();
+            this.directoryLabel = new FlatUI.FlatLabel();
             this.errorBox = new FlatUI.FlatAlertBox();
             this.succesBox = new FlatUI.FlatAlertBox();
             this.infoBox = new FlatUI.FlatAlertBox();
@@ -72,8 +74,6 @@
             this.downloadMessage = new FlatUI.FlatLabel();
             this.estimedTime = new FlatUI.FlatLabel();
             this.sizeLabel = new FlatUI.FlatLabel();
-            this.playerUIDLabel = new FlatUI.FlatLabel();
-            this.playerUID = new FlatUI.FlatLabel();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.newsBox.SuspendLayout();
             this.playerBox.SuspendLayout();
@@ -134,256 +134,6 @@
             this.newsBox.Size = new System.Drawing.Size(506, 187);
             this.newsBox.TabIndex = 6;
             this.newsBox.TabStop = false;
-            // 
-            // playerBox
-            // 
-            this.playerBox.Controls.Add(this.playerUIDLabel);
-            this.playerBox.Controls.Add(this.playerUID);
-            this.playerBox.Controls.Add(this.playerStatusLabel);
-            this.playerBox.Controls.Add(this.playerEmailLabel);
-            this.playerBox.Controls.Add(this.playerUsernameLabel);
-            this.playerBox.Controls.Add(this.settingsButton);
-            this.playerBox.Controls.Add(this.logoutButton);
-            this.playerBox.Controls.Add(this.playerStatus);
-            this.playerBox.Controls.Add(this.playerEmail);
-            this.playerBox.Controls.Add(this.playerUsername);
-            this.playerBox.Controls.Add(this.pictureBox4);
-            this.playerBox.Location = new System.Drawing.Point(20, 60);
-            this.playerBox.Name = "playerBox";
-            this.playerBox.Size = new System.Drawing.Size(282, 187);
-            this.playerBox.TabIndex = 9;
-            this.playerBox.TabStop = false;
-            // 
-            // settingsButton
-            // 
-            this.settingsButton.Depth = 0;
-            this.settingsButton.Location = new System.Drawing.Point(6, 145);
-            this.settingsButton.MouseState = MaterialSkin.MouseState.HOVER;
-            this.settingsButton.Name = "settingsButton";
-            this.settingsButton.Primary = true;
-            this.settingsButton.Size = new System.Drawing.Size(126, 36);
-            this.settingsButton.TabIndex = 18;
-            this.settingsButton.Text = "Settings";
-            this.settingsButton.UseVisualStyleBackColor = true;
-            this.settingsButton.Click += new System.EventHandler(this.settingsButton_Click);
-            // 
-            // logoutButton
-            // 
-            this.logoutButton.Depth = 0;
-            this.logoutButton.Location = new System.Drawing.Point(140, 145);
-            this.logoutButton.MouseState = MaterialSkin.MouseState.HOVER;
-            this.logoutButton.Name = "logoutButton";
-            this.logoutButton.Primary = true;
-            this.logoutButton.Size = new System.Drawing.Size(134, 36);
-            this.logoutButton.TabIndex = 17;
-            this.logoutButton.Text = "Log Out";
-            this.logoutButton.UseVisualStyleBackColor = true;
-            this.logoutButton.Click += new System.EventHandler(this.disconnectButton_Click);
-            // 
-            // pictureBox4
-            // 
-            this.pictureBox4.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBox4.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox4.Image")));
-            this.pictureBox4.Location = new System.Drawing.Point(-3, 0);
-            this.pictureBox4.Name = "pictureBox4";
-            this.pictureBox4.Size = new System.Drawing.Size(285, 24);
-            this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox4.TabIndex = 10;
-            this.pictureBox4.TabStop = false;
-            // 
-            // playButton
-            // 
-            this.playButton.Depth = 0;
-            this.playButton.Location = new System.Drawing.Point(819, 430);
-            this.playButton.MouseState = MaterialSkin.MouseState.HOVER;
-            this.playButton.Name = "playButton";
-            this.playButton.Primary = true;
-            this.playButton.Size = new System.Drawing.Size(158, 46);
-            this.playButton.TabIndex = 17;
-            this.playButton.Text = "Play";
-            this.playButton.UseVisualStyleBackColor = true;
-            this.playButton.Click += new System.EventHandler(this.playButton_Click);
-            // 
-            // chooseButton
-            // 
-            this.chooseButton.Depth = 0;
-            this.chooseButton.Location = new System.Drawing.Point(23, 431);
-            this.chooseButton.MouseState = MaterialSkin.MouseState.HOVER;
-            this.chooseButton.Name = "chooseButton";
-            this.chooseButton.Primary = true;
-            this.chooseButton.Size = new System.Drawing.Size(214, 46);
-            this.chooseButton.TabIndex = 18;
-            this.chooseButton.Text = "Choose arma directory";
-            this.chooseButton.UseVisualStyleBackColor = true;
-            this.chooseButton.Click += new System.EventHandler(this.chooseButton_Click);
-            // 
-            // pauseButton
-            // 
-            this.pauseButton.Depth = 0;
-            this.pauseButton.Location = new System.Drawing.Point(819, 377);
-            this.pauseButton.MouseState = MaterialSkin.MouseState.HOVER;
-            this.pauseButton.Name = "pauseButton";
-            this.pauseButton.Primary = true;
-            this.pauseButton.Size = new System.Drawing.Size(158, 46);
-            this.pauseButton.TabIndex = 20;
-            this.pauseButton.Text = "Pause";
-            this.pauseButton.UseVisualStyleBackColor = true;
-            this.pauseButton.Visible = false;
-            this.pauseButton.Click += new System.EventHandler(this.pauseButton_Click);
-            // 
-            // cancelButton
-            // 
-            this.cancelButton.Depth = 0;
-            this.cancelButton.Location = new System.Drawing.Point(819, 324);
-            this.cancelButton.MouseState = MaterialSkin.MouseState.HOVER;
-            this.cancelButton.Name = "cancelButton";
-            this.cancelButton.Primary = true;
-            this.cancelButton.Size = new System.Drawing.Size(158, 46);
-            this.cancelButton.TabIndex = 23;
-            this.cancelButton.Text = "Cancel";
-            this.cancelButton.UseVisualStyleBackColor = true;
-            this.cancelButton.Visible = false;
-            this.cancelButton.Click += new System.EventHandler(this.cancelButton_Click);
-            // 
-            // forceUpdate
-            // 
-            this.forceUpdate.AutoSize = true;
-            this.forceUpdate.Depth = 0;
-            this.forceUpdate.Font = new System.Drawing.Font("Roboto", 10F);
-            this.forceUpdate.Location = new System.Drawing.Point(696, 446);
-            this.forceUpdate.Margin = new System.Windows.Forms.Padding(0);
-            this.forceUpdate.MouseLocation = new System.Drawing.Point(-1, -1);
-            this.forceUpdate.MouseState = MaterialSkin.MouseState.HOVER;
-            this.forceUpdate.Name = "forceUpdate";
-            this.forceUpdate.Ripple = true;
-            this.forceUpdate.Size = new System.Drawing.Size(111, 30);
-            this.forceUpdate.TabIndex = 25;
-            this.forceUpdate.Text = "Force update";
-            this.forceUpdate.UseVisualStyleBackColor = true;
-            this.forceUpdate.Visible = false;
-            this.forceUpdate.CheckedChanged += new System.EventHandler(this.forceUpdate_CheckedChanged);
-            // 
-            // serverRequest
-            // 
-            this.serverRequest.DoWork += new System.ComponentModel.DoWorkEventHandler(this.serverRequest_DoWork);
-            // 
-            // playerStatusLabel
-            // 
-            this.playerStatusLabel.BackColor = System.Drawing.Color.Transparent;
-            this.playerStatusLabel.Font = new System.Drawing.Font("Microsoft Tai Le", 8F, System.Drawing.FontStyle.Bold);
-            this.playerStatusLabel.ForeColor = System.Drawing.Color.DodgerBlue;
-            this.playerStatusLabel.Location = new System.Drawing.Point(7, 106);
-            this.playerStatusLabel.Name = "playerStatusLabel";
-            this.playerStatusLabel.Size = new System.Drawing.Size(66, 14);
-            this.playerStatusLabel.TabIndex = 15;
-            this.playerStatusLabel.Text = "Status :";
-            // 
-            // playerEmailLabel
-            // 
-            this.playerEmailLabel.BackColor = System.Drawing.Color.Transparent;
-            this.playerEmailLabel.Font = new System.Drawing.Font("Microsoft Tai Le", 8F, System.Drawing.FontStyle.Bold);
-            this.playerEmailLabel.ForeColor = System.Drawing.Color.DodgerBlue;
-            this.playerEmailLabel.Location = new System.Drawing.Point(6, 61);
-            this.playerEmailLabel.Name = "playerEmailLabel";
-            this.playerEmailLabel.Size = new System.Drawing.Size(65, 14);
-            this.playerEmailLabel.TabIndex = 14;
-            this.playerEmailLabel.Text = "Email :";
-            // 
-            // playerUsernameLabel
-            // 
-            this.playerUsernameLabel.BackColor = System.Drawing.Color.Transparent;
-            this.playerUsernameLabel.Font = new System.Drawing.Font("Microsoft Tai Le", 8F, System.Drawing.FontStyle.Bold);
-            this.playerUsernameLabel.ForeColor = System.Drawing.Color.DodgerBlue;
-            this.playerUsernameLabel.Location = new System.Drawing.Point(6, 36);
-            this.playerUsernameLabel.Name = "playerUsernameLabel";
-            this.playerUsernameLabel.Size = new System.Drawing.Size(63, 14);
-            this.playerUsernameLabel.TabIndex = 12;
-            this.playerUsernameLabel.Text = "Username :";
-            // 
-            // playerStatus
-            // 
-            this.playerStatus.BackColor = System.Drawing.Color.Transparent;
-            this.playerStatus.Cursor = System.Windows.Forms.Cursors.Default;
-            this.playerStatus.Font = new System.Drawing.Font("Arial Black", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.playerStatus.ForeColor = System.Drawing.SystemColors.WindowFrame;
-            this.playerStatus.Location = new System.Drawing.Point(78, 103);
-            this.playerStatus.Name = "playerStatus";
-            this.playerStatus.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.playerStatus.Size = new System.Drawing.Size(194, 22);
-            this.playerStatus.TabIndex = 16;
-            this.playerStatus.Text = "NULL";
-            this.playerStatus.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            // 
-            // playerEmail
-            // 
-            this.playerEmail.BackColor = System.Drawing.Color.Transparent;
-            this.playerEmail.Cursor = System.Windows.Forms.Cursors.Default;
-            this.playerEmail.Font = new System.Drawing.Font("Arial Black", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.playerEmail.ForeColor = System.Drawing.SystemColors.WindowFrame;
-            this.playerEmail.Location = new System.Drawing.Point(77, 56);
-            this.playerEmail.Name = "playerEmail";
-            this.playerEmail.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.playerEmail.Size = new System.Drawing.Size(196, 22);
-            this.playerEmail.TabIndex = 13;
-            this.playerEmail.Text = "NULL";
-            this.playerEmail.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            // 
-            // playerUsername
-            // 
-            this.playerUsername.BackColor = System.Drawing.Color.Transparent;
-            this.playerUsername.Cursor = System.Windows.Forms.Cursors.Default;
-            this.playerUsername.Font = new System.Drawing.Font("Arial Black", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.playerUsername.ForeColor = System.Drawing.SystemColors.WindowFrame;
-            this.playerUsername.Location = new System.Drawing.Point(75, 33);
-            this.playerUsername.Name = "playerUsername";
-            this.playerUsername.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.playerUsername.Size = new System.Drawing.Size(200, 22);
-            this.playerUsername.TabIndex = 10;
-            this.playerUsername.Text = "NULL";
-            this.playerUsername.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            // 
-            // totalFiles
-            // 
-            this.totalFiles.AutoSize = true;
-            this.totalFiles.BackColor = System.Drawing.Color.Transparent;
-            this.totalFiles.Cursor = System.Windows.Forms.Cursors.Default;
-            this.totalFiles.Font = new System.Drawing.Font("Arial Black", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.totalFiles.ForeColor = System.Drawing.SystemColors.WindowFrame;
-            this.totalFiles.Location = new System.Drawing.Point(25, 324);
-            this.totalFiles.Name = "totalFiles";
-            this.totalFiles.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.totalFiles.Size = new System.Drawing.Size(0, 18);
-            this.totalFiles.TabIndex = 27;
-            this.totalFiles.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            // 
-            // downloadedFiles
-            // 
-            this.downloadedFiles.AutoSize = true;
-            this.downloadedFiles.BackColor = System.Drawing.Color.Transparent;
-            this.downloadedFiles.Cursor = System.Windows.Forms.Cursors.Default;
-            this.downloadedFiles.Font = new System.Drawing.Font("Arial Black", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.downloadedFiles.ForeColor = System.Drawing.SystemColors.WindowFrame;
-            this.downloadedFiles.Location = new System.Drawing.Point(25, 349);
-            this.downloadedFiles.Name = "downloadedFiles";
-            this.downloadedFiles.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.downloadedFiles.Size = new System.Drawing.Size(0, 18);
-            this.downloadedFiles.TabIndex = 26;
-            this.downloadedFiles.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            // 
-            // directoryLabel
-            // 
-            this.directoryLabel.AutoSize = true;
-            this.directoryLabel.BackColor = System.Drawing.Color.Transparent;
-            this.directoryLabel.Cursor = System.Windows.Forms.Cursors.Default;
-            this.directoryLabel.Font = new System.Drawing.Font("Arial Black", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.directoryLabel.ForeColor = System.Drawing.SystemColors.WindowFrame;
-            this.directoryLabel.Location = new System.Drawing.Point(23, 406);
-            this.directoryLabel.Name = "directoryLabel";
-            this.directoryLabel.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.directoryLabel.Size = new System.Drawing.Size(180, 18);
-            this.directoryLabel.TabIndex = 19;
-            this.directoryLabel.Text = "Select a arma directory";
-            this.directoryLabel.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // newsDate3
             // 
@@ -517,6 +267,281 @@
             this.iTalk_Separator2.TabIndex = 10;
             this.iTalk_Separator2.Text = "iTalk_Separator2";
             // 
+            // playerBox
+            // 
+            this.playerBox.Controls.Add(this.playerUIDLabel);
+            this.playerBox.Controls.Add(this.playerUID);
+            this.playerBox.Controls.Add(this.playerStatusLabel);
+            this.playerBox.Controls.Add(this.playerEmailLabel);
+            this.playerBox.Controls.Add(this.playerUsernameLabel);
+            this.playerBox.Controls.Add(this.settingsButton);
+            this.playerBox.Controls.Add(this.logoutButton);
+            this.playerBox.Controls.Add(this.playerStatus);
+            this.playerBox.Controls.Add(this.playerEmail);
+            this.playerBox.Controls.Add(this.playerUsername);
+            this.playerBox.Controls.Add(this.pictureBox4);
+            this.playerBox.Location = new System.Drawing.Point(20, 60);
+            this.playerBox.Name = "playerBox";
+            this.playerBox.Size = new System.Drawing.Size(282, 187);
+            this.playerBox.TabIndex = 9;
+            this.playerBox.TabStop = false;
+            // 
+            // playerUIDLabel
+            // 
+            this.playerUIDLabel.BackColor = System.Drawing.Color.Transparent;
+            this.playerUIDLabel.Font = new System.Drawing.Font("Microsoft Tai Le", 8F, System.Drawing.FontStyle.Bold);
+            this.playerUIDLabel.ForeColor = System.Drawing.Color.DodgerBlue;
+            this.playerUIDLabel.Location = new System.Drawing.Point(6, 84);
+            this.playerUIDLabel.Name = "playerUIDLabel";
+            this.playerUIDLabel.Size = new System.Drawing.Size(65, 14);
+            this.playerUIDLabel.TabIndex = 20;
+            this.playerUIDLabel.Text = "Steam UID:";
+            // 
+            // playerUID
+            // 
+            this.playerUID.BackColor = System.Drawing.Color.Transparent;
+            this.playerUID.Cursor = System.Windows.Forms.Cursors.Default;
+            this.playerUID.Font = new System.Drawing.Font("Arial Black", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.playerUID.ForeColor = System.Drawing.SystemColors.WindowFrame;
+            this.playerUID.Location = new System.Drawing.Point(77, 79);
+            this.playerUID.Name = "playerUID";
+            this.playerUID.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.playerUID.Size = new System.Drawing.Size(196, 22);
+            this.playerUID.TabIndex = 19;
+            this.playerUID.Text = "NULL";
+            this.playerUID.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // playerStatusLabel
+            // 
+            this.playerStatusLabel.BackColor = System.Drawing.Color.Transparent;
+            this.playerStatusLabel.Font = new System.Drawing.Font("Microsoft Tai Le", 8F, System.Drawing.FontStyle.Bold);
+            this.playerStatusLabel.ForeColor = System.Drawing.Color.DodgerBlue;
+            this.playerStatusLabel.Location = new System.Drawing.Point(7, 106);
+            this.playerStatusLabel.Name = "playerStatusLabel";
+            this.playerStatusLabel.Size = new System.Drawing.Size(66, 14);
+            this.playerStatusLabel.TabIndex = 15;
+            this.playerStatusLabel.Text = "Status :";
+            // 
+            // playerEmailLabel
+            // 
+            this.playerEmailLabel.BackColor = System.Drawing.Color.Transparent;
+            this.playerEmailLabel.Font = new System.Drawing.Font("Microsoft Tai Le", 8F, System.Drawing.FontStyle.Bold);
+            this.playerEmailLabel.ForeColor = System.Drawing.Color.DodgerBlue;
+            this.playerEmailLabel.Location = new System.Drawing.Point(6, 61);
+            this.playerEmailLabel.Name = "playerEmailLabel";
+            this.playerEmailLabel.Size = new System.Drawing.Size(65, 14);
+            this.playerEmailLabel.TabIndex = 14;
+            this.playerEmailLabel.Text = "Email :";
+            // 
+            // playerUsernameLabel
+            // 
+            this.playerUsernameLabel.BackColor = System.Drawing.Color.Transparent;
+            this.playerUsernameLabel.Font = new System.Drawing.Font("Microsoft Tai Le", 8F, System.Drawing.FontStyle.Bold);
+            this.playerUsernameLabel.ForeColor = System.Drawing.Color.DodgerBlue;
+            this.playerUsernameLabel.Location = new System.Drawing.Point(6, 36);
+            this.playerUsernameLabel.Name = "playerUsernameLabel";
+            this.playerUsernameLabel.Size = new System.Drawing.Size(63, 14);
+            this.playerUsernameLabel.TabIndex = 12;
+            this.playerUsernameLabel.Text = "Username :";
+            // 
+            // settingsButton
+            // 
+            this.settingsButton.Depth = 0;
+            this.settingsButton.Location = new System.Drawing.Point(6, 145);
+            this.settingsButton.MouseState = MaterialSkin.MouseState.HOVER;
+            this.settingsButton.Name = "settingsButton";
+            this.settingsButton.Primary = true;
+            this.settingsButton.Size = new System.Drawing.Size(126, 36);
+            this.settingsButton.TabIndex = 18;
+            this.settingsButton.Text = "Settings";
+            this.settingsButton.UseVisualStyleBackColor = true;
+            this.settingsButton.Click += new System.EventHandler(this.settingsButton_Click);
+            // 
+            // logoutButton
+            // 
+            this.logoutButton.Depth = 0;
+            this.logoutButton.Location = new System.Drawing.Point(140, 145);
+            this.logoutButton.MouseState = MaterialSkin.MouseState.HOVER;
+            this.logoutButton.Name = "logoutButton";
+            this.logoutButton.Primary = true;
+            this.logoutButton.Size = new System.Drawing.Size(134, 36);
+            this.logoutButton.TabIndex = 17;
+            this.logoutButton.Text = "Log Out";
+            this.logoutButton.UseVisualStyleBackColor = true;
+            this.logoutButton.Click += new System.EventHandler(this.disconnectButton_Click);
+            // 
+            // playerStatus
+            // 
+            this.playerStatus.BackColor = System.Drawing.Color.Transparent;
+            this.playerStatus.Cursor = System.Windows.Forms.Cursors.Default;
+            this.playerStatus.Font = new System.Drawing.Font("Arial Black", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.playerStatus.ForeColor = System.Drawing.SystemColors.WindowFrame;
+            this.playerStatus.Location = new System.Drawing.Point(78, 103);
+            this.playerStatus.Name = "playerStatus";
+            this.playerStatus.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.playerStatus.Size = new System.Drawing.Size(194, 22);
+            this.playerStatus.TabIndex = 16;
+            this.playerStatus.Text = "NULL";
+            this.playerStatus.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // playerEmail
+            // 
+            this.playerEmail.BackColor = System.Drawing.Color.Transparent;
+            this.playerEmail.Cursor = System.Windows.Forms.Cursors.Default;
+            this.playerEmail.Font = new System.Drawing.Font("Arial Black", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.playerEmail.ForeColor = System.Drawing.SystemColors.WindowFrame;
+            this.playerEmail.Location = new System.Drawing.Point(77, 56);
+            this.playerEmail.Name = "playerEmail";
+            this.playerEmail.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.playerEmail.Size = new System.Drawing.Size(196, 22);
+            this.playerEmail.TabIndex = 13;
+            this.playerEmail.Text = "NULL";
+            this.playerEmail.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // playerUsername
+            // 
+            this.playerUsername.BackColor = System.Drawing.Color.Transparent;
+            this.playerUsername.Cursor = System.Windows.Forms.Cursors.Default;
+            this.playerUsername.Font = new System.Drawing.Font("Arial Black", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.playerUsername.ForeColor = System.Drawing.SystemColors.WindowFrame;
+            this.playerUsername.Location = new System.Drawing.Point(75, 33);
+            this.playerUsername.Name = "playerUsername";
+            this.playerUsername.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.playerUsername.Size = new System.Drawing.Size(200, 22);
+            this.playerUsername.TabIndex = 10;
+            this.playerUsername.Text = "NULL";
+            this.playerUsername.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // pictureBox4
+            // 
+            this.pictureBox4.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBox4.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox4.Image")));
+            this.pictureBox4.Location = new System.Drawing.Point(-3, 0);
+            this.pictureBox4.Name = "pictureBox4";
+            this.pictureBox4.Size = new System.Drawing.Size(285, 24);
+            this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox4.TabIndex = 10;
+            this.pictureBox4.TabStop = false;
+            // 
+            // playButton
+            // 
+            this.playButton.Depth = 0;
+            this.playButton.Location = new System.Drawing.Point(819, 430);
+            this.playButton.MouseState = MaterialSkin.MouseState.HOVER;
+            this.playButton.Name = "playButton";
+            this.playButton.Primary = true;
+            this.playButton.Size = new System.Drawing.Size(158, 46);
+            this.playButton.TabIndex = 17;
+            this.playButton.Text = "Play";
+            this.playButton.UseVisualStyleBackColor = true;
+            this.playButton.Click += new System.EventHandler(this.playButton_Click);
+            // 
+            // chooseButton
+            // 
+            this.chooseButton.Depth = 0;
+            this.chooseButton.Location = new System.Drawing.Point(23, 431);
+            this.chooseButton.MouseState = MaterialSkin.MouseState.HOVER;
+            this.chooseButton.Name = "chooseButton";
+            this.chooseButton.Primary = true;
+            this.chooseButton.Size = new System.Drawing.Size(214, 46);
+            this.chooseButton.TabIndex = 18;
+            this.chooseButton.Text = "Choose arma directory";
+            this.chooseButton.UseVisualStyleBackColor = true;
+            this.chooseButton.Click += new System.EventHandler(this.chooseButton_Click);
+            // 
+            // pauseButton
+            // 
+            this.pauseButton.Depth = 0;
+            this.pauseButton.Location = new System.Drawing.Point(819, 377);
+            this.pauseButton.MouseState = MaterialSkin.MouseState.HOVER;
+            this.pauseButton.Name = "pauseButton";
+            this.pauseButton.Primary = true;
+            this.pauseButton.Size = new System.Drawing.Size(158, 46);
+            this.pauseButton.TabIndex = 20;
+            this.pauseButton.Text = "Pause";
+            this.pauseButton.UseVisualStyleBackColor = true;
+            this.pauseButton.Visible = false;
+            this.pauseButton.Click += new System.EventHandler(this.pauseButton_Click);
+            // 
+            // cancelButton
+            // 
+            this.cancelButton.Depth = 0;
+            this.cancelButton.Location = new System.Drawing.Point(819, 324);
+            this.cancelButton.MouseState = MaterialSkin.MouseState.HOVER;
+            this.cancelButton.Name = "cancelButton";
+            this.cancelButton.Primary = true;
+            this.cancelButton.Size = new System.Drawing.Size(158, 46);
+            this.cancelButton.TabIndex = 23;
+            this.cancelButton.Text = "Cancel";
+            this.cancelButton.UseVisualStyleBackColor = true;
+            this.cancelButton.Visible = false;
+            this.cancelButton.Click += new System.EventHandler(this.cancelButton_Click);
+            // 
+            // forceUpdate
+            // 
+            this.forceUpdate.AutoSize = true;
+            this.forceUpdate.Depth = 0;
+            this.forceUpdate.Font = new System.Drawing.Font("Roboto", 10F);
+            this.forceUpdate.Location = new System.Drawing.Point(696, 446);
+            this.forceUpdate.Margin = new System.Windows.Forms.Padding(0);
+            this.forceUpdate.MouseLocation = new System.Drawing.Point(-1, -1);
+            this.forceUpdate.MouseState = MaterialSkin.MouseState.HOVER;
+            this.forceUpdate.Name = "forceUpdate";
+            this.forceUpdate.Ripple = true;
+            this.forceUpdate.Size = new System.Drawing.Size(111, 30);
+            this.forceUpdate.TabIndex = 25;
+            this.forceUpdate.Text = "Force update";
+            this.forceUpdate.UseVisualStyleBackColor = true;
+            this.forceUpdate.Visible = false;
+            this.forceUpdate.CheckedChanged += new System.EventHandler(this.forceUpdate_CheckedChanged);
+            // 
+            // serverRequest
+            // 
+            this.serverRequest.DoWork += new System.ComponentModel.DoWorkEventHandler(this.serverRequest_DoWork);
+            // 
+            // totalFiles
+            // 
+            this.totalFiles.AutoSize = true;
+            this.totalFiles.BackColor = System.Drawing.Color.Transparent;
+            this.totalFiles.Cursor = System.Windows.Forms.Cursors.Default;
+            this.totalFiles.Font = new System.Drawing.Font("Arial Black", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.totalFiles.ForeColor = System.Drawing.SystemColors.WindowFrame;
+            this.totalFiles.Location = new System.Drawing.Point(25, 324);
+            this.totalFiles.Name = "totalFiles";
+            this.totalFiles.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.totalFiles.Size = new System.Drawing.Size(0, 18);
+            this.totalFiles.TabIndex = 27;
+            this.totalFiles.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // downloadedFiles
+            // 
+            this.downloadedFiles.AutoSize = true;
+            this.downloadedFiles.BackColor = System.Drawing.Color.Transparent;
+            this.downloadedFiles.Cursor = System.Windows.Forms.Cursors.Default;
+            this.downloadedFiles.Font = new System.Drawing.Font("Arial Black", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.downloadedFiles.ForeColor = System.Drawing.SystemColors.WindowFrame;
+            this.downloadedFiles.Location = new System.Drawing.Point(25, 349);
+            this.downloadedFiles.Name = "downloadedFiles";
+            this.downloadedFiles.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.downloadedFiles.Size = new System.Drawing.Size(0, 18);
+            this.downloadedFiles.TabIndex = 26;
+            this.downloadedFiles.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // directoryLabel
+            // 
+            this.directoryLabel.AutoSize = true;
+            this.directoryLabel.BackColor = System.Drawing.Color.Transparent;
+            this.directoryLabel.Cursor = System.Windows.Forms.Cursors.Default;
+            this.directoryLabel.Font = new System.Drawing.Font("Arial Black", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.directoryLabel.ForeColor = System.Drawing.SystemColors.WindowFrame;
+            this.directoryLabel.Location = new System.Drawing.Point(23, 406);
+            this.directoryLabel.Name = "directoryLabel";
+            this.directoryLabel.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.directoryLabel.Size = new System.Drawing.Size(180, 18);
+            this.directoryLabel.TabIndex = 19;
+            this.directoryLabel.Text = "Select a arma directory";
+            this.directoryLabel.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
             // errorBox
             // 
             this.errorBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(70)))), ((int)(((byte)(73)))));
@@ -625,31 +650,6 @@
             this.sizeLabel.Size = new System.Drawing.Size(1001, 18);
             this.sizeLabel.TabIndex = 29;
             this.sizeLabel.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            // 
-            // playerUIDLabel
-            // 
-            this.playerUIDLabel.BackColor = System.Drawing.Color.Transparent;
-            this.playerUIDLabel.Font = new System.Drawing.Font("Microsoft Tai Le", 8F, System.Drawing.FontStyle.Bold);
-            this.playerUIDLabel.ForeColor = System.Drawing.Color.DodgerBlue;
-            this.playerUIDLabel.Location = new System.Drawing.Point(6, 84);
-            this.playerUIDLabel.Name = "playerUIDLabel";
-            this.playerUIDLabel.Size = new System.Drawing.Size(65, 14);
-            this.playerUIDLabel.TabIndex = 20;
-            this.playerUIDLabel.Text = "Steam UID:";
-            // 
-            // playerUID
-            // 
-            this.playerUID.BackColor = System.Drawing.Color.Transparent;
-            this.playerUID.Cursor = System.Windows.Forms.Cursors.Default;
-            this.playerUID.Font = new System.Drawing.Font("Arial Black", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.playerUID.ForeColor = System.Drawing.SystemColors.WindowFrame;
-            this.playerUID.Location = new System.Drawing.Point(77, 79);
-            this.playerUID.Name = "playerUID";
-            this.playerUID.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.playerUID.Size = new System.Drawing.Size(196, 22);
-            this.playerUID.TabIndex = 19;
-            this.playerUID.Text = "NULL";
-            this.playerUID.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // launcherMain
             // 

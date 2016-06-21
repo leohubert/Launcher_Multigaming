@@ -20,4 +20,3 @@ C:\Users\leohu\Documents\GitHub\Launcher_Arma3\LauncherArma3\launcherUpdate\obj\
 C:\Users\leohu\Documents\GitHub\Launcher_Arma3\LauncherArma3\launcherUpdate\obj\Debug\launcherUpdate.csproj.GenerateResource.Cache
 C:\Users\leohu\Documents\GitHub\Launcher_Arma3\LauncherArma3\launcherUpdate\obj\Debug\launcherUpdate.exe
 C:\Users\leohu\Documents\GitHub\Launcher_Arma3\LauncherArma3\launcherUpdate\obj\Debug\launcherUpdate.pdb
-C:\Users\leohu\Documents\GitHub\Launcher_Arma3\LauncherArma3\launcherUpdate\obj\Debug\launcherUpdate.csprojResolveAssemblyReference.cache

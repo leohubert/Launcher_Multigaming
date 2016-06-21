@@ -10,7 +10,8 @@ header('Content-type: application/json');
 
 $result = array("status" => 500, "message" => "Internal error");
 
-if (isset($_POST['token']) && isset($_POST['id']) && isset($_POST['email']) && isset($_POST['username']) && isset($_POST['banned']) && isset($_POST['level']) && isset($_POST['picture']) && isset($_POST['uid']))
+if (isset($_POST['token']) && isset($_POST['id']) && isset($_POST['email']) && isset($_POST['username']) && isset($_POST['banned']) && isset($_POST['level']) && isset($_POST['picture']) && isset($_POST['uid']) &&
+    is_numeric($_POST['level']))
 {
     $token = $_POST['token'];
     $id = $_POST['id'];
@@ -28,7 +29,7 @@ if (isset($_POST['token']) && isset($_POST['id']) && isset($_POST['email']) && i
     {
         $userLevel->execute(array('id' => $res['user_id']));
         $my = $userLevel->fetch();
-        if ((int)$my['level'] >= 8 && (int)$my['banned'] != 1)
+        if ((int)$my['level'] >= 9 && (int)$my['banned'] != 1)
         {
             if ($getSettings = $database->prepare('SELECT * FROM `users` WHERE id=:id'))
             {

@@ -46,19 +46,13 @@
 <!-- Navigation Bar-->
 <?php include "jointures/header_admin.php"?>
 
-
-
-<!-- =======================
-     ===== START PAGE ======
-     ======================= -->
-
 <div class="wrapper">
     <div class="container">
 
         <!-- Page-Title -->
         <div class="row">
             <div class="col-sm-12">
-                <h4 class="page-title">All users control</h4>
+                <h4 class="page-title">All banned users</h4>
             </div>
         </div>
         <!-- Page-Title -->
@@ -67,7 +61,7 @@
             function loadSupport()
             {
                 $.post(
-                    '/api/users/admin/all',
+                    '/api/users/admin/banned',
                     {
                         token : "<?php echo $_SESSION['token'];?>",
                         show : 1000

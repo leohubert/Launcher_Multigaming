@@ -1,3 +1,6 @@
 Ne pas oublier d'allow all les .htaccess dans /etc/apache2/apache2.conf
 
 et de taper "sudo a2enmod rewrite"
+
+chmod 777 -R /var/www/html/arma3/launcher/
+chmod 777 -R /var/www/html/configs/

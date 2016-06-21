@@ -64,10 +64,13 @@
                 if (obj.status == 42)
                 {
                     document.getElementById("detail_username").textContent = obj.user_username;
+                    document.getElementById("support_username").textContent = obj.user_username;
                     document.getElementById("control_username").value = obj.user_username;
                     document.getElementById("detail_email").textContent = obj.user_email;
+                    document.getElementById("support_email").textContent = obj.user_email;
                     document.getElementById("control_email").value = obj.user_email;
                     document.getElementById("detail_picture").src = obj.user_picture;
+                    document.getElementById("support_picture").src = obj.user_picture;
                     document.getElementById("control_picture").value = obj.user_picture;
                     document.getElementById("user_uid").innerHTML = obj.user_uid;
                     document.getElementById("control_last_ip").value = obj.user_last_ip;
@@ -175,6 +178,13 @@
                         <h4 class="m-t-0 m-b-5" id="detail_username"></h4>
                         <p class="text-muted m-b-5 font-13" id="detail_email"></p>
                         <div id="detail_status"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="card-box widget-user">
+                <div>
+                    <div class="wid-u-info">
+                        <button data-toggle="modal" data-target="#con-close-modal" type="button" class="btn btn-primary btn-custom waves-effect w-md waves-light m-b-5">Create support with user</button>
                     </div>
                 </div>
             </div>
@@ -291,6 +301,83 @@
     </div>
 </div>
 
+<div id="con-close-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h4 class="modal-title">Create a support request</h4>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="card-box widget-user">
+                            <div>
+                                <img src="" class="img-responsive img-circle" alt="user" id="support_picture">
+                                <div class="wid-u-info">
+                                    <h4 class="m-t-0 m-b-5"><div id="support_username"></div></h4>
+                                    <p class="text-muted m-b-5 font-13"><div id="support_email"></div></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="field-1" class="control-label">Support title</label>
+                            <input type="text" class="form-control" id="createSupport_title" placeholder="Ban request...">
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group no-margin">
+                            <label for="field-7" class="control-label">Message</label>
+                            <textarea class="form-control autogrow" id="createSupport_message" placeholder="Write something about your request" style="overflow: hidden; word-wrap: break-word; resize: horizontal; height: 104px;"></textarea>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default waves-effect" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-info waves-effect waves-light" onclick="createSupport()">Send request</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    function createSupport() {
+        $.post(
+            '/api/support/admin/create',
+            {
+                token : "<?php echo $_SESSION['token'];?>",
+                title : document.getElementById("createSupport_title").value,
+                message : document.getElementById("createSupport_message").value,
+                user_id : "<?php echo $id;?>"
+            },
+
+            function(data){
+                var obj = JSON.parse(data);
+                if (obj.status == 42)
+                {
+                    sweetAlert("Support request created !", obj.message, "success");
+                    window.location = "/support/view/" + obj.support_id;
+                }
+                else if (obj.status == 41)
+                    window.location="/logout";
+                else if (obj.status == 44)
+                    sweetAlert("Missing permission", obj.message, "error");
+                else
+                    $.Notification.notify('error','bottom center','Internal Error', "Error: " + obj.status + " | " + obj.message);
+            },
+            'text'
+        );
+    }
+</script>
+
+
 <?php include "jointures/footer.php";?>
 
 <!-- jQuery  -->
@@ -325,6 +412,10 @@
 
 <script src="/assets/js/jquery.core.js"></script>
 <script src="/assets/js/jquery.app.js"></script>
+
+<script src="assets/plugins/custombox/dist/custombox.min.js"></script>
+<script src="assets/plugins/custombox/dist/legacy.min.js"></script>
+
 
 </body>
 </html>

@@ -119,49 +119,49 @@
 </header>
 
 <div id="con-close-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
-<div class="modal-dialog">
-    <div class="modal-content">
-        <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-            <h4 class="modal-title">Create a support request</h4>
-        </div>
-        <div class="modal-body">
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="card-box widget-user">
-                        <div>
-                            <img src="<?php echo $_SESSION['picture'];?>" class="img-responsive img-circle" alt="user">
-                            <div class="wid-u-info">
-                                <h4 class="m-t-0 m-b-5"><?php echo $_SESSION['username'];?></h4>
-                                <p class="text-muted m-b-5 font-13"><?php echo $_SESSION['email'];?></p>
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h4 class="modal-title">Create a support request</h4>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="card-box widget-user">
+                            <div>
+                                <img src="<?php echo $_SESSION['picture'];?>" class="img-responsive img-circle" alt="user">
+                                <div class="wid-u-info">
+                                    <h4 class="m-t-0 m-b-5"><?php echo $_SESSION['username'];?></h4>
+                                    <p class="text-muted m-b-5 font-13"><?php echo $_SESSION['email'];?></p>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="row">
-                <div class="col-md-6">
-                    <div class="form-group">
-                        <label for="field-1" class="control-label">Support title</label>
-                        <input type="text" class="form-control" id="createSupport_title" placeholder="Ban request...">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="field-1" class="control-label">Support title</label>
+                            <input type="text" class="form-control" id="createSupport_title" placeholder="Ban request...">
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group no-margin">
+                            <label for="field-7" class="control-label">Message</label>
+                            <textarea class="form-control autogrow" id="createSupport_message" placeholder="Write something about your request" style="overflow: hidden; word-wrap: break-word; resize: horizontal; height: 104px;"></textarea>
+                        </div>
                     </div>
                 </div>
             </div>
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="form-group no-margin">
-                        <label for="field-7" class="control-label">Message</label>
-                        <textarea class="form-control autogrow" id="createSupport_message" placeholder="Write something about your request" style="overflow: hidden; word-wrap: break-word; resize: horizontal; height: 104px;"></textarea>
-                    </div>
-                </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default waves-effect" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-info waves-effect waves-light" onclick="createSupport()">Send request</button>
             </div>
-        </div>
-        <div class="modal-footer">
-            <button type="button" class="btn btn-default waves-effect" data-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-info waves-effect waves-light" onclick="createSupport()">Send request</button>
         </div>
     </div>
-</div>
 </div>
 
 

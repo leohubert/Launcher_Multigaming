@@ -52,6 +52,7 @@
             this.registerLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.registerLogo.TabIndex = 31;
             this.registerLogo.TabStop = false;
+            this.registerLogo.Click += new System.EventHandler(this.registerLogo_Click);
             // 
             // separator
             // 
