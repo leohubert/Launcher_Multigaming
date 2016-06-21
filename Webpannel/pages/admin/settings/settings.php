@@ -236,6 +236,7 @@
                                                             document.getElementById("msg_title").value = obj.msg_title;
                                                             document.getElementById("msg_content").value = obj.msg_content;
                                                             document.getElementById("vmod").textContent = obj.vmod;
+                                                            document.getElementById("vlauncher").textContent = obj.vlauncher;
 
                                                         },
 
