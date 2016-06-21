@@ -21,7 +21,15 @@ Copyright HUBERT Léo © 2014 - 2016
 
 ##Change Logs:
 
-Launcher update:
+Launcher update v0.0.1.3:
+- Add: Admin create support
+- Add: List of admins
+- Add: List of banned
+- Fix: Update player permission
+
+-----------------------------------
+
+Launcher update v0.0.1.0:
 - Add: AutoInstall page
 - Fix: Register page
 - Fix: Settings page
