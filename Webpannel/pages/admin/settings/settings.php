@@ -62,12 +62,12 @@
                                         <div class="col-xs-6 text-center">
                                             <span>Login <div><span class="label label-success" id="login_state">Activated</span></div></span>
                                             <br>
-                                            <button id="login" type="button" class="btn btn-danger waves-effect w-md waves-light m-b-5" onclick="switch_login()">Deactivate login</button>
+                                            <button id="login" type="button" class="btn btn-primary waves-effect w-md waves-light m-b-5" onclick="switch_login()">Deactivate login</button>
                                         </div>
                                         <div class="col-xs-6 text-center">
                                             <span>Register <div><span class="label label-success" id="register_state">Activated</span></div></span>
                                             <br>
-                                            <button id="register" type="button" class="btn btn-danger waves-effect w-md waves-light m-b-5" onclick="switch_register()">Deactivate register</button>
+                                            <button id="register" type="button" class="btn btn-primary waves-effect w-md waves-light m-b-5" onclick="switch_register()">Deactivate register</button>
                                         </div>
                                     </div><!-- End row -->
                                 </div>
@@ -91,6 +91,30 @@
                             </div><!-- end row -->
                         </div>
                     </div> <!-- end col -->
+                    <div class="col-lg-3">
+                        <div class="card-box">
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <div class="row">
+                                        <div class="col-xs-12 text-center">
+                                            <div class="col-xs-6 text-center">
+                                                <span>Taskforce <div><span class="label label-success" id="taskforce_state">Activated</span></div></span>
+                                                <br>
+                                                <button id="taskforce" type="button" class="btn btn-primary waves-effect w-md waves-light m-b-5" onclick="switch_taskforce()">Deactivate taskforce</button>
+                                            </div>
+                                            <div class="col-xs-6 text-center">
+                                                <span>Taskforce version </span>
+                                                <div style="line-height:50%;"><br></div>
+                                                <span class="label label-info" id="vtaskforce">0.000000</span>
+                                                <div style="line-height:100%;"><br></div>
+                                                <button id="login" type="button" class="btn btn-warning waves-effect w-md waves-light m-b-5" onclick="update_vtaskforce()">Create an update</button>
+                                            </div>
+                                        </div>
+                                    </div><!-- End row -->
+                                </div>
+                            </div><!-- end row -->
+                        </div>
+                    </div> <!-- end col -->
                      <!-- end col -->
                 </div>
                 <div class="row">
@@ -102,7 +126,7 @@
                                         <div class="col-xs-13 text-center ">
                                             <span>Maintenance <div><span class="label label-success" id="maintenance_state">Activated</span></div></span>
                                             <br>
-                                            <button id="maintenance" type="button" class="btn btn-success waves-effect w-md waves-light m-b-5" onclick="switch_maintenance()">Deactivate maintenance</button>
+                                            <button id="maintenance" type="button" class="btn btn-primary waves-effect w-md waves-light m-b-5" onclick="switch_maintenance()">Deactivate maintenance</button>
                                         </div>
                                         <br>
                                         <div class="col-xs-13">
@@ -206,8 +230,16 @@
                                                                 var button = document.getElementById("maintenance");
                                                                 var label = document.getElementById("maintenance_state");
 
-                                                                button.className = "btn btn-danger waves-effect w-md waves-light m-b-5";
                                                                 button.textContent = "Active maintenance";
+                                                                label.className = "label label-danger";
+                                                                label.textContent = "Deactivated";
+                                                            }
+                                                            if (obj.taskforce == 0)
+                                                            {
+                                                                var button = document.getElementById("taskforce");
+                                                                var label = document.getElementById("taskforce_state");
+
+                                                                button.textContent = "Active taskforce";
                                                                 label.className = "label label-danger";
                                                                 label.textContent = "Deactivated";
                                                             }
@@ -216,7 +248,6 @@
                                                                 var button = document.getElementById("login");
                                                                 var label = document.getElementById("login_state");
 
-                                                                button.className = "btn btn-success waves-effect w-md waves-light m-b-5";
                                                                 button.textContent = "Active login";
                                                                 label.className = "label label-danger";
                                                                 label.textContent = "Deactivated";
@@ -226,7 +257,6 @@
                                                                 var button = document.getElementById("register");
                                                                 var label = document.getElementById("register_state");
 
-                                                                button.className = "btn btn-success waves-effect w-md waves-light m-b-5";
                                                                 button.textContent = "Active register";
                                                                 label.className = "label label-danger";
                                                                 label.textContent = "Deactivated";
@@ -236,8 +266,8 @@
                                                             document.getElementById("msg_title").value = obj.msg_title;
                                                             document.getElementById("msg_content").value = obj.msg_content;
                                                             document.getElementById("vmod").textContent = obj.vmod;
+                                                            document.getElementById("vtaskforce").textContent = obj.vtaskforce;
                                                             document.getElementById("vlauncher").textContent = obj.vlauncher;
-
                                                         },
 
                                                         'text'
@@ -254,6 +284,7 @@
                                                         name: 'uploadfile',
                                                         allowedExtensions: ['exe'],
                                                         multipart: true,
+                                                        maxSize: false,
                                                         hoverClass: 'hover',
                                                         focusClass: 'focus',
                                                         responseType: 'json',
@@ -304,7 +335,7 @@
                         var button = document.getElementById("maintenance");
                         var label = document.getElementById("maintenance_state");
 
-                        if (button.className == "btn btn-success waves-effect w-md waves-light m-b-5")
+                        if (label.textContent == "Activated")
                         {
                             $.post(
                                 '/api/switch/maintenance',
@@ -318,7 +349,6 @@
                                     if (obj.status == 42)
                                     {
                                         $.Notification.notify('success','top right','Maintenance deactivate', "Maintenance was been deactivated");
-                                        button.className = "btn btn-danger waves-effect w-md waves-light m-b-5";
                                         button.textContent = "Active maintenance";
                                         label.className = "label label-danger";
                                         label.textContent = "Deactivated";
@@ -348,7 +378,6 @@
                                     if (obj.status == 42)
                                     {
                                         $.Notification.notify('warning','top right','Maintenance active', "Maintenance was been activated");
-                                        button.className = "btn btn-success waves-effect w-md waves-light m-b-5";
                                         button.textContent = "Deactivate maintenance";
                                         label.className = "label label-success";
                                         label.textContent = "Activated";
@@ -371,7 +400,7 @@
                         var button = document.getElementById("login");
                         var label = document.getElementById("login_state");
 
-                        if (button.className == "btn btn-danger waves-effect w-md waves-light m-b-5")
+                        if (label.textContent == "Activated")
                         {
                             $.post(
                                 '/api/switch/login',
@@ -385,7 +414,6 @@
                                     if (obj.status == 42)
                                     {
                                         $.Notification.notify('warning','top right','Login deactivate', "Login was been deactivated");
-                                        button.className = "btn btn-success waves-effect w-md waves-light m-b-5";
                                         button.textContent = "Active login";
                                         label.className = "label label-danger";
                                         label.textContent = "Deactivated";
@@ -416,7 +444,6 @@
                                     if (obj.status == 42)
                                     {
                                         $.Notification.notify('success','top right','Login activate', "Login was been activated");
-                                        button.className = "btn btn-danger waves-effect w-md waves-light m-b-5";
                                         button.textContent = "Deactivate login";
                                         label.className = "label label-success";
                                         label.textContent = "Activated";
@@ -439,7 +466,7 @@
                         var button = document.getElementById("register");
                         var label = document.getElementById("register_state");
 
-                        if (button.className == "btn btn-danger waves-effect w-md waves-light m-b-5")
+                        if (label.textContent == "Activated")
                         {
                             $.post(
                                 '/api/switch/register',
@@ -453,7 +480,6 @@
                                     if (obj.status == 42)
                                     {
                                         $.Notification.notify('warning','top right','Register deactivate', "Register was been deactivated");
-                                        button.className = "btn btn-success waves-effect w-md waves-light m-b-5";
                                         button.textContent = "Active register";
                                         label.className = "label label-danger";
                                         label.textContent = "Deactivated";
@@ -484,7 +510,72 @@
                                     if (obj.status == 42)
                                     {
                                         $.Notification.notify('success','top right','Register activate', "Register was been activated");
-                                        button.className = "btn btn-danger waves-effect w-md waves-light m-b-5";
+                                        button.textContent = "Deactivate register";
+                                        label.className = "label label-success";
+                                        label.textContent = "Activated";
+                                    }
+                                    else if (obj.status == 41)
+                                        window.location="/logout";
+                                    else if (obj.status == 44)
+                                        sweetAlert("Missing permission", obj.message, "error");
+                                    else
+                                        $.Notification.notify('error','bottom center','Internal Error', "Error: " + obj.status + " | " + obj.message);
+
+                                },
+
+                                'text'
+                            );
+                        }
+                    }
+                    function switch_taskforce()
+                    {
+                        var button = document.getElementById("taskforce");
+                        var label = document.getElementById("taskforce_state");
+
+                        if (label.textContent == "Activated")
+                        {
+                            $.post(
+                                '/api/switch/taskforce',
+                                {
+                                    token : "<?php echo $_SESSION['token'];?>",
+                                    state : 0
+                                },
+
+                                function(data){
+                                    var obj = JSON.parse(data);
+                                    if (obj.status == 42)
+                                    {
+                                        $.Notification.notify('warning','top right','Taskforce deactivate', "Taskforce was been deactivated");
+                                        button.textContent = "Active register";
+                                        label.className = "label label-danger";
+                                        label.textContent = "Deactivated";
+                                    }
+                                    else if (obj.status == 41)
+                                        window.location="/logout";
+                                    else if (obj.status == 44)
+                                        sweetAlert("Missing permission", obj.message, "error");
+                                    else
+                                        $.Notification.notify('error','bottom center','Internal Error', "Error: " + obj.status + " | " + obj.message);
+
+                                },
+
+                                'text'
+                            );
+                        }
+                        else
+                        {
+                            $.post(
+                                '/api/switch/taskforce',
+                                {
+                                    token : "<?php echo $_SESSION['token'];?>",
+                                    state : 1
+                                },
+
+                                function(data){
+                                    var obj = JSON.parse(data);
+                                    if (obj.status == 42)
+                                    {
+                                        $.Notification.notify('success','top right','Taskforce activate', "Taskforce was been activated");
                                         button.textContent = "Deactivate register";
                                         label.className = "label label-success";
                                         label.textContent = "Activated";
@@ -563,6 +654,32 @@
                                 {
                                     $.Notification.notify('success','top right','New update created', obj.message);
                                     document.getElementById("vmod").textContent = newVersion.toFixed(6);
+                                }
+                                else if (obj.status == 41)
+                                    window.location="/logout";
+                                else if (obj.status == 44)
+                                    sweetAlert("Missing permission", obj.message, "error");
+                                else
+                                    $.Notification.notify('error','bottom center','Internal Error', "Error: " + obj.status + " | " + obj.message);
+                            },
+                            'text'
+                        );
+                    }
+                    function update_vtaskforce() {
+                        var newVersion = parseFloat(document.getElementById("vtaskforce").textContent) + 0.000001;
+                        $.post(
+                            '/api/update/vtaskforce',
+                            {
+                                token : "<?php echo $_SESSION['token'];?>",
+                                vtaskforce : newVersion.toFixed(6)
+                            },
+
+                            function(data){
+                                var obj = JSON.parse(data);
+                                if (obj.status == 42)
+                                {
+                                    $.Notification.notify('success','top right','New taskforce update created', obj.message);
+                                    document.getElementById("vtaskforce").textContent = newVersion.toFixed(6);
                                 }
                                 else if (obj.status == 41)
                                     window.location="/logout";

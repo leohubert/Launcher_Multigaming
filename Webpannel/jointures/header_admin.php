@@ -104,7 +104,10 @@
                         <a href="/"><i class="md md-dashboard"></i>Dashboard</a>
                     </li>
                     <li class="has-submenu">
-                        <a href="/settings"><i class="md  md-settings"></i>Settings</a>
+                        <a href="/settings"><i class="md md-settings"></i>Settings</a>
+                    </li>
+                    <li class="has-submenu">
+                        <a href="/news"><i class="md md-assignment"></i>News</a>
                     </li>
                     <li class="has-submenu">
                         <a href="#"><i class="md md-verified-user"></i>Users</a>

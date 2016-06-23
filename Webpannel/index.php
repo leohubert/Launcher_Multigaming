@@ -33,6 +33,8 @@
             if ((int)$_SESSION['level'] >= 6) {
                 $router->map('GET', '/', 'pages/admin/index.php', 'home-admin');
                 $router->map('GET', '/settings', 'pages/admin/settings/settings.php', 'settings-admin');
+                $router->map('GET', '/news', 'pages/admin/news/news.php', 'news-admin');
+                $router->map('GET', '/news/view/[i:id]', 'pages/admin/news/view.php', 'news-admin-view');
                 $router->map('GET', '/support/view/[i:id]', 'pages/admin/support/view.php', 'support-view-admin');
                 $router->map('GET', '/users/all', 'pages/admin/users/all.php', 'users-all');
                 $router->map('GET', '/users/admins', 'pages/admin/users/admins.php', 'users-admins');
@@ -55,17 +57,26 @@
     $router->map('POST','/api/login', 'api/login.php', 'api-login');
     $router->map('POST','/api/register', 'api/register.php', 'api-register');
     $router->map('GET','/api/settings', 'api/settings.php', 'api-settings');
-    $router->map('GET','/api/news', 'api/news.php', 'api-news');
+
+    /** @var API news route */
+    $router->map('GET','/api/news/launcher', 'api/news/news_launcher.php', 'api-news');
+    $router->map('POST','/api/news/admin/list', 'api/news/admin/list.php', 'api-news-admin-list');
+    $router->map('POST','/api/news/admin/get', 'api/news/admin/get.php', 'api-news-admin-get');
+    $router->map('POST','/api/news/admin/edit', 'api/news/admin/edit.php', 'api-news-admin-edit');
+    $router->map('POST','/api/news/admin/create', 'api/news/admin/create.php', 'api-news-admin-create');
+    $router->map('POST','/api/news/admin/remove', 'api/news/admin/remove.php', 'api-news-admin-remove');
 
     /** @var API switch route */
     $router->map('POST','/api/switch/maintenance', 'api/switch/maintenance.php', 'api-switch-maintenance');
     $router->map('POST','/api/switch/login', 'api/switch/login.php', 'api-switch-login');
     $router->map('POST','/api/switch/register', 'api/switch/register.php', 'api-switch-register');
+    $router->map('POST','/api/switch/taskforce', 'api/switch/taskforce.php', 'api-switch-taskforce');
 
     /** @var API update route */
     $router->map('POST','/api/update/maintenance', 'api/update/maintenance.php', 'api-update-maintenance');
     $router->map('POST','/api/update/loginNews', 'api/update/loginNews.php', 'api-update-loginNews');
     $router->map('POST','/api/update/vmod', 'api/update/vmod.php', 'api-update-vmod');
+    $router->map('POST','/api/update/vtaskforce', 'api/update/vtaskforce.php', 'api-update-vtaksforce');
 
     /** @var API stats route */
     $router->map('GET','/api/stats/dashboard', 'api/stats/dashboard.php', 'api-stats-dashboard');
@@ -97,6 +108,7 @@
 
     /** @var API arma3 route $match */
     $router->map('GET','/api/arma3/addons', 'api/arma3/addons.php', 'api-addons');
+    $router->map('GET','/api/arma3/taskforce', 'api/arma3/taskforce.php', 'api-taskforce');
     $router->map('GET','/api/arma3/launcher/download', 'api/arma3/download_launcher.php', 'api-launcher-download');
     $router->map('GET','/api/arma3/addons/download/[*:addons]', 'api/arma3/download.php', 'api-arma3-addons');
     $router->map('GET','/api/arma3/cpps/download/[*:cpps]', 'api/arma3/download.php', 'api-arma3-cpps');

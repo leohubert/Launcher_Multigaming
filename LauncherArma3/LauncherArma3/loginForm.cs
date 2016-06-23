@@ -47,6 +47,8 @@ namespace LauncherArma3
         bool maintenance;
         bool loaded = false;
         bool notif = false;
+        int taskforce;
+        string vtaskforce;
 
         /* TRANSLATE PART */
 
@@ -79,6 +81,10 @@ namespace LauncherArma3
             {
                 language = File.ReadAllText(appdata + serverName + "/language.lang");
                 loadLanguage();
+            }
+            if (modDev == true)
+            {
+                notifView("Warning ! Dev mod enabled !");   
             }
         }
 
@@ -153,6 +159,8 @@ namespace LauncherArma3
 
                 newsTitle.Text = res.msg_title;
                 newsContent.Text = res.msg_content;
+                taskforce = res.taskforce;
+                vtaskforce = res.vtaskforce;
 
                 if (modDev == false && res.vlauncher != getLauncherMd5().ToLower())
                 {
@@ -163,7 +171,7 @@ namespace LauncherArma3
                 if (res.login == "0")
                 {
                     sessionToken = null;
-                    launcherMain launcher = new launcherMain(serverName, apiUrl, webSite, sessionToken, ftp_url, ftp_user, ftp_pass, vLast);
+                    launcherMain launcher = new launcherMain(serverName, apiUrl, webSite, sessionToken, ftp_url, ftp_user, ftp_pass, vLast, taskforce, vtaskforce, modDev);
 
                     // Show the laguage choice
                     this.Visible = false;
@@ -258,7 +266,7 @@ namespace LauncherArma3
                 await Task.Delay(1000);
             if (startLauncher == true)
             {
-                launcherMain launcher = new launcherMain(serverName, apiUrl, webSite, sessionToken, ftp_url, ftp_user, ftp_pass, vLast);
+                launcherMain launcher = new launcherMain(serverName, apiUrl, webSite, sessionToken, ftp_url, ftp_user, ftp_pass, vLast, taskforce, vtaskforce, modDev);
                 startLauncher = false;
                 loginUsername.Text = "";
                 loginPassword.Text = "";
@@ -288,7 +296,7 @@ namespace LauncherArma3
                 if (res.status == "42")
                 {
                     // Login
-                    launcherMain launcher = new launcherMain(serverName, apiUrl, webSite, sessionToken, ftp_url, ftp_user, ftp_pass, vLast);
+                    launcherMain launcher = new launcherMain(serverName, apiUrl, webSite, sessionToken, ftp_url, ftp_user, ftp_pass, vLast, taskforce, vtaskforce, modDev);
                     startLauncher = false;
                     this.Visible = false;
                     launcher.ShowDialog();

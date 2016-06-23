@@ -15,6 +15,7 @@ using System.Threading;
 using System.Security.Cryptography;
 using System.ComponentModel;
 using System.Collections.Generic;
+using Microsoft.Win32;
 
 namespace LauncherArma3
 {
@@ -44,6 +45,7 @@ namespace LauncherArma3
         string language;
         string vLast_mod;
         string vThis_mod;
+        string vThis_taskforce;
         string launchOptions;
         bool normalyClose = false;
         bool update = false;
@@ -55,6 +57,11 @@ namespace LauncherArma3
         long downloaded_bytes = 0;
         long need_to_download = 0;
         long oldBytes = 0;
+        int taskforce;
+        string vtaskforce;
+        bool modDev;    
+        int oldTime;
+        long oldBytesPerSeconds;
 
         /* TIME CALCUL */
         DateTime startTimeDownload;
@@ -66,7 +73,7 @@ namespace LauncherArma3
 
 
         /* STEAM VARIABLE */
-        string armaDirectory = @"c:\Program Files (x86)\Steam\steamapps\common\Arma 3";
+        string armaDirectory = null;
 
         /* Session info */
         string sessionToken = null;
@@ -75,14 +82,14 @@ namespace LauncherArma3
         string level = null;
         string uid = null;
         string picture = null;
-    
+
         /* GENERAL TRANSLATE */
 
         string tr_username;
         string tr_email;
         string tr_disconnectMsg;
 
-        public launcherMain(string server, string api, string website, string session, string ftpUrl, string ftpUser, string ftpPass, string vmod)
+        public launcherMain(string server, string api, string website, string session, string ftpUrl, string ftpUser, string ftpPass, string vmod, int _taskforce, string _vtaskforce, bool _modDev)
         {
             InitializeComponent();
             serverName = server;
@@ -93,10 +100,17 @@ namespace LauncherArma3
             ftp_user = ftpUser;
             ftp_pass = ftpPass;
             vLast_mod = vmod;
+            vtaskforce = _vtaskforce;
+            taskforce = _taskforce;
+            modDev = _modDev; 
         }
 
         private void launcherMain_Load(object sender, EventArgs e)
         {
+            if (taskforce == 0)
+            {
+                taskforceBox.Visible = false;
+            }
             if (File.Exists(appdata + serverName + "/language.lang"))
             {
                 language = File.ReadAllText(appdata + serverName + "/language.lang");
@@ -130,7 +144,119 @@ namespace LauncherArma3
             materialSkinManager = MaterialSkinManager.Instance;
             materialSkinManager.Theme = MaterialSkinManager.Themes.LIGHT;
             materialSkinManager.ColorScheme = new ColorScheme(Primary.Blue500, Primary.Blue700, Primary.Blue100, Accent.Red400, TextShade.WHITE);
+            taskforceVersion.Text = vtaskforce;
             checkUpdate();
+            loadArma3Directory();
+            if (modDev == true)
+            {
+                infoBox.Visible = true;
+                infoBox.Text = "Warning ! modDev enabled !";
+            }
+            if (taskforce == 1)
+            {
+                if (File.Exists(appdata + serverName + "/vTaskForce"))
+                {
+                    vThis_taskforce = File.ReadAllText(appdata + serverName + "/vTaskForce");
+                    if (vThis_taskforce == vtaskforce)
+                    {
+                        taskforceStatus.ForeColor = Color.ForestGreen;
+                        taskforceStatus.Text = "Installed";
+                        taskforceButton.Text = "Force Update Taskforce";
+                    }
+                    else
+                    {
+                        taskforceStatus.ForeColor = Color.DarkOrange;
+                        taskforceStatus.Text = "Update required";
+                    }
+                }
+                else
+                {
+                    vThis_taskforce = "-42";
+                    taskforceStatus.ForeColor = Color.DarkRed;
+                    taskforceStatus.Text = "Not installed";
+                }
+            }        
+        }
+
+        void loadArma3Directory()
+        {
+            string uninstallKey = @"SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall";
+            using (RegistryKey rk = Registry.LocalMachine.OpenSubKey(uninstallKey))
+            {
+                foreach (string skName in rk.GetSubKeyNames())
+                {
+                    using (RegistryKey sk = rk.OpenSubKey(skName))
+                    {
+                        try
+                        {
+
+                            var displayName = sk.GetValue("DisplayName");
+
+                            if (displayName != null && displayName.ToString().Contains("Arma 3") == true)
+                            {
+                                armaDirectory = sk.GetValue("InstallLocation").ToString();
+                                directoryLabel.Text = armaDirectory;
+                                return;
+                            }
+                        }
+                        catch (Exception ex)
+                        { }
+                    }
+                }
+            }
+            uninstallKey = @"SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall";
+            using (RegistryKey rk = Registry.CurrentUser.OpenSubKey(uninstallKey))
+            {
+                foreach (string skName in rk.GetSubKeyNames())
+                {
+                    using (RegistryKey sk = rk.OpenSubKey(skName))
+                    {
+                        try
+                        {
+
+                            var displayName = sk.GetValue("DisplayName");
+
+                            if (displayName != null && displayName.ToString().Contains("Arma 3") == true)
+                            {
+                                armaDirectory = sk.GetValue("InstallLocation").ToString();
+                                directoryLabel.Text = armaDirectory;
+                                return;
+                            }
+                        }
+                        catch (Exception ex)
+                        { }
+                    }
+                }
+            }
+            uninstallKey = @"SOFTWARE\Wow6432Node\Microsoft\Windows\CurrentVersion\Uninstall";
+            using (RegistryKey rk = Registry.LocalMachine.OpenSubKey(uninstallKey))
+            {
+                foreach (string skName in rk.GetSubKeyNames())
+                {
+                    using (RegistryKey sk = rk.OpenSubKey(skName))
+                    {
+                        try
+                        {
+
+                            var displayName = sk.GetValue("DisplayName");
+
+                            if (displayName != null && displayName.ToString().Contains("Arma 3") == true)
+                            {
+                                armaDirectory = sk.GetValue("InstallLocation").ToString();
+                                directoryLabel.Text = armaDirectory;
+                                return;
+                            }
+                        }
+                        catch (Exception ex)
+                        { }
+                    }
+                }
+            }
+            chooseButton.Visible = true;
+            directoryLabel.Visible = true;
+            clearNotif();
+            errorBox.Visible = true;
+            errorBox.Text = "Choose arma 3 directory";
         }
 
         void loginWithToken()
@@ -256,7 +382,7 @@ namespace LauncherArma3
         {
             var client = new RestClient(apiUrl);
 
-            var request = new RestRequest("api/news", Method.GET);
+            var request = new RestRequest("api/news/launcher", Method.GET);
 
             IRestResponse response = client.Execute(request);
             var content = response.Content;
@@ -768,7 +894,6 @@ namespace LauncherArma3
             int total_files = addonsList.Count + cppList.Count + userconfigList.Count;
             int downloaded = 0;
 
-            totalFiles.Text = "Fichier à télécharger: " + total_files;
 
             /* DOWNLOAD ADDONS */
 
@@ -791,7 +916,6 @@ namespace LauncherArma3
                 while (stat == 0)
                     await Task.Delay(1000);
                 downloaded++;
-                downloadedFiles.Text = "Fichier télécharger: " + downloaded;
                 i--;
             }
 
@@ -816,7 +940,6 @@ namespace LauncherArma3
                 while (stat == 0)
                     await Task.Delay(1000);
                 downloaded++;
-                downloadedFiles.Text = "Fichier télécharger: " + downloaded;
                 i--;
             }
 
@@ -841,7 +964,6 @@ namespace LauncherArma3
                 while (stat == 0)
                     await Task.Delay(1000);
                 downloaded++;
-                downloadedFiles.Text = "Fichier télécharger: " + downloaded;
                 i--;
             }
 
@@ -916,8 +1038,6 @@ namespace LauncherArma3
             onDownload = false;
             estimedTime.Text = "";
             sizeLabel.Text = "";
-            totalFiles.Text = "";
-            downloadedFiles.Text = "";
             cancel = false;
             pause = false;
             result = null;
@@ -927,9 +1047,9 @@ namespace LauncherArma3
         private void startArma()
         {
             if (launchOptions != null)
-                Process.Start(armaDirectory + "/arma3.exe", "0 1 -mod=@" + serverName + " -connect=" + serverArmaIp);
+                Process.Start(armaDirectory + "/arma3.exe", "0 1 -mod=@" + serverName + " -nopause -connect=" + serverArmaIp);
             else
-                Process.Start(armaDirectory + "/arma3.exe", "0 1 -mod=@" + serverName + " -connect=" + serverArmaIp + " " + launchOptions);
+                Process.Start(armaDirectory + "/arma3.exe", "0 1 -mod=@" + serverName + " -nopause -connect=" + serverArmaIp + " " + launchOptions);
         }
 
         private bool addonsExits(string addonsName, dynamic res)
@@ -1055,10 +1175,6 @@ namespace LauncherArma3
             }
             return "0 Bytes";
         }
-
-        int oldTime;
-        long oldBytesPerSeconds;
-
         void client_DownloadProgressChanged(object sender, DownloadProgressChangedEventArgs e)
         {
             this.BeginInvoke((MethodInvoker)delegate
@@ -1169,6 +1285,33 @@ namespace LauncherArma3
                 errorBox.Visible = true;
                 errorBox.Text = "Error when start listing mods";
             }
+        }
+
+        private void taskforceButton_Click(object sender, EventArgs e)
+        {
+            taskforceButton.Enabled = false;
+            if (!File.Exists("taskforceInstaller.exe"))
+            {
+                clearNotif();
+                errorBox.Visible = true;
+                errorBox.Text = "taskforceInstaller missing !";
+                return;
+            }
+            try
+            {
+                Process taskforce = new Process();
+                taskforce.StartInfo.FileName = "taskforceInstaller.exe";
+                taskforce.StartInfo.Arguments = apiUrl  + " \"" + appdata + serverName + "\" \"" + vtaskforce + "\" \"" + System.Windows.Forms.Application.ExecutablePath + "\"";
+                taskforce.Start();
+                normalyClose = false;
+                this.Close();
+            }
+            catch
+            {
+                errorBox.Visible = true;
+                errorBox.Text = "Install canceled !";
+            }
+            taskforceButton.Enabled = true;
         }
     }
 }

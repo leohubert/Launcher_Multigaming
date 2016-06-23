@@ -61,6 +61,8 @@ CREATE TABLE IF NOT EXISTS `settings` (
   `maintenance_content` text NOT NULL,
   `login` int(11) NOT NULL,
   `register` int(11) NOT NULL,
+  `taskforce` int(11) NOT NULL,
+  `vtaskforce` varchar(250) NOT NULL,
   `vmod` varchar(250) NOT NULL
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 
@@ -69,7 +71,7 @@ CREATE TABLE IF NOT EXISTS `settings` (
 --
 
 INSERT INTO `settings` (`id`, `active`, `msg_title`, `msg_content`, `maintenance`, `maintenance_title`, `maintenance_content`, `login`, `register`, `vmod`) VALUES
-(1, 1, 'Welcome to my arma3 server', 'This is a message content :D', 0, '{picture}', 'http://www.designbolts.com/wp-content/uploads/2015/07/Dark-Polygon-iphone-6-background.jpg', 1, 1, '0.000000');
+(1, 1, 'Welcome to my arma3 server', 'This is a message content :D', 0, '{picture}', 'http://www.designbolts.com/wp-content/uploads/2015/07/Dark-Polygon-iphone-6-background.jpg', 1, 1, 0, '0.000000', '0.000000');
 
 -- --------------------------------------------------------
 

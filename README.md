@@ -4,9 +4,9 @@ Launcher_Arma3
 -------------[ Launcher Information ]-------------
 
 ###Last push:
-Version: Alpha 5.0.3.0
+Version: Beta 5.0.4.0
 Functional: YES
-Release date: 18/06/2016 00:16
+Release date: 23/06/2016 22:40
 
 
 ###Last functional version:
@@ -20,6 +20,21 @@ Copyright HUBERT Léo © 2014 - 2016
 
 
 ##Change Logs:
+
+Beta 5.0.4.0:
+- Add: Panel news control
+- Add: Arma3 automatic search
+- Add: TeamSpeak automatic search
+- Add: Create support with player ( admin )
+- Add: All users pages ( admins, banned )
+- Add: TaskForce settings
+- Add: TaskForce into launcher (BETA)
+- Add: API for taskforce
+- Fix: User name register fix
+- Fix: Install error (mysql_connect.php)
+And more ....
+
+-----------------------------------
 
 Launcher update v0.0.1.3:
 - Add: Admin create support

@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LauncherArma3", "LauncherAr
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "launcherUpdate", "launcherUpdate\launcherUpdate.csproj", "{F2FDC86C-7838-4531-A6ED-10B280A85C2C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "taskforceInstaller", "taskforceInstaller\taskforceInstaller.csproj", "{6D215FAE-2607-4206-AF48-90845B4BD0D9}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{F2FDC86C-7838-4531-A6ED-10B280A85C2C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F2FDC86C-7838-4531-A6ED-10B280A85C2C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F2FDC86C-7838-4531-A6ED-10B280A85C2C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6D215FAE-2607-4206-AF48-90845B4BD0D9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6D215FAE-2607-4206-AF48-90845B4BD0D9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6D215FAE-2607-4206-AF48-90845B4BD0D9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6D215FAE-2607-4206-AF48-90845B4BD0D9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

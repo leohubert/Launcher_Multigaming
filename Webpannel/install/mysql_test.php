@@ -12,7 +12,7 @@ $result = array("status" => 500, "message" => "Internal error");
 
 
 if (isset($_POST['db_host']) && isset($_POST['db_name']) && isset($_POST['db_user']) && isset($_POST['db_pass'])
-    && $_POST['db_host'] != "" && $_POST['db_name'] != "" && $_POST['db_user'] != "" && $_POST['db_pass'] != "")
+    && $_POST['db_host'] != "" && $_POST['db_name'] != "" && $_POST['db_user'] != "")
 {
     try {
         $database = new PDO('mysql:host='. $_POST['db_host'] .';dbname='. $_POST['db_name'], $_POST['db_user'], $_POST['db_pass']);
