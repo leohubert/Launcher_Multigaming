@@ -70,7 +70,7 @@ CREATE TABLE IF NOT EXISTS `settings` (
 -- Contenu de la table `settings`
 --
 
-INSERT INTO `settings` (`id`, `active`, `msg_title`, `msg_content`, `maintenance`, `maintenance_title`, `maintenance_content`, `login`, `register`, `vmod`) VALUES
+INSERT INTO `settings` (`id`, `active`, `msg_title`, `msg_content`, `maintenance`, `maintenance_title`, `maintenance_content`, `login`, `register`, `taskforce`, `vtaskforce`, `vmod`) VALUES
 (1, 1, 'Welcome to my arma3 server', 'This is a message content :D', 0, '{picture}', 'http://www.designbolts.com/wp-content/uploads/2015/07/Dark-Polygon-iphone-6-background.jpg', 1, 1, 0, '0.000000', '0.000000');
 
 -- --------------------------------------------------------
