@@ -1,3 +1,4 @@
+![alt text](https://raw.githubusercontent.com/MrDarkSkil/Launcher_Arma3/master/GFX/icones/favicon.png "Logo Launcher")
 # Launcher_Arma3
 Launcher_Arma3 
 
