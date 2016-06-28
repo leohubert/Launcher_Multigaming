@@ -73,7 +73,7 @@ Upload WebPanel to the /var/www/html folder (don't forget .htaccess file)
 
 ##Licences:
 
-#####This project is under GPL licence, please refear to the LICENCE file.
+#####This project is under GPL licence, please refer to the LICENCE file.
 
 --------------------------------------------------
 
