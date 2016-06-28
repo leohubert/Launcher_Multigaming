@@ -50,6 +50,7 @@ Step 5: Edit this file (/etc/apache2/apache2.conf) with this command 'sudo nano 
         "
 Step 6: Write this command in the terminal 'sudo a2enmod rewrite'
 Step 7: Upload WebPanel to the /var/www/html folder (don't forget .htaccess file)
+
 --------------------------------------------------
 
 
