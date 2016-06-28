@@ -59,6 +59,22 @@ Write this command in the terminal 'sudo a2enmod rewrite'
 - Step 7: 
 Upload WebPanel to the /var/www/html folder (don't forget .htaccess file)
 
+-------------------[ Creators ]-------------------
+
+######Léo Hubert
+```json
+{
+"nom":"Hubert",
+"prenom":"Léo",
+"email":"leo.hubert@epitech.eu", 
+"linkedin": "https://www.linkedin.com/in/leohubert"
+}
+```
+
+-------------------[ Licences ]-------------------
+
+#####This project is under GPL licence, please refear to the LICENCE file.
+
 --------------------------------------------------
 
 
