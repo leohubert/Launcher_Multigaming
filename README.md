@@ -61,7 +61,7 @@ Upload WebPanel to the /var/www/html folder (don't forget .htaccess file)
 --------------------------------------------------
 
 
-##Change Logs:
+##Changes Logs:
 
 Beta 5.0.4.0:
 - Add: Panel news control
