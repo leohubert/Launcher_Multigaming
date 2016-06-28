@@ -28,15 +28,15 @@ Once connected, follow step by step.
 
 
 Step 1: 
-Write this command in the terminal 'apt-get update; apt-get upgrade'
+- Write this command in the terminal 'apt-get update; apt-get upgrade'
 Step 2: 
-Write this command in the terminal 'apt-get install apache2 php5 php5-curl'
+- Write this command in the terminal 'apt-get install apache2 php5 php5-curl'
 Step 3: 
-Write this command in the terminal 'apt-get install mysql-server' and follow install page.  
+- Write this command in the terminal 'apt-get install mysql-server' and follow install page.  
 Step 4: 
-Write this command in the terminal 'apt-get install phpmyadmin' and follow install page.
+- Write this command in the terminal 'apt-get install phpmyadmin' and follow install page.
 Step 5: 
-Edit this file (/etc/apache2/apache2.conf) with this command 'sudo nano /etc/apache2/apache2.conf'
+- Edit this file (/etc/apache2/apache2.conf) with this command 'sudo nano /etc/apache2/apache2.conf'
 search this line:
 "
   <Directory /var/www/>
@@ -54,9 +54,9 @@ edit to
   </Directory>
 "
 Step 6: 
-Write this command in the terminal 'sudo a2enmod rewrite'
+- Write this command in the terminal 'sudo a2enmod rewrite'
 Step 7: 
-Upload WebPanel to the /var/www/html folder (don't forget .htaccess file)
+- Upload WebPanel to the /var/www/html folder (don't forget .htaccess file)
 
 --------------------------------------------------
 
