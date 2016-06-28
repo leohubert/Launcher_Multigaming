@@ -2,7 +2,7 @@
 # Launcher_Arma3
 Launcher_Arma3 
 
-###Launcher Information:
+##Launcher Information:
 
 ####Last push:
 Version: Beta 5.0.4.0
@@ -17,7 +17,7 @@ Release date: 30/04/2016 à  14:20
 
 Copyright HUBERT Léo © 2014 - 2016
 
-### Launcher Panel Guide Intall:
+## Launcher Panel Guide Intall:
 
 For install this panel you need to have a little VPS 
 or more biggest.
@@ -59,7 +59,7 @@ Write this command in the terminal 'sudo a2enmod rewrite'
 - Step 7: 
 Upload WebPanel to the /var/www/html folder (don't forget .htaccess file)
 
-###Creators:
+##Creators:
 
 ######Léo Hubert
 ```json
@@ -71,7 +71,7 @@ Upload WebPanel to the /var/www/html folder (don't forget .htaccess file)
 }
 ```
 
-###Licences:
+##Licences:
 
 #####This project is under GPL licence, please refear to the LICENCE file.
 
