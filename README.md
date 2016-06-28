@@ -4,13 +4,13 @@ Launcher_Arma3
 
 ###Launcher Information:
 
-##Last push:
+####Last push:
 Version: Beta 5.0.4.0
 Functional: YES
 Release date: 23/06/2016 22:40
 
 
-##Last functional version:
+####Last functional version:
 Version: Release 4.0.0.0
 Functional: YES
 Release date: 30/04/2016 à  14:20
