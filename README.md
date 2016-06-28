@@ -21,35 +21,42 @@ Copyright HUBERT Léo © 2014 - 2016
 For install this panel you need to have a little VPS 
 or more biggest.
 
-Minimal config required: [URL]https://www.ovh.com/fr/vps/vps-ssd.xml[/URL] 
+Minimal config required: https://www.ovh.com/fr/vps/vps-ssd.xml 
 
 When you have a VPS or other, connect to that with SSH (on windows with PUTTY on linux with "ssh" command)
 Once connected, follow step by step.
 
 
-Step 1: Write this command in the terminal 'apt-get update; apt-get upgrade'
-Step 2: Write this command in the terminal 'apt-get install apache2 php5 php5-curl'
-Step 3: Write this command in the terminal 'apt-get install mysql-server' and follow install page.  
-Step 4: Write this command in the terminal 'apt-get install phpmyadmin' and follow install page.
-Step 5: Edit this file (/etc/apache2/apache2.conf) with this command 'sudo nano /etc/apache2/apache2.conf'
-        search this line:
-        "
-          <Directory /var/www/>
-            Options Indexes FollowSymLinks
-            AllowOverride None
-            Require all granted
-          </Directory>
-        "
-        edit to
-        "
-          <Directory /var/www/>
-            Options Indexes FollowSymLinks
-            AllowOverride All
-            Require all granted
-          </Directory>
-        "
-Step 6: Write this command in the terminal 'sudo a2enmod rewrite'
-Step 7: Upload WebPanel to the /var/www/html folder (don't forget .htaccess file)
+Step 1: 
+Write this command in the terminal 'apt-get update; apt-get upgrade'
+Step 2: 
+Write this command in the terminal 'apt-get install apache2 php5 php5-curl'
+Step 3: 
+Write this command in the terminal 'apt-get install mysql-server' and follow install page.  
+Step 4: 
+Write this command in the terminal 'apt-get install phpmyadmin' and follow install page.
+Step 5: 
+Edit this file (/etc/apache2/apache2.conf) with this command 'sudo nano /etc/apache2/apache2.conf'
+search this line:
+"
+  <Directory /var/www/>
+    Options Indexes FollowSymLinks
+    AllowOverride None
+    Require all granted
+  </Directory>
+"
+edit to
+"
+  <Directory /var/www/>
+    Options Indexes FollowSymLinks
+    AllowOverride All
+    Require all granted
+  </Directory>
+"
+Step 6: 
+Write this command in the terminal 'sudo a2enmod rewrite'
+Step 7: 
+Upload WebPanel to the /var/www/html folder (don't forget .htaccess file)
 
 --------------------------------------------------
 
