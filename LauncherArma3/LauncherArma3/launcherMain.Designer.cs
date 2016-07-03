@@ -47,6 +47,35 @@
             this.taskforceBox = new System.Windows.Forms.GroupBox();
             this.taskforceButton = new MaterialSkin.Controls.MaterialRaisedButton();
             this.taskforceIcon = new System.Windows.Forms.PictureBox();
+            this.serverBox = new System.Windows.Forms.GroupBox();
+            this.playerInGameBox = new System.Windows.Forms.GroupBox();
+            this.usefulBox = new System.Windows.Forms.GroupBox();
+            this.visitTeamSpeakButton = new MaterialSkin.Controls.MaterialRaisedButton();
+            this.visitSiteButton = new MaterialSkin.Controls.MaterialRaisedButton();
+            this.teamspeakIcon = new System.Windows.Forms.PictureBox();
+            this.websiteIcon = new System.Windows.Forms.PictureBox();
+            this.supportButton = new MaterialSkin.Controls.MaterialRaisedButton();
+            this.IGplayerLabel_bank = new FlatUI.FlatLabel();
+            this.IGplayer_bank = new FlatUI.FlatLabel();
+            this.IGplayerLabel_cash = new FlatUI.FlatLabel();
+            this.IGplayer_cash = new FlatUI.FlatLabel();
+            this.IGplayerLabel_mediclevel = new FlatUI.FlatLabel();
+            this.IGplayer_mediclevel = new FlatUI.FlatLabel();
+            this.IGplayerLabel_coplevel = new FlatUI.FlatLabel();
+            this.IGplayer_coplevel = new FlatUI.FlatLabel();
+            this.IGplayerLabel_adminlevel = new FlatUI.FlatLabel();
+            this.IGplayer_adminlevel = new FlatUI.FlatLabel();
+            this.IGplayerLabel_username = new FlatUI.FlatLabel();
+            this.IGplayer_username = new FlatUI.FlatLabel();
+            this.serverMapLabel = new FlatUI.FlatLabel();
+            this.serverMap = new FlatUI.FlatLabel();
+            this.serverPlayersLabel = new FlatUI.FlatLabel();
+            this.serverPlayers = new FlatUI.FlatLabel();
+            this.serverSeparator = new iTalk.iTalk_Separator();
+            this.serverIPLabel = new FlatUI.FlatLabel();
+            this.serverIP = new FlatUI.FlatLabel();
+            this.serverStatusLabel = new FlatUI.FlatLabel();
+            this.serverStatus = new FlatUI.FlatLabel();
             this.taskforceStatus = new FlatUI.FlatLabel();
             this.taskforceVersion = new FlatUI.FlatLabel();
             this.taskforceVersionLabel = new iTalk.iTalk_Label();
@@ -84,6 +113,11 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             this.taskforceBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.taskforceIcon)).BeginInit();
+            this.serverBox.SuspendLayout();
+            this.playerInGameBox.SuspendLayout();
+            this.usefulBox.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.teamspeakIcon)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.websiteIcon)).BeginInit();
             this.SuspendLayout();
             // 
             // tabPage2
@@ -257,7 +291,7 @@
             this.forceUpdate.AutoSize = true;
             this.forceUpdate.Depth = 0;
             this.forceUpdate.Font = new System.Drawing.Font("Roboto", 10F);
-            this.forceUpdate.Location = new System.Drawing.Point(696, 446);
+            this.forceUpdate.Location = new System.Drawing.Point(814, 474);
             this.forceUpdate.Margin = new System.Windows.Forms.Padding(0);
             this.forceUpdate.MouseLocation = new System.Drawing.Point(-1, -1);
             this.forceUpdate.MouseState = MaterialSkin.MouseState.HOVER;
@@ -311,6 +345,378 @@
             this.taskforceIcon.TabIndex = 21;
             this.taskforceIcon.TabStop = false;
             // 
+            // serverBox
+            // 
+            this.serverBox.Controls.Add(this.serverMapLabel);
+            this.serverBox.Controls.Add(this.serverMap);
+            this.serverBox.Controls.Add(this.serverPlayersLabel);
+            this.serverBox.Controls.Add(this.serverPlayers);
+            this.serverBox.Controls.Add(this.serverSeparator);
+            this.serverBox.Controls.Add(this.serverIPLabel);
+            this.serverBox.Controls.Add(this.serverIP);
+            this.serverBox.Controls.Add(this.serverStatusLabel);
+            this.serverBox.Controls.Add(this.serverStatus);
+            this.serverBox.Font = new System.Drawing.Font("Arial Black", 9.75F);
+            this.serverBox.ForeColor = System.Drawing.SystemColors.WindowFrame;
+            this.serverBox.Location = new System.Drawing.Point(20, 253);
+            this.serverBox.Name = "serverBox";
+            this.serverBox.Size = new System.Drawing.Size(282, 142);
+            this.serverBox.TabIndex = 30;
+            this.serverBox.TabStop = false;
+            this.serverBox.Text = "Server Status";
+            // 
+            // playerInGameBox
+            // 
+            this.playerInGameBox.Controls.Add(this.IGplayerLabel_bank);
+            this.playerInGameBox.Controls.Add(this.IGplayer_bank);
+            this.playerInGameBox.Controls.Add(this.IGplayerLabel_cash);
+            this.playerInGameBox.Controls.Add(this.IGplayer_cash);
+            this.playerInGameBox.Controls.Add(this.IGplayerLabel_mediclevel);
+            this.playerInGameBox.Controls.Add(this.IGplayer_mediclevel);
+            this.playerInGameBox.Controls.Add(this.IGplayerLabel_coplevel);
+            this.playerInGameBox.Controls.Add(this.IGplayer_coplevel);
+            this.playerInGameBox.Controls.Add(this.IGplayerLabel_adminlevel);
+            this.playerInGameBox.Controls.Add(this.IGplayer_adminlevel);
+            this.playerInGameBox.Controls.Add(this.IGplayerLabel_username);
+            this.playerInGameBox.Controls.Add(this.IGplayer_username);
+            this.playerInGameBox.Font = new System.Drawing.Font("Arial Black", 9.75F);
+            this.playerInGameBox.ForeColor = System.Drawing.SystemColors.WindowFrame;
+            this.playerInGameBox.Location = new System.Drawing.Point(308, 253);
+            this.playerInGameBox.Name = "playerInGameBox";
+            this.playerInGameBox.Size = new System.Drawing.Size(250, 142);
+            this.playerInGameBox.TabIndex = 31;
+            this.playerInGameBox.TabStop = false;
+            this.playerInGameBox.Text = "In game information";
+            // 
+            // usefulBox
+            // 
+            this.usefulBox.Controls.Add(this.visitTeamSpeakButton);
+            this.usefulBox.Controls.Add(this.visitSiteButton);
+            this.usefulBox.Controls.Add(this.teamspeakIcon);
+            this.usefulBox.Controls.Add(this.websiteIcon);
+            this.usefulBox.Font = new System.Drawing.Font("Arial Black", 9.75F);
+            this.usefulBox.ForeColor = System.Drawing.SystemColors.WindowFrame;
+            this.usefulBox.Location = new System.Drawing.Point(564, 253);
+            this.usefulBox.Name = "usefulBox";
+            this.usefulBox.Size = new System.Drawing.Size(250, 142);
+            this.usefulBox.TabIndex = 32;
+            this.usefulBox.TabStop = false;
+            this.usefulBox.Text = "Useful Links";
+            // 
+            // visitTeamSpeakButton
+            // 
+            this.visitTeamSpeakButton.Depth = 0;
+            this.visitTeamSpeakButton.Location = new System.Drawing.Point(129, 103);
+            this.visitTeamSpeakButton.MouseState = MaterialSkin.MouseState.HOVER;
+            this.visitTeamSpeakButton.Name = "visitTeamSpeakButton";
+            this.visitTeamSpeakButton.Primary = true;
+            this.visitTeamSpeakButton.Size = new System.Drawing.Size(115, 33);
+            this.visitTeamSpeakButton.TabIndex = 35;
+            this.visitTeamSpeakButton.Text = "visit our teamspeak";
+            this.visitTeamSpeakButton.UseVisualStyleBackColor = true;
+            // 
+            // visitSiteButton
+            // 
+            this.visitSiteButton.Depth = 0;
+            this.visitSiteButton.Location = new System.Drawing.Point(6, 103);
+            this.visitSiteButton.MouseState = MaterialSkin.MouseState.HOVER;
+            this.visitSiteButton.Name = "visitSiteButton";
+            this.visitSiteButton.Primary = true;
+            this.visitSiteButton.Size = new System.Drawing.Size(115, 33);
+            this.visitSiteButton.TabIndex = 34;
+            this.visitSiteButton.Text = "Visit our website";
+            this.visitSiteButton.UseVisualStyleBackColor = true;
+            // 
+            // teamspeakIcon
+            // 
+            this.teamspeakIcon.Image = ((System.Drawing.Image)(resources.GetObject("teamspeakIcon.Image")));
+            this.teamspeakIcon.Location = new System.Drawing.Point(159, 37);
+            this.teamspeakIcon.Name = "teamspeakIcon";
+            this.teamspeakIcon.Size = new System.Drawing.Size(50, 50);
+            this.teamspeakIcon.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.teamspeakIcon.TabIndex = 1;
+            this.teamspeakIcon.TabStop = false;
+            // 
+            // websiteIcon
+            // 
+            this.websiteIcon.Image = ((System.Drawing.Image)(resources.GetObject("websiteIcon.Image")));
+            this.websiteIcon.Location = new System.Drawing.Point(35, 37);
+            this.websiteIcon.Name = "websiteIcon";
+            this.websiteIcon.Size = new System.Drawing.Size(50, 50);
+            this.websiteIcon.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.websiteIcon.TabIndex = 0;
+            this.websiteIcon.TabStop = false;
+            // 
+            // supportButton
+            // 
+            this.supportButton.Depth = 0;
+            this.supportButton.Location = new System.Drawing.Point(820, 34);
+            this.supportButton.MouseState = MaterialSkin.MouseState.HOVER;
+            this.supportButton.Name = "supportButton";
+            this.supportButton.Primary = true;
+            this.supportButton.Size = new System.Drawing.Size(157, 24);
+            this.supportButton.TabIndex = 33;
+            this.supportButton.Text = "Support";
+            this.supportButton.UseVisualStyleBackColor = true;
+            this.supportButton.Click += new System.EventHandler(this.supportButton_Click);
+            // 
+            // IGplayerLabel_bank
+            // 
+            this.IGplayerLabel_bank.BackColor = System.Drawing.Color.Transparent;
+            this.IGplayerLabel_bank.Font = new System.Drawing.Font("Microsoft Tai Le", 8F, System.Drawing.FontStyle.Bold);
+            this.IGplayerLabel_bank.ForeColor = System.Drawing.Color.SteelBlue;
+            this.IGplayerLabel_bank.Location = new System.Drawing.Point(6, 120);
+            this.IGplayerLabel_bank.Name = "IGplayerLabel_bank";
+            this.IGplayerLabel_bank.Size = new System.Drawing.Size(83, 14);
+            this.IGplayerLabel_bank.TabIndex = 41;
+            this.IGplayerLabel_bank.Text = "Bank :";
+            // 
+            // IGplayer_bank
+            // 
+            this.IGplayer_bank.BackColor = System.Drawing.Color.Transparent;
+            this.IGplayer_bank.Cursor = System.Windows.Forms.Cursors.Default;
+            this.IGplayer_bank.Font = new System.Drawing.Font("Arial Black", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.IGplayer_bank.ForeColor = System.Drawing.SystemColors.WindowFrame;
+            this.IGplayer_bank.Location = new System.Drawing.Point(95, 117);
+            this.IGplayer_bank.Name = "IGplayer_bank";
+            this.IGplayer_bank.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.IGplayer_bank.Size = new System.Drawing.Size(149, 22);
+            this.IGplayer_bank.TabIndex = 40;
+            this.IGplayer_bank.Text = "NULL";
+            this.IGplayer_bank.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // IGplayerLabel_cash
+            // 
+            this.IGplayerLabel_cash.BackColor = System.Drawing.Color.Transparent;
+            this.IGplayerLabel_cash.Font = new System.Drawing.Font("Microsoft Tai Le", 8F, System.Drawing.FontStyle.Bold);
+            this.IGplayerLabel_cash.ForeColor = System.Drawing.Color.Goldenrod;
+            this.IGplayerLabel_cash.Location = new System.Drawing.Point(6, 102);
+            this.IGplayerLabel_cash.Name = "IGplayerLabel_cash";
+            this.IGplayerLabel_cash.Size = new System.Drawing.Size(83, 14);
+            this.IGplayerLabel_cash.TabIndex = 39;
+            this.IGplayerLabel_cash.Text = "Cash :";
+            // 
+            // IGplayer_cash
+            // 
+            this.IGplayer_cash.BackColor = System.Drawing.Color.Transparent;
+            this.IGplayer_cash.Cursor = System.Windows.Forms.Cursors.Default;
+            this.IGplayer_cash.Font = new System.Drawing.Font("Arial Black", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.IGplayer_cash.ForeColor = System.Drawing.SystemColors.WindowFrame;
+            this.IGplayer_cash.Location = new System.Drawing.Point(95, 99);
+            this.IGplayer_cash.Name = "IGplayer_cash";
+            this.IGplayer_cash.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.IGplayer_cash.Size = new System.Drawing.Size(149, 22);
+            this.IGplayer_cash.TabIndex = 38;
+            this.IGplayer_cash.Text = "NULL";
+            this.IGplayer_cash.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // IGplayerLabel_mediclevel
+            // 
+            this.IGplayerLabel_mediclevel.BackColor = System.Drawing.Color.Transparent;
+            this.IGplayerLabel_mediclevel.Font = new System.Drawing.Font("Microsoft Tai Le", 8F, System.Drawing.FontStyle.Bold);
+            this.IGplayerLabel_mediclevel.ForeColor = System.Drawing.Color.DodgerBlue;
+            this.IGplayerLabel_mediclevel.Location = new System.Drawing.Point(6, 82);
+            this.IGplayerLabel_mediclevel.Name = "IGplayerLabel_mediclevel";
+            this.IGplayerLabel_mediclevel.Size = new System.Drawing.Size(83, 14);
+            this.IGplayerLabel_mediclevel.TabIndex = 37;
+            this.IGplayerLabel_mediclevel.Text = "Medic level :";
+            // 
+            // IGplayer_mediclevel
+            // 
+            this.IGplayer_mediclevel.BackColor = System.Drawing.Color.Transparent;
+            this.IGplayer_mediclevel.Cursor = System.Windows.Forms.Cursors.Default;
+            this.IGplayer_mediclevel.Font = new System.Drawing.Font("Arial Black", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.IGplayer_mediclevel.ForeColor = System.Drawing.SystemColors.WindowFrame;
+            this.IGplayer_mediclevel.Location = new System.Drawing.Point(95, 79);
+            this.IGplayer_mediclevel.Name = "IGplayer_mediclevel";
+            this.IGplayer_mediclevel.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.IGplayer_mediclevel.Size = new System.Drawing.Size(149, 22);
+            this.IGplayer_mediclevel.TabIndex = 36;
+            this.IGplayer_mediclevel.Text = "NULL";
+            this.IGplayer_mediclevel.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // IGplayerLabel_coplevel
+            // 
+            this.IGplayerLabel_coplevel.BackColor = System.Drawing.Color.Transparent;
+            this.IGplayerLabel_coplevel.Font = new System.Drawing.Font("Microsoft Tai Le", 8F, System.Drawing.FontStyle.Bold);
+            this.IGplayerLabel_coplevel.ForeColor = System.Drawing.Color.DodgerBlue;
+            this.IGplayerLabel_coplevel.Location = new System.Drawing.Point(6, 63);
+            this.IGplayerLabel_coplevel.Name = "IGplayerLabel_coplevel";
+            this.IGplayerLabel_coplevel.Size = new System.Drawing.Size(83, 14);
+            this.IGplayerLabel_coplevel.TabIndex = 35;
+            this.IGplayerLabel_coplevel.Text = "Cop level :";
+            // 
+            // IGplayer_coplevel
+            // 
+            this.IGplayer_coplevel.BackColor = System.Drawing.Color.Transparent;
+            this.IGplayer_coplevel.Cursor = System.Windows.Forms.Cursors.Default;
+            this.IGplayer_coplevel.Font = new System.Drawing.Font("Arial Black", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.IGplayer_coplevel.ForeColor = System.Drawing.SystemColors.WindowFrame;
+            this.IGplayer_coplevel.Location = new System.Drawing.Point(95, 60);
+            this.IGplayer_coplevel.Name = "IGplayer_coplevel";
+            this.IGplayer_coplevel.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.IGplayer_coplevel.Size = new System.Drawing.Size(149, 22);
+            this.IGplayer_coplevel.TabIndex = 34;
+            this.IGplayer_coplevel.Text = "NULL";
+            this.IGplayer_coplevel.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // IGplayerLabel_adminlevel
+            // 
+            this.IGplayerLabel_adminlevel.BackColor = System.Drawing.Color.Transparent;
+            this.IGplayerLabel_adminlevel.Font = new System.Drawing.Font("Microsoft Tai Le", 8F, System.Drawing.FontStyle.Bold);
+            this.IGplayerLabel_adminlevel.ForeColor = System.Drawing.Color.DodgerBlue;
+            this.IGplayerLabel_adminlevel.Location = new System.Drawing.Point(6, 42);
+            this.IGplayerLabel_adminlevel.Name = "IGplayerLabel_adminlevel";
+            this.IGplayerLabel_adminlevel.Size = new System.Drawing.Size(83, 14);
+            this.IGplayerLabel_adminlevel.TabIndex = 33;
+            this.IGplayerLabel_adminlevel.Text = "Admin level :";
+            // 
+            // IGplayer_adminlevel
+            // 
+            this.IGplayer_adminlevel.BackColor = System.Drawing.Color.Transparent;
+            this.IGplayer_adminlevel.Cursor = System.Windows.Forms.Cursors.Default;
+            this.IGplayer_adminlevel.Font = new System.Drawing.Font("Arial Black", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.IGplayer_adminlevel.ForeColor = System.Drawing.SystemColors.WindowFrame;
+            this.IGplayer_adminlevel.Location = new System.Drawing.Point(95, 39);
+            this.IGplayer_adminlevel.Name = "IGplayer_adminlevel";
+            this.IGplayer_adminlevel.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.IGplayer_adminlevel.Size = new System.Drawing.Size(149, 22);
+            this.IGplayer_adminlevel.TabIndex = 32;
+            this.IGplayer_adminlevel.Text = "NULL";
+            this.IGplayer_adminlevel.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // IGplayerLabel_username
+            // 
+            this.IGplayerLabel_username.BackColor = System.Drawing.Color.Transparent;
+            this.IGplayerLabel_username.Font = new System.Drawing.Font("Microsoft Tai Le", 8F, System.Drawing.FontStyle.Bold);
+            this.IGplayerLabel_username.ForeColor = System.Drawing.Color.DodgerBlue;
+            this.IGplayerLabel_username.Location = new System.Drawing.Point(6, 23);
+            this.IGplayerLabel_username.Name = "IGplayerLabel_username";
+            this.IGplayerLabel_username.Size = new System.Drawing.Size(83, 14);
+            this.IGplayerLabel_username.TabIndex = 31;
+            this.IGplayerLabel_username.Text = "Username :";
+            // 
+            // IGplayer_username
+            // 
+            this.IGplayer_username.BackColor = System.Drawing.Color.Transparent;
+            this.IGplayer_username.Cursor = System.Windows.Forms.Cursors.Default;
+            this.IGplayer_username.Font = new System.Drawing.Font("Arial Black", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.IGplayer_username.ForeColor = System.Drawing.SystemColors.WindowFrame;
+            this.IGplayer_username.Location = new System.Drawing.Point(95, 19);
+            this.IGplayer_username.Name = "IGplayer_username";
+            this.IGplayer_username.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.IGplayer_username.Size = new System.Drawing.Size(149, 22);
+            this.IGplayer_username.TabIndex = 30;
+            this.IGplayer_username.Text = "NULL";
+            this.IGplayer_username.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // serverMapLabel
+            // 
+            this.serverMapLabel.BackColor = System.Drawing.Color.Transparent;
+            this.serverMapLabel.Font = new System.Drawing.Font("Microsoft Tai Le", 8F, System.Drawing.FontStyle.Bold);
+            this.serverMapLabel.ForeColor = System.Drawing.Color.DodgerBlue;
+            this.serverMapLabel.Location = new System.Drawing.Point(6, 115);
+            this.serverMapLabel.Name = "serverMapLabel";
+            this.serverMapLabel.Size = new System.Drawing.Size(103, 14);
+            this.serverMapLabel.TabIndex = 29;
+            this.serverMapLabel.Text = "Map :";
+            // 
+            // serverMap
+            // 
+            this.serverMap.BackColor = System.Drawing.Color.Transparent;
+            this.serverMap.Cursor = System.Windows.Forms.Cursors.Default;
+            this.serverMap.Font = new System.Drawing.Font("Arial Black", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.serverMap.ForeColor = System.Drawing.SystemColors.WindowFrame;
+            this.serverMap.Location = new System.Drawing.Point(115, 112);
+            this.serverMap.Name = "serverMap";
+            this.serverMap.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.serverMap.Size = new System.Drawing.Size(160, 22);
+            this.serverMap.TabIndex = 28;
+            this.serverMap.Text = "NULL";
+            this.serverMap.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // serverPlayersLabel
+            // 
+            this.serverPlayersLabel.BackColor = System.Drawing.Color.Transparent;
+            this.serverPlayersLabel.Font = new System.Drawing.Font("Microsoft Tai Le", 8F, System.Drawing.FontStyle.Bold);
+            this.serverPlayersLabel.ForeColor = System.Drawing.Color.DodgerBlue;
+            this.serverPlayersLabel.Location = new System.Drawing.Point(6, 92);
+            this.serverPlayersLabel.Name = "serverPlayersLabel";
+            this.serverPlayersLabel.Size = new System.Drawing.Size(103, 14);
+            this.serverPlayersLabel.TabIndex = 27;
+            this.serverPlayersLabel.Text = "Players in game :";
+            // 
+            // serverPlayers
+            // 
+            this.serverPlayers.BackColor = System.Drawing.Color.Transparent;
+            this.serverPlayers.Cursor = System.Windows.Forms.Cursors.Default;
+            this.serverPlayers.Font = new System.Drawing.Font("Arial Black", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.serverPlayers.ForeColor = System.Drawing.SystemColors.WindowFrame;
+            this.serverPlayers.Location = new System.Drawing.Point(115, 89);
+            this.serverPlayers.Name = "serverPlayers";
+            this.serverPlayers.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.serverPlayers.Size = new System.Drawing.Size(160, 22);
+            this.serverPlayers.TabIndex = 26;
+            this.serverPlayers.Text = "NULL";
+            this.serverPlayers.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // serverSeparator
+            // 
+            this.serverSeparator.Location = new System.Drawing.Point(6, 77);
+            this.serverSeparator.Name = "serverSeparator";
+            this.serverSeparator.Size = new System.Drawing.Size(269, 10);
+            this.serverSeparator.TabIndex = 25;
+            // 
+            // serverIPLabel
+            // 
+            this.serverIPLabel.BackColor = System.Drawing.Color.Transparent;
+            this.serverIPLabel.Font = new System.Drawing.Font("Microsoft Tai Le", 8F, System.Drawing.FontStyle.Bold);
+            this.serverIPLabel.ForeColor = System.Drawing.Color.DodgerBlue;
+            this.serverIPLabel.Location = new System.Drawing.Point(7, 55);
+            this.serverIPLabel.Name = "serverIPLabel";
+            this.serverIPLabel.Size = new System.Drawing.Size(102, 14);
+            this.serverIPLabel.TabIndex = 24;
+            this.serverIPLabel.Text = "IP :";
+            // 
+            // serverIP
+            // 
+            this.serverIP.BackColor = System.Drawing.Color.Transparent;
+            this.serverIP.Cursor = System.Windows.Forms.Cursors.Default;
+            this.serverIP.Font = new System.Drawing.Font("Arial Black", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.serverIP.ForeColor = System.Drawing.SystemColors.WindowFrame;
+            this.serverIP.Location = new System.Drawing.Point(116, 52);
+            this.serverIP.Name = "serverIP";
+            this.serverIP.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.serverIP.Size = new System.Drawing.Size(158, 22);
+            this.serverIP.TabIndex = 23;
+            this.serverIP.Text = "NULL";
+            this.serverIP.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // serverStatusLabel
+            // 
+            this.serverStatusLabel.BackColor = System.Drawing.Color.Transparent;
+            this.serverStatusLabel.Font = new System.Drawing.Font("Microsoft Tai Le", 8F, System.Drawing.FontStyle.Bold);
+            this.serverStatusLabel.ForeColor = System.Drawing.Color.DodgerBlue;
+            this.serverStatusLabel.Location = new System.Drawing.Point(7, 32);
+            this.serverStatusLabel.Name = "serverStatusLabel";
+            this.serverStatusLabel.Size = new System.Drawing.Size(102, 14);
+            this.serverStatusLabel.TabIndex = 22;
+            this.serverStatusLabel.Text = "Status :";
+            // 
+            // serverStatus
+            // 
+            this.serverStatus.BackColor = System.Drawing.Color.Transparent;
+            this.serverStatus.Cursor = System.Windows.Forms.Cursors.Default;
+            this.serverStatus.Font = new System.Drawing.Font("Arial Black", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.serverStatus.ForeColor = System.Drawing.SystemColors.WindowFrame;
+            this.serverStatus.Location = new System.Drawing.Point(115, 29);
+            this.serverStatus.Name = "serverStatus";
+            this.serverStatus.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.serverStatus.Size = new System.Drawing.Size(161, 22);
+            this.serverStatus.TabIndex = 21;
+            this.serverStatus.Text = "NULL";
+            this.serverStatus.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
             // taskforceStatus
             // 
             this.taskforceStatus.BackColor = System.Drawing.Color.Transparent;
@@ -358,7 +764,7 @@
             this.playerUIDLabel.ForeColor = System.Drawing.Color.DodgerBlue;
             this.playerUIDLabel.Location = new System.Drawing.Point(6, 84);
             this.playerUIDLabel.Name = "playerUIDLabel";
-            this.playerUIDLabel.Size = new System.Drawing.Size(65, 14);
+            this.playerUIDLabel.Size = new System.Drawing.Size(93, 14);
             this.playerUIDLabel.TabIndex = 20;
             this.playerUIDLabel.Text = "Steam UID:";
             // 
@@ -368,10 +774,10 @@
             this.playerUID.Cursor = System.Windows.Forms.Cursors.Default;
             this.playerUID.Font = new System.Drawing.Font("Arial Black", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.playerUID.ForeColor = System.Drawing.SystemColors.WindowFrame;
-            this.playerUID.Location = new System.Drawing.Point(77, 79);
+            this.playerUID.Location = new System.Drawing.Point(98, 79);
             this.playerUID.Name = "playerUID";
             this.playerUID.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.playerUID.Size = new System.Drawing.Size(196, 22);
+            this.playerUID.Size = new System.Drawing.Size(178, 22);
             this.playerUID.TabIndex = 19;
             this.playerUID.Text = "NULL";
             this.playerUID.TextAlign = System.Drawing.ContentAlignment.TopCenter;
@@ -383,7 +789,7 @@
             this.playerStatusLabel.ForeColor = System.Drawing.Color.DodgerBlue;
             this.playerStatusLabel.Location = new System.Drawing.Point(7, 106);
             this.playerStatusLabel.Name = "playerStatusLabel";
-            this.playerStatusLabel.Size = new System.Drawing.Size(66, 14);
+            this.playerStatusLabel.Size = new System.Drawing.Size(92, 14);
             this.playerStatusLabel.TabIndex = 15;
             this.playerStatusLabel.Text = "Status :";
             // 
@@ -394,7 +800,7 @@
             this.playerEmailLabel.ForeColor = System.Drawing.Color.DodgerBlue;
             this.playerEmailLabel.Location = new System.Drawing.Point(6, 61);
             this.playerEmailLabel.Name = "playerEmailLabel";
-            this.playerEmailLabel.Size = new System.Drawing.Size(65, 14);
+            this.playerEmailLabel.Size = new System.Drawing.Size(93, 14);
             this.playerEmailLabel.TabIndex = 14;
             this.playerEmailLabel.Text = "Email :";
             // 
@@ -405,7 +811,7 @@
             this.playerUsernameLabel.ForeColor = System.Drawing.Color.DodgerBlue;
             this.playerUsernameLabel.Location = new System.Drawing.Point(6, 36);
             this.playerUsernameLabel.Name = "playerUsernameLabel";
-            this.playerUsernameLabel.Size = new System.Drawing.Size(63, 14);
+            this.playerUsernameLabel.Size = new System.Drawing.Size(93, 14);
             this.playerUsernameLabel.TabIndex = 12;
             this.playerUsernameLabel.Text = "Username :";
             // 
@@ -415,10 +821,10 @@
             this.playerStatus.Cursor = System.Windows.Forms.Cursors.Default;
             this.playerStatus.Font = new System.Drawing.Font("Arial Black", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.playerStatus.ForeColor = System.Drawing.SystemColors.WindowFrame;
-            this.playerStatus.Location = new System.Drawing.Point(78, 103);
+            this.playerStatus.Location = new System.Drawing.Point(99, 103);
             this.playerStatus.Name = "playerStatus";
             this.playerStatus.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.playerStatus.Size = new System.Drawing.Size(194, 22);
+            this.playerStatus.Size = new System.Drawing.Size(177, 22);
             this.playerStatus.TabIndex = 16;
             this.playerStatus.Text = "NULL";
             this.playerStatus.TextAlign = System.Drawing.ContentAlignment.TopCenter;
@@ -429,10 +835,10 @@
             this.playerEmail.Cursor = System.Windows.Forms.Cursors.Default;
             this.playerEmail.Font = new System.Drawing.Font("Arial Black", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.playerEmail.ForeColor = System.Drawing.SystemColors.WindowFrame;
-            this.playerEmail.Location = new System.Drawing.Point(77, 56);
+            this.playerEmail.Location = new System.Drawing.Point(98, 56);
             this.playerEmail.Name = "playerEmail";
             this.playerEmail.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.playerEmail.Size = new System.Drawing.Size(196, 22);
+            this.playerEmail.Size = new System.Drawing.Size(178, 22);
             this.playerEmail.TabIndex = 13;
             this.playerEmail.Text = "NULL";
             this.playerEmail.TextAlign = System.Drawing.ContentAlignment.TopCenter;
@@ -443,10 +849,10 @@
             this.playerUsername.Cursor = System.Windows.Forms.Cursors.Default;
             this.playerUsername.Font = new System.Drawing.Font("Arial Black", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.playerUsername.ForeColor = System.Drawing.SystemColors.WindowFrame;
-            this.playerUsername.Location = new System.Drawing.Point(75, 33);
+            this.playerUsername.Location = new System.Drawing.Point(96, 33);
             this.playerUsername.Name = "playerUsername";
             this.playerUsername.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.playerUsername.Size = new System.Drawing.Size(200, 22);
+            this.playerUsername.Size = new System.Drawing.Size(180, 22);
             this.playerUsername.TabIndex = 10;
             this.playerUsername.Text = "NULL";
             this.playerUsername.TextAlign = System.Drawing.ContentAlignment.TopCenter;
@@ -711,8 +1117,11 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1000, 500);
-            this.Controls.Add(this.forceUpdate);
             this.Controls.Add(this.playButton);
+            this.Controls.Add(this.supportButton);
+            this.Controls.Add(this.usefulBox);
+            this.Controls.Add(this.playerInGameBox);
+            this.Controls.Add(this.serverBox);
             this.Controls.Add(this.chooseButton);
             this.Controls.Add(this.taskforceBox);
             this.Controls.Add(this.playerBox);
@@ -728,6 +1137,7 @@
             this.Controls.Add(this.estimedTime);
             this.Controls.Add(this.downloadProgress);
             this.Controls.Add(this.directoryLabel);
+            this.Controls.Add(this.forceUpdate);
             this.ForeColor = System.Drawing.Color.Black;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
@@ -745,6 +1155,11 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
             this.taskforceBox.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.taskforceIcon)).EndInit();
+            this.serverBox.ResumeLayout(false);
+            this.playerInGameBox.ResumeLayout(false);
+            this.usefulBox.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.teamspeakIcon)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.websiteIcon)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -802,5 +1217,34 @@
         private iTalk.iTalk_Label taskforceVersionLabel;
         private MaterialSkin.Controls.MaterialRaisedButton taskforceButton;
         private FlatUI.FlatLabel taskforceStatus;
+        private System.Windows.Forms.GroupBox serverBox;
+        private iTalk.iTalk_Separator serverSeparator;
+        private FlatUI.FlatLabel serverIPLabel;
+        private FlatUI.FlatLabel serverIP;
+        private FlatUI.FlatLabel serverStatusLabel;
+        private FlatUI.FlatLabel serverStatus;
+        private FlatUI.FlatLabel serverMapLabel;
+        private FlatUI.FlatLabel serverMap;
+        private FlatUI.FlatLabel serverPlayersLabel;
+        private FlatUI.FlatLabel serverPlayers;
+        private System.Windows.Forms.GroupBox playerInGameBox;
+        private System.Windows.Forms.GroupBox usefulBox;
+        private FlatUI.FlatLabel IGplayerLabel_bank;
+        private FlatUI.FlatLabel IGplayer_bank;
+        private FlatUI.FlatLabel IGplayerLabel_cash;
+        private FlatUI.FlatLabel IGplayer_cash;
+        private FlatUI.FlatLabel IGplayerLabel_mediclevel;
+        private FlatUI.FlatLabel IGplayer_mediclevel;
+        private FlatUI.FlatLabel IGplayerLabel_coplevel;
+        private FlatUI.FlatLabel IGplayer_coplevel;
+        private FlatUI.FlatLabel IGplayerLabel_adminlevel;
+        private FlatUI.FlatLabel IGplayer_adminlevel;
+        private FlatUI.FlatLabel IGplayerLabel_username;
+        private FlatUI.FlatLabel IGplayer_username;
+        private MaterialSkin.Controls.MaterialRaisedButton supportButton;
+        private MaterialSkin.Controls.MaterialRaisedButton visitTeamSpeakButton;
+        private MaterialSkin.Controls.MaterialRaisedButton visitSiteButton;
+        private System.Windows.Forms.PictureBox teamspeakIcon;
+        private System.Windows.Forms.PictureBox websiteIcon;
     }
 }

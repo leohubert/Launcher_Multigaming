@@ -2,7 +2,7 @@ Ne pas oublier d'allow all les .htaccess dans /etc/apache2/apache2.conf
 
 et de taper "sudo a2enmod rewrite"
 
-Augmenter dans php.ini "upload_max_filesize" à 20M
+Augmenter dans php.ini "upload_max_filesize" à 20M ou plus
 
 chmod 777 -R /var/www/html/arma3/launcher/
 chmod 777 -R /var/www/html/configs/

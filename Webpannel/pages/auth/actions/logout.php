@@ -6,5 +6,6 @@
  * Time: 03:02
  */
 session_destroy();
-
+setcookie("token", "", time() - 3600);
+setcookie("locked", "", time() - 3600);
 header("location: /");

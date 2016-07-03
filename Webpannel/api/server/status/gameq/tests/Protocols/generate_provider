@@ -1,0 +1,119 @@
+#!/usr/bin/env php
+<?php
+/**
+ * This file is part of GameQ.
+ *
+ * GameQ is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU Lesser General Public License as published by
+ * the Free Software Foundation; either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * GameQ is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU Lesser General Public License for more details.
+ *
+ * You should have received a copy of the GNU Lesser General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ */
+
+/*
+ * This file will query a single server and save the contents of the raw packet responses as well as the parsed
+ * packets into their own indexed files underneath tests/Protocols/Providers/.  These are used for unit testing of
+ * the protocol classes to make sure changes do not break existing functionality. Something v2 had a few problems with.
+ *
+ * Requires composer install in dev mode
+ *
+ * Usage examples:
+ * $ php tests/Protocols/generate_provider -s 127.0.0.1:27015 -p css
+ * $ php tests/Protocols/generate_provider -s 127.0.0.1:27015 -p css -o '{"query_port":27018}'
+ */
+
+require __DIR__ . '/../../vendor/autoload.php';
+
+use GetOptionKit\OptionCollection;
+use GetOptionKit\OptionParser;
+
+$specs = new OptionCollection;
+$specs->add('s|server:', 'Server to contact ip|hostname:port')
+      ->isa('String');
+
+$specs->add('p|protocol:', 'Protocol of the server')
+      ->isa('String');
+
+$specs->add('o|options:', 'Optional: Server options such as query port')
+      ->isa('String');
+
+$parser = new OptionParser($specs);
+
+try {
+    // Parse the argv
+    $result = $parser->parse($argv);
+
+    // Get the options
+    $options = $result->toArray();
+
+    // Make sure options exist
+    if (!array_key_exists('server', $options) || !array_key_exists('protocol', $options)) {
+        throw new Exception('Missing arguments');
+    }
+
+    // Check the options
+    if (array_key_exists('options', $options)) {
+        if (($server_options = json_decode($options['options'], true)) === null) {
+            throw new Exception('The options setting must be a JSON string');
+        }
+    } else {
+        $server_options = [ ];
+    }
+
+    // Build the directory where we want to store this data
+    $provider_dir = sprintf('%s/Providers/%s', __DIR__, ucfirst(strtolower($options['protocol'])));
+
+    // Make the directory if it does not already exist
+    if (!is_dir($provider_dir)) {
+        mkdir($provider_dir, null, true);
+    }
+
+    // Figure out the number of files in the provider directory
+    $pd = new FilesystemIterator($provider_dir, FilesystemIterator::SKIP_DOTS);
+
+    // Figure out the index by taking the count and divide by 2 since there are 2 files for each server test
+    $index = (iterator_count($pd) / 2) + 1;
+
+    unset($pd);
+
+    // Let's do GameQ
+    $gq = new \GameQ\GameQ();
+    $gq->removeFilter('normalize'); // We dont care about normalize for testing the core
+    $gq->setOption('debug', true);
+    $gq->setOption('timeout', 10);
+    $gq->setOption('stream_timeout', 900000);
+    $gq->setOption('capture_packets_file', sprintf('%s/%d_response.txt', $provider_dir, $index));
+
+    // Add our test server
+    $gq->addServer([
+        \GameQ\Server::SERVER_ID      => $options['server'],
+        \GameQ\Server::SERVER_TYPE    => $options['protocol'],
+        \GameQ\Server::SERVER_HOST    => $options['server'],
+        \GameQ\Server::SERVER_OPTIONS => $server_options,
+    ]);
+
+    // Process
+    $results = $gq->process();
+
+    // Save the result into a file
+    $result = file_put_contents(sprintf('%s/%d_result.json', $provider_dir, $index), json_encode(
+        $results,
+        JSON_UNESCAPED_UNICODE
+    ));
+
+    exit(0);
+} catch (Exception $e) {
+    echo $e->getMessage() . PHP_EOL;
+
+    $printer = new GetOptionKit\OptionPrinter\ConsoleOptionPrinter;
+    echo $printer->render($specs) . PHP_EOL;
+
+    exit(1);
+}

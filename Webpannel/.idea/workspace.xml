@@ -22,65 +22,91 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="index.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/index.php">
+      <file leaf-file-name="login.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/api/login.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1870">
-              <caret line="110" column="67" selection-start-line="110" selection-start-column="67" selection-end-line="110" selection-end-column="67" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="register.php" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/api/register.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="306">
-              <caret line="23" column="48" selection-start-line="23" selection-start-column="48" selection-end-line="23" selection-end-column="48" />
+            <state relative-caret-position="561">
+              <caret line="38" column="58" selection-start-line="38" selection-start-column="58" selection-end-line="38" selection-end-column="58" />
               <folding>
-                <marker date="1466715457825" expanded="true" signature="583:622" placeholder="SELECT * FRO... settings" />
-                <marker date="1466715457825" expanded="true" signature="2009:2049" placeholder="SELECT * FRO... users" />
-                <marker date="1466715457825" expanded="true" signature="2241:2287" placeholder="SELECT * FRO... users" />
-                <marker date="1466715457825" expanded="true" signature="2977:3106" placeholder="INSERT INTO `users`... " />
+                <marker date="1467413200872" expanded="true" signature="297:346" placeholder="SELECT user_... sessions" />
+                <marker date="1467413200872" expanded="true" signature="552:586" placeholder="SELECT * FRO... users" />
+                <marker date="1467413200872" expanded="true" signature="810:861" placeholder="SELECT id FR... users" />
+                <marker date="1467413200872" expanded="true" signature="2422:2483" placeholder="SELECT * FRO... users" />
+                <marker date="1467413200872" expanded="true" signature="2926:2977" placeholder="SELECT id FR... users" />
+                <marker date="1467413200872" expanded="true" signature="3257:3308" placeholder="SELECT token... sessions" />
+                <marker date="1467413200872" expanded="true" signature="3513:3581" placeholder="INSERT INTO `sessions`... " />
+                <marker date="1467413200872" expanded="true" signature="3783:3838" placeholder="UPDATE sessi... " />
+                <marker date="1467413200872" expanded="true" signature="4152:4198" placeholder="UPDATE users... " />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="index.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/pages/admin/index.php">
+      <file leaf-file-name="settings.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/api/settings.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="3825">
-              <caret line="225" column="84" selection-start-line="225" selection-start-column="84" selection-end-line="225" selection-end-column="84" />
-              <folding />
+            <state relative-caret-position="408">
+              <caret line="29" column="35" selection-start-line="29" selection-start-column="35" selection-end-line="29" selection-end-column="35" />
+              <folding>
+                <marker date="1467554256963" expanded="true" signature="238:277" placeholder="SELECT * FRO... settings" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file leaf-file-name="view.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/pages/admin/news/view.php">
+        <entry file="file://$PROJECT_DIR$/pages/profile/view.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="3043">
-              <caret line="184" column="56" selection-start-line="184" selection-start-column="56" selection-end-line="184" selection-end-column="56" />
-              <folding>
-                <element signature="e#6#88#0#PHP" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="taskforce.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/api/arma3/taskforce.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="646">
-              <caret line="43" column="26" selection-start-line="43" selection-start-column="26" selection-end-line="43" selection-end-column="26" />
+            <state relative-caret-position="34">
+              <caret line="188" column="0" selection-start-line="188" selection-start-column="0" selection-end-line="188" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="download_launcher.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/api/arma3/download_launcher.php">
+      <file leaf-file-name="get.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/api/server/client/players/get.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="153">
+              <caret line="14" column="26" selection-start-line="14" selection-start-column="26" selection-end-line="14" selection-end-column="26" />
+              <folding>
+                <marker date="1467554863598" expanded="true" signature="441:490" placeholder="SELECT user_... sessions" />
+                <marker date="1467554863598" expanded="true" signature="649:704" placeholder="SELECT `leve... users" />
+                <marker date="1467554863598" expanded="true" signature="998:1040" placeholder="SELECT * FRO... players" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="get.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/api/server/admin/players/get.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="153">
+              <caret line="14" column="26" selection-start-line="14" selection-start-column="26" selection-end-line="14" selection-end-column="26" />
+              <folding>
+                <marker date="1467554868531" expanded="true" signature="492:541" placeholder="SELECT user_... sessions" />
+                <marker date="1467554868531" expanded="true" signature="700:749" placeholder="SELECT `leve... users" />
+                <marker date="1467554868531" expanded="true" signature="1044:1086" placeholder="SELECT * FRO... players" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="view.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/pages/admin/users/view.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="504">
+              <caret line="265" column="97" selection-start-line="265" selection-start-column="32" selection-end-line="265" selection-end-column="97" />
+              <folding>
+                <marker date="1467231721170" expanded="true" signature="11018:11048" placeholder="..." />
+                <marker date="1467231721170" expanded="true" signature="11543:11575" placeholder="..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="mysql_connect.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/configs/mysql_connect.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="0">
               <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -89,47 +115,32 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="addons.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/api/arma3/addons.php">
+      <file leaf-file-name="config_general.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/configs/config_general.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="544">
-              <caret line="37" column="79" selection-start-line="37" selection-start-column="39" selection-end-line="37" selection-end-column="79" />
+            <state relative-caret-position="119">
+              <caret line="7" column="16" selection-start-line="7" selection-start-column="16" selection-end-line="7" selection-end-column="16" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="download.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/api/arma3/download.php">
+      <file leaf-file-name="note" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/note">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="153">
-              <caret line="14" column="14" selection-start-line="14" selection-start-column="8" selection-end-line="14" selection-end-column="14" />
+            <state relative-caret-position="68">
+              <caret line="4" column="58" selection-start-line="4" selection-start-column="58" selection-end-line="4" selection-end-column="58" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="view.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/pages/admin/support/view.php">
+      <file leaf-file-name="index.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/install/index.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1955">
-              <caret line="120" column="12" selection-start-line="120" selection-start-column="12" selection-end-line="120" selection-end-column="51" />
+            <state relative-caret-position="597">
+              <caret line="279" column="44" selection-start-line="279" selection-start-column="44" selection-end-line="279" selection-end-column="44" />
               <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="edit.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/api/news/admin/edit.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="425">
-              <caret line="30" column="82" selection-start-line="30" selection-start-column="82" selection-end-line="30" selection-end-column="82" />
-              <folding>
-                <element signature="e#6#92#0#PHP" expanded="true" />
-                <marker date="1466688829485" expanded="true" signature="538:587" placeholder="SELECT user_... sessions" />
-                <marker date="1466688829485" expanded="true" signature="746:795" placeholder="SELECT `leve... users" />
-                <marker date="1466688829485" expanded="true" signature="1086:1146" placeholder="UPDATE `news... " />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -147,56 +158,57 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/configs/save_config_mysql.php" />
-        <option value="$PROJECT_DIR$/theme/form-wizard.html" />
-        <option value="$PROJECT_DIR$/assets/css/menu.css" />
-        <option value="$PROJECT_DIR$/install/images/mysql_inject.php" />
-        <option value="$PROJECT_DIR$/configs/config_mysql.php" />
-        <option value="$PROJECT_DIR$/install/config.php" />
-        <option value="$PROJECT_DIR$/install/finish.php" />
-        <option value="$PROJECT_DIR$/pages/auth/register.php" />
-        <option value="$PROJECT_DIR$/install/install_finish.php" />
-        <option value="$PROJECT_DIR$/install/index.php" />
-        <option value="$PROJECT_DIR$/configs/config_general.php" />
-        <option value="$PROJECT_DIR$/api/users/admin/admins.php" />
-        <option value="$PROJECT_DIR$/api/users/admin/banned.php" />
-        <option value="$PROJECT_DIR$/pages/admin/users/banned.php" />
-        <option value="$PROJECT_DIR$/pages/admin/users/admins.php" />
-        <option value="$PROJECT_DIR$/jointures/header_client.php" />
-        <option value="$PROJECT_DIR$/api/support/admin/create.php" />
-        <option value="$PROJECT_DIR$/pages/client/support/view.php" />
-        <option value="$PROJECT_DIR$/api/users/admin/save.php" />
-        <option value="$PROJECT_DIR$/pages/admin/support/view.php" />
-        <option value="$PROJECT_DIR$/api/update/loginNews.php" />
-        <option value="$PROJECT_DIR$/api/login.php" />
-        <option value="$PROJECT_DIR$/api/switch/taskforce.php" />
-        <option value="$PROJECT_DIR$/theme/ui-modals.html" />
-        <option value="$PROJECT_DIR$/assets/js/pageloader.js" />
-        <option value="$PROJECT_DIR$/assets/css/loadpage.css" />
-        <option value="$PROJECT_DIR$/install/sql_inject.sql" />
-        <option value="$PROJECT_DIR$/api/settings.php" />
-        <option value="$PROJECT_DIR$/api/update/vtaskforce.php" />
-        <option value="$PROJECT_DIR$/install/finish_config.php" />
-        <option value="$PROJECT_DIR$/install/mysql_inject.php" />
-        <option value="$PROJECT_DIR$/install/mysql_test.php" />
+        <option value="$PROJECT_DIR$/api/server/user/players/get.php" />
         <option value="$PROJECT_DIR$/configs/mysql_connect.php" />
-        <option value="$PROJECT_DIR$/jointures/header_admin.php" />
-        <option value="$PROJECT_DIR$/pages/admin/settings/settings.php" />
-        <option value="$PROJECT_DIR$/note" />
-        <option value="$PROJECT_DIR$/api/news/news_launcher.php" />
+        <option value="$USER_HOME$/Desktop/Save/Example.php" />
+        <option value="$USER_HOME$/Desktop/Save/View.php" />
+        <option value="$USER_HOME$/Desktop/Save/index.php" />
+        <option value="$USER_HOME$/Desktop/Save/config.inc.php" />
+        <option value="$PROJECT_DIR$/api/server/stats/query-servers.php" />
+        <option value="$PROJECT_DIR$/api/server/stats/index.php" />
+        <option value="$PROJECT_DIR$/api/server/stats/config.inc.php" />
+        <option value="$PROJECT_DIR$/api/server/status/index.php" />
+        <option value="$PROJECT_DIR$/api/server/status/config.inc.php" />
+        <option value="$PROJECT_DIR$/errors/404.php" />
+        <option value="$PROJECT_DIR$/api/users/admin/admins.php" />
+        <option value="$PROJECT_DIR$/api/users/admin/all.php" />
+        <option value="$PROJECT_DIR$/api/users/admin/banned.php" />
+        <option value="$PROJECT_DIR$/pages/admin/users/admins.php" />
         <option value="$PROJECT_DIR$/pages/admin/users/all.php" />
-        <option value="$PROJECT_DIR$/api/news/admin/list.php" />
+        <option value="$PROJECT_DIR$/pages/admin/users/banned.php" />
+        <option value="$PROJECT_DIR$/api/users/admin/delete.php" />
+        <option value="$PROJECT_DIR$/api/users/admin/remove.php" />
+        <option value="$PROJECT_DIR$/pages/auth/lock.php" />
+        <option value="$PROJECT_DIR$/pages/auth/logout.php" />
+        <option value="$PROJECT_DIR$/pages/auth/lockscreen.php" />
+        <option value="$PROJECT_DIR$/pages/auth/actions/lock.php" />
+        <option value="$PROJECT_DIR$/pages/admin/support/view.php" />
+        <option value="$PROJECT_DIR$/pages/auth/locked.php" />
         <option value="$PROJECT_DIR$/pages/admin/index.php" />
+        <option value="$PROJECT_DIR$/pages/admin/profile/view.php" />
+        <option value="$PROJECT_DIR$/pages/auth/login.php" />
+        <option value="$PROJECT_DIR$/jointures/header_admin.php" />
+        <option value="$PROJECT_DIR$/jointures/header_client.php" />
+        <option value="$PROJECT_DIR$/pages/auth/actions/refresh.php" />
+        <option value="$PROJECT_DIR$/pages/client/index.php" />
         <option value="$PROJECT_DIR$/pages/admin/users/view.php" />
-        <option value="$PROJECT_DIR$/api/news/admin/create.php" />
-        <option value="$PROJECT_DIR$/api/news/admin/remove.php" />
-        <option value="$PROJECT_DIR$/api/news/admin/get.php" />
-        <option value="$PROJECT_DIR$/pages/admin/news/news.php" />
+        <option value="$PROJECT_DIR$/api/users/client/save.php" />
+        <option value="$PROJECT_DIR$/api/users/client/changepass.php" />
+        <option value="$PROJECT_DIR$/pages/profile/edit.php" />
+        <option value="$PROJECT_DIR$/api/login.php" />
+        <option value="$PROJECT_DIR$/jointures/footer.php" />
+        <option value="$PROJECT_DIR$/install/save_config.php" />
+        <option value="$PROJECT_DIR$/install/mysql_server.php" />
+        <option value="$PROJECT_DIR$/theme/form-advanced.html" />
         <option value="$PROJECT_DIR$/index.php" />
-        <option value="$PROJECT_DIR$/api/news/admin/edit.php" />
-        <option value="$PROJECT_DIR$/pages/admin/news/view.php" />
-        <option value="$PROJECT_DIR$/api/arma3/taskforce.php" />
-        <option value="$PROJECT_DIR$/api/register.php" />
+        <option value="$PROJECT_DIR$/install/index.php" />
+        <option value="$PROJECT_DIR$/install/switch_status.php" />
+        <option value="$PROJECT_DIR$/api/settings.php" />
+        <option value="$PROJECT_DIR$/pages/profile/view.php" />
+        <option value="$PROJECT_DIR$/api/server/client/players/get.php" />
+        <option value="$PROJECT_DIR$/api/server/admin/players/get.php" />
+        <option value="$PROJECT_DIR$/configs/config_general.php" />
+        <option value="$PROJECT_DIR$/note" />
       </list>
     </option>
   </component>
@@ -210,10 +222,10 @@
   </component>
   <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
   <component name="ProjectFrameBounds">
-    <option name="x" value="1912" />
-    <option name="y" value="-20" />
+    <option name="x" value="-19" />
+    <option name="y" value="64" />
     <option name="width" value="1936" />
-    <option name="height" value="1056" />
+    <option name="height" value="1041" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
     <OptionsSetting value="true" id="Add" />
@@ -240,8 +252,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scratches" />
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -260,8 +270,24 @@
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
           </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Webpannel" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Webpannel" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="configs" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+          </PATH>
         </subPane>
       </pane>
+      <pane id="Scratches" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -272,18 +298,18 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\leohu\Documents\GitHub\Launcher_Arma3\Webpannel\api\news\admin" />
-      <recent name="C:\Users\leohu\Documents\GitHub\Launcher_Arma3\Webpannel\pages\admin\news" />
-      <recent name="C:\Users\leohu\Documents\GitHub\Launcher_Arma3\Webpannel\api\update" />
-      <recent name="C:\Users\leohu\Documents\GitHub\Launcher_Arma3\Webpannel\api\arma3" />
-      <recent name="C:\Users\leohu\Documents\GitHub\Launcher_Arma3\Webpannel\api\switch" />
+      <recent name="C:\Users\leohu\Documents\GitHub\Launcher_Arma3\Webpannel\install" />
+      <recent name="C:\Users\leohu\Documents\GitHub\Launcher_Arma3\Webpannel\api\users\client" />
+      <recent name="C:\Users\leohu\Documents\GitHub\Launcher_Arma3\Webpannel\pages\profile" />
+      <recent name="C:\Users\leohu\Documents\GitHub\Launcher_Arma3\Webpannel\pages\auth\actions" />
+      <recent name="C:\Users\leohu\Documents\GitHub\Launcher_Arma3\Webpannel\pages\admin\profile" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\leohu\Documents\GitHub\Launcher_Arma3\Webpannel\arma3\taskforce" />
-      <recent name="C:\Users\leohu\Documents\GitHub\Launcher_Arma3\Webpannel\assets\images" />
+      <recent name="C:\Users\leohu\Documents\GitHub\Launcher_Arma3\Webpannel\pages" />
+      <recent name="C:\Users\leohu\Documents\GitHub\Launcher_Arma3\Webpannel\pages\auth\actions" />
+      <recent name="C:\Users\leohu\Documents\GitHub\Launcher_Arma3\Webpannel\pages\auth" />
+      <recent name="C:\Users\leohu\Documents\GitHub\Launcher_Arma3\Webpannel\api\server\admin" />
       <recent name="C:\Users\leohu\Documents\GitHub\Launcher_Arma3\Webpannel\api" />
-      <recent name="C:\Users\leohu\Documents\GitHub\Launcher_Arma3\Webpannel\api\news" />
-      <recent name="C:\Users\leohu\Documents\GitHub\Launcher_Arma3\Webpannel\install" />
     </key>
   </component>
   <component name="RunManager">
@@ -340,21 +366,28 @@
       <workItem from="1466678068554" duration="16359000" />
       <workItem from="1466715439627" duration="620000" />
       <workItem from="1466727334852" duration="619000" />
+      <workItem from="1467186306410" duration="9000" />
+      <workItem from="1467186345465" duration="17856000" />
+      <workItem from="1467228133587" duration="11096000" />
+      <workItem from="1467370966256" duration="9853000" />
+      <workItem from="1467407975147" duration="1583000" />
+      <workItem from="1467550917791" duration="4696000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="64124000" />
+    <option name="totallyTimeSpent" value="109217000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="1912" y="-20" width="1936" height="1056" extended-state="6" />
+    <frame x="-19" y="64" width="1936" height="1041" extended-state="0" />
     <editor active="false" />
     <layout>
       <window_info id="Remote Host" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.1828125" sideWeight="0.5" order="1" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.011627907" sideWeight="0.56993735" order="0" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.007399577" sideWeight="0.5734375" order="0" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="File Transfer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.024704618" sideWeight="0.4265625" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -363,7 +396,6 @@
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="File Transfer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.011739595" sideWeight="0.43006262" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="combo" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -389,388 +421,414 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/install/install_finish.php">
+    <entry file="file://$PROJECT_DIR$/api/server/stats/images/arma2.jpg" />
+    <entry file="file://$PROJECT_DIR$/api/server/status/index.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="748">
-          <caret line="44" column="18" selection-start-line="44" selection-start-column="18" selection-end-line="44" selection-end-column="18" />
+        <state relative-caret-position="459">
+          <caret line="27" column="29" selection-start-line="27" selection-start-column="29" selection-end-line="27" selection-end-column="29" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/install/index.php">
+    <entry file="file://$USER_HOME$/AppData/Local/Temp/Rar$DIa0.380/query-servers.php" />
+    <entry file="file://$PROJECT_DIR$/api/server/status/index.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2703">
-          <caret line="159" column="45" selection-start-line="159" selection-start-column="45" selection-end-line="159" selection-end-column="45" />
+        <state relative-caret-position="68">
+          <caret line="4" column="41" selection-start-line="4" selection-start-column="41" selection-end-line="4" selection-end-column="41" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/theme/extras-maintenance.html">
+    <entry file="file://$PROJECT_DIR$/api/server/status/config.inc.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="11" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="84" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/api/users/admin/admins.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="25" column="91" selection-start-line="25" selection-start-column="73" selection-end-line="25" selection-end-column="91" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/api/users/admin/banned.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="25" column="91" selection-start-line="25" selection-start-column="91" selection-end-line="25" selection-end-column="91" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pages/admin/users/banned.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="381">
-          <caret line="54" column="55" selection-start-line="54" selection-start-column="55" selection-end-line="54" selection-end-column="55" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/jointures/header_client.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="297">
-          <caret line="169" column="15" selection-start-line="169" selection-start-column="15" selection-end-line="169" selection-end-column="15" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/api/users/admin/save.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="476">
-          <caret line="39" column="97" selection-start-line="39" selection-start-column="97" selection-end-line="39" selection-end-column="97" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pages/client/support/view.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="374">
-          <caret line="190" column="41" selection-start-line="189" selection-start-column="19" selection-end-line="190" selection-end-column="41" />
+        <state relative-caret-position="51">
+          <caret line="3" column="0" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/api/update/loginNews.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="25" column="95" selection-start-line="25" selection-start-column="95" selection-end-line="25" selection-end-column="95" />
+        <state relative-caret-position="493">
+          <caret line="34" column="10" selection-start-line="34" selection-start-column="10" selection-end-line="35" selection-end-column="81" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/api/login.php">
+    <entry file="file://$PROJECT_DIR$/errors/404.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="16" column="0" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
+        <state relative-caret-position="221">
+          <caret line="37" column="55" selection-start-line="37" selection-start-column="55" selection-end-line="37" selection-end-column="55" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/pages/auth/login.php">
+    <entry file="file://$PROJECT_DIR$/pages/admin/users/admins.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1972">
+          <caret line="100" column="0" selection-start-line="100" selection-start-column="0" selection-end-line="103" selection-end-column="69" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/api/users/admin/admins.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="612">
+          <caret line="41" column="0" selection-start-line="41" selection-start-column="0" selection-end-line="41" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/api/users/admin/all.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="595">
+          <caret line="40" column="62" selection-start-line="40" selection-start-column="62" selection-end-line="40" selection-end-column="62" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pages/admin/users/all.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="544">
+          <caret line="104" column="69" selection-start-line="104" selection-start-column="69" selection-end-line="104" selection-end-column="69" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pages/admin/users/banned.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="493">
+          <caret line="98" column="69" selection-start-line="98" selection-start-column="69" selection-end-line="98" selection-end-column="69" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/api/users/admin/banned.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="595">
+          <caret line="40" column="62" selection-start-line="40" selection-start-column="62" selection-end-line="40" selection-end-column="62" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/api/users/admin/remove.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="340">
+          <caret line="25" column="13" selection-start-line="25" selection-start-column="13" selection-end-line="25" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pages/auth/actions/logout.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="7" column="0" selection-start-line="7" selection-start-column="0" selection-end-line="10" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pages/auth/actions/lock.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="9" column="29" selection-start-line="9" selection-start-column="29" selection-end-line="9" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/api/users/admin/get.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/theme/ui-modals.html">
+    <entry file="file://$PROJECT_DIR$/pages/admin/support/view.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="604">
-          <caret line="927" column="3" selection-start-line="927" selection-start-column="3" selection-end-line="929" selection-end-column="75" />
+        <state relative-caret-position="833">
+          <caret line="54" column="87" selection-start-line="54" selection-start-column="87" selection-end-line="54" selection-end-column="87" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/assets/js/pageloader.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="4" column="0" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/assets/css/loadpage.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1207">
-          <caret line="71" column="1" selection-start-line="71" selection-start-column="1" selection-end-line="71" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/api/switch/taskforce.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="425">
-          <caret line="30" column="39" selection-start-line="30" selection-start-column="39" selection-end-line="30" selection-end-column="39" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/install/sql_inject.sql">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1241">
-          <caret line="73" column="198" selection-start-line="73" selection-start-column="198" selection-end-line="73" selection-end-column="198" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/api/settings.php">
+    <entry file="file://$PROJECT_DIR$/pages/auth/register.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="340">
-          <caret line="25" column="50" selection-start-line="25" selection-start-column="50" selection-end-line="25" selection-end-column="50" />
+          <caret line="20" column="0" selection-start-line="20" selection-start-column="0" selection-end-line="21" selection-end-column="113" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/api/update/vtaskforce.php">
+    <entry file="file://$PROJECT_DIR$/pages/auth/locked.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="408">
-          <caret line="29" column="47" selection-start-line="29" selection-start-column="47" selection-end-line="29" selection-end-column="47" />
+        <state relative-caret-position="663">
+          <caret line="39" column="26" selection-start-line="39" selection-start-column="26" selection-end-line="39" selection-end-column="26" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/install/finish_config.php">
+    <entry file="file://$PROJECT_DIR$/api/users/client/get.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="12" column="213" selection-start-line="12" selection-start-column="213" selection-end-line="12" selection-end-column="213" />
+        <state relative-caret-position="221">
+          <caret line="18" column="31" selection-start-line="16" selection-start-column="3" selection-end-line="18" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/jointures/header_client.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="395">
+          <caret line="77" column="90" selection-start-line="77" selection-start-column="90" selection-end-line="77" selection-end-column="90" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pages/auth/login.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="783">
+          <caret line="177" column="7" selection-start-line="7" selection-start-column="0" selection-end-line="177" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pages/auth/actions/refresh.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="579">
+          <caret line="51" column="36" selection-start-line="51" selection-start-column="36" selection-end-line="51" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pages/client/index.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="157">
+          <caret line="254" column="44" selection-start-line="254" selection-start-column="44" selection-end-line="254" selection-end-column="44" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pages/admin/index.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="570">
+          <caret line="372" column="30" selection-start-line="354" selection-start-column="23" selection-end-line="372" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/api/users/admin/save.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="493">
+          <caret line="34" column="13" selection-start-line="34" selection-start-column="13" selection-end-line="34" selection-end-column="13" />
           <folding>
-            <marker date="1466647159205" expanded="true" signature="1403:1556" placeholder="INSERT INTO `users`... " />
+            <marker date="1466548213000" expanded="true" signature="727:776" placeholder="SELECT user_... sessions" />
+            <marker date="1466548213000" expanded="true" signature="935:984" placeholder="SELECT `leve... users" />
+            <marker date="1466548213000" expanded="true" signature="1214:1248" placeholder="SELECT * FRO... users" />
+            <marker date="1466548213000" expanded="true" signature="1651:1780" placeholder="UPDATE `user... " />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/install/mysql_inject.php">
+    <entry file="file://$PROJECT_DIR$/api/users/client/save.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="14" column="84" selection-start-line="14" selection-start-column="84" selection-end-line="14" selection-end-column="84" />
+        <state relative-caret-position="442">
+          <caret line="31" column="35" selection-start-line="31" selection-start-column="35" selection-end-line="31" selection-end-column="35" />
+          <folding>
+            <marker date="1467400149964" expanded="true" signature="488:537" placeholder="SELECT user_... sessions" />
+            <marker date="1467400149964" expanded="true" signature="696:745" placeholder="SELECT `leve... users" />
+            <marker date="1467400149964" expanded="true" signature="999:1076" placeholder="UPDATE `user... " />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/api/register.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="425">
+          <caret line="30" column="45" selection-start-line="30" selection-start-column="16" selection-end-line="30" selection-end-column="45" />
+          <folding>
+            <marker date="1467187658610" expanded="true" signature="698:737" placeholder="SELECT * FRO... settings" />
+            <marker date="1467187658610" expanded="true" signature="2120:2162" placeholder="SELECT `id` users" />
+            <marker date="1467187658610" expanded="true" signature="2355:2395" placeholder="SELECT * FRO... users" />
+            <marker date="1467187658610" expanded="true" signature="2587:2633" placeholder="SELECT * FRO... users" />
+            <marker date="1467187658610" expanded="true" signature="3081:3210" placeholder="INSERT INTO `users`... " />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/api/users/client/changepass.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="612">
+          <caret line="41" column="58" selection-start-line="41" selection-start-column="58" selection-end-line="41" selection-end-column="58" />
+          <folding>
+            <marker date="1467401115005" expanded="true" signature="721:770" placeholder="SELECT user_... sessions" />
+            <marker date="1467401115005" expanded="true" signature="929:989" placeholder="SELECT `leve... users" />
+            <marker date="1467401115005" expanded="true" signature="1485:1537" placeholder="UPDATE `user... " />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pages/profile/edit.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="4828">
+          <caret line="284" column="78" selection-start-line="284" selection-start-column="78" selection-end-line="284" selection-end-column="78" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/jointures/footer.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="16" column="13" selection-start-line="16" selection-start-column="13" selection-end-line="16" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/jointures/header_admin.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="344">
+          <caret line="72" column="90" selection-start-line="72" selection-start-column="41" selection-end-line="72" selection-end-column="90" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/install/mysql_test.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="14" column="84" selection-start-line="14" selection-start-column="84" selection-end-line="14" selection-end-column="84" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/configs/config_general.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="6" column="20" selection-start-line="6" selection-start-column="19" selection-end-line="6" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/configs/mysql_connect.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="13" column="1" selection-start-line="13" selection-start-column="1" selection-end-line="13" selection-end-column="1" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/arma3/userconfig.userconfig">
-      <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/jointures/header_admin.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="570">
-          <caret line="109" column="76" selection-start-line="109" selection-start-column="76" selection-end-line="109" selection-end-column="76" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pages/admin/settings/settings.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="412">
-          <caret line="285" column="72" selection-start-line="285" selection-start-column="72" selection-end-line="285" selection-end-column="72" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/note">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="4" column="50" selection-start-line="4" selection-start-column="50" selection-end-line="4" selection-end-column="50" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/api/support/admin/create.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="22" column="31" selection-start-line="0" selection-start-column="0" selection-end-line="60" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/assets/js/SimpleAjaxUploader.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="295">
-          <caret line="669" column="19" selection-start-line="669" selection-start-column="12" selection-end-line="669" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/api/users/admin/all.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="20" column="5" selection-start-line="0" selection-start-column="0" selection-end-line="68" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/api/support/admin/list.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="20" column="56" selection-start-line="0" selection-start-column="0" selection-end-line="73" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/api/news/news_launcher.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="23" column="0" selection-start-line="23" selection-start-column="0" selection-end-line="26" selection-end-column="51" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pages/admin/users/all.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="425">
-          <caret line="103" column="0" selection-start-line="103" selection-start-column="0" selection-end-line="103" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pages/admin/users/admins.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="748">
-          <caret line="193" column="13" selection-start-line="167" selection-start-column="11" selection-end-line="193" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pages/admin/users/view.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="10" selection-end-column="2" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/api/news/admin/list.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="24" column="66" selection-start-line="24" selection-start-column="65" selection-end-line="24" selection-end-column="66" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/api/news/admin/remove.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="25" column="66" selection-start-line="25" selection-start-column="66" selection-end-line="25" selection-end-column="66" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/api/news/admin/get.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="510">
-          <caret line="35" column="64" selection-start-line="35" selection-start-column="64" selection-end-line="35" selection-end-column="64" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/api/news/admin/create.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="193">
-          <caret line="21" column="31" selection-start-line="0" selection-start-column="0" selection-end-line="57" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/api/news/admin/edit.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="425">
-          <caret line="30" column="82" selection-start-line="30" selection-start-column="82" selection-end-line="30" selection-end-column="82" />
-          <folding>
-            <element signature="e#6#92#0#PHP" expanded="true" />
-            <marker date="1466688829485" expanded="true" signature="538:587" placeholder="SELECT user_... sessions" />
-            <marker date="1466688829485" expanded="true" signature="746:795" placeholder="SELECT `leve... users" />
-            <marker date="1466688829485" expanded="true" signature="1086:1146" placeholder="UPDATE `news... " />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pages/admin/support/view.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1955">
-          <caret line="120" column="12" selection-start-line="120" selection-start-column="12" selection-end-line="120" selection-end-column="51" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/pages/admin/index.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3825">
-          <caret line="225" column="84" selection-start-line="225" selection-start-column="84" selection-end-line="225" selection-end-column="84" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pages/admin/news/news.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="575">
-          <caret line="181" column="84" selection-start-line="181" selection-start-column="84" selection-end-line="181" selection-end-column="84" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pages/admin/news/view.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3043">
-          <caret line="184" column="56" selection-start-line="184" selection-start-column="56" selection-end-line="184" selection-end-column="56" />
-          <folding>
-            <element signature="e#6#88#0#PHP" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/api/arma3/addons.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="544">
-          <caret line="37" column="79" selection-start-line="37" selection-start-column="39" selection-end-line="37" selection-end-column="79" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/api/arma3/taskforce.php">
+    <entry file="file://$PROJECT_DIR$/install/mysql_server.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="646">
-          <caret line="43" column="26" selection-start-line="43" selection-start-column="26" selection-end-line="43" selection-end-column="26" />
+          <caret line="43" column="64" selection-start-line="43" selection-start-column="64" selection-end-line="43" selection-end-column="64" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/api/arma3/download_launcher.php">
+    <entry file="file://$PROJECT_DIR$/install/save_config.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        <state relative-caret-position="358">
+          <caret line="46" column="58" selection-start-line="46" selection-start-column="58" selection-end-line="46" selection-end-column="58" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/api/arma3/download.php">
+    <entry file="file://$PROJECT_DIR$/theme/form-advanced.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="14" column="14" selection-start-line="14" selection-start-column="8" selection-end-line="14" selection-end-column="14" />
+        <state relative-caret-position="430">
+          <caret line="1391" column="7" selection-start-line="1391" selection-start-column="7" selection-end-line="1397" selection-end-column="116" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/theme/ui-checkbox-radio.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-165">
+          <caret line="586" column="32" selection-start-line="586" selection-start-column="32" selection-end-line="636" selection-end-column="38" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/index.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1870">
-          <caret line="110" column="67" selection-start-line="110" selection-start-column="67" selection-end-line="110" selection-end-column="67" />
+        <state relative-caret-position="238">
+          <caret line="26" column="92" selection-start-line="26" selection-start-column="92" selection-end-line="26" selection-end-column="92" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/api/register.php">
+    <entry file="file://$PROJECT_DIR$/install/switch_status.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="23" column="48" selection-start-line="23" selection-start-column="48" selection-end-line="23" selection-end-column="48" />
+        <state relative-caret-position="308">
+          <caret line="46" column="28" selection-start-line="46" selection-start-column="28" selection-end-line="46" selection-end-column="28" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/install/index.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="597">
+          <caret line="279" column="44" selection-start-line="279" selection-start-column="44" selection-end-line="279" selection-end-column="44" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/api/login.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="561">
+          <caret line="38" column="58" selection-start-line="38" selection-start-column="58" selection-end-line="38" selection-end-column="58" />
           <folding>
-            <marker date="1466715457825" expanded="true" signature="583:622" placeholder="SELECT * FRO... settings" />
-            <marker date="1466715457825" expanded="true" signature="2009:2049" placeholder="SELECT * FRO... users" />
-            <marker date="1466715457825" expanded="true" signature="2241:2287" placeholder="SELECT * FRO... users" />
-            <marker date="1466715457825" expanded="true" signature="2977:3106" placeholder="INSERT INTO `users`... " />
+            <marker date="1467413200872" expanded="true" signature="297:346" placeholder="SELECT user_... sessions" />
+            <marker date="1467413200872" expanded="true" signature="552:586" placeholder="SELECT * FRO... users" />
+            <marker date="1467413200872" expanded="true" signature="810:861" placeholder="SELECT id FR... users" />
+            <marker date="1467413200872" expanded="true" signature="2422:2483" placeholder="SELECT * FRO... users" />
+            <marker date="1467413200872" expanded="true" signature="2926:2977" placeholder="SELECT id FR... users" />
+            <marker date="1467413200872" expanded="true" signature="3257:3308" placeholder="SELECT token... sessions" />
+            <marker date="1467413200872" expanded="true" signature="3513:3581" placeholder="INSERT INTO `sessions`... " />
+            <marker date="1467413200872" expanded="true" signature="3783:3838" placeholder="UPDATE sessi... " />
+            <marker date="1467413200872" expanded="true" signature="4152:4198" placeholder="UPDATE users... " />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pages/admin/users/view.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="504">
+          <caret line="265" column="97" selection-start-line="265" selection-start-column="32" selection-end-line="265" selection-end-column="97" />
+          <folding>
+            <marker date="1467231721170" expanded="true" signature="11018:11048" placeholder="..." />
+            <marker date="1467231721170" expanded="true" signature="11543:11575" placeholder="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/api/settings.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="408">
+          <caret line="29" column="35" selection-start-line="29" selection-start-column="35" selection-end-line="29" selection-end-column="35" />
+          <folding>
+            <marker date="1467554256963" expanded="true" signature="238:277" placeholder="SELECT * FRO... settings" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pages/profile/view.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="188" column="0" selection-start-line="188" selection-start-column="0" selection-end-line="188" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/api/server/client/players/get.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="14" column="26" selection-start-line="14" selection-start-column="26" selection-end-line="14" selection-end-column="26" />
+          <folding>
+            <marker date="1467554863598" expanded="true" signature="441:490" placeholder="SELECT user_... sessions" />
+            <marker date="1467554863598" expanded="true" signature="649:704" placeholder="SELECT `leve... users" />
+            <marker date="1467554863598" expanded="true" signature="998:1040" placeholder="SELECT * FRO... players" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/api/server/admin/players/get.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="14" column="26" selection-start-line="14" selection-start-column="26" selection-end-line="14" selection-end-column="26" />
+          <folding>
+            <marker date="1467554868531" expanded="true" signature="492:541" placeholder="SELECT user_... sessions" />
+            <marker date="1467554868531" expanded="true" signature="700:749" placeholder="SELECT `leve... users" />
+            <marker date="1467554868531" expanded="true" signature="1044:1086" placeholder="SELECT * FRO... players" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/configs/config_mysql.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/configs/mysql_connect.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/configs/config_general.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="7" column="16" selection-start-line="7" selection-start-column="16" selection-end-line="7" selection-end-column="16" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/note">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="4" column="58" selection-start-line="4" selection-start-column="58" selection-end-line="4" selection-end-column="58" />
+          <folding />
         </state>
       </provider>
     </entry>

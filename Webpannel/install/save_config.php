@@ -44,8 +44,8 @@ header('Content-type: application/json');
 $result = array("status" => 500, "message" => "Internal error");
 
 
-if (isset($_POST['server_name']) && isset($_POST['token'])
-    && $_POST['server_name'] != "")
+if (isset($_POST['server_name']) && isset($_POST['token']) && isset($_POST['server_teamspeak']) && isset($_POST['server_website'])
+    && $_POST['server_name'] != "" && $_POST['server_teamspeak'] != "" && $_POST['server_website'] != "")
 {
 
 // Example usage:
@@ -57,6 +57,8 @@ if (isset($_POST['server_name']) && isset($_POST['token'])
         'encrypt_key' =>  $_POST['token'],
         'arma_ip' => $_POST['server_ip'],
         'arma_port' => $_POST['server_port'],
+        'teamspeak' => $_POST['server_teamspeak'],
+        'website' => $_POST['server_website'],
     );
     change_config_file_settings('configs/config_general.php', $newSettings);
     $result['status'] = 42;

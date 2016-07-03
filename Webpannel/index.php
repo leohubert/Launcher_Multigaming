@@ -23,6 +23,8 @@
         $router->map('POST', '/inject_mysql', 'install/mysql_inject.php', 'install-mysql-inject');
         $router->map('POST', '/save_config', 'install/save_config.php', 'install-save-config');
         $router->map('POST', '/finish_install', 'install/finish_config.php', 'install-finish-config');
+        $router->map('POST', '/save_server_mysql', 'install/mysql_server.php', 'install-save-server-mysql');
+        $router->map('POST', '/switch_status', 'install/switch_status.php', 'install-switch-status');
     }
     else {
         include dirname(__FILE__) . '/configs/config_mysql.php';
@@ -30,27 +32,60 @@
         if (!isset($_SESSION['token'])) {
             $router->map('GET', '/', 'pages/auth/login.php', 'home');
         } else {
-            if ((int)$_SESSION['level'] >= 6) {
-                $router->map('GET', '/', 'pages/admin/index.php', 'home-admin');
-                $router->map('GET', '/settings', 'pages/admin/settings/settings.php', 'settings-admin');
-                $router->map('GET', '/news', 'pages/admin/news/news.php', 'news-admin');
-                $router->map('GET', '/news/view/[i:id]', 'pages/admin/news/view.php', 'news-admin-view');
-                $router->map('GET', '/support/view/[i:id]', 'pages/admin/support/view.php', 'support-view-admin');
-                $router->map('GET', '/users/all', 'pages/admin/users/all.php', 'users-all');
-                $router->map('GET', '/users/admins', 'pages/admin/users/admins.php', 'users-admins');
-                $router->map('GET', '/users/banned', 'pages/admin/users/banned.php', 'users-banned');
-                $router->map('GET', '/users/view/[i:id]', 'pages/admin/users/view.php', 'users-view-admin');
-            } else {
-                $router->map('GET', '/', 'pages/client/index.php', 'home-client');
-                $router->map('GET', '/support/view/[i:id]', 'pages/client/support/view.php', 'support-view-client');
+            if (isset($_SESSION['session']) || isset($_COOKIE['session']))
+            {
+                if (isset($_SESSION['session']) && $_SESSION['session'] < time())
+                {
+                    $_SESSION['locked'] = true;
+                    setcookie('locked', true, time() + (86400 * 30), "/");
+                }
+                else
+                {
+                    if (isset($_COOKIE['session']) && $_COOKIE['session'] < time())
+                    {
+                        $_SESSION['locked'] = true;
+                        setcookie('locked', true, time() + (86400 * 30), "/");
+                    }
+                    else
+                    {
+                        $_SESSION['session'] = time() + (60 * 30);
+                        setcookie('session', time() + (60 * 30), time() + (86400 * 30), "/");
+                    }
+                }
+            }
+            if ((isset($_SESSION['locked']) && $_SESSION['locked'] == true) || (isset($_COOKIE['locked']) && $_COOKIE['locked'] == true))
+            {
+                $router->map('GET', '/', 'pages/auth/locked.php', 'home');
+            }
+            else
+            {
+                $router->map('GET','/refresh', 'pages/auth/actions/refresh.php', 'refresh');
+                $router->map('GET','/profile/view', 'pages/profile/view.php', 'profile-view');
+                $router->map('GET','/profile/edit', 'pages/profile/edit.php', 'profile-edit');
+                if ((int)$_SESSION['level'] >= 6) {
+                    $router->map('GET', '/', 'pages/admin/index.php', 'home-admin');
+                    $router->map('GET', '/settings', 'pages/admin/settings/settings.php', 'settings-admin');
+                    $router->map('GET', '/news', 'pages/admin/news/news.php', 'news-admin');
+                    $router->map('GET', '/news/view/[i:id]', 'pages/admin/news/view.php', 'news-admin-view');
+                    $router->map('GET', '/support/view/[i:id]', 'pages/admin/support/view.php', 'support-view-admin');
+                    $router->map('GET', '/users/all', 'pages/admin/users/all.php', 'users-all');
+                    $router->map('GET', '/users/admins', 'pages/admin/users/admins.php', 'users-admins');
+                    $router->map('GET', '/users/banned', 'pages/admin/users/banned.php', 'users-banned');
+                    $router->map('GET', '/users/view/[i:id]', 'pages/admin/users/view.php', 'users-view-admin');
+                } else {
+                    $router->map('GET', '/', 'pages/client/index.php', 'home-client');
+                    $router->map('GET', '/support/view/[i:id]', 'pages/client/support/view.php', 'support-view-client');
+                }
             }
         }
     }
 
+    $router->map('GET','/terms', 'pages/auth/terms.php', 'terms');
     $router->map('GET','/login', 'pages/auth/login.php', 'login');
-    $router->map('GET','/logout', 'pages/auth/logout.php', 'logout');
     $router->map('GET','/register', 'pages/auth/register.php', 'register');
     $router->map('GET','/recover', 'pages/auth/recover.php', 'recover');
+    $router->map('GET','/logout', 'pages/auth/actions/logout.php', 'logout');
+    $router->map('GET','/lock', 'pages/auth/actions/lock.php', 'lock');
     $router->map('GET', '/install_finish', 'install/install_finish.php', 'install-finish');
 
     /** @var API route */
@@ -102,9 +137,12 @@
     $router->map('POST','/api/users/admin/banned', 'api/users/admin/banned.php', 'api-users-admin-banned');
     $router->map('POST','/api/users/admin/get', 'api/users/admin/get.php', 'api-users-admin-get');
     $router->map('POST','/api/users/admin/save', 'api/users/admin/save.php', 'api-users-admin-save');
+    $router->map('POST','/api/users/admin/remove', 'api/users/admin/remove.php', 'api-users-admin-delete');
 
     /** @var API users client route $match */
     $router->map('POST','/api/users/client/get', 'api/users/client/get.php', 'api-users-client-get');
+    $router->map('POST','/api/users/client/save', 'api/users/client/save.php', 'api-users-client-save');
+    $router->map('POST','/api/users/client/changepass', 'api/users/client/changepass.php', 'api-users-client-changepass');
 
     /** @var API arma3 route $match */
     $router->map('GET','/api/arma3/addons', 'api/arma3/addons.php', 'api-addons');
@@ -114,6 +152,14 @@
     $router->map('GET','/api/arma3/cpps/download/[*:cpps]', 'api/arma3/download.php', 'api-arma3-cpps');
     $router->map('GET','/api/arma3/userconfigs/download/[*:userconfigs]', 'api/arma3/download.php', 'api-arma3-userconfigs');
 
+    /** @var API admin ingame route $match */
+    $router->map('POST','/api/server/admin/players/get', 'api/server/admin/players/get.php', 'api-server-admin-player-get');
+
+    /** @var API users ingame route $match */
+    $router->map('POST','/api/server/client/players/get', 'api/server/client/players/get.php', 'api-server-client-player-get');
+
+    /** API server status */
+    $router->map('GET','/api/server/status/get', 'api/server/status/index.php', 'api-server-status');
 
     /* Match the current request */
     $match = $router->match();

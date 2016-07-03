@@ -8,4 +8,13 @@
         </div>
     </div>
 </footer>
+<script src="/assets/js/jquery.min.js"></script>
 <!-- End Footer -->
+<script type="text/javascript">
+    $(function() {
+        setInterval(function () {
+            window.location = "/lock";
+        }, 1800000);
+    });
+</script>
+

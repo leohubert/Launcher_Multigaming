@@ -28,9 +28,11 @@ namespace LauncherArma3
         string serverName;
         string apiUrl;
         string webSite;
+        string teamSpeak;
         string ftp_url;
         string ftp_user;
         string ftp_pass;
+        bool showIGinfo;
 
         /* ANOTHER VARIABLE */
 
@@ -49,6 +51,7 @@ namespace LauncherArma3
         bool notif = false;
         int taskforce;
         string vtaskforce;
+        string serverArmaIp;
 
         /* TRANSLATE PART */
 
@@ -56,7 +59,7 @@ namespace LauncherArma3
         Dictionary<string, string> translateDic = new Dictionary<string, string>();
 
 
-        public loginForm(string server, string api, string website, string ftpUrl, string ftpUser, string ftpPass, bool mod)
+        public loginForm(string server, string api, string ftpUrl, string ftpUser, string ftpPass, bool mod)
         {
             InitializeComponent();
             materialSkinManager = MaterialSkinManager.Instance;
@@ -64,7 +67,6 @@ namespace LauncherArma3
             materialSkinManager.ColorScheme = new ColorScheme(Primary.Cyan400, Primary.Indigo700, Primary.Indigo100, Accent.LightGreen200, TextShade.WHITE);
             serverName = server;
             apiUrl = api;
-            webSite = website;
             ftp_url = ftpUrl;
             ftp_user = ftpUser;
             ftp_pass = ftpPass;
@@ -157,10 +159,14 @@ namespace LauncherArma3
                     newsImage.BringToFront();
                 }
 
+                webSite = res.website;
+                teamSpeak = res.teamspeak;
+                serverArmaIp = res.server_ip + ":" + res.server_port;
                 newsTitle.Text = res.msg_title;
                 newsContent.Text = res.msg_content;
                 taskforce = res.taskforce;
                 vtaskforce = res.vtaskforce;
+                showIGinfo = res.show_ig;
 
                 if (modDev == false && res.vlauncher != getLauncherMd5().ToLower())
                 {
@@ -171,7 +177,7 @@ namespace LauncherArma3
                 if (res.login == "0")
                 {
                     sessionToken = null;
-                    launcherMain launcher = new launcherMain(serverName, apiUrl, webSite, sessionToken, ftp_url, ftp_user, ftp_pass, vLast, taskforce, vtaskforce, modDev);
+                    launcherMain launcher = new launcherMain(serverName, apiUrl, webSite, teamSpeak, sessionToken, ftp_url, ftp_user, ftp_pass, vLast, taskforce, vtaskforce, modDev, serverArmaIp, translateDic, showIGinfo);
 
                     // Show the laguage choice
                     this.Visible = false;
@@ -266,7 +272,7 @@ namespace LauncherArma3
                 await Task.Delay(1000);
             if (startLauncher == true)
             {
-                launcherMain launcher = new launcherMain(serverName, apiUrl, webSite, sessionToken, ftp_url, ftp_user, ftp_pass, vLast, taskforce, vtaskforce, modDev);
+                launcherMain launcher = new launcherMain(serverName, apiUrl, webSite, teamSpeak, sessionToken, ftp_url, ftp_user, ftp_pass, vLast, taskforce, vtaskforce, modDev, serverArmaIp, translateDic, showIGinfo);
                 startLauncher = false;
                 loginUsername.Text = "";
                 loginPassword.Text = "";
@@ -296,7 +302,7 @@ namespace LauncherArma3
                 if (res.status == "42")
                 {
                     // Login
-                    launcherMain launcher = new launcherMain(serverName, apiUrl, webSite, sessionToken, ftp_url, ftp_user, ftp_pass, vLast, taskforce, vtaskforce, modDev);
+                    launcherMain launcher = new launcherMain(serverName, apiUrl, webSite, teamSpeak, sessionToken, ftp_url, ftp_user, ftp_pass, vLast, taskforce, vtaskforce, modDev, serverArmaIp, translateDic, showIGinfo);
                     startLauncher = false;
                     this.Visible = false;
                     launcher.ShowDialog();
@@ -382,6 +388,140 @@ namespace LauncherArma3
                 translateDic.Add("errorUpdate", translate.ReadElementContentAsString());
                 translate.ReadToFollowing("updateCancel");
                 translateDic.Add("updateCancel", translate.ReadElementContentAsString());
+                translate.ReadToFollowing("settings");
+                translateDic.Add("settings", translate.ReadElementContentAsString());
+                translate.ReadToFollowing("steamUID");
+                translateDic.Add("steamUID", translate.ReadElementContentAsString());
+                translate.ReadToFollowing("IP");
+                translateDic.Add("IP", translate.ReadElementContentAsString());
+                translate.ReadToFollowing("online");
+                translateDic.Add("online", translate.ReadElementContentAsString());
+                translate.ReadToFollowing("offline");
+                translateDic.Add("offline", translate.ReadElementContentAsString());
+                translate.ReadToFollowing("notFound");
+                translateDic.Add("notFound", translate.ReadElementContentAsString());
+                translate.ReadToFollowing("support");
+                translateDic.Add("support", translate.ReadElementContentAsString());
+                translate.ReadToFollowing("taskforceVersion");
+                translateDic.Add("taskforceVersion", translate.ReadElementContentAsString());
+                translate.ReadToFollowing("notInstalled");
+                translateDic.Add("notInstalled", translate.ReadElementContentAsString());
+                translate.ReadToFollowing("installed");
+                translateDic.Add("installed", translate.ReadElementContentAsString());
+                translate.ReadToFollowing("updateTaskforceRequire");
+                translateDic.Add("updateTaskforceRequire", translate.ReadElementContentAsString());
+                translate.ReadToFollowing("forceUpdateTaskforce");
+                translateDic.Add("forceUpdateTaskforce", translate.ReadElementContentAsString());
+                translate.ReadToFollowing("installTaskforce");
+                translateDic.Add("installTaskforce", translate.ReadElementContentAsString());
+                translate.ReadToFollowing("updateTaskforce");
+                translateDic.Add("updateTaskforce", translate.ReadElementContentAsString());
+                translate.ReadToFollowing("play");
+                translateDic.Add("play", translate.ReadElementContentAsString());
+                translate.ReadToFollowing("forceUpdate");
+                translateDic.Add("forceUpdate", translate.ReadElementContentAsString());
+                translate.ReadToFollowing("visitSite");
+                translateDic.Add("visitSite", translate.ReadElementContentAsString());
+                translate.ReadToFollowing("visitTeamSpeak");
+                translateDic.Add("visitTeamSpeak", translate.ReadElementContentAsString());
+                translate.ReadToFollowing("modDev");
+                translateDic.Add("modDev", translate.ReadElementContentAsString());
+                translate.ReadToFollowing("chooseArma");
+                translateDic.Add("chooseArma", translate.ReadElementContentAsString());
+                translate.ReadToFollowing("downloadProgress");
+                translateDic.Add("downloadProgress", translate.ReadElementContentAsString());
+                translate.ReadToFollowing("armaOK");
+                translateDic.Add("armaOK", translate.ReadElementContentAsString());
+                translate.ReadToFollowing("selectArma");
+                translateDic.Add("selectArma", translate.ReadElementContentAsString());
+                translate.ReadToFollowing("armaNotOK");
+                translateDic.Add("armaNotOK", translate.ReadElementContentAsString());
+                translate.ReadToFollowing("success");
+                translateDic.Add("success", translate.ReadElementContentAsString());
+                translate.ReadToFollowing("waitDownload");
+                translateDic.Add("waitDownload", translate.ReadElementContentAsString());
+                translate.ReadToFollowing("updateTaskforceBefore");
+                translateDic.Add("updateTaskforceBefore", translate.ReadElementContentAsString());
+                translate.ReadToFollowing("downloadInitialisation");
+                translateDic.Add("downloadInitialisation", translate.ReadElementContentAsString());
+                translate.ReadToFollowing("pleaseWait");
+                translateDic.Add("pleaseWait", translate.ReadElementContentAsString());
+                translate.ReadToFollowing("cancelling");
+                translateDic.Add("cancelling", translate.ReadElementContentAsString());
+                translate.ReadToFollowing("pause");
+                translateDic.Add("pause", translate.ReadElementContentAsString());
+                translate.ReadToFollowing("resume");
+                translateDic.Add("resume", translate.ReadElementContentAsString());
+                translate.ReadToFollowing("serverRequest");
+                translateDic.Add("serverRequest", translate.ReadElementContentAsString());
+                translate.ReadToFollowing("listingMod");
+                translateDic.Add("listingMod", translate.ReadElementContentAsString());
+                translate.ReadToFollowing("listingCpp");
+                translateDic.Add("listingCpp", translate.ReadElementContentAsString());
+                translate.ReadToFollowing("listingAdditional");
+                translateDic.Add("listingAdditional", translate.ReadElementContentAsString());
+                translate.ReadToFollowing("alreadyUpToDate");
+                translateDic.Add("alreadyUpToDate", translate.ReadElementContentAsString());
+                translate.ReadToFollowing("inProgress");
+                translateDic.Add("inProgress", translate.ReadElementContentAsString());
+                translate.ReadToFollowing("downloadMod");
+                translateDic.Add("downloadMod", translate.ReadElementContentAsString());
+                translate.ReadToFollowing("downloadFile");
+                translateDic.Add("downloadFile", translate.ReadElementContentAsString());
+                translate.ReadToFollowing("checkMod");
+                translateDic.Add("checkMod", translate.ReadElementContentAsString());
+                translate.ReadToFollowing("checkCpp");
+                translateDic.Add("checkCpp", translate.ReadElementContentAsString());
+                translate.ReadToFollowing("downloadStoped");
+                translateDic.Add("downloadStoped", translate.ReadElementContentAsString());
+                translate.ReadToFollowing("downloadFinish");
+                translateDic.Add("downloadFinish", translate.ReadElementContentAsString());
+                translate.ReadToFollowing("downloadWillPause");
+                translateDic.Add("downloadWillPause", translate.ReadElementContentAsString());
+                translate.ReadToFollowing("downloadPaused");
+                translateDic.Add("downloadPaused", translate.ReadElementContentAsString());
+                translate.ReadToFollowing("downloaded");
+                translateDic.Add("downloaded", translate.ReadElementContentAsString());
+                translate.ReadToFollowing("of");
+                translateDic.Add("of", translate.ReadElementContentAsString());
+                translate.ReadToFollowing("estimatedTime");
+                translateDic.Add("estimatedTime", translate.ReadElementContentAsString());
+                translate.ReadToFollowing("waitForDownload");
+                translateDic.Add("waitForDownload", translate.ReadElementContentAsString());
+                translate.ReadToFollowing("updateAvailable");
+                translateDic.Add("updateAvailable", translate.ReadElementContentAsString());
+                translate.ReadToFollowing("errorListing");
+                translateDic.Add("errorListing", translate.ReadElementContentAsString());
+                translate.ReadToFollowing("taskforceInstallerMissing");
+                translateDic.Add("taskforceInstallerMissing", translate.ReadElementContentAsString());
+                translate.ReadToFollowing("installCancel");
+                translateDic.Add("installCancel", translate.ReadElementContentAsString());
+                translate.ReadToFollowing("minutes");
+                translateDic.Add("minutes", translate.ReadElementContentAsString());
+                translate.ReadToFollowing("seconds");
+                translateDic.Add("seconds", translate.ReadElementContentAsString());
+                translate.ReadToFollowing("hours");
+                translateDic.Add("hours", translate.ReadElementContentAsString());
+                translate.ReadToFollowing("playersIG");
+                translateDic.Add("playersIG", translate.ReadElementContentAsString());
+                translate.ReadToFollowing("map");
+                translateDic.Add("map", translate.ReadElementContentAsString());
+                translate.ReadToFollowing("adminLevel");
+                translateDic.Add("adminLevel", translate.ReadElementContentAsString());
+                translate.ReadToFollowing("copLevel");
+                translateDic.Add("copLevel", translate.ReadElementContentAsString());
+                translate.ReadToFollowing("medicLevel");
+                translateDic.Add("medicLevel", translate.ReadElementContentAsString());
+                translate.ReadToFollowing("cash");
+                translateDic.Add("cash", translate.ReadElementContentAsString());
+                translate.ReadToFollowing("bank");
+                translateDic.Add("bank", translate.ReadElementContentAsString());
+                translate.ReadToFollowing("serverStatus");
+                translateDic.Add("serverStatus", translate.ReadElementContentAsString());
+                translate.ReadToFollowing("IGinformations");
+                translateDic.Add("IGinformations", translate.ReadElementContentAsString());
+                translate.ReadToFollowing("usefulLink");
+                translateDic.Add("usefulLink", translate.ReadElementContentAsString());
 
                 loginButton.Text = translateDic["logIn"];
                 registerLink.Text = translateDic["registerLink"];
@@ -389,9 +529,7 @@ namespace LauncherArma3
                 loginPassword.Hint = translateDic["password"];
                 loginRemember.Text = translateDic["remember"];
                 newPassword.Text = translateDic["forgotPass"];
-                registerMessage.Text = translateDic["registerMsg"];
-
-
+                registerMessage.Text = translateDic["registerMsg"];                           
                 this.Refresh();
             }
             catch

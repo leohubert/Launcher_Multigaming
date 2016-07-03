@@ -1,3 +1,10 @@
+<?php
+    if (isset($_GET['auto']) && $_GET['auto'] == "true" && isset($_GET['token']))
+        echo "<body onload='connectWithToken(\"" . $_GET['token'] ."\")';>";
+    if (isset($_COOKIE['token']))
+        echo "<body onload='connectWithToken(\"" . $_COOKIE['token'] ."\")';>";
+?>
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -58,7 +65,7 @@
                         <div class="form-group">
                             <div class="col-xs-12">
                                 <div class="checkbox checkbox-primary">
-                                    <input id="checkbox-signup" type="checkbox">
+                                    <input id="checkbox-signup" type="checkbox" checked>
                                     <label for="checkbox-signup">
                                         Remember me
                                     </label>
@@ -94,6 +101,34 @@
                         login : $("#login").val(),
                         password : $("#password").val(),
                         launcher : "0"
+                    },
+
+                    function(data){
+                        var obj = JSON.parse(data);
+
+                        if (obj.status == 42)
+                        {
+
+                            $.Notification.notify('success','top right','Login success', obj.message);
+                            window.location="/";
+                        }
+                        else if (obj.status == 43)
+                            sweetAlert("Oops...", "Your are banned", "error");
+                        else
+                            $.Notification.notify('error','top right', 'Login error', obj.message);
+                    },
+
+                    'text'
+                );
+                return false;
+            }
+
+            function connectWithToken(token)
+            {
+                $.post(
+                    '/api/login',
+                    {
+                        token : token
                     },
 
                     function(data){

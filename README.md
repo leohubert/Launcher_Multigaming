@@ -80,6 +80,21 @@ Upload WebPanel to the /var/www/html folder (don't forget .htaccess file)
 
 ###Changes Logs:
 
+Pre-Release 5.0.5.0:
+- Add: IG (in-game) user information on launcher & panel
+- Add: When you ban a player, her ip is automatically banned
+- Add: Can delete user on panel
+- Add: Auto-Connect to panel with COOKIES
+- Add: Support button into launcher whit auto-connection
+- Add: Server status (ONLINE / OFFLINE, number of player and more...)
+- Add: Lock session into panel
+- Add: If an email or an username has more than 20 character on the launcher, we show 20 first character and add ... to this
+- Add: Profile view into the panel
+- Add: Settings profile into the panel
+- Fix: Translate of all launcher (French/English)
+
+-----------------------------------
+
 Beta 5.0.4.0:
 - Add: Panel news control
 - Add: Arma3 automatic search

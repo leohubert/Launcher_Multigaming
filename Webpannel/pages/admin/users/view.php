@@ -52,6 +52,7 @@
 
 <script>
     function loadUser() {
+        var userUID = null;
         $.post(
             '/api/users/admin/get',
             {
@@ -77,6 +78,7 @@
                     document.getElementById("control_uid").value = obj.user_uid;
                     document.getElementById("level" + obj.user_level).selected = true;
                     document.getElementById("banned" + obj.user_banned).selected = true;
+                    userUID = obj.user_uid;
                     if (obj.user_banned == "1")
                         document.getElementById("banned_pop").innerHTML = '<div class="alert alert-warning"> <strong>Warning !</strong> This user is banned !</div>';
                     else
@@ -117,6 +119,38 @@
                             status.innerHTML = '<small class="text-danger"><b>AnY</b></small>';
                             break;
                     }
+                    $.post(
+                        '/api/server/admin/players/get',
+                        {
+                            token : "<?php echo $_SESSION['token'];?>",
+                            uid : userUID
+                        },
+
+                        function(data){
+                            var obj = JSON.parse(data);
+                            if (obj.status == 42) {
+                                document.getElementById("player_cash").innerText = obj.cash;
+                                document.getElementById("player_bank").innerText = obj.bank;
+                                document.getElementById("player_name").innerText = obj.name;
+                                document.getElementById("player_adminlevel").innerText = obj.adminlevel;
+                                document.getElementById("player_mediclevel").innerText = obj.mediclevel;
+                                document.getElementById("player_coplevel").innerText = obj.coplevel;
+                            }
+                            else if (obj.status == 40)
+                            {
+                                document.getElementById("player_cash").innerText = "Not found";
+                                document.getElementById("player_bank").innerText = "Not found";
+                                document.getElementById("player_name").innerText = "Not found";
+                                document.getElementById("player_adminlevel").innerText = "Not found";
+                                document.getElementById("player_mediclevel").innerText = "Not found";
+                                document.getElementById("player_coplevel").innerText = "Not found";
+                            }
+                            else if (obj.status == 41)
+                                window.location="/logout";
+                        },
+
+                        'text'
+                    );
 
                 }
                 else if (obj.status == 41)
@@ -157,6 +191,49 @@
 
             'text'
         );
+    }
+    function deleteUser() {
+        swal({
+            title: "Are you sure?",
+            text: "You will not be able to recover this user !",
+            type: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#DD6B55",
+            confirmButtonText: "Yes, delete it!",
+            cancelButtonText: "No, cancel plx!",
+            closeOnConfirm: false,
+            closeOnCancel: false
+        }, function(isConfirm){
+            if (isConfirm) {
+                $.post(
+                    '/api/users/admin/remove',
+                    {
+                        token : "<?php echo $_SESSION['token'];?>",
+                        id : "<?php echo $id;?>"
+                    },
+
+                    function(data){
+                        var obj = JSON.parse(data);
+
+                        if (obj.status == 42)
+                        {
+                            swal("Deleted!", obj.message , "success");
+                            setInterval(function () {
+                                location.reload();
+                            }, 1500);
+                        }
+                        else if (obj.status == 41)
+                            window.location="/logout";
+                        else
+                            swal("Error...", obj.message, "error");
+                    },
+
+                    'text'
+                );
+            } else {
+                swal("Cancelled", "Deletion successfully canceled", "error");
+            }
+        });
     }
 </script>
 
@@ -199,12 +276,12 @@
                     <p class="text-muted font-500">In game money</p>
                     <div class="row">
                         <div class="col-sm-6">
-                            <p class="text-muted font-500">BANK</p>
-                            <h3 class="text-primary">$ <span class="counter">12480</span></h3>
+                            <p class="text-muted font-500">CASH</p>
+                            <h3 class="text-warning">$ <span class="counter" id="player_cash">0</span></h3>
                         </div>
                         <div class="col-sm-6">
-                            <p class="text-muted font-500">LIQUID</p>
-                            <h3 class="text-warning">$ <span class="counter">12480</span></h3>
+                            <p class="text-muted font-500">BANK</p>
+                            <h3 class="text-primary">$ <span class="counter" id="player_bank">0</span></h3>
                         </div>
                     </div>
                 </div>
@@ -213,11 +290,21 @@
                     <div class="row">
                         <div class="col-sm-6">
                             <p class="text-muted font-500">Username</p>
-                            <h3 class="text-info">USERNAME</h3>
+                            <h3 class="text-info" id="player_name">.</h3>
                         </div>
                         <div class="col-sm-6">
-                            <p class="text-muted font-500">je sais pas</p>
-                            <h3 class="text-info"><span class="counter">12480</span></h3>
+                            <p class="text-muted font-500">Admin level</p>
+                            <h3 class="text-info"><span class="counter" id="player_adminlevel">0</span></h3>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <p class="text-muted font-500">Cop level</p>
+                            <h3 class="text-info" id="player_coplevel">0</h3>
+                        </div>
+                        <div class="col-sm-6">
+                            <p class="text-muted font-500">Medic level</p>
+                            <h3 class="text-info"><span class="counter" id="player_mediclevel">0</span></h3>
                         </div>
                     </div>
                     <div class="row">
@@ -296,6 +383,7 @@
                 </p>
                 </div>
                 <div class="panel-footer">
+                    <button type="button" class="btn btn-danger btn-custom waves-effect w-md waves-light m-b-5" onclick="deleteUser()">Delete this user</button>
                     <button type="button" class="btn btn-success btn-custom waves-effect w-md waves-light m-b-5" onclick="saveUser()">Save</button>
                 </div>
             </div>

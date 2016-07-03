@@ -101,9 +101,9 @@
                 <div class="form-group">
                     <div class="col-xs-12">
                         <div class="checkbox checkbox-primary">
-                            <input id="checkbox-signup" type="checkbox" checked="checked" required>
+                            <input id="checkbox-signup" type="checkbox" required>
                             <label for="checkbox-signup">
-                                I accept <a href="#">Terms and Conditions</a>
+                                I accept <a href="/terms">Terms and Conditions</a>
                             </label>
                         </div>
 

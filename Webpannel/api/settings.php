@@ -23,9 +23,14 @@ if ($getSettings = $database->prepare('SELECT * FROM settings WHERE active = 1')
     $result['maintenance_content'] = $res['maintenance_content'];
     $result['login'] = (int)$res['login'];
     $result['register'] = (int)$res['register'];
+    $result['website'] = $website;
+    $result['teamspeak'] = $teamspeak;
     $result['taskforce'] = (int)$res['taskforce'];
     $result['vtaskforce'] = $res['vtaskforce'];
     $result['vmod'] = $res['vmod'];
+    $result['server_ip'] = $arma_ip;
+    $result['server_port'] = $arma_port;
+    $result['show_ig'] = $ig_info;
     $result['vlauncher'] = md5_file('arma3/launcher/launcher.exe');
 }
 

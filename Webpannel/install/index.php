@@ -24,6 +24,8 @@
         <link href="assets/css/pages.css" rel="stylesheet" type="text/css" />
         <link href="assets/css/menu.css" rel="stylesheet" type="text/css" />
         <link href="assets/css/responsive.css" rel="stylesheet" type="text/css" />
+        <link href="assets/plugins/switchery/switchery.min.css" rel="stylesheet" />
+
 
         <link href="assets/plugins/sweetalert/dist/sweetalert.css" rel="stylesheet" type="text/css">
         <link href="assets/plugins/jquery-circliful/css/jquery.circliful.css" rel="stylesheet" type="text/css" />
@@ -151,7 +153,9 @@
                                             token : token,
                                             server_name : document.getElementById("server_name").value,
                                             server_ip : document.getElementById("server_ip").value,
-                                            server_port : document.getElementById("server_port").value
+                                            server_port : document.getElementById("server_port").value,
+                                            server_teamspeak : document.getElementById("server_teamspeak").value,
+                                            server_website : document.getElementById("server_website").value
                                         },
 
                                         function(data){
@@ -182,6 +186,100 @@
                     {
                         sweetAlert("Oops...", "Error | " + obj.message, "error");
                     }
+                },
+
+                'text'
+            );
+        }
+        function testMysqlArma() {
+            if (inprogress == 1)
+            {
+                sweetAlert("Test already in progress", "You can not run two tests simultaneously", "error");
+                return;
+            }
+            inprogress = 1;
+            var obj;
+            var loading = document.getElementById("mysql_arma_loading");
+            var status = document.getElementById("mysql_arma_status");
+            var save_button = document.getElementById("mysql_arma_save");
+
+            save_button.innerHTML = "";
+
+            loading.className = "md md-cached text-primary fa-spin";
+            status.innerHTML = '<small class="text-info"><b>Test in progress</b></small>';
+            $.post(
+                '/test_mysql',
+                {
+                    db_host : document.getElementById("mysql_arma_host").value,
+                    db_name : document.getElementById("mysql_arma_name").value,
+                    db_user : document.getElementById("mysql_arma_user").value,
+                    db_pass : document.getElementById("mysql_arma_pass").value
+                },
+
+                function(data){
+                    obj = JSON.parse(data);
+                },
+
+                'text'
+            );
+
+            setTimeout(function() {
+                loading.className = "md md-cached text-primary";
+                switch (obj.status)
+                {
+                    case 42:
+                        status.innerHTML = '<small class="text-success"><b>Success</b></small>';
+                        save_button.innerHTML = '<br><button onclick="saveMysqlArma()" type="button" class="btn btn-success btn-rounded w-md waves-effect waves-light m-b-5">Save & inject</button>';
+                        break;
+                    default:
+                        status.innerHTML = '<small class="text-danger"><b>Error | '+ obj.message +'</b></small>';
+                        break;
+                }
+                inprogress = 0;
+            }, 2000);
+        }
+        function saveMysqlArma()
+        {
+            $.post(
+                '/save_server_mysql',
+                {
+                    db_host : document.getElementById("mysql_arma_host").value,
+                    db_name : document.getElementById("mysql_arma_name").value,
+                    db_user : document.getElementById("mysql_arma_user").value,
+                    db_pass : document.getElementById("mysql_arma_pass").value
+                },
+
+                function(data){
+                    obj = JSON.parse(data)
+                    if (obj.status == 42)
+                        sweetAlert("Save & Inject successfully", obj.message, "success");
+                    else
+                        sweetAlert("Oops...", "Error | " + obj.message, "error");
+                },
+
+                'text'
+            );
+        }
+        function switch_status() {
+            var checkbox_yes = document.getElementById("radio1");
+            var checkbox_no = document.getElementById("radio2");
+            var response = null;
+            if (checkbox_yes.checked == true)
+                response = true;
+            else if (checkbox_no.checked == true)
+                response = false;
+            $.post(
+                '/switch_status',
+                {
+                    status : response
+                },
+
+                function(data){
+                    obj = JSON.parse(data)
+                    if (obj.status == 42)
+                        sweetAlert("Switched", obj.message, "success");
+                    else
+                        sweetAlert("Oops...", "Error | " + obj.message, "error");
                 },
 
                 'text'
@@ -220,6 +318,7 @@
                         <ul>
                             <li><a href="#mysql" data-toggle="tab">Mysql settings</a></li>
                             <li><a href="#settings" data-toggle="tab">General settings</a></li>
+                            <li><a href="#server" data-toggle="tab">Server settings</a></li>
                             <li><a href="#useradmin" data-toggle="tab">Create user admin</a></li>
                         </ul>
 
@@ -291,16 +390,86 @@
                                             <div>
                                                 <i class="md md-domain text-primary"></i>
                                                 <div class="wid-icon-info">
-                                                    <label class="col-md-2 control-label " for="server_ip">Server ip</label>
+                                                    <label class="col-md-5 control-label " for="server_ip">Server ip</label>
                                                     <input class="form-control required" id="server_ip" name="server_ip" type="text" <?php if ($general == true) { echo 'value="'.$arma_ip.'"'; };?>>
-                                                    <label class="col-md-2 control-label " for="server_port">Server port</label>
+                                                    <label class="col-md-5 control-label " for="server_port">Server port</label>
                                                     <input class="form-control required" id="server_port" name="server_port" type="text" <?php if ($general == true) { echo 'value="'.$arma_port.'"'; };?>>
+                                                    <label class="col-md-5 control-label " for="server_teamspeak">Teamspeak adress</label>
+                                                    <input class="form-control required" id="server_teamspeak" name="server_teamspeak" type="text" <?php if ($general == true) { echo 'value="'.$teamspeak.'"'; };?>>
+                                                    <label class="col-md-5 control-label " for="server_website">Your website</label>
+                                                    <input class="form-control required" id="server_website" name="server_website" type="text" <?php if ($general == true) { echo 'value="'.$website.'"'; };?>>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
+                            <div class="tab-pane p-t-10 fade" id="server">
+                                <div class="row">
+                                    <div class="col-md-8">
+                                        <div class="form-group clearfix">
+                                            <label class="col-md-2 control-label " for="active_IG">Active IG information ?</label>
+                                            <div class="col-md-5">
+                                                <div class="radio radio-success">
+                                                    <input type="radio" name="radio" id="radio1" value="option1" onchange="switch_status()" checked>
+                                                    <label for="radio1">
+                                                        YES
+                                                    </label>
+                                                </div>
+                                                <div class="radio radio-danger">
+                                                    <input type="radio" name="radio" id="radio2" value="option2" onchange="switch_status()">
+                                                    <label for="radio2">
+                                                        NO
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <label class="col-sm-12 control-label " for="mysql_arma_pass">If no checked, you don't need to follow this page !</label>
+                                        <br><br>
+                                        <div class="form-group clearfix">
+                                            <label class="col-md-2 control-label " for="mysql_arma_host">MySql arma server host</label>
+                                            <div class="col-md-5">
+                                                <input class="form-control required" id="mysql_arma_host" name="mysql_arma_host" type="text" <?php if ($mysql_arma == true) { echo 'value="'.$db_arma_host.'"'; };?>>
+                                            </div>
+                                        </div>
+                                        <div class="form-group clearfix">
+                                            <label class="col-md-2 control-label " for="mysql_arma_name">MySql arma database name</label>
+                                            <div class="col-md-5">
+                                                <input id="mysql_arma_name" name="mysql_arma_name" type="text" class="required form-control" <?php if ($mysql_arma == true) { echo 'value="'.$db_arma_name.'"'; };?>>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group clearfix">
+                                            <label class="col-md-2 control-label " for="mysql_arma_user">MySql arma username</label>
+                                            <div class="col-md-5">
+                                                <input id="mysql_arma_user" name="mysql_arma_user" type="text" class="required form-control" <?php if ($mysql_arma == true) { echo 'value="'.$db_arma_user.'"'; };?>>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group clearfix">
+                                            <label class="col-md-2 control-label " for="mysql_arma_pass">MySql arma password</label>
+                                            <div class="col-md-5">
+                                                <input id="mysql_arma_pass" name="mysql_arma_pass" type="password" class="required form-control" <?php if ($mysql_arma == true) { echo 'value="'.$db_arma_pass.'"'; };?>>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="col-md-7">
+                                            <div class="card-box widget-icon">
+                                                <div>
+                                                    <i class="md md-cached text-primary" id="mysql_arma_loading"></i>
+                                                    <div class="wid-icon-info">
+                                                        <p class="text-muted m-b-5 font-13 text-uppercase">Mysql arma status</p><br>
+                                                        <button onclick="testMysqlArma()" type="button" class="btn btn-primary btn-rounded w-md waves-effect waves-light m-b-5">Test connection</button><br><br>
+                                                        <div id="mysql_arma_status"><?php if ($mysql == true) { echo '<small class="text-success">Already configured<b></b>'; } else { echo '<small class="text-pink"><b>No set</b>';};?></small></div>
+                                                        <div id="mysql_arma_save"></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                                 <div class="tab-pane p-t-10 fade" id="useradmin">
                                     <div class="row">
                                         <div class="form-group clearfix">
@@ -385,6 +554,7 @@
         <!-- Sweet-Alert  -->
         <script src="assets/plugins/sweetalert/dist/sweetalert.min.js"></script>
         <script src="assets/pages/jquery.sweet-alert.init.js"></script>
+
 
         <script type="text/javascript">
             $(document).ready(function() {

@@ -12,3 +12,10 @@ try {
     print "Erreur !: " . $e->getMessage() . "<br/>";
     die();
 }
+
+try {
+    $db_arma = new PDO('mysql:host='. $db_arma_host .';dbname='. $db_arma_name, $db_arma_user, $db_arma_pass);
+} catch (PDOException $e) {
+    print "Erreur !: " . $e->getMessage() . "<br/>";
+    die();
+}

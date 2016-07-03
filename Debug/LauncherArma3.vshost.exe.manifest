@@ -43,14 +43,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="LauncherArma3.exe" size="3615232">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="LauncherArma3.exe" size="3695616">
       <assemblyIdentity name="LauncherArma3" version="5.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>KC6/X369UUQ2AokA+gK7aasekxMAQJU9XllQt4BPBVU=</dsig:DigestValue>
+        <dsig:DigestValue>emmzII+MwVv1dexQff7nbXb3r44bwbCUistCYhV0DWo=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

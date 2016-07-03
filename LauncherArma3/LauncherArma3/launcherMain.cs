@@ -25,15 +25,12 @@ namespace LauncherArma3
         /* Launcher basic config */
         string apiUrl;
         string webSite;
+        string teamSpeak;
         string serverName;
         string ftp_url;
         string ftp_user;
         string ftp_pass;
-
-        /* ARMA CONFIG */
-
-        string serverArmaIp = "0.0.0.0";
-
+        bool showIGinfo;
 
         /* Variables globals */
 
@@ -62,6 +59,7 @@ namespace LauncherArma3
         bool modDev;    
         int oldTime;
         long oldBytesPerSeconds;
+        string serverArmaIp;
 
         /* TIME CALCUL */
         DateTime startTimeDownload;
@@ -84,12 +82,9 @@ namespace LauncherArma3
         string picture = null;
 
         /* GENERAL TRANSLATE */
+        Dictionary<string, string> translateDic = new Dictionary<string, string>();
 
-        string tr_username;
-        string tr_email;
-        string tr_disconnectMsg;
-
-        public launcherMain(string server, string api, string website, string session, string ftpUrl, string ftpUser, string ftpPass, string vmod, int _taskforce, string _vtaskforce, bool _modDev)
+        public launcherMain(string server, string api, string website, string _teamSpeak, string session, string ftpUrl, string ftpUser, string ftpPass, string vmod, int _taskforce, string _vtaskforce, bool _modDev, string _serverArmaIp, Dictionary<string, string> _translateDic, bool _showIGinfo)
         {
             InitializeComponent();
             serverName = server;
@@ -102,7 +97,11 @@ namespace LauncherArma3
             vLast_mod = vmod;
             vtaskforce = _vtaskforce;
             taskforce = _taskforce;
-            modDev = _modDev; 
+            modDev = _modDev;
+            serverArmaIp = _serverArmaIp;
+            teamSpeak = _teamSpeak;
+            translateDic = _translateDic;
+            showIGinfo = _showIGinfo;
         }
 
         private void launcherMain_Load(object sender, EventArgs e)
@@ -111,11 +110,7 @@ namespace LauncherArma3
             {
                 taskforceBox.Visible = false;
             }
-            if (File.Exists(appdata + serverName + "/language.lang"))
-            {
-                language = File.ReadAllText(appdata + serverName + "/language.lang");
-                setLanguage(language);
-            }
+            setLanguage();        
             if (File.Exists(appdata + serverName + "/armaDest"))
             {
                 armaDirectory = File.ReadAllText(appdata + serverName + "/armaDest");
@@ -150,7 +145,7 @@ namespace LauncherArma3
             if (modDev == true)
             {
                 infoBox.Visible = true;
-                infoBox.Text = "Warning ! modDev enabled !";
+                infoBox.Text = translateDic["modDev"];
             }
             if (taskforce == 1)
             {
@@ -160,22 +155,30 @@ namespace LauncherArma3
                     if (vThis_taskforce == vtaskforce)
                     {
                         taskforceStatus.ForeColor = Color.ForestGreen;
-                        taskforceStatus.Text = "Installed";
-                        taskforceButton.Text = "Force Update Taskforce";
+                        taskforceStatus.Text = translateDic["installed"];
+                        taskforceButton.Text = translateDic["forceUpdateTaskforce"];
                     }
                     else
                     {
                         taskforceStatus.ForeColor = Color.DarkOrange;
-                        taskforceStatus.Text = "Update required";
+                        taskforceStatus.Text = translateDic["updateTaskforceRequire"];
+                        taskforceButton.Text = translateDic["updateTaskforce"];
                     }
                 }
                 else
                 {
                     vThis_taskforce = "-42";
                     taskforceStatus.ForeColor = Color.DarkRed;
-                    taskforceStatus.Text = "Not installed";
+                    taskforceStatus.Text = translateDic["notInstalled"];
+                    taskforceButton.Text = translateDic["installTaskforce"];
                 }
-            }        
+            }
+            if (showIGinfo == false)
+            {
+                playerInGameBox.Visible = false;
+                usefulBox.Location = new Point(308, 253);
+ 
+            }
         }
 
         void loadArma3Directory()
@@ -192,7 +195,7 @@ namespace LauncherArma3
 
                             var displayName = sk.GetValue("DisplayName");
 
-                            if (displayName != null && displayName.ToString().Contains("Arma 3") == true)
+                            if (displayName != null && displayName.ToString() == "Arma 3")
                             {
                                 armaDirectory = sk.GetValue("InstallLocation").ToString();
                                 directoryLabel.Text = armaDirectory;
@@ -216,7 +219,7 @@ namespace LauncherArma3
 
                             var displayName = sk.GetValue("DisplayName");
 
-                            if (displayName != null && displayName.ToString().Contains("Arma 3") == true)
+                            if (displayName != null && displayName.ToString() == "Arma 3")
                             {
                                 armaDirectory = sk.GetValue("InstallLocation").ToString();
                                 directoryLabel.Text = armaDirectory;
@@ -240,7 +243,7 @@ namespace LauncherArma3
 
                             var displayName = sk.GetValue("DisplayName");
 
-                            if (displayName != null && displayName.ToString().Contains("Arma 3") == true)
+                            if (displayName != null && displayName.ToString() == "Arma 3")
                             {
                                 armaDirectory = sk.GetValue("InstallLocation").ToString();
                                 directoryLabel.Text = armaDirectory;
@@ -256,7 +259,7 @@ namespace LauncherArma3
             directoryLabel.Visible = true;
             clearNotif();
             errorBox.Visible = true;
-            errorBox.Text = "Choose arma 3 directory";
+            errorBox.Text = translateDic["chooseArma"];
         }
 
         void loginWithToken()
@@ -284,6 +287,8 @@ namespace LauncherArma3
                 changeStatus("Green");
                 loadNews();
                 refreshSession();
+                loadServerStatus();
+                loadIGinfos();
             }
             else
             {
@@ -296,9 +301,18 @@ namespace LauncherArma3
 
         void refreshSession()
         {
-            playerUsername.Text = username;
-            playerEmail.Text = email;
-            playerUID.Text = uid;
+            if (username.Length >= 18)
+                playerUsername.Text = username.Substring(0, 18) + "...";
+            else
+                playerUsername.Text = username;
+            if (email.Length >= 18)
+                playerEmail.Text = email.Substring(0, 18) + "...";
+            else
+                playerEmail.Text = email;
+            if (uid.Length >= 18)
+                playerUID.Text = uid.Substring(0, 18) + "...";
+            else
+                playerUID.Text = uid;            
             switch (level)
             {
                 case "1":
@@ -345,6 +359,93 @@ namespace LauncherArma3
                     playerStatus.Text = "INCONNU";
                     playerStatus.ForeColor = Color.OrangeRed;
                     break;
+            }
+        }
+
+        void loadServerStatus()
+        {
+            try
+            {
+                var client = new RestClient(apiUrl);
+
+                var request = new RestRequest("api/server/status/get", Method.GET);
+
+                IRestResponse response = client.Execute(request);
+                var content = response.Content;
+            
+                dynamic res = JObject.Parse(content.ToString());
+
+                clearNotif();
+
+                if (res.status == "42")
+                {
+                    if (res.online == true)
+                    {
+                        serverStatus.Text = translateDic["online"];
+                        serverStatus.ForeColor = Color.Green;
+                        serverIP.Text = res.server_ip + ':' + res.server_port;
+                        serverPlayers.Text = res.server_onlineplayers + " / " +  res.server_maxplayers;
+                        serverMap.Text = res.server_map;
+                    }
+                    else
+                    {
+                        serverStatus.Text = translateDic["offline"];
+                        serverStatus.ForeColor = Color.Red;
+                        serverIP.Text = translateDic["notFound"];
+                        serverPlayers.Text = translateDic["notFound"];
+                        serverMap.Text = translateDic["notFound"];
+                    }
+                }
+                else
+                {
+                    errorBox.Visible = true;
+                    errorBox.Text = res.message;
+                }
+            }
+            catch
+            {
+
+            }
+        }
+
+        void loadIGinfos()
+        {
+            try
+            {
+                var client = new RestClient(apiUrl);
+
+                var request = new RestRequest("api/server/client/players/get", Method.POST);
+
+                request.AddParameter("token", sessionToken);            
+
+                IRestResponse response = client.Execute(request);
+                var content = response.Content;
+
+                dynamic res = JObject.Parse(content.ToString());
+
+                clearNotif();
+
+                if (res.status == "42")
+                {
+                    double tmp;
+                    IGplayer_username.Text = res.name;
+                    tmp = res.cash;
+                    IGplayer_cash.Text = tmp.ToString("C", System.Globalization.CultureInfo.GetCultureInfo("en-us"));
+                    tmp = res.bank;
+                    IGplayer_bank.Text = tmp.ToString("C", System.Globalization.CultureInfo.GetCultureInfo("en-us"));
+                    IGplayer_coplevel.Text = res.coplevel;
+                    IGplayer_mediclevel.Text = res.mediclevel;
+                    IGplayer_adminlevel.Text = res.adminlevel;
+                }
+                else if (res.status != "24")
+                {
+                    errorBox.Visible = true;
+                    errorBox.Text = res.message;
+                }
+            }
+            catch
+            {
+
             }
         }
 
@@ -415,15 +516,11 @@ namespace LauncherArma3
             {
                 clearNotif();
                 errorBox.Visible = true;
-                errorBox.Text = "Download in progress";
+                errorBox.Text = translateDic["downloadProgress"];
                 return;
             }
             if (File.Exists(appdata + serverName + "/token.bin2hex"))
                 File.Delete(appdata + serverName + "/token.bin2hex");
-            clearNotif();
-            succesBox.Visible = true;
-            succesBox.Text = tr_disconnectMsg;
-            changeStatus("Red");
             normalyClose = true;
             this.Close();
         }
@@ -451,49 +548,37 @@ namespace LauncherArma3
             this.Refresh();
         }
 
-        void setLanguage(string language)
+        void setLanguage()
         {
-            try
-            {
-                string tmp;
-                string translateFile = Properties.Resources.translate;
-                XmlReader translate = XmlReader.Create(new StringReader(translateFile));
-
-                translate.ReadToFollowing(language);
-                translate.ReadToFollowing("logOut");
-                logoutButton.Text = translate.ReadElementContentAsString();
-                translate.ReadToFollowing("commingSoon");
-                tmp = translate.ReadElementContentAsString();
-                newsLabel1.Text = tmp;
-                newsLabel2.Text = tmp;
-                newsLabel3.Text = tmp;
-                translate.ReadToFollowing("username");
-                tmp = translate.ReadElementContentAsString();
-                tr_username = tmp;
-                playerUsernameLabel.Text = tmp + " :";
-                translate.ReadToFollowing("email");
-                tmp = translate.ReadElementContentAsString();
-                tr_email = tmp;
-                playerEmailLabel.Text = tmp + " :";
-                translate.ReadToFollowing("status");
-                playerStatusLabel.Text = translate.ReadElementContentAsString();
-                translate.ReadToFollowing("disconnectMsg");
-                tr_disconnectMsg = translate.ReadElementContentAsString();
-                this.Refresh();
-            }
-            catch
-            {
-                languageChoice formLanguage = new languageChoice(serverName, true);
-
-                // Show the laguage choice
-                formLanguage.ShowDialog();
-
-                if (File.Exists(appdata + serverName + "/language.lang"))
-                {
-                    language = File.ReadAllText(appdata + serverName + "/language.lang");
-                    setLanguage(language);
-                }
-            }
+            newsLabel1.Text = translateDic["commingSoon"];
+            newsLabel2.Text = translateDic["commingSoon"];
+            newsLabel3.Text = translateDic["commingSoon"];
+            playerUsernameLabel.Text = translateDic["username"] + " :";
+            IGplayerLabel_username.Text = translateDic["username"] + " :";
+            playerEmailLabel.Text = translateDic["email"] + " :";
+            playerStatusLabel.Text = translateDic["status"] + " :";
+            serverStatusLabel.Text = translateDic["status"] + " :";
+            logoutButton.Text = translateDic["logOut"];
+            settingsButton.Text = translateDic["settings"];
+            playerUIDLabel.Text = translateDic["steamUID"] + " :";
+            serverIPLabel.Text = translateDic["IP"] + " :";
+            supportButton.Text = translateDic["support"];
+            taskforceVersionLabel.Text = translateDic["taskforceVersion"];
+            forceUpdate.Text = translateDic["forceUpdate"];
+            visitSiteButton.Text = translateDic["visitSite"];
+            visitTeamSpeakButton.Text = translateDic["visitTeamSpeak"];
+            cancelButton.Text = translateDic["cancel"];
+            pauseButton.Text = translateDic["pause"];
+            serverPlayersLabel.Text = translateDic["playersIG"] + " :";
+            serverMapLabel.Text = translateDic["map"] + " :";
+            IGplayerLabel_adminlevel.Text = translateDic["adminLevel"] + " :";
+            IGplayerLabel_coplevel.Text = translateDic["copLevel"] + " :";
+            IGplayerLabel_mediclevel.Text = translateDic["medicLevel"] + " :";
+            IGplayerLabel_cash.Text = translateDic["cash"] + " :";
+            IGplayerLabel_bank.Text = translateDic["bank"] + " :";
+            playerInGameBox.Text = translateDic["IGinformations"];
+            serverBox.Text = translateDic["serverStatus"];
+            usefulBox.Text = translateDic["usefulLink"];
         }
 
         private void settingsButton_Click(object sender, EventArgs e)
@@ -549,13 +634,13 @@ namespace LauncherArma3
         {
             if (File.Exists(path + @"\arma3.exe"))
             {
-                directoryLabel.Text = "Arma directory ok";
+                directoryLabel.Text = translateDic["armaOK"];
                 armaDirectory = path;
                 return true;
             }
             else
             {
-                directoryLabel.Text = "Reselect arma diretory !";
+                directoryLabel.Text = translateDic["selectArma"];
                 armaDirectory = null;
                 return false;
             }
@@ -567,7 +652,7 @@ namespace LauncherArma3
             {
                 clearNotif();
                 errorBox.Visible = true;
-                errorBox.Text = "Download in progress";
+                errorBox.Text = translateDic["downloadProgress"];
                 return;
             }
             directoryChooser.ShowDialog();
@@ -575,12 +660,12 @@ namespace LauncherArma3
             if (checkArmaDirectory(directoryChooser.SelectedPath) == true)
             {
                 succesBox.Visible = true;
-                succesBox.Text = "Success !";
+                succesBox.Text = translateDic["success"];
             }
             else
             {
                 errorBox.Visible = true;
-                errorBox.Text = "Arma directory not good ! ";
+                errorBox.Text = translateDic["armaNotOK"];
             }
             if (File.Exists(appdata + serverName + "/armaDest"))
                 File.Delete(appdata + serverName + "/armaDest");
@@ -709,14 +794,21 @@ namespace LauncherArma3
             {
                 clearNotif();
                 infoBox.Visible = true;
-                infoBox.Text = "Please select arma directory.";
+                infoBox.Text = translateDic["selectArma"];
                 return;
             }
             if (onDownload == true)
             {
                 clearNotif();
                 infoBox.Visible = true;
-                infoBox.Text = "Wait until the end of the current download.";
+                infoBox.Text = translateDic["waitDownload"];
+                return;
+            }
+            if (taskforce == 1 && vtaskforce != vThis_taskforce)
+            {
+                clearNotif();
+                infoBox.Visible = true;
+                infoBox.Text = translateDic["updateTaskforceBefore"];
                 return;
             }
             if (update == false && forceUpdate.Checked == false)
@@ -733,11 +825,8 @@ namespace LauncherArma3
             cancelButton.Visible = true;
             onDownload = true;
             forceUpdate.Visible = false;
-            clearNotif();
-            succesBox.Visible = true;
-            succesBox.Text = "Download started";
-            playButton.Text = "Download in progress";
-            estimedTime.Text = "Initalisation du téléchargement";
+            playButton.Text = translateDic["downloadProgress"];
+            estimedTime.Text = translateDic["downloadInitialisation"];
             downloadProgress.Maximum = 100;
             this.Refresh();
 
@@ -754,7 +843,7 @@ namespace LauncherArma3
             while (serverRequest.IsBusy)
             {
                 serverRequest.Dispose();
-                downloadMessage.Text = "Veuillez patientez...";
+                downloadMessage.Text = translateDic["pleaseWait"];
                 await Task.Delay(1000);
             }
 
@@ -765,10 +854,10 @@ namespace LauncherArma3
             stat = 0;
 
             if (cancel == true)
-                downloadMessage.Text = "Annulation en cours...";
+                downloadMessage.Text = translateDic["cancelling"];
             else
             {
-                downloadMessage.Text = "Requete au serveur en cours...";
+                downloadMessage.Text = translateDic["serverRequest"];
                 serverRequest.RunWorkerAsync();
             }
 
@@ -779,7 +868,7 @@ namespace LauncherArma3
                     downloadProgress.Value += 1;
                 if (cancel == true)
                 {
-                    downloadMessage.Text = "Annulation en cours...";
+                    downloadMessage.Text = translateDic["cancelling"];
                     stat = 1;
                 }
                 else
@@ -796,10 +885,10 @@ namespace LauncherArma3
             stat = 0;
 
             if (cancel == true)
-                downloadMessage.Text = "Annulation en cours...";
+                downloadMessage.Text = translateDic["cancelling"];
             else
             {
-                downloadMessage.Text = "Listing des mods à télécharger.";
+                downloadMessage.Text = translateDic["listingMod"];
                 addonsList = listAddons(res);
             }
 
@@ -810,7 +899,7 @@ namespace LauncherArma3
                     downloadProgress.Value += 1;
                 if (cancel == true)
                 {
-                    downloadMessage.Text = "Annulation en cours...";
+                    downloadMessage.Text = translateDic["cancelling"];
                     stat = 1;
                 }
                 else
@@ -823,10 +912,10 @@ namespace LauncherArma3
             Queue cppList = new Queue();
             stat = 0;
             if (cancel == true)
-                downloadMessage.Text = "Annulation en cours...";
+                downloadMessage.Text = translateDic["cancelling"];
             else
             {
-                downloadMessage.Text = "Listing des ccp à télécharger.";
+                downloadMessage.Text = translateDic["listingCpp"];
                 cppList = listCpp(res);
             }
 
@@ -836,7 +925,7 @@ namespace LauncherArma3
                     downloadProgress.Value += 1;
                 if (cancel == true)
                 {
-                    downloadMessage.Text = "Annulation en cours...";
+                    downloadMessage.Text = translateDic["cancelling"];
                     stat = 1;
                 }
                 else
@@ -848,10 +937,10 @@ namespace LauncherArma3
             Queue userconfigList = new Queue();
             stat = 0;
             if (cancel == true)
-                downloadMessage.Text = "Annulation en cours...";
+                downloadMessage.Text = translateDic["cancelling"];
             else
             {
-                downloadMessage.Text = "Listing des fichier anexes à télécharger.";
+                downloadMessage.Text = translateDic["listingAdditional"];
                 userconfigList = listUserconfigs(res);
             }
 
@@ -861,7 +950,7 @@ namespace LauncherArma3
                     downloadProgress.Value += 1;
                 if (cancel == true)
                 {
-                    downloadMessage.Text = "Annulation en cours...";
+                    downloadMessage.Text = translateDic["cancelling"];
                     stat = 1;
                 }
                 else
@@ -873,7 +962,7 @@ namespace LauncherArma3
             if (addonsList.Count == 0 && cppList.Count == 0
                && userconfigList.Count == 0)
             {
-                downloadMessage.Text = "Already up to date, you can play !";
+                downloadMessage.Text = translateDic["alreadyUpToDate"];
                 alreadyUp = true;
             }
 
@@ -882,7 +971,7 @@ namespace LauncherArma3
                 downloadProgress.Value += 1;
                 if (cancel == true)
                 {
-                    downloadMessage.Text = "Annulation en cours...";
+                    downloadMessage.Text = translateDic["cancelling"];
                     break;
                 }
                 else
@@ -909,9 +998,9 @@ namespace LauncherArma3
                 stat = 0;
                 current = addonsList.Dequeue().ToString();
                 if (cancel == true)
-                    downloadMessage.Text = "Annulation en cours...";
+                    downloadMessage.Text = translateDic["cancelling"];
                 else
-                    downloadMessage.Text = "Téléchargement du mod: " + current + " en cours.";
+                    downloadMessage.Text = translateDic["downloadMod"] + " : " + current + " " + translateDic["inProgress"];
                 startDownload(apiUrl + "api/arma3/addons/download/" + current, armaDirectory + "/@" + serverName + "/addons/" + current);
                 while (stat == 0)
                     await Task.Delay(1000);
@@ -933,9 +1022,9 @@ namespace LauncherArma3
                 stat = 0;
                 current = cppList.Dequeue().ToString();
                 if (cancel == true)
-                    downloadMessage.Text = "Annulation en cours...";
+                    downloadMessage.Text = translateDic["cancelling"];
                 else
-                    downloadMessage.Text = "Téléchargement du fichier: " + current + " en cours.";
+                    downloadMessage.Text = translateDic["downloadFile"] + " : " + current + " " + translateDic["inProgress"];
                 startDownload(apiUrl + "api/arma3/cpps/download/" + current, armaDirectory + "/@" + serverName + "/" + current);
                 while (stat == 0)
                     await Task.Delay(1000);
@@ -957,9 +1046,9 @@ namespace LauncherArma3
                 stat = 0;
                 current = userconfigList.Dequeue().ToString();
                 if (cancel == true)
-                    downloadMessage.Text = "Annulation en cours...";
+                    downloadMessage.Text = translateDic["cancelling"];
                 else
-                    downloadMessage.Text = "Téléchargement du fichier: " + current + " en cours.";
+                    downloadMessage.Text = translateDic["downloadFile"] + " : " + current + " " + translateDic["inProgress"];
                 startDownload(apiUrl + "api/arma3/userconfigs/download/" + current, armaDirectory + "/" + current);
                 while (stat == 0)
                     await Task.Delay(1000);
@@ -973,10 +1062,10 @@ namespace LauncherArma3
             /* DELETE INUTILES MODS AND CPP */
 
             if (cancel == true)
-                downloadMessage.Text = "Annulation en cours...";
+                downloadMessage.Text = translateDic["cancelling"];
             else
             {
-                downloadMessage.Text = "Verification des mods en cours...";
+                downloadMessage.Text = translateDic["checkMod"];
 
                 string addonsName;
                 string[] files = Directory.GetFiles(armaDirectory + "/@" + serverName + "/addons/", "*", SearchOption.TopDirectoryOnly);
@@ -989,10 +1078,10 @@ namespace LauncherArma3
             }
 
             if (cancel == true)
-                downloadMessage.Text = "Annulation en cours...";
+                downloadMessage.Text = translateDic["cancelling"];
             else
             {
-                downloadMessage.Text = "Verification des cpp en cours...";
+                downloadMessage.Text = translateDic["checkCpp"];
 
                 string cppName;
                 string[] files = Directory.GetFiles(armaDirectory + "/@" + serverName + "/", "*", SearchOption.TopDirectoryOnly);
@@ -1017,14 +1106,14 @@ namespace LauncherArma3
             if (cancel == true)
             {
                 infoBox.Visible = true;
-                infoBox.Text = "Download stoped ";
+                infoBox.Text = translateDic["downloadStoped"];
                 checkUpdate();
             }
             else
             {
                 if (alreadyUp == false)
                 {
-                    succesBox.Text = "Download finish !";
+                    succesBox.Text = translateDic["downloadFinish"];
                     succesBox.Visible = true;
                 }
                 if (File.Exists(appdata + serverName + "/vMod"))
@@ -1041,7 +1130,7 @@ namespace LauncherArma3
             cancel = false;
             pause = false;
             result = null;
-            pauseButton.Text = "Pause";
+            pauseButton.Text = translateDic["pause"];
         }
 
         private void startArma()
@@ -1087,15 +1176,15 @@ namespace LauncherArma3
             if (pause == true)
             {
                 pause = false;
-                pauseButton.Text = "Pause";
+                pauseButton.Text = translateDic["pause"];
             }
             else
             {
-                pauseButton.Text = "Resume";
+                pauseButton.Text = translateDic["resume"];
                 pause = true;
                 clearNotif();
                 infoBox.Visible = true;
-                infoBox.Text = "Le téléchargement se mettra en pause après avoir tétécharger le fichier en cours .";
+                infoBox.Text = translateDic["downloadWillPause"];
             }
         }
 
@@ -1129,7 +1218,7 @@ namespace LauncherArma3
             if (pause == true)
             {
                 downloadProgressLabel.Text = "";
-                downloadMessage.Text = "Download paused";
+                downloadMessage.Text = translateDic["downloadPaused"];
                 while (pause == true)
                 {
                     await Task.Delay(1000);
@@ -1153,7 +1242,7 @@ namespace LauncherArma3
             {
                 if (cancel == true)
                 {
-                    downloadMessage.Text = "Annulation en cours...";
+                    downloadMessage.Text = translateDic["cancelling"];
                     client.CancelAsync();
                 }
                 await Task.Delay(1000);
@@ -1184,10 +1273,10 @@ namespace LauncherArma3
 
                 string received = FormatBytes(e.BytesReceived);
                 string total = FormatBytes(e.TotalBytesToReceive);
-                downloadProgressLabel.Text = "Downloaded " + received + " of " + total;
+                downloadProgressLabel.Text = translateDic["downloaded"] + " " + received + " " + translateDic["of"] + " " + total;
                 downloadProgress.Maximum = (int)e.TotalBytesToReceive;
                 downloadProgress.Value = (int)e.BytesReceived;
-                sizeLabel.Text = "Downloaded " + FormatBytes(downloaded_bytes) + " of " + FormatBytes(need_to_download);
+                sizeLabel.Text = translateDic["downloaded"] + " " + FormatBytes(downloaded_bytes) + " " + translateDic["of"] + " " + FormatBytes(need_to_download);
 
 
 
@@ -1195,20 +1284,28 @@ namespace LauncherArma3
 
                 if (DateTime.Now.Second != oldTime)
                 {
-                    bytesPerSecond = (e.BytesReceived - oldBytesPerSeconds);
-                    oldBytesPerSeconds = e.BytesReceived;
-                    oldTime = DateTime.Now.Second;
-                    long sent = (need_to_download - downloaded_bytes);
-                    if (sent != 0 && bytesPerSecond != 0)
+                    try
                     {
-                        long remainingseconds = (sent / 1000) / (bytesPerSecond / 1000);
-                        estimedTime.Text = "Temps estimé: " + FormatDurationSeconds((int)remainingseconds);
+                        bytesPerSecond = (e.BytesReceived - oldBytesPerSeconds);
+                        oldBytesPerSeconds = e.BytesReceived;
+                        oldTime = DateTime.Now.Second;
+                        long sent = (need_to_download - downloaded_bytes);
+                        if (sent != 0 && bytesPerSecond != 0)
+                        {
+                            long remainingseconds = (sent / 1000) / (bytesPerSecond / 1000);
+                            estimedTime.Text = translateDic["estimatedTime"] + " : " + FormatDurationSeconds((int)remainingseconds);
+                        }
                     }
+                    catch
+                    {
+                        //Error division by 0
+                    }
+       
                 }
             });
         }
 
-        public static string FormatDurationSeconds(int seconds)
+        public  string FormatDurationSeconds(int seconds)
         {
             var duration = TimeSpan.FromSeconds(seconds);
             string result = "";
@@ -1236,22 +1333,22 @@ namespace LauncherArma3
                 update = true;
                 if (File.Exists(appdata + serverName + "/vMod"))
                 {
-                    playButton.Text = "Update";
-                    downloadMessage.Text = "An update is available";
+                    playButton.Text = translateDic["update"];
+                    downloadMessage.Text = translateDic["updateAvailable"];
                     forceUpdate.Visible = false;
                 }
                 else
                 {
-                    playButton.Text = "Download";
-                    downloadMessage.Text = "Wait for download";
+                    playButton.Text = translateDic["download"];
+                    downloadMessage.Text = translateDic["waitForDownload"];
                     forceUpdate.Visible = false;
                 }
             }
             else
             {
                 update = false;
-                playButton.Text = "Play";
-                downloadMessage.Text = "Already up to date, you can play !";
+                playButton.Text = translateDic["play"];
+                downloadMessage.Text = translateDic["alreadyUpToDate"];
                 forceUpdate.Visible = true;
             }
         }
@@ -1260,7 +1357,7 @@ namespace LauncherArma3
         {
             if (forceUpdate.Checked == true)
             {
-                playButton.Text = "Force Update";
+                playButton.Text = translateDic["forceUpdate"];
             }
             else
                 checkUpdate();
@@ -1283,18 +1380,25 @@ namespace LauncherArma3
             {
                 clearNotif();
                 errorBox.Visible = true;
-                errorBox.Text = "Error when start listing mods";
+                errorBox.Text = translateDic["errorListing"];
             }
         }
 
         private void taskforceButton_Click(object sender, EventArgs e)
         {
+            if (onDownload == true)
+            {
+                clearNotif();
+                infoBox.Visible = true;
+                infoBox.Text = translateDic["waitDownload"];
+                return;
+            }
             taskforceButton.Enabled = false;
             if (!File.Exists("taskforceInstaller.exe"))
             {
                 clearNotif();
                 errorBox.Visible = true;
-                errorBox.Text = "taskforceInstaller missing !";
+                errorBox.Text = translateDic["taskforceInstallerMissing"];
                 return;
             }
             try
@@ -1309,9 +1413,31 @@ namespace LauncherArma3
             catch
             {
                 errorBox.Visible = true;
-                errorBox.Text = "Install canceled !";
+                errorBox.Text = translateDic["installCancel"];
             }
             taskforceButton.Enabled = true;
         }
+
+        private void supportButton_Click(object sender, EventArgs e)
+        {
+            Process p = new Process();
+            p.StartInfo.FileName = apiUrl + "login?auto=true&token=" + sessionToken;
+            p.Start();
+        }
+
+        private void teamSpeakIcon_Click(object sender, EventArgs e)
+        {
+            Process p = new Process();
+            p.StartInfo.FileName = "ts3server://" + teamSpeak;
+            p.Start();
+        }
+
+        private void webSiteIcon_Click(object sender, EventArgs e)
+        {
+            Process p = new Process();
+            p.StartInfo.FileName = webSite;
+            p.Start();
+        }
     }
 }
+

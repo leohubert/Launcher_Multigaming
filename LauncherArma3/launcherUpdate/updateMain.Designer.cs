@@ -29,23 +29,9 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(updateMain));
-            this.quitButton = new MaterialSkin.Controls.MaterialRaisedButton();
             this.downloadProgress = new FlatUI.FlatProgressBar();
             this.downloadLabel = new MonoFlat.MonoFlat_Label();
             this.SuspendLayout();
-            // 
-            // quitButton
-            // 
-            this.quitButton.Depth = 0;
-            this.quitButton.Location = new System.Drawing.Point(351, 63);
-            this.quitButton.MouseState = MaterialSkin.MouseState.HOVER;
-            this.quitButton.Name = "quitButton";
-            this.quitButton.Primary = true;
-            this.quitButton.Size = new System.Drawing.Size(149, 49);
-            this.quitButton.TabIndex = 0;
-            this.quitButton.Text = "QUIT";
-            this.quitButton.UseVisualStyleBackColor = true;
-            this.quitButton.Click += new System.EventHandler(this.quitButton_Click);
             // 
             // downloadProgress
             // 
@@ -79,11 +65,10 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(523, 125);
+            this.ClientSize = new System.Drawing.Size(523, 96);
             this.ControlBox = false;
             this.Controls.Add(this.downloadLabel);
             this.Controls.Add(this.downloadProgress);
-            this.Controls.Add(this.quitButton);
             this.DisplayHeader = false;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
@@ -98,8 +83,6 @@
         }
 
         #endregion
-
-        private MaterialSkin.Controls.MaterialRaisedButton quitButton;
         private FlatUI.FlatProgressBar downloadProgress;
         private MonoFlat.MonoFlat_Label downloadLabel;
     }

@@ -85,7 +85,7 @@
                                 var banned = row.insertCell(3);
                                 var level = row.insertCell(4);
                                 var last_ip = row.insertCell(5);
-                                var picture = row.insertCell(6);
+                                var uid = row.insertCell(6);
                                 var action = row.insertCell(7);
                                 id.innerHTML = i;
                                 username.innerHTML = obj.users[i].username;
@@ -93,7 +93,10 @@
                                 banned.innerHTML = obj.users[i].banned;
                                 level.innerHTML = obj.users[i].level;
                                 last_ip.innerHTML = obj.users[i].last_ip;
-                                picture.innerHTML = obj.users[i].picture;
+                                if (jQuery.isNumeric(obj.users[i].uid))
+                                    uid.innerHTML = "<a href='http://steamcommunity.com/profiles/" + obj.users[i].uid + "'>" + obj.users[i].uid + "</a>";
+                                else
+                                    uid.innerHTML = obj.users[i].uid;
                                 action.innerHTML = '<a href="/users/view/'+ obj.users[i].id+'"> <button class="btn btn-icon waves-effect waves-light btn-primary m-b-5"> <i class="fa fa-eye"></i> </button></a>';
                                 i++;
                                 total--;
@@ -208,7 +211,7 @@
                                 <th>Banned</th>
                                 <th>Level</th>
                                 <th>Last ip</th>
-                                <th>Picture</th>
+                                <th>Steam UID</th>
                                 <th>Actions</th>
                             </tr>
                             </thead>

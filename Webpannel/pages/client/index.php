@@ -214,13 +214,45 @@
 
                             'text'
                         );
+                        $.get(
+                            '/api/server/status/get',{},
+                            function(data){
+                                var obj = JSON.parse(data);
+
+                                if (obj.status == 42)
+                                {
+                                    if (obj.online == true)
+                                    {
+                                        document.getElementById("server_status_color").className = "text-success";
+                                        document.getElementById("server_status").textContent = "ONLINE";
+                                        document.getElementById("server_ip").textContent = obj.server_ip + ":" + obj.server_port;
+                                        document.getElementById("server_players").textContent = obj.server_onlineplayers + " / " + obj.server_maxplayers;
+                                        document.getElementById("server_map").textContent = obj.server_map;
+                                    }
+                                    else
+                                    {
+                                        document.getElementById("server_status_color").className = "text-danger";
+                                        document.getElementById("server_status").textContent = "OFFLINE";
+                                        document.getElementById("server_ip").textContent = "No found";
+                                        document.getElementById("server_players").textContent = "No found";
+                                        document.getElementById("server_map").textContent = "No found";
+                                    }
+                                }
+                                else if (obj.status == 41)
+                                    window.location="/logout";
+                                else
+                                    swal("Error...", obj.message, "error");
+                            },
+
+                            'text'
+                        );
                     }
                     
                 </script>
 
                 <div class="row">
                     <div class="row">
-                        <div class="col-sm-12">
+                        <div class="col-sm-9">
                             <div class="card-box table-responsive">
 
                                 <h4 class="m-t-0 header-title"><b>Support</b></h4>
@@ -245,6 +277,25 @@
 
                                     </tbody>
                                 </table>
+                            </div>
+                        </div>
+                        <div class="col-sm-3">
+                            <div class="card-box table-responsive">
+                                <h4 class="m-t-0 header-title"><b>Server status</b></h4>
+                                <div class="wid-icon-info">
+                                    <div>
+                                        Status : <small class="text-warning" id="server_status_color"><b id="server_status">WAIT</b></small>
+                                    </div>
+                                    <div>
+                                        IP : <small class="text-primary"><b id="server_ip"></b></small>
+                                    </div>
+                                    <div>
+                                        Players : <small class="text-primary"><b id="server_players"></b></small>
+                                    </div>
+                                    <div>
+                                        Map : <small class="text-primary"><b id="server_map"></b></small>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>

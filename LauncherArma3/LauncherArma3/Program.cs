@@ -19,7 +19,6 @@ namespace LauncherArma3
 
             string serverName = "Regalian";  /* Your serverName */
             string apiUrl = "http://51.255.167.125/"; /* Link to API launcher Arma 3 */
-            string webSite = "http://regalian.org/"; /* Your webSite */
                         
             /* FTP NO FUNCTIONAL */
 
@@ -29,7 +28,7 @@ namespace LauncherArma3
            
             /* FTP NO FUNCTIONAL */
 
-            bool modDev = false;  /* enable or disable modDev */
+            bool modDev = true;  /* enable or disable modDev */
 
             /* ANOTHER VARIABLE */
 
@@ -43,12 +42,12 @@ namespace LauncherArma3
                 Directory.CreateDirectory(appdata + serverName);
             if (File.Exists(appdata + serverName + "/language.lang"))
             {
-                Application.Run(new loginForm(serverName, apiUrl, webSite, ftp_url, ftp_user, ftp_pass, modDev));
+                Application.Run(new loginForm(serverName, apiUrl, ftp_url, ftp_user, ftp_pass, modDev));
             }
             else
             {
                 Application.Run(new languageChoice(serverName, false));
-                Application.Run(new loginForm(serverName, apiUrl, webSite, ftp_url, ftp_user, ftp_pass, modDev));
+                Application.Run(new loginForm(serverName, apiUrl, ftp_url, ftp_user, ftp_pass, modDev));
             }
         }
     }

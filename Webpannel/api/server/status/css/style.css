@@ -1,0 +1,56 @@
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+body
+{
+	background-color: #FFFFFF;
+}
+
+
+a:link    {color:#0066FF}
+a:visited {color:#0066FF}
+a:active  {color:#000099}
+a:hover   {color:#000099}
+
+.like-link {
+	color: #0066FF;
+}
+
+/*CSS Table*/
+.div-table {
+	display: table;
+	border: 1px;
+}
+.div-table-row {
+	display: table-row;
+	height: auto;
+}
+.div-table-col {
+	display: table-cell;
+	padding: 5px;
+	border: 1px;
+	height: auto;
+}
+
+.div-left {
+	width: 30%;
+}
+.div-right {
+	width: 70%;
+}
+
+.error {
+	color: red;
+	text-decoration: none;
+	font-weight: bold;
+}
+
+.underline {
+	text-decoration: underline;
+}

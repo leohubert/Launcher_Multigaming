@@ -38,6 +38,7 @@ if (isset($_POST['token']))
                     $result['users'][$i]['email'] = $res['email'];
                     $result['users'][$i]['banned'] = $res['banned'];
                     $result['users'][$i]['level'] = $res['level'];
+                    $result['users'][$i]['uid'] = $res['uid'];
                     if ((int)$my['level'] >= 8)
                         $result['users'][$i]['last_ip'] = $res['last_ip'];
                     else
