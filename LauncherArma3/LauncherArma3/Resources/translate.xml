@@ -24,77 +24,77 @@
 		<error404>Le serveur n'est pas accéssible.</error404>
 		<errorInternet>Vous n'avez pas internet</errorInternet>
 		<errorUpdate>Erreur launcherUpdate.exe manquant !</errorUpdate>
-    <updateCancel>Mise à jour annulé</updateCancel>
-      <!-- NEW TRANSLATE HERE-->
-    <settings>Paramètres</settings>
-    <steamUID>Steam UID</steamUID>
-    <IP>IP</IP>
-    <online>EN LIGNE</online>
-    <offline>HORS LIGNE</offline>
-    <notFound>Non disponible</notFound>
-    <support>Support</support>
-    <taskforceVersion>Version de taskforce</taskforceVersion>
-    <notInstalled>Non installée</notInstalled>
-    <installed>Installée</installed>
-    <updateTaskforceRequire>Mise à jour de taskforce requise</updateTaskforceRequire>
-    <forceUpdateTaskforce>Forcer la mise à jour</forceUpdateTaskforce>
-    <installTaskforce>Installer Taksforce</installTaskforce>
-    <updateTaskforce>Mettre à jour TaskForce</updateTaskforce>
-    <play>Jouer</play>
-    <download>Télécharger</download>
-    <update>Mettre à jour</update>
-    <forceUpdate>Forcer la mise à jour</forceUpdate>
-    <visitSite>Visiter notre site</visitSite>
-    <visitTeamSpeak>Visiter notre TeamSpeak</visitTeamSpeak>
-    <modDev>Attention ! ModDev activé !</modDev>
-    <chooseArma>Choisissez la destination d'arma 3</chooseArma>
-    <downloadProgress>Téléchargement en cours</downloadProgress>
-    <armaOK>La destination d'arma 3 est OK</armaOK>
-    <selectArma>Selectionner la destination d'arma 3</selectArma>
-    <armaNotOK>La destination d'arma 3 n'est pas bonne</armaNotOK>
-    <success>Succés !</success>
-    <waitDownload>Veuillez attendre la fin du téléchargement des mods !</waitDownload>
-    <updateTaskforceBefore>Veuillez mettre à jour taskforce avant cela !</updateTaskforceBefore>
-    <downloadInitialisation>Initialisation du téléchargement</downloadInitialisation>
-    <pleaseWait>Veuillez patientez</pleaseWait>
-    <cancelling>Annulation...</cancelling>
-    <pause>Pause</pause>
-    <resume>Continuer</resume>
-    <serverRequest>Requête au serveur en cours</serverRequest>
-    <listingMod>Création de la list des mods en cours</listingMod>
-    <listingCpp>Création de la list des cpps en cours</listingCpp>
-    <listingAdditional>Création de la list des autres fichier en cours</listingAdditional>
-    <alreadyUpToDate>Tout est à jour, vous pouvez jouer</alreadyUpToDate>
-    <inProgress>en cours</inProgress>
-    <downloadMod>Téléchargement du mod</downloadMod>
-    <downloadFile>Téléchargement du fichier</downloadFile>
-    <checkMod>Vérification des mods</checkMod>
-    <checkCpp>Vérification des cpps</checkCpp>
-    <downloadStoped>Téléchargement stopé</downloadStoped>
-    <downloadFinish>Téléchargement terminé</downloadFinish>
-    <downloadWillPause>Le téléchargement va se mettre en pause</downloadWillPause>
-    <downloadPaused>Téléchargement mis en pause</downloadPaused>
-    <downloaded>Téléchargé(s)</downloaded>
-    <of>sur</of>
-    <estimatedTime>Temps estimé</estimatedTime>
-    <waitForDownload>En attente du téléchargement</waitForDownload>
-    <updateAvailable>Mise à jour disponible</updateAvailable>
-    <errorListing>Une erreur est survenue durant le listage des mods</errorListing>
-    <taskforceInstallerMissing>Il manque l'installateur du taskforce</taskforceInstallerMissing>
-    <installCancel>Installation annulée</installCancel>
-    <minutes>Minutes</minutes>
-    <seconds>Secondes</seconds>
-    <hours>Heurs</hours>
-    <playersIG>Joueurs en ligne</playersIG>
-    <map>Carte</map>
-    <adminLevel>Level admin</adminLevel>
-    <copLevel>Level flic</copLevel>
-    <medicLevel>Level médecin</medicLevel>
-    <cash>Argent en liquide</cash>
-    <bank>Argent en banque</bank>
-    <serverStatus>Statut du serveur</serverStatus>
-    <IGinformations>Informations en jeu</IGinformations>
-    <usefulLink>Liens utiles</usefulLink>  
+		<updateCancel>Mise à jour annulé</updateCancel>
+		<!-- NEW TRANSLATE HERE-->
+		<settings>Paramètres</settings>
+		<steamUID>Steam UID</steamUID>
+		<IP>IP</IP>
+		<online>EN LIGNE</online>
+		    <offline>HORS LIGNE</offline>
+		    <notFound>Non disponible</notFound>
+		    <support>Support</support>
+		    <taskforceVersion>Version de taskforce</taskforceVersion>
+		    <notInstalled>Non installée</notInstalled>
+		    <installed>Installée</installed>
+		    <updateTaskforceRequire>Mise à jour de taskforce requise</updateTaskforceRequire>
+		    <forceUpdateTaskforce>Forcer la mise à jour</forceUpdateTaskforce>
+		    <installTaskforce>Installer Taksforce</installTaskforce>
+		    <updateTaskforce>Mettre à jour TaskForce</updateTaskforce>
+		    <play>Jouer</play>
+		    <download>Télécharger</download>
+		    <update>Mettre à jour</update>
+		    <forceUpdate>Forcer la mise à jour</forceUpdate>
+		    <visitSite>Visiter notre site</visitSite>
+		    <visitTeamSpeak>Visiter notre TeamSpeak</visitTeamSpeak>
+		    <modDev>Attention ! ModDev activé !</modDev>
+		    <chooseArma>Choisissez la destination d'arma 3</chooseArma>
+		    <downloadProgress>Téléchargement en cours</downloadProgress>
+		    <armaOK>La destination d'arma 3 est OK</armaOK>
+		    <selectArma>Selectionner la destination d'arma 3</selectArma>
+		    <armaNotOK>La destination d'arma 3 n'est pas bonne</armaNotOK>
+		    <success>Succés !</success>
+		    <waitDownload>Veuillez attendre la fin du téléchargement des mods !</waitDownload>
+		    <updateTaskforceBefore>Veuillez mettre à jour taskforce avant cela !</updateTaskforceBefore>
+		    <downloadInitialisation>Initialisation du téléchargement</downloadInitialisation>
+		    <pleaseWait>Veuillez patientez</pleaseWait>
+		    <cancelling>Annulation...</cancelling>
+		    <pause>Pause</pause>
+		    <resume>Continuer</resume>
+		    <serverRequest>Requête au serveur en cours</serverRequest>
+		    <listingMod>Création de la list des mods en cours</listingMod>
+		    <listingCpp>Création de la list des cpps en cours</listingCpp>
+		    <listingAdditional>Création de la list des autres fichier en cours</listingAdditional>
+		    <alreadyUpToDate>Tout est à jour, vous pouvez jouer</alreadyUpToDate>
+		    <inProgress>en cours</inProgress>
+		    <downloadMod>Téléchargement du mod</downloadMod>
+		    <downloadFile>Téléchargement du fichier</downloadFile>
+		    <checkMod>Vérification des mods</checkMod>
+		    <checkCpp>Vérification des cpps</checkCpp>
+		    <downloadStoped>Téléchargement stopé</downloadStoped>
+		    <downloadFinish>Téléchargement terminé</downloadFinish>
+		    <downloadWillPause>Le téléchargement va se mettre en pause</downloadWillPause>
+		    <downloadPaused>Téléchargement mis en pause</downloadPaused>
+		    <downloaded>Téléchargé(s)</downloaded>
+		    <of>sur</of>
+		    <estimatedTime>Temps estimé</estimatedTime>
+		    <waitForDownload>En attente du téléchargement</waitForDownload>
+		    <updateAvailable>Mise à jour disponible</updateAvailable>
+		    <errorListing>Une erreur est survenue durant le listage des mods</errorListing>
+		    <taskforceInstallerMissing>Il manque l'installateur du taskforce</taskforceInstallerMissing>
+		    <installCancel>Installation annulée</installCancel>
+		    <minutes>Minutes</minutes>
+		    <seconds>Secondes</seconds>
+		    <hours>Heurs</hours>
+		    <playersIG>Joueurs en ligne</playersIG>
+		    <map>Carte</map>
+		    <adminLevel>Level admin</adminLevel>
+		    <copLevel>Level flic</copLevel>
+		    <medicLevel>Level médecin</medicLevel>
+		    <cash>Argent en liquide</cash>
+		    <bank>Argent en banque</bank>
+		    <serverStatus>Statut du serveur</serverStatus>
+		    <IGinformations>Informations en jeu</IGinformations>
+		    <usefulLink>Liens utiles</usefulLink>  
 	</FR>
 	<EN language="English">
 		<languageTitle>Select your language</languageTitle>
@@ -120,78 +120,77 @@
 		<error404>The server is not accessible.</error404>
 		<errorInternet>You don't have internet</errorInternet>
 		<errorUpdate>Error launcherUpdate.exe not found !</errorUpdate>
-    <updateCancel>Update canceled</updateCancel>
-      <!-- NEW TRANSLATE HERE-->
-    <settings>Settings</settings>
-    <steamUID>Steam UID</steamUID>
-    <IP>IP</IP>
-    <online>ONLINE</online>
-    <offline>OFFLINE</offline>
-    <notFound>Not found</notFound>
-    <support>Support</support>
-    <taskforceVersion>Taskforce version</taskforceVersion>
-    <notInstalled>Not installed</notInstalled>
-    <installed>Installed</installed>
-    <updateTaskforceRequire>Update of taskforce required</updateTaskforceRequire>
-    <forceUpdateTaskforce>Force update taskforce</forceUpdateTaskforce>
-    <installTaskforce>Install Taksforce</installTaskforce>
-    <updateTaskforce>Update TaskForce</updateTaskforce>
-    <play>Play</play>
-    <download>Download</download>
-    <update>Update</update>
-    <forceUpdate>Force update</forceUpdate>
-    <visitSite>Visit our site</visitSite>
-    <visitTeamSpeak>Visit our TeamSpeak</visitTeamSpeak>
-    <modDev>Warning ! ModDev enabled !</modDev>
-    <chooseArma>Choose arma 3 directory</chooseArma>
-    <downloadProgress>Download in progress</downloadProgress>
-    <armaOK>Arma 3 destination is OK</armaOK>
-    <selectArma>Select arma 3 directory</selectArma>
-    <armaNotOK>Arma 3 destination not OK</armaNotOK>
-    <success>Success !</success>
-    <waitDownload>Wait until the end of the current download</waitDownload>
-    <updateTaskforceBefore>Please update taskforce before</updateTaskforceBefore>
-    <downloadInitialisation>Download initalisation</downloadInitialisation>
-    <pleaseWait>Please wait</pleaseWait>
-    <cancelling>Cancelling...</cancelling>
-    <pause>Pause</pause>
-    <resume>Resume</resume>
-    <serverRequest>Request to the server</serverRequest>
-    <listingMod>Listing all mods to download</listingMod>
-    <listingCpp>Listing all cpps to download</listingCpp>
-    <listingAdditional>Listing all anex files to download</listingAdditional>
-    <alreadyUpToDate>Already up to date, you can play</alreadyUpToDate>
-    <inProgress>in progress</inProgress>
-    <downloadMod>Download mod</downloadMod>
-    <downloadFile>Downlaod file</downloadFile>
-    <checkMod>Checking all mods</checkMod>
-    <checkCpp>Checking all cpps</checkCpp>
-    <downloadStoped>Download stoped</downloadStoped>
-    <downloadFinish>Download finish</downloadFinish>
-    <downloadWillPause>The download will be paused</downloadWillPause>
-    <downloadPaused>Download paused</downloadPaused>
-    <downloaded>Downloaded</downloaded>
-    <of>of</of>
-    <estimatedTime>Estimed time</estimatedTime>
-    <waitForDownload>Wait for download</waitForDownload>
-    <updateAvailable>Update available</updateAvailable>
-    <errorListing>An error occurred during the listing of mods</errorListing>
-    <taskforceInstallerMissing>Missing the installer of the task force</taskforceInstallerMissing>
-    <installCancel>Installation Cancelled</installCancel>
-    <minutes>Minutes</minutes>
-    <seconds>Seconds</seconds>
-    <hours>Hours</hours>
-    <playersIG>Player online</playersIG>
-    <map>Map</map>
-    <adminLevel>Admin level</adminLevel>
-    <copLevel>Cop level</copLevel>
-    <medicLevel>Medic level</medicLevel>
-    <cash>Cash</cash>
-    <bank>Bank</bank>
-    <serverStatus>Server status</serverStatus>
-    <IGinformations>In game information</IGinformations>
-    <usefulLink>Useful link</usefulLink>  
-  </EN>
+		<updateCancel>Update cancelled</updateCancel>
+		<settings>Settings</settings>
+		<steamUID>Steam UID</steamUID>
+		<IP>IP</IP>
+		<online>ONLINE</online>
+		<offline>OFFLINE</offline>
+		<notFound>Not found</notFound>
+		<support>Support</support>
+		<taskforceVersion>Task Force version</taskforceVersion>
+		<notInstalled>Not installed</notInstalled>
+		<installed>Installed</installed>
+		<updateTaskforceRequire>Update of Task Force required</updateTaskforceRequire>
+		<forceUpdateTaskforce>Force update Task Force</forceUpdateTaskforce>
+		<installTaskforce>Install Task Force</installTaskforce>
+		<updateTaskforce>Update TaskForce</updateTaskforce>
+		<play>Play</play>
+		<download>Download</download>
+		<update>Update</update>
+		<forceUpdate>Force update</forceUpdate>
+		<visitSite>Visit our site</visitSite>
+		<visitTeamSpeak>Visit our TeamSpeak</visitTeamSpeak>
+		<modDev>Warning ! ModDev enabled !</modDev>
+		<chooseArma>Choose arma 3 directory</chooseArma>
+		<downloadProgress>Download in progress</downloadProgress>
+		<armaOK>Arma 3 destination is OK</armaOK>
+		<selectArma>Select arma 3 directory</selectArma>
+		<armaNotOK>Arma 3 destination not OK</armaNotOK>
+		<success>Success !</success>
+		<waitDownload>Wait until the end of the current download</waitDownload>
+		<updateTaskforceBefore>Please update Task Force before</updateTaskforceBefore>
+		<downloadInitialisation>Download Initialisation</downloadInitialisation>
+		<pleaseWait>Please wait</pleaseWait>
+		<cancelling>Cancelling...</cancelling>
+		<pause>Pause</pause>
+		<resume>Resume</resume>
+		<serverRequest>Request to the server</serverRequest>
+		<listingMod>Listing all mods to download</listingMod>
+		<listingCpp>Listing all cpps to download</listingCpp>
+		<listingAdditional>Listing all required files to download</listingAdditional>
+		<alreadyUpToDate>Already up to date, you can play</alreadyUpToDate>
+		<inProgress>in progress</inProgress>
+		<downloadMod>Download mod</downloadMod>
+		<downloadFile>Download file</downloadFile>
+		<checkMod>Checking all mods</checkMod>
+		<checkCpp>Checking all cpps</checkCpp>
+		<downloadStoped>Download stopped</downloadStoped>
+		<downloadFinish>Download finish</downloadFinish>
+		<downloadWillPause>The download will be paused</downloadWillPause>
+		<downloadPaused>Download paused</downloadPaused>
+		<downloaded>Downloaded</downloaded>
+		<of>of</of>
+		<estimatedTime>Estimated time</estimatedTime>
+		<waitForDownload>Wait for download</waitForDownload>
+		<updateAvailable>Update available</updateAvailable>
+		<errorListing>An error occurred during the listing of mods</errorListing>
+		<taskforceInstallerMissing>Missing the installer of the task force</taskforceInstallerMissing>
+		<installCancel>Installation Cancelled</installCancel>
+		<minutes>Minutes</minutes>
+		<seconds>Seconds</seconds>
+		<hours>Hours</hours>
+		<playersIG>Player Online</playersIG>
+		<map>Map</map>
+		<adminLevel>Admin level</adminLevel>
+		<copLevel>Cop level</copLevel>
+		<medicLevel>Medic level</medicLevel>
+		<cash>Cash</cash>
+		<bank>Bank</bank>
+		<serverStatus>Server status</serverStatus>
+		<IGinformations>In game information</IGinformations>
+		<usefulLink>Useful link</usefulLink>
+  	</EN>
 	<DE language="Deutch">
 		<languageTitle>Wähle deine Sprache</languageTitle>
 		<contry>Deutschland</contry>
@@ -216,77 +215,77 @@
 		<error404>Der Server ist nicht verfügbar.</error404>
 		<errorInternet>Sie haben keine Internet.</errorInternet>
 		<errorUpdate>Error launcherUpdate.exe wurde nicht gefunden!</errorUpdate>
-    <updateCancel>Aktualisierung abgebrochen</updateCancel>
-     <!-- NEW TRANSLATE HERE-->
-    <settings>Settings</settings>
-    <steamUID>Steam UID</steamUID>
-    <IP>IP</IP>
-    <online>ONLINE</online>
-    <offline>OFFLINE</offline>
-    <notFound>Not found</notFound>
-    <support>Support</support>
-    <taskforceVersion>Taskforce version</taskforceVersion>
-    <notInstalled>Not installed</notInstalled>
-    <installed>Installed</installed>
-    <updateTaskforceRequire>Update of taskforce required</updateTaskforceRequire>
-    <forceUpdateTaskforce>Force update taskforce</forceUpdateTaskforce>
-    <installTaskforce>Install Taksforce</installTaskforce>
-    <updateTaskforce>Update TaskForce</updateTaskforce>
-    <play>Play</play>
-    <download>Download</download>
-    <update>Update</update>
-    <forceUpdate>Force update</forceUpdate>
-    <visitSite>Visit our site</visitSite>
-    <visitTeamSpeak>Visit our TeamSpeak</visitTeamSpeak>
-    <modDev>Warning ! ModDev enabled !</modDev>
-    <chooseArma>Choose arma 3 directory</chooseArma>
-    <downloadProgress>Download in progress</downloadProgress>
-    <armaOK>Arma 3 destination is OK</armaOK>
-    <selectArma>Select arma 3 directory</selectArma>
-    <armaNotOK>Arma 3 destination not OK</armaNotOK>
-    <success>Success !</success>
-    <waitDownload>Wait until the end of the current download</waitDownload>
-    <updateTaskforceBefore>Please update taskforce before</updateTaskforceBefore>
-    <downloadInitialisation>Download initalisation</downloadInitialisation>
-    <pleaseWait>Please wait</pleaseWait>
-    <cancelling>Cancelling...</cancelling>
-    <pause>Pause</pause>
-    <resume>Resume</resume>
-    <serverRequest>Request to the server</serverRequest>
-    <listingMod>Listing all mods to download</listingMod>
-    <listingCpp>Listing all cpps to download</listingCpp>
-    <listingAdditional>Listing all anex files to download</listingAdditional>
-    <alreadyUpToDate>Already up to date, you can play</alreadyUpToDate>
-    <inProgress>in progress</inProgress>
-    <downloadMod>Download mod</downloadMod>
-    <downloadFile>Downlaod file</downloadFile>
-    <checkMod>Checking all mods</checkMod>
-    <checkCpp>Checking all cpps</checkCpp>
-    <downloadStoped>Download stoped</downloadStoped>
-    <downloadFinish>Download finish</downloadFinish>
-    <downloadWillPause>The download will be paused</downloadWillPause>
-    <downloadPaused>Download paused</downloadPaused>
-    <downloaded>Downloaded</downloaded>
-    <of>of</of>
-    <estimatedTime>Estimed time</estimatedTime>
-    <waitForDownload>Wait for download</waitForDownload>
-    <updateAvailable>Update available</updateAvailable>
-    <errorListing>An error occurred during the listing of mods</errorListing>
-    <taskforceInstallerMissing>Missing the installer of the task force</taskforceInstallerMissing>
-    <installCancel>Installation Cancelled</installCancel>
-    <minutes>Minutes</minutes>
-    <seconds>Seconds</seconds>
-    <hours>Hours</hours>
-    <playersIG>Player online</playersIG>
-    <map>Map</map>
-    <adminLevel>Admin level</adminLevel>
-    <copLevel>Cop level</copLevel>
-    <medicLevel>Medic level</medicLevel>
-    <cash>Cash</cash>
-    <bank>Bank</bank>
-    <serverStatus>Server status</serverStatus>
-    <IGinformations>In game information</IGinformations>
-    <usefulLink>Useful link</usefulLink>  
+		    <updateCancel>Aktualisierung abgebrochen</updateCancel>
+		     <!-- NEW TRANSLATE HERE-->
+		    <settings>Settings</settings>
+		    <steamUID>Steam UID</steamUID>
+		    <IP>IP</IP>
+		    <online>ONLINE</online>
+		    <offline>OFFLINE</offline>
+		    <notFound>Not found</notFound>
+		    <support>Support</support>
+		    <taskforceVersion>Taskforce version</taskforceVersion>
+		    <notInstalled>Not installed</notInstalled>
+		    <installed>Installed</installed>
+		    <updateTaskforceRequire>Update of taskforce required</updateTaskforceRequire>
+		    <forceUpdateTaskforce>Force update taskforce</forceUpdateTaskforce>
+		    <installTaskforce>Install Taksforce</installTaskforce>
+		    <updateTaskforce>Update TaskForce</updateTaskforce>
+		    <play>Play</play>
+		    <download>Download</download>
+		    <update>Update</update>
+		    <forceUpdate>Force update</forceUpdate>
+		    <visitSite>Visit our site</visitSite>
+		    <visitTeamSpeak>Visit our TeamSpeak</visitTeamSpeak>
+		    <modDev>Warning ! ModDev enabled !</modDev>
+		    <chooseArma>Choose arma 3 directory</chooseArma>
+		    <downloadProgress>Download in progress</downloadProgress>
+		    <armaOK>Arma 3 destination is OK</armaOK>
+		    <selectArma>Select arma 3 directory</selectArma>
+		    <armaNotOK>Arma 3 destination not OK</armaNotOK>
+		    <success>Success !</success>
+		    <waitDownload>Wait until the end of the current download</waitDownload>
+		    <updateTaskforceBefore>Please update taskforce before</updateTaskforceBefore>
+		    <downloadInitialisation>Download initalisation</downloadInitialisation>
+		    <pleaseWait>Please wait</pleaseWait>
+		    <cancelling>Cancelling...</cancelling>
+		    <pause>Pause</pause>
+		    <resume>Resume</resume>
+		    <serverRequest>Request to the server</serverRequest>
+		    <listingMod>Listing all mods to download</listingMod>
+		    <listingCpp>Listing all cpps to download</listingCpp>
+		    <listingAdditional>Listing all anex files to download</listingAdditional>
+		    <alreadyUpToDate>Already up to date, you can play</alreadyUpToDate>
+		    <inProgress>in progress</inProgress>
+		    <downloadMod>Download mod</downloadMod>
+		    <downloadFile>Downlaod file</downloadFile>
+		    <checkMod>Checking all mods</checkMod>
+		    <checkCpp>Checking all cpps</checkCpp>
+		    <downloadStoped>Download stoped</downloadStoped>
+		    <downloadFinish>Download finish</downloadFinish>
+		    <downloadWillPause>The download will be paused</downloadWillPause>
+		    <downloadPaused>Download paused</downloadPaused>
+		    <downloaded>Downloaded</downloaded>
+		    <of>of</of>
+		    <estimatedTime>Estimed time</estimatedTime>
+		    <waitForDownload>Wait for download</waitForDownload>
+		    <updateAvailable>Update available</updateAvailable>
+		    <errorListing>An error occurred during the listing of mods</errorListing>
+		    <taskforceInstallerMissing>Missing the installer of the task force</taskforceInstallerMissing>
+		    <installCancel>Installation Cancelled</installCancel>
+		    <minutes>Minutes</minutes>
+		    <seconds>Seconds</seconds>
+		    <hours>Hours</hours>
+		    <playersIG>Player online</playersIG>
+		    <map>Map</map>
+		    <adminLevel>Admin level</adminLevel>
+		    <copLevel>Cop level</copLevel>
+		    <medicLevel>Medic level</medicLevel>
+		    <cash>Cash</cash>
+		    <bank>Bank</bank>
+		    <serverStatus>Server status</serverStatus>
+		    <IGinformations>In game information</IGinformations>
+		    <usefulLink>Useful link</usefulLink>  
 	</DE>
 	<SP language="Spanish">
 		<languageTitle>Elige tu idioma</languageTitle>
@@ -312,77 +311,77 @@
 		<error404>El servidor no es accesible.</error404>
 		<errorInternet>Usted no tiene internet.</errorInternet>
 		<errorUpdate>Error launcherUpdate.exe no encontrado!</errorUpdate>
-    <updateCancel>Actualización cancelada</updateCancel>
-     <!-- NEW TRANSLATE HERE-->
-    <settings>Settings</settings>
-    <steamUID>Steam UID</steamUID>
-    <IP>IP</IP>
-    <online>ONLINE</online>
-    <offline>OFFLINE</offline>
-    <notFound>Not found</notFound>
-    <support>Support</support>
-    <taskforceVersion>Taskforce version</taskforceVersion>
-    <notInstalled>Not installed</notInstalled>
-    <installed>Installed</installed>
-    <updateTaskforceRequire>Update of taskforce required</updateTaskforceRequire>
-    <forceUpdateTaskforce>Force update taskforce</forceUpdateTaskforce>
-    <installTaskforce>Install Taksforce</installTaskforce>
-    <updateTaskforce>Update TaskForce</updateTaskforce>
-    <play>Play</play>
-    <download>Download</download>
-    <update>Update</update>
-    <forceUpdate>Force update</forceUpdate>
-    <visitSite>Visit our site</visitSite>
-    <visitTeamSpeak>Visit our TeamSpeak</visitTeamSpeak>
-    <modDev>Warning ! ModDev enabled !</modDev>
-    <chooseArma>Choose arma 3 directory</chooseArma>
-    <downloadProgress>Download in progress</downloadProgress>
-    <armaOK>Arma 3 destination is OK</armaOK>
-    <selectArma>Select arma 3 directory</selectArma>
-    <armaNotOK>Arma 3 destination not OK</armaNotOK>
-    <success>Success !</success>
-    <waitDownload>Wait until the end of the current download</waitDownload>
-    <updateTaskforceBefore>Please update taskforce before</updateTaskforceBefore>
-    <downloadInitialisation>Download initalisation</downloadInitialisation>
-    <pleaseWait>Please wait</pleaseWait>
-    <cancelling>Cancelling...</cancelling>
-    <pause>Pause</pause>
-    <resume>Resume</resume>
-    <serverRequest>Request to the server</serverRequest>
-    <listingMod>Listing all mods to download</listingMod>
-    <listingCpp>Listing all cpps to download</listingCpp>
-    <listingAdditional>Listing all anex files to download</listingAdditional>
-    <alreadyUpToDate>Already up to date, you can play</alreadyUpToDate>
-    <inProgress>in progress</inProgress>
-    <downloadMod>Download mod</downloadMod>
-    <downloadFile>Downlaod file</downloadFile>
-    <checkMod>Checking all mods</checkMod>
-    <checkCpp>Checking all cpps</checkCpp>
-    <downloadStoped>Download stoped</downloadStoped>
-    <downloadFinish>Download finish</downloadFinish>
-    <downloadWillPause>The download will be paused</downloadWillPause>
-    <downloadPaused>Download paused</downloadPaused>
-    <downloaded>Downloaded</downloaded>
-    <of>of</of>
-    <estimatedTime>Estimed time</estimatedTime>
-    <waitForDownload>Wait for download</waitForDownload>
-    <updateAvailable>Update available</updateAvailable>
-    <errorListing>An error occurred during the listing of mods</errorListing>
-    <taskforceInstallerMissing>Missing the installer of the task force</taskforceInstallerMissing>
-    <installCancel>Installation Cancelled</installCancel>
-    <minutes>Minutes</minutes>
-    <seconds>Seconds</seconds>
-    <hours>Hours</hours>
-    <playersIG>Player online</playersIG>
-    <map>Map</map>
-    <adminLevel>Admin level</adminLevel>
-    <copLevel>Cop level</copLevel>
-    <medicLevel>Medic level</medicLevel>
-    <cash>Cash</cash>
-    <bank>Bank</bank>
-    <serverStatus>Server status</serverStatus>
-    <IGinformations>In game information</IGinformations>
-    <usefulLink>Useful link</usefulLink>  
+		    <updateCancel>Actualización cancelada</updateCancel>
+		     <!-- NEW TRANSLATE HERE-->
+		    <settings>Settings</settings>
+		    <steamUID>Steam UID</steamUID>
+		    <IP>IP</IP>
+		    <online>ONLINE</online>
+		    <offline>OFFLINE</offline>
+		    <notFound>Not found</notFound>
+		    <support>Support</support>
+		    <taskforceVersion>Taskforce version</taskforceVersion>
+		    <notInstalled>Not installed</notInstalled>
+		    <installed>Installed</installed>
+		    <updateTaskforceRequire>Update of taskforce required</updateTaskforceRequire>
+		    <forceUpdateTaskforce>Force update taskforce</forceUpdateTaskforce>
+		    <installTaskforce>Install Taksforce</installTaskforce>
+		    <updateTaskforce>Update TaskForce</updateTaskforce>
+		    <play>Play</play>
+		    <download>Download</download>
+		    <update>Update</update>
+		    <forceUpdate>Force update</forceUpdate>
+		    <visitSite>Visit our site</visitSite>
+		    <visitTeamSpeak>Visit our TeamSpeak</visitTeamSpeak>
+		    <modDev>Warning ! ModDev enabled !</modDev>
+		    <chooseArma>Choose arma 3 directory</chooseArma>
+		    <downloadProgress>Download in progress</downloadProgress>
+		    <armaOK>Arma 3 destination is OK</armaOK>
+		    <selectArma>Select arma 3 directory</selectArma>
+		    <armaNotOK>Arma 3 destination not OK</armaNotOK>
+		    <success>Success !</success>
+		    <waitDownload>Wait until the end of the current download</waitDownload>
+		    <updateTaskforceBefore>Please update taskforce before</updateTaskforceBefore>
+		    <downloadInitialisation>Download initalisation</downloadInitialisation>
+		    <pleaseWait>Please wait</pleaseWait>
+		    <cancelling>Cancelling...</cancelling>
+		    <pause>Pause</pause>
+		    <resume>Resume</resume>
+		    <serverRequest>Request to the server</serverRequest>
+		    <listingMod>Listing all mods to download</listingMod>
+		    <listingCpp>Listing all cpps to download</listingCpp>
+		    <listingAdditional>Listing all anex files to download</listingAdditional>
+		    <alreadyUpToDate>Already up to date, you can play</alreadyUpToDate>
+		    <inProgress>in progress</inProgress>
+		    <downloadMod>Download mod</downloadMod>
+		    <downloadFile>Downlaod file</downloadFile>
+		    <checkMod>Checking all mods</checkMod>
+		    <checkCpp>Checking all cpps</checkCpp>
+		    <downloadStoped>Download stoped</downloadStoped>
+		    <downloadFinish>Download finish</downloadFinish>
+		    <downloadWillPause>The download will be paused</downloadWillPause>
+		    <downloadPaused>Download paused</downloadPaused>
+		    <downloaded>Downloaded</downloaded>
+		    <of>of</of>
+		    <estimatedTime>Estimed time</estimatedTime>
+		    <waitForDownload>Wait for download</waitForDownload>
+		    <updateAvailable>Update available</updateAvailable>
+		    <errorListing>An error occurred during the listing of mods</errorListing>
+		    <taskforceInstallerMissing>Missing the installer of the task force</taskforceInstallerMissing>
+		    <installCancel>Installation Cancelled</installCancel>
+		    <minutes>Minutes</minutes>
+		    <seconds>Seconds</seconds>
+		    <hours>Hours</hours>
+		    <playersIG>Player online</playersIG>
+		    <map>Map</map>
+		    <adminLevel>Admin level</adminLevel>
+		    <copLevel>Cop level</copLevel>
+		    <medicLevel>Medic level</medicLevel>
+		    <cash>Cash</cash>
+		    <bank>Bank</bank>
+		    <serverStatus>Server status</serverStatus>
+		    <IGinformations>In game information</IGinformations>
+		    <usefulLink>Useful link</usefulLink>  
 	</SP>
 	<MT language="Canadiens">
 		<languageTitle>Choisi ta langue tabernack</languageTitle>
@@ -409,77 +408,77 @@
 		<error404>Le serveur n'est pas accéssible.</error404>
 		<errorInternet>Verifie ta wifi tu n'as pas internet</errorInternet>
 		<errorUpdate>Erreur launcherUpdate.exe manquant !</errorUpdate>
-    <updateCancel>Hey mec ta annulé la mise à jour</updateCancel>
-       <!-- NEW TRANSLATE HERE-->
-    <settings>Paramètres</settings>
-    <steamUID>Steam UID</steamUID>
-    <IP>IP</IP>
-    <online>EN LIGNE</online>
-    <offline>HORS LIGNE</offline>
-    <notFound>Non disponible</notFound>
-    <support>Support</support>
-    <taskforceVersion>Version de taskforce</taskforceVersion>
-    <notInstalled>Non installée</notInstalled>
-    <installed>Installée</installed>
-    <updateTaskforceRequire>Mise à jour de taskforce requise</updateTaskforceRequire>
-    <forceUpdateTaskforce>Forcer la mise à jour</forceUpdateTaskforce>
-    <installTaskforce>Installer Taksforce</installTaskforce>
-    <updateTaskforce>Mettre à jour TaskForce</updateTaskforce>
-    <play>Jouer</play>
-    <download>Télécharger</download>
-    <update>Mettre à jour</update>
-    <forceUpdate>Forcer la mise à jour</forceUpdate>
-    <visitSite>Visiter notre site</visitSite>
-    <visitTeamSpeak>Visiter notre TeamSpeak</visitTeamSpeak>
-    <modDev>Attention ! ModDev activé !</modDev>
-    <chooseArma>Choisissez la destination d'arma 3</chooseArma>
-    <downloadProgress>Téléchargement en cours</downloadProgress>
-    <armaOK>La destination d'arma 3 est OK</armaOK>
-    <selectArma>Selectionner la destination d'arma 3</selectArma>
-    <armaNotOK>La destination d'arma 3 n'est pas bonne</armaNotOK>
-    <success>Succés !</success>
-    <waitDownload>Veuillez attendre la fin du téléchargement des mods !</waitDownload>
-    <updateTaskforceBefore>Veuillez mettre à jour taskforce avant cela !</updateTaskforceBefore>
-    <downloadInitialisation>Initialisation du téléchargement</downloadInitialisation>
-    <pleaseWait>Veuillez patientez</pleaseWait>
-    <cancelling>Annulation...</cancelling>
-    <pause>Pause</pause>
-    <resume>Continuer</resume>
-    <serverRequest>Requête au serveur en cours</serverRequest>
-    <listingMod>Création de la list des mods en cours</listingMod>
-    <listingCpp>Création de la list des cpps en cours</listingCpp>
-    <listingAdditional>Création de la list des autres fichier en cours</listingAdditional>
-    <alreadyUpToDate>Tout est à jour, vous pouvez jouer</alreadyUpToDate>
-    <inProgress>en cours</inProgress>
-    <downloadMod>Téléchargement du mod</downloadMod>
-    <downloadFile>Téléchargement du fichier</downloadFile>
-    <checkMod>Vérification des mods</checkMod>
-    <checkCpp>Vérification des cpps</checkCpp>
-    <downloadStoped>Téléchargement stopé</downloadStoped>
-    <downloadFinish>Téléchargement terminé</downloadFinish>
-    <downloadWillPause>Le téléchargement va se mettre en pause</downloadWillPause>
-    <downloadPaused>Téléchargement mis en pause</downloadPaused>
-    <downloaded>Téléchargé(s)</downloaded>
-    <of>sur</of>
-    <estimatedTime>Temps estimé</estimatedTime>
-    <waitForDownload>En attente du téléchargement</waitForDownload>
-    <updateAvailable>Mise à jour disponible</updateAvailable>
-    <errorListing>Une erreur est survenue durant le listage des mods</errorListing>
-    <taskforceInstallerMissing>Il manque l'installateur du taskforce</taskforceInstallerMissing>
-    <installCancel>Installation annulée</installCancel>
-    <minutes>Minutes</minutes>
-    <seconds>Secondes</seconds>
-    <hours>Heurs</hours>
-    <playersIG>Joueurs en ligne</playersIG>
-    <map>Carte</map>
-    <adminLevel>Level admin</adminLevel>
-    <copLevel>Level flic</copLevel>
-    <medicLevel>Level médecin</medicLevel>
-    <cash>Argent en liquide</cash>
-    <bank>Argent en banque</bank>
-    <serverStatus>Statut du serveur</serverStatus>
-    <IGinformations>Informations en jeux</IGinformations>
-    <usefulLink>Liens utiles</usefulLink>  
+		    <updateCancel>Hey mec ta annulé la mise à jour</updateCancel>
+		       <!-- NEW TRANSLATE HERE-->
+		    <settings>Paramètres</settings>
+		    <steamUID>Steam UID</steamUID>
+		    <IP>IP</IP>
+		    <online>EN LIGNE</online>
+		    <offline>HORS LIGNE</offline>
+		    <notFound>Non disponible</notFound>
+		    <support>Support</support>
+		    <taskforceVersion>Version de taskforce</taskforceVersion>
+		    <notInstalled>Non installée</notInstalled>
+		    <installed>Installée</installed>
+		    <updateTaskforceRequire>Mise à jour de taskforce requise</updateTaskforceRequire>
+		    <forceUpdateTaskforce>Forcer la mise à jour</forceUpdateTaskforce>
+		    <installTaskforce>Installer Taksforce</installTaskforce>
+		    <updateTaskforce>Mettre à jour TaskForce</updateTaskforce>
+		    <play>Jouer</play>
+		    <download>Télécharger</download>
+		    <update>Mettre à jour</update>
+		    <forceUpdate>Forcer la mise à jour</forceUpdate>
+		    <visitSite>Visiter notre site</visitSite>
+		    <visitTeamSpeak>Visiter notre TeamSpeak</visitTeamSpeak>
+		    <modDev>Attention ! ModDev activé !</modDev>
+		    <chooseArma>Choisissez la destination d'arma 3</chooseArma>
+		    <downloadProgress>Téléchargement en cours</downloadProgress>
+		    <armaOK>La destination d'arma 3 est OK</armaOK>
+		    <selectArma>Selectionner la destination d'arma 3</selectArma>
+		    <armaNotOK>La destination d'arma 3 n'est pas bonne</armaNotOK>
+		    <success>Succés !</success>
+		    <waitDownload>Veuillez attendre la fin du téléchargement des mods !</waitDownload>
+		    <updateTaskforceBefore>Veuillez mettre à jour taskforce avant cela !</updateTaskforceBefore>
+		    <downloadInitialisation>Initialisation du téléchargement</downloadInitialisation>
+		    <pleaseWait>Veuillez patientez</pleaseWait>
+		    <cancelling>Annulation...</cancelling>
+		    <pause>Pause</pause>
+		    <resume>Continuer</resume>
+		    <serverRequest>Requête au serveur en cours</serverRequest>
+		    <listingMod>Création de la list des mods en cours</listingMod>
+		    <listingCpp>Création de la list des cpps en cours</listingCpp>
+		    <listingAdditional>Création de la list des autres fichier en cours</listingAdditional>
+		    <alreadyUpToDate>Tout est à jour, vous pouvez jouer</alreadyUpToDate>
+		    <inProgress>en cours</inProgress>
+		    <downloadMod>Téléchargement du mod</downloadMod>
+		    <downloadFile>Téléchargement du fichier</downloadFile>
+		    <checkMod>Vérification des mods</checkMod>
+		    <checkCpp>Vérification des cpps</checkCpp>
+		    <downloadStoped>Téléchargement stopé</downloadStoped>
+		    <downloadFinish>Téléchargement terminé</downloadFinish>
+		    <downloadWillPause>Le téléchargement va se mettre en pause</downloadWillPause>
+		    <downloadPaused>Téléchargement mis en pause</downloadPaused>
+		    <downloaded>Téléchargé(s)</downloaded>
+		    <of>sur</of>
+		    <estimatedTime>Temps estimé</estimatedTime>
+		    <waitForDownload>En attente du téléchargement</waitForDownload>
+		    <updateAvailable>Mise à jour disponible</updateAvailable>
+		    <errorListing>Une erreur est survenue durant le listage des mods</errorListing>
+		    <taskforceInstallerMissing>Il manque l'installateur du taskforce</taskforceInstallerMissing>
+		    <installCancel>Installation annulée</installCancel>
+		    <minutes>Minutes</minutes>
+		    <seconds>Secondes</seconds>
+		    <hours>Heurs</hours>
+		    <playersIG>Joueurs en ligne</playersIG>
+		    <map>Carte</map>
+		    <adminLevel>Level admin</adminLevel>
+		    <copLevel>Level flic</copLevel>
+		    <medicLevel>Level médecin</medicLevel>
+		    <cash>Argent en liquide</cash>
+		    <bank>Argent en banque</bank>
+		    <serverStatus>Statut du serveur</serverStatus>
+		    <IGinformations>Informations en jeux</IGinformations>
+		    <usefulLink>Liens utiles</usefulLink>  
 	</MT>
 	<JP language="Japanese">
 		<languageTitle>言語を選択</languageTitle>
@@ -505,77 +504,77 @@
 		<error404>サーバーにアクセスできません。</error404>
 		<errorInternet>あなたはインターネットを持っていません。</errorInternet>
 		<errorUpdate>エラー launcherUpdate.exe が見つかりません！</errorUpdate>
-    <updateCancel>更新キャンセル</updateCancel>
-      <!-- NEW TRANSLATE HERE-->
-    <settings>んんん</settings>
-    <steamUID>んんん</steamUID>
-    <IP>んんん</IP>
-    <online>んん</online>
-    <offline>んん</offline>
-    <notFound>んんんん</notFound>
-    <support>エラエラ</support>
-    <taskforceVersion>クセスで</taskforceVersion>
-    <notInstalled>スで</notInstalled>
-    <installed>スで</installed>
-    <updateTaskforceRequire>スで</updateTaskforceRequire>
-    <forceUpdateTaskforce>スス</forceUpdateTaskforce>
-    <installTaskforce>スス</installTaskforce>
-    <updateTaskforce>ススス</updateTaskforce>
-    <play>あなたが</play>
-    <download>グアウ</download>
-    <update>アク</update>
-    <forceUpdate>見つか</forceUpdate>
-    <visitSite>を忘</visitSite>
-    <visitTeamSpeak>を忘</visitTeamSpeak>
-    <modDev>りま</modDev>
-    <chooseArma>まま</chooseArma>
-    <downloadProgress>無無</downloadProgress>
-    <armaOK>無スで</armaOK>
-    <selectArma>はインタ</selectArma>
-    <armaNotOK>はイン</armaNotOK>
-    <success>でで</success>
-    <waitDownload>トを</waitDownload>
-    <updateTaskforceBefore>つかり</updateTaskforceBefore>
-    <downloadInitialisation>ーネッ</downloadInitialisation>
-    <pleaseWait>ッッッ</pleaseWait>
-    <cancelling>りりり</cancelling>
-    <pause>ネり</pause>
-    <resume>中中</resume>
-    <serverRequest>つかつか</serverRequest>
-    <listingMod>つつつ</listingMod>
-    <listingCpp>つつ</listingCpp>
-    <listingAdditional>中中</listingAdditional>
-    <alreadyUpToDate>ネ</alreadyUpToDate>
-    <inProgress>まネま</inProgress>
-    <downloadMod>まま</downloadMod>
-    <downloadFile>まま</downloadFile>
-    <checkMod>忘</checkMod>
-    <checkCpp>忘</checkCpp>
-    <downloadStoped>スス</downloadStoped>
-    <downloadFinish>ススス</downloadFinish>
-    <downloadWillPause>ネネネ</downloadWillPause>
-    <downloadPaused>ネネ</downloadPaused>
-    <downloaded>ネ</downloaded>
-    <of>ネ</of>
-    <estimatedTime>スス</estimatedTime>
-    <waitForDownload>ーネーネ</waitForDownload>
-    <updateAvailable>ーー</updateAvailable>
-    <errorListing>ーー</errorListing>
-    <taskforceInstallerMissing>ススーー</taskforceInstallerMissing>
-    <installCancel>スス</installCancel>
-    <minutes>のの</minutes>
-    <seconds>ののの</seconds>
-    <hours>ののの</hours>
-    <playersIG>のの</playersIG>
-    <map>のの</map>
-    <adminLevel>のの</adminLevel>
-    <copLevel>のの</copLevel>
-    <medicLevel>のの</medicLevel>
-    <cash>のの</cash>
-    <bank>のの</bank>
-    <serverStatus>のの</serverStatus>
-    <IGinformations>のの</IGinformations>
-    <usefulLink>のの</usefulLink>  
+		    <updateCancel>更新キャンセル</updateCancel>
+		      <!-- NEW TRANSLATE HERE-->
+		    <settings>んんん</settings>
+		    <steamUID>んんん</steamUID>
+		    <IP>んんん</IP>
+		    <online>んん</online>
+		    <offline>んん</offline>
+		    <notFound>んんんん</notFound>
+		    <support>エラエラ</support>
+		    <taskforceVersion>クセスで</taskforceVersion>
+		    <notInstalled>スで</notInstalled>
+		    <installed>スで</installed>
+		    <updateTaskforceRequire>スで</updateTaskforceRequire>
+		    <forceUpdateTaskforce>スス</forceUpdateTaskforce>
+		    <installTaskforce>スス</installTaskforce>
+		    <updateTaskforce>ススス</updateTaskforce>
+		    <play>あなたが</play>
+		    <download>グアウ</download>
+		    <update>アク</update>
+		    <forceUpdate>見つか</forceUpdate>
+		    <visitSite>を忘</visitSite>
+		    <visitTeamSpeak>を忘</visitTeamSpeak>
+		    <modDev>りま</modDev>
+		    <chooseArma>まま</chooseArma>
+		    <downloadProgress>無無</downloadProgress>
+		    <armaOK>無スで</armaOK>
+		    <selectArma>はインタ</selectArma>
+		    <armaNotOK>はイン</armaNotOK>
+		    <success>でで</success>
+		    <waitDownload>トを</waitDownload>
+		    <updateTaskforceBefore>つかり</updateTaskforceBefore>
+		    <downloadInitialisation>ーネッ</downloadInitialisation>
+		    <pleaseWait>ッッッ</pleaseWait>
+		    <cancelling>りりり</cancelling>
+		    <pause>ネり</pause>
+		    <resume>中中</resume>
+		    <serverRequest>つかつか</serverRequest>
+		    <listingMod>つつつ</listingMod>
+		    <listingCpp>つつ</listingCpp>
+		    <listingAdditional>中中</listingAdditional>
+		    <alreadyUpToDate>ネ</alreadyUpToDate>
+		    <inProgress>まネま</inProgress>
+		    <downloadMod>まま</downloadMod>
+		    <downloadFile>まま</downloadFile>
+		    <checkMod>忘</checkMod>
+		    <checkCpp>忘</checkCpp>
+		    <downloadStoped>スス</downloadStoped>
+		    <downloadFinish>ススス</downloadFinish>
+		    <downloadWillPause>ネネネ</downloadWillPause>
+		    <downloadPaused>ネネ</downloadPaused>
+		    <downloaded>ネ</downloaded>
+		    <of>ネ</of>
+		    <estimatedTime>スス</estimatedTime>
+		    <waitForDownload>ーネーネ</waitForDownload>
+		    <updateAvailable>ーー</updateAvailable>
+		    <errorListing>ーー</errorListing>
+		    <taskforceInstallerMissing>ススーー</taskforceInstallerMissing>
+		    <installCancel>スス</installCancel>
+		    <minutes>のの</minutes>
+		    <seconds>ののの</seconds>
+		    <hours>ののの</hours>
+		    <playersIG>のの</playersIG>
+		    <map>のの</map>
+		    <adminLevel>のの</adminLevel>
+		    <copLevel>のの</copLevel>
+		    <medicLevel>のの</medicLevel>
+		    <cash>のの</cash>
+		    <bank>のの</bank>
+		    <serverStatus>のの</serverStatus>
+		    <IGinformations>のの</IGinformations>
+		    <usefulLink>のの</usefulLink>  
 </JP>
 </user>
 
