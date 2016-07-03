@@ -58,6 +58,10 @@ edit to
 Write this command in the terminal 'sudo a2enmod rewrite'
 - Step 7: 
 Upload WebPanel to the /var/www/html folder (don't forget .htaccess file)
+- Step 8:
+Write this command in the terminal 'chmod 777 -R /var/www/html/arma3/; chmod 777 -R /var/www/html/configs/'
+- Step 9:
+In your browser, go to your VPS or other IP and follow the install progress.
 
 ##Creators:
 
