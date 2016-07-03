@@ -418,6 +418,10 @@ namespace LauncherArma3
                 translateDic.Add("updateTaskforce", translate.ReadElementContentAsString());
                 translate.ReadToFollowing("play");
                 translateDic.Add("play", translate.ReadElementContentAsString());
+                translate.ReadToFollowing("download");
+                translateDic.Add("download", translate.ReadElementContentAsString());
+                translate.ReadToFollowing("update");
+                translateDic.Add("update", translate.ReadElementContentAsString());
                 translate.ReadToFollowing("forceUpdate");
                 translateDic.Add("forceUpdate", translate.ReadElementContentAsString());
                 translate.ReadToFollowing("visitSite");

@@ -18,7 +18,7 @@ namespace LauncherArma3
             /* GENERAL OPTIONS */
 
             string serverName = "Regalian";  /* Your serverName */
-            string apiUrl = "http://51.255.167.125/"; /* Link to API launcher Arma 3 */
+            string apiUrl = "http://launcher.ffb-rp.fr/"; /* Link to API launcher Arma 3 */
                         
             /* FTP NO FUNCTIONAL */
 
