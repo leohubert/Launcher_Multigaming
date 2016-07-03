@@ -1,13 +1,13 @@
 <?xml version="1.0"?>
 <user>
 	<FR language="Français">
-		<languageTitle>Choisissez votre language</languageTitle>
+		<languageTitle>Choisissez votre langage</languageTitle>
 		<contry>France</contry>
 		<logIn>Se connecter</logIn>
 		<logOut>Se deconnecter</logOut>
 		<remember>Se rappeler de moi</remember>
 		<loginMsg>Déjà enregistré ?</loginMsg>
-		<registerLink>ou s'enregistré</registerLink>
+		<registerLink>ou s'enregistrer</registerLink>
 		<commingSoon>Prochainement</commingSoon>
 		<registerMsg>Nouveau sur notre communautée ?</registerMsg>
 		<username>Nom d'utilisateur</username>
@@ -22,7 +22,7 @@
 		<maintenanceTitle>Maintenance en cours !</maintenanceTitle>
 		<registerDisabled>Enregistrement désactivé</registerDisabled>
 		<error404>Le serveur n'est pas accéssible.</error404>
-		<errorInternet>Vous n'avez pas internet.</errorInternet>
+		<errorInternet>Vous n'avez pas internet</errorInternet>
 		<errorUpdate>Erreur launcherUpdate.exe manquant !</errorUpdate>
     <updateCancel>Mise à jour annulé</updateCancel>
       <!-- NEW TRANSLATE HERE-->
@@ -93,7 +93,7 @@
     <cash>Argent en liquide</cash>
     <bank>Argent en banque</bank>
     <serverStatus>Statut du serveur</serverStatus>
-    <IGinformations>Informations en jeux</IGinformations>
+    <IGinformations>Informations en jeu</IGinformations>
     <usefulLink>Liens utiles</usefulLink>  
 	</FR>
 	<EN language="English">
