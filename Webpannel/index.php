@@ -60,9 +60,9 @@
             else
             {
                 $router->map('GET','/refresh', 'pages/auth/actions/refresh.php', 'refresh');
-                $router->map('GET','/profile/view', 'pages/profile/view.php', 'profile-view');
-                $router->map('GET','/profile/edit', 'pages/profile/edit.php', 'profile-edit');
                 if ((int)$_SESSION['level'] >= 6) {
+                    $router->map('GET','/profile/view', 'pages/admin/profile/view.php', 'profile-view');
+                    $router->map('GET','/profile/edit', 'pages/admin/profile/edit.php', 'profile-edit');
                     $router->map('GET', '/', 'pages/admin/index.php', 'home-admin');
                     $router->map('GET', '/settings', 'pages/admin/settings/settings.php', 'settings-admin');
                     $router->map('GET', '/news', 'pages/admin/news/news.php', 'news-admin');
@@ -73,6 +73,8 @@
                     $router->map('GET', '/users/banned', 'pages/admin/users/banned.php', 'users-banned');
                     $router->map('GET', '/users/view/[i:id]', 'pages/admin/users/view.php', 'users-view-admin');
                 } else {
+                    $router->map('GET','/profile/view', 'pages/client/profile/view.php', 'profile-view');
+                    $router->map('GET','/profile/edit', 'pages/client/profile/edit.php', 'profile-edit');
                     $router->map('GET', '/', 'pages/client/index.php', 'home-client');
                     $router->map('GET', '/support/view/[i:id]', 'pages/client/support/view.php', 'support-view-client');
                 }
