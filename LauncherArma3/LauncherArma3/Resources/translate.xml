@@ -94,7 +94,7 @@
 		    <bank>Argent en banque</bank>
 		    <serverStatus>Statut du serveur</serverStatus>
 		    <IGinformations>Informations en jeu</IGinformations>
-		    <usefulLink>Liens utiles</usefulLink>  
+		    <usefulLink>Liens utiles</usefulLink>
 	</FR>
 	<EN language="English">
 		<languageTitle>Select your language</languageTitle>
@@ -285,7 +285,7 @@
 		    <bank>Bank</bank>
 		    <serverStatus>Server status</serverStatus>
 		    <IGinformations>In game information</IGinformations>
-		    <usefulLink>Useful link</usefulLink>  
+		    <usefulLink>Useful link</usefulLink>
 	</DE>
 	<SP language="Spanish">
 		<languageTitle>Elige tu idioma</languageTitle>
@@ -381,7 +381,7 @@
 		    <bank>Bank</bank>
 		    <serverStatus>Server status</serverStatus>
 		    <IGinformations>In game information</IGinformations>
-		    <usefulLink>Useful link</usefulLink>  
+		    <usefulLink>Useful link</usefulLink>
 	</SP>
 	<MT language="Canadiens">
 		<languageTitle>Choisi ta langue tabernack</languageTitle>
@@ -389,7 +389,7 @@
 		<logIn>Se connecter</logIn>
 		<logOut>Se deconnecter</logOut>
 		<remember>Se rappeler de moi</remember>
-		<loginMsg>Tu es déjà enregistré ? 
+		<loginMsg>Tu es déjà enregistré ?
 		Pourquoi tu es venu là alors !</loginMsg>
 		<registerLink>ou s'enregistré</registerLink>
 		<commingSoon>Prochainement</commingSoon>
@@ -478,7 +478,7 @@
 		    <bank>Argent en banque</bank>
 		    <serverStatus>Statut du serveur</serverStatus>
 		    <IGinformations>Informations en jeux</IGinformations>
-		    <usefulLink>Liens utiles</usefulLink>  
+		    <usefulLink>Liens utiles</usefulLink>
 	</MT>
 	<JP language="Japanese">
 		<languageTitle>言語を選択</languageTitle>
@@ -506,75 +506,74 @@
 		<errorUpdate>エラー launcherUpdate.exe が見つかりません！</errorUpdate>
 		    <updateCancel>更新キャンセル</updateCancel>
 		      <!-- NEW TRANSLATE HERE-->
-		    <settings>んんん</settings>
-		    <steamUID>んんん</steamUID>
-		    <IP>んんん</IP>
-		    <online>んん</online>
-		    <offline>んん</offline>
-		    <notFound>んんんん</notFound>
-		    <support>エラエラ</support>
-		    <taskforceVersion>クセスで</taskforceVersion>
-		    <notInstalled>スで</notInstalled>
-		    <installed>スで</installed>
-		    <updateTaskforceRequire>スで</updateTaskforceRequire>
-		    <forceUpdateTaskforce>スス</forceUpdateTaskforce>
-		    <installTaskforce>スス</installTaskforce>
-		    <updateTaskforce>ススス</updateTaskforce>
-		    <play>あなたが</play>
-		    <download>グアウ</download>
-		    <update>アク</update>
-		    <forceUpdate>見つか</forceUpdate>
-		    <visitSite>を忘</visitSite>
-		    <visitTeamSpeak>を忘</visitTeamSpeak>
-		    <modDev>りま</modDev>
-		    <chooseArma>まま</chooseArma>
-		    <downloadProgress>無無</downloadProgress>
-		    <armaOK>無スで</armaOK>
-		    <selectArma>はインタ</selectArma>
-		    <armaNotOK>はイン</armaNotOK>
-		    <success>でで</success>
+		    <settings>設定</settings>
+		    <steamUID>steamUID</steamUID>
+		    <IP>IP</IP>
+		    <online>online</online>
+		    <offline>offline</offline>
+		    <notFound>notFound</notFound>
+		    <support>サポート</support>
+		    <taskforceVersion>taskforce Version</taskforceVersion>
+		    <notInstalled>not installed</notInstalled>
+		    <installed>Installed</installed>
+		    <updateTaskforceRequire>Update required for Task Force</updateTaskforceRequire>
+		    <forceUpdateTaskforce>Force TFAR Update</forceUpdateTaskforce>
+		    <installTaskforce>Install TFAR</installTaskforce>
+		    <updateTaskforce>Update TFAR</updateTaskforce>
+		    <play>play</play>
+		    <download>download</download>
+		    <update>update</update>
+		    <forceUpdate>force Update</forceUpdate>
+		    <visitSite>ウェブサイト</visitSite>
+		    <visitTeamSpeak>TeamSpeak</visitTeamSpeak>
+		    <modDev>Dev Mod</modDev>
+		    <chooseArma>ARMA 3ディレクトリを選択してください</chooseArma>
+		    <downloadProgress>進行中のダウンロード</downloadProgress>
+		    <armaOK>Arma 3 destination is OK</armaOK>
+		    <selectArma>ARMA 3ディレクトリを選択してください</selectArma>
+		    <armaNotOK>Arma 3 destination is not OK</armaNotOK>
+		    <success>成功</success>
 		    <waitDownload>トを</waitDownload>
-		    <updateTaskforceBefore>つかり</updateTaskforceBefore>
-		    <downloadInitialisation>ーネッ</downloadInitialisation>
-		    <pleaseWait>ッッッ</pleaseWait>
-		    <cancelling>りりり</cancelling>
-		    <pause>ネり</pause>
-		    <resume>中中</resume>
-		    <serverRequest>つかつか</serverRequest>
-		    <listingMod>つつつ</listingMod>
-		    <listingCpp>つつ</listingCpp>
-		    <listingAdditional>中中</listingAdditional>
-		    <alreadyUpToDate>ネ</alreadyUpToDate>
-		    <inProgress>まネま</inProgress>
-		    <downloadMod>まま</downloadMod>
-		    <downloadFile>まま</downloadFile>
-		    <checkMod>忘</checkMod>
-		    <checkCpp>忘</checkCpp>
-		    <downloadStoped>スス</downloadStoped>
-		    <downloadFinish>ススス</downloadFinish>
-		    <downloadWillPause>ネネネ</downloadWillPause>
-		    <downloadPaused>ネネ</downloadPaused>
-		    <downloaded>ネ</downloaded>
-		    <of>ネ</of>
-		    <estimatedTime>スス</estimatedTime>
-		    <waitForDownload>ーネーネ</waitForDownload>
-		    <updateAvailable>ーー</updateAvailable>
-		    <errorListing>ーー</errorListing>
-		    <taskforceInstallerMissing>ススーー</taskforceInstallerMissing>
-		    <installCancel>スス</installCancel>
-		    <minutes>のの</minutes>
-		    <seconds>ののの</seconds>
-		    <hours>ののの</hours>
-		    <playersIG>のの</playersIG>
-		    <map>のの</map>
-		    <adminLevel>のの</adminLevel>
-		    <copLevel>のの</copLevel>
-		    <medicLevel>のの</medicLevel>
-		    <cash>のの</cash>
-		    <bank>のの</bank>
-		    <serverStatus>のの</serverStatus>
-		    <IGinformations>のの</IGinformations>
-		    <usefulLink>のの</usefulLink>  
+		    <updateTaskforceBefore>Please update TFAR before</updateTaskforceBefore>
+		    <downloadInitialisation>ダウンロード初期化</downloadInitialisation>
+		    <pleaseWait>お待ちください</pleaseWait>
+		    <cancelling>キャンセル</cancelling>
+		    <pause>ポーズ</pause>
+		    <resume>履歴書</resume>
+		    <serverRequest>サーバーへの要求</serverRequest>
+		    <listingMod>listing Addons</listingMod>
+		    <listingCpp>listing Cpp</listingCpp>
+		    <listingAdditional>listing Additional assets</listingAdditional>
+		    <alreadyUpToDate>すでに最新の状態に</alreadyUpToDate>
+		    <inProgress>進行中</inProgress>
+		    <downloadMod>ダウンロードモッズ</downloadMod>
+		    <downloadFile>ダウンロードファイル</downloadFile>
+		    <checkMod>check Mod</checkMod>
+		    <checkCpp>check Cpp</checkCpp>
+		    <downloadStoped>立ち止まっをダウンロード</downloadStoped>
+		    <downloadFinish>[完了]をダウンロード</downloadFinish>
+		    <downloadWillPause>ダウンロードが一時停止します</downloadWillPause>
+		    <downloadPaused>一時停止をダウンロード</downloadPaused>
+		    <downloaded>ダウンロード</downloaded>
+		    <of>の</of>
+		    <estimatedTime>予定時刻</estimatedTime>
+		    <waitForDownload>ダウンロードを待ちます</waitForDownload>
+		    <updateAvailable>利用可能な更新</updateAvailable>
+		    <errorListing>リストエラー</errorListing>
+		    <taskforceInstallerMissing>TFAR Installer Missing</taskforceInstallerMissing>
+		    <installCancel>インストールをキャンセル</installCancel>
+		    <minutes>分</minutes>
+		    <seconds>秒</seconds>
+		    <hours>営業時間</hours>
+		    <playersIG>players InGame</playersIG>
+		    <map>map</map>
+		    <adminLevel>admin Level</adminLevel>
+		    <copLevel>cop Level</copLevel>
+		    <medicLevel>med icLevel</medicLevel>
+		    <cash>cash</cash>
+		    <bank>bank</bank>
+		    <serverStatus>server Status</serverStatus>
+		    <IGinformations>InGame informations</IGinformations>
+		    <usefulLink>便利なリンク</usefulLink>
 </JP>
 </user>
-
