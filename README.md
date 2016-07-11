@@ -11,6 +11,14 @@ Release date: 03/07/2016 16:38
 
 Copyright HUBERT Léo © 2014 - 2016
 
+##Comming soon:
+- Multi server
+- Login with forum, facebook, etc ...
+- More stats ingame ( gang, total vehicle, total house etc...)
+- Auto detect Steam UID
+- Donation system
+- Profil editing (in launcher)
+
 ## Launcher Panel Guide Intall:
 
 For install this panel you need to have a little VPS 
