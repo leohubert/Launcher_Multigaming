@@ -44,7 +44,7 @@ Temporary Items
 .apdisk
 
 # PHPSTORM
-.idea/*
+.idea
 
 # INGNORE LAUNCHER FILE
 

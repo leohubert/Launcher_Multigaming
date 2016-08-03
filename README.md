@@ -1,73 +1,63 @@
-![alt text](https://raw.githubusercontent.com/MrDarkSkil/Launcher_Arma3/master/GFX/icones/favicon.png "Logo Launcher")
+![Launcher_Arma3 Logo](https://raw.githubusercontent.com/MrDarkSkil/Launcher_Arma3/master/GFX/icones/favicon.png)
 # Launcher_Arma3
 Launcher_Arma3 
 
-##Launcher Information:
+## Launcher Information:
 
-####Last version:
+#### Last version:
 Version: Beta 5.0.5.0
 Functional: YES
 Release date: 03/07/2016 16:38
 
 Copyright HUBERT Léo © 2014 - 2016
 
-##Comming soon:
+## Coming soon:
 - Multi server
 - Login with forum, facebook, etc ...
 - More stats ingame ( gang, total vehicle, total house etc...)
 - Auto detect Steam UID
 - Donation system
-- Profil editing (in launcher)
+- Profile editing (in launcher)
 
-## Launcher Panel Guide Intall:
+## Launcher Panel Install Guide:
 
-For install this panel you need to have a little VPS 
-or more biggest.
+For install this panel you need to have a little VPS or more biggest.
 
-Minimal config required: https://www.ovh.com/fr/vps/vps-ssd.xml 
+Reccomended minimal specs required: https://www.ovh.com/fr/vps/vps-ssd.xml
 
-When you have a VPS or other, connect to that with SSH (on windows with PUTTY on linux with "ssh" command)
-Once connected, follow step by step.
+When you have setup a VPS you can connect to it using SSH. On Windows you can use [PUTTY](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html) or on Linux you can just use the `ssh` commands.
 
+Once connected, follow the steps below.
 
-- Step 1: 
-Write this command in the terminal 'apt-get update; apt-get upgrade'
-- Step 2: 
-Write this command in the terminal 'apt-get install apache2 php5 php5-curl'
-- Step 3: 
-Write this command in the terminal 'apt-get install mysql-server' and follow install page.  
-- Step 4: 
-Write this command in the terminal 'apt-get install phpmyadmin' and follow install page.
-- Step 5: 
-Edit this file (/etc/apache2/apache2.conf) with this command 'sudo nano /etc/apache2/apache2.conf'
-search this line:
-"
-  <Directory /var/www/>
-    Options Indexes FollowSymLinks
-    AllowOverride None
-    Require all granted
-  </Directory>
-"
+1. Write this command in the terminal `apt-get update; apt-get upgrade`
+2. Write this command in the terminal `apt-get install apache2 php5 php5-curl`
+3. Write this command in the terminal `apt-get install mysql-server` and follow install page.  
+4. Write this command in the terminal `apt-get install phpmyadmin` and follow install page.
+5. Edit this file (/etc/apache2/apache2.conf) with this command `sudo nano /etc/apache2/apache2.conf` search this line:
+
+```
+<Directory /var/www/>
+  Options Indexes FollowSymLinks
+  AllowOverride None
+  Require all granted
+</Directory>
+```
 edit to
-"
-  <Directory /var/www/>
-    Options Indexes FollowSymLinks
-    AllowOverride All
-    Require all granted
-  </Directory>
-"
-- Step 6: 
-Write this command in the terminal 'sudo a2enmod rewrite'
-- Step 7: 
-Upload WebPanel to the /var/www/html folder (don't forget .htaccess file)
-- Step 8:
-Write this command in the terminal 'chmod 777 -R /var/www/html/arma3/; chmod 777 -R /var/www/html/configs/'
-- Step 9:
-In your browser, go to your VPS or other IP and follow the install progress.
+```
+<Directory /var/www/>
+  Options Indexes FollowSymLinks
+  AllowOverride All
+  Require all granted
+</Directory>
+```
+6. Write this command in the terminal `a2enmod rewrite`
+7. Upload WebPanel to the `/var/www/html` folder (don't forget .htaccess file)
+8. Write this command in the terminal `chown -R www-data:www-data /var/www/html/arma3/; chmod -R www-data:www-data /var/www/html/configs/`
+9. In your browser, go to your VPS or other IP and follow the installation steps
 
-##Creators:
+## Creators:
 
-######Léo Hubert
+###### Léo Hubert
 ```json
 {
 "nom":"Hubert",
@@ -77,14 +67,13 @@ In your browser, go to your VPS or other IP and follow the install progress.
 }
 ```
 
-##Licences:
+## Licences:
 
-#####This project is under GPL licence, please refer to the LICENCE file.
+##### This project is under GPL licence, please refer to the LICENCE file.
 
 --------------------------------------------------
 
-
-###Changes Logs:
+### Changes Logs:
 
 Pre-Release 5.0.5.0:
 - Add: IG (in-game) user information on launcher & panel
