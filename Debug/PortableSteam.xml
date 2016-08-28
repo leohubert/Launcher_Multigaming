@@ -1,0 +1,3592 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>PortableSteam</name>
+    </assembly>
+    <members>
+        <member name="M:PortableSteam.Fluent.Game.Dota2BaseBuilderHandler.#ctor(System.String)">
+            <summary>
+            Constructor.
+            </summary>
+            <param name="key"></param>
+        </member>
+        <member name="M:PortableSteam.Fluent.Game.Dota2BaseBuilderHandler.IDOTA2">
+            <summary>
+            Methods relating to Dota 2.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:PortableSteam.Fluent.Game.Dota2BaseBuilderHandler.IDOTA2Match">
+            <summary>
+            Methods relating to Dota 2 matches.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:PortableSteam.Fluent.Game.GameBaseBuilderHandler.#ctor(System.String,System.Int32)">
+            <summary>
+            Constructor.
+            </summary>
+            <param name="key"></param>
+        </member>
+        <member name="M:PortableSteam.Fluent.Game.Dota2MatchBuilderHandler.#ctor(System.String)">
+            <summary>
+            Constructor.
+            </summary>
+            <param name="key"></param>
+        </member>
+        <member name="M:PortableSteam.Fluent.Game.Dota2MatchBuilderHandler.GetLeagueListing">
+            <summary>
+            Information about DotaTV-supported leagues.
+            </summary>
+        </member>
+        <member name="M:PortableSteam.Fluent.Game.Dota2MatchBuilderHandler.GetLiveLeagueGames">
+            <summary>
+            A list of in-progress league matches, as well as details of that match as it unfolds.
+            </summary>
+        </member>
+        <member name="M:PortableSteam.Fluent.Game.Dota2MatchBuilderHandler.GetMatchDetails(System.Int64)">
+            <summary>
+            Information about a particular match.
+            </summary>
+        </member>
+        <member name="M:PortableSteam.Fluent.Game.Dota2MatchBuilderHandler.GetMatchHistory">
+            <summary>
+            A list of matches, filterable by various parameters.
+            </summary>
+        </member>
+        <member name="M:PortableSteam.Fluent.Game.Dota2MatchBuilderHandler.GetMatchHistoryBySequenceNum">
+            <summary>
+            A list of matches ordered by their sequence num.
+            </summary>
+        </member>
+        <member name="M:PortableSteam.Fluent.Game.Dota2MatchBuilderHandler.GetScheduledLeagueGames">
+            <summary>
+            A list of scheduled league games coming up.
+            </summary>
+        </member>
+        <member name="M:PortableSteam.Fluent.Game.Dota2MatchBuilderHandler.GetTeamInfoByTeamID">
+            <summary>
+            A list of all the teams set up in-game.
+            </summary>
+        </member>
+        <member name="M:PortableSteam.Fluent.Game.Dota2MatchBuilderHandler.GetTournamentPlayerStats(PortableSteam.SteamIdentity)">
+            <summary>
+            Stats about a particular player within a tournament.
+            <param name="identity">SteamIdentity.</param>
+            </summary>
+        </member>
+        <member name="M:PortableSteam.Fluent.SteamBaseBuilder`3.#ctor(`0)">
+            <summary>
+            Constructor.
+            </summary>
+            <param name="request"></param>
+        </member>
+        <member name="M:PortableSteam.Fluent.SteamBaseBuilder`3.Language(System.String)">
+            <summary>
+            The ISO639-1 language code for the language all tokenized strings should be returned in. 
+            Not all strings have been translated to every language. 
+            If a language does not have a string, the English string will be returned instead. 
+            If this parameter is omitted the string token will be returned for the strings.
+            </summary>
+            <see href="http://en.wikipedia.org/wiki/List_of_ISO_639-1_codes"/>
+            <param name="language"></param>
+            <returns></returns>
+        </member>
+        <member name="M:PortableSteam.Fluent.SteamBaseBuilder`3.GetResponse">
+            <summary>
+            Gets the response object of this request.
+            </summary>
+            <returns>Response object.</returns>
+        </member>
+        <member name="M:PortableSteam.Fluent.SteamBaseBuilder`3.GetResponseString(PortableSteam.RequestFormat)">
+            <summary>
+            Gets the response string of this request.
+            </summary>
+            <param name="format">Format of the response string. Default is JSON.</param>
+            <returns>Response string.</returns>
+        </member>
+        <member name="M:PortableSteam.Fluent.SteamBaseBuilder`3.GetResponseAsync">
+            <summary>
+            Gets the response object of this request asynchronously.
+            </summary>
+            <returns>Response object.</returns>
+        </member>
+        <member name="M:PortableSteam.Fluent.SteamBaseBuilder`3.GetResponseStringAsync(PortableSteam.RequestFormat)">
+            <summary>
+            Gets the response string of this request asynchronously.
+            </summary>
+            <param name="format">Format of the response string. Default is JSON.</param>
+            <returns>Response string.</returns>
+        </member>
+        <member name="P:PortableSteam.Fluent.SteamBaseBuilder`3.Request">
+            <summary>
+            The current request.
+            </summary>
+        </member>
+        <member name="M:PortableSteam.Fluent.Game.Dota2.IDOTA2.GetMatchHistoryBuilder.PlayerName(System.String)">
+            <summary>
+            Exact match of a player's display-name at the time of the match.
+            </summary>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="M:PortableSteam.Fluent.Game.Dota2.IDOTA2.GetMatchHistoryBuilder.HeroID(System.Int32)">
+            <summary>
+            A list of hero IDs can be found via the GetHeroes method.
+            </summary>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="M:PortableSteam.Fluent.Game.Dota2.IDOTA2.GetMatchHistoryBuilder.GameMode(PortableSteam.Dota2GameMode)">
+            <summary>
+            Game mode to filter.
+            </summary>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="M:PortableSteam.Fluent.Game.Dota2.IDOTA2.GetMatchHistoryBuilder.Skill(PortableSteam.Dota2Skill)">
+            <summary>
+            Skill bracket for the matches (Ignored if an account ID is specified).
+            </summary>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="M:PortableSteam.Fluent.Game.Dota2.IDOTA2.GetMatchHistoryBuilder.DateMin(System.DateTime)">
+            <summary>
+            Minimum date range for returned matches (rounded to the nearest day).
+            </summary>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="M:PortableSteam.Fluent.Game.Dota2.IDOTA2.GetMatchHistoryBuilder.DateMax(System.DateTime)">
+            <summary>
+            Maximum date range for returned matches (rounded to the nearest day).
+            </summary>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="M:PortableSteam.Fluent.Game.Dota2.IDOTA2.GetMatchHistoryBuilder.MinPlayers(System.Int32)">
+            <summary>
+            Minimum amount of players in a match for the match to be returned.
+            </summary>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="M:PortableSteam.Fluent.Game.Dota2.IDOTA2.GetMatchHistoryBuilder.Account(PortableSteam.SteamIdentity)">
+            <summary>
+            Identity of the user to retrieve match history for.
+            </summary>
+            <param name="identity"></param>
+            <returns></returns>
+        </member>
+        <member name="M:PortableSteam.Fluent.Game.Dota2.IDOTA2.GetMatchHistoryBuilder.LeagueID(System.Int64)">
+            <summary>
+            Only return matches from this league. A list of league IDs can be found via the GetLeagueListing method.
+            </summary>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="M:PortableSteam.Fluent.Game.Dota2.IDOTA2.GetMatchHistoryBuilder.StartAtMatchID(System.Int64)">
+            <summary>
+            Start searching for matches equal to or older than this match ID.
+            </summary>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="M:PortableSteam.Fluent.Game.Dota2.IDOTA2.GetMatchHistoryBuilder.MatchesRequested(System.Int32)">
+            <summary>
+            Amount of matches to include in results (default: 25).
+            </summary>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="M:PortableSteam.Fluent.Game.Dota2.IDOTA2.GetMatchHistoryBuilder.TournamentGamesOnly">
+            <summary>
+            Whether to limit results to tournament matches.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:PortableSteam.Fluent.Game.Dota2.IDOTA2.GetMatchHistoryBySequenceNumBuilder.StartAtMatchSequenceNumber(System.Int64)">
+            <summary>
+            The match sequence number to start returning results from.
+            </summary>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="M:PortableSteam.Fluent.Game.Dota2.IDOTA2.GetMatchHistoryBySequenceNumBuilder.MatchesRequested(System.Int32)">
+            <summary>
+            The amount of matches to return.
+            </summary>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="M:PortableSteam.Fluent.Game.Dota2.IDOTA2.GetScheduledLeagueGamesBuilder.DateMin(System.DateTime)">
+            <summary>
+            Minimum date range for returned matches (rounded to the nearest day).
+            </summary>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="M:PortableSteam.Fluent.Game.Dota2.IDOTA2.GetScheduledLeagueGamesBuilder.DateMax(System.DateTime)">
+            <summary>
+            Maximum date range for returned matches (rounded to the nearest day).
+            </summary>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="M:PortableSteam.Fluent.Game.Dota2.IDOTA2.GetTeamInfoByTeamIDBuilder.StartAtTeamID(System.Int64)">
+            <summary>
+            The team id to start returning results from.
+            </summary>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="M:PortableSteam.Fluent.Game.Dota2.IDOTA2.GetTeamInfoByTeamIDBuilder.TeamsRequested(System.Int32)">
+            <summary>
+            The amount of teams to return.
+            </summary>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="M:PortableSteam.Fluent.Game.Dota2.IDOTA2.GetTournamentPlayerStatsBuilder.HeroID(System.Int32)">
+            <summary>
+            A list of hero IDs can be found via the GetHeroes method.
+            </summary>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="M:PortableSteam.Fluent.Game.Dota2.IDOTA2.GetTournamentPlayerStatsBuilder.LeagueID(System.Int64)">
+            <summary>
+            Only return matches from this league. A list of league IDs can be found via the GetLeagueListing method.
+            </summary>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="M:PortableSteam.Fluent.Game.Dota2.IDOTA2.GetTournamentPlayerStatsBuilder.TimeFrame">
+            <summary>
+            Placeholder - Only return stats between this time frame (parameter format not yet known).
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:PortableSteam.Fluent.Game.Dota2BuilderHandler.#ctor(System.String)">
+            <summary>
+            Constructor.
+            </summary>
+            <param name="key"></param>
+        </member>
+        <member name="M:PortableSteam.Fluent.Game.Dota2BuilderHandler.GetRarities">
+            <summary>
+            Dota 2 item rarity list.
+            </summary>
+        </member>
+        <member name="M:PortableSteam.Fluent.Game.Dota2BuilderHandler.GetHeroes">
+            <summary>
+            A list of heroes within Dota 2.
+            </summary>
+        </member>
+        <member name="M:PortableSteam.Fluent.Game.Dota2BuilderHandler.GetTicketSaleStatus">
+            <summary>
+            TODO.
+            </summary>
+        </member>
+        <member name="T:PortableSteam.Fluent.Game.Dota2.IDOTA2.GetHeroesBuilder">
+            <summary>
+            Get heroes method builder.
+            </summary>
+        </member>
+        <member name="M:PortableSteam.Fluent.Game.Dota2.IDOTA2.GetHeroesBuilder.#ctor(PortableSteam.Interfaces.Game.Dota2.IDOTA2.GetHeroesRequest)">
+            <summary>
+            Constructor.
+            </summary>
+            <param name="request"></param>
+        </member>
+        <member name="M:PortableSteam.Fluent.Game.Dota2.IDOTA2.GetHeroesBuilder.ItemizedOnly">
+            <summary>
+            Return a list of itemized heroes only.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:PortableSteam.Fluent.Game.GameBuilderHandler.#ctor(System.String)">
+            <summary>
+            Constructor.
+            </summary>
+            <param name="key"></param>
+        </member>
+        <member name="M:PortableSteam.Fluent.Game.GameBuilderHandler.Generic">
+            <summary>
+            Generic interfaces related to games.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:PortableSteam.Fluent.Game.GameBuilderHandler.Dota2">
+            <summary>
+            Interfaces related to Dota 2.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:PortableSteam.Fluent.Game.GameBuilderHandler.Portal2">
+            <summary>
+            Interfaces related to Portal 2.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:PortableSteam.Fluent.Game.GenericBuilderHandler.#ctor(System.String)">
+            <summary>
+            Constructor.
+            </summary>
+            <param name="key"></param>
+        </member>
+        <member name="M:PortableSteam.Fluent.Game.GenericBuilderHandler.IEconItems(PortableSteam.GameType)">
+            <summary>
+            Methods relating to in-game items for supported games.
+            </summary>
+            <param name="gameType">Type of game to retrieve.</param>
+            <returns></returns>
+        </member>
+        <member name="M:PortableSteam.Fluent.Game.GenericBuilderHandler.IEconItems(System.Int32)">
+            <summary>
+            Methods relating to in-game items for supported games.
+            </summary>
+            <param name="appID">ID of the app to retrieve.</param>
+            <returns></returns>
+        </member>
+        <member name="M:PortableSteam.Fluent.Game.GenericBuilderHandler.IGCVersion(PortableSteam.GameType)">
+            <summary>
+            TODO.
+            </summary>
+            <param name="gameType"></param>
+            <returns></returns>
+        </member>
+        <member name="M:PortableSteam.Fluent.Game.GenericBuilderHandler.IGCVersion(System.Int32)">
+            <summary>
+            TODO.
+            </summary>
+            <param name="gameType"></param>
+            <returns></returns>
+        </member>
+        <member name="M:PortableSteam.Fluent.Game.GenericBuilderHandler.ITFPromos(PortableSteam.GameType)">
+            <summary>
+            TODO.
+            </summary>
+            <param name="gameType"></param>
+            <returns></returns>
+        </member>
+        <member name="M:PortableSteam.Fluent.Game.GenericBuilderHandler.ITFPromos(System.Int32)">
+            <summary>
+            TODO.
+            </summary>
+            <param name="appID"></param>
+            <returns></returns>
+        </member>
+        <member name="M:PortableSteam.Fluent.Game.EconItemsBuilderHandler.#ctor(System.String,System.Int32)">
+            <summary>
+            Constructor.
+            </summary>
+            <param name="key"></param>
+        </member>
+        <member name="M:PortableSteam.Fluent.Game.EconItemsBuilderHandler.GetPlayerItems(PortableSteam.SteamIdentity)">
+            <summary>
+            Lists items in a player's backpack.
+            <param name="identity">The identity of the user the backpack will be retrieved for.</param>
+            </summary>
+        </member>
+        <member name="M:PortableSteam.Fluent.Game.EconItemsBuilderHandler.GetSchema">
+            <summary>
+            Information about the items in a supporting game.
+            </summary>
+        </member>
+        <member name="M:PortableSteam.Fluent.Game.EconItemsBuilderHandler.GetSchemaURL">
+            <summary>
+            Returns a URL for the game's item_game.txt file. This method is not supported on app ids: 260, 620, 710, 841
+            </summary>
+        </member>
+        <member name="M:PortableSteam.Fluent.Game.EconItemsBuilderHandler.GetStoreMetaData">
+            <summary>
+            Information about the game's store.
+            </summary>
+        </member>
+        <member name="M:PortableSteam.Fluent.Game.EconItemsBuilderHandler.GetStoreStatus">
+            <summary>
+            The game's store status.
+            </summary>
+        </member>
+        <member name="M:PortableSteam.Fluent.Game.GCVersionBuilderHandler.#ctor(System.String,System.Int32)">
+            <summary>
+            Constructor.
+            </summary>
+            <param name="key"></param>
+        </member>
+        <member name="M:PortableSteam.Fluent.Game.GCVersionBuilderHandler.GetClientVersion">
+            <summary>
+            TODO.
+            </summary>
+        </member>
+        <member name="M:PortableSteam.Fluent.Game.GCVersionBuilderHandler.GetClusterVersion">
+            <summary>
+            TODO.
+            </summary>
+        </member>
+        <member name="M:PortableSteam.Fluent.Game.GCVersionBuilderHandler.GetServerVersion">
+            <summary>
+            TODO.
+            </summary>
+        </member>
+        <member name="M:PortableSteam.Fluent.Game.TFPromosBuilderHandler.#ctor(System.String,System.Int32)">
+            <summary>
+            Constructor.
+            </summary>
+            <param name="key"></param>
+        </member>
+        <member name="M:PortableSteam.Fluent.Game.TFPromosBuilderHandler.GetItemID">
+            <summary>
+            TODO.
+            </summary>
+        </member>
+        <member name="M:PortableSteam.Fluent.Game.TFPromosBuilderHandler.GrantItem">
+            <summary>
+            TODO.
+            </summary>
+        </member>
+        <member name="M:PortableSteam.Fluent.Game.Portal2LeaderboardsBuilderHandler.#ctor(System.String)">
+            <summary>
+            Constructor.
+            </summary>
+            <param name="key"></param>
+        </member>
+        <member name="M:PortableSteam.Fluent.Game.Portal2LeaderboardsBuilderHandler.GetBucketizedData">
+            <summary>
+            TODO.
+            </summary>
+        </member>
+        <member name="M:PortableSteam.Fluent.Game.Portal2BaseBuilderHandler.#ctor(System.String)">
+            <summary>
+            Constructor.
+            </summary>
+            <param name="key"></param>
+        </member>
+        <member name="M:PortableSteam.Fluent.Game.Portal2BaseBuilderHandler.IPortal2LeaderBoards">
+            <summary>
+            Methods relating to Portal 2 Leaderboards.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:PortableSteam.Fluent.General.GeneralBuilderHandler.#ctor(System.String)">
+            <summary>
+            Constructor.
+            </summary>
+            <param name="key"></param>
+        </member>
+        <member name="M:PortableSteam.Fluent.General.GeneralBuilderHandler.ISteamApps">
+            <summary>
+            Methods relating to Steam Apps in general.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:PortableSteam.Fluent.General.GeneralBuilderHandler.ISteamEconomy">
+            <summary>
+            Methods relating to games' store's assets.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:PortableSteam.Fluent.General.GeneralBuilderHandler.ISteamNews">
+            <summary>
+            Methods relating to Steam News.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:PortableSteam.Fluent.General.GeneralBuilderHandler.ISteamRemoteStorage">
+            <summary>
+            Methods relating to stored files.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:PortableSteam.Fluent.General.GeneralBuilderHandler.ISteamUser">
+            <summary>
+            Methods relating to Steam users.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:PortableSteam.Fluent.General.GeneralBuilderHandler.ISteamUserStats">
+            <summary>
+            Methods relating to User stats.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:PortableSteam.Fluent.General.GeneralBuilderHandler.IPlayerService">
+            <summary>
+            Methods relating to a Steam user's games.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:PortableSteam.Fluent.General.GeneralBuilderHandler.ISteamWebAPIUtil">
+            <summary>
+            Methods relating to the WebAPI itself.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:PortableSteam.Fluent.General.IPlayerService.GetCommunityBadgeProgressBuilder.BadgeID(System.Int32)">
+            <summary>
+            A badge id.
+            </summary>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="M:PortableSteam.Fluent.General.IPlayerService.GetOwnedGamesBuilder.IncludeAppInfo">
+            <summary>
+            Whether or not to include additional details of apps - name and images.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:PortableSteam.Fluent.General.IPlayerService.GetOwnedGamesBuilder.IncludePlayedFreeGames">
+            <summary>
+            Whether or not to list free-to-play games in the results.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:PortableSteam.Fluent.General.IPlayerService.GetRecentlyPlayedGamesBuilder.Count(System.Int32)">
+            <summary>
+            The number of games to return.
+            </summary>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="M:PortableSteam.Fluent.General.PlayerServiceBuilderHandler.GetBadges(PortableSteam.SteamIdentity)">
+            <summary>
+            Get badges for player.
+            </summary>
+            <param name="identity">The identity of the player.</param>
+            <returns></returns>
+        </member>
+        <member name="M:PortableSteam.Fluent.General.PlayerServiceBuilderHandler.GetCommunityBadgeProgress(PortableSteam.SteamIdentity)">
+            <summary>
+            Get badge progress for player.
+            </summary>
+            <param name="identity">The identity of the player.</param>
+            <returns></returns>
+        </member>
+        <member name="M:PortableSteam.Fluent.General.PlayerServiceBuilderHandler.GetOwnedGames(PortableSteam.SteamIdentity)">
+            <summary>
+            Get owned games for player.
+            </summary>
+            <param name="identity">The identity of the player.</param>
+            <returns></returns>
+        </member>
+        <member name="M:PortableSteam.Fluent.General.PlayerServiceBuilderHandler.GetRecentlyPlayedGames(PortableSteam.SteamIdentity)">
+            <summary>
+            Get recently played games for player.
+            </summary>
+            <param name="identity">The identity of the player.</param>
+            <returns></returns>
+        </member>
+        <member name="M:PortableSteam.Fluent.General.PlayerServiceBuilderHandler.GetSteamLevel(PortableSteam.SteamIdentity)">
+            <summary>
+            Get player level.
+            </summary>
+            <param name="identity">The identity of the player.</param>
+            <returns></returns>
+        </member>
+        <member name="M:PortableSteam.Fluent.General.SteamAppsBuilderHandler.GetAppList">
+            <summary>
+            Full list of every publicly facing program in the store/library.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:PortableSteam.Fluent.General.SteamAppsBuilderHandler.GetServersAtAddress">
+            <summary>
+            No documentation.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:PortableSteam.Fluent.General.SteamAppsBuilderHandler.UpToDateCheck(PortableSteam.GameType,System.Int32)">
+            <summary>
+            Check if a given app version is the most current available.
+            </summary>
+            <param name="gameType">Game</param>
+            <param name="version">The installed version of the game.</param>
+            <returns></returns>
+        </member>
+        <member name="M:PortableSteam.Fluent.General.SteamAppsBuilderHandler.UpToDateCheck(System.Int32,System.Int32)">
+            <summary>
+            Check if a given app version is the most current available.
+            </summary>
+            <param name="appID">AppID of game.</param>
+            <param name="version">The installed version of the game.</param>
+            <returns></returns>
+        </member>
+        <member name="M:PortableSteam.Fluent.General.ISteamEconomy.GetAssetClassInfoBuilder.InstanceIDs(System.Int32[])">
+            <summary>
+            Instance ID of the nth class.
+            </summary>
+            <param name="instanceIDs"></param>
+            <returns></returns>
+        </member>
+        <member name="M:PortableSteam.Fluent.General.ISteamEconomy.GetAssetPricesBuilder.Currency(System.String)">
+            <summary>
+            The ISO 4217 code for currency specific filtering.
+            </summary>
+            <see href="http://en.wikipedia.org/wiki/ISO_4217"/>
+            <param name="currency"></param>
+            <returns></returns>
+        </member>
+        <member name="M:PortableSteam.Fluent.General.SteamEconomyBuilderHandler.GetAssetClassInfo(PortableSteam.GameType,System.Int32,System.Int32[])">
+            <summary>
+            Asset metadata.
+            </summary>
+            <param name="gameType">Game to query assets from.</param>
+            <param name="classCount">The number of classids passed to the request.</param>
+            <param name="classIDs">A series of numbers to form a list of class IDs.</param>
+            <returns></returns>
+        </member>
+        <member name="M:PortableSteam.Fluent.General.SteamEconomyBuilderHandler.GetAssetClassInfo(System.Int32,System.Int32,System.Int32[])">
+            <summary>
+            Asset metadata.
+            </summary>
+            <param name="appID">The ID of the game to query assets from.</param>
+            <param name="classCount">The number of classids passed to the request.</param>
+            <param name="classIDs">A series of numbers to form a list of class IDs.</param>
+            <returns></returns>
+        </member>
+        <member name="M:PortableSteam.Fluent.General.SteamEconomyBuilderHandler.GetAssetPrices(PortableSteam.GameType)">
+            <summary>
+            Prices of items in the economy.
+            </summary>
+            <param name="gameType">Game to query assets from.</param>
+            <returns></returns>
+        </member>
+        <member name="M:PortableSteam.Fluent.General.SteamEconomyBuilderHandler.GetAssetPrices(System.Int32)">
+            <summary>
+            Prices of items in the economy.
+            </summary>
+            <param name="appID">The ID of the game to query assets from.</param>
+            <returns></returns>
+        </member>
+        <member name="M:PortableSteam.Fluent.General.ISteamNews.GetNewsForAppBuilder.MaxLength(System.Int32)">
+            <summary>
+            The max length of the contents field.
+            </summary>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="M:PortableSteam.Fluent.General.ISteamNews.GetNewsForAppBuilder.EndDate(System.DateTime)">
+            <summary>
+            Returns posts before this date.
+            </summary>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="M:PortableSteam.Fluent.General.ISteamNews.GetNewsForAppBuilder.Count(System.Int32)">
+            <summary>
+            The max number of news items to retrieve. Default: 20.
+            </summary>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="M:PortableSteam.Fluent.General.ISteamNews.GetNewsForAppBuilder.Feeds(System.String[])">
+            <summary>
+            List of feed names to return news for.
+            </summary>
+            <param name="feeds"></param>
+            <returns></returns>
+        </member>
+        <member name="M:PortableSteam.Fluent.General.SteamNewsBuilderHandler.GetNewsForApp(PortableSteam.GameType)">
+            <summary>
+            News feed for various games.
+            </summary>
+            <param name="gameType">The game/item to retrieve news for. This can be any valid app ID as seen in the Steam store.</param>
+            <returns></returns>
+        </member>
+        <member name="M:PortableSteam.Fluent.General.SteamNewsBuilderHandler.GetNewsForApp(System.Int32)">
+            <summary>
+            News feed for various games.
+            </summary>
+            <param name="appID">The game/item to retrieve news for. This can be any valid app ID as seen in the Steam store.</param>
+            <returns></returns>
+        </member>
+        <member name="M:PortableSteam.Fluent.General.ISteamRemoteStorage.GetUGCFileDetailsBuilder.Identity(PortableSteam.SteamIdentity)">
+            <summary>
+            If specified, only returns details if the file is owned by the identity specified.
+            </summary>
+            <param name="identity"></param>
+            <returns></returns>
+        </member>
+        <member name="M:PortableSteam.Fluent.General.SteamRemoteStorageBuilderHandler.GetCollectionDetails">
+            <summary>
+            No documentation.
+            </summary>
+        </member>
+        <member name="M:PortableSteam.Fluent.General.SteamRemoteStorageBuilderHandler.GetPublishedFilDetails">
+            <summary>
+            No documentation.
+            </summary>
+        </member>
+        <member name="M:PortableSteam.Fluent.General.SteamRemoteStorageBuilderHandler.GetUGCFileDetails(PortableSteam.GameType,System.Int64)">
+            <summary>
+            UGC file size, local filename, and URL.
+            </summary>
+            <param name="gameType">Product.</param>
+            <param name="ugcID">ID of UGC file to get info for.</param>
+            <returns></returns>
+        </member>
+        <member name="M:PortableSteam.Fluent.General.SteamRemoteStorageBuilderHandler.GetUGCFileDetails(System.Int32,System.Int64)">
+            <summary>
+            UGC file size, local filename, and URL.
+            </summary>
+            <param name="appID">AppID of product.</param>
+            <param name="ugcID">ID of UGC file to get info for.</param>
+            <returns></returns>
+        </member>
+        <member name="M:PortableSteam.Fluent.General.ISteamUserStats.GetGlobalStatsForGameBuilder.StartDate(System.DateTime)">
+            <summary>
+            Start date for daily totals.
+            </summary>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="M:PortableSteam.Fluent.General.ISteamUserStats.GetGlobalStatsForGameBuilder.EndDate(System.DateTime)">
+            <summary>
+            End date for daily totals.
+            </summary>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="M:PortableSteam.Fluent.General.SteamUserStatsBuilderHandler.GetGlobalAchievementPercentagesForApp(PortableSteam.GameType)">
+            <summary>
+            Statistics showing how much of the player base have unlocked various achievements.
+            </summary>
+            <param name="gameType">Game type to retrieve achievement percentages for.</param>
+            <returns></returns>
+        </member>
+        <member name="M:PortableSteam.Fluent.General.SteamUserStatsBuilderHandler.GetGlobalAchievementPercentagesForApp(System.Int32)">
+            <summary>
+            Statistics showing how much of the player base have unlocked various achievements.
+            </summary>
+            <param name="gameID">The ID of the game to retrieve achievement percentages for. This can be the ID of any Steamworks game with achievements available.</param>
+            <returns></returns>
+        </member>
+        <member name="M:PortableSteam.Fluent.General.SteamUserStatsBuilderHandler.GetGlobalStatsForGame(PortableSteam.GameType,System.Int32,System.String[])">
+            <summary>
+            Get global stats for game.
+            </summary>
+            <param name="gameType">Game type to retrieve global stats for.</param>
+            <param name="count">Number of stats to get data for.</param>
+            <param name="names">Names of the stats to get.</param>
+            <returns></returns>
+        </member>
+        <member name="M:PortableSteam.Fluent.General.SteamUserStatsBuilderHandler.GetGlobalStatsForGame(System.Int32,System.Int32,System.String[])">
+            <summary>
+            
+            </summary>
+            <param name="gameID">The ID of the game to retrieve global stats for. This can be the ID of any Steamworks game with global stats available.</param>
+            <param name="count">Number of stats to get data for.</param>
+            <param name="names">Names of the stats to get.</param>
+            <returns></returns>
+        </member>
+        <member name="M:PortableSteam.Fluent.General.SteamUserStatsBuilderHandler.GetNumberOfCurrentPlayers(PortableSteam.GameType)">
+            <summary>
+            Returns the current number of players for an app.
+            </summary>
+            <param name="gameType">App that we're getting user count for.</param>
+            <returns></returns>
+        </member>
+        <member name="M:PortableSteam.Fluent.General.SteamUserStatsBuilderHandler.GetNumberOfCurrentPlayers(System.Int32)">
+            <summary>
+            Returns the current number of players for an app.
+            </summary>
+            <param name="appID">AppID that we're getting user count for.</param>
+            <returns></returns>
+        </member>
+        <member name="M:PortableSteam.Fluent.General.SteamUserStatsBuilderHandler.GetPlayerAchievements(PortableSteam.GameType,PortableSteam.SteamIdentity)">
+            <summary>
+            Returns the current number of players for an app.
+            </summary>
+            <param name="gameType">App that we're getting achievements for.</param>
+            <param name="identity">Identity of user.</param>
+            <returns></returns>
+        </member>
+        <member name="M:PortableSteam.Fluent.General.SteamUserStatsBuilderHandler.GetPlayerAchievements(System.Int32,PortableSteam.SteamIdentity)">
+            <summary>
+            Returns the current number of players for an app.
+            </summary>
+            <param name="appID">AppID that we're getting achievements for.</param>
+            <param name="identity">Identity of user.</param>
+            <returns></returns>
+        </member>
+        <member name="M:PortableSteam.Fluent.General.SteamUserStatsBuilderHandler.GetSchemaForGame(PortableSteam.GameType)">
+            <summary>
+            Get schema for game.
+            </summary>
+            <param name="gameType">App that we're getting schema for.</param>
+            <returns></returns>
+        </member>
+        <member name="M:PortableSteam.Fluent.General.SteamUserStatsBuilderHandler.GetSchemaForGame(System.Int32)">
+            <summary>
+            Get schema for game.
+            </summary>
+            <param name="appID">AppID that we're getting schema for.</param>
+            <returns></returns>
+        </member>
+        <member name="M:PortableSteam.Fluent.General.SteamUserStatsBuilderHandler.GetUserStatsForGame(PortableSteam.GameType,PortableSteam.SteamIdentity)">
+            <summary>
+            Returns the user stats for game.
+            </summary>
+            <param name="gameType">App that we're getting achievements for.</param>
+            <param name="identity">Identity of user</param>
+            <returns></returns>
+        </member>
+        <member name="M:PortableSteam.Fluent.General.SteamUserStatsBuilderHandler.GetUserStatsForGame(System.Int32,PortableSteam.SteamIdentity)">
+            <summary>
+            Returns the user stats for game.
+            </summary>
+            <param name="appID">AppID that we're getting achievements for.</param>
+            <param name="identity">Identity of user.</param>
+            <returns></returns>
+        </member>
+        <member name="M:PortableSteam.Fluent.General.SteamUserBuilderHandler.GetFriendList(PortableSteam.SteamIdentity,PortableSteam.RelationshipType)">
+            <summary>
+            User friend list.
+            </summary>
+            <param name="identity">The identity of the user to retrieve a list for.</param>
+            <param name="relationship">Filter by a given role.</param>
+            <returns></returns>
+        </member>
+        <member name="M:PortableSteam.Fluent.General.SteamUserBuilderHandler.GetPlayerBans(PortableSteam.SteamIdentity[])">
+            <summary>
+            Player ban/probation status
+            </summary>
+            <param name="identities">List of identities</param>
+            <returns></returns>
+        </member>
+        <member name="M:PortableSteam.Fluent.General.SteamUserBuilderHandler.GetPlayerSummaries(PortableSteam.SteamIdentity[])">
+            <summary>
+            User profile data.
+            </summary>
+            <param name="identities">List of identities</param>
+            <returns></returns>
+        </member>
+        <member name="M:PortableSteam.Fluent.General.SteamUserBuilderHandler.GetUserGroupList(PortableSteam.SteamIdentity)">
+            <summary>
+            User group data.
+            </summary>
+            <param name="identity">The identity of the user to retrieve a user group list for.</param>
+            <returns></returns>
+        </member>
+        <member name="M:PortableSteam.Fluent.General.SteamUserBuilderHandler.ResolveVanityURL(System.String)">
+            <summary>
+            Resolve vanity URL parts to a 64 bit ID.
+            </summary>
+            <param name="vanityurl">The vanity URL part of a user's Steam profile URL. This is the basename of http://steamcommunity.com/id/ URLs.</param>
+            <returns></returns>
+        </member>
+        <member name="M:PortableSteam.Fluent.General.SteamWebAPIUtilBuilderHandler.GetServerInfo">
+            <summary>
+            Returns WebAPI server time and checks server status.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:PortableSteam.Fluent.General.SteamWebAPIUtilBuilderHandler.GetSupportedAPIList">
+            <summary>
+            Lists all available WebAPI interfaces.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:PortableSteam.Fluent.Other.OtherBuilderHandler.ISteamGameServerAccount">
+            <summary>
+            TODO.
+            </summary>
+        </member>
+        <member name="M:PortableSteam.Fluent.Other.OtherBuilderHandler.ISteamOAuth2">
+            <summary>
+            TODO.
+            </summary>
+        </member>
+        <member name="M:PortableSteam.Fluent.Other.OtherBuilderHandler.ISteamUserAuth">
+            <summary>
+            TODO.
+            </summary>
+        </member>
+        <member name="M:PortableSteam.Fluent.Other.OtherBuilderHandler.ISteamWebUserPresenceOAuth">
+            <summary>
+            TODO.
+            </summary>
+        </member>
+        <member name="M:PortableSteam.Fluent.SteamCustomBuilder.GetResponseString(PortableSteam.RequestFormat)">
+            <summary>
+            Gets the response string of this request.
+            </summary>
+            <param name="format">Format of the response string. Default is JSON.</param>
+            <returns>Response string.</returns>
+        </member>
+        <member name="M:PortableSteam.Fluent.SteamCustomBuilder.GetResponseStringAsync(PortableSteam.RequestFormat)">
+            <summary>
+            Gets the response string of this request asynchronously.
+            </summary>
+            <param name="format">Format of the response string. Default is JSON.</param>
+            <returns>Response string.</returns>
+        </member>
+        <member name="T:PortableSteam.Infrastructure.Attributes.RequiredAttribute">
+            <summary>
+            Attribute used to mark properties that a required.
+            </summary>
+        </member>
+        <member name="T:PortableSteam.Infrastructure.RequestBase">
+            <summary>
+            Base class for steam requests.
+            </summary>
+        </member>
+        <member name="M:PortableSteam.Infrastructure.RequestBase.#ctor(System.String)">
+            <summary>
+            Constructor.
+            </summary>
+            <param name="key"></param>
+        </member>
+        <member name="M:PortableSteam.Infrastructure.RequestBase.GetUri">
+            <summary>
+            The complete URI of this request with parameters.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:PortableSteam.Infrastructure.RequestBase.GetParameterList">
+            <summary>
+            List of parameters for this request object.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:PortableSteam.Infrastructure.RequestBase.EndpointUrl">
+            <summary>
+            Base URL for MapQuest API.
+            </summary>
+        </member>
+        <member name="P:PortableSteam.Infrastructure.RequestBase.Format">
+            <summary>
+            The file format to return output in.
+            </summary>
+        </member>
+        <member name="P:PortableSteam.Infrastructure.RequestBase.Language">
+            <summary>
+            The ISO639-1 language code for the language all tokenized strings should be returned in. 
+            Not all strings have been translated to every language. 
+            If a language does not have a string, the English string will be returned instead. 
+            If this parameter is omitted the string token will be returned for the strings.
+            </summary>
+        </member>
+        <member name="M:PortableSteam.Infrastructure.Extensions.ToNullableString(System.Object)">
+            <summary>
+            Returns this object as a string.
+            </summary>
+            <param name="source"></param>
+            <returns></returns>
+        </member>
+        <member name="M:PortableSteam.Infrastructure.Extensions.ToLowerString(System.Object)">
+            <summary>
+            Returns this object as a string all lower case.
+            </summary>
+            <param name="source"></param>
+            <returns></returns>
+        </member>
+        <member name="M:PortableSteam.Infrastructure.Extensions.ToDateTime(System.Int64)">
+            <summary>
+            Converts this unix time stamp to date time.
+            </summary>
+            <param name="source"></param>
+            <returns></returns>
+        </member>
+        <member name="M:PortableSteam.Infrastructure.Extensions.ToUnixTimeStamp(System.DateTime)">
+            <summary>
+            Converts this date time to unix time stamp.
+            </summary>
+            <param name="source"></param>
+            <returns></returns>
+        </member>
+        <member name="M:PortableSteam.Infrastructure.Extensions.ToDelimitedString``1(System.Collections.Generic.IEnumerable{``0},System.String)">
+            <summary>
+            Converts this ienumerable source to a delimited string.
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="source"></param>
+            <param name="delimiter"></param>
+            <returns></returns>
+        </member>
+        <member name="M:PortableSteam.Infrastructure.Extensions.ToDictionary(System.Object)">
+            <summary>
+            Converts this object's parameters to a query string dictionary.
+            </summary>
+            <param name="source"></param>
+            <returns></returns>
+        </member>
+        <member name="M:PortableSteam.Infrastructure.Objects.QueryStringDictionary.ToQueryString">
+            <summary>
+            Converts this dictionary of parameters into URL compatible string.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:PortableSteam.Infrastructure.Objects.QueryStringKeyValuePair">
+            <summary>
+            Key value pair used for QueryStringDictionary.
+            </summary>
+        </member>
+        <member name="P:PortableSteam.Infrastructure.Objects.QueryStringKeyValuePair.Key">
+            <summary>
+            Key of this pair.
+            </summary>
+        </member>
+        <member name="P:PortableSteam.Infrastructure.Objects.QueryStringKeyValuePair.Value">
+            <summary>
+            Value of this pair.
+            </summary>
+        </member>
+        <member name="T:PortableSteam.RequestFormat">
+            <summary>
+            The file format to return output in.
+            </summary>
+        </member>
+        <member name="F:PortableSteam.RequestFormat.JSON">
+            <summary>
+            The JavaScript Object Notation format.
+            </summary>
+        </member>
+        <member name="F:PortableSteam.RequestFormat.VDF">
+            <summary>
+            Valve Data Format.
+            </summary>
+            <remarks>
+            http://wiki.teamfortress.com/wiki/WebAPI/VDF
+            </remarks>
+        </member>
+        <member name="F:PortableSteam.RequestFormat.XML">
+            <summary>
+            Standard XML.
+            </summary>
+        </member>
+        <member name="M:PortableSteam.Infrastructure.RequestHandler.Request(System.Uri)">
+            <summary>
+            Send GET request.
+            </summary>
+            <param name="uri">Address of the endpoint.</param>
+            <returns>Response string.</returns>
+        </member>
+        <member name="M:PortableSteam.Infrastructure.RequestHandler.RequestAsync(System.Uri)">
+            <summary>
+            Send GET request asynchronously.
+            </summary>
+            <param name="uri">Address of the endpoint.</param>
+            <returns>Response string.</returns>
+        </member>
+        <member name="T:PortableSteam.Infrastructure.ResponseBase">
+            <summary>
+            Base class for steam responses.
+            </summary>
+        </member>
+        <member name="P:PortableSteam.Infrastructure.ResponseBase.RequestURI">
+            <summary>
+            Request URI of this response.
+            </summary>
+        </member>
+        <member name="P:PortableSteam.Infrastructure.ResponseBase.Response">
+            <summary>
+            Response for this steam request.
+            </summary>
+        </member>
+        <member name="P:PortableSteam.Infrastructure.Response.Success">
+            <summary>
+            True if the query was successful, false otherwise.
+            </summary>
+        </member>
+        <member name="P:PortableSteam.Infrastructure.Response.Error">
+            <summary>
+            Error message of this response.
+            </summary>
+        </member>
+        <member name="P:PortableSteam.Infrastructure.Response.ErrorCode">
+            <summary>
+            Error code of this response.
+            </summary>
+        </member>
+        <member name="T:PortableSteam.SteamIdentity">
+            <summary>
+            Steam identity. Wrapper class that encapsulates authentication, authorization and correct parsing of steam ids and account ids.
+            </summary>
+        </member>
+        <member name="M:PortableSteam.SteamIdentity.#ctor(PortableSteam.SteamIdentityType,System.Int64)">
+            <summary>
+            Constructor.
+            </summary>
+            <param name="type"></param>
+            <param name="value"></param>
+        </member>
+        <member name="M:PortableSteam.SteamIdentity.FromAccountID(System.Int64)">
+            <summary>
+            Create a new steam identity from a 32bit account ID.
+            </summary>
+            <param name="accountID"></param>
+            <returns></returns>
+        </member>
+        <member name="M:PortableSteam.SteamIdentity.FromSteamID(System.Int64)">
+            <summary>
+            Create a new steam identity from a 64bit steam ID.
+            </summary>
+            <param name="steamID"></param>
+            <returns></returns>
+        </member>
+        <member name="P:PortableSteam.SteamIdentity.Type">
+            <summary>
+            The type of this steam identity instantiated.
+            </summary>
+        </member>
+        <member name="P:PortableSteam.SteamIdentity.AccountID">
+            <summary>
+            The user's 32 bit account ID.
+            </summary>
+        </member>
+        <member name="P:PortableSteam.SteamIdentity.SteamID">
+            <summary>
+            64 bit Steam Community ID.
+            </summary>
+        </member>
+        <member name="T:PortableSteam.SteamIdentityType">
+            <summary>
+            Type of steam identity.
+            </summary>
+        </member>
+        <member name="F:PortableSteam.SteamIdentityType.Default">
+            <summary>
+            64 bit community user id.
+            </summary>
+        </member>
+        <member name="F:PortableSteam.SteamIdentityType.Account">
+            <summary>
+            32 bit account id.
+            </summary>
+        </member>
+        <member name="T:PortableSteam.Dota2GameMode">
+            <summary>
+            Dota 2 game modes.
+            </summary>
+        </member>
+        <member name="F:PortableSteam.Dota2GameMode.None">
+            <summary>
+            None.
+            </summary>
+        </member>
+        <member name="F:PortableSteam.Dota2GameMode.AllPick">
+            <summary>
+            All pick.
+            </summary>
+        </member>
+        <member name="F:PortableSteam.Dota2GameMode.CaptainsMode">
+            <summary>
+            Captain's mode.
+            </summary>
+        </member>
+        <member name="F:PortableSteam.Dota2GameMode.RandomDraft">
+            <summary>
+            Random draft.
+            </summary>
+        </member>
+        <member name="F:PortableSteam.Dota2GameMode.SingleDraft">
+            <summary>
+            Single draft.
+            </summary>
+        </member>
+        <member name="F:PortableSteam.Dota2GameMode.AllRandom">
+            <summary>
+            All random.
+            </summary>
+        </member>
+        <member name="F:PortableSteam.Dota2GameMode.Intro">
+            <summary>
+            Intro.
+            </summary>
+        </member>
+        <member name="F:PortableSteam.Dota2GameMode.Diretide">
+            <summary>
+            Dire tide.
+            </summary>
+        </member>
+        <member name="F:PortableSteam.Dota2GameMode.ReverseCaptainsMode">
+            <summary>
+            Reverse captain's mode.
+            </summary>
+        </member>
+        <member name="F:PortableSteam.Dota2GameMode.TheGreeviling">
+            <summary>
+            The greeviling.
+            </summary>
+        </member>
+        <member name="F:PortableSteam.Dota2GameMode.Tutorial">
+            <summary>
+            Tutorial.
+            </summary>
+        </member>
+        <member name="F:PortableSteam.Dota2GameMode.MidOnly">
+            <summary>
+            Mid lane only.
+            </summary>
+        </member>
+        <member name="F:PortableSteam.Dota2GameMode.LeastPlayed">
+            <summary>
+            Least played.
+            </summary>
+        </member>
+        <member name="F:PortableSteam.Dota2GameMode.NewPlayerPool">
+            <summary>
+            New player pool.
+            </summary>
+        </member>
+        <member name="F:PortableSteam.Dota2GameMode.CompendiumMatchmaking">
+            <summary>
+            Compendium match making.
+            </summary>
+        </member>
+        <member name="F:PortableSteam.Dota2GameMode.CaptainsDraft">
+            <summary>
+            Captain's draft.
+            </summary>
+        </member>
+        <member name="T:PortableSteam.Dota2LobbyType">
+            <summary>
+            Lobby types for Dota 2. 
+            </summary>
+        </member>
+        <member name="F:PortableSteam.Dota2LobbyType.Invalid">
+            <summary>
+            Invalid.
+            </summary>
+        </member>
+        <member name="F:PortableSteam.Dota2LobbyType.PublicMatchmaking">
+            <summary>
+            Public match making.
+            </summary>
+        </member>
+        <member name="F:PortableSteam.Dota2LobbyType.Practise">
+            <summary>
+            Practise.
+            </summary>
+        </member>
+        <member name="F:PortableSteam.Dota2LobbyType.Tournament">
+            <summary>
+            Tournamnet.
+            </summary>
+        </member>
+        <member name="F:PortableSteam.Dota2LobbyType.Tutorial">
+            <summary>
+            Tutorial.
+            </summary>
+        </member>
+        <member name="F:PortableSteam.Dota2LobbyType.CoopWithBots">
+            <summary>
+            Coop with bots.
+            </summary>
+        </member>
+        <member name="F:PortableSteam.Dota2LobbyType.TeamMatch">
+            <summary>
+            Team match.
+            </summary>
+        </member>
+        <member name="F:PortableSteam.Dota2LobbyType.SoloQueue">
+            <summary>
+            Solo queue.
+            </summary>
+        </member>
+        <member name="T:PortableSteam.Dota2Skill">
+            <summary>
+            Dota 2 skill level. Used for match history filter.
+            </summary>
+        </member>
+        <member name="F:PortableSteam.Dota2Skill.Any">
+            <summary>
+            Any.
+            </summary>
+        </member>
+        <member name="F:PortableSteam.Dota2Skill.Normal">
+            <summary>
+            Normal.
+            </summary>
+        </member>
+        <member name="F:PortableSteam.Dota2Skill.High">
+            <summary>
+            High.
+            </summary>
+        </member>
+        <member name="F:PortableSteam.Dota2Skill.VeryHigh">
+            <summary>
+            Very high.
+            </summary>
+        </member>
+        <member name="T:PortableSteam.Dota2Team">
+            <summary>
+            Dota 2 teams.
+            </summary>
+        </member>
+        <member name="F:PortableSteam.Dota2Team.Radiant">
+            <summary>
+            Radiant team.
+            </summary>
+        </member>
+        <member name="F:PortableSteam.Dota2Team.Dire">
+            <summary>
+            Dire team.
+            </summary>
+        </member>
+        <member name="F:PortableSteam.Dota2Team.Broadcaster">
+            <summary>
+            Broadcasters.
+            </summary>
+        </member>
+        <member name="F:PortableSteam.Dota2Team.Unassigned">
+            <summary>
+            None.
+            </summary>
+        </member>
+        <member name="P:PortableSteam.Interfaces.Game.Dota2.IDOTA2.GetLeagueListingResponseData.Leagues">
+            <summary>
+            A list of leagues supported in-game via DotaTV.
+            </summary>
+        </member>
+        <member name="P:PortableSteam.Interfaces.Game.Dota2.IDOTA2.GetLeagueListingResponseLeague.Name">
+            <summary>
+            The name of the league.
+            </summary>
+        </member>
+        <member name="P:PortableSteam.Interfaces.Game.Dota2.IDOTA2.GetLeagueListingResponseLeague.LeagueID">
+            <summary>
+            The league's unique ID.
+            </summary>
+        </member>
+        <member name="P:PortableSteam.Interfaces.Game.Dota2.IDOTA2.GetLeagueListingResponseLeague.Description">
+            <summary>
+            A description of the league.
+            </summary>
+        </member>
+        <member name="P:PortableSteam.Interfaces.Game.Dota2.IDOTA2.GetLeagueListingResponseLeague.TournamentUrl">
+            <summary>
+            The league's website.
+            </summary>
+        </member>
+        <member name="P:PortableSteam.Interfaces.Game.Dota2.IDOTA2.GetLiveLeagueGamesResponseData.Games">
+            <summary>
+            A list of games in-progress.
+            </summary>
+        </member>
+        <member name="P:PortableSteam.Interfaces.Game.Dota2.IDOTA2.GetLiveLeagueGamesResponseGame.Players">
+            <summary>
+            The list of players within a game.
+            </summary>
+        </member>
+        <member name="P:PortableSteam.Interfaces.Game.Dota2.IDOTA2.GetLiveLeagueGamesResponseGame.RadiantTeam">
+            <summary>
+            Information about the team playing as radiant for this match.
+            </summary>
+        </member>
+        <member name="P:PortableSteam.Interfaces.Game.Dota2.IDOTA2.GetLiveLeagueGamesResponseGame.DireTeam">
+            <summary>
+            Information about the team playing as dire for this match.
+            </summary>
+        </member>
+        <member name="P:PortableSteam.Interfaces.Game.Dota2.IDOTA2.GetLiveLeagueGamesResponseGame.LobbyID">
+            <summary>
+            Unique ID for the matches lobby.
+            </summary>
+        </member>
+        <member name="P:PortableSteam.Interfaces.Game.Dota2.IDOTA2.GetLiveLeagueGamesResponseGame.Spectators">
+            <summary>
+            Number of spectators at time of query.
+            </summary>
+        </member>
+        <member name="P:PortableSteam.Interfaces.Game.Dota2.IDOTA2.GetLiveLeagueGamesResponseGame.TowerState">
+            <summary>
+            <see href="http://wiki.teamfortress.com/wiki/WebAPI/GetLiveLeagueGames#Tower_state"/>
+            </summary>
+        </member>
+        <member name="P:PortableSteam.Interfaces.Game.Dota2.IDOTA2.GetLiveLeagueGamesResponseGame.LeagueID">
+            <summary>
+            Unique ID for the league of the match being played. A list of league IDs can be found via the GetLeagueListing method.
+            </summary>
+        </member>
+        <member name="P:PortableSteam.Interfaces.Game.Dota2.IDOTA2.GetLiveLeagueGamesResponsePlayer.Identity">
+            <summary>
+            SteamIdentity.
+            </summary>
+        </member>
+        <member name="P:PortableSteam.Interfaces.Game.Dota2.IDOTA2.GetLiveLeagueGamesResponsePlayer.Name">
+            <summary>
+            The player's display name.
+            </summary>
+        </member>
+        <member name="P:PortableSteam.Interfaces.Game.Dota2.IDOTA2.GetLiveLeagueGamesResponsePlayer.HeroID">
+            <summary>
+            The hero's unique ID. A list of hero IDs can be found via the GetHeroes method.
+            </summary>
+        </member>
+        <member name="P:PortableSteam.Interfaces.Game.Dota2.IDOTA2.GetLiveLeagueGamesResponsePlayer.Team">
+            <summary>
+            What team the player is currently playing as.
+            </summary>
+        </member>
+        <member name="P:PortableSteam.Interfaces.Game.Dota2.IDOTA2.GetLiveLeagueGamesResponseRadiantTeam.TeamName">
+            <summary>
+            The team's name.
+            </summary>
+        </member>
+        <member name="P:PortableSteam.Interfaces.Game.Dota2.IDOTA2.GetLiveLeagueGamesResponseRadiantTeam.TeamID">
+            <summary>
+            The team's unique ID.
+            </summary>
+        </member>
+        <member name="P:PortableSteam.Interfaces.Game.Dota2.IDOTA2.GetLiveLeagueGamesResponseRadiantTeam.TeamLogo">
+            <summary>
+            The UGC id for the team logo. You can resolve this with the GetUGCFileDetails method.
+            </summary>
+        </member>
+        <member name="P:PortableSteam.Interfaces.Game.Dota2.IDOTA2.GetLiveLeagueGamesResponseRadiantTeam.Complete">
+            <summary>
+            Whether the players for this team are all team members.
+            </summary>
+        </member>
+        <member name="P:PortableSteam.Interfaces.Game.Dota2.IDOTA2.GetLiveLeagueGamesResponseDireTeam.TeamName">
+            <summary>
+            The team's name.
+            </summary>
+        </member>
+        <member name="P:PortableSteam.Interfaces.Game.Dota2.IDOTA2.GetLiveLeagueGamesResponseDireTeam.TeamID">
+            <summary>
+            The team's unique ID.
+            </summary>
+        </member>
+        <member name="P:PortableSteam.Interfaces.Game.Dota2.IDOTA2.GetLiveLeagueGamesResponseDireTeam.TeamLogo">
+            <summary>
+            The UGC id for the team logo. You can resolve this with the GetUGCFileDetails method.
+            </summary>
+        </member>
+        <member name="P:PortableSteam.Interfaces.Game.Dota2.IDOTA2.GetLiveLeagueGamesResponseDireTeam.Complete">
+            <summary>
+            Whether the players for this team are all team members.
+            </summary>
+        </member>
+        <member name="P:PortableSteam.Interfaces.Game.Dota2.IDOTA2.GetMatchDetailsResponseData.Players">
+            <summary>
+            List of players in the match.
+            </summary>
+        </member>
+        <member name="P:PortableSteam.Interfaces.Game.Dota2.IDOTA2.GetMatchDetailsResponseData.Season">
+            <summary>
+            The season the game was played in.
+            </summary>
+        </member>
+        <member name="P:PortableSteam.Interfaces.Game.Dota2.IDOTA2.GetMatchDetailsResponseData.RadiantWin">
+            <summary>
+            Dictates the winner of the match, true for radiant; false for dire.
+            </summary>
+        </member>
+        <member name="P:PortableSteam.Interfaces.Game.Dota2.IDOTA2.GetMatchDetailsResponseData.Duration">
+            <summary>
+            The length of the match since the match began.
+            </summary>
+        </member>
+        <member name="P:PortableSteam.Interfaces.Game.Dota2.IDOTA2.GetMatchDetailsResponseData.StartTime">
+            <summary>
+            DateTime timestamp of when the match began.
+            </summary>
+        </member>
+        <member name="P:PortableSteam.Interfaces.Game.Dota2.IDOTA2.GetMatchDetailsResponseData.MatchID">
+            <summary>
+            The matches unique ID.
+            </summary>
+        </member>
+        <member name="P:PortableSteam.Interfaces.Game.Dota2.IDOTA2.GetMatchDetailsResponseData.MatchSequenceNumber">
+            <summary>
+            A 'sequence number', representing the order in which matches were recorded.
+            </summary>
+        </member>
+        <member name="P:PortableSteam.Interfaces.Game.Dota2.IDOTA2.GetMatchDetailsResponseData.TowerStatusRadiant">
+            <summary>
+            Tower status. http://wiki.teamfortress.com/wiki/WebAPI/GetMatchDetails#Tower_Status
+            </summary>
+        </member>
+        <member name="P:PortableSteam.Interfaces.Game.Dota2.IDOTA2.GetMatchDetailsResponseData.TowerStatusDire">
+            <summary>
+            Tower status. http://wiki.teamfortress.com/wiki/WebAPI/GetMatchDetails#Tower_Status
+            </summary>
+        </member>
+        <member name="P:PortableSteam.Interfaces.Game.Dota2.IDOTA2.GetMatchDetailsResponseData.BarracksStatusRadiant">
+            <summary>
+            Barracks status. http://wiki.teamfortress.com/wiki/WebAPI/GetMatchDetails#Barracks_Status
+            </summary>
+        </member>
+        <member name="P:PortableSteam.Interfaces.Game.Dota2.IDOTA2.GetMatchDetailsResponseData.BarracksStatusDire">
+            <summary>
+            Barracks status. http://wiki.teamfortress.com/wiki/WebAPI/GetMatchDetails#Barracks_Status
+            </summary>
+        </member>
+        <member name="P:PortableSteam.Interfaces.Game.Dota2.IDOTA2.GetMatchDetailsResponseData.Cluster">
+            <summary>
+            The server cluster the match was played upon. Used for downloading replays of matches.
+            </summary>
+        </member>
+        <member name="P:PortableSteam.Interfaces.Game.Dota2.IDOTA2.GetMatchDetailsResponseData.FirstBloodTime">
+            <summary>
+            The time in seconds since the match began when first-blood occured.
+            </summary>
+        </member>
+        <member name="P:PortableSteam.Interfaces.Game.Dota2.IDOTA2.GetMatchDetailsResponseData.LobbyType">
+            <summary>
+            Lobby type.
+            </summary>
+        </member>
+        <member name="P:PortableSteam.Interfaces.Game.Dota2.IDOTA2.GetMatchDetailsResponseData.HumanPlayers">
+            <summary>
+            The amount of human players within the match.
+            </summary>
+        </member>
+        <member name="P:PortableSteam.Interfaces.Game.Dota2.IDOTA2.GetMatchDetailsResponseData.LeagueID">
+            <summary>
+            The league that this match was a part of. A list of league IDs can be found via the GetLeagueListing method.
+            </summary>
+        </member>
+        <member name="P:PortableSteam.Interfaces.Game.Dota2.IDOTA2.GetMatchDetailsResponseData.PositiveVotes">
+            <summary>
+            The number of thumbs-up the game has received by users.
+            </summary>
+        </member>
+        <member name="P:PortableSteam.Interfaces.Game.Dota2.IDOTA2.GetMatchDetailsResponseData.NegativeVotes">
+            <summary>
+            The number of thumbs-down the game has received by users.
+            </summary>
+        </member>
+        <member name="P:PortableSteam.Interfaces.Game.Dota2.IDOTA2.GetMatchDetailsResponseData.GameMode">
+            <summary>
+            Game mode.
+            </summary>
+        </member>
+        <member name="P:PortableSteam.Interfaces.Game.Dota2.IDOTA2.GetMatchDetailsResponseData.PicksAndBans">
+            <summary>
+            A list of the picks and bans in the match, if the game mode is Captains Mode.
+            </summary>
+        </member>
+        <member name="P:PortableSteam.Interfaces.Game.Dota2.IDOTA2.GetMatchDetailsResponsePlayer.Identity">
+            <summary>
+            32-bit account ID.
+            </summary>
+        </member>
+        <member name="P:PortableSteam.Interfaces.Game.Dota2.IDOTA2.GetMatchDetailsResponsePlayer.PlayerSlot">
+            <summary>
+            http://wiki.teamfortress.com/wiki/WebAPI/GetMatchDetails#Player_Slot
+            </summary>
+        </member>
+        <member name="P:PortableSteam.Interfaces.Game.Dota2.IDOTA2.GetMatchDetailsResponsePlayer.HeroID">
+            <summary>
+            The hero's unique ID. A list of hero IDs can be found via the GetHeroes method.
+            </summary>
+        </member>
+        <member name="P:PortableSteam.Interfaces.Game.Dota2.IDOTA2.GetMatchDetailsResponsePlayer.Item0">
+            <summary>
+            ID of the top-left inventory item.
+            </summary>
+        </member>
+        <member name="P:PortableSteam.Interfaces.Game.Dota2.IDOTA2.GetMatchDetailsResponsePlayer.Item1">
+            <summary>
+            ID of the top-center inventory item.
+            </summary>
+        </member>
+        <member name="P:PortableSteam.Interfaces.Game.Dota2.IDOTA2.GetMatchDetailsResponsePlayer.Item2">
+            <summary>
+            ID of the top-right inventory item.
+            </summary>
+        </member>
+        <member name="P:PortableSteam.Interfaces.Game.Dota2.IDOTA2.GetMatchDetailsResponsePlayer.Item3">
+            <summary>
+            ID of the bottom-left inventory item.
+            </summary>
+        </member>
+        <member name="P:PortableSteam.Interfaces.Game.Dota2.IDOTA2.GetMatchDetailsResponsePlayer.Item4">
+            <summary>
+            ID of the bottom-center inventory item.
+            </summary>
+        </member>
+        <member name="P:PortableSteam.Interfaces.Game.Dota2.IDOTA2.GetMatchDetailsResponsePlayer.Item5">
+            <summary>
+            ID of the bottom-right inventory item.
+            </summary>
+        </member>
+        <member name="P:PortableSteam.Interfaces.Game.Dota2.IDOTA2.GetMatchDetailsResponsePlayer.Kills">
+            <summary>
+            The amount of kills attributed to this player.
+            </summary>
+        </member>
+        <member name="P:PortableSteam.Interfaces.Game.Dota2.IDOTA2.GetMatchDetailsResponsePlayer.Deaths">
+            <summary>
+            The amount of times this player died during the match.
+            </summary>
+        </member>
+        <member name="P:PortableSteam.Interfaces.Game.Dota2.IDOTA2.GetMatchDetailsResponsePlayer.Assists">
+            <summary>
+            The amount of assists attributed to this player.
+            </summary>
+        </member>
+        <member name="P:PortableSteam.Interfaces.Game.Dota2.IDOTA2.GetMatchDetailsResponsePlayer.LeaverStatus">
+            <summary>
+            What the values here represent are not yet known.
+            </summary>
+        </member>
+        <member name="P:PortableSteam.Interfaces.Game.Dota2.IDOTA2.GetMatchDetailsResponsePlayer.Gold">
+            <summary>
+            The amount of gold the player had remaining at the end of the match.
+            </summary>
+        </member>
+        <member name="P:PortableSteam.Interfaces.Game.Dota2.IDOTA2.GetMatchDetailsResponsePlayer.LastHits">
+            <summary>
+            The amount of last-hits the player got during the match.
+            </summary>
+        </member>
+        <member name="P:PortableSteam.Interfaces.Game.Dota2.IDOTA2.GetMatchDetailsResponsePlayer.Denies">
+            <summary>
+            The amount of denies the player got during the match.
+            </summary>
+        </member>
+        <member name="P:PortableSteam.Interfaces.Game.Dota2.IDOTA2.GetMatchDetailsResponsePlayer.GoldPerMin">
+            <summary>
+            The player's overall gold/minute.
+            </summary>
+        </member>
+        <member name="P:PortableSteam.Interfaces.Game.Dota2.IDOTA2.GetMatchDetailsResponsePlayer.XPPerMin">
+            <summary>
+            The player's overall experience/minute.
+            </summary>
+        </member>
+        <member name="P:PortableSteam.Interfaces.Game.Dota2.IDOTA2.GetMatchDetailsResponsePlayer.GoldSpent">
+            <summary>
+            The amount of gold the player spent during the match.
+            </summary>
+        </member>
+        <member name="P:PortableSteam.Interfaces.Game.Dota2.IDOTA2.GetMatchDetailsResponsePlayer.HeroDamage">
+            <summary>
+            The amount of damage the player dealt to heroes.
+            </summary>
+        </member>
+        <member name="P:PortableSteam.Interfaces.Game.Dota2.IDOTA2.GetMatchDetailsResponsePlayer.TowerDamage">
+            <summary>
+            The amount of damage the player dealt to towers.
+            </summary>
+        </member>
+        <member name="P:PortableSteam.Interfaces.Game.Dota2.IDOTA2.GetMatchDetailsResponsePlayer.HeroHealing">
+            <summary>
+            The amount of health the player had healed on heroes.
+            </summary>
+        </member>
+        <member name="P:PortableSteam.Interfaces.Game.Dota2.IDOTA2.GetMatchDetailsResponsePlayer.Level">
+            <summary>
+            The player's level at match end.
+            </summary>
+        </member>
+        <member name="P:PortableSteam.Interfaces.Game.Dota2.IDOTA2.GetMatchDetailsResponsePlayer.AbilityUpgrades">
+            <summary>
+            A list detailing a player's ability upgrades.
+            </summary>
+        </member>
+        <member name="P:PortableSteam.Interfaces.Game.Dota2.IDOTA2.GetMatchDetailsResponsePlayer.AdditionalUnits">
+            <summary>
+            Additional playable units owned by the player.
+            </summary>
+        </member>
+        <member name="P:PortableSteam.Interfaces.Game.Dota2.IDOTA2.GetMatchDetailsResponseAbilityUpgrade.AbilityID">
+            <summary>
+            ID of the ability upgraded.
+            </summary>
+        </member>
+        <member name="P:PortableSteam.Interfaces.Game.Dota2.IDOTA2.GetMatchDetailsResponseAbilityUpgrade.Time">
+            <summary>
+            Time since match start that the ability was upgraded.
+            </summary>
+        </member>
+        <member name="P:PortableSteam.Interfaces.Game.Dota2.IDOTA2.GetMatchDetailsResponseAbilityUpgrade.Level">
+            <summary>
+            The level of the player at time of upgrading.
+            </summary>
+        </member>
+        <member name="P:PortableSteam.Interfaces.Game.Dota2.IDOTA2.GetMatchDetailsResponseAdditionalUnit.UnitName">
+            <summary>
+            The name of the unit
+            </summary>
+        </member>
+        <member name="P:PortableSteam.Interfaces.Game.Dota2.IDOTA2.GetMatchDetailsResponseAdditionalUnit.Item0">
+            <summary>
+            ID of the top-left inventory item.
+            </summary>
+        </member>
+        <member name="P:PortableSteam.Interfaces.Game.Dota2.IDOTA2.GetMatchDetailsResponseAdditionalUnit.Item1">
+            <summary>
+            ID of the top-center inventory item.
+            </summary>
+        </member>
+        <member name="P:PortableSteam.Interfaces.Game.Dota2.IDOTA2.GetMatchDetailsResponseAdditionalUnit.Item2">
+            <summary>
+            ID of the top-right inventory item.
+            </summary>
+        </member>
+        <member name="P:PortableSteam.Interfaces.Game.Dota2.IDOTA2.GetMatchDetailsResponseAdditionalUnit.Item3">
+            <summary>
+            ID of the bottom-left inventory item.
+            </summary>
+        </member>
+        <member name="P:PortableSteam.Interfaces.Game.Dota2.IDOTA2.GetMatchDetailsResponseAdditionalUnit.Item4">
+            <summary>
+            ID of the bottom-center inventory item.
+            </summary>
+        </member>
+        <member name="P:PortableSteam.Interfaces.Game.Dota2.IDOTA2.GetMatchDetailsResponseAdditionalUnit.Item5">
+            <summary>
+            ID of the bottom-right inventory item.
+            </summary>
+        </member>
+        <member name="P:PortableSteam.Interfaces.Game.Dota2.IDOTA2.GetMatchDetailsResponsePickBan.IsPick">
+            <summary>
+            Whether this entry is a pick (true) or a ban (false).
+            </summary>
+        </member>
+        <member name="P:PortableSteam.Interfaces.Game.Dota2.IDOTA2.GetMatchDetailsResponsePickBan.HeroID">
+            <summary>
+            The hero's unique ID. A list of hero IDs can be found via the GetHeroes method.
+            </summary>
+        </member>
+        <member name="P:PortableSteam.Interfaces.Game.Dota2.IDOTA2.GetMatchDetailsResponsePickBan.Team">
+            <summary>
+            The team who chose the pick or ban.
+            </summary>
+        </member>
+        <member name="P:PortableSteam.Interfaces.Game.Dota2.IDOTA2.GetMatchDetailsResponsePickBan.Order">
+            <summary>
+            The order of which the picks and bans were selected; 0-19.
+            </summary>
+        </member>
+        <member name="P:PortableSteam.Interfaces.Game.Dota2.IDOTA2.GetMatchHistoryBySequenceNumResponseData.Status">
+            <summary>
+            Query status.
+            </summary>
+        </member>
+        <member name="P:PortableSteam.Interfaces.Game.Dota2.IDOTA2.GetMatchHistoryBySequenceNumResponseData.StatusDetail">
+            <summary>
+            A message explaining the status, should status not be 1.
+            </summary>
+        </member>
+        <member name="P:PortableSteam.Interfaces.Game.Dota2.IDOTA2.GetMatchHistoryBySequenceNumResponseData.Matches">
+            <summary>
+            A list of matches.
+            </summary>
+        </member>
+        <member name="P:PortableSteam.Interfaces.Game.Dota2.IDOTA2.GetMatchDetailsMatch.Players">
+            <summary>
+            List of players in the match.
+            </summary>
+        </member>
+        <member name="P:PortableSteam.Interfaces.Game.Dota2.IDOTA2.GetMatchDetailsMatch.Season">
+            <summary>
+            The season the game was played in.
+            </summary>
+        </member>
+        <member name="P:PortableSteam.Interfaces.Game.Dota2.IDOTA2.GetMatchDetailsMatch.RadiantWin">
+            <summary>
+            Dictates the winner of the match, true for radiant; false for dire.
+            </summary>
+        </member>
+        <member name="P:PortableSteam.Interfaces.Game.Dota2.IDOTA2.GetMatchDetailsMatch.Duration">
+            <summary>
+            The length of the match since the match began.
+            </summary>
+        </member>
+        <member name="P:PortableSteam.Interfaces.Game.Dota2.IDOTA2.GetMatchDetailsMatch.StartTime">
+            <summary>
+            DateTime timestamp of when the match began.
+            </summary>
+        </member>
+        <member name="P:PortableSteam.Interfaces.Game.Dota2.IDOTA2.GetMatchDetailsMatch.MatchID">
+            <summary>
+            The matches unique ID.
+            </summary>
+        </member>
+        <member name="P:PortableSteam.Interfaces.Game.Dota2.IDOTA2.GetMatchDetailsMatch.MatchSequenceNumber">
+            <summary>
+            A 'sequence number', representing the order in which matches were recorded.
+            </summary>
+        </member>
+        <member name="P:PortableSteam.Interfaces.Game.Dota2.IDOTA2.GetMatchDetailsMatch.TowerStatusRadiant">
+            <summary>
+            Tower status. http://wiki.teamfortress.com/wiki/WebAPI/GetMatchDetails#Tower_Status
+            </summary>
+        </member>
+        <member name="P:PortableSteam.Interfaces.Game.Dota2.IDOTA2.GetMatchDetailsMatch.TowerStatusDire">
+            <summary>
+            Tower status. http://wiki.teamfortress.com/wiki/WebAPI/GetMatchDetails#Tower_Status
+            </summary>
+        </member>
+        <member name="P:PortableSteam.Interfaces.Game.Dota2.IDOTA2.GetMatchDetailsMatch.BarracksStatusRadiant">
+            <summary>
+            Barracks status. http://wiki.teamfortress.com/wiki/WebAPI/GetMatchDetails#Barracks_Status
+            </summary>
+        </member>
+        <member name="P:PortableSteam.Interfaces.Game.Dota2.IDOTA2.GetMatchDetailsMatch.BarracksStatusDire">
+            <summary>
+            Barracks status. http://wiki.teamfortress.com/wiki/WebAPI/GetMatchDetails#Barracks_Status
+            </summary>
+        </member>
+        <member name="P:PortableSteam.Interfaces.Game.Dota2.IDOTA2.GetMatchDetailsMatch.Cluster">
+            <summary>
+            The server cluster the match was played upon. Used for downloading replays of matches.
+            </summary>
+        </member>
+        <member name="P:PortableSteam.Interfaces.Game.Dota2.IDOTA2.GetMatchDetailsMatch.FirstBloodTime">
+            <summary>
+            The time in seconds since the match began when first-blood occured.
+            </summary>
+        </member>
+        <member name="P:PortableSteam.Interfaces.Game.Dota2.IDOTA2.GetMatchDetailsMatch.LobbyType">
+            <summary>
+            Lobby type.
+            </summary>
+        </member>
+        <member name="P:PortableSteam.Interfaces.Game.Dota2.IDOTA2.GetMatchDetailsMatch.HumanPlayers">
+            <summary>
+            The amount of human players within the match.
+            </summary>
+        </member>
+        <member name="P:PortableSteam.Interfaces.Game.Dota2.IDOTA2.GetMatchDetailsMatch.LeagueID">
+            <summary>
+            The league that this match was a part of. A list of league IDs can be found via the GetLeagueListing method.
+            </summary>
+        </member>
+        <member name="P:PortableSteam.Interfaces.Game.Dota2.IDOTA2.GetMatchDetailsMatch.PositiveVotes">
+            <summary>
+            The number of thumbs-up the game has received by users.
+            </summary>
+        </member>
+        <member name="P:PortableSteam.Interfaces.Game.Dota2.IDOTA2.GetMatchDetailsMatch.NegativeVotes">
+            <summary>
+            The number of thumbs-down the game has received by users.
+            </summary>
+        </member>
+        <member name="P:PortableSteam.Interfaces.Game.Dota2.IDOTA2.GetMatchDetailsMatch.GameMode">
+            <summary>
+            Game mode.
+            </summary>
+        </member>
+        <member name="P:PortableSteam.Interfaces.Game.Dota2.IDOTA2.GetMatchDetailsMatch.PicksAndBans">
+            <summary>
+            A list of the picks and bans in the match, if the game mode is Captains Mode.
+            </summary>
+        </member>
+        <member name="P:PortableSteam.Interfaces.Game.Dota2.IDOTA2.GetMatchHistoryResponseData.Status">
+            <summary>
+            Query status.
+            </summary>
+        </member>
+        <member name="P:PortableSteam.Interfaces.Game.Dota2.IDOTA2.GetMatchHistoryResponseData.StatusDetail">
+            <summary>
+            A message explaining the status, should status not be 1.
+            </summary>
+        </member>
+        <member name="P:PortableSteam.Interfaces.Game.Dota2.IDOTA2.GetMatchHistoryResponseData.NumberOfResults">
+            <summary>
+            The number of matches in this response.
+            </summary>
+        </member>
+        <member name="P:PortableSteam.Interfaces.Game.Dota2.IDOTA2.GetMatchHistoryResponseData.TotalResults">
+            <summary>
+            The total number of matches for the query.
+            </summary>
+        </member>
+        <member name="P:PortableSteam.Interfaces.Game.Dota2.IDOTA2.GetMatchHistoryResponseData.ResultsRemaining">
+            <summary>
+            The number of matches left for this query.
+            </summary>
+        </member>
+        <member name="P:PortableSteam.Interfaces.Game.Dota2.IDOTA2.GetMatchHistoryResponseData.Matches">
+            <summary>
+            A list of matches.
+            </summary>
+        </member>
+        <member name="P:PortableSteam.Interfaces.Game.Dota2.IDOTA2.GetMatchHistoryResponseMatch.MatchID">
+            <summary>
+            The matches unique ID.
+            </summary>
+        </member>
+        <member name="P:PortableSteam.Interfaces.Game.Dota2.IDOTA2.GetMatchHistoryResponseMatch.MatchSequenceNumber">
+            <summary>
+            A 'sequence number', representing the order in which matches were recorded.
+            </summary>
+        </member>
+        <member name="P:PortableSteam.Interfaces.Game.Dota2.IDOTA2.GetMatchHistoryResponseMatch.StartTime">
+            <summary>
+            DateTime timestamp of when the match began.
+            </summary>
+        </member>
+        <member name="P:PortableSteam.Interfaces.Game.Dota2.IDOTA2.GetMatchHistoryResponseMatch.LobbyType">
+            <summary>
+            Lobby type.
+            </summary>
+        </member>
+        <member name="P:PortableSteam.Interfaces.Game.Dota2.IDOTA2.GetMatchHistoryResponseMatch.Players">
+            <summary>
+            List of players in the match.
+            </summary>
+        </member>
+        <member name="P:PortableSteam.Interfaces.Game.Dota2.IDOTA2.GetMatchHistoryResponsePlayer.Identity">
+            <summary>
+            32-bit account ID.
+            </summary>
+        </member>
+        <member name="P:PortableSteam.Interfaces.Game.Dota2.IDOTA2.GetMatchHistoryResponsePlayer.PlayerSlot">
+            <summary>
+            http://wiki.teamfortress.com/wiki/WebAPI/GetMatchDetails#Player_Slot
+            </summary>
+        </member>
+        <member name="P:PortableSteam.Interfaces.Game.Dota2.IDOTA2.GetMatchHistoryResponsePlayer.HeroID">
+            <summary>
+            The hero's unique ID. A list of hero IDs can be found via the GetHeroes method.
+            </summary>
+        </member>
+        <member name="P:PortableSteam.Interfaces.Game.Dota2.IDOTA2.GetScheduledLeagueGamesResponseData.LeagueID">
+            <summary>
+            Unique ID for the league of the match being played. A list of league IDs can be found via the GetLeagueListing method.
+            </summary>
+        </member>
+        <member name="P:PortableSteam.Interfaces.Game.Dota2.IDOTA2.GetScheduledLeagueGamesResponseData.GameID">
+            <summary>
+            Unique ID of the game scheduled.
+            </summary>
+        </member>
+        <member name="P:PortableSteam.Interfaces.Game.Dota2.IDOTA2.GetScheduledLeagueGamesResponseData.Teams">
+            <summary>
+            List of participating teams; empty if not known.
+            </summary>
+        </member>
+        <member name="P:PortableSteam.Interfaces.Game.Dota2.IDOTA2.GetScheduledLeagueGamesResponseData.StartTime">
+            <summary>
+            DateTime timestamp of when the match began.
+            </summary>
+        </member>
+        <member name="P:PortableSteam.Interfaces.Game.Dota2.IDOTA2.GetScheduledLeagueGamesResponseData.Comment">
+            <summary>
+            Description of the game.
+            </summary>
+        </member>
+        <member name="P:PortableSteam.Interfaces.Game.Dota2.IDOTA2.GetScheduledLeagueGamesResponseData.Final">
+            <summary>
+            Whether the game is a final or not.
+            </summary>
+        </member>
+        <member name="P:PortableSteam.Interfaces.Game.Dota2.IDOTA2.GetScheduledLeagueGamesResponseTeam.TeamName">
+            <summary>
+            The team's name.
+            </summary>
+        </member>
+        <member name="P:PortableSteam.Interfaces.Game.Dota2.IDOTA2.GetScheduledLeagueGamesResponseTeam.TeamID">
+            <summary>
+            The team's unique ID.
+            </summary>
+        </member>
+        <member name="P:PortableSteam.Interfaces.Game.Dota2.IDOTA2.GetScheduledLeagueGamesResponseTeam.TeamLogo">
+            <summary>
+            The UGC id for the team logo. You can resolve this with the GetUGCFileDetails method.
+            </summary>
+        </member>
+        <member name="P:PortableSteam.Interfaces.Game.Dota2.IDOTA2.GetScheduledLeagueGamesResponseTeam.Complete">
+            <summary>
+            Whether the players for this team are all team members.
+            </summary>
+        </member>
+        <member name="P:PortableSteam.Interfaces.Game.Dota2.IDOTA2.GetTeamInfoByTeamIDResponseData.Status">
+            <summary>
+            Query status.
+            </summary>
+        </member>
+        <member name="P:PortableSteam.Interfaces.Game.Dota2.IDOTA2.GetTeamInfoByTeamIDResponseData.StatusDetail">
+            <summary>
+            A message explaining the status, should status not be 1.
+            </summary>
+        </member>
+        <member name="P:PortableSteam.Interfaces.Game.Dota2.IDOTA2.GetTeamInfoByTeamIDResponseData.Teams">
+            <summary>
+            List of participating teams; empty if not known.
+            </summary>
+        </member>
+        <member name="P:PortableSteam.Interfaces.Game.Dota2.IDOTA2.GetTeamInfoByTeamIDResponseTeam.TeamID">
+            <summary>
+            The team's unique ID.
+            </summary>
+        </member>
+        <member name="P:PortableSteam.Interfaces.Game.Dota2.IDOTA2.GetTeamInfoByTeamIDResponseTeam.Name">
+            <summary>
+            The team's name.
+            </summary>
+        </member>
+        <member name="P:PortableSteam.Interfaces.Game.Dota2.IDOTA2.GetTeamInfoByTeamIDResponseTeam.Tag">
+            <summary>
+            The team's tag.
+            </summary>
+        </member>
+        <member name="P:PortableSteam.Interfaces.Game.Dota2.IDOTA2.GetTeamInfoByTeamIDResponseTeam.TimeCreated">
+            <summary>
+            DateTime timestamp of when the match began.
+            </summary>
+        </member>
+        <member name="P:PortableSteam.Interfaces.Game.Dota2.IDOTA2.GetTeamInfoByTeamIDResponseTeam.Rating">
+            <summary>
+            The team's rating.
+            </summary>
+        </member>
+        <member name="P:PortableSteam.Interfaces.Game.Dota2.IDOTA2.GetTeamInfoByTeamIDResponseTeam.Logo">
+            <summary>
+            The UGC id for the team logo. You can resolve this with the GetUGCFileDetails method.
+            </summary>
+        </member>
+        <member name="P:PortableSteam.Interfaces.Game.Dota2.IDOTA2.GetTeamInfoByTeamIDResponseTeam.LogoSponsor">
+            <summary>
+            The UGC id for the team sponsor logo. You can resolve this with the GetUGCFileDetails method.
+            </summary>
+        </member>
+        <member name="P:PortableSteam.Interfaces.Game.Dota2.IDOTA2.GetTeamInfoByTeamIDResponseTeam.CountryCode">
+            <summary>
+            The team's ISO 3166-1 country-code.
+            </summary>
+        </member>
+        <member name="P:PortableSteam.Interfaces.Game.Dota2.IDOTA2.GetTeamInfoByTeamIDResponseTeam.Url">
+            <summary>
+            Whether the players for this team are all team members.
+            </summary>
+        </member>
+        <member name="P:PortableSteam.Interfaces.Game.Dota2.IDOTA2.GetTeamInfoByTeamIDResponseTeam.GamesPlayedWithCurrentRoster">
+            <summary>
+            Amount of matches played with the current roster
+            </summary>
+        </member>
+        <member name="P:PortableSteam.Interfaces.Game.Dota2.IDOTA2.GetTeamInfoByTeamIDResponseTeam.AdminIdentity">
+            <summary>
+            Identity of the team's admin.
+            </summary>
+        </member>
+        <member name="P:PortableSteam.Interfaces.Game.Dota2.IDOTA2.GetTeamInfoByTeamIDResponseTeam.Leagues">
+            <summary>
+            Leagues this team is involved in.
+            </summary>
+        </member>
+        <member name="P:PortableSteam.Interfaces.Game.Dota2.IDOTA2.GetTeamInfoByTeamIDResponseTeam.PlayerIdentities">
+            <summary>
+            Identity of players on this team's roster.
+            </summary>
+        </member>
+        <member name="P:PortableSteam.Interfaces.Game.Dota2.IDOTA2.GetTeamInfoByTeamIDResponseLeague.LeagueID">
+            <summary>
+            The league's unique ID.
+            </summary>
+        </member>
+        <member name="P:PortableSteam.Interfaces.Game.Dota2.IDOTA2.GetTournamentPlayerStatsResponseData.Status">
+            <summary>
+            Query status.
+            </summary>
+        </member>
+        <member name="P:PortableSteam.Interfaces.Game.Dota2.IDOTA2.GetTournamentPlayerStatsResponseData.StatusDetail">
+            <summary>
+            A message explaining the status, should status not be 1.
+            </summary>
+        </member>
+        <member name="P:PortableSteam.Interfaces.Game.Dota2.IDOTA2.GetTournamentPlayerStatsResponseData.Matches">
+            <summary>
+            An array of matches.
+            </summary>
+        </member>
+        <member name="P:PortableSteam.Interfaces.Game.Dota2.IDOTA2.GetTournamentPlayerStatsResponseData.Identity">
+            <summary>
+            Account identity.
+            </summary>
+        </member>
+        <member name="P:PortableSteam.Interfaces.Game.Dota2.IDOTA2.GetTournamentPlayerStatsResponseData.Persona">
+            <summary>
+            Account's current Steam profile name.
+            </summary>
+        </member>
+        <member name="P:PortableSteam.Interfaces.Game.Dota2.IDOTA2.GetTournamentPlayerStatsResponseData.Wins">
+            <summary>
+            Number of the matches won.
+            </summary>
+        </member>
+        <member name="P:PortableSteam.Interfaces.Game.Dota2.IDOTA2.GetTournamentPlayerStatsResponseData.Losses">
+            <summary>
+            Number of the matches lost.
+            </summary>
+        </member>
+        <member name="P:PortableSteam.Interfaces.Game.Dota2.IDOTA2.GetTournamentPlayerStatsResponseData.Kills">
+            <summary>
+            Number of kills across all of the matches.
+            </summary>
+        </member>
+        <member name="P:PortableSteam.Interfaces.Game.Dota2.IDOTA2.GetTournamentPlayerStatsResponseData.Deaths">
+            <summary>
+            Number of deaths across all of the matches.
+            </summary>
+        </member>
+        <member name="P:PortableSteam.Interfaces.Game.Dota2.IDOTA2.GetTournamentPlayerStatsResponseData.Assists">
+            <summary>
+            Number of assists across all of the matches.
+            </summary>
+        </member>
+        <member name="P:PortableSteam.Interfaces.Game.Dota2.IDOTA2.GetTournamentPlayerStatsResponseData.KillsAverage">
+            <summary>
+            Average number of kills per match.
+            </summary>
+        </member>
+        <member name="P:PortableSteam.Interfaces.Game.Dota2.IDOTA2.GetTournamentPlayerStatsResponseData.DeathsAverage">
+            <summary>
+            Average number of deaths per match.
+            </summary>
+        </member>
+        <member name="P:PortableSteam.Interfaces.Game.Dota2.IDOTA2.GetTournamentPlayerStatsResponseData.AssistsAverage">
+            <summary>
+            Average number of assists per match.
+            </summary>
+        </member>
+        <member name="P:PortableSteam.Interfaces.Game.Dota2.IDOTA2.GetTournamentPlayerStatsResponseData.GPPerMinAverage">
+            <summary>
+            Average gold per minute across all of the matches.
+            </summary>
+        </member>
+        <member name="P:PortableSteam.Interfaces.Game.Dota2.IDOTA2.GetTournamentPlayerStatsResponseData.XPPerMinAverage">
+            <summary>
+            Average experience per minute across all of the matches.
+            </summary>
+        </member>
+        <member name="P:PortableSteam.Interfaces.Game.Dota2.IDOTA2.GetTournamentPlayerStatsResponseData.BestKills">
+            <summary>
+            Most kills in one of the matches.
+            </summary>
+        </member>
+        <member name="P:PortableSteam.Interfaces.Game.Dota2.IDOTA2.GetTournamentPlayerStatsResponseData.BestKillsHeroID">
+            <summary>
+            Which Hero the player was playing when they achieved BestKills. A list of hero IDs can be found via the GetHeroes method.
+            </summary>
+        </member>
+        <member name="P:PortableSteam.Interfaces.Game.Dota2.IDOTA2.GetTournamentPlayerStatsResponseData.BestGoldPerMin">
+            <summary>
+            Highest gold per minute in one of the matches.
+            </summary>
+        </member>
+        <member name="P:PortableSteam.Interfaces.Game.Dota2.IDOTA2.GetTournamentPlayerStatsResponseData.BestGoldPerMinHeroID">
+            <summary>
+            Which Hero the player was playing when they achieved BestGoldPerMin. A list of hero IDs can be found via the GetHeroes method.
+            </summary>
+        </member>
+        <member name="P:PortableSteam.Interfaces.Game.Dota2.IDOTA2.GetTournamentPlayerStatsResponseData.HeroesPlayed">
+            <summary>
+            An array of heroes played.
+            </summary>
+        </member>
+        <member name="P:PortableSteam.Interfaces.Game.Dota2.IDOTA2.GetTournamentPlayerStatsResponseHero.HeroID">
+            <summary>
+            The hero's unique ID. A list of hero IDs can be found via the GetHeroes method.
+            </summary>
+        </member>
+        <member name="P:PortableSteam.Interfaces.Game.Dota2.IDOTA2.GetTournamentPlayerStatsResponseHero.Wins">
+            <summary>
+            Number of matches won with this hero.
+            </summary>
+        </member>
+        <member name="P:PortableSteam.Interfaces.Game.Dota2.IDOTA2.GetTournamentPlayerStatsResponseHero.Losses">
+            <summary>
+            Number of matches lost with this hero.
+            </summary>
+        </member>
+        <member name="P:PortableSteam.Interfaces.Game.Dota2.IDOTA2.GetTournamentPlayerStatsResponseMatch.PlayerSlot">
+            <summary>
+            http://wiki.teamfortress.com/wiki/WebAPI/GetMatchDetails#Player_Slot
+            </summary>
+        </member>
+        <member name="P:PortableSteam.Interfaces.Game.Dota2.IDOTA2.GetTournamentPlayerStatsResponseMatch.HeroID">
+            <summary>
+            The hero's unique ID. A list of hero IDs can be found via the GetHeroes method.
+            </summary>
+        </member>
+        <member name="P:PortableSteam.Interfaces.Game.Dota2.IDOTA2.GetTournamentPlayerStatsResponseMatch.Item0">
+            <summary>
+            ID of the top-left inventory item.
+            </summary>
+        </member>
+        <member name="P:PortableSteam.Interfaces.Game.Dota2.IDOTA2.GetTournamentPlayerStatsResponseMatch.Item1">
+            <summary>
+            ID of the top-center inventory item.
+            </summary>
+        </member>
+        <member name="P:PortableSteam.Interfaces.Game.Dota2.IDOTA2.GetTournamentPlayerStatsResponseMatch.Item2">
+            <summary>
+            ID of the top-right inventory item.
+            </summary>
+        </member>
+        <member name="P:PortableSteam.Interfaces.Game.Dota2.IDOTA2.GetTournamentPlayerStatsResponseMatch.Item3">
+            <summary>
+            ID of the bottom-left inventory item.
+            </summary>
+        </member>
+        <member name="P:PortableSteam.Interfaces.Game.Dota2.IDOTA2.GetTournamentPlayerStatsResponseMatch.Item4">
+            <summary>
+            ID of the bottom-center inventory item.
+            </summary>
+        </member>
+        <member name="P:PortableSteam.Interfaces.Game.Dota2.IDOTA2.GetTournamentPlayerStatsResponseMatch.Item5">
+            <summary>
+            ID of the bottom-right inventory item.
+            </summary>
+        </member>
+        <member name="P:PortableSteam.Interfaces.Game.Dota2.IDOTA2.GetTournamentPlayerStatsResponseMatch.Kills">
+            <summary>
+            The amount of kills attributed to this player.
+            </summary>
+        </member>
+        <member name="P:PortableSteam.Interfaces.Game.Dota2.IDOTA2.GetTournamentPlayerStatsResponseMatch.Deaths">
+            <summary>
+            The amount of times this player died during the match.
+            </summary>
+        </member>
+        <member name="P:PortableSteam.Interfaces.Game.Dota2.IDOTA2.GetTournamentPlayerStatsResponseMatch.Assists">
+            <summary>
+            The amount of assists attributed to this player.
+            </summary>
+        </member>
+        <member name="P:PortableSteam.Interfaces.Game.Dota2.IDOTA2.GetTournamentPlayerStatsResponseMatch.Gold">
+            <summary>
+            The amount of gold the player had remaining at the end of the match.
+            </summary>
+        </member>
+        <member name="P:PortableSteam.Interfaces.Game.Dota2.IDOTA2.GetTournamentPlayerStatsResponseMatch.LastHits">
+            <summary>
+            The amount of last-hits the player got during the match.
+            </summary>
+        </member>
+        <member name="P:PortableSteam.Interfaces.Game.Dota2.IDOTA2.GetTournamentPlayerStatsResponseMatch.Denies">
+            <summary>
+            The amount of denies the player got during the match.
+            </summary>
+        </member>
+        <member name="P:PortableSteam.Interfaces.Game.Dota2.IDOTA2.GetTournamentPlayerStatsResponseMatch.GoldPerMin">
+            <summary>
+            The player's overall gold/minute.
+            </summary>
+        </member>
+        <member name="P:PortableSteam.Interfaces.Game.Dota2.IDOTA2.GetTournamentPlayerStatsResponseMatch.XPPerMin">
+            <summary>
+            The player's overall experience/minute.
+            </summary>
+        </member>
+        <member name="P:PortableSteam.Interfaces.Game.Dota2.IDOTA2.GetTournamentPlayerStatsResponseMatch.GoldSpent">
+            <summary>
+            The amount of gold the player spent during the match.
+            </summary>
+        </member>
+        <member name="P:PortableSteam.Interfaces.Game.Dota2.IDOTA2.GetTournamentPlayerStatsResponseMatch.Level">
+            <summary>
+            The player's level at match end.
+            </summary>
+        </member>
+        <member name="P:PortableSteam.Interfaces.Game.Dota2.IDOTA2.GetTournamentPlayerStatsResponseMatch.Win">
+            <summary>
+            Whether the player won the match or not (values: "true" or "false").
+            </summary>
+        </member>
+        <member name="P:PortableSteam.Interfaces.Game.Dota2.IDOTA2.GetTournamentPlayerStatsResponseMatch.MatchID">
+            <summary>
+            The matches unique ID.
+            </summary>
+        </member>
+        <member name="P:PortableSteam.Interfaces.Game.Dota2.IDOTA2.GetTournamentPlayerStatsResponseMatch.Duration">
+            <summary>
+            The length of the match since the match began.
+            </summary>
+        </member>
+        <member name="P:PortableSteam.Interfaces.Game.Dota2.IDOTA2.GetHeroesRequestResponseData.Count">
+            <summary>
+            Number of results.
+            </summary>
+        </member>
+        <member name="P:PortableSteam.Interfaces.Game.Dota2.IDOTA2.GetHeroesRequestResponseData.Heroes">
+            <summary>
+            List of heroes.
+            </summary>
+        </member>
+        <member name="P:PortableSteam.Interfaces.Game.Dota2.IDOTA2.GetHeroesRequestResponseHero.Name">
+            <summary>
+            The tokenized string for the name of the hero.
+            </summary>
+        </member>
+        <member name="P:PortableSteam.Interfaces.Game.Dota2.IDOTA2.GetHeroesRequestResponseHero.ID">
+            <summary>
+            ID of the hero.
+            </summary>
+        </member>
+        <member name="P:PortableSteam.Interfaces.Game.Dota2.IDOTA2.GetHeroesRequestResponseHero.LocalizedName">
+            <summary>
+            The localized name of the hero for use in name display.
+            </summary>
+        </member>
+        <member name="P:PortableSteam.Interfaces.Game.Dota2.IDOTA2.GetRaritiesRequestResponseData.Count">
+            <summary>
+            Possible number of rarities. This number appears to be currently incorrect and off by one.
+            </summary>
+        </member>
+        <member name="P:PortableSteam.Interfaces.Game.Dota2.IDOTA2.GetRaritiesRequestResponseData.Rarities">
+            <summary>
+            List of rarity objects.
+            </summary>
+        </member>
+        <member name="P:PortableSteam.Interfaces.Game.Dota2.IDOTA2.GetRaritiesRequestResponseRarity.Name">
+            <summary>
+            The internal rarity name string.
+            </summary>
+        </member>
+        <member name="P:PortableSteam.Interfaces.Game.Dota2.IDOTA2.GetRaritiesRequestResponseRarity.ID">
+            <summary>
+            ID of rarity, used for indexing.
+            </summary>
+        </member>
+        <member name="P:PortableSteam.Interfaces.Game.Dota2.IDOTA2.GetRaritiesRequestResponseRarity.Order">
+            <summary>
+            Sorting and logical order of rarities, from most distributed to least.
+            </summary>
+        </member>
+        <member name="P:PortableSteam.Interfaces.Game.Dota2.IDOTA2.GetRaritiesRequestResponseRarity.Color">
+            <summary>
+            String of the hexadecimal RGB tuple of the rarity name as it is displayed in-game.
+            </summary>
+        </member>
+        <member name="P:PortableSteam.Interfaces.Game.Dota2.IDOTA2.GetRaritiesRequestResponseRarity.LocalizedName">
+            <summary>
+            The localized name of the rarity for use in name display.
+            </summary>
+        </member>
+        <member name="T:PortableSteam.GameType">
+            <summary>
+            Common game IDs
+            </summary>
+        </member>
+        <member name="F:PortableSteam.GameType.TeamFortress2">
+            <summary>
+            Team Fortress 2 (440)
+            </summary>
+        </member>
+        <member name="F:PortableSteam.GameType.Dota2">
+            <summary>
+            Dota 2 (570)
+            </summary>
+        </member>
+        <member name="F:PortableSteam.GameType.Portal2">
+            <summary>
+            Portal 2 (620)
+            </summary>
+        </member>
+        <member name="T:PortableSteam.EconItemsQuality">
+            <summary>
+            An object containing the numeric values corresponding to each "quality" an item can have:
+            </summary>
+        </member>
+        <member name="F:PortableSteam.EconItemsQuality.Normal">
+            <summary>
+            Normal - Set on stock items.
+            </summary>
+        </member>
+        <member name="F:PortableSteam.EconItemsQuality.Rarity1">
+            <summary>
+            Genuine - Set on items acquired for a promotional event (for example, Sun-On-A-Stick and Sharpened Volcano Fragment).
+            </summary>
+        </member>
+        <member name="F:PortableSteam.EconItemsQuality.Rarity2">
+            <summary>
+            Unused.
+            </summary>
+        </member>
+        <member name="F:PortableSteam.EconItemsQuality.Vintage3">
+            <summary>
+            Vintage - Set on items with an effect attached or that were gained from a Halloween event.
+            </summary>
+        </member>
+        <member name="F:PortableSteam.EconItemsQuality.Rarity3">
+            <summary>
+            Unused.
+            </summary>
+        </member>
+        <member name="F:PortableSteam.EconItemsQuality.Rarity4">
+            <summary>
+            Unusual - Set on items with an effect attached or that were gained from a Halloween event.
+            </summary>
+        </member>
+        <member name="F:PortableSteam.EconItemsQuality.Unique">
+            <summary>
+            Unique - Set on the most common items including those found via drops and crafting.
+            </summary>
+        </member>
+        <member name="F:PortableSteam.EconItemsQuality.Community">
+            <summary>
+            Community - Set on items granted to community contributors.
+            </summary>
+        </member>
+        <member name="F:PortableSteam.EconItemsQuality.Developer">
+            <summary>
+            Valve - Set on items owned by Valve staff members.
+            </summary>
+        </member>
+        <member name="F:PortableSteam.EconItemsQuality.SelfMade">
+            <summary>
+            Self-Made - Set on items owned by 3rd-party content creators.
+            </summary>
+        </member>
+        <member name="F:PortableSteam.EconItemsQuality.Customized">
+            <summary>
+            Unused.
+            </summary>
+        </member>
+        <member name="F:PortableSteam.EconItemsQuality.Strange">
+            <summary>
+            Strange - Set on ranked items.
+            </summary>
+        </member>
+        <member name="F:PortableSteam.EconItemsQuality.Completed">
+            <summary>
+            Unused.
+            </summary>
+        </member>
+        <member name="F:PortableSteam.EconItemsQuality.Haunted">
+            <summary>
+            Haunted - Set on Halloween items.
+            </summary>
+        </member>
+        <member name="F:PortableSteam.EconItemsQuality.ToborA">
+            <summary>
+            Unused.
+            </summary>
+        </member>
+        <member name="P:PortableSteam.Interfaces.Game.Generic.IEconItems.GetPlayerItemsResponseData.Status">
+            <summary>
+            The status of the request.
+            </summary>
+        </member>
+        <member name="P:PortableSteam.Interfaces.Game.Generic.IEconItems.GetPlayerItemsResponseData.NumBackpackSlots">
+            <summary>
+            The number of backpack slots this user has.
+            </summary>
+        </member>
+        <member name="P:PortableSteam.Interfaces.Game.Generic.IEconItems.GetPlayerItemsResponseData.Items">
+            <summary>
+            A list of item objects.
+            </summary>
+        </member>
+        <member name="P:PortableSteam.Interfaces.Game.Generic.IEconItems.GetPlayerItemsResponseItem.ID">
+            <summary>
+            The unique ID of the specific item.
+            </summary>
+        </member>
+        <member name="P:PortableSteam.Interfaces.Game.Generic.IEconItems.GetPlayerItemsResponseItem.OriginalID">
+            <summary>
+            The ID of the item before it was customized, traded, or otherwise changed.
+            </summary>
+        </member>
+        <member name="P:PortableSteam.Interfaces.Game.Generic.IEconItems.GetPlayerItemsResponseItem.DefIndex">
+            <summary>
+            The defindex of the item, as found in the item array returned from GetSchema.
+            </summary>
+        </member>
+        <member name="P:PortableSteam.Interfaces.Game.Generic.IEconItems.GetPlayerItemsResponseItem.Level">
+            <summary>
+            The arbitrary "level" value of the item as displayed in the inventory.
+            </summary>
+        </member>
+        <member name="P:PortableSteam.Interfaces.Game.Generic.IEconItems.GetPlayerItemsResponseItem.Quantity">
+            <summary>
+            The number of "uses" an item has, generally only has a value in excess of '1' on "usable items", such as the Dueling Mini-Game.
+            </summary>
+        </member>
+        <member name="P:PortableSteam.Interfaces.Game.Generic.IEconItems.GetPlayerItemsResponseItem.Origin">
+            <summary>
+            An integer used to lookup an origin name via GetSchema.
+            </summary>
+        </member>
+        <member name="P:PortableSteam.Interfaces.Game.Generic.IEconItems.GetPlayerItemsResponseItem.FlagCannotTrade">
+            <summary>
+            A boolean value that is true if the item cannot be traded. Assume false if not present.
+            </summary>
+        </member>
+        <member name="P:PortableSteam.Interfaces.Game.Generic.IEconItems.GetPlayerItemsResponseItem.FlagCannotCraft">
+            <summary>
+            A boolean value that is true if the item cannot be used in crafting. Assume false if not present.
+            </summary>
+        </member>
+        <member name="P:PortableSteam.Interfaces.Game.Generic.IEconItems.GetPlayerItemsResponseItem.Quality">
+            <summary>
+            The quality of the item (see definition in GetSchema).
+            </summary>
+        </member>
+        <member name="P:PortableSteam.Interfaces.Game.Generic.IEconItems.GetPlayerItemsResponseItem.CustomName">
+            <summary>
+            The item's custom name if it has one.
+            </summary>
+        </member>
+        <member name="P:PortableSteam.Interfaces.Game.Generic.IEconItems.GetPlayerItemsResponseItem.CustomDescription">
+            <summary>
+            The item's custom description if it has one.
+            </summary>
+        </member>
+        <member name="P:PortableSteam.Interfaces.Game.Generic.IEconItems.GetPlayerItemsResponseItem.ContainedItem">
+            <summary>
+            All the information for the item that this item contains for gift-wrapped items.
+            </summary>
+        </member>
+        <member name="P:PortableSteam.Interfaces.Game.Generic.IEconItems.GetPlayerItemsResponseItem.Style">
+            <summary>
+            An integer that can be used as an index to the item's style list.
+            </summary>
+        </member>
+        <member name="P:PortableSteam.Interfaces.Game.Generic.IEconItems.GetPlayerItemsResponseItem.Attributes">
+            <summary>
+            If the item has additional effects to the ones normally associated with it as described in GetSchema, contains a list of objects.
+            </summary>
+        </member>
+        <member name="P:PortableSteam.Interfaces.Game.Generic.IEconItems.GetPlayerItemsResponseItem.Equipped">
+            <summary>
+            If the item is equipped, contains an array of equip information
+            </summary>
+        </member>
+        <member name="P:PortableSteam.Interfaces.Game.Generic.IEconItems.GetPlayerItemsResponseAttribute.DefIndex">
+            <summary>
+            The index to the attributes definition in the schema, e.g. 133 for the medal number attribute for the Gentle Manne's Service Medal.
+            </summary>
+        </member>
+        <member name="P:PortableSteam.Interfaces.Game.Generic.IEconItems.GetPlayerItemsResponseAttribute.Value">
+            <summary>
+            The value for this attribute for this item, e.g. the medal number for the Gentle Manne's Service Medal.
+            </summary>
+        </member>
+        <member name="P:PortableSteam.Interfaces.Game.Generic.IEconItems.GetPlayerItemsResponseAttribute.FloatValue">
+            <summary>
+            The floating point value for this attribute if it has one.
+            </summary>
+        </member>
+        <member name="P:PortableSteam.Interfaces.Game.Generic.IEconItems.GetPlayerItemsResponseAttribute.AccountInfo">
+            <summary>
+            Set on attributes with a Steam ID as the value.
+            </summary>
+        </member>
+        <member name="P:PortableSteam.Interfaces.Game.Generic.IEconItems.GetPlayerItemsResponseAccountInfo.Identity">
+            <summary>
+            The specified user's identity.
+            </summary>
+        </member>
+        <member name="P:PortableSteam.Interfaces.Game.Generic.IEconItems.GetPlayerItemsResponseAccountInfo.PersonaName">
+            <summary>
+            The specified user's current name on Steam.
+            </summary>
+        </member>
+        <member name="T:PortableSteam.Interfaces.Game.Generic.IEconItems.GetPlayerItemsResponseEquipment">
+            <summary>
+            http://wiki.teamfortress.com/wiki/WebAPI/GetPlayerItems#cite_ref-tf2specific_1-1
+            </summary>
+        </member>
+        <member name="P:PortableSteam.Interfaces.Game.Generic.IEconItems.GetPlayerItemsResponseEquipment.Class">
+            <summary>
+            The class the weapon is equipped to (numeric index).
+            </summary>
+        </member>
+        <member name="P:PortableSteam.Interfaces.Game.Generic.IEconItems.GetPlayerItemsResponseEquipment.Slot">
+            <summary>
+            The slot the weapon is equipped in (numeric index).
+            </summary>
+        </member>
+        <member name="P:PortableSteam.Interfaces.Game.Generic.IEconItems.GetSchemaURLResponseData.Status">
+            <summary>
+            The status of the request, should always be 1.
+            </summary>
+        </member>
+        <member name="P:PortableSteam.Interfaces.Game.Generic.IEconItems.GetSchemaURLResponseData.ItemsGameUrl">
+            <summary>
+            URL of the items_game.txt file.
+            </summary>
+        </member>
+        <member name="T:PortableSteam.Interfaces.Game.Generic.IEconItems.GetSchemaResponse">
+            <summary>
+            TODO.
+            </summary>
+        </member>
+        <member name="P:PortableSteam.Interfaces.Game.Generic.IEconItems.GetSchemaResponseData.Status">
+            <summary>
+            The status of the request, should always be 1.
+            </summary>
+        </member>
+        <member name="P:PortableSteam.Interfaces.Game.Generic.IEconItems.GetSchemaResponseData.ItemsGameUrl">
+            <summary>
+            A string containing the URL to the full item schema as used by the game.
+            </summary>
+        </member>
+        <member name="P:PortableSteam.Interfaces.Game.Generic.IEconItems.GetSchemaResponseData.Items">
+            <summary>
+            A list of item objects.
+            </summary>
+        </member>
+        <member name="T:PortableSteam.Interfaces.Game.Generic.IEconItems.GetStoreMetaDataResponse">
+            <summary>
+            TODO.
+            </summary>
+        </member>
+        <member name="P:PortableSteam.Interfaces.General.IPlayerService.GetBadgesResponseData.Badges">
+            <summary>
+            Array of badges.
+            </summary>
+        </member>
+        <member name="P:PortableSteam.Interfaces.General.IPlayerService.GetBadgesResponseData.PlayerXP">
+            <summary>
+            Player's current experience points.
+            </summary>
+        </member>
+        <member name="P:PortableSteam.Interfaces.General.IPlayerService.GetBadgesResponseData.PlayerLevel">
+            <summary>
+            Player's current level.
+            </summary>
+        </member>
+        <member name="P:PortableSteam.Interfaces.General.IPlayerService.GetBadgesResponseData.PlayerXPNeededToLevelUp">
+            <summary>
+            Experience points needed to level up,
+            </summary>
+        </member>
+        <member name="P:PortableSteam.Interfaces.General.IPlayerService.GetBadgesResponseData.PlayerXPNeededCurrentLevel">
+            <summary>
+            Experience points needed for the player's current level.
+            </summary>
+        </member>
+        <member name="P:PortableSteam.Interfaces.General.IPlayerService.GetBadgesResponseBadge.BadgeID">
+            <summary>
+            Badge ID. Currently no official badge schema is available.
+            </summary>
+        </member>
+        <member name="P:PortableSteam.Interfaces.General.IPlayerService.GetBadgesResponseBadge.AppID">
+            <summary>
+            Provided if the badge relates to an app (trading cards).
+            </summary>
+        </member>
+        <member name="P:PortableSteam.Interfaces.General.IPlayerService.GetBadgesResponseBadge.Level">
+            <summary>
+            Badge level.
+            </summary>
+        </member>
+        <member name="P:PortableSteam.Interfaces.General.IPlayerService.GetBadgesResponseBadge.CompletionTime">
+            <summary>
+            DateTime timestamp of when the steam user acquired the badge.
+            </summary>
+        </member>
+        <member name="P:PortableSteam.Interfaces.General.IPlayerService.GetBadgesResponseBadge.XP">
+            <summary>
+            The experience this badge is worth, contributing toward the steam account's player experience points.
+            </summary>
+        </member>
+        <member name="P:PortableSteam.Interfaces.General.IPlayerService.GetBadgesResponseBadge.CommunityItemID">
+            <summary>
+            Provided if the badge relates to an app (trading cards); 
+            the value doesn't seem to be an item in the steam accounts backpack, 
+            however the value minus 1 seems to be the item ID for the emoticon granted for crafting this badge, 
+            and the value minus 2 seems to be the background granted.
+            </summary>
+        </member>
+        <member name="P:PortableSteam.Interfaces.General.IPlayerService.GetBadgesResponseBadge.BorderColor">
+            <summary>
+            Provided if the badge relates to an app (trading cards).
+            </summary>
+        </member>
+        <member name="P:PortableSteam.Interfaces.General.IPlayerService.GetBadgesResponseBadge.Scarcity">
+            <summary>
+            The amount of people who has this badge.
+            </summary>
+        </member>
+        <member name="P:PortableSteam.Interfaces.General.IPlayerService.GetCommunityBadgeProgressResponseData.Quests">
+            <summary>
+            Array of quests (actions required to unlock a badge).
+            </summary>
+        </member>
+        <member name="P:PortableSteam.Interfaces.General.IPlayerService.GetCommunityBadgeProgressResponseQuest.QuestID">
+            <summary>
+            Quest ID; no schema is currently available.
+            </summary>
+        </member>
+        <member name="P:PortableSteam.Interfaces.General.IPlayerService.GetCommunityBadgeProgressResponseQuest.Completed">
+            <summary>
+            Whether the steam account has completed this quest.
+            </summary>
+        </member>
+        <member name="P:PortableSteam.Interfaces.General.IPlayerService.GetOwnedGamesResponseData.GameCount">
+            <summary>
+            Total number of results.
+            </summary>
+        </member>
+        <member name="P:PortableSteam.Interfaces.General.IPlayerService.GetOwnedGamesResponseData.Games">
+            <summary>
+            An array of results.
+            </summary>
+        </member>
+        <member name="P:PortableSteam.Interfaces.General.IPlayerService.GetOwnedGamesResponseGame.AppID">
+            <summary>
+            An integer containing the program's ID.
+            </summary>
+        </member>
+        <member name="P:PortableSteam.Interfaces.General.IPlayerService.GetOwnedGamesResponseGame.Name">
+            <summary>
+            A string containing the program's publicly facing title.
+            </summary>
+        </member>
+        <member name="P:PortableSteam.Interfaces.General.IPlayerService.GetOwnedGamesResponseGame.PlayTime2Weeks">
+            <summary>
+            A TimeSpan of the player's playtime in the past 2 weeks.
+            </summary>
+        </member>
+        <member name="P:PortableSteam.Interfaces.General.IPlayerService.GetOwnedGamesResponseGame.PlayTimeTotal">
+            <summary>
+            A TimeSpan of the the player's total playtime.
+            </summary>
+        </member>
+        <member name="P:PortableSteam.Interfaces.General.IPlayerService.GetOwnedGamesResponseGame.IconUrl">
+            <summary>
+            The program icon's file name, 
+            accessible at: http://media.steampowered.com/steamcommunity/public/images/apps/APPID/IMG_ICON_URL.jpg, 
+            replacing "APPID" and "IMG_ICON_URL" as necessary.
+            </summary>
+        </member>
+        <member name="P:PortableSteam.Interfaces.General.IPlayerService.GetOwnedGamesResponseGame.HasCommunityVisibleStats">
+            <summary>
+            Whether the program has stats accessible via GetUserStatsForGame and GetGlobalStatsForGame.
+            </summary>
+        </member>
+        <member name="P:PortableSteam.Interfaces.General.IPlayerService.GetRecentlyPlayedGamesResponseData.TotalCount">
+            <summary>
+            Total number of results.
+            </summary>
+        </member>
+        <member name="P:PortableSteam.Interfaces.General.IPlayerService.GetRecentlyPlayedGamesResponseData.Games">
+            <summary>
+            An array of results.
+            </summary>
+        </member>
+        <member name="P:PortableSteam.Interfaces.General.IPlayerService.GetRecentlyPlayedGamesResponseGame.AppID">
+            <summary>
+            An integer containing the program's ID.
+            </summary>
+        </member>
+        <member name="P:PortableSteam.Interfaces.General.IPlayerService.GetRecentlyPlayedGamesResponseGame.Name">
+            <summary>
+            A string containing the program's publicly facing title.
+            </summary>
+        </member>
+        <member name="P:PortableSteam.Interfaces.General.IPlayerService.GetRecentlyPlayedGamesResponseGame.PlayTime2Weeks">
+            <summary>
+            A TimeSpan of the player's playtime in the past 2 weeks.
+            </summary>
+        </member>
+        <member name="P:PortableSteam.Interfaces.General.IPlayerService.GetRecentlyPlayedGamesResponseGame.PlayTimeTotal">
+            <summary>
+            A TimeSpan of the the player's total playtime.
+            </summary>
+        </member>
+        <member name="P:PortableSteam.Interfaces.General.IPlayerService.GetRecentlyPlayedGamesResponseGame.IconUrl">
+            <summary>
+            The program icon's file name, 
+            accessible at: http://media.steampowered.com/steamcommunity/public/images/apps/APPID/IMG_ICON_URL.jpg, 
+            replacing "APPID" and "IMG_ICON_URL" as necessary.
+            </summary>
+        </member>
+        <member name="P:PortableSteam.Interfaces.General.IPlayerService.GetSteamLevelResponseData.PlayerLevel">
+            <summary>
+            How many HL3 conspiracy theories begun during the time it took to execute the API call.
+            </summary>
+        </member>
+        <member name="P:PortableSteam.Interfaces.General.ISteamApps.GetAppListResponseData.Apps">
+            <summary>
+            A list of objects containing the title and app ID of each program available in the store.
+            </summary>
+        </member>
+        <member name="P:PortableSteam.Interfaces.General.ISteamApps.App.AppID">
+            <summary>
+            An integer containing the program's ID.
+            </summary>
+        </member>
+        <member name="P:PortableSteam.Interfaces.General.ISteamApps.App.Name">
+            <summary>
+            A string containing the program's publicly facing title.
+            </summary>
+        </member>
+        <member name="P:PortableSteam.Interfaces.General.ISteamApps.UpToDateCheckResponse.UpToDate">
+            <summary>
+            Boolean indicating if the given version number is the most current version.
+            </summary>
+        </member>
+        <member name="P:PortableSteam.Interfaces.General.ISteamApps.UpToDateCheckResponse.VersionIsListable">
+            <summary>
+            Boolean indicating if the given version can be listed in public changelogs.
+            </summary>
+        </member>
+        <member name="P:PortableSteam.Interfaces.General.ISteamApps.UpToDateCheckResponse.RequiredVersion">
+            <summary>
+            Integer of the most current version of the app available.
+            </summary>
+        </member>
+        <member name="P:PortableSteam.Interfaces.General.ISteamApps.UpToDateCheckResponse.Message">
+            <summary>
+            A string giving the status message if applicable.
+            </summary>
+        </member>
+        <member name="P:PortableSteam.Interfaces.General.ISteamEconomy.GetAssetPricesResponse.Assets">
+            <summary>
+            A list of items with slot tags and prices in the chosen or all currency.
+            </summary>
+        </member>
+        <member name="P:PortableSteam.Interfaces.General.ISteamEconomy.GetAssetPricesResponse.Tags">
+            <summary>
+            An array containing friendly names for the tags attached to items.
+            </summary>
+        </member>
+        <member name="P:PortableSteam.Interfaces.General.ISteamEconomy.Asset.Prices">
+            <summary>
+            An array containing the currency code and respective price, if a currency is specified only that currency value will be present.
+            All prices are given as integers due to issues regarding precision. A double value can be obtained by dividing the price by 100.
+            </summary>
+        </member>
+        <member name="P:PortableSteam.Interfaces.General.ISteamEconomy.Asset.OriginalPrices">
+            <summary>
+            An array equivalent to prices in layout. Present when the item is on sale.
+            </summary>
+        </member>
+        <member name="P:PortableSteam.Interfaces.General.ISteamEconomy.Asset.Class">
+            <summary>
+            A list of properties attached to the item.
+            </summary>
+        </member>
+        <member name="P:PortableSteam.Interfaces.General.ISteamEconomy.Asset.Name">
+            <summary>
+            The "name" of the asset. This has no set content besides that it is an identifier that can be used in URLs such as those for Valve's store frontend.
+            </summary>
+        </member>
+        <member name="P:PortableSteam.Interfaces.General.ISteamEconomy.Asset.ClassID">
+            <summary>
+            The class ID of the item.
+            </summary>
+        </member>
+        <member name="P:PortableSteam.Interfaces.General.ISteamEconomy.Asset.Tags">
+            <summary>
+            An array containing information related to the item's slot or special attributes.
+            </summary>
+        </member>
+        <member name="P:PortableSteam.Interfaces.General.ISteamEconomy.Class.Name">
+            <summary>
+            The name of the property.
+            </summary>
+        </member>
+        <member name="P:PortableSteam.Interfaces.General.ISteamEconomy.Class.Value">
+            <summary>
+            The value of the property.
+            </summary>
+        </member>
+        <member name="P:PortableSteam.Interfaces.General.ISteamNews.GetNewsForAppResponse.Data">
+            <summary>
+            App news.
+            </summary>
+        </member>
+        <member name="P:PortableSteam.Interfaces.General.ISteamNews.GetNewsForAppResponseData.AppID">
+            <summary>
+            The appid of the item news is fetched for.
+            </summary>
+        </member>
+        <member name="P:PortableSteam.Interfaces.General.ISteamNews.GetNewsForAppResponseData.NewsItems">
+            <summary>
+            A list of objects describing each news item.
+            </summary>
+        </member>
+        <member name="P:PortableSteam.Interfaces.General.ISteamNews.NewsItem.GID">
+            <summary>
+            The unique identifier of the news item.
+            </summary>
+        </member>
+        <member name="P:PortableSteam.Interfaces.General.ISteamNews.NewsItem.Title">
+            <summary>
+            Title of the news item.
+            </summary>
+        </member>
+        <member name="P:PortableSteam.Interfaces.General.ISteamNews.NewsItem.Url">
+            <summary>
+            Permanent link to the item.
+            </summary>
+        </member>
+        <member name="P:PortableSteam.Interfaces.General.ISteamNews.NewsItem.IsExternalUrl">
+            <summary>
+            True if the url given links to an external website. False if it links to the Steam store.
+            </summary>
+        </member>
+        <member name="P:PortableSteam.Interfaces.General.ISteamNews.NewsItem.Author">
+            <summary>
+            The author of the news item.
+            </summary>
+        </member>
+        <member name="P:PortableSteam.Interfaces.General.ISteamNews.NewsItem.Contents">
+            <summary>
+            The article body with a length equal to the given length with an appended ellipsis if it is exceeded.
+            </summary>
+        </member>
+        <member name="P:PortableSteam.Interfaces.General.ISteamNews.NewsItem.FeedLabel">
+            <summary>
+            The category label of the news item.
+            </summary>
+        </member>
+        <member name="P:PortableSteam.Interfaces.General.ISteamNews.NewsItem.Date">
+            <summary>
+            A DateTime timestamp of the date the item was posted.
+            </summary>
+        </member>
+        <member name="P:PortableSteam.Interfaces.General.ISteamNews.NewsItem.FeedName">
+            <summary>
+            An internal tag that describes the source of the news item.
+            </summary>
+        </member>
+        <member name="P:PortableSteam.Interfaces.General.ISteamRemoteStorage.GetUGCFileDetailsResponse.Data">
+            <summary>
+            Array containing the file information.
+            </summary>
+        </member>
+        <member name="P:PortableSteam.Interfaces.General.ISteamRemoteStorage.GetUGCFileDetailsResponse.Status">
+            <summary>
+            Object returned on non-HTTP errors.
+            </summary>
+        </member>
+        <member name="P:PortableSteam.Interfaces.General.ISteamRemoteStorage.GetUGCFileDetailsResponseData.FileName">
+            <summary>
+            Path to the file along with its name.
+            </summary>
+        </member>
+        <member name="P:PortableSteam.Interfaces.General.ISteamRemoteStorage.GetUGCFileDetailsResponseData.Url">
+            <summary>
+            URL to the file.
+            </summary>
+        </member>
+        <member name="P:PortableSteam.Interfaces.General.ISteamRemoteStorage.GetUGCFileDetailsResponseData.Size">
+            <summary>
+            Size of the file.
+            </summary>
+        </member>
+        <member name="P:PortableSteam.Interfaces.General.ISteamRemoteStorage.Status.Code">
+            <summary>
+            Integer identifying error that occurred, currently 9 is the only known return value which means that the file with the given ID was not found.
+            </summary>
+        </member>
+        <member name="P:PortableSteam.Interfaces.General.ISteamUserStats.GetGlobalAchievementPercentagesForAppResponseAchievement.Name">
+            <summary>
+            The name of the achievement as an unlocalized token.
+            </summary>
+        </member>
+        <member name="P:PortableSteam.Interfaces.General.ISteamUserStats.GetGlobalAchievementPercentagesForAppResponseAchievement.Percent">
+            <summary>
+            Percentage of player population that has unlocked the achievement given as a double.
+            </summary>
+        </member>
+        <member name="T:PortableSteam.Interfaces.General.ISteamUserStats.GetGlobalStatsForGameResponse">
+            <summary>
+            TODO
+            </summary>
+        </member>
+        <member name="P:PortableSteam.Interfaces.General.ISteamUserStats.GetGlobalStatsForGameResponse.Result">
+            <summary>
+            Returns result code.
+            </summary>
+        </member>
+        <member name="P:PortableSteam.Interfaces.General.ISteamUserStats.GetGlobalStatsForGameResponse.Error">
+            <summary>
+            Returns error.
+            </summary>
+        </member>
+        <member name="P:PortableSteam.Interfaces.General.ISteamUserStats.GetGlobalStatsForGameResponseData.Stats">
+            <summary>
+            An array of results.
+            </summary>
+        </member>
+        <member name="P:PortableSteam.Interfaces.General.ISteamUserStats.GetGlobalStatsForGameResponseStat.Name">
+            <summary>
+            The name of the requested stat.
+            </summary>
+        </member>
+        <member name="P:PortableSteam.Interfaces.General.ISteamUserStats.GetGlobalStatsForGameResponseStat.Value">
+            <summary>
+            The value of the stat.
+            </summary>
+        </member>
+        <member name="P:PortableSteam.Interfaces.General.ISteamUserStats.GetNumberOfCurrentPlayersResponseResponse.Success">
+            <summary>
+            The status of the request. 1 if successful, 42 if there was no match.
+            </summary>
+        </member>
+        <member name="P:PortableSteam.Interfaces.General.ISteamUserStats.GetNumberOfCurrentPlayersResponseResponse.Message">
+            <summary>
+            The message associated with the request status. Currently only used on resolution failures.
+            </summary>
+        </member>
+        <member name="P:PortableSteam.Interfaces.General.ISteamUserStats.GetNumberOfCurrentPlayersResponseResponse.PlayerCount">
+            <summary>
+            Player count.
+            </summary>
+        </member>
+        <member name="P:PortableSteam.Interfaces.General.ISteamUserStats.GetPlayerAchievementsResponseData.Identity">
+            <summary>
+            The identity of the user.
+            </summary>
+        </member>
+        <member name="P:PortableSteam.Interfaces.General.ISteamUserStats.GetPlayerAchievementsResponseData.GameName">
+            <summary>
+            String containing the game title.
+            </summary>
+        </member>
+        <member name="P:PortableSteam.Interfaces.General.ISteamUserStats.GetPlayerAchievementsResponseData.Success">
+            <summary>
+            Boolean value indicating if the request was successful.
+            </summary>
+        </member>
+        <member name="P:PortableSteam.Interfaces.General.ISteamUserStats.GetPlayerAchievementsResponseData.Achievements">
+            <summary>
+            List of achievement objects.
+            </summary>
+        </member>
+        <member name="P:PortableSteam.Interfaces.General.ISteamUserStats.GetPlayerAchievementsResponseAchievement.APIName">
+            <summary>
+            String containing the ID of the achievement.
+            </summary>
+        </member>
+        <member name="P:PortableSteam.Interfaces.General.ISteamUserStats.GetPlayerAchievementsResponseAchievement.Achieved">
+            <summary>
+            Boolean value indicating whether or not the achievement has been unlocked by the user.
+            </summary>
+        </member>
+        <member name="P:PortableSteam.Interfaces.General.ISteamUserStats.GetPlayerAchievementsResponseAchievement.Name">
+            <summary>
+            String containing the localized title of the achievement.
+            </summary>
+        </member>
+        <member name="P:PortableSteam.Interfaces.General.ISteamUserStats.GetPlayerAchievementsResponseAchievement.Description">
+            <summary>
+            String containing the localized string or requirements of the achievement.
+            </summary>
+        </member>
+        <member name="P:PortableSteam.Interfaces.General.ISteamUserStats.GetSchemaForGameResponseGame.GameName">
+            <summary>
+            Steam internal (non-localized) name of game.
+            </summary>
+        </member>
+        <member name="P:PortableSteam.Interfaces.General.ISteamUserStats.GetSchemaForGameResponseGame.GameVersion">
+            <summary>
+            Steam release version number currently live on Steam.
+            </summary>
+        </member>
+        <member name="P:PortableSteam.Interfaces.General.ISteamUserStats.GetSchemaForGameResponseGame.AvailableGameStats">
+            <summary>
+            Available game stats.
+            </summary>
+        </member>
+        <member name="P:PortableSteam.Interfaces.General.ISteamUserStats.GetSchemaForGameResponseAchievements.Name">
+            <summary>
+            API Name of achievement.
+            </summary>
+        </member>
+        <member name="P:PortableSteam.Interfaces.General.ISteamUserStats.GetSchemaForGameResponseAchievements.DefaultValue">
+            <summary>
+            Always 0 (player's default state is unachieved).
+            </summary>
+        </member>
+        <member name="P:PortableSteam.Interfaces.General.ISteamUserStats.GetSchemaForGameResponseAchievements.DisplayName">
+            <summary>
+            Display title string of achievement.
+            </summary>
+        </member>
+        <member name="P:PortableSteam.Interfaces.General.ISteamUserStats.GetSchemaForGameResponseAchievements.Hidden">
+            <summary>
+            If achievement is hidden to the user before earning achievement, value is true; false if public.
+            </summary>
+        </member>
+        <member name="P:PortableSteam.Interfaces.General.ISteamUserStats.GetSchemaForGameResponseAchievements.Description">
+            <summary>
+            Display description string of achievement.
+            </summary>
+        </member>
+        <member name="P:PortableSteam.Interfaces.General.ISteamUserStats.GetSchemaForGameResponseAchievements.Icon">
+            <summary>
+            Absolute URL of earned achievement icon art.
+            </summary>
+        </member>
+        <member name="P:PortableSteam.Interfaces.General.ISteamUserStats.GetSchemaForGameResponseAchievements.IconGray">
+            <summary>
+            Absolute URL of un-earned achievement icon art.
+            </summary>
+        </member>
+        <member name="P:PortableSteam.Interfaces.General.ISteamUserStats.GetSchemaForGameResponseStats.Name">
+            <summary>
+            API name of stat.
+            </summary>
+        </member>
+        <member name="P:PortableSteam.Interfaces.General.ISteamUserStats.GetSchemaForGameResponseStats.DefaultValue">
+            <summary>
+            Default value of stat.
+            </summary>
+        </member>
+        <member name="P:PortableSteam.Interfaces.General.ISteamUserStats.GetSchemaForGameResponseStats.DisplayName">
+            <summary>
+            Developer provided name of string.
+            </summary>
+        </member>
+        <member name="P:PortableSteam.Interfaces.General.ISteamUserStats.GetUserStatsForGameResponseData.GameName">
+            <summary>
+            Steam internal (non-localized) name of game.
+            </summary>
+        </member>
+        <member name="P:PortableSteam.Interfaces.General.ISteamUserStats.GetUserStatsForGameResponseData.Identity">
+            <summary>
+            The Identity of the user.
+            </summary>
+        </member>
+        <member name="P:PortableSteam.Interfaces.General.ISteamUserStats.GetUserStatsForGameResponseData.Achievements">
+            <summary>
+            List of achievement objects.
+            </summary>
+        </member>
+        <member name="P:PortableSteam.Interfaces.General.ISteamUserStats.GetUserStatsForGameResponseData.Stats">
+            <summary>
+            List of stats.
+            </summary>
+        </member>
+        <member name="P:PortableSteam.Interfaces.General.ISteamUserStats.GetUserStatsForGameResponseAchievements.Name">
+            <summary>
+            API Name of achievement.
+            </summary>
+        </member>
+        <member name="P:PortableSteam.Interfaces.General.ISteamUserStats.GetUserStatsForGameResponseAchievements.Achieved">
+            <summary>
+            Boolean value indicating whether or not the achievement has been unlocked by the user.
+            </summary>
+        </member>
+        <member name="P:PortableSteam.Interfaces.General.ISteamUserStats.GetUserStatsForGameResponseStats.Name">
+            <summary>
+            API name of stat.
+            </summary>
+        </member>
+        <member name="P:PortableSteam.Interfaces.General.ISteamUserStats.GetUserStatsForGameResponseStats.Value">
+            <summary>
+            Default value of stat.
+            </summary>
+        </member>
+        <member name="P:PortableSteam.Interfaces.General.ISteamUser.GetFriendListResponse.Data">
+            <summary>
+            If the profile is not public or there are no available entries for the given relationship only an empty object will be returned.
+            </summary>
+        </member>
+        <member name="P:PortableSteam.Interfaces.General.ISteamUser.GetFriendListResponseData.Friends">
+            <summary>
+            A list of objects for each list entry.
+            </summary>
+        </member>
+        <member name="P:PortableSteam.Interfaces.General.ISteamUser.Friend.Identity">
+            <summary>
+            The identity of the friend.
+            </summary>
+        </member>
+        <member name="P:PortableSteam.Interfaces.General.ISteamUser.Friend.Relationship">
+            <summary>
+            Role in relation to the given identity.
+            </summary>
+        </member>
+        <member name="P:PortableSteam.Interfaces.General.ISteamUser.Friend.FriendSince">
+            <summary>
+            A DateTime timestamp of when the friend was added to the list.
+            </summary>
+        </member>
+        <member name="T:PortableSteam.RelationshipType">
+            <summary>
+            Filter by a given role.
+            </summary>
+        </member>
+        <member name="F:PortableSteam.RelationshipType.All">
+            <summary>
+            All roles.
+            </summary>
+        </member>
+        <member name="F:PortableSteam.RelationshipType.Friend">
+            <summary>
+            Friend only.
+            </summary>
+        </member>
+        <member name="P:PortableSteam.Interfaces.General.ISteamUser.GetPlayerBansResponse.Players">
+            <summary>
+            List of player ban objects for each given (and valid) 64 bit ID.
+            </summary>
+        </member>
+        <member name="P:PortableSteam.Interfaces.General.ISteamUser.GetPlayerBansResponsePlayer.Identity">
+            <summary>
+            The player's identity.
+            </summary>
+        </member>
+        <member name="P:PortableSteam.Interfaces.General.ISteamUser.GetPlayerBansResponsePlayer.CommunityBanned">
+            <summary>
+            Boolean indicating whether or not the player is banned from
+            </summary>
+        </member>
+        <member name="P:PortableSteam.Interfaces.General.ISteamUser.GetPlayerBansResponsePlayer.VACBanned">
+            <summary>
+            Boolean indicating whether or not the player has VAC bans on record.
+            </summary>
+        </member>
+        <member name="P:PortableSteam.Interfaces.General.ISteamUser.GetPlayerBansResponsePlayer.EconomyBan">
+            <summary>
+            String containing the player's ban status in the economy. If the player has no bans on record the string will be "none", if the player is on probation it will say "probation", and so forth.
+            </summary>
+        </member>
+        <member name="T:PortableSteam.CommunityVisibilityState">
+            <summary>
+            Describes the access setting of a player profile.
+            </summary>
+        </member>
+        <member name="F:PortableSteam.CommunityVisibilityState.Private">
+            <summary>
+            Private.
+            </summary>
+        </member>
+        <member name="F:PortableSteam.CommunityVisibilityState.FriendsOnly">
+            <summary>
+            Friends only.
+            </summary>
+        </member>
+        <member name="F:PortableSteam.CommunityVisibilityState.FriendsofFriends">
+            <summary>
+            Friends of Friends. Currently this value is also set for "Public" and "Users Only" profiles.
+            </summary>
+        </member>
+        <member name="F:PortableSteam.CommunityVisibilityState.UsersOnly">
+            <summary>
+            Users Only.
+            </summary>
+        </member>
+        <member name="F:PortableSteam.CommunityVisibilityState.Public">
+            <summary>
+            Public.
+            </summary>
+        </member>
+        <member name="P:PortableSteam.Interfaces.General.ISteamUser.GetPlayerSummariesResponseData.Players">
+            <summary>
+            List of player ban objects for each given (and valid) 64 bit ID.
+            </summary>
+        </member>
+        <member name="P:PortableSteam.Interfaces.General.ISteamUser.GetPlayerSummariesResponsePlayer.Identity">
+            <summary>
+            The player's identity.
+            </summary>
+        </member>
+        <member name="P:PortableSteam.Interfaces.General.ISteamUser.GetPlayerSummariesResponsePlayer.CommunityVisibilityState">
+            <summary>
+            An enum that describes the access setting of the profile
+            </summary>
+        </member>
+        <member name="P:PortableSteam.Interfaces.General.ISteamUser.GetPlayerSummariesResponsePlayer.ProfileState">
+            <summary>
+            If set to 1 the user has configured the profile.
+            </summary>
+        </member>
+        <member name="P:PortableSteam.Interfaces.General.ISteamUser.GetPlayerSummariesResponsePlayer.PersonaName">
+            <summary>
+            User's display name.
+            </summary>
+        </member>
+        <member name="P:PortableSteam.Interfaces.General.ISteamUser.GetPlayerSummariesResponsePlayer.LastLogOff">
+            <summary>
+            A DateTime timestamp of when the user was last online.
+            </summary>
+        </member>
+        <member name="P:PortableSteam.Interfaces.General.ISteamUser.GetPlayerSummariesResponsePlayer.ProfileUrl">
+            <summary>
+            The URL to the user's Steam Community profile.
+            </summary>
+        </member>
+        <member name="P:PortableSteam.Interfaces.General.ISteamUser.GetPlayerSummariesResponsePlayer.Avatar">
+            <summary>
+            A 32x32 image url.
+            </summary>
+        </member>
+        <member name="P:PortableSteam.Interfaces.General.ISteamUser.GetPlayerSummariesResponsePlayer.AvatarMedium">
+            <summary>
+            A 64x64 image url.
+            </summary>
+        </member>
+        <member name="P:PortableSteam.Interfaces.General.ISteamUser.GetPlayerSummariesResponsePlayer.AvatarFull">
+            <summary>
+            A 184x184 image url.
+            </summary>
+        </member>
+        <member name="P:PortableSteam.Interfaces.General.ISteamUser.GetPlayerSummariesResponsePlayer.PersonaState">
+            <summary>
+            The user's status.
+            </summary>
+        </member>
+        <member name="P:PortableSteam.Interfaces.General.ISteamUser.GetPlayerSummariesResponsePlayer.CommentPermission">
+            <summary>
+            If not null the profile allows public comments.
+            </summary>
+        </member>
+        <member name="P:PortableSteam.Interfaces.General.ISteamUser.GetPlayerSummariesResponsePlayer.RealName">
+            <summary>
+            The user's real name.
+            </summary>
+        </member>
+        <member name="P:PortableSteam.Interfaces.General.ISteamUser.GetPlayerSummariesResponsePlayer.PrimaryClanID">
+            <summary>
+            The 64 bit ID of the user's primary group.
+            </summary>
+        </member>
+        <member name="P:PortableSteam.Interfaces.General.ISteamUser.GetPlayerSummariesResponsePlayer.TimeCreated">
+            <summary>
+            A DateTime timestamp of the date the profile was created.
+            </summary>
+        </member>
+        <member name="P:PortableSteam.Interfaces.General.ISteamUser.GetPlayerSummariesResponsePlayer.LocCountryCode">
+            <summary>
+            ISO 3166 code of where the user is located.
+            </summary>
+        </member>
+        <member name="P:PortableSteam.Interfaces.General.ISteamUser.GetPlayerSummariesResponsePlayer.LocStateCode">
+            <summary>
+            Variable length code representing the state the user is located in.
+            </summary>
+        </member>
+        <member name="P:PortableSteam.Interfaces.General.ISteamUser.GetPlayerSummariesResponsePlayer.LocCityID">
+            <summary>
+            An integer ID internal to Steam representing the user's city.
+            </summary>
+        </member>
+        <member name="P:PortableSteam.Interfaces.General.ISteamUser.GetPlayerSummariesResponsePlayer.GameID">
+            <summary>
+            If the user is in game this will be set to it's app ID as a string.
+            </summary>
+        </member>
+        <member name="P:PortableSteam.Interfaces.General.ISteamUser.GetPlayerSummariesResponsePlayer.GameExtraInfo">
+            <summary>
+            The title of the game.
+            </summary>
+        </member>
+        <member name="P:PortableSteam.Interfaces.General.ISteamUser.GetPlayerSummariesResponsePlayer.GameServerIP">
+            <summary>
+            The server URL given as an IP address and port number separated by a colon, this will not be present or set to "0.0.0.0:0" if none is available.
+            </summary>
+        </member>
+        <member name="T:PortableSteam.PersonaState">
+            <summary>
+            A player's status
+            </summary>
+        </member>
+        <member name="F:PortableSteam.PersonaState.Offline">
+            <summary>
+            Also set when the profile is Private.
+            </summary>
+        </member>
+        <member name="F:PortableSteam.PersonaState.Online">
+            <summary>
+            Online.
+            </summary>
+        </member>
+        <member name="F:PortableSteam.PersonaState.Busy">
+            <summary>
+            Busy.
+            </summary>
+        </member>
+        <member name="F:PortableSteam.PersonaState.Away">
+            <summary>
+            Away.
+            </summary>
+        </member>
+        <member name="F:PortableSteam.PersonaState.Snooze">
+            <summary>
+            Snooze.
+            </summary>
+        </member>
+        <member name="F:PortableSteam.PersonaState.LookingToTrade">
+            <summary>
+            Looking to trade.
+            </summary>
+        </member>
+        <member name="F:PortableSteam.PersonaState.LookingToPlay">
+            <summary>
+            Looking to play.
+            </summary>
+        </member>
+        <member name="P:PortableSteam.Interfaces.General.ISteamUser.GetUserGroupListResponseResponse.Success">
+            <summary>
+            True if the query was successful, false otherwise.
+            </summary>
+        </member>
+        <member name="P:PortableSteam.Interfaces.General.ISteamUser.GetUserGroupListResponseResponse.Error">
+            <summary>
+            Error message of this response.
+            </summary>
+        </member>
+        <member name="P:PortableSteam.Interfaces.General.ISteamUser.GetUserGroupListResponseResponse.Groups">
+            <summary>
+            If the profile is not public or there are no available entries for the given relationship only an empty object will be returned.
+            </summary>
+        </member>
+        <member name="P:PortableSteam.Interfaces.General.ISteamUser.GetUserGroupListResponseGroup.GID">
+            <summary>
+            64 bit ID number of group.
+            </summary>
+        </member>
+        <member name="P:PortableSteam.Interfaces.General.ISteamUser.ResolveVanityURLResponse.Data">
+            <summary>
+            If the profile is not public or there are no available entries for the given relationship only an empty object will be returned.
+            </summary>
+        </member>
+        <member name="P:PortableSteam.Interfaces.General.ISteamUser.ResolveVanityURLResponseResponse.Success">
+            <summary>
+            The status of the request. 1 if successful, 42 if there was no match.
+            </summary>
+        </member>
+        <member name="P:PortableSteam.Interfaces.General.ISteamUser.ResolveVanityURLResponseResponse.Message">
+            <summary>
+            The message associated with the request status. Currently only used on resolution failures.
+            </summary>
+        </member>
+        <member name="P:PortableSteam.Interfaces.General.ISteamUser.ResolveVanityURLResponseResponse.Identity">
+            <summary>
+            The identity the vanity URL resolves to. Not returned on resolution failures.
+            </summary>
+        </member>
+        <member name="T:PortableSteam.Interfaces.General.ISteamWebAPIUtil.GetServerInfoRequest">
+            <summary>
+            Request object for methods relating to the WebAPI itself.
+            </summary>
+        </member>
+        <member name="T:PortableSteam.Interfaces.General.ISteamWebAPIUtil.GetServerInfoResponse">
+            <summary>
+            Response object for methods relating to the WebAPI itself.
+            </summary>
+        </member>
+        <member name="P:PortableSteam.Interfaces.General.ISteamWebAPIUtil.GetServerInfoResponse.ServerTime">
+            <summary>
+            Returns DateTime timestamp of WebAPI server.
+            </summary>
+        </member>
+        <member name="P:PortableSteam.Interfaces.General.ISteamWebAPIUtil.GetServerInfoResponse.ServerTimeString">
+            <summary>
+            Returns time string of WebAPI server.
+            </summary>
+        </member>
+        <member name="T:PortableSteam.Interfaces.General.ISteamWebAPIUtil.GetSupportedAPIListRequest">
+            <summary>
+            Request object for method that lists all available WebAPI interfaces.
+            </summary>
+        </member>
+        <member name="T:PortableSteam.Interfaces.General.ISteamWebAPIUtil.GetSupportedAPIListResponse">
+            <summary>
+            Response object for method that lists all available WebAPI interfaces.
+            </summary>
+        </member>
+        <member name="P:PortableSteam.Interfaces.General.ISteamWebAPIUtil.GetSupportedAPIListResponseAPIList.Interfaces">
+            <summary>
+            Interfaces.
+            </summary>
+        </member>
+        <member name="P:PortableSteam.Interfaces.General.ISteamWebAPIUtil.GetSupportedAPIListResponseInterface.Name">
+            <summary>
+            Name of Interface.
+            </summary>
+        </member>
+        <member name="P:PortableSteam.Interfaces.General.ISteamWebAPIUtil.GetSupportedAPIListResponseInterface.Methods">
+            <summary>
+            Methods with-in the interface.
+            </summary>
+        </member>
+        <member name="P:PortableSteam.Interfaces.General.ISteamWebAPIUtil.GetSupportedAPIListResponseMethod.Name">
+            <summary>
+            Name of method.
+            </summary>
+        </member>
+        <member name="P:PortableSteam.Interfaces.General.ISteamWebAPIUtil.GetSupportedAPIListResponseMethod.Version">
+            <summary>
+            Version of method.
+            </summary>
+        </member>
+        <member name="P:PortableSteam.Interfaces.General.ISteamWebAPIUtil.GetSupportedAPIListResponseMethod.HttpMethod">
+            <summary>
+            Allowed HTTP method for method (GET, POST).
+            </summary>
+        </member>
+        <member name="P:PortableSteam.Interfaces.General.ISteamWebAPIUtil.GetSupportedAPIListResponseMethod.Parameters">
+            <summary>
+            Parameters of the method.
+            </summary>
+        </member>
+        <member name="P:PortableSteam.Interfaces.General.ISteamWebAPIUtil.GetSupportedAPIListResponseParameter.Name">
+            <summary>
+            Name of parameter.
+            </summary>
+        </member>
+        <member name="P:PortableSteam.Interfaces.General.ISteamWebAPIUtil.GetSupportedAPIListResponseParameter.Type">
+            <summary>
+            Expected type of value.
+            </summary>
+        </member>
+        <member name="P:PortableSteam.Interfaces.General.ISteamWebAPIUtil.GetSupportedAPIListResponseParameter.Optional">
+            <summary>
+            Is input optional for the method.
+            </summary>
+        </member>
+        <member name="P:PortableSteam.Interfaces.General.ISteamWebAPIUtil.GetSupportedAPIListResponseParameter.Description">
+            <summary>
+            API Documentation of parameter.
+            </summary>
+        </member>
+        <member name="T:PortableSteam.SteamWebAPI">
+            <summary>
+            Valve provides these APIs so website developers can use data from Steam in new and interesting ways. 
+            They allow developers to query Steam for information that they can present on their own sites. 
+            At the moment the only APIs we offer provide item data for Team Fortress 2, but this list will grow over time.
+            </summary>
+            <see href="http://steamcommunity.com/dev"/>
+            <see href="http://wiki.teamfortress.com/wiki/WebAPI"/>
+        </member>
+        <member name="M:PortableSteam.SteamWebAPI.SetGlobalKey(System.String)">
+            <summary>
+            Sets your Steam Web API key. Without this, the server will return an HTTP 403 (forbidden) error.
+            </summary>
+            <param name="key"></param>
+        </member>
+        <member name="M:PortableSteam.SteamWebAPI.CustomRequest(System.String,System.String,System.String,System.Action{PortableSteam.Infrastructure.Objects.QueryStringDictionary})">
+            <summary>
+            Custom steam request.
+            </summary>
+            <param name="interface">Interface.</param>
+            <param name="method">Method's name</param>
+            <param name="version">Method's version.</param>
+            <param name="actionBody">QueryStringDictionary action.</param>
+            <returns></returns>
+        </member>
+        <member name="M:PortableSteam.SteamWebAPI.CustomRequest(System.String,System.String,System.String,System.Object)">
+            <summary>
+            Custom steam request.
+            </summary>
+            <param name="interface"></param>
+            <param name="method"></param>
+            <param name="version"></param>
+            <param name="parameters"></param>
+            <returns></returns>
+        </member>
+        <member name="M:PortableSteam.SteamWebAPI.General">
+            <summary>
+            General interfaces.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:PortableSteam.SteamWebAPI.Game">
+            <summary>
+            Game specific interfaces
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:PortableSteam.SteamWebAPI.Other">
+            <summary>
+            Other undocumented interfaces.
+            </summary>
+            <returns></returns>
+        </member>
+    </members>
+</doc>

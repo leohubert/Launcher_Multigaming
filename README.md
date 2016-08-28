@@ -1,6 +1,6 @@
 ![Launcher_Arma3 Logo](https://raw.githubusercontent.com/MrDarkSkil/Launcher_Arma3/master/GFX/icones/favicon.png)
 # Launcher_Arma3
-Launcher_Arma3 
+Launcher_Arma3
 
 ## Launcher Information:
 
@@ -62,7 +62,7 @@ edit to
 {
 "nom":"Hubert",
 "prenom":"Léo",
-"email":"leo.hubert@epitech.eu", 
+"email":"leo.hubert@epitech.eu",
 "linkedin": "https://www.linkedin.com/in/leohubert"
 }
 ```
@@ -74,6 +74,17 @@ edit to
 --------------------------------------------------
 
 ### Changes Logs:
+
+Release 5.1.0.0: (not finished)
+- Add: Multiserver/Games
+- Add: New system for update (mods)
+- Add: Server section into the panel
+- Add: You can lock a server (with password or not)
+- Add: You can make a server on maintenance
+- Fix: Taskforce Installer (userconfig)
+- Fix: Some Bugs
+We prepare the launcher for use with the steamAPI
+And more ...
 
 Pre-Release 5.0.5.0:
 - Add: IG (in-game) user information on launcher & panel
@@ -176,7 +187,7 @@ Building 5.0.0.3:
 - Add: MetroFramework
 - Add: New API system (Wirk)
 - Add: Pannel v2.0
- 
+
 -------------------------------------
 
 Building 5.0.0.2:
@@ -199,7 +210,7 @@ Remove the old version
 sure to start anew.
 
 The v4.0.0.0 be downloaded in
-left "release" at github.com/MrDarkSkil/Launcher_Arma3 
+left "release" at github.com/MrDarkSkil/Launcher_Arma3
 
 --------------------------------------
 

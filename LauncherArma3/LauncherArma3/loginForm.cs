@@ -25,7 +25,7 @@ namespace LauncherArma3
 
         /* GENERAL OPTIONS */
 
-        string serverName;
+        string communityName;
         string apiUrl;
         string webSite;
         string teamSpeak;
@@ -33,6 +33,18 @@ namespace LauncherArma3
         string ftp_user;
         string ftp_pass;
         bool showIGinfo;
+        string modPackName;
+        string downloadPath;
+        bool canPlay;
+        bool serverMaintenance;
+
+        /* SERVER VARIABLE */
+
+        string serverIP;
+        string serverID;
+        string serverName;
+        string serverGame;
+
 
         /* ANOTHER VARIABLE */
 
@@ -51,7 +63,6 @@ namespace LauncherArma3
         bool notif = false;
         int taskforce;
         string vtaskforce;
-        string serverArmaIp;
 
         /* TRANSLATE PART */
 
@@ -59,13 +70,13 @@ namespace LauncherArma3
         Dictionary<string, string> translateDic = new Dictionary<string, string>();
 
 
-        public loginForm(string server, string api, string ftpUrl, string ftpUser, string ftpPass, bool mod)
+        public loginForm(string _communityName, string api, string ftpUrl, string ftpUser, string ftpPass, bool mod)
         {
             InitializeComponent();
             materialSkinManager = MaterialSkinManager.Instance;
             materialSkinManager.Theme = MaterialSkinManager.Themes.DARK;
             materialSkinManager.ColorScheme = new ColorScheme(Primary.Cyan400, Primary.Indigo700, Primary.Indigo100, Accent.LightGreen200, TextShade.WHITE);
-            serverName = server;
+            communityName = _communityName;
             apiUrl = api;
             ftp_url = ftpUrl;
             ftp_user = ftpUser;
@@ -75,13 +86,13 @@ namespace LauncherArma3
 
         private void loginForm_Load(object sender, EventArgs e)
         {
-            if (File.Exists(appdata + serverName + "/token.bin2hex"))
+            if (File.Exists(appdata + communityName + "/token.bin2hex"))
             {
-                sessionToken = File.ReadAllText(appdata + serverName + "/token.bin2hex");
+                sessionToken = File.ReadAllText(appdata + communityName + "/token.bin2hex");
             }
-            if (File.Exists(appdata + serverName + "/language.lang"))
+            if (File.Exists(appdata + communityName + "/language.lang"))
             {
-                language = File.ReadAllText(appdata + serverName + "/language.lang");
+                language = File.ReadAllText(appdata + communityName + "/language.lang");
                 loadLanguage();
             }
             if (modDev == true)
@@ -158,32 +169,66 @@ namespace LauncherArma3
                     newsImage.ImageLocation = res.msg_content;
                     newsImage.BringToFront();
                 }
-
-                webSite = res.website;
-                teamSpeak = res.teamspeak;
-                serverArmaIp = res.server_ip + ":" + res.server_port;
                 newsTitle.Text = res.msg_title;
                 newsContent.Text = res.msg_content;
-                taskforce = res.taskforce;
-                vtaskforce = res.vtaskforce;
-                showIGinfo = res.show_ig;
 
                 if (modDev == false && res.vlauncher != getLauncherMd5().ToLower())
                 {
                     launcherUpdate();
                     return;
                 }
-                vLast = res.vmod;
                 if (res.login == "0")
                 {
                     sessionToken = null;
-                    launcherMain launcher = new launcherMain(serverName, apiUrl, webSite, teamSpeak, sessionToken, ftp_url, ftp_user, ftp_pass, vLast, taskforce, vtaskforce, modDev, serverArmaIp, translateDic, showIGinfo);
-
-                    // Show the laguage choice
+                    startLauncher = false;
+                    loginUsername.Text = "";
+                    loginPassword.Text = "";
+                    loginRemember.Checked = false;
                     this.Visible = false;
-                    launcher.ShowDialog();                    
-                    this.Visible = true;
+                    if (!File.Exists(appdata + communityName + "/autoConnect"))
+                    {
+                        using (var chooseServer = new serverChoose(apiUrl, communityName, translateDic, appdata))
+                        {                            
+                            var result = chooseServer.ShowDialog();
+                            if (result == DialogResult.OK)
+                            {
+                                serverID = chooseServer.currentServerid;
+                                serverIP = chooseServer.currentServerIP;
+                                serverGame = chooseServer.currentServerGame;
+                                serverName = chooseServer.currentServerName;
+                                getServerInfo(serverID);
+                            }
+                        }
+                    }
+                    else
+                    {
+                        string id = File.ReadAllText(appdata + communityName + "/autoConnect");
 
+                        //GET SERVER INFO
+                        getServerInfo(id);
+                    }
+                    switch (serverGame)
+                    {
+                        case "arma3":
+                            using (var launcher = new launcherMain(communityName, apiUrl, webSite, teamSpeak, sessionToken, ftp_url, ftp_user, 
+                                ftp_pass, vLast, taskforce, vtaskforce, modDev, serverIP, translateDic, showIGinfo, serverName, serverID,
+                                modPackName, downloadPath, canPlay, serverMaintenance))
+                            {
+                                var result = launcher.ShowDialog();
+                                if (result == DialogResult.Yes)
+                                {
+                                    if (File.Exists(appdata + communityName + "/autoConnect"))
+                                        File.Delete(appdata + communityName + "/autoConnect");
+                                    loginWithToken();
+                                }
+                            }
+                            break;
+                        default:
+                            MessageBox.Show("This game is not created on this launcher");
+                            break;
+                    }
+                    materialSkinManager.Theme = MaterialSkinManager.Themes.DARK;
+                    this.Visible = true;
                 }
                 if (res.register == "0")
                 {
@@ -248,7 +293,7 @@ namespace LauncherArma3
                             if (loginRemember.Checked == true)
                             {
                                 string token = res.token;
-                                File.WriteAllText(appdata + serverName + "/token.bin2hex", token);
+                                File.WriteAllText(appdata + communityName + "/token.bin2hex", token);
                             }
 
                             // Reset form
@@ -272,14 +317,99 @@ namespace LauncherArma3
                 await Task.Delay(1000);
             if (startLauncher == true)
             {
-                launcherMain launcher = new launcherMain(serverName, apiUrl, webSite, teamSpeak, sessionToken, ftp_url, ftp_user, ftp_pass, vLast, taskforce, vtaskforce, modDev, serverArmaIp, translateDic, showIGinfo);
                 startLauncher = false;
                 loginUsername.Text = "";
                 loginPassword.Text = "";
                 loginRemember.Checked = false;
                 this.Visible = false;
-                launcher.ShowDialog();
+                if (!File.Exists(appdata + communityName + "/autoConnect"))
+                {
+                    using (var chooseServer = new serverChoose(apiUrl, communityName, translateDic, appdata))
+                    {
+                        var result = chooseServer.ShowDialog();
+                        if (result == DialogResult.OK)
+                        {
+                            serverID = chooseServer.currentServerid;
+                            serverIP = chooseServer.currentServerIP;
+                            serverGame = chooseServer.currentServerGame;
+                            serverName = chooseServer.currentServerName;
+                            getServerInfo(serverID);
+                        }
+                        else
+                            this.Close();        
+                    }
+                }
+                else
+                {
+                    string id = File.ReadAllText(appdata + communityName + "/autoConnect");
+
+                    //GET SERVER INFO
+                    getServerInfo(id);        
+                }
+                switch (serverGame)
+                {
+                    case "arma3":
+                        using (var launcher = new launcherMain(communityName, apiUrl, webSite, teamSpeak, sessionToken, ftp_url, ftp_user, ftp_pass, 
+                            vLast, taskforce, vtaskforce, modDev, serverIP, translateDic, showIGinfo, serverName, serverID, modPackName, downloadPath,
+                            canPlay, serverMaintenance))
+                        {
+                            var result = launcher.ShowDialog();
+                            if (result == DialogResult.Yes)
+                            {
+                                if (File.Exists(appdata + communityName + "/autoConnect"))
+                                    File.Delete(appdata + communityName + "/autoConnect");
+                                loginWithToken();
+                            }
+                        }
+                        break;
+                    default:
+                        MessageBox.Show("This game is not created on this launcher");
+                        break;
+                }
+                materialSkinManager.Theme = MaterialSkinManager.Themes.DARK;
                 this.Visible = true;
+            }
+        }
+
+        void getServerInfo(string id)
+        {
+            //GET SERVER INFO
+            var client = new RestClient(apiUrl);
+
+            var request = new RestRequest("api/server/get", Method.POST);
+
+            request.AddParameter("id", id);
+
+            IRestResponse response = client.Execute(request);
+            var content = response.Content;
+
+            dynamic res = JObject.Parse(content.ToString());
+
+            if (res.status == "42")
+            {
+                serverID = res.id;
+                serverIP = res.ip + ":" + res.port;
+                serverGame = res.game;
+                serverName = res.name;
+                teamSpeak = res.teamspeak;
+                webSite = res.website;
+                vLast = res.vmod;
+                vtaskforce = res.vtaskforce;
+                taskforce = res.taskforce;
+                modPackName = res.modpack_name;
+                downloadPath = res.local_path;
+                if (res.show_infos == "1")
+                    showIGinfo = true;
+                else
+                    showIGinfo = false;
+                if (res.maintenance == "1")
+                    serverMaintenance = true;
+                else
+                    serverMaintenance = false;
+                if (res.can_play == "1")
+                    canPlay = true;
+                else
+                    canPlay = false;
             }
         }
 
@@ -301,19 +431,63 @@ namespace LauncherArma3
 
                 if (res.status == "42")
                 {
-                    // Login
-                    launcherMain launcher = new launcherMain(serverName, apiUrl, webSite, teamSpeak, sessionToken, ftp_url, ftp_user, ftp_pass, vLast, taskforce, vtaskforce, modDev, serverArmaIp, translateDic, showIGinfo);
                     startLauncher = false;
+                    loginUsername.Text = "";
+                    loginPassword.Text = "";
+                    loginRemember.Checked = false;
                     this.Visible = false;
-                    launcher.ShowDialog();
+                    if (!File.Exists(appdata + communityName + "/autoConnect"))
+                    {
+                        using (var chooseServer = new serverChoose(apiUrl, communityName, translateDic, appdata))
+                        {                                                    
+                            var result = chooseServer.ShowDialog();
+                            if (result == DialogResult.OK)
+                            {
+                                serverID = chooseServer.currentServerid;
+                                serverIP = chooseServer.currentServerIP;
+                                serverGame = chooseServer.currentServerGame;
+                                serverName = chooseServer.currentServerName;
+                                getServerInfo(serverID);
+                            }
+                            else
+                                this.Close();
+                        }
+                    }
+                    else
+                    {
+                        string id = File.ReadAllText(appdata + communityName + "/autoConnect");
+
+                        //GET SERVER INFO
+                        getServerInfo(id);
+                    }
+                    switch (serverGame)
+                    {
+                        case "arma3":
+                            using (var launcher = new launcherMain(communityName, apiUrl, webSite, teamSpeak, sessionToken, ftp_url, ftp_user, ftp_pass, vLast, taskforce, 
+                                vtaskforce, modDev, serverIP, translateDic, showIGinfo, serverName, serverID, modPackName, downloadPath, canPlay, serverMaintenance))
+                            {
+                                var result = launcher.ShowDialog();
+                                if (result == DialogResult.Yes)
+                                {
+                                    if (File.Exists(appdata + communityName + "/autoConnect"))
+                                        File.Delete(appdata + communityName + "/autoConnect");
+                                    loginWithToken();
+                                }
+                            }
+                            break;
+                        default:
+                            MessageBox.Show("This game is not created on this launcher");
+                            break;
+                    }
+                    materialSkinManager.Theme = MaterialSkinManager.Themes.DARK;
                     this.Visible = true;
                 }
                 else
                 {
                     string msg = res.message;
                     notifView(msg);
-                    if (File.Exists(appdata + serverName + "/token.bin2hex"))
-                        File.Delete(appdata + serverName + "/token.bin2hex");
+                    if (File.Exists(appdata + communityName + "/token.bin2hex"))
+                        File.Delete(appdata + communityName + "/token.bin2hex");
                 }
             }
             catch
@@ -334,7 +508,7 @@ namespace LauncherArma3
                 notifView(translateDic["error404"]);
                 return;
             }
-            registerForm register = new registerForm(serverName, apiUrl, webSite, translateDic);
+            registerForm register = new registerForm(communityName, apiUrl, webSite, translateDic);
 
             // Show the laguage choice
             register.ShowDialog();
@@ -346,6 +520,8 @@ namespace LauncherArma3
             {
 
                 translate.ReadToFollowing(language);
+                translate.ReadToFollowing("money");
+                translateDic.Add("money", translate.ReadElementContentAsString());
                 translate.ReadToFollowing("logIn");
                 translateDic.Add("logIn", translate.ReadElementContentAsString());
                 translate.ReadToFollowing("logOut");
@@ -392,8 +568,8 @@ namespace LauncherArma3
                 translateDic.Add("settings", translate.ReadElementContentAsString());
                 translate.ReadToFollowing("steamUID");
                 translateDic.Add("steamUID", translate.ReadElementContentAsString());
-                translate.ReadToFollowing("IP");
-                translateDic.Add("IP", translate.ReadElementContentAsString());
+                translate.ReadToFollowing("mission");
+                translateDic.Add("mission", translate.ReadElementContentAsString());
                 translate.ReadToFollowing("online");
                 translateDic.Add("online", translate.ReadElementContentAsString());
                 translate.ReadToFollowing("offline");
@@ -526,6 +702,10 @@ namespace LauncherArma3
                 translateDic.Add("IGinformations", translate.ReadElementContentAsString());
                 translate.ReadToFollowing("usefulLink");
                 translateDic.Add("usefulLink", translate.ReadElementContentAsString());
+                translate.ReadToFollowing("serverMaintenance");
+                translateDic.Add("serverMaintenance", translate.ReadElementContentAsString());
+                translate.ReadToFollowing("serverLocked");
+                translateDic.Add("serverLocked", translate.ReadElementContentAsString());            
 
                 loginButton.Text = translateDic["logIn"];
                 registerLink.Text = translateDic["registerLink"];
@@ -538,14 +718,14 @@ namespace LauncherArma3
             }
             catch
             {
-                languageChoice formLanguage = new languageChoice(serverName, true);
+                languageChoice formLanguage = new languageChoice(communityName, true);
 
                 // Show the laguage choice
                 formLanguage.ShowDialog();
 
-                if (File.Exists(appdata + serverName + "/language.lang"))
+                if (File.Exists(appdata + communityName + "/language.lang"))
                 {
-                    language = File.ReadAllText(appdata + serverName + "/language.lang");
+                    language = File.ReadAllText(appdata + communityName + "/language.lang");
                     loadLanguage();
                 }
 
@@ -665,7 +845,7 @@ namespace LauncherArma3
                 registerLink.Enabled = false;
                 Process update = new Process();
                 update.StartInfo.FileName = "launcherUpdate.exe";
-                update.StartInfo.Arguments = apiUrl + "api/arma3/launcher/download" + " \"" + System.Windows.Forms.Application.ExecutablePath + "\" \"" + System.Diagnostics.Process.GetCurrentProcess().ProcessName + "\"";
+                update.StartInfo.Arguments = apiUrl + "games/launcher/launcher.exe" + " \"" + System.Windows.Forms.Application.ExecutablePath + "\" \"" + System.Diagnostics.Process.GetCurrentProcess().ProcessName + "\"";
                 update.Start();
                 this.Close();
             }
@@ -711,5 +891,12 @@ namespace LauncherArma3
             }
         }
 
+        private void materialRaisedButton1_Click(object sender, EventArgs e)
+        {
+            selectSteamProfile formLanguage = new selectSteamProfile();
+
+            // Show the laguage choice
+            formLanguage.ShowDialog();
+        }
     }
 }

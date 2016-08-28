@@ -32,14 +32,18 @@ namespace taskforceInstaller
         int stat = 0;
         DateTime startTimeDownload;
         long bytesPerSecond;
+        string serverID;
+        string downloadPath;
 
-        public taskforceMain(string _apiUrl, string _appdata, string _vTaskForce, string _launcherDest)
+        public taskforceMain(string _apiUrl, string _appdata, string _vTaskForce, string _launcherDest, string _serverID, string _downloadPath)
         {
             InitializeComponent();
             apiUrl = _apiUrl;
             appdata = _appdata;
             vTaskForce = _vTaskForce;
             launcherDest = _launcherDest;
+            serverID = _serverID;
+            downloadPath = _downloadPath;
         }
 
         void autodetectTeamSpeak()
@@ -150,7 +154,9 @@ namespace taskforceInstaller
 
                 var client = new RestClient(apiUrl);
 
-                var request = new RestRequest("api/arma3/taskforce", Method.GET);
+                var request = new RestRequest("api/games/arma3/taskforce/list", Method.POST);
+
+                request.AddParameter("id", serverID);
 
                 IRestResponse response = client.Execute(request);
                 var content = response.Content;
@@ -198,7 +204,7 @@ namespace taskforceInstaller
             {
                 stat = 0;
                 current = files.Dequeue().ToString();
-                startDownload(apiUrl + "arma3/taskforce/" + current, teamspeakDirectory + "/plugins/" + current);
+                startDownload(apiUrl + "/" + downloadPath +"/taskforce/" + current, teamspeakDirectory + "/plugins/" + current);
                 while (stat == 0)
                     await Task.Delay(1000);
                 downloaded++;

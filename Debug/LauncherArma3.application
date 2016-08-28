@@ -7,14 +7,14 @@
     <framework targetVersion="4.5.2" profile="Full" supportedRuntime="4.0.30319" />
   </compatibleFrameworks>
   <dependency>
-    <dependentAssembly dependencyType="install" codebase="LauncherArma3.exe.manifest" size="10498">
+    <dependentAssembly dependencyType="install" codebase="LauncherArma3.exe.manifest" size="13238">
       <assemblyIdentity name="LauncherArma3.exe" version="1.0.0.0" publicKeyToken="0000000000000000" language="neutral" processorArchitecture="msil" type="win32" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>DoHlddqoyQJ6m88olmd6k4NizEhTf1R1Z9VkObzEfQw=</dsig:DigestValue>
+        <dsig:DigestValue>w+ad41rTsNuyAhJ2L4hY7a0psmYb0eq//D3p2kaLmpI=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

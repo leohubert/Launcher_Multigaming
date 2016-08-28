@@ -298,6 +298,7 @@ namespace LauncherArma3
         {
             File.WriteAllText(appdata + serverName + "/language.lang", "FR");
             normalyClose = true;
+            this.DialogResult = DialogResult.OK;
             this.Close();
         }
 
@@ -305,6 +306,7 @@ namespace LauncherArma3
         {
             File.WriteAllText(appdata + serverName + "/language.lang", "EN");
             normalyClose = true;
+            this.DialogResult = DialogResult.OK;
             this.Close();
         }
 
@@ -312,6 +314,7 @@ namespace LauncherArma3
         {
             File.WriteAllText(appdata + serverName + "/language.lang", "DE");
             normalyClose = true;
+            this.DialogResult = DialogResult.OK;
             this.Close();
         }
 
@@ -319,6 +322,7 @@ namespace LauncherArma3
         {
             File.WriteAllText(appdata + serverName + "/language.lang", "SP");
             normalyClose = true;
+            this.DialogResult = DialogResult.OK;
             this.Close();
         }
 
@@ -326,6 +330,7 @@ namespace LauncherArma3
         {
             File.WriteAllText(appdata + serverName + "/language.lang", "MT");
             normalyClose = true;
+            this.DialogResult = DialogResult.OK;
             this.Close();
         }
 
@@ -333,6 +338,7 @@ namespace LauncherArma3
         {
             File.WriteAllText(appdata + serverName + "/language.lang", "JP");
             normalyClose = true;
+            this.DialogResult = DialogResult.OK;
             this.Close();
         }
 

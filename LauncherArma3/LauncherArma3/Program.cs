@@ -17,8 +17,8 @@ namespace LauncherArma3
         {
             /* GENERAL OPTIONS */
 
-            string serverName = "Regalian";  /* Your serverName */
-            string apiUrl = "http://yourserver.com/"; /* Link to API launcher Arma 3 */
+            string communityName = "Emodyz";  /* Your serverName */
+            string apiUrl = "http://164.132.98.164/"; /* Link to API launcher Arma 3 */
                         
             /* FTP NO FUNCTIONAL */
 
@@ -28,7 +28,7 @@ namespace LauncherArma3
            
             /* FTP NO FUNCTIONAL */
 
-            bool modDev = true;  /* enable or disable modDev */
+            bool modDev = false;  /* enable or disable modDev */
 
             /* ANOTHER VARIABLE */
 
@@ -38,16 +38,16 @@ namespace LauncherArma3
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
-            if (!Directory.Exists(appdata + serverName))
-                Directory.CreateDirectory(appdata + serverName);
-            if (File.Exists(appdata + serverName + "/language.lang"))
+            if (!Directory.Exists(appdata + communityName))
+                Directory.CreateDirectory(appdata + communityName);
+            if (File.Exists(appdata + communityName + "/language.lang"))
             {
-                Application.Run(new loginForm(serverName, apiUrl, ftp_url, ftp_user, ftp_pass, modDev));
+                Application.Run(new loginForm(communityName, apiUrl, ftp_url, ftp_user, ftp_pass, modDev));
             }
             else
             {
-                Application.Run(new languageChoice(serverName, false));
-                Application.Run(new loginForm(serverName, apiUrl, ftp_url, ftp_user, ftp_pass, modDev));
+                Application.Run(new languageChoice(communityName, false));
+                Application.Run(new loginForm(communityName, apiUrl, ftp_url, ftp_user, ftp_pass, modDev));
             }
         }
     }

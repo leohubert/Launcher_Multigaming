@@ -14,14 +14,14 @@ namespace taskforceInstaller
         [STAThread]
         static void Main(string[] av)
         {
-            if (av.Length != 4)
+            if (av.Length != 6)
             {
                 MessageBox.Show("You cannot launch this program manualy !");
                 return;
             }
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new taskforceMain(av[0], av[1], av[2], av[3]));
+            Application.Run(new taskforceMain(av[0], av[1], av[2], av[3], av[4], av[5]));
         }
     }
 }
