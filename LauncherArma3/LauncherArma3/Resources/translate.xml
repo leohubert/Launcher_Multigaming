@@ -4,6 +4,7 @@
     <languageTitle>Choisissez votre langage</languageTitle>
     <contry>France</contry>
     <money>fr-FR</money>
+    <reverse>true</reverse>
     <logIn>Se connecter</logIn>
     <logOut>Se deconnecter</logOut>
     <remember>Se rappeler de moi</remember>
@@ -103,6 +104,7 @@
     <languageTitle>Select your language</languageTitle>
     <contry>England</contry>
     <money>en-US</money>
+    <reverse>false</reverse>
     <logIn>Log In</logIn>
     <logOut>Log Out</logOut>
     <remember>Remember me</remember>
@@ -116,7 +118,7 @@
     <email>Email</email>
     <cancel>Cancel</cancel>
     <register>Register</register>
-    <forgotPass>I forgot my password</forgotPass>
+    <forgotPass>Need a new password ?</forgotPass>
     <status>Status</status>
     <disconnectMsg>You are logged out</disconnectMsg>
     <maintenanceTitle>Maintenance in progress !</maintenanceTitle>
@@ -201,6 +203,7 @@
     <languageTitle>Wähle deine Sprache</languageTitle>
     <contry>Deutschland</contry>
     <money>de-DE</money>
+    <reverse>false</reverse>
     <logIn>Anmeldung</logIn>
     <logOut>Logout</logOut>
     <remember>Erinnere dich an mich</remember>
@@ -300,6 +303,7 @@
     <languageTitle>Elige tu idioma</languageTitle>
     <contry>Spain</contry>
     <money>fr-FR</money>
+    <reverse>false</reverse>
     <logIn>Iniciar sesión</logIn>
     <logOut>Cerrar sesión</logOut>
     <remember>Recuérdame</remember>
@@ -395,112 +399,110 @@
     <serverMaintenance>This server is on maintenance !</serverMaintenance>
     <serverLocked>Server locked</serverLocked>
   </SP>
-  <MT language="Canadiens">
-    <languageTitle>Choisi ta langue tabernack</languageTitle>
-    <contry>Montréal</contry>
-    <money>eu-US</money>
-    <logIn>Se connecter</logIn>
-    <logOut>Se deconnecter</logOut>
-    <remember>Se rappeler de moi</remember>
-    <loginMsg>
-      Tu es déjà enregistré ?
-      Pourquoi tu es venu là alors !
-    </loginMsg>
-    <registerLink>ou s'enregistré</registerLink>
-    <commingSoon>Prochainement</commingSoon>
-    <registerMsg>Tu es nouveaux ici ?</registerMsg>
-    <username>Nom d'utilisateur</username>
-    <password>Mot de passe</password>
-    <passwordConfirm>Confirmez le mot de passe</passwordConfirm>
-    <email>E-mail</email>
-    <cancel>Annuler</cancel>
-    <register>Bah clique ici</register>
-    <forgotPass>Quel con j'ai oublier mon mot de passe</forgotPass>
-    <status>J'sui qui :</status>
-    <disconnectMsg>Câlisse je me suis déconnectéë</disconnectMsg>
-    <maintenanceTitle>Et merde c'est en maintenance ...</maintenanceTitle>
-    <registerDisabled>Enregistrement désactivé</registerDisabled>
-    <error404>Le serveur n'est pas accéssible.</error404>
-    <errorInternet>Verifie ta wifi tu n'as pas internet</errorInternet>
-    <errorUpdate>Erreur launcherUpdate.exe manquant !</errorUpdate>
-    <updateCancel>Hey mec ta annulé la mise à jour</updateCancel>
-    <!-- NEW TRANSLATE HERE-->
-    <settings>Paramètres</settings>
-    <steamUID>Steam UID</steamUID>
-    <mission>Mission</mission>
-    <online>EN LIGNE</online>
-    <offline>HORS LIGNE</offline>
-    <notFound>Non disponible</notFound>
-    <support>Support</support>
-    <taskforceVersion>Version de taskforce</taskforceVersion>
-    <notInstalled>Non installée</notInstalled>
-    <installed>Installée</installed>
-    <updateTaskforceRequire>Mise à jour de taskforce requise</updateTaskforceRequire>
-    <forceUpdateTaskforce>Forcer la mise à jour</forceUpdateTaskforce>
-    <installTaskforce>Installer Taksforce</installTaskforce>
-    <updateTaskforce>Mettre à jour TaskForce</updateTaskforce>
-    <play>Jouer</play>
-    <download>Télécharger</download>
-    <update>Mettre à jour</update>
-    <forceUpdate>Forcer la mise à jour</forceUpdate>
-    <visitSite>Visiter notre site</visitSite>
-    <visitTeamSpeak>Visiter notre TeamSpeak</visitTeamSpeak>
-    <modDev>Attention ! ModDev activé !</modDev>
-    <chooseArma>Choisissez la destination d'arma 3</chooseArma>
-    <downloadProgress>Téléchargement en cours</downloadProgress>
-    <armaOK>La destination d'arma 3 est OK</armaOK>
-    <selectArma>Selectionner la destination d'arma 3</selectArma>
-    <armaNotOK>La destination d'arma 3 n'est pas bonne</armaNotOK>
-    <success>Succés !</success>
-    <waitDownload>Veuillez attendre la fin du téléchargement des mods !</waitDownload>
-    <updateTaskforceBefore>Veuillez mettre à jour taskforce avant cela !</updateTaskforceBefore>
-    <downloadInitialisation>Initialisation du téléchargement</downloadInitialisation>
-    <pleaseWait>Veuillez patientez</pleaseWait>
-    <cancelling>Annulation...</cancelling>
-    <pause>Pause</pause>
-    <resume>Continuer</resume>
-    <serverRequest>Requête au serveur en cours</serverRequest>
-    <listingMod>Création de la list des mods en cours</listingMod>
-    <listingCpp>Création de la list des cpps en cours</listingCpp>
-    <listingAdditional>Création de la list des autres fichier en cours</listingAdditional>
-    <alreadyUpToDate>Tout est à jour, vous pouvez jouer</alreadyUpToDate>
-    <inProgress>en cours</inProgress>
-    <downloadMod>Téléchargement du mod</downloadMod>
-    <downloadFile>Téléchargement du fichier</downloadFile>
-    <checkMod>Vérification des mods</checkMod>
-    <checkCpp>Vérification des cpps</checkCpp>
-    <downloadStoped>Téléchargement stopé</downloadStoped>
-    <downloadFinish>Téléchargement terminé</downloadFinish>
-    <downloadWillPause>Le téléchargement va se mettre en pause</downloadWillPause>
-    <downloadPaused>Téléchargement mis en pause</downloadPaused>
-    <downloaded>Téléchargé(s)</downloaded>
-    <of>sur</of>
-    <estimatedTime>Temps estimé</estimatedTime>
-    <waitForDownload>En attente du téléchargement</waitForDownload>
-    <updateAvailable>Mise à jour disponible</updateAvailable>
-    <errorListing>Une erreur est survenue durant le listage des mods</errorListing>
-    <taskforceInstallerMissing>Il manque l'installateur du taskforce</taskforceInstallerMissing>
-    <installCancel>Installation annulée</installCancel>
-    <minutes>Minutes</minutes>
-    <seconds>Secondes</seconds>
-    <hours>Heurs</hours>
-    <playersIG>Joueurs en ligne</playersIG>
-    <map>Carte</map>
-    <adminLevel>Level admin</adminLevel>
-    <copLevel>Level flic</copLevel>
-    <medicLevel>Level médecin</medicLevel>
-    <cash>Argent en liquide</cash>
-    <bank>Argent en banque</bank>
-    <serverStatus>Statut du serveur</serverStatus>
-    <IGinformations>Informations en jeux</IGinformations>
-    <usefulLink>Liens utiles</usefulLink>
-    <serverMaintenance>Le serveur actuel est en maintenance !</serverMaintenance>
-    <serverLocked>Serveur verrouillé</serverLocked>
-  </MT>
+  <AR language="Arabic">
+		<languageTitle>اختار اللغة‬</languageTitle>
+		<contry>العربية</contry>
+    <money>jp-JP</money>
+    <reverse>true</reverse>
+		<logIn>تسجيل الدخول</logIn>
+		<logOut>تسجيل الخروج</logOut>
+		<remember>تذكر معلوماتي‬</remember>
+		<loginMsg>مسجل من قبل‬</loginMsg>
+		<registerLink>تسجيل</registerLink>
+		<commingSoon>قريباً</commingSoon>
+		<registerMsg>هل أنت عضو جديد ؟</registerMsg>
+		<username>اسم المستخدم</username>
+		<password>كلمة المرور</password>
+		<passwordConfirm>تأكيد كلمة المرور</passwordConfirm>
+		<email>البريد الإلكتروني</email>
+		<cancel>إلغاء</cancel>
+		<register>تسجيل</register>
+		<forgotPass>نسيت كلمة المرور‬</forgotPass>
+		<status>الحالة</status>
+		<disconnectMsg>تم تسجيل الخروج‬</disconnectMsg>
+		<maintenanceTitle>!تحت الصيانة</maintenanceTitle>
+		<registerDisabled>التسجيل مغلق</registerDisabled>
+		<error404>لا يمكن الوصول إلى الخادم.</error404>
+		<errorInternet>لا يوجد إتصال إنترنت</errorInternet>
+		<errorUpdate>Error launcherUpdate.exe not found !</errorUpdate>
+		<updateCancel>تم إلغاء التحديث</updateCancel>
+		<settings>الإعدادات</settings>
+		<steamUID>Steam UID</steamUID>
+		<mission>Mission</mission>
+		<online>متصل</online>
+		<offline>غير متصل</offline>
+		<notFound>لا يوجد</notFound>
+		<support>الدعم الفني</support>
+		<taskforceVersion>إصدار التاسك فورس</taskforceVersion>
+		<notInstalled>لم تم التثبيت</notInstalled>
+		<installed>تم التثبيت</installed>
+		<updateTaskforceRequire>يوجد تحديث للتاسك فورس</updateTaskforceRequire>
+		<forceUpdateTaskforce>إجبار تحديث التاسك فورس</forceUpdateTaskforce>
+		<installTaskforce>تثبيت التاسك فورس</installTaskforce>
+		<updateTaskforce>تحديث التاسك فورس</updateTaskforce>
+		<play>تشغيل</play>
+		<download>تحميل</download>
+		<update>تحديث</update>
+		<forceUpdate>إجبار التحديث</forceUpdate>
+		<visitSite>زيارة الموقع</visitSite>
+		<visitTeamSpeak>زيارة التيم سبيك</visitTeamSpeak>
+		<modDev>Warning ! ModDev enabled !</modDev>
+		<chooseArma>اختر مسار تثبيت أرما3</chooseArma>
+		<downloadProgress>جاري التحميل</downloadProgress>
+		<armaOK>مسار أرما3 صحيح</armaOK>
+		<selectArma>حدد مكان أرما3</selectArma>
+		<armaNotOK>مكان أرما3 غير صحيح</armaNotOK>
+		<success>تم بنجاح !</success>
+		<waitDownload>إنتظر لحين إكتمال التحميل</waitDownload>
+		<updateTaskforceBefore>من فضلك قم بتحديث التاسك فورس أولاً</updateTaskforceBefore>
+		<downloadInitialisation>التحميل بدأ</downloadInitialisation>
+		<pleaseWait>فضلاً أنتظر</pleaseWait>
+		<cancelling>يتم الإلغاء...</cancelling>
+		<pause>إيقاف</pause>
+		<resume>إكمال</resume>
+		<serverRequest>طلب إلى الخادم</serverRequest>
+		<listingMod>Listing all mods to download</listingMod>
+		<listingCpp>Listing all cpps to download</listingCpp>
+		<listingAdditional>Listing all required files to download</listingAdditional>
+		<alreadyUpToDate>بالفعل محدث، يمكنك اللعب</alreadyUpToDate>
+		<inProgress>تحت المعالجة</inProgress>
+		<downloadMod>تحميل المود</downloadMod>
+		<downloadFile>تحميل الملفات</downloadFile>
+		<checkMod>جاري التأكد من جميع الإضافات</checkMod>
+		<checkCpp>جاري التأكد من ملفات النظام</checkCpp>
+		<downloadStoped>توقف التحميل</downloadStoped>
+		<downloadFinish>إنتهى التحميل</downloadFinish>
+		<downloadWillPause>سيتم إيقاف التحميل مؤقتاً</downloadWillPause>
+		<downloadPaused>تم إيقاف التحميل مؤقتاً</downloadPaused>
+		<downloaded>تم التحميل</downloaded>
+		<of>من</of>
+		<estimatedTime>الوقت المتبقي</estimatedTime>
+		<waitForDownload>إنتظر التحميل</waitForDownload>
+		<updateAvailable>يوجد تحديث جديد متاح</updateAvailable>
+		<errorListing>حصل خطأ أثناء التأكد من الإضافات</errorListing>
+		<taskforceInstallerMissing>ملف التاسك فورس مفقود</taskforceInstallerMissing>
+		<installCancel>تم إلغاء التثبيت</installCancel>
+		<minutes>دقيقة</minutes>
+		<seconds>ثانية</seconds>
+		<hours>ساعة</hours>
+		<playersIG>الاعبين المتصلين</playersIG>
+		<map>الخريطة</map>
+		<adminLevel>رتبة الأدمنية</adminLevel>
+		<copLevel>رتبة الشرطة</copLevel>
+		<medicLevel>رتبة الإسعاف</medicLevel>
+		<cash>حساب النقد</cash>
+		<bank>حساب البنك</bank>
+		<serverStatus>حالة السيرفر</serverStatus>
+		<IGinformations>المعلومات داخل اللعبة</IGinformations>
+		<usefulLink>الروابط الخارجية</usefulLink>
+    <serverMaintenance>This server is on maintenance !</serverMaintenance>
+    <serverLocked>Server locked</serverLocked>
+</AR>
   <JP language="Japanese">
     <languageTitle>言語を選択</languageTitle>
     <contry>日本</contry>
     <money>jp-JP</money>
+    <reverse>false</reverse>
     <logIn>ログイン</logIn>
     <logOut>ログアウト</logOut>
     <remember>私を覚えてますか</remember>

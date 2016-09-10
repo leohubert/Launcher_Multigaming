@@ -129,7 +129,7 @@ namespace LauncherArma3
             {
                 taskforceBox.Visible = false;
             }
-            setLanguage();
+            setLanguage();         
             if (File.Exists(appdata + communityName + "/armaDest"))
             {
                 armaDirectory = File.ReadAllText(appdata + communityName + "/armaDest");
@@ -214,6 +214,7 @@ namespace LauncherArma3
             if (serverMaintenance == true || canPlay == false)
                 refreshMaintenance();
             autoRefresh();
+
         }
 
         private async void refreshMaintenance()
@@ -692,6 +693,11 @@ namespace LauncherArma3
             playerInGameBox.Text = translateDic["IGinformations"];
             serverBox.Text = translateDic["serverStatus"];
             usefulBox.Text = translateDic["usefulLink"];
+            /*if (translateDic["reverse"] == "true")
+            {
+                this.RightToLeft = RightToLeft.Yes;
+                this.RightToLeftLayout = true;
+            }*/
         }
 
         private void settingsButton_Click(object sender, EventArgs e)

@@ -18,7 +18,7 @@ namespace LauncherArma3
             /* GENERAL OPTIONS */
 
             string communityName = "Emodyz";  /* Your serverName */
-            string apiUrl = "http://164.132.98.164/"; /* Link to API launcher Arma 3 */
+            string apiUrl = "http://launcher.arabmultigaming.net/"; /* Link to API launcher Arma 3 */
                         
             /* FTP NO FUNCTIONAL */
 
@@ -28,7 +28,7 @@ namespace LauncherArma3
            
             /* FTP NO FUNCTIONAL */
 
-            bool modDev = false;  /* enable or disable modDev */
+            bool modDev = true;  /* enable or disable modDev */
 
             /* ANOTHER VARIABLE */
 

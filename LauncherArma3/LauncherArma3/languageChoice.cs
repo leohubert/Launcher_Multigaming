@@ -88,9 +88,9 @@ namespace LauncherArma3
             this.Refresh();
         }
 
-        private void setMontreal(object sender, EventArgs e)
+        private void setArab(object sender, EventArgs e)
         {
-            language = "MT";
+            language = "AR";
             setLanguage();
             status = 0;
             setColor("SILVER");
@@ -112,6 +112,9 @@ namespace LauncherArma3
             {
                 case "BLUE":
                     this.Style = MetroColorStyle.Blue;
+                    break;
+                case "GREEN":
+                    this.Style = MetroColorStyle.Green;
                     break;
                 case "WHITE":
                     this.Style = MetroColorStyle.White;
@@ -219,21 +222,21 @@ namespace LauncherArma3
             }
         }
 
-        void animationMontreal()
+        void animationArab()
         {
             switch (status)
             {
                 case 0:
-                    setColor("PINK");
+                    setColor("GREEN");
                     break;
                 case 1:
-                    setColor("ORANGE");
+                    setColor("WHITE");
                     break;
                 case 2:
-                    setColor("PURPLE");
+                    setColor("GREEN");
                     break;
                 case 3:
-                    setColor("BROWN");
+                    setColor("SILVER");
                     break;
             }
         }
@@ -274,8 +277,8 @@ namespace LauncherArma3
                 case "SP":
                     animationSpain();
                     break;
-                case "MT":
-                    animationMontreal();
+                case "AR":
+                    animationArab();
                     break;
                 case "JP":
                     animationJapan();
@@ -324,11 +327,11 @@ namespace LauncherArma3
             normalyClose = true;
             this.DialogResult = DialogResult.OK;
             this.Close();
-        }
+        }    
 
-        private void montrealFlag_Click(object sender, EventArgs e)
+        private void arabFlag(object sender, EventArgs e)
         {
-            File.WriteAllText(appdata + serverName + "/language.lang", "MT");
+            File.WriteAllText(appdata + serverName + "/language.lang", "AR");
             normalyClose = true;
             this.DialogResult = DialogResult.OK;
             this.Close();

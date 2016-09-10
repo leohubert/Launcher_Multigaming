@@ -99,6 +99,12 @@ namespace LauncherArma3
             {
                 notifView("Warning ! Dev mod enabled !");   
             }
+            if (translateDic["reverse"] == "true")
+            {
+                this.RightToLeft = RightToLeft.Yes;
+                this.RightToLeftLayout = true;
+            }
+                             
         }
 
         private void checkOptions(object sender, EventArgs e)
@@ -522,6 +528,8 @@ namespace LauncherArma3
                 translate.ReadToFollowing(language);
                 translate.ReadToFollowing("money");
                 translateDic.Add("money", translate.ReadElementContentAsString());
+                translate.ReadToFollowing("reverse");
+                translateDic.Add("reverse", translate.ReadElementContentAsString());
                 translate.ReadToFollowing("logIn");
                 translateDic.Add("logIn", translate.ReadElementContentAsString());
                 translate.ReadToFollowing("logOut");

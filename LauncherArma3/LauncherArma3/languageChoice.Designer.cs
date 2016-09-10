@@ -80,8 +80,8 @@
             this.montrealFlag.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.montrealFlag.TabIndex = 10;
             this.montrealFlag.TabStop = false;
-            this.montrealFlag.Click += new System.EventHandler(this.montrealFlag_Click);
-            this.montrealFlag.MouseEnter += new System.EventHandler(this.setMontreal);
+            this.montrealFlag.Click += new System.EventHandler(this.arabFlag);
+            this.montrealFlag.MouseEnter += new System.EventHandler(this.setArab);
             // 
             // englishFlag
             // 
