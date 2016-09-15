@@ -252,7 +252,7 @@
 
                 <div class="row">
                     <div class="row">
-                        <div class="col-sm-9">
+                        <div class="col-sm-12">
                             <div class="card-box table-responsive">
 
                                 <h4 class="m-t-0 header-title"><b>Support</b></h4>
@@ -277,25 +277,6 @@
 
                                     </tbody>
                                 </table>
-                            </div>
-                        </div>
-                        <div class="col-sm-3">
-                            <div class="card-box table-responsive">
-                                <h4 class="m-t-0 header-title"><b>Server status</b></h4>
-                                <div class="wid-icon-info">
-                                    <div>
-                                        Status : <small class="text-warning" id="server_status_color"><b id="server_status">WAIT</b></small>
-                                    </div>
-                                    <div>
-                                        IP : <small class="text-primary"><b id="server_ip"></b></small>
-                                    </div>
-                                    <div>
-                                        Players : <small class="text-primary"><b id="server_players"></b></small>
-                                    </div>
-                                    <div>
-                                        Map : <small class="text-primary"><b id="server_map"></b></small>
-                                    </div>
-                                </div>
                             </div>
                         </div>
                     </div>

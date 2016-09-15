@@ -163,6 +163,7 @@
     /** @var API servers admin route $match */
     $router->map('POST','/api/server/admin/get', 'api/server/admin/get.php', 'api-server-admin-get');
     $router->map('POST','/api/server/admin/lock', 'api/server/admin/lock.php', 'api-server-admin-lock');
+    $router->map('POST','/api/server/admin/maintenance', 'api/server/admin/maintenance.php', 'api-server-admin-maintenance');
     $router->map('POST','/api/server/admin/setpass', 'api/server/admin/setpass.php', 'api-server-admin-setpass');
 
     /** @var API users ingames route $match */
@@ -172,6 +173,8 @@
     $router->map('POST','/api/server/status/get', 'api/server/status/index.php', 'api-server-status');
     $router->map('POST','/api/server/get', 'api/server/get.php', 'api-server-get');
     $router->map('POST','/api/server/auth', 'api/server/auth.php', 'api-server-auth');
+    $router->map('POST','/api/server/create', 'api/server/create.php', 'api-server-create');
+    $router->map('POST','/api/server/remove', 'api/server/remove.php', 'api-server-remove');
     $router->map('GET','/api/server/list', 'api/server/list.php', 'api-server-list');
 
     /** API intranet */

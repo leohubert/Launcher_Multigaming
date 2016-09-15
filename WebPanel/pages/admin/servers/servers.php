@@ -33,7 +33,7 @@
 
 
 
-    <body onload="loadNews()">
+    <body onload="loadServers()">
 
         <!-- Navigation Bar-->
         <?php include "jointures/header_admin.php"?>
@@ -75,60 +75,56 @@
                 </div>
                 <div class="col-sm-1"></div>
                 <div class="col-sm-4 col-lg-4">
+                    <form onsubmit="return addServer()">
                     <div class="panel panel-color panel-primary">
                         <div class="panel-heading">
                             <h3 class="panel-title">Create a new server</h3>
                         </div>
-                        <div class="panel-body">
-                            <p>
-                            <div id="banned_pop"></div>
-                            <div class="form-group">
-                                <div class="col-sm-12">
-                                    <input type="text" class="form-control"  placeholder="Server name" id="server_name">
-                                </div>
-                                <br>
-                                <br>
-                                <div class="col-sm-12">
-                                    <input type="text" class="form-control"  placeholder="ModPack Name (exemple = @YourServerName)" id="server_modpack">
-                                </div>
-                                <br>
-                                <br>
-                                <div class="col-sm-12">
-                                    <input type="text" class="form-control"  placeholder="Local Path (exemple = games/'yourservername') " id="local_path">
-                                </div>
-                                <br>
-                                <br>
-                                <div class="col-sm-12">
-                                    <input type="text" class="form-control"  placeholder="Server IP" id="server_ip">
-                                </div>
-                                <br>
-                                <br>
-                                <div class="col-sm-12">
-                                    <input type="text" class="form-control"  placeholder="Server Port" id="server_port">
-                                </div>
-                                <br>
-                                <br>
-                                <div class="col-sm-12">
-                                    <input type="text" class="form-control"  placeholder="Server TeamSpeak" id="server_teamspeak">
-                                </div>
-                                <br>
-                                <br>
-                                <div class="col-sm-12">
-                                    <input type="text" class="form-control"  placeholder="Server WebSite" id="server_website">
-                                </div>
-                                <br>
-                                <br>
-                                <div class="col-sm-12">
-                                    <input type="text" class="form-control"  placeholder="Server Rank (0 = first, 1 = second etc...)" id="server_rank">
+
+                            <div class="panel-body">
+                                <p>
+                                <div id="banned_pop"></div>
+                                <div class="form-group">
+                                    <div class="col-sm-12">
+                                        <input type="text" class="form-control"  placeholder="Server name" id="server_name" required>
+                                    </div>
+                                    <br>
+                                    <br>
+                                    <div class="col-sm-12">
+                                        <input type="text" class="form-control"  placeholder="ModPack Name (exemple = @YourServerName)" id="server_modpack_name" required>
+                                    </div>
+                                    <br>
+                                    <br>
+                                    <div class="col-sm-12">
+                                        <input type="text" class="form-control"  placeholder="Local Path (exemple = games/'yourservername') " id="server_local_path" required>
+                                    </div>
+                                    <br>
+                                    <br>
+                                    <div class="col-sm-12">
+                                        <input type="text" class="form-control"  placeholder="Server IP" id="server_ip" required>
+                                    </div>
+                                    <br>
+                                    <br>
+                                    <div class="col-sm-12">
+                                        <input type="number" class="form-control"  placeholder="Server Port" id="server_port" required>
+                                    </div>
+                                    <br>
+                                    <br>
+                                    <div class="col-sm-12">
+                                        <input type="text" class="form-control"  placeholder="Server Game" id="server_game" value="arma3" disabled>
+                                    </div>
+                                    <br>
+                                    <br>
+                                    <div class="col-sm-12">
+                                        <input type="number" min="0" max="100" class="form-control"  placeholder="Server Rank (0 = first, 1 = second etc...)" id="server_rank" required>
+                                    </div>
                                 </div>
                             </div>
-
-                            </p>
-                        </div>
                         <div class="panel-footer">
-                            <button type="button" class="btn btn-success btn-custom waves-effect w-md waves-light m-b-5" onclick="addNews()">Submit</button>
+                            <button type="submit" class="btn btn-success btn-custom waves-effect w-md waves-light m-b-5">Submit</button>
                         </div>
                     </div>
+                    </form>
                 </div>
                 <?php include "jointures/footer.php";?>
             </div>
@@ -136,7 +132,7 @@
 
 
         <script type="text/javascript">
-            function loadNews() {
+            function loadServers() {
                 $.get(
                     '/api/server/list',
                     {
@@ -165,7 +161,7 @@
                                 name.innerHTML = obj.servers[i].name;
                                 game.innerHTML = obj.servers[i].game;
                                 ip.innerHTML = obj.servers[i].ip + ":" +obj.servers[i].port;
-                                action.innerHTML = '<a href="/servers/view/'+ obj.servers[i].id +'"> <button class="btn btn-icon waves-effect waves-light btn-primary m-b-5"> <i class="fa fa-eye"></i> </button></a>  <button class="btn btn-icon waves-effect waves-light btn-danger m-b-5" onclick="removeNews('+ i +','+ obj.servers[i].id + ')"> <i class="fa fa-remove"></i></button>';
+                                action.innerHTML = '<a href="/servers/view/'+ obj.servers[i].id +'"> <button class="btn btn-icon waves-effect waves-light btn-primary m-b-5"> <i class="fa fa-eye"></i> </button></a>  <button class="btn btn-icon waves-effect waves-light btn-danger m-b-5" onclick="removeServer('+ i +','+ obj.servers[i].id + ')"> <i class="fa fa-remove"></i></button>';
                                 i++;
                                 total--;
                             }
@@ -187,13 +183,18 @@
                     'text'
                 );
             }
-            function addNews() {
+            function addServer() {
                     $.post(
-                        '/api/server/admin/create',
+                        '/api/server/create',
                         {
                             token : "<?php echo $_SESSION['token'];?>",
-                            title : document.getElementById("news_title").value,
-                            link : document.getElementById("news_link").value
+                            name : $('#server_name').val(),
+                            local_path : $('#server_local_path').val(),
+                            modpack_name : $('#server_modpack_name').val(),
+                            ip : $('#server_ip').val(),
+                            port : $('#server_port').val(),
+                            game : $('#server_game').val(),
+                            rank : $('#server_rank').val()
                         },
 
                         function(data){
@@ -202,8 +203,9 @@
                             if (obj.status == 42)
                             {
                                 $.Notification.notify('success','top right','Created !', obj.message);
-                                document.getElementById("news").innerHTML = "";
-                                loadNews();
+                                document.getElementById("servers").innerHTML = "";
+                                window.location = "servers/view/" + obj.server_id;
+                                loadServers();
                             }
                             else if (obj.status == 41)
                                 window.location="/logout";
@@ -213,43 +215,54 @@
 
                         'text'
                     );
+                return false;
             }
-            function removeNews(table_id, news_id) {
+            function removeServer(table_id, server_id) {
+                var remove_folder = 1;
                 swal({
                     title: "Are you sure?",
-                    text: "You will not be able to recover this news!",
+                    text: "You will not be able to recover this server!",
                     type: "warning",
                     showCancelButton: true,
                     confirmButtonColor: "#DD6B55",
                     confirmButtonText: "Yes, delete it!",
                     cancelButtonText: "No, cancel plx!",
                     closeOnConfirm: false,
+                    showLoaderOnConfirm: true,
                     closeOnCancel: false
                 }, function(isConfirm){
                     if (isConfirm) {
-                        $.post(
-                            '/api/news/admin/remove',
-                            {
-                                token : "<?php echo $_SESSION['token'];?>",
-                                id : news_id
-                            },
-
-                            function(data){
-                                var obj = JSON.parse(data);
-
-                                if (obj.status == 42)
+                        setTimeout(function(){
+                            $.post(
+                                '/api/server/remove',
                                 {
-                                    swal("Deleted!", obj.message , "success");
-                                    document.getElementById(table_id).remove();
-                                }
-                                else if (obj.status == 41)
-                                    window.location="/logout";
-                                else
-                                    swal("Error...", obj.message, "error");
-                            },
+                                    token : "<?php echo $_SESSION['token'];?>",
+                                    id : server_id,
+                                    remove_folder : remove_folder
+                                },
 
-                            'text'
-                        );
+                                function(data){
+                                    var obj = JSON.parse(data);
+
+                                    if (obj.status == 42)
+                                    {
+                                        swal({
+                                            title: "Deleted !",
+                                            text: obj.message,
+                                            type: "success",
+                                            timer: 500
+                                        });
+                                        document.getElementById(table_id).remove();
+                                    }
+                                    else if (obj.status == 41)
+                                        window.location="/logout";
+                                    else
+                                        swal("Error...", obj.message, "error");
+                                },
+
+                                'text'
+                            );
+                        }, 1300);
                     } else {
                         swal("Cancelled", "Deletion successfully canceled", "error");
                     }

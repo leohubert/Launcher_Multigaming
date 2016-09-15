@@ -81,7 +81,7 @@ if (isset($_POST['token']) && isset($_POST['id']))
                     }
 
                     $result['status'] = 42;
-                    $result['message'] = "Modlist showed";
+                    $result['message'] = "Update created";
                     $result['total_addons'] = count($addons);
                     $result['total_cpps'] = count($cpps);
                     $result['total_userconfigs'] = count($userconfigs);

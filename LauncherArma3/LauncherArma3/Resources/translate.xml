@@ -4,7 +4,7 @@
     <languageTitle>Choisissez votre langage</languageTitle>
     <contry>France</contry>
     <money>fr-FR</money>
-    <reverse>true</reverse>
+    <reverse>false</reverse>
     <logIn>Se connecter</logIn>
     <logOut>Se deconnecter</logOut>
     <remember>Se rappeler de moi</remember>
@@ -502,7 +502,7 @@
     <languageTitle>言語を選択</languageTitle>
     <contry>日本</contry>
     <money>jp-JP</money>
-    <reverse>false</reverse>
+    <reverse>true</reverse>
     <logIn>ログイン</logIn>
     <logOut>ログアウト</logOut>
     <remember>私を覚えてますか</remember>

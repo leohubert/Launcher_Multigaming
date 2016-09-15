@@ -73,6 +73,14 @@
                         button.className = "btn btn-success btn-custom waves-effect w-md waves-light m-b-5";
                     }
 
+                    if (obj.maintenance == 1)
+                    {
+                        var button = document.getElementById("maintenance_button");
+                        button.textContent = "Deactivate Maintenance";
+                        button.value = "unmaintenance";
+                        button.className = "btn btn-success btn-custom waves-effect w-md waves-light m-b-5";
+                    }
+
                     $.post(
                         '/api/server/status/get',
                         {
@@ -174,7 +182,12 @@
 
                         if (obj.status == 42)
                         {
-                            swal("Deleted!", obj.message , "success");
+                            swal({
+                                title: "Deleted !",
+                                text: obj.message,
+                                type: "success",
+                                timer: 500
+                            });
                             setInterval(function () {
                                 location.reload();
                             }, 1500);
@@ -208,7 +221,12 @@
 
                 if (obj.status == 42)
                 {
-
+                    swal({
+                        title: "Success !",
+                        text: obj.message,
+                        type: "success",
+                        timer: 1500
+                    });
                 }
                 else if (obj.status == 41)
                     window.location="/logout";
@@ -243,6 +261,12 @@
                         button.textContent = "UnLock Server";
                         button.value = "unlock";
                         button.className = "btn btn-success btn-custom waves-effect w-md waves-light m-b-5";
+
+                        //MODAL
+                        Custombox.open({
+                            target: '#lock',
+                            effect: 'blur'
+                        });
                     }
                     else if (obj.status == 41)
                         window.location="/logout";
@@ -289,6 +313,73 @@
         }
     }
 
+    function maintenanceServer()
+    {
+        var button = document.getElementById("maintenance_button");
+
+        if (button.value == "maintenance")
+        {
+            $.post(
+                '/api/server/admin/maintenance',
+                {
+                    token : "<?php echo $_SESSION['token'];?>",
+                    id : "<?php echo $id;?>",
+                    maintenance : 1
+                },
+
+                function(data){
+                    var obj = JSON.parse(data);
+                    if (obj.status == 42)
+                    {
+                        $.Notification.notify('warning','top right','Server Maintenance', "Maintenance activated");
+                        button.textContent = "Deactivate Maintenance";
+                        button.value = "unmaintenance";
+                        button.className = "btn btn-success btn-custom waves-effect w-md waves-light m-b-5";
+                    }
+                    else if (obj.status == 41)
+                        window.location="/logout";
+                    else if (obj.status == 44)
+                        sweetAlert("Missing permission", obj.message, "error");
+                    else
+                        $.Notification.notify('error','bottom center','Internal Error', "Error: " + obj.status + " | " + obj.message);
+
+                },
+
+                'text'
+            );
+        }
+        else
+        {
+            $.post(
+                '/api/server/admin/maintenance',
+                {
+                    token : "<?php echo $_SESSION['token'];?>",
+                    id : "<?php echo $id;?>",
+                    maintenance : 0
+                },
+
+                function(data){
+                    var obj = JSON.parse(data);
+                    if (obj.status == 42)
+                    {
+                        $.Notification.notify('success','top right','Server UnLocked', "Maintenance deactivated");
+                        button.textContent = "Activate Maintenance";
+                        button.value = "maintenance";
+                        button.className = "btn btn-danger btn-custom waves-effect w-md waves-light m-b-5";
+                    }
+                    else if (obj.status == 41)
+                        window.location="/logout";
+                    else if (obj.status == 44)
+                        sweetAlert("Missing permission", obj.message, "error");
+                    else
+                        $.Notification.notify('error','bottom center','Internal Error', "Error: " + obj.status + " | " + obj.message);
+
+                },
+
+                'text'
+            );
+        }
+    }
     function setPass()
     {
         $.post(
@@ -304,7 +395,12 @@
 
                 if (obj.status == 42)
                 {
-                    swal("Success", obj.message, "success");
+                    swal({
+                        title: "Success !",
+                        text: obj.message,
+                        type: "success",
+                        timer: 1000
+                    });
                 }
                 else if (obj.status == 41)
                     window.location="/logout";
@@ -359,7 +455,53 @@
                         <h3 class="panel-title">Server Control</h3>
                     </div>
                     <div class="panel-body">
-
+                        <div class="form-group">
+                            <label class="col-md-2 control-label">Server Name</label>
+                            <div class="col-md-4">
+                                <input type="text" class="form-control" placeholder="Server Name">
+                            </div>
+                            <label class="col-md-2 control-label">ModPack Name</label>
+                            <div class="col-md-4">
+                                <input type="text" class="form-control" placeholder="ModPack Name (exemple: @Server)">
+                            </div>
+                        </div>
+                        <br><br>
+                        <div class="form-group">
+                            <label class="col-md-2 control-label">TeamSpeak</label>
+                            <div class="col-md-4">
+                                <input type="text" class="form-control" placeholder="TS3 server">
+                            </div>
+                            <label class="col-md-2 control-label">WebSite</label>
+                            <div class="col-md-4">
+                                <input type="text" class="form-control" placeholder="WebSite">
+                            </div>
+                        </div>
+                        <br><br>
+                        <div class="form-group">
+                            <label class="col-md-2 control-label">IP</label>
+                            <div class="col-md-4">
+                                <input type="text" class="form-control" placeholder="Arma 3 IP">
+                            </div>
+                            <label class="col-md-2 control-label">PORT</label>
+                            <div class="col-md-4">
+                                <input type="text" class="form-control" placeholder="Arma 3 port (2302)">
+                            </div>
+                        </div>
+                        <br><br>
+                        <div class="form-group">
+                            <label class="col-md-2 control-label">Local Path</label>
+                            <div class="col-md-4">
+                                <input type="text" class="form-control" placeholder="Path to local" disabled>
+                            </div>
+                            <label class="col-md-2 control-label">Game</label>
+                            <div class="col-md-4">
+                                <input type="text" class="form-control" placeholder="Arma3, CSGO" disabled>
+                            </div>
+                        </div>
+                        <br><br><br>
+                        <div class="text-right">
+                            <button type="button" class="btn btn-warning btn-custom waves-effect w-md waves-light m-b-5">Save</button>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -369,7 +511,7 @@
                         <h3 class="panel-title">Server Access Control</h3>
                     </div>
                     <div class="panel-body text-center">
-                        <button type="button" class="btn btn-danger btn-custom waves-effect w-md waves-light m-b-5">Active Maintenance</button>
+                        <button id="maintenance_button" type="button" class="btn btn-danger btn-custom waves-effect w-md waves-light m-b-5" onclick="maintenanceServer()" value="maintenance">Activate Maintenance</button>
                         <br>
                         <button id="lock_button" type="button" class="btn btn-warning btn-custom waves-effect w-md waves-light m-b-5" onclick="lockServer()" value="lock">Lock Server</button>
                         <br>
@@ -378,16 +520,15 @@
                     </div>
                 </div>
             </div>
-        </div>
-
-        <div class="col-lg-12">
-            <div class="col-lg-3">
-                <div class="panel panel-border panel-primary">
-                    <div class="panel-heading">
-                        <h3 class="panel-title">Mods control</h3>
-                    </div>
-                    <div class="panel-body text-center">
-                        <button type="button" class="btn btn-warning btn-custom waves-effect w-md waves-light m-b-5" onclick="createModUpdate()">Create an update</button>
+            <div class="col-lg-12">
+                <div class="col-lg-3">
+                    <div class="panel panel-border panel-primary">
+                        <div class="panel-heading">
+                            <h3 class="panel-title">Mods control</h3>
+                        </div>
+                        <div class="panel-body text-center">
+                            <button type="button" class="btn btn-warning btn-custom waves-effect w-md waves-light m-b-5" onclick="createModUpdate()">Create an update</button>
+                        </div>
                     </div>
                 </div>
             </div>
