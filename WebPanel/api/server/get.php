@@ -36,6 +36,7 @@ if (isset($_POST['id']))
         $result['local_path'] = $res['local_path'];
         $result['maintenance'] = $res['maintenance'];
         $result['can_play'] = $res['can_play'];
+        $result['rank'] = $res['rank'];
         if ($res['password'] != 'null')
             $result['password'] = true;
         else

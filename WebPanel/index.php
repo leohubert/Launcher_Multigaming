@@ -69,6 +69,7 @@
                     $router->map('GET', '/news/view/[i:id]', 'pages/admin/news/view.php', 'news-admin-view');
                     $router->map('GET', '/servers', 'pages/admin/servers/servers.php', 'servers-admin-list');
                     $router->map('GET', '/servers/view/[i:id]', 'pages/admin/servers/view.php', 'servers-view-admin');
+                    $router->map('GET', '/servers/browse/[a:id]', 'pages/admin/servers/browser.php', 'servers-browse-admin');
                     $router->map('GET', '/support/view/[i:id]', 'pages/admin/support/view.php', 'support-view-admin');
                     $router->map('GET', '/users/all', 'pages/admin/users/all.php', 'users-all');
                     $router->map('GET', '/users/admins', 'pages/admin/users/admins.php', 'users-admins');
@@ -80,6 +81,7 @@
                     $router->map('GET', '/', 'pages/client/index.php', 'home-client');
                     $router->map('GET', '/support/view/[i:id]', 'pages/client/support/view.php', 'support-view-client');
                 }
+
                 /** INTRANET */
                 $router->map('GET', '/intranet', 'pages/intranet/index.php', 'intranet-index');
                 $router->map('GET', '/intranet/login', 'pages/intranet/login.php', 'intranet-login');
@@ -163,6 +165,7 @@
     /** @var API servers admin route $match */
     $router->map('POST','/api/server/admin/get', 'api/server/admin/get.php', 'api-server-admin-get');
     $router->map('POST','/api/server/admin/lock', 'api/server/admin/lock.php', 'api-server-admin-lock');
+    $router->map('POST','/api/server/admin/taskforce', 'api/server/admin/taskforce.php', 'api-server-admin-taskforce');
     $router->map('POST','/api/server/admin/maintenance', 'api/server/admin/maintenance.php', 'api-server-admin-maintenance');
     $router->map('POST','/api/server/admin/setpass', 'api/server/admin/setpass.php', 'api-server-admin-setpass');
 
@@ -174,11 +177,9 @@
     $router->map('POST','/api/server/get', 'api/server/get.php', 'api-server-get');
     $router->map('POST','/api/server/auth', 'api/server/auth.php', 'api-server-auth');
     $router->map('POST','/api/server/create', 'api/server/create.php', 'api-server-create');
+    $router->map('POST','/api/server/save', 'api/server/save.php', 'api-server-save');
     $router->map('POST','/api/server/remove', 'api/server/remove.php', 'api-server-remove');
     $router->map('GET','/api/server/list', 'api/server/list.php', 'api-server-list');
-
-    /** API intranet */
-    
 
     /* Match the current request */
     $match = $router->match();

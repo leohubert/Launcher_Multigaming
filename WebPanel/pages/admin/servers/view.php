@@ -53,6 +53,7 @@
 <body onload="loadServer()">
 
 <script>
+    var path = null;
     function loadServer() {
         $.post(
             '/api/server/admin/get',
@@ -73,6 +74,13 @@
                         button.className = "btn btn-success btn-custom waves-effect w-md waves-light m-b-5";
                     }
 
+                    if (obj.taskforce == 1)
+                    {
+                        var button = document.getElementById("taskforce_button");
+                        button.textContent = "Deactivate Taskforce";
+                        button.value = "untaskforce";
+                    }
+
                     if (obj.maintenance == 1)
                     {
                         var button = document.getElementById("maintenance_button");
@@ -80,6 +88,18 @@
                         button.value = "unmaintenance";
                         button.className = "btn btn-success btn-custom waves-effect w-md waves-light m-b-5";
                     }
+
+                    $('#server_name').val(obj.name);
+                    $('#server_modpack').val(obj.modpack_name);
+                    $('#server_teamspeak').val(obj.teamspeak);
+                    $('#server_website').val(obj.website);
+                    $('#server_ip2').val(obj.ip);
+                    $('#server_port').val(obj.port);
+                    $('#server_path').val(obj.local_path);
+                    $('#server_game').val(obj.game);
+                    $('#server_rank').val(obj.rank);
+                    path = obj.local_path;
+                    path = path.replace('games/', '');
 
                     $.post(
                         '/api/server/status/get',
@@ -127,85 +147,6 @@
             'text'
         );
     }
-    function saveUser() {
-        $.post(
-            '/api/users/admin/save',
-            {
-                token : "<?php echo $_SESSION['token'];?>",
-                id : "<?php echo $id;?>",
-                username : document.getElementById("control_username").value,
-                email : document.getElementById("control_email").value,
-                uid : document.getElementById("control_uid").value,
-                picture : document.getElementById("control_picture").value,
-                level : document.getElementById("control_level").value,
-                banned : document.getElementById("control_banned").value
-            },
-
-            function(data){
-                var obj = JSON.parse(data);
-                if (obj.status == 42)
-                {
-                    loadUser();
-                    $.Notification.notify('success','top right','Saved', obj.message);
-                }
-                else if (obj.status == 41)
-                    window.location="/logout";
-                else
-                    swal("Error...", obj.message, "error");
-            },
-
-            'text'
-        );
-    }
-    function deleteUser() {
-        swal({
-            title: "Are you sure?",
-            text: "You will not be able to recover this user !",
-            type: "warning",
-            showCancelButton: true,
-            confirmButtonColor: "#DD6B55",
-            confirmButtonText: "Yes, delete it!",
-            cancelButtonText: "No, cancel plx!",
-            closeOnConfirm: false,
-            closeOnCancel: false
-        }, function(isConfirm){
-            if (isConfirm) {
-                $.post(
-                    '/api/users/admin/remove',
-                    {
-                        token : "<?php echo $_SESSION['token'];?>",
-                        id : "<?php echo $id;?>"
-                    },
-
-                    function(data){
-                        var obj = JSON.parse(data);
-
-                        if (obj.status == 42)
-                        {
-                            swal({
-                                title: "Deleted !",
-                                text: obj.message,
-                                type: "success",
-                                timer: 500
-                            });
-                            setInterval(function () {
-                                location.reload();
-                            }, 1500);
-                        }
-                        else if (obj.status == 41)
-                            window.location="/logout";
-                        else
-                            swal("Error...", obj.message, "error");
-                    },
-
-                    'text'
-                );
-            } else {
-                swal("Cancelled", "Deletion successfully canceled", "error");
-            }
-        });
-    }
-    
     function createModUpdate()
     {
         waitingDialog.show('Creating update in progress, don\'t refresh this page !', {progressType: 'warning'});
@@ -362,10 +303,76 @@
                     var obj = JSON.parse(data);
                     if (obj.status == 42)
                     {
-                        $.Notification.notify('success','top right','Server UnLocked', "Maintenance deactivated");
+                        $.Notification.notify('success','top right','Server Maintenance', "Maintenance deactivated");
                         button.textContent = "Activate Maintenance";
                         button.value = "maintenance";
                         button.className = "btn btn-danger btn-custom waves-effect w-md waves-light m-b-5";
+                    }
+                    else if (obj.status == 41)
+                        window.location="/logout";
+                    else if (obj.status == 44)
+                        sweetAlert("Missing permission", obj.message, "error");
+                    else
+                        $.Notification.notify('error','bottom center','Internal Error', "Error: " + obj.status + " | " + obj.message);
+
+                },
+
+                'text'
+            );
+        }
+    }
+
+    function switch_taskforce()
+    {
+        var button = document.getElementById("taskforce_button");
+
+        if (button.value == "taskforce")
+        {
+            $.post(
+                '/api/server/admin/taskforce',
+                {
+                    token : "<?php echo $_SESSION['token'];?>",
+                    id : "<?php echo $id;?>",
+                    taskforce : 1
+                },
+
+                function(data){
+                    var obj = JSON.parse(data);
+                    if (obj.status == 42)
+                    {
+                        $.Notification.notify('warning','top right','Taskforce', "Taskforce activated");
+                        button.textContent = "Deactivate Taskforce";
+                        button.value = "untaskforce";
+                    }
+                    else if (obj.status == 41)
+                        window.location="/logout";
+                    else if (obj.status == 44)
+                        sweetAlert("Missing permission", obj.message, "error");
+                    else
+                        $.Notification.notify('error','bottom center','Internal Error', "Error: " + obj.status + " | " + obj.message);
+
+                },
+
+                'text'
+            );
+        }
+        else
+        {
+            $.post(
+                '/api/server/admin/taskforce',
+                {
+                    token : "<?php echo $_SESSION['token'];?>",
+                    id : "<?php echo $id;?>",
+                    taskforce : 0
+                },
+
+                function(data){
+                    var obj = JSON.parse(data);
+                    if (obj.status == 42)
+                    {
+                        $.Notification.notify('success','top right','Taskforce', "Taskforce deactivated");
+                        button.textContent = "Activate Taskforce";
+                        button.value = "taskforce";
                     }
                     else if (obj.status == 41)
                         window.location="/logout";
@@ -411,6 +418,43 @@
             'text'
         );
     }
+    
+    function saveServer() {
+        $.post(
+            '/api/server/save',
+            {
+                token : "<?php echo $_SESSION['token'];?>",
+                id : "<?php echo $id; ?>",
+                name : $('#server_name').val(),
+                local_path : $('#server_path').val(),
+                modpack_name : $('#server_modpack').val(),
+                ip : $('#server_ip2').val(),
+                port : $('#server_port').val(),
+                game : $('#server_game').val(),
+                rank : $('#server_rank').val(),
+                teamspeak : $('#server_teamspeak').val(),
+                website : $('#server_website').val()
+            },
+
+            function(data){
+                var obj = JSON.parse(data);
+
+                if (obj.status == 42)
+                {
+                    $.Notification.notify('success','top right','Saved !', obj.message);
+                }
+                else if (obj.status == 41)
+                    window.location="/logout";
+                else
+                    swal("Error...", obj.message, "error");
+            },
+
+            'text'
+        );
+    }
+    function openBrowser() {
+        window.location = "/servers/browse/" + path;
+    }
 </script>
 
 <?php include "jointures/header_admin.php"?>
@@ -424,9 +468,9 @@
                 </h4>
             </div>
         </div>
-
-        <div class="col-lg-12">
+        <div class="row">
             <div class="col-lg-3">
+
                 <div class="panel panel-border panel-info">
                     <div class="panel-heading">
                         <h3 class="panel-title">Server Status</h3>
@@ -448,6 +492,16 @@
                         </div>
                     </div>
                 </div>
+
+                <div class="panel panel-border panel-primary">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Mods control</h3>
+                    </div>
+                    <div class="panel-body text-center">
+                        <button type="button" class="btn btn-warning btn-custom waves-effect w-md waves-light m-b-5" onclick="createModUpdate()">Create an update</button>
+                    </div>
+                </div>
+
             </div>
             <div class="col-lg-6">
                 <div class="panel panel-border panel-success">
@@ -458,54 +512,64 @@
                         <div class="form-group">
                             <label class="col-md-2 control-label">Server Name</label>
                             <div class="col-md-4">
-                                <input type="text" class="form-control" placeholder="Server Name">
+                                <input type="text" class="form-control" id="server_name" placeholder="Server Name">
                             </div>
                             <label class="col-md-2 control-label">ModPack Name</label>
                             <div class="col-md-4">
-                                <input type="text" class="form-control" placeholder="ModPack Name (exemple: @Server)">
+                                <input type="text" class="form-control" id="server_modpack" placeholder="ModPack Name (exemple: @Server)">
                             </div>
                         </div>
                         <br><br>
                         <div class="form-group">
                             <label class="col-md-2 control-label">TeamSpeak</label>
                             <div class="col-md-4">
-                                <input type="text" class="form-control" placeholder="TS3 server">
+                                <input type="text" class="form-control" id="server_teamspeak" placeholder="TS3 server">
                             </div>
                             <label class="col-md-2 control-label">WebSite</label>
                             <div class="col-md-4">
-                                <input type="text" class="form-control" placeholder="WebSite">
+                                <input type="text" class="form-control" id="server_website" placeholder="WebSite">
                             </div>
                         </div>
                         <br><br>
                         <div class="form-group">
                             <label class="col-md-2 control-label">IP</label>
                             <div class="col-md-4">
-                                <input type="text" class="form-control" placeholder="Arma 3 IP">
+                                <input type="text" class="form-control" id="server_ip2" placeholder="Arma 3 IP">
                             </div>
                             <label class="col-md-2 control-label">PORT</label>
                             <div class="col-md-4">
-                                <input type="text" class="form-control" placeholder="Arma 3 port (2302)">
+                                <input type="text" class="form-control" id="server_port" placeholder="Arma 3 port (2302)">
                             </div>
                         </div>
                         <br><br>
                         <div class="form-group">
                             <label class="col-md-2 control-label">Local Path</label>
                             <div class="col-md-4">
-                                <input type="text" class="form-control" placeholder="Path to local" disabled>
+                                <input type="text" class="form-control" id="server_path" placeholder="Path to local" disabled>
                             </div>
                             <label class="col-md-2 control-label">Game</label>
                             <div class="col-md-4">
-                                <input type="text" class="form-control" placeholder="Arma3, CSGO" disabled>
+                                <input type="text" class="form-control" id="server_game" placeholder="Arma3, CSGO" disabled>
+                            </div>
+                        </div>
+                        <br><br>
+                        <div class="form-group">
+                            <label class="col-md-2 control-label">Rank</label>
+                            <div class="col-md-10">
+                                <input type="number" max="100" min="0" class="form-control" id="server_rank" placeholder="Rank">
                             </div>
                         </div>
                         <br><br><br>
                         <div class="text-right">
-                            <button type="button" class="btn btn-warning btn-custom waves-effect w-md waves-light m-b-5">Save</button>
+                            <button type="button" class="btn btn-warning btn-custom waves-effect w-md waves-light m-b-5" onclick="saveServer()">Save</button>
                         </div>
                     </div>
                 </div>
             </div>
+            <!-- end col -8 -->
+
             <div class="col-lg-3">
+
                 <div class="panel panel-border panel-warning">
                     <div class="panel-heading">
                         <h3 class="panel-title">Server Access Control</h3>
@@ -519,50 +583,53 @@
                            data-overlaySpeed="200" data-overlayColor="#36404a">Set password</a>
                     </div>
                 </div>
+
+                <div class="panel panel-border panel-purple">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Taskforce Radio Control</h3>
+                    </div>
+                    <div class="panel-body text-center">
+                        <button id="taskforce_button" type="button" class="btn btn-purple btn-custom waves-effect w-md waves-light m-b-5" onclick="switch_taskforce()" value="taskforce">Activate Taskforce</button>
+                    </div>
+                </div>
+
+                <div class="panel panel-border panel-color">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Browse Files</h3>
+                    </div>
+                    <div class="panel-body text-center">
+                        <button id="browse" type="button" class="btn btn-default btn-custom waves-effect w-md waves-light m-b-5" onclick="openBrowser()" value="taskforce">Browse server</button>
+                    </div>
+                </div>
             </div>
-            <div class="col-lg-12">
-                <div class="col-lg-3">
-                    <div class="panel panel-border panel-primary">
-                        <div class="panel-heading">
-                            <h3 class="panel-title">Mods control</h3>
-                        </div>
-                        <div class="panel-body text-center">
-                            <button type="button" class="btn btn-warning btn-custom waves-effect w-md waves-light m-b-5" onclick="createModUpdate()">Create an update</button>
+        </div>
+
+        <div class="row">
+            <div class="col-md-12">
+                <div id="lock" class="modal-demo text-center ">
+                    <button type="button" class="close" onclick="Custombox.close();">
+                        <span>&times;</span><span class="sr-only">Close</span>
+                    </button>
+                    <h4 class="custom-modal-title">Set an server password</h4>
+                    <div class="custom-modal-text">
+                        <input id="lock_password" type="text" class="form-control" placeholder="Server Password">
+                        <br>
+                        <div class="col-lg-12">
+                            <div class="col-lg-6">
+                                <button type="button" class="btn btn-warning btn-custom waves-effect w-md waves-light m-b-5" onclick="Custombox.close();">Cancel</button>
+                            </div>
+                            <div class="col-lg-6">
+                                <button type="button" class="btn btn-info btn-custom waves-effect w-md waves-light m-b-5" onclick="Custombox.close();setPass();">Set Password</button>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
 
-    </div>
-
-    <div class="row">
-        <div class="col-md-12">
-            <div id="lock" class="modal-demo text-center ">
-                <button type="button" class="close" onclick="Custombox.close();">
-                    <span>&times;</span><span class="sr-only">Close</span>
-                </button>
-                <h4 class="custom-modal-title">Set an server password</h4>
-                <div class="custom-modal-text">
-                    <input id="lock_password" type="text" class="form-control" placeholder="Server Password">
-                    <br>
-                    <div class="col-lg-12">
-                        <div class="col-lg-6">
-                            <button type="button" class="btn btn-warning btn-custom waves-effect w-md waves-light m-b-5" onclick="Custombox.close();">Cancel</button>
-                        </div>
-                        <div class="col-lg-6">
-                            <button type="button" class="btn btn-info btn-custom waves-effect w-md waves-light m-b-5" onclick="Custombox.close();setPass();">Set Password</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
     </div>
 
 </div>
-
-
-
 
 <?php include "jointures/footer.php";?>
 

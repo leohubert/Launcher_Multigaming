@@ -47,6 +47,7 @@ if (isset($_POST['token']) && isset($_POST['id']) && is_numeric($_POST['id']))
                 $result['local_path'] = $res['local_path'];
                 $result['maintenance'] = $res['maintenance'];
                 $result['can_play'] = $res['can_play'];
+                $result['rank'] = $res['rank'];
                 if ($myLevel >= 9)
                 {
                     if ($res['password'] == 'null')

@@ -12,8 +12,7 @@ Release date: 03/07/2016 16:38
 Copyright HUBERT Léo © 2014 - 2016
 
 ## Coming soon:
-- Multi server
-- Login with forum, facebook, etc ...
+- Login with forum, facebook, etc ... (XenForo in progress)
 - More stats ingame ( gang, total vehicle, total house etc...)
 - Auto detect Steam UID
 - Donation system
@@ -81,6 +80,9 @@ Release 5.1.0.0: (not finished)
 - Add: Server section into the panel
 - Add: You can lock a server (with password or not)
 - Add: You can make a server on maintenance
+- Add: File Browser ( for server )
+- Add: New Taskforce System
+- Remove: IP server adress from launcher (change with mission) 
 - Fix: Taskforce Installer (userconfig)
 - Fix: Some Bugs
 We prepare the launcher for use with the steamAPI
