@@ -1,0 +1,8 @@
+Change php.ini
+upload file size max,
+memory_limit = 1000M
+
+
+Corriger bug.
+Si il n'y a pas de .json sur le serveur
+Si le lien du site est incorrect
