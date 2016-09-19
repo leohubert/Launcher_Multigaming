@@ -20,11 +20,11 @@ if (isset($_POST['id']) && isset($_POST['password']))
     {
         $getSettings->execute(array('id' => $id));
         $res = $getSettings->fetch();
-        if ($res['password'] == $password)
+        if ($res['lock'] == $password)
         {
             $result['status'] = 42;
             $result['message'] = "Access success.";
-            $result['password'] = $res['password'];
+            $result['password'] = $res['lock'];
         }
         else
         {

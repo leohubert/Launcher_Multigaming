@@ -42,7 +42,7 @@ if (isset($_POST['token']) && isset($_POST['name'])&& isset($_POST['local_path']
             if ($getServer->rowCount() != 0)
             {
                 $getSettings = $database->prepare('UPDATE `servers` SET `name`= :name,`local_path`= :local_path,`modpack_name`= :modpack_name,
-                                                  `ip`= :ip,`port`= :port,`teamspeak`= :teamspeak,`website`= :teamspeak,`game`= :game,
+                                                  `ip`= :ip,`port`= :port,`teamspeak`= :teamspeak,`website`= :website,`game`= :game,
                                                   `rank`= :rank WHERE id= :id');
                 $getSettings->execute(array('name' => $name, 'local_path' => $local_path, 'modpack_name' => $modpack_name, 'ip' => $ip,
                     'port' => $port, 'game' => $game, 'rank' => $rank, 'teamspeak' => $teamspeak, 'website' => $website, 'id' => $id));

@@ -46,8 +46,28 @@ if (isset($_POST['token']) && isset($_POST['id']) && is_numeric($_POST['id']))
                 $result['modpack_name'] = $res['modpack_name'];
                 $result['local_path'] = $res['local_path'];
                 $result['maintenance'] = $res['maintenance'];
-                $result['can_play'] = $res['can_play'];
-                $result['rank'] = $res['rank'];
+                if ($res['password'] == 'null')
+                    $result['haspass'] = 0;
+                else
+                    $result['haspass'] = 1;
+                if ($res['lock'] == 'null')
+                    $result['locked'] = 0;
+                else
+                    $result['locked'] = 1;
+                if ($myLevel >= 9)
+                {
+                    if ($res['lock'] == 'null')
+                        $result['lock'] = "No password";
+                    else
+                        $result['lock'] = $res['lock'];
+                }
+                else
+                {
+                    if ($res['lock'] == 'null')
+                        $result['lock'] = "No password";
+                    else
+                        $result['lock'] = "*******";
+                }
                 if ($myLevel >= 9)
                 {
                     if ($res['password'] == 'null')
@@ -62,6 +82,7 @@ if (isset($_POST['token']) && isset($_POST['id']) && is_numeric($_POST['id']))
                     else
                         $result['password'] = "*******";
                 }
+                $result['rank'] = $res['rank'];
             }
             else
             {

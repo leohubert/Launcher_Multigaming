@@ -18,29 +18,36 @@ if (isset($_POST['id']))
     if ($getSettings = $database->prepare('SELECT * FROM `servers` WHERE id = :id'))
     {
         $getSettings->execute(array('id' => $id));
-        $res = $getSettings->fetch();
-        $result['status'] = 42;
-        $result['message'] = "Servers listed";
-        $result['id'] = (int)$res['id'];
-        $result['name'] = $res['name'];
-        $result['ip'] = $res['ip'];
-        $result['port'] = $res['port'];
-        $result['show_infos'] = (int)$res['show_infos'];
-        $result['teamspeak'] = $res['teamspeak'];
-        $result['website'] = $res['website'];
-        $result['game'] = $res['game'];
-        $result['taskforce'] = $res['taskforce'];
-        $result['vtaskforce'] = $res['vtaskforce'];
-        $result['vmod'] = $res['vmod'];
-        $result['modpack_name'] = $res['modpack_name'];
-        $result['local_path'] = $res['local_path'];
-        $result['maintenance'] = $res['maintenance'];
-        $result['can_play'] = $res['can_play'];
-        $result['rank'] = $res['rank'];
-        if ($res['password'] != 'null')
-            $result['password'] = true;
+        if ($getSettings->rowCount() != 0) {
+            $res = $getSettings->fetch();
+            $result['status'] = 42;
+            $result['message'] = "Servers listed";
+            $result['id'] = (int)$res['id'];
+            $result['name'] = $res['name'];
+            $result['ip'] = $res['ip'];
+            $result['port'] = $res['port'];
+            $result['show_infos'] = (int)$res['show_infos'];
+            $result['teamspeak'] = $res['teamspeak'];
+            $result['website'] = $res['website'];
+            $result['game'] = $res['game'];
+            $result['taskforce'] = $res['taskforce'];
+            $result['vtaskforce'] = $res['vtaskforce'];
+            $result['vmod'] = $res['vmod'];
+            $result['modpack_name'] = $res['modpack_name'];
+            $result['local_path'] = $res['local_path'];
+            $result['maintenance'] = $res['maintenance'];
+            if ($res['lock'] != 'null')
+                $result['locked'] = true;
+            else
+                $result['locked'] = false;
+            $result['password'] = $res['password'];
+            $result['rank'] = $res['rank'];
+        }
         else
-            $result['password'] = false;
+        {
+            $result['status'] = 04;
+            $result['message'] = "Servers not exist";
+        }
     }
 }
 else

@@ -36,7 +36,8 @@ namespace LauncherArma3
         string modsPackName;
         string downloadPath;
         bool serverMaintenance;
-        bool canPlay;
+        bool serverLocked;
+        string serverLockPass = null;
         string serverPass = null;
 
         /* Variables globals */
@@ -94,7 +95,7 @@ namespace LauncherArma3
 
         public launcherMain(string server, string api, string website, string _teamSpeak, string session, string ftpUrl, string ftpUser, string ftpPass, string vmod,
             int _taskforce, string _vtaskforce, bool _modDev, string _serverArmaIp, Dictionary<string, string> _translateDic, bool _showIGinfo, string _serverName,
-            string _serverID, string _modsPackName, string _downloadPath, bool _canPlay, bool _serverMaintenance)
+            string _serverID, string _modsPackName, string _downloadPath, bool _serverLocked, bool _serverMaintenance, string _serverPass)
         {
             InitializeComponent();
             communityName = server;
@@ -116,13 +117,15 @@ namespace LauncherArma3
             serverID = _serverID;
             modsPackName = _modsPackName;
             downloadPath = _downloadPath;
-            canPlay = _canPlay;
+            serverLocked = _serverLocked;
             serverMaintenance = _serverMaintenance;
+            serverPass = _serverPass;
             this.Text = serverName;
         }
 
         private void launcherMain_Load(object sender, EventArgs e)
-        {
+        {            
+            //notification.ShowBalloonTip(1000, "Hey", "Welcome", ToolTipIcon.Info);
             if (!Directory.Exists((appdata + communityName + "/" + serverID)))
                 Directory.CreateDirectory(appdata + communityName + "/" + serverID);
             if (taskforce == 0)
@@ -197,7 +200,7 @@ namespace LauncherArma3
                 playerInGameBox.Visible = false;
                 usefulBox.Location = new Point(308, 253);
             }
-            if (canPlay == false)
+            if (serverLocked == true)
             {
                 clearNotif();
                 infoBox.Visible = true;
@@ -211,7 +214,7 @@ namespace LauncherArma3
                 errorBox.Text = translateDic["serverMaintenance"];
                 this.Style = MetroColorStyle.Orange;
             }
-            if (serverMaintenance == true || canPlay == false)
+            if (serverMaintenance == true || serverLocked == true)
                 refreshMaintenance();
             autoRefresh();
 
@@ -246,16 +249,16 @@ namespace LauncherArma3
                                 this.Style = MetroColorStyle.Blue;
                                 clearNotif();
                             }
-                            if (res.can_play == "1" && canPlay == false)
+                            if (res.locked == false && serverLocked == true)
                             {
                                 this.Style = MetroColorStyle.Blue;
                                 clearNotif();
-                                canPlay = true;
+                                serverLocked = false;
                                 checkUpdate();
                             }
-                            if (serverMaintenance == false && canPlay == true)
+                            if (serverMaintenance == false && serverLocked == false)
                                 i = 1;
-                        }
+                        }                        
                     }
                     catch
                     {
@@ -959,7 +962,7 @@ namespace LauncherArma3
             }
             if (update == false && forceUpdate.Checked == false)
             {
-                if (canPlay == true)
+                if (serverLocked == false)
                     startArma();
                 else
                 {
@@ -970,8 +973,8 @@ namespace LauncherArma3
                         {
                             if (form.access == true)
                             {
-                                serverPass = form.password;
-                                canPlay = true;
+                                serverLockPass = form.password;
+                                serverLocked = true;
                                 startArma();
                             }
                         }
@@ -1010,7 +1013,6 @@ namespace LauncherArma3
                 await Task.Delay(1000);
             }
 
-
             /* START LISTING */
             dynamic res;
 
@@ -1022,8 +1024,7 @@ namespace LauncherArma3
             {
                 downloadMessage.Text = translateDic["serverRequest"];
                 serverRequest.RunWorkerAsync();
-            }
-
+            }            
 
             while (stat == 0)
             {
@@ -1036,6 +1037,12 @@ namespace LauncherArma3
                 }
                 else
                     await Task.Delay(1000);
+            }
+
+            if (result.status != "42")
+            {
+                MetroMessageBox.Show(this, "Please contact the fondateur for fix this problem (need to create an update)", "An error was detected !", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                cancel = true;
             }
 
             res = result;
@@ -1312,19 +1319,29 @@ namespace LauncherArma3
         private async void startArma()
         {
             playButton.Text = "Game Starting ...";
-            if (serverPass == null)
+            if (serverLockPass == null)
             {
                 if (launchOptions == null || launchOptions.Length == 0)
-                    Process.Start(armaDirectory + "/arma3battleye.exe", "0 1 -mod=" + modsPackName + " -nopause -connect=" + serverArmaIp);
+                {
+                    if (serverPass == null)
+                        Process.Start(armaDirectory + "/arma3battleye.exe", "0 1 -mod=" + modsPackName + " -nopause -connect=" + serverArmaIp);
+                    else
+                        Process.Start(armaDirectory + "/arma3battleye.exe", "0 1 -mod=" + modsPackName + " -nopause -connect=" + serverArmaIp + " -password=" + serverPass);
+                }            
                 else
-                    Process.Start(armaDirectory + "/arma3battleye.exe", "0 1 -mod=" + modsPackName + " -nopause -connect=" + serverArmaIp + " " + launchOptions);
+                {
+                    if (serverPass == null)
+                        Process.Start(armaDirectory + "/arma3battleye.exe", "0 1 -mod=" + modsPackName + " -nopause -connect=" + serverArmaIp + " " + launchOptions);
+                    else
+                        Process.Start(armaDirectory + "/arma3battleye.exe", "0 1 -mod=" + modsPackName + " -nopause -connect=" + serverArmaIp + " -password=" + serverPass + " " + launchOptions);
+                }                
             }
-            else
-            {
+            else 
+            {                
                 if (launchOptions == null || launchOptions.Length == 0)
-                    Process.Start(armaDirectory + "/arma3battleye.exe", "0 1 -mod=" + modsPackName + " -nopause -connect=" + serverArmaIp + " -password=" + serverPass);
+                    Process.Start(armaDirectory + "/arma3battleye.exe", "0 1 -mod=" + modsPackName + " -nopause -connect=" + serverArmaIp + " -password=" + serverLockPass);
                 else
-                    Process.Start(armaDirectory + "/arma3battleye.exe", "0 1 -mod=" + modsPackName + " -nopause -connect=" + serverArmaIp + " -password=" + serverPass + " " + launchOptions);
+                    Process.Start(armaDirectory + "/arma3battleye.exe", "0 1 -mod=" + modsPackName + " -nopause -connect=" + serverArmaIp + " -password=" + serverLockPass + " " + launchOptions);
             }
 
             await Task.Delay(17000);
@@ -1537,7 +1554,7 @@ namespace LauncherArma3
             else
             {
                 update = false;
-                if (canPlay == true)
+                if (serverLocked == false)
                     playButton.Text = translateDic["play"];
                 else
                     playButton.Text = translateDic["serverLocked"];
@@ -1576,6 +1593,7 @@ namespace LauncherArma3
                 clearNotif();
                 errorBox.Visible = true;
                 errorBox.Text = translateDic["errorListing"];
+                result = null;
             }
         }
 
@@ -1629,9 +1647,18 @@ namespace LauncherArma3
 
         private void webSiteIcon_Click(object sender, EventArgs e)
         {
-            Process p = new Process();
-            p.StartInfo.FileName = webSite;
-            p.Start();
+            try
+            {
+                Process p = new Process();
+                p.StartInfo.FileName = webSite;
+                p.Start();
+            }
+            catch
+            {
+                clearNotif();
+                errorBox.Visible = true;
+                errorBox.Text = "WebSite link ins't correct";
+            }            
         }
 
         private void changeGameButton_Click(object sender, EventArgs e)

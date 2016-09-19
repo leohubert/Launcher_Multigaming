@@ -35,8 +35,9 @@ namespace LauncherArma3
         bool showIGinfo;
         string modPackName;
         string downloadPath;
-        bool canPlay;
+        bool serverLocked;
         bool serverMaintenance;
+        string serverPass = null;
 
         /* SERVER VARIABLE */
 
@@ -218,7 +219,7 @@ namespace LauncherArma3
                         case "arma3":
                             using (var launcher = new launcherMain(communityName, apiUrl, webSite, teamSpeak, sessionToken, ftp_url, ftp_user, 
                                 ftp_pass, vLast, taskforce, vtaskforce, modDev, serverIP, translateDic, showIGinfo, serverName, serverID,
-                                modPackName, downloadPath, canPlay, serverMaintenance))
+                                modPackName, downloadPath, serverLocked, serverMaintenance, serverPass))
                             {
                                 var result = launcher.ShowDialog();
                                 if (result == DialogResult.Yes)
@@ -357,7 +358,7 @@ namespace LauncherArma3
                     case "arma3":
                         using (var launcher = new launcherMain(communityName, apiUrl, webSite, teamSpeak, sessionToken, ftp_url, ftp_user, ftp_pass, 
                             vLast, taskforce, vtaskforce, modDev, serverIP, translateDic, showIGinfo, serverName, serverID, modPackName, downloadPath,
-                            canPlay, serverMaintenance))
+                            serverLocked, serverMaintenance, serverPass))
                         {
                             var result = launcher.ShowDialog();
                             if (result == DialogResult.Yes)
@@ -404,6 +405,8 @@ namespace LauncherArma3
                 taskforce = res.taskforce;
                 modPackName = res.modpack_name;
                 downloadPath = res.local_path;
+                if (res.password != "null")
+                     serverPass = res.password;
                 if (res.show_infos == "1")
                     showIGinfo = true;
                 else
@@ -412,10 +415,27 @@ namespace LauncherArma3
                     serverMaintenance = true;
                 else
                     serverMaintenance = false;
-                if (res.can_play == "1")
-                    canPlay = true;
+                if (res.locked == true)
+                    serverLocked = true;
                 else
-                    canPlay = false;
+                    serverLocked = false;
+            }
+            else if (res.status == "04")
+            {                
+                using (var chooseServer = new serverChoose(apiUrl, communityName, translateDic, appdata))
+                {
+                    var result = chooseServer.ShowDialog();
+                    if (result == DialogResult.OK)
+                    {
+                        serverID = chooseServer.currentServerid;
+                        serverIP = chooseServer.currentServerIP;
+                        serverGame = chooseServer.currentServerGame;
+                        serverName = chooseServer.currentServerName;
+                        getServerInfo(serverID);
+                    }
+                    else
+                        this.Close();
+                }
             }
         }
 
@@ -470,7 +490,8 @@ namespace LauncherArma3
                     {
                         case "arma3":
                             using (var launcher = new launcherMain(communityName, apiUrl, webSite, teamSpeak, sessionToken, ftp_url, ftp_user, ftp_pass, vLast, taskforce, 
-                                vtaskforce, modDev, serverIP, translateDic, showIGinfo, serverName, serverID, modPackName, downloadPath, canPlay, serverMaintenance))
+                                vtaskforce, modDev, serverIP, translateDic, showIGinfo, serverName, serverID, modPackName, downloadPath, serverLocked, serverMaintenance,
+                                serverPass))
                             {
                                 var result = launcher.ShowDialog();
                                 if (result == DialogResult.Yes)

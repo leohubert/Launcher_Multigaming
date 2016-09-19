@@ -66,11 +66,18 @@
                 var obj = JSON.parse(data);
                 if (obj.status == 42)
                 {
-                    if (obj.can_play == 0)
+                    if (obj.locked == 1)
                     {
                         var button = document.getElementById("lock_button");
                         button.textContent = "UnLock Server";
                         button.value = "unlock";
+                        button.className = "btn btn-success btn-custom waves-effect w-md waves-light m-b-5";
+                    }
+                    if (obj.haspass == 1)
+                    {
+                        var button = document.getElementById("server_button");
+                        button.textContent = "UnSet Password";
+                        button.value = "unpass";
                         button.className = "btn btn-success btn-custom waves-effect w-md waves-light m-b-5";
                     }
 
@@ -186,28 +193,29 @@
 
         if (button.value == "lock")
         {
+            //MODAL
+            Custombox.open({
+                target: '#lock',
+                effect: 'blur'
+            });
+        }
+        else
+        {
             $.post(
-                '/api/server/admin/lock',
+                '/api/server/admin/unlock',
                 {
                     token : "<?php echo $_SESSION['token'];?>",
-                    id : "<?php echo $id;?>",
-                    lock : 0
+                    id : "<?php echo $id;?>"
                 },
 
                 function(data){
                     var obj = JSON.parse(data);
                     if (obj.status == 42)
                     {
-                        $.Notification.notify('warning','top right','Server Locked', "Server as been locked");
-                        button.textContent = "UnLock Server";
-                        button.value = "unlock";
-                        button.className = "btn btn-success btn-custom waves-effect w-md waves-light m-b-5";
-
-                        //MODAL
-                        Custombox.open({
-                            target: '#lock',
-                            effect: 'blur'
-                        });
+                        $.Notification.notify('success','top right','Server UnLocked', "Server as been unlocked");
+                        button.textContent = "Lock Server";
+                        button.value = "lock";
+                        button.className = "btn btn-warning btn-custom waves-effect w-md waves-light m-b-5";
                     }
                     else if (obj.status == 41)
                         window.location="/logout";
@@ -221,23 +229,37 @@
                 'text'
             );
         }
+    }
+
+    function serverPassword()
+    {
+        var button = document.getElementById("server_button");
+
+        if (button.value == "pass")
+        {
+            //MODAL
+            Custombox.open({
+                target: '#password',
+                effect: 'blur'
+            });
+        }
         else
         {
             $.post(
-                '/api/server/admin/lock',
+                '/api/server/admin/setpass/server',
                 {
                     token : "<?php echo $_SESSION['token'];?>",
                     id : "<?php echo $id;?>",
-                    lock : 1
+                    password: "null"
                 },
 
                 function(data){
                     var obj = JSON.parse(data);
                     if (obj.status == 42)
                     {
-                        $.Notification.notify('success','top right','Server UnLocked', "Server as been unlocked");
-                        button.textContent = "Lock Server";
-                        button.value = "lock";
+                        $.Notification.notify('success','top right','Success !', "Server password set");
+                        button.textContent = "Set server password";
+                        button.value = "pass";
                         button.className = "btn btn-warning btn-custom waves-effect w-md waves-light m-b-5";
                     }
                     else if (obj.status == 41)
@@ -387,10 +409,11 @@
             );
         }
     }
-    function setPass()
+
+    function setLockPass()
     {
         $.post(
-            '/api/server/admin/setpass',
+            '/api/server/admin/setpass/lock',
             {
                 token : "<?php echo $_SESSION['token'];?>",
                 id : "<?php echo $id;?>",
@@ -408,6 +431,12 @@
                         type: "success",
                         timer: 1000
                     });
+
+                    var button = document.getElementById("lock_button");
+
+                    button.textContent = "UnLock Server";
+                    button.value = "unlock";
+                    button.className = "btn btn-success btn-custom waves-effect w-md waves-light m-b-5";
                 }
                 else if (obj.status == 41)
                     window.location="/logout";
@@ -418,6 +447,46 @@
             'text'
         );
     }
+
+
+    function setServerPass()
+    {
+        $.post(
+            '/api/server/admin/setpass/server',
+            {
+                token : "<?php echo $_SESSION['token'];?>",
+                id : "<?php echo $id;?>",
+                password : document.getElementById("server_password").value
+            },
+
+            function(data){
+                var obj = JSON.parse(data);
+
+                if (obj.status == 42)
+                {
+                    swal({
+                        title: "Success !",
+                        text: obj.message,
+                        type: "success",
+                        timer: 1000
+                    });
+
+                    var button = document.getElementById("server_button");
+
+                    button.textContent = "UnSet Password";
+                    button.value = "unpass";
+                    button.className = "btn btn-success btn-custom waves-effect w-md waves-light m-b-5";
+                }
+                else if (obj.status == 41)
+                    window.location="/logout";
+                else
+                    swal("Error...", obj.message, "error");
+            },
+
+            'text'
+        );
+    }
+
     
     function saveServer() {
         $.post(
@@ -502,6 +571,15 @@
                     </div>
                 </div>
 
+                <div class="panel panel-border panel-color">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Browse Files</h3>
+                    </div>
+                    <div class="panel-body text-center">
+                        <button id="browse" type="button" class="btn btn-default btn-custom waves-effect w-md waves-light m-b-5" onclick="openBrowser()" value="taskforce">Browse server</button>
+                    </div>
+                </div>
+
             </div>
             <div class="col-lg-6">
                 <div class="panel panel-border panel-success">
@@ -578,9 +656,15 @@
                         <button id="maintenance_button" type="button" class="btn btn-danger btn-custom waves-effect w-md waves-light m-b-5" onclick="maintenanceServer()" value="maintenance">Activate Maintenance</button>
                         <br>
                         <button id="lock_button" type="button" class="btn btn-warning btn-custom waves-effect w-md waves-light m-b-5" onclick="lockServer()" value="lock">Lock Server</button>
-                        <br>
-                        <a href="#lock" class="btn btn-primary waves-effect waves-light" data-animation="blur" data-plugin="custommodal"
-                           data-overlaySpeed="200" data-overlayColor="#36404a">Set password</a>
+                    </div>
+                </div>
+
+                <div class="panel panel-border panel-primary">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Password Server Control</h3>
+                    </div>
+                    <div class="panel-body text-center">
+                        <button type="button" class="btn btn-warning btn-custom waves-effect w-md waves-light m-b-5" onclick="serverPassword()" value="pass" id="server_button">Set Server Password</button>
                     </div>
                 </div>
 
@@ -592,15 +676,6 @@
                         <button id="taskforce_button" type="button" class="btn btn-purple btn-custom waves-effect w-md waves-light m-b-5" onclick="switch_taskforce()" value="taskforce">Activate Taskforce</button>
                     </div>
                 </div>
-
-                <div class="panel panel-border panel-color">
-                    <div class="panel-heading">
-                        <h3 class="panel-title">Browse Files</h3>
-                    </div>
-                    <div class="panel-body text-center">
-                        <button id="browse" type="button" class="btn btn-default btn-custom waves-effect w-md waves-light m-b-5" onclick="openBrowser()" value="taskforce">Browse server</button>
-                    </div>
-                </div>
             </div>
         </div>
 
@@ -610,7 +685,7 @@
                     <button type="button" class="close" onclick="Custombox.close();">
                         <span>&times;</span><span class="sr-only">Close</span>
                     </button>
-                    <h4 class="custom-modal-title">Set an server password</h4>
+                    <h4 class="custom-modal-title">Set an lock password</h4>
                     <div class="custom-modal-text">
                         <input id="lock_password" type="text" class="form-control" placeholder="Server Password">
                         <br>
@@ -619,7 +694,30 @@
                                 <button type="button" class="btn btn-warning btn-custom waves-effect w-md waves-light m-b-5" onclick="Custombox.close();">Cancel</button>
                             </div>
                             <div class="col-lg-6">
-                                <button type="button" class="btn btn-info btn-custom waves-effect w-md waves-light m-b-5" onclick="Custombox.close();setPass();">Set Password</button>
+                                <button type="button" class="btn btn-info btn-custom waves-effect w-md waves-light m-b-5" onclick="Custombox.close();setLockPass();">Lock server</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-12">
+                <div id="password" class="modal-demo text-center ">
+                    <button type="button" class="close" onclick="Custombox.close();">
+                        <span>&times;</span><span class="sr-only">Close</span>
+                    </button>
+                    <h4 class="custom-modal-title">Set an server password</h4>
+                    <div class="custom-modal-text">
+                        <input id="server_password" type="text" class="form-control" placeholder="Server Password">
+                        <br>
+                        <div class="col-lg-12">
+                            <div class="col-lg-6">
+                                <button type="button" class="btn btn-warning btn-custom waves-effect w-md waves-light m-b-5" onclick="Custombox.close();">Cancel</button>
+                            </div>
+                            <div class="col-lg-6">
+                                <button type="button" class="btn btn-info btn-custom waves-effect w-md waves-light m-b-5" onclick="Custombox.close();setServerPass();">Set Password</button>
                             </div>
                         </div>
                     </div>

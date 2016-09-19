@@ -26,10 +26,10 @@ if (isset($_POST['token']) && isset($_POST['id']) && is_numeric($_POST['id']) &&
         $res = $userLevel->fetch();
         if ($userLevel->rowCount() != 0 && (int)$res['level'] >= 9  && (int)$res['banned'] != 1)
         {
-            $getSettings = $database->prepare('UPDATE servers SET `password` = :password WHERE id=:id');
-            $getSettings->execute(array('id' => $id, 'password' => $password));
+            $getSettings = $database->prepare('UPDATE servers SET `lock` = :lock WHERE id=:id');
+            $getSettings->execute(array('id' => $id, 'lock' => $password));
             $result['status'] = 42;
-            $result['message'] = "Password changed";
+            $result['message'] = "Locked password changed";
         }
         else
         {

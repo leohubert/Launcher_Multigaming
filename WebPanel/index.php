@@ -164,10 +164,11 @@
 
     /** @var API servers admin route $match */
     $router->map('POST','/api/server/admin/get', 'api/server/admin/get.php', 'api-server-admin-get');
-    $router->map('POST','/api/server/admin/lock', 'api/server/admin/lock.php', 'api-server-admin-lock');
+    $router->map('POST','/api/server/admin/unlock', 'api/server/admin/unlock.php', 'api-server-admin-unlock');
     $router->map('POST','/api/server/admin/taskforce', 'api/server/admin/taskforce.php', 'api-server-admin-taskforce');
     $router->map('POST','/api/server/admin/maintenance', 'api/server/admin/maintenance.php', 'api-server-admin-maintenance');
-    $router->map('POST','/api/server/admin/setpass', 'api/server/admin/setpass.php', 'api-server-admin-setpass');
+    $router->map('POST','/api/server/admin/setpass/lock', 'api/server/admin/setLockPass.php', 'api-server-admin-setpass-lock');
+    $router->map('POST','/api/server/admin/setpass/server', 'api/server/admin/setServerPass.php', 'api-server-admin-setpass-server');
 
     /** @var API users ingames route $match */
     $router->map('POST','/api/server/client/players/get', 'api/server/client/players/get.php', 'api-server-client-player-get');
@@ -188,6 +189,11 @@
     }
     else
     {
+        if (!isset($_SESSION['token']))
+        {
+            header('location: /');
+            exit();
+        }
         header("HTTP/1.0 404 Not Found");
         require 'errors/404.php';
     }

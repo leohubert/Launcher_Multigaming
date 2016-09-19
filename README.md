@@ -82,8 +82,12 @@ Release 5.1.0.0: (not finished)
 - Add: You can make a server on maintenance
 - Add: File Browser ( for server )
 - Add: New Taskforce System
-- Remove: IP server adress from launcher (change with mission) 
+- Add: You can add password server from the pannel
+- Remove: IP server adress from launcher (change with mission)
 - Fix: Taskforce Installer (userconfig)
+- Fix: Reselect server if it does't exist.
+- Fix: If website isn't correct
+- Fix: If update not create for first time, show error message (nbr_of_server.json in server directory)
 - Fix: Some Bugs
 We prepare the launcher for use with the steamAPI
 And more ...

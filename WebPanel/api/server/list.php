@@ -29,7 +29,7 @@ if ($getSettings = $database->prepare('SELECT * FROM `servers` ORDER BY `rank` A
         $result['servers'][$i]['website'] = $res['website'];
         $result['servers'][$i]['game'] = $res['game'];
         $result['servers'][$i]['maintenance'] = $res['maintenance'];
-        $result['servers'][$i]['can_play'] = $res['can_play'];
+        $result['servers'][$i]['lock'] = $res['lock'];
         $i++;
     }
 }

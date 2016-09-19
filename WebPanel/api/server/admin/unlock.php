@@ -10,11 +10,10 @@ header('Content-type: application/json');
 
 $result = array("status" => 500, "message" => "Internal error");
 
-if (isset($_POST['token']) && isset($_POST['id']) && is_numeric($_POST['id']) && isset($_POST['lock']) && is_numeric($_POST['lock']) )
+if (isset($_POST['token']) && isset($_POST['id']) && is_numeric($_POST['id']))
 {
     $token = $_POST['token'];
     $id = $_POST['id'];
-    $lock = (int)$_POST['lock'];
 
     $checkUser = $database->prepare('SELECT user_id FROM sessions WHERE token = :token');
     $checkUser->execute(array('token' => $token));
@@ -26,13 +25,10 @@ if (isset($_POST['token']) && isset($_POST['id']) && is_numeric($_POST['id']) &&
         $res = $userLevel->fetch();
         if ($userLevel->rowCount() != 0 && (int)$res['level'] >= 9  && (int)$res['banned'] != 1)
         {
-            $getSettings = $database->prepare('UPDATE servers SET `can_play` = :lock WHERE id=:id');
-            $getSettings->execute(array('id' => $id, 'lock' => $lock));
+            $getSettings = $database->prepare('UPDATE servers SET `lock` = :lock WHERE id=:id');
+            $getSettings->execute(array('id' => $id, 'lock' => 'null'));
             $result['status'] = 42;
-            if ($lock == 0)
-                $result['message'] = "Servers unlocked";
-            else
-                $result['message'] = "Servers locked";
+            $result['message'] = "Servers unlocked";
         }
         else
         {
