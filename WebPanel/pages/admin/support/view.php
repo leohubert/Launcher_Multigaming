@@ -139,8 +139,8 @@
     <script src="/assets/js/jquery.core.js"></script>
     <script src="/assets/js/jquery.app.js"></script>
     
-        <!-- Load Pages Script -->
-        <script src="/assets/js/pages/admin/users_banned.js"></script>
+    <!-- Load Pages Script -->
+    <script src="/assets/js/pages/admin/support_view.js"></script>
     
     </body>
 </html>
