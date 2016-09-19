@@ -169,6 +169,8 @@
     $router->map('POST','/api/server/admin/maintenance', 'api/server/admin/maintenance.php', 'api-server-admin-maintenance');
     $router->map('POST','/api/server/admin/setpass/lock', 'api/server/admin/setLockPass.php', 'api-server-admin-setpass-lock');
     $router->map('POST','/api/server/admin/setpass/server', 'api/server/admin/setServerPass.php', 'api-server-admin-setpass-server');
+    $router->map('POST','/api/server/admin/database/save', 'api/server/admin/database/save.php', 'api-server-admin-database-save');
+    $router->map('POST','/api/server/admin/database/get', 'api/server/admin/database/get.php', 'api-server-admin-database-get');
 
     /** @var API users ingames route $match */
     $router->map('POST','/api/server/client/players/get', 'api/server/client/players/get.php', 'api-server-client-player-get');

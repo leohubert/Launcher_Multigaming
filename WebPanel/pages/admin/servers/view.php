@@ -153,6 +153,7 @@
 
             'text'
         );
+        getDB();
     }
     function createModUpdate()
     {
@@ -524,6 +525,82 @@
     function openBrowser() {
         window.location = "/servers/browse/" + path;
     }
+    function showInfo(type) {
+        if (type == 1)
+        {
+            $("#db_hostname").attr('type', 'text');
+            $("#db_name").attr('type', 'text');
+            $("#db_user").attr('type', 'text');
+            $("#db_password").attr('type', 'text');
+
+        }
+        else
+        {
+            $("#db_hostname").attr('type', 'password');
+            $("#db_name").attr('type', 'password');
+            $("#db_user").attr('type', 'password');
+            $("#db_password").attr('type', 'password');
+        }
+    }
+
+    function saveDB() {
+        $.post(
+            '/api/server/admin/database/save',
+            {
+                token : "<?php echo $_SESSION['token'];?>",
+                id : "<?php echo $id; ?>",
+                db_host : $('#db_hostname').val(),
+                db_name : $('#db_name').val(),
+                db_user : $('#db_user').val(),
+                db_pass : $('#db_password').val(),
+                show_infos : $('#show_infos').val()
+            },
+
+            function(data){
+                var obj = JSON.parse(data);
+
+                if (obj.status == 42)
+                {
+                    $.Notification.notify('success','top right','Saved !', obj.message);
+                }
+                else if (obj.status == 41)
+                    window.location="/logout";
+                else
+                    swal("Error...", obj.message, "error");
+            },
+
+            'text'
+        );
+    }
+
+    function getDB() {
+        $.post(
+            '/api/server/admin/database/get',
+            {
+                token : "<?php echo $_SESSION['token'];?>",
+                id : "<?php echo $id; ?>"
+            },
+
+            function(data){
+                var obj = JSON.parse(data);
+
+                if (obj.status == 42)
+                {
+                    $("#db_hostname").val(obj.db_host);
+                    $("#db_name").val(obj.db_name);
+                    $("#db_user").val(obj.db_user);
+                    $("#db_password").val(obj.db_pass);
+                    $("#show_infos option[value='" + obj.show_infos + "']").prop('selected', true);
+                }
+                else if (obj.status == 41)
+                    window.location="/logout";
+                else
+                    swal("Error...", obj.message, "error");
+            },
+
+            'text'
+        );
+    }
 </script>
 
 <?php include "jointures/header_admin.php"?>
@@ -576,7 +653,7 @@
                         <h3 class="panel-title">Browse Files</h3>
                     </div>
                     <div class="panel-body text-center">
-                        <button id="browse" type="button" class="btn btn-default btn-custom waves-effect w-md waves-light m-b-5" onclick="openBrowser()" value="taskforce">Browse server</button>
+                        <button id="browse" type="button" class="btn btn-default btn-custom waves-effect w-md waves-light m-b-5" onclick="openBrowser()"  value="taskforce">Browse server</button>
                     </div>
                 </div>
 
@@ -640,6 +717,49 @@
                         <br><br><br>
                         <div class="text-right">
                             <button type="button" class="btn btn-warning btn-custom waves-effect w-md waves-light m-b-5" onclick="saveServer()">Save</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel panel-border panel-success">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">In game config</h3>
+                    </div>
+                    <div class="panel-body">
+                        <div class="form-group">
+                            <label class="col-md-2 control-label">DB Hostname</label>
+                            <div class="col-md-4">
+                                <input type="password" class="form-control" id="db_hostname" placeholder="Database hostname">
+                            </div>
+                            <label class="col-md-2 control-label">DB Name</label>
+                            <div class="col-md-4">
+                                <input type="password" class="form-control" id="db_name" placeholder="Database name">
+                            </div>
+                        </div>
+                        <br><br>
+                        <div class="form-group">
+                            <label class="col-md-2 control-label">DB User</label>
+                            <div class="col-md-4">
+                                <input type="password" class="form-control" id="db_user" placeholder="Database user">
+                            </div>
+                            <label class="col-md-2 control-label">DB Password</label>
+                            <div class="col-md-4">
+                                <input type="password" class="form-control" id="db_password" placeholder="Database password">
+                            </div>
+                        </div>
+                        <br><br>
+                        <div class="form-group">
+                            <label class="col-md-2 control-label">Show In-Game informations ?</label>
+                            <div class="col-md-4">
+                                <select class="form-control" id="show_infos">
+                                    <option value="0">No</option>
+                                    <option value="1">Yes</option>
+                                </select>
+                            </div>
+                        </div>
+                        <br><br><br>
+                        <div class="text-right">
+                            <button type="button" class="btn btn-primary btn-custom waves-effect w-md waves-light m-b-5" onmousedown="showInfo(1)" onmouseup="showInfo(0)" onmouseleave="showInfo(0)">Show info</button>
+                            <button type="button" class="btn btn-warning btn-custom waves-effect w-md waves-light m-b-5" onclick="saveDB()">Save</button>
                         </div>
                     </div>
                 </div>
