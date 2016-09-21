@@ -81,7 +81,7 @@ if (isset($_POST['token']) && isset($_POST['id']))
                         array_push($userconfigs, $Userconfig);
                     }
 
-                    $userconfigs_dir = $res['local_path'] . "/userconfigs";
+                    $userconfigs_dir = $res['local_path'] . "/userconfig";
                     function get_filelist_as_array($dir, $recursive = true, $basedir = '')
                     {
                         if ($dir == '') {

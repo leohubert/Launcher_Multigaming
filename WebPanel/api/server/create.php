@@ -62,9 +62,9 @@ if (isset($_POST['token']) && isset($_POST['name'])&& isset($_POST['local_path']
                 }
             }
 
-            if (!file_exists($local_path . '/userconfigs'))
+            if (!file_exists($local_path . '/userconfig'))
             {
-                if (!mkdir($local_path . '/userconfigs', 0777, true)) {
+                if (!mkdir($local_path . '/userconfig', 0777, true)) {
                     $allOK = false;
                 }
             }

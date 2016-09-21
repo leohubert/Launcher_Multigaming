@@ -934,8 +934,8 @@ namespace LauncherArma3
                 {
                     if (cancel == true)
                         break;                   
-                    directory = Path.GetDirectoryName(armaDirectory + "/userconfigs/" + res.userconfigs[i].name);
-                    file = armaDirectory + "/userconfigs/" + res.userconfigs[i].name;
+                    directory = Path.GetDirectoryName(armaDirectory + "/userconfig/" + res.userconfigs[i].name);
+                    file = armaDirectory + "/userconfig/" + res.userconfigs[i].name;
                     if (!Directory.Exists(directory))
                         Directory.CreateDirectory(directory);
                     local_userconfigs_md5 = getFileMd5(file).ToLower();
@@ -946,7 +946,7 @@ namespace LauncherArma3
                         if (res.userconfigs[i].type == "0")
                             userconfigList.Enqueue(res.userconfigs[i].name);
                         else
-                            userconfigList.Enqueue("userconfigs/" + res.userconfigs[i].name);
+                            userconfigList.Enqueue("userconfig/" + res.userconfigs[i].name);
                     }
                     i++;
                 }
@@ -1272,20 +1272,7 @@ namespace LauncherArma3
                     await Task.Delay(1000);
                 downloaded++;
                 i--;
-            }
-
-
-            if (taskforce == 1)
-            {
-                stat = 0;
-                if (!Directory.Exists(armaDirectory + "/userconfig"))
-                    Directory.CreateDirectory(armaDirectory + "/userconfig");
-                if (!Directory.Exists(armaDirectory + "/userconfig/task_force_radio"))
-                    Directory.CreateDirectory(armaDirectory + "/userconfig/task_force_radio");
-                startDownload(apiUrl + downloadPath + "/userconfig/task_force_radio/radio_settings.hpp", armaDirectory + "/userconfig/task_force_radio/radio_settings.hpp");
-                while (stat == 0)
-                    await Task.Delay(1000);
-            }
+            }            
 
             /* END DOWNLOAD USERCONFIGS */
 
