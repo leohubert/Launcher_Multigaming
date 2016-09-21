@@ -19,10 +19,11 @@ if (isset($_POST['token']) && isset($_POST['support_id']) && isset($_POST['messa
     $checkUser = $database->prepare('SELECT user_id FROM sessions WHERE token = :token');
     $checkUser->execute(array('token' => $token));
     $res = $checkUser->fetch();
-    if ($checkUser->rowCount() != 0 && $userLevel = $database->prepare('SELECT `level`,`banned` FROM users WHERE id = :id'))
+    if ($checkUser->rowCount() != 0 && $userLevel = $database->prepare('SELECT `level`,`banned`, `username` FROM users WHERE id = :id'))
     {
         $userLevel->execute(array('id' => $res['user_id']));
         $myID = $res['user_id'];
+        $myUserName = $res['username'];
         $res = $userLevel->fetch();
         if ($userLevel->rowCount() != 0  && (int)$res['banned'] != 1)
         {
@@ -37,6 +38,18 @@ if (isset($_POST['token']) && isset($_POST['support_id']) && isset($_POST['messa
                     $checkUser->execute(array('support_id' => $support_id, 'send_by' => $myID, 'send_at' => date('Y-m-d H:i:s'), 'message' => $message));
                     $updateSupport = $database->prepare('UPDATE `support` SET `updated_at`=:date WHERE id=:id');
                     $updateSupport->execute(array('id' => $support_id, 'date' => date('Y-m-d H:i:s')));
+
+
+                    $updateSupport = $database->prepare('SELECT * FROM `support` WHERE id=:id');
+                    $updateSupport->execute(array('id' => $support_id));
+                    $res = $updateSupport->fetch();
+
+                    if ((int)$res['assign_to'] != 0)
+                    {
+                        $updateSupport = $database->prepare('INSERT INTO `notifications`(`users`, `title`, `content`, `link`) VALUES (:users, :title, :content, :link)');
+                        $updateSupport->execute(array('users' => $res['assign_to'],'title' => 'Support', 'content' => 'New message from ' . $myUserName, 'link' =>  "http://" . $_SERVER['HTTP_HOST']. "/support/view/" . $support_id));
+                    }
+
                     $result['status'] = 42;
                     $result['message'] = "Message send";
                 }

@@ -131,6 +131,7 @@ namespace LauncherArma3
             if (taskforce == 0)
             {
                 taskforceBox.Visible = false;
+                changeGameButton.Location = new Point(826, 65);
             }
             setLanguage();         
             if (File.Exists(appdata + communityName + "/armaDest"))
@@ -216,6 +217,7 @@ namespace LauncherArma3
             }
             if (serverMaintenance == true || serverLocked == true)
                 refreshMaintenance();
+            getNotification();
             autoRefresh();
 
         }
@@ -279,6 +281,7 @@ namespace LauncherArma3
                 {
                     loadServerStatus();
                     loadIGinfos();
+                    getNotification();
                 });
                 thread.Start();
             }
@@ -470,6 +473,38 @@ namespace LauncherArma3
                     playerStatus.Text = "INCONNU";
                     playerStatus.ForeColor = Color.OrangeRed;
                     break;
+            }
+        }
+
+        void getNotification()
+        {
+            try
+            {
+                var client = new RestClient(apiUrl);
+
+                var request = new RestRequest("api/notifications/get", Method.POST);
+
+                request.AddParameter("token", sessionToken);
+
+                IRestResponse response = client.Execute(request);
+                var content = response.Content;
+
+                dynamic res = JObject.Parse(content.ToString());
+                
+                if (res.status == "42")
+                {
+                    int total = res.total;
+                    notificationNumber.Value = total;                   
+                }
+                else
+                {
+                    errorBox.Visible = true;
+                    errorBox.Text = res.message;
+                }
+            }
+            catch
+            {
+                               
             }
         }
 
