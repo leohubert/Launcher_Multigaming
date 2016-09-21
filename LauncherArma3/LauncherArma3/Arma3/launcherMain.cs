@@ -124,15 +124,16 @@ namespace LauncherArma3
         }
 
         private void launcherMain_Load(object sender, EventArgs e)
-        {            
+        {
             //notification.ShowBalloonTip(1000, "Hey", "Welcome", ToolTipIcon.Info);
             if (!Directory.Exists((appdata + communityName + "/" + serverID)))
                 Directory.CreateDirectory(appdata + communityName + "/" + serverID);
             if (taskforce == 0)
             {
                 taskforceBox.Visible = false;
+                changeGameButton.Location = new Point(826, 65);
             }
-            setLanguage();         
+            setLanguage();
             if (File.Exists(appdata + communityName + "/armaDest"))
             {
                 armaDirectory = File.ReadAllText(appdata + communityName + "/armaDest");
@@ -216,6 +217,7 @@ namespace LauncherArma3
             }
             if (serverMaintenance == true || serverLocked == true)
                 refreshMaintenance();
+            getNotification();
             autoRefresh();
 
         }
@@ -258,7 +260,7 @@ namespace LauncherArma3
                             }
                             if (serverMaintenance == false && serverLocked == false)
                                 i = 1;
-                        }                        
+                        }
                     }
                     catch
                     {
@@ -279,6 +281,7 @@ namespace LauncherArma3
                 {
                     loadServerStatus();
                     loadIGinfos();
+                    getNotification();
                 });
                 thread.Start();
             }
@@ -470,6 +473,44 @@ namespace LauncherArma3
                     playerStatus.Text = "INCONNU";
                     playerStatus.ForeColor = Color.OrangeRed;
                     break;
+            }
+        }
+
+        void getNotification()
+        {
+            try
+            {
+                var client = new RestClient(apiUrl);
+
+                var request = new RestRequest("api/notifications/get", Method.POST);
+
+                request.AddParameter("token", sessionToken);
+
+                IRestResponse response = client.Execute(request);
+                var content = response.Content;
+
+                dynamic res = JObject.Parse(content.ToString());
+
+                if (res.status == "42")
+                {
+                    int total = res.total;
+                    notificationNumber.Value = total;
+                    notificationNumber.Visible = true;
+                }
+                else if (res.status == "422")
+                {
+                    notificationNumber.Value = 0;
+                    notificationNumber.Visible = false;
+                }
+                else
+                {
+                    errorBox.Visible = true;
+                    errorBox.Text = res.message;
+                }
+            }
+            catch
+            {
+
             }
         }
 
@@ -1024,7 +1065,7 @@ namespace LauncherArma3
             {
                 downloadMessage.Text = translateDic["serverRequest"];
                 serverRequest.RunWorkerAsync();
-            }            
+            }
 
             while (stat == 0)
             {
@@ -1327,17 +1368,17 @@ namespace LauncherArma3
                         Process.Start(armaDirectory + "/arma3battleye.exe", "0 1 -mod=" + modsPackName + " -nopause -connect=" + serverArmaIp);
                     else
                         Process.Start(armaDirectory + "/arma3battleye.exe", "0 1 -mod=" + modsPackName + " -nopause -connect=" + serverArmaIp + " -password=" + serverPass);
-                }            
+                }
                 else
                 {
                     if (serverPass == null)
                         Process.Start(armaDirectory + "/arma3battleye.exe", "0 1 -mod=" + modsPackName + " -nopause -connect=" + serverArmaIp + " " + launchOptions);
                     else
                         Process.Start(armaDirectory + "/arma3battleye.exe", "0 1 -mod=" + modsPackName + " -nopause -connect=" + serverArmaIp + " -password=" + serverPass + " " + launchOptions);
-                }                
+                }
             }
-            else 
-            {                
+            else
+            {
                 if (launchOptions == null || launchOptions.Length == 0)
                     Process.Start(armaDirectory + "/arma3battleye.exe", "0 1 -mod=" + modsPackName + " -nopause -connect=" + serverArmaIp + " -password=" + serverLockPass);
                 else
@@ -1658,7 +1699,7 @@ namespace LauncherArma3
                 clearNotif();
                 errorBox.Visible = true;
                 errorBox.Text = "WebSite link ins't correct";
-            }            
+            }
         }
 
         private void changeGameButton_Click(object sender, EventArgs e)

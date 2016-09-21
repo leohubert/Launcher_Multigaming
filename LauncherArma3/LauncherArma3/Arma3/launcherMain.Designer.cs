@@ -57,10 +57,8 @@
             this.websiteIcon = new System.Windows.Forms.PictureBox();
             this.supportButton = new MaterialSkin.Controls.MaterialRaisedButton();
             this.changeGameButton = new MaterialSkin.Controls.MaterialRaisedButton();
-            this.errorBox = new FlatUI.FlatAlertBox();
-            this.succesBox = new FlatUI.FlatAlertBox();
-            this.infoBox = new FlatUI.FlatAlertBox();
             this.notification = new System.Windows.Forms.NotifyIcon(this.components);
+            this.notificationNumber = new iTalk.iTalk_NotificationNumber();
             this.IGplayerLabel_bank = new FlatUI.FlatLabel();
             this.IGplayer_bank = new FlatUI.FlatLabel();
             this.IGplayerLabel_cash = new FlatUI.FlatLabel();
@@ -104,6 +102,9 @@
             this.newsLink1 = new iTalk.iTalk_Button_1();
             this.iTalk_Separator3 = new iTalk.iTalk_Separator();
             this.iTalk_Separator2 = new iTalk.iTalk_Separator();
+            this.errorBox = new FlatUI.FlatAlertBox();
+            this.succesBox = new FlatUI.FlatAlertBox();
+            this.infoBox = new FlatUI.FlatAlertBox();
             this.downloadProgressLabel = new FlatUI.FlatLabel();
             this.downloadMessage = new FlatUI.FlatLabel();
             this.sizeLabel = new FlatUI.FlatLabel();
@@ -478,50 +479,20 @@
             this.changeGameButton.UseVisualStyleBackColor = true;
             this.changeGameButton.Click += new System.EventHandler(this.changeGameButton_Click);
             // 
-            // errorBox
-            // 
-            this.errorBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(70)))), ((int)(((byte)(73)))));
-            this.errorBox.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.errorBox.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
-            this.errorBox.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.errorBox.kind = FlatUI.FlatAlertBox._Kind.Error;
-            this.errorBox.Location = new System.Drawing.Point(250, 12);
-            this.errorBox.Name = "errorBox";
-            this.errorBox.Size = new System.Drawing.Size(500, 42);
-            this.errorBox.TabIndex = 2;
-            this.errorBox.Visible = false;
-            // 
-            // succesBox
-            // 
-            this.succesBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(70)))), ((int)(((byte)(73)))));
-            this.succesBox.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.succesBox.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.succesBox.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.succesBox.kind = FlatUI.FlatAlertBox._Kind.Success;
-            this.succesBox.Location = new System.Drawing.Point(250, 12);
-            this.succesBox.Name = "succesBox";
-            this.succesBox.Size = new System.Drawing.Size(500, 42);
-            this.succesBox.TabIndex = 1;
-            this.succesBox.Visible = false;
-            // 
-            // infoBox
-            // 
-            this.infoBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(70)))), ((int)(((byte)(73)))));
-            this.infoBox.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.infoBox.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.infoBox.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.infoBox.kind = FlatUI.FlatAlertBox._Kind.Info;
-            this.infoBox.Location = new System.Drawing.Point(250, 12);
-            this.infoBox.Name = "infoBox";
-            this.infoBox.Size = new System.Drawing.Size(500, 42);
-            this.infoBox.TabIndex = 0;
-            this.infoBox.Visible = false;
-            // 
             // notification
             // 
             this.notification.Icon = ((System.Drawing.Icon)(resources.GetObject("notification.Icon")));
             this.notification.Text = "Notification System";
             this.notification.Visible = true;
+            // 
+            // notificationNumber
+            // 
+            this.notificationNumber.Location = new System.Drawing.Point(794, 34);
+            this.notificationNumber.Maximum = 99;
+            this.notificationNumber.Name = "notificationNumber";
+            this.notificationNumber.Size = new System.Drawing.Size(20, 20);
+            this.notificationNumber.TabIndex = 34;
+            this.notificationNumber.Value = 0;
             // 
             // IGplayerLabel_bank
             // 
@@ -1052,6 +1023,45 @@
             this.iTalk_Separator2.TabIndex = 10;
             this.iTalk_Separator2.Text = "iTalk_Separator2";
             // 
+            // errorBox
+            // 
+            this.errorBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(70)))), ((int)(((byte)(73)))));
+            this.errorBox.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.errorBox.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
+            this.errorBox.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.errorBox.kind = FlatUI.FlatAlertBox._Kind.Error;
+            this.errorBox.Location = new System.Drawing.Point(250, 12);
+            this.errorBox.Name = "errorBox";
+            this.errorBox.Size = new System.Drawing.Size(500, 42);
+            this.errorBox.TabIndex = 2;
+            this.errorBox.Visible = false;
+            // 
+            // succesBox
+            // 
+            this.succesBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(70)))), ((int)(((byte)(73)))));
+            this.succesBox.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.succesBox.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.succesBox.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.succesBox.kind = FlatUI.FlatAlertBox._Kind.Success;
+            this.succesBox.Location = new System.Drawing.Point(250, 12);
+            this.succesBox.Name = "succesBox";
+            this.succesBox.Size = new System.Drawing.Size(500, 42);
+            this.succesBox.TabIndex = 1;
+            this.succesBox.Visible = false;
+            // 
+            // infoBox
+            // 
+            this.infoBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(70)))), ((int)(((byte)(73)))));
+            this.infoBox.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.infoBox.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.infoBox.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.infoBox.kind = FlatUI.FlatAlertBox._Kind.Info;
+            this.infoBox.Location = new System.Drawing.Point(250, 12);
+            this.infoBox.Name = "infoBox";
+            this.infoBox.Size = new System.Drawing.Size(500, 42);
+            this.infoBox.TabIndex = 0;
+            this.infoBox.Visible = false;
+            // 
             // downloadProgressLabel
             // 
             this.downloadProgressLabel.BackColor = System.Drawing.Color.Transparent;
@@ -1141,6 +1151,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1000, 500);
+            this.Controls.Add(this.notificationNumber);
             this.Controls.Add(this.changeGameButton);
             this.Controls.Add(this.playButton);
             this.Controls.Add(this.supportButton);
@@ -1273,5 +1284,6 @@
         private System.Windows.Forms.PictureBox websiteIcon;
         private MaterialSkin.Controls.MaterialRaisedButton changeGameButton;
         private System.Windows.Forms.NotifyIcon notification;
+        private iTalk.iTalk_NotificationNumber notificationNumber;
     }
 }
