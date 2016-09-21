@@ -16,7 +16,7 @@ if (isset($_POST['id'])) {
 
     $getSettings = $database->prepare('SELECT * FROM `servers` WHERE id = :id');
     $getSettings->execute(array('id' => $id));
-    if ($getSettings->rowCount())
+    if ($getSettings->rowCount() != 0)
     {
         $res = $getSettings->fetch();
         $taskforce_directory = $res['local_path'] . "/taskforce";

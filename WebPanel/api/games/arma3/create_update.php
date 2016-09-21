@@ -64,6 +64,7 @@ if (isset($_POST['token']) && isset($_POST['id']))
                             $Userconfigs['userconfig' . $i]['md5'] = md5_file($userconfigs_directory . '/' . $entry);
                             $Userconfigs['userconfig' . $i]['name'] = $entry;
                             $Userconfigs['userconfig' . $i]['size'] = filesize($userconfigs_directory . '/' . $entry);
+                            $Userconfigs['userconfig' . $i]['type'] = 0;
                             $i++;
                         }
                     }
@@ -80,6 +81,56 @@ if (isset($_POST['token']) && isset($_POST['id']))
                         array_push($userconfigs, $Userconfig);
                     }
 
+                    $userconfigs_dir = $res['local_path'] . "/userconfigs";
+                    function get_filelist_as_array($dir, $recursive = true, $basedir = '')
+                    {
+                        if ($dir == '') {
+                            return array();
+                        } else {
+                            $results = array();
+                            $subresults = array();
+                        }
+                        if (!is_dir($dir)) {
+                            $dir = dirname($dir);
+                        } // so a files path can be sent
+                        if ($basedir == '') {
+                            $basedir = realpath($dir) . DIRECTORY_SEPARATOR;
+                        }
+
+                        $files = scandir($dir);
+                        foreach ($files as $key => $value) {
+                            if (($value != '.') && ($value != '..')) {
+                                $path = realpath($dir . DIRECTORY_SEPARATOR . $value);
+                                if (is_dir($path)) { // do not combine with the next line or..
+                                    if ($recursive) { // ..non-recursive list will include subdirs
+                                        $subdirresults = get_filelist_as_array($path, $recursive, $basedir);
+                                        $results = array_merge($results, $subdirresults);
+                                    }
+                                } else { // strip basedir and add to subarray to separate file list
+                                    $subresults[] = str_replace($basedir, '', $path);
+                                }
+                            }
+                        }
+                        // merge the subarray to give the list of files then subdirectory files
+                        if (count($subresults) > 0) {
+                            $results = array_merge($subresults, $results);
+                        }
+                        return $results;
+                    }
+
+                    $files = get_filelist_as_array($userconfigs_dir);
+                    $result2['total'] = count($files);
+                    $i = 0;
+                    $y = count($userconfigs);
+                    while ($i < $result2['total']) {
+                        $userconfigs[$y]['name'] = $files[$i];
+                        $userconfigs[$y]['size'] = filesize($userconfigs_dir . '/' . $files[$i]);
+                        $userconfigs[$y]['md5'] = md5_file($userconfigs_dir. '/' . $files[$i]);
+                        $userconfigs[$y]['type'] = 1;
+                        $i++;
+                        $y++;
+                    }
+
                     $result['status'] = 42;
                     $result['message'] = "Update created";
                     $result['total_addons'] = count($addons);
@@ -88,6 +139,7 @@ if (isset($_POST['token']) && isset($_POST['id']))
                     $result['addons'] = $addons;
                     $result['cpps'] = $cpps;
                     $result['userconfigs'] = $userconfigs;
+
 
                     if (!$fp = fopen($userconfigs_directory . '/'. $id .'.json', 'w+'))
                     {

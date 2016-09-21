@@ -923,6 +923,8 @@ namespace LauncherArma3
                 string remote_userconfigs_md5;
                 string local_userconfigs_md5;
                 string currentUserconfigs;
+                string file;
+                string directory;
                 int i = 0;
                 int total_userconfigs = res.total_userconfigs;
                 long currentSize;
@@ -931,15 +933,20 @@ namespace LauncherArma3
                 while (i < total_userconfigs)
                 {
                     if (cancel == true)
-                        break;
-                    currentUserconfigs = res.userconfigs[i].name;
-                    currentSize = res.userconfigs[i].size;
-                    local_userconfigs_md5 = getFileMd5(armaDirectory + "/" + currentUserconfigs).ToLower();
+                        break;                   
+                    directory = Path.GetDirectoryName(armaDirectory + "/userconfigs/" + res.userconfigs[i].name);
+                    file = armaDirectory + "/userconfigs/" + res.userconfigs[i].name;
+                    if (!Directory.Exists(directory))
+                        Directory.CreateDirectory(directory);
+                    local_userconfigs_md5 = getFileMd5(file).ToLower();
                     remote_userconfigs_md5 = res.userconfigs[i].md5;
                     if (remote_userconfigs_md5 != local_userconfigs_md5)
                     {
-                        need_to_download += currentSize;
-                        userconfigList.Enqueue(currentUserconfigs);
+                        need_to_download += (long)res.userconfigs[i].size;
+                        if (res.userconfigs[i].type == "0")
+                            userconfigList.Enqueue(res.userconfigs[i].name);
+                        else
+                            userconfigList.Enqueue("userconfigs/" + res.userconfigs[i].name);
                     }
                     i++;
                 }

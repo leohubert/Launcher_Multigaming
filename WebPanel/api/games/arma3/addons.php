@@ -19,9 +19,7 @@ if (isset($_POST['id']))
     $getSettings->execute(array('id' => $id));
     if ($getSettings->rowCount()) {
         $res = $getSettings->fetch();
-
-        $addons_directory = $res['local_path'] . '/modpack/addons';
-        $cpps_directory = $res['local_path'] . '/modpack';
+        
         $userconfigs_directory = $res['local_path'];
 
         if (!$fp = fopen($userconfigs_directory . '/'. $id .'.json', 'r'))
