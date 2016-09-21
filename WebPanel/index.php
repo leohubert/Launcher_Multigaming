@@ -184,10 +184,6 @@
     $router->map('POST','/api/server/remove', 'api/server/remove.php', 'api-server-remove');
     $router->map('GET','/api/server/list', 'api/server/list.php', 'api-server-list');
 
-    /** @var API Notifications  $match */
-    $router->map('POST','/api/notifications/get', 'api/notifications/get.php', 'api-notifications-get');
-    $router->map('POST','/api/notifications/readall', 'api/notifications/readall.php', 'api-notifications-readall');
-
     /* Match the current request */
     $match = $router->match();
     if($match) {

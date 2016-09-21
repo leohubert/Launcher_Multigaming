@@ -83,7 +83,6 @@ Release 5.1.0.0: (not finished)
 - Add: File Browser ( for server )
 - Add: New Taskforce System
 - Add: You can add password server from the pannel
-- Add: Notification system (BETA)
 - Remove: IP server adress from launcher (change with mission)
 - Fix: Taskforce Installer (userconfig)
 - Fix: Reselect server if it does't exist.
