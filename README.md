@@ -5,7 +5,7 @@ Launcher_Arma3
 ## Launcher Information:
 
 #### Last version:
-Version: Beta 5.0.5.0
+Version: 5.1.0.0
 Functional: YES
 Release date: 03/07/2016 16:38
 
@@ -74,7 +74,7 @@ edit to
 
 ### Changes Logs:
 
-Release 5.1.0.0: (not finished)
+Release 5.1.0.0:
 - Add: Multiserver/Games
 - Add: New system for update (mods)
 - Add: Server section into the panel
