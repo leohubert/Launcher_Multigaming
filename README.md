@@ -51,7 +51,7 @@ edit to
 ```
 6. Write this command in the terminal `a2enmod rewrite`
 7. Upload WebPanel to the `/var/www/html` folder (don't forget .htaccess file)
-8. Write this command in the terminal `chown -R www-data:www-data /var/www/html/arma3/; chmod -R www-data:www-data /var/www/html/configs/`
+8. Write this command in the terminal `chown -R www-data:www-data /var/www/html/games/; chmod -R 777 /var/www/html/configs/`
 9. In your browser, go to your VPS or other IP and follow the installation steps
 
 ## Creators:
