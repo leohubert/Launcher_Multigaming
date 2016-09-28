@@ -4,5 +4,5 @@ memory_limit = 1000M
 
 
 Corriger bug.
-Si il n'y a pas de .json sur le serveur
-Si le lien du site est incorrect
+Si il n'y a pas de .json sur le serveur (check) 
+Si le lien du site est incorrect (check)
