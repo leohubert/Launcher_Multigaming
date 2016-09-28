@@ -20,7 +20,8 @@ Copyright HUBERT Léo © 2014 - 2016
 
 ## Launcher Panel Install Guide:
 
-For install this panel you need to have a little VPS or more biggest.
+For install this panel you need to have a little VPS and you need to have DEBIAN 8 on this VPS.
+
 
 Reccomended minimal specs required: https://www.ovh.com/fr/vps/vps-ssd.xml
 
@@ -50,9 +51,10 @@ edit to
 </Directory>
 ```
 6. Write this command in the terminal `a2enmod rewrite`
-7. Upload WebPanel to the `/var/www/html` folder (don't forget .htaccess file)
-8. Write this command in the terminal `chown -R www-data:www-data /var/www/html/games/; chmod -R 777 /var/www/html/configs/`
-9. In your browser, go to your VPS or other IP and follow the installation steps
+7. Write this command in the terminal `service apache2 restart`
+9. Upload WebPanel to the `/var/www/html` folder (don't forget .htaccess file)
+9. Write this command in the terminal `chown -R www-data:www-data /var/www/html/games/; chmod -R 777 /var/www/html/configs/`
+10. In your browser, go to your VPS or other IP and follow the installation steps
 
 ## Creators:
 
