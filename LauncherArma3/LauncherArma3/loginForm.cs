@@ -764,6 +764,8 @@ namespace LauncherArma3
 
         void notifView(string msg)
         {
+            if (msg == null)
+                return;
             if (notif == false)
             {
                 this.Height += 50;
