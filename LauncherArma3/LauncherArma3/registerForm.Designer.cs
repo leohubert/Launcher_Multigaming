@@ -40,6 +40,7 @@
             this.registerEmail = new MaterialSkin.Controls.MaterialSingleLineTextField();
             this.errorBox = new FlatUI.FlatAlertBox();
             this.successBox = new FlatUI.FlatAlertBox();
+            this.registerUid = new MaterialSkin.Controls.MaterialSingleLineTextField();
             ((System.ComponentModel.ISupportInitialize)(this.registerLogo)).BeginInit();
             this.SuspendLayout();
             // 
@@ -58,7 +59,7 @@
             // 
             this.separator.BaseTabControl = null;
             this.separator.Depth = 0;
-            this.separator.Location = new System.Drawing.Point(-1, 315);
+            this.separator.Location = new System.Drawing.Point(-1, 328);
             this.separator.MouseState = MaterialSkin.MouseState.HOVER;
             this.separator.Name = "separator";
             this.separator.Size = new System.Drawing.Size(325, 1);
@@ -81,7 +82,7 @@
             // registerButton
             // 
             this.registerButton.Depth = 0;
-            this.registerButton.Location = new System.Drawing.Point(32, 243);
+            this.registerButton.Location = new System.Drawing.Point(32, 259);
             this.registerButton.MouseState = MaterialSkin.MouseState.HOVER;
             this.registerButton.Name = "registerButton";
             this.registerButton.Primary = true;
@@ -97,7 +98,7 @@
             this.loginMessage.Depth = 0;
             this.loginMessage.Font = new System.Drawing.Font("Roboto", 11F);
             this.loginMessage.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.loginMessage.Location = new System.Drawing.Point(32, 332);
+            this.loginMessage.Location = new System.Drawing.Point(32, 337);
             this.loginMessage.MouseState = MaterialSkin.MouseState.HOVER;
             this.loginMessage.Name = "loginMessage";
             this.loginMessage.Size = new System.Drawing.Size(249, 45);
@@ -111,7 +112,7 @@
             this.registerPassConfirm.Depth = 0;
             this.registerPassConfirm.ForeColor = System.Drawing.Color.White;
             this.registerPassConfirm.Hint = "Confirm password";
-            this.registerPassConfirm.Location = new System.Drawing.Point(32, 202);
+            this.registerPassConfirm.Location = new System.Drawing.Point(32, 230);
             this.registerPassConfirm.MouseState = MaterialSkin.MouseState.HOVER;
             this.registerPassConfirm.Name = "registerPassConfirm";
             this.registerPassConfirm.PasswordChar = '*';
@@ -128,7 +129,7 @@
             this.registerPass.Depth = 0;
             this.registerPass.ForeColor = System.Drawing.Color.White;
             this.registerPass.Hint = "Password";
-            this.registerPass.Location = new System.Drawing.Point(32, 173);
+            this.registerPass.Location = new System.Drawing.Point(32, 201);
             this.registerPass.MouseState = MaterialSkin.MouseState.HOVER;
             this.registerPass.Name = "registerPass";
             this.registerPass.PasswordChar = '*';
@@ -162,7 +163,7 @@
             this.registerEmail.Depth = 0;
             this.registerEmail.ForeColor = System.Drawing.Color.White;
             this.registerEmail.Hint = "Email";
-            this.registerEmail.Location = new System.Drawing.Point(32, 145);
+            this.registerEmail.Location = new System.Drawing.Point(32, 172);
             this.registerEmail.MouseState = MaterialSkin.MouseState.HOVER;
             this.registerEmail.Name = "registerEmail";
             this.registerEmail.PasswordChar = '\0';
@@ -199,12 +200,30 @@
             this.successBox.Visible = false;
             this.successBox.Click += new System.EventHandler(this.normalView);
             // 
+            // registerUid
+            // 
+            this.registerUid.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.registerUid.Depth = 0;
+            this.registerUid.ForeColor = System.Drawing.Color.White;
+            this.registerUid.Hint = "Uid";
+            this.registerUid.Location = new System.Drawing.Point(32, 143);
+            this.registerUid.MouseState = MaterialSkin.MouseState.HOVER;
+            this.registerUid.Name = "registerUid";
+            this.registerUid.PasswordChar = '\0';
+            this.registerUid.SelectedText = "";
+            this.registerUid.SelectionLength = 0;
+            this.registerUid.SelectionStart = 0;
+            this.registerUid.Size = new System.Drawing.Size(249, 23);
+            this.registerUid.TabIndex = 38;
+            this.registerUid.UseSystemPasswordChar = false;
+            // 
             // registerForm
             // 
             this.AcceptButton = this.registerButton;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(323, 444);
+            this.ClientSize = new System.Drawing.Size(323, 474);
+            this.Controls.Add(this.registerUid);
             this.Controls.Add(this.registerEmail);
             this.Controls.Add(this.registerUsername);
             this.Controls.Add(this.registerPass);
@@ -242,5 +261,6 @@
         private MaterialSkin.Controls.MaterialSingleLineTextField registerEmail;
         private FlatUI.FlatAlertBox errorBox;
         private FlatUI.FlatAlertBox successBox;
+        private MaterialSkin.Controls.MaterialSingleLineTextField registerUid;
     }
 }
