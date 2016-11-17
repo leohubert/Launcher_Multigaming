@@ -41,6 +41,7 @@
                     {
                         email : $("#email").val(),
                         username : $("#username").val(),
+						uid : $("#uid").val(),
                         password : $("#password").val(),
                         confirm_password : $("#confirm_password").val(),
                         launcher : "0"
@@ -80,6 +81,13 @@
                 <div class="form-group">
                     <div class="col-xs-12">
                         <input class="form-control" type="text" id="username" required="" placeholder="Username">
+                        <i class="md md-account-circle form-control-feedback l-h-34"></i>
+                    </div>
+                </div>
+				
+				 <div class="form-group">
+                    <div class="col-xs-12">
+                        <input class="form-control" type="text" id="uid" required="" placeholder="UID">
                         <i class="md md-account-circle form-control-feedback l-h-34"></i>
                     </div>
                 </div>
