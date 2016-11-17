@@ -71,6 +71,7 @@ namespace LauncherArma3
 
             request.AddParameter("launcher", 1);
             request.AddParameter("username", registerUsername.Text);
+            request.AddParameter("uid", registerUid.Text);
             request.AddParameter("email", registerEmail.Text);
             request.AddParameter("password", registerPass.Text);
             request.AddParameter("confirm_password", registerPassConfirm.Text);
