@@ -795,7 +795,7 @@ namespace LauncherArma3
 
         bool checkArmaDirectory(string path)
         {
-            if (File.Exists(path + @"\arma3.exe"))
+            if (File.Exists(path + @"\arma3battleye.exe"))
             {
                 directoryLabel.Text = translateDic["armaOK"];
                 armaDirectory = path;
@@ -805,6 +805,7 @@ namespace LauncherArma3
             {
                 directoryLabel.Text = translateDic["selectArma"];
                 armaDirectory = null;
+                chooseButton.Visible = true;
                 return false;
             }
         }
@@ -933,7 +934,7 @@ namespace LauncherArma3
                 while (i < total_userconfigs)
                 {
                     if (cancel == true)
-                        break;                   
+                        break;
                     directory = Path.GetDirectoryName(armaDirectory + "/userconfig/" + res.userconfigs[i].name);
                     file = armaDirectory + "/userconfig/" + res.userconfigs[i].name;
                     if (!Directory.Exists(directory))
@@ -1272,7 +1273,7 @@ namespace LauncherArma3
                     await Task.Delay(1000);
                 downloaded++;
                 i--;
-            }            
+            }
 
             /* END DOWNLOAD USERCONFIGS */
 
@@ -1353,34 +1354,41 @@ namespace LauncherArma3
 
         private async void startArma()
         {
-            playButton.Text = "Game Starting ...";
-            if (serverLockPass == null)
+            try
             {
-                if (launchOptions == null || launchOptions.Length == 0)
+                playButton.Text = "Game Starting ...";
+                if (serverLockPass == null)
                 {
-                    if (serverPass == null)
-                        Process.Start(armaDirectory + "/arma3battleye.exe", "0 1 -mod=" + modsPackName + " -nopause -connect=" + serverArmaIp);
+                    if (launchOptions == null || launchOptions.Length == 0)
+                    {
+                        if (serverPass == null)
+                            Process.Start(armaDirectory + "/arma3battleye.exe", "0 1 -mod=" + modsPackName + " -nopause -connect=" + serverArmaIp);
+                        else
+                            Process.Start(armaDirectory + "/arma3battleye.exe", "0 1 -mod=" + modsPackName + " -nopause -connect=" + serverArmaIp + " -password=" + serverPass);
+                    }
                     else
-                        Process.Start(armaDirectory + "/arma3battleye.exe", "0 1 -mod=" + modsPackName + " -nopause -connect=" + serverArmaIp + " -password=" + serverPass);
+                    {
+                        if (serverPass == null)
+                            Process.Start(armaDirectory + "/arma3battleye.exe", "0 1 -mod=" + modsPackName + " -nopause -connect=" + serverArmaIp + " " + launchOptions);
+                        else
+                            Process.Start(armaDirectory + "/arma3battleye.exe", "0 1 -mod=" + modsPackName + " -nopause -connect=" + serverArmaIp + " -password=" + serverPass + " " + launchOptions);
+                    }
                 }
                 else
                 {
-                    if (serverPass == null)
-                        Process.Start(armaDirectory + "/arma3battleye.exe", "0 1 -mod=" + modsPackName + " -nopause -connect=" + serverArmaIp + " " + launchOptions);
+                    if (launchOptions == null || launchOptions.Length == 0)
+                        Process.Start(armaDirectory + "/arma3battleye.exe", "0 1 -mod=" + modsPackName + " -nopause -connect=" + serverArmaIp + " -password=" + serverLockPass);
                     else
-                        Process.Start(armaDirectory + "/arma3battleye.exe", "0 1 -mod=" + modsPackName + " -nopause -connect=" + serverArmaIp + " -password=" + serverPass + " " + launchOptions);
+                        Process.Start(armaDirectory + "/arma3battleye.exe", "0 1 -mod=" + modsPackName + " -nopause -connect=" + serverArmaIp + " -password=" + serverLockPass + " " + launchOptions);
                 }
-            }
-            else
-            {
-                if (launchOptions == null || launchOptions.Length == 0)
-                    Process.Start(armaDirectory + "/arma3battleye.exe", "0 1 -mod=" + modsPackName + " -nopause -connect=" + serverArmaIp + " -password=" + serverLockPass);
-                else
-                    Process.Start(armaDirectory + "/arma3battleye.exe", "0 1 -mod=" + modsPackName + " -nopause -connect=" + serverArmaIp + " -password=" + serverLockPass + " " + launchOptions);
-            }
 
-            await Task.Delay(17000);
-            checkUpdate();
+                await Task.Delay(17000);
+                checkUpdate();
+            }catch (Exception)
+            {
+                playButton.Text = "Arma 3 Not Found";
+                checkArmaDirectory(armaDirectory);
+            }
         }
 
         private bool addonsExits(string addonsName, dynamic res)

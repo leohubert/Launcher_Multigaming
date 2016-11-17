@@ -121,7 +121,7 @@
   <data name="pictureBox2.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAABAAAAAQACAYAAAB/HSuDAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAL
-        EwAACxMBAJqcGAAAABl0RVh0U29mdHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAKLWSURBVHhe7f19
+        EAAACxABrSO9dQAAABl0RVh0U29mdHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAKLWSURBVHhe7f19
         t1zVeSD6no+gb2B9ggw+QHoMWcbGlnEObe4Yxie3fXR8cXcc+9iymzRx82K5k07gMuzIbULSkd2owTb0
         AGJCYiwZBBsQUkKQvXmzmnN0PURfJ5YHpqGBmMPh2vvOudlltmo/u3ZVrbe51vrNMX7/PNKuWlU116r1
         PLXWM/+ntbU1AAAAYODCIAAAADAsYRAAAAAYljAIAAAADEsYBAAAAIYlDAIAAADDEgYBAACAYQmDAAAA
@@ -822,7 +822,7 @@
   <data name="pictureBox4.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAQAAAAEACAYAAABccqhmAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
-        wwAADsMBx2+oZAAAEhtJREFUeF7tnU1vXcUZx/0RIvULeMEHyIq1d2yz7S5SE95fDIIisalXRWKVRReo
+        wAAADsABataJCQAAEhtJREFUeF7tnU1vXcUZx/0RIvULeMEHyIq1d2yz7S5SE95fDIIisalXRWKVRReo
         iyqohSAjkQQaiGVFcYCUFKLGChAgJW1SaETUCLltSiNQdfo89pzYvneu7zn3vD3PzO8v/RaJ7XvPmTPP
         nHleZmYO+dXP3/98n7AQWAocFdYC60LREP2M8vP0s8vvKb93X7gchFAXEiPbLxwQ1PBOCGqMMWMdEr0m
         vTa9Rr3W/eHyEUJVpYYjLAr6tm3jDT40eg96L3pPDAoI7ZQYRTl9t/hW7wq91003IjQDQnlIOn35hs/J
@@ -996,7 +996,7 @@
   <data name="teamspeakIcon.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAX0AAAF9CAYAAADoebhRAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6
-        JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAACXBIWXMAAAsTAAALEwEAmpwYAADwTUlE
+        JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAACXBIWXMAAAsQAAALEAGtI711AADwTUlE
         QVR4Xuz9d3Rd1bn3i9/3/eW949w7zvj98t5x7jg5IWDARVbvXbK61Xt3bxibEjqEQCAkobdAIAQSCJ1Q
         jJssyd24G4x7L5J271vVhUDO9ze/c2nZ29IyNliSt6T1x3esvadsae+15vzMZz7zmc/zfwDQpctv9K9/
         /et/nj37z/+7q6vn/9fR0fW/u7tP/T/i+lOHw/X/tdkc/7fL5flfJ0+e/J9Hjhz5HwcOHPif6v9rbW39
