@@ -11,7 +11,7 @@
 
     <link rel="icon" href="/assets/images/favicon.ico">
 
-    <title>{{ config('app.name') }} | Login</title>
+    <title>{{ config('app.name') }} | {{ trans('auth.login') }}</title>
 
     <link rel="stylesheet" href="/assets/js/jquery-ui/css/no-theme/jquery-ui-1.10.3.custom.min.css">
     <link rel="stylesheet" href="/assets/css/font-icons/entypo/css/entypo.css">
@@ -52,12 +52,12 @@
                 <img src="/assets/images/logo@2x.png" width="120" alt="" />
             </a>
 
-            <p class="description">Dear user, log in to access the admin area!</p>
+            <p class="description">{{ trans('auth.description') }}</p>
 
             <!-- progress bar indicator -->
             <div class="login-progressbar-indicator">
                 <h3>43%</h3>
-                <span>logging in...</span>
+                <span>{{ trans('auth.logging') }}</span>
             </div>
         </div>
 
@@ -74,7 +74,7 @@
             <div class="form-login-error">
                 <h3>Invalid login</h3>
                 <div id="error-message">
-                    <p>Enter <strong>demo</strong>/<strong>demo</strong> as login and password.</p>
+                    <p>ERROR</p>
                 </div>
             </div>
 
@@ -87,7 +87,7 @@
                             <i class="entypo-user"></i>
                         </div>
 
-                        <input type="text" class="form-control" name="username" id="username" placeholder="Username" autocomplete="off" />
+                        <input type="text" class="form-control" name="username" id="username" placeholder="{{ trans('auth.username') }}" autocomplete="off" />
                     </div>
 
                 </div>
@@ -99,7 +99,7 @@
                             <i class="entypo-key"></i>
                         </div>
 
-                        <input type="password" class="form-control" name="password" id="password" placeholder="Password" autocomplete="off" />
+                        <input type="password" class="form-control" name="password" id="password" placeholder="{{ trans('auth.password') }}" autocomplete="off" />
                     </div>
 
                 </div>
@@ -107,55 +107,33 @@
                 <div class="form-group">
                     <button type="submit" class="btn btn-primary btn-block btn-login">
                         <i class="entypo-login"></i>
-                        Login In
+                        {{ trans('auth.login-in') }}
                     </button>
                 </div>
 
                 <!-- Implemented in v1.1.4 -->
                 <div class="form-group">
-                    <em>- or -</em>
+                    <em>- {{ trans('auth.or') }} -</em>
                 </div>
 
                 <div class="form-group">
-
-                    <button type="button" class="btn btn-default btn-lg btn-block btn-icon icon-left facebook-button">
-                        Login with Facebook
-                        <i class="entypo-facebook"></i>
+                    <button type="button" class="btn btn-success btn-block btn-login" onclick="window.location = '/register' ">
+                        <i class="entypo-users"></i>
+                        {{ trans('auth.register') }}
                     </button>
-
                 </div>
 
-                <!--
-
-                You can also use other social network buttons
-                <div class="form-group">
-
-                    <button type="button" class="btn btn-default btn-lg btn-block btn-icon icon-left twitter-button">
-                        Login with Twitter
-                        <i class="entypo-twitter"></i>
-                    </button>
-
-                </div>
-
-                <div class="form-group">
-
-                    <button type="button" class="btn btn-default btn-lg btn-block btn-icon icon-left google-button">
-                        Login with Google+
-                        <i class="entypo-gplus"></i>
-                    </button>
-
-                </div> -->
 
             </form>
 
 
             <div class="login-bottom-links">
 
-                <a href="extra-forgot-password.html" class="link">Forgot your password?</a>
+                <a href="{{ route('password.request') }}" class="link">{{ trans('auth.forgot-password') }}</a>
 
                 <br />
 
-                <a href="#">ToS</a>  - <a href="#">Privacy Policy</a>
+                <a href="#">{{ config('app.name') }}</a>  - <a href="#">{{ trans('auth.privacy') }}</a>
 
             </div>
 
@@ -174,7 +152,6 @@
 <script src="/assets/js/resizeable.js"></script>
 <script src="/assets/js/neon-api.js"></script>
 <script src="/assets/js/jquery.validate.min.js"></script>
-<script src="/assets/js/neon-login.js"></script>
 
 
 <!-- JavaScripts initializations and stuff -->
@@ -182,7 +159,7 @@
 
 
 <!-- Demo Settings -->
-<script src="/assets/js/neon-demo.js"></script>
+<script src="/assets/js/scripts/login.js"></script>
 
 </body>
 </html>
