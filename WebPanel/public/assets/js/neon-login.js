@@ -66,23 +66,35 @@ var neonLogin = neonLogin || {};
 						dataType: 'json',
 						data: {
 							_token: $('meta[name=_token]').attr('content'),
-							email: $("input#username").val(),
+							username: $("input#username").val(),
 							password: $("input#password").val(),
 						},
 						error: function(response)
 						{
-							if (response.responseJSON.email)
+							if (response.status == 200)
 							{
-								$('#error-message').html("<p>" + response.responseJSON.email + "</p>");
+                                // Form is fully completed, we update the percentage
+                                neonLogin.setPercentage(100);
+
+                                // We will give some time for the animation to finish, then execute the following procedures
+                                setTimeout(function()
+                                {
+                                    window.location.href = '/';
+
+                                }, 1400);
+                                return;
+
+							}
+							else
+							if (typeof response.responseJSON.username)
+							{
+								$('#error-message').html("<p>" + response.responseJSON.username + "</p>");
 							}
                             $(".login-page").removeClass('logging-in');
                             neonLogin.resetProgressBar(true);
 						},
 						success: function(response)
 						{
-							var email = response.email;
-                            var password = response.password;
-															
 							// Form is fully completed, we update the percentage
 							neonLogin.setPercentage(100);
 							
