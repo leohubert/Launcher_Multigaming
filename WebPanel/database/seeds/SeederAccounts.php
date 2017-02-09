@@ -15,7 +15,7 @@ class SeederAccounts extends Seeder
             'username' => "MrDarkSkil",
             'email' => 'leohub@live.fr',
             'password' => Hash::make('secret'),
-            'name' => "bite"
+            'name' => "bite",
         ]);
 	DB::table('users')->insert([
             'username' => "FrenChQWerTy",

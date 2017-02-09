@@ -52,7 +52,7 @@
 
                 <a href="extra-lockscreen.html">
                     <i class="entypo-lock"></i>
-                    Log Off
+                    Lock
                 </a>
 
                 <span class="close-sui-popup">&times;</span><!-- this is mandatory -->				</div>

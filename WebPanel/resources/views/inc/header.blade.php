@@ -336,40 +336,18 @@
 
                 Language: &nbsp;
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-close-others="true">
-                    <img src="/assets/images/flags/flag-uk.png" width="16" height="16" />
+                    <img src="/assets/images/flags/flag-{{  Auth::user()->lang }}.png" width="16" height="16" />
                 </a>
 
                 <ul class="dropdown-menu pull-right">
-                    <li>
-                        <a href="#">
-                            <img src="/assets/images/flags/flag-de.png" width="16" height="16" />
-                            <span>Deutsch</span>
-                        </a>
-                    </li>
-                    <li class="active">
-                        <a href="#">
-                            <img src="/assets/images/flags/flag-uk.png" width="16" height="16" />
-                            <span>English</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#">
-                            <img src="/assets/images/flags/flag-fr.png" width="16" height="16" />
-                            <span>François</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#">
-                            <img src="/assets/images/flags/flag-al.png" width="16" height="16" />
-                            <span>Shqip</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#">
-                            <img src="/assets/images/flags/flag-es.png" width="16" height="16" />
-                            <span>Español</span>
-                        </a>
-                    </li>
+                    @foreach(config('languages') as $item)
+                        <li class="{{ Auth::user()->lang == $item['flag'] ? 'active' : '' }}">
+                            <a href="/account/update/lang/{{ $item['flag'] }}">
+                                <img src="/assets/images/flags/flag-{{ $item['flag'] }}.png" width="16" height="16" />
+                                <span>{{ $item['lang'] }}</span>
+                            </a>
+                        </li>
+                    @endforeach
                 </ul>
 
             </li>
@@ -389,9 +367,15 @@
             <li class="sep"></li>
 
             <li>
-                <a href="extra-login.html">
-                    Log Out <i class="entypo-logout right"></i>
+                <a href="{{ route('logout') }}"
+                   onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                    Log Out
                 </a>
+
+                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                    {{ csrf_field() }}
+                </form>
             </li>
         </ul>
 

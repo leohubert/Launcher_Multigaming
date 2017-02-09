@@ -14,3 +14,11 @@
 Auth::routes();
 
 Route::get('/', 'HomeController@index');
+
+Route::group(['prefix' => 'account'], function ()
+{
+    Route::group(['prefix' => "update"], function ()
+    {
+        Route::get('/lang/{lang}', ["uses" => "AccountController@updateLang", "as" => "lang"]);
+    });
+});
