@@ -170,7 +170,7 @@ var neonLogin = neonLogin || {};
 									// Do some other stuff...
 									
 									// Redirect to the page
-									setTimeout("window.location.href = '../../'", 600);
+									setTimeout("window.location.href = '/'", 600);
 								}, 2);
 								
 							}, 820);
@@ -353,7 +353,7 @@ var neonLogin = neonLogin || {};
 			
 			// Create Progress Circle
 			var bg = neonLogin.lockscreen_progress_canvas,
-				ctx = ctx = bg.getContext('2d'),
+				ctx = bg.getContext('2d'),
 				imd = null,
 				circ = Math.PI * 2,
 				quart = Math.PI / 2,

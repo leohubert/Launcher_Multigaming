@@ -1,87 +1,96 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <!-- CSRF Token -->
-    <meta name="csrf-token" content="{{ csrf_token() }}">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="{{ config('app.name') }} Admin Panel" />
+    <meta name="author" content="" />
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <link rel="icon" href="/assets/images/favicon.ico">
 
-    <!-- Styles -->
-    <link href="/css/app.css" rel="stylesheet">
+    <title>Neon | Dashboard</title>
 
-    <!-- Scripts -->
-    <script>
-        window.Laravel = {!! json_encode([
-            'csrfToken' => csrf_token(),
-        ]) !!};
-    </script>
+    <link rel="stylesheet" href="/assets/js/jquery-ui/css/no-theme/jquery-ui-1.10.3.custom.min.css">
+    <link rel="stylesheet" href="/assets/css/font-icons/entypo/css/entypo.css">
+    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Noto+Sans:400,700,400italic">
+    <link rel="stylesheet" href="/assets/css/bootstrap.css">
+    <link rel="stylesheet" href="/assets/css/neon-core.css">
+    <link rel="stylesheet" href="/assets/css/neon-theme.css">
+    <link rel="stylesheet" href="/assets/css/neon-forms.css">
+    <link rel="stylesheet" href="/assets/css/custom.css">
+    <link rel="stylesheet" href="assets/css/skins/cafe.css">
+
+    <script src="/assets/js/jquery-1.11.3.min.js"></script>
+
+    <!--[if lt IE 9]><script src="/assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+
 </head>
-<body>
-    <div id="app">
-        <nav class="navbar navbar-default navbar-static-top">
-            <div class="container">
-                <div class="navbar-header">
+<body class="page-body page-fade" data-url="/">
 
-                    <!-- Collapsed Hamburger -->
-                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#app-navbar-collapse">
-                        <span class="sr-only">Toggle Navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
+<div class="page-container"><!-- add class "sidebar-collapsed" to close sidebar by default, "chat-visible" to make chat appear always -->
 
-                    <!-- Branding Image -->
-                    <a class="navbar-brand" href="{{ url('/') }}">
-                        {{ config('app.name', 'Laravel') }}
-                    </a>
-                </div>
+    @include('inc.sidebar')
 
-                <div class="collapse navbar-collapse" id="app-navbar-collapse">
-                    <!-- Left Side Of Navbar -->
-                    <ul class="nav navbar-nav">
-                        &nbsp;
-                    </ul>
+    <div class="main-content">
 
-                    <!-- Right Side Of Navbar -->
-                    <ul class="nav navbar-nav navbar-right">
-                        <!-- Authentication Links -->
-                        @if (Auth::guest())
-                            <li><a href="{{ route('login') }}">Login</a></li>
-                            <li><a href="{{ route('register') }}">Register</a></li>
-                        @else
-                            <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-                                    {{ Auth::user()->name }} <span class="caret"></span>
-                                </a>
+        @include('inc.header')
 
-                                <ul class="dropdown-menu" role="menu">
-                                    <li>
-                                        <a href="{{ route('logout') }}"
-                                            onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                            Logout
-                                        </a>
 
-                                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                            {{ csrf_field() }}
-                                        </form>
-                                    </li>
-                                </ul>
-                            </li>
-                        @endif
-                    </ul>
-                </div>
-            </div>
-        </nav>
+        <hr />
 
         @yield('content')
+
+        @include('inc.footer')
+
     </div>
 
-    <!-- Scripts -->
-    <script src="/js/app.js"></script>
+
+    @include('inc.chat')
+
+
+</div>
+
+
+<!-- Imported styles on this page -->
+<link rel="stylesheet" href="/assets/js/jvectormap/jquery-jvectormap-1.2.2.css">
+<link rel="stylesheet" href="/assets/js/rickshaw/rickshaw.min.css">
+
+<!-- Bottom scripts (common) -->
+<script src="/assets/js/gsap/TweenMax.min.js"></script>
+<script src="/assets/js/jquery-ui/js/jquery-ui-1.10.3.minimal.min.js"></script>
+<script src="/assets/js/bootstrap.js"></script>
+<script src="/assets/js/joinable.js"></script>
+<script src="/assets/js/resizeable.js"></script>
+<script src="/assets/js/neon-api.js"></script>
+<script src="/assets/js/jvectormap/jquery-jvectormap-1.2.2.min.js"></script>
+
+
+<!-- Imported scripts on this page -->
+<script src="/assets/js/jvectormap/jquery-jvectormap-europe-merc-en.js"></script>
+<script src="/assets/js/jquery.sparkline.min.js"></script>
+<script src="/assets/js/rickshaw/vendor/d3.v3.js"></script>
+<script src="/assets/js/rickshaw/rickshaw.min.js"></script>
+<script src="/assets/js/raphael-min.js"></script>
+<script src="/assets/js/morris.min.js"></script>
+<script src="/assets/js/toastr.js"></script>
+<script src="/assets/js/neon-chat.js"></script>
+
+
+<!-- JavaScripts initializations and stuff -->
+<script src="/assets/js/neon-custom.js"></script>
+
+
+<!-- Demo Settings -->
+<script src="/assets/js/neon-demo.js"></script>
+
 </body>
 </html>
