@@ -25,4 +25,10 @@ class AccountController extends Controller
         }
         return redirect()->back();
     }
+
+    function myAccount()
+    {
+
+        return view('account.index');
+    }
 }
