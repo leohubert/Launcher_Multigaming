@@ -1,6 +1,6 @@
 <!-- Footer -->
 <footer class="main">
 
-    &copy; 2017 <strong>Neon</strong> Admin Theme by <a href="http://laborator.co" target="_blank">Laborator</a>
+    &copy; {{ \Carbon\Carbon::now()->format('Y') }} <strong>{{ config('app.name') }}</strong> | Launcher Admin Control by <a href="http://ezgames.eu/" target="_blank">MrDarkSkil</a>
 
 </footer>
