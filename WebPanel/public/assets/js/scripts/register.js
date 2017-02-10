@@ -68,7 +68,7 @@ var neonRegister = neonRegister || {};
 					{
 						// Send data to the server
 						$.ajax({
-							url: baseurl + 'data/sample-register-form.php',
+							url: '/register',
 							method: 'POST',
 							dataType: 'json',
 							data: {
@@ -79,9 +79,36 @@ var neonRegister = neonRegister || {};
 								email: 		$("input#email").val(),
 								password:	$("input#password").val()
 							},
-							error: function()
+							error: function(response)
 							{
-								alert("An error occoured!");
+								if (response.status == 200)
+								{
+                                    // Form is fully completed, we update the percentage
+                                    neonRegister.setPercentage(100);
+
+
+                                    // We will give some time for the animation to finish, then execute the following procedures
+                                    setTimeout(function()
+                                    {
+                                        // Hide the description title
+                                        $(".login-page .login-header .description").slideUp();
+
+                                        // Hide the register form (steps)
+                                        neonRegister.$steps.slideUp('normal', function()
+                                        {
+                                            // Remove loging-in state
+                                            $(".login-page").removeClass('logging-in');
+
+                                            // Now we show the success message
+                                            $(".form-register-success").slideDown('normal');
+
+                                            // You can use the data returned from response variable
+                                        });
+
+                                    }, 1000);
+
+								}
+
 							},
 							success: function(response)
 							{

@@ -354,7 +354,6 @@
 
             <li class="sep"></li>
 
-
             <li>
                 <a href="#" data-toggle="chat" data-collapse-sidebar="1">
                     <i class="entypo-chat"></i>
@@ -369,7 +368,8 @@
             <li>
                 <a href="{{ route('logout') }}"
                    onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
+                   document.getElementById('logout-form').submit();">
+                    <i class="entypo-logout"></i>
                     Log Out
                 </a>
 
