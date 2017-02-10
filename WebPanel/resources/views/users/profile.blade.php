@@ -1,9 +1,5 @@
 @extends('layouts.app')
 
-@php
-    $user = Auth::user();
-@endphp
-
 @section('content')
     <div class="profile-env">
 
@@ -23,7 +19,7 @@
                     <li>
                         <div class="profile-name">
                             <strong>
-                                <a href="#">Art Ramadani</a>
+                                <a href="#">{{ $user->username }}</a>
                                 <a href="#" class="user-status is-online tooltip-primary" data-toggle="tooltip" data-placement="top" data-original-title="Online"></a>
                                 <!-- User statuses available classes "is-online", "is-offline", "is-idle", "is-busy" -->						</strong>
                             <span><a href="#">Co-Founder at Laborator</a></span>
@@ -145,7 +141,7 @@
 
                     <aside class="user-thumb">
                         <a href="#">
-                            <img src="assets/images/thumb-1@2x.png" width="44" alt="" class="img-circle" />
+                            <img src="/assets/images/thumb-1@2x.png" width="44" alt="" class="img-circle" />
                         </a>
                     </aside>
 
@@ -186,7 +182,7 @@
 
                                 <li>
                                     <div class="user-comment-thumb">
-                                        <img src="assets/images/thumb-2@2x.png" alt="" class="img-circle" width="30" />
+                                        <img src="/assets/images/thumb-2@2x.png" alt="" class="img-circle" width="30" />
                                     </div>
 
                                     <div class="user-comment-content">
@@ -219,7 +215,7 @@
 
                                 <li>
                                     <div class="user-comment-thumb">
-                                        <img src="assets/images/thumb-1@2x.png" alt="" class="img-circle" width="30" />
+                                        <img src="/assets/images/thumb-1@2x.png" alt="" class="img-circle" width="30" />
                                     </div>
 
                                     <div class="user-comment-content">
@@ -252,7 +248,7 @@
 
                                 <li>
                                     <div class="user-comment-thumb">
-                                        <img src="assets/images/thumb-3@2x.png" alt="" class="img-circle" width="30" />
+                                        <img src="/assets/images/thumb-3@2x.png" alt="" class="img-circle" width="30" />
                                     </div>
 
                                     <div class="user-comment-content">
@@ -285,7 +281,7 @@
 
                                 <li class="comment-form">
                                     <div class="user-comment-thumb">
-                                        <img src="assets/images/thumb-1@2x.png" alt="" class="img-circle" width="30" />
+                                        <img src="/assets/images/thumb-1@2x.png" alt="" class="img-circle" width="30" />
                                     </div>
 
                                     <div class="user-comment-content">
@@ -312,7 +308,7 @@
 
                     <aside class="user-thumb">
                         <a href="#">
-                            <img src="assets/images/thumb-3@2x.png" width="44" alt="" class="img-circle" />
+                            <img src="/assets/images/thumb-3@2x.png" width="44" alt="" class="img-circle" />
                         </a>
                     </aside>
 
@@ -358,7 +354,7 @@
 
                     <aside class="user-thumb">
                         <a href="#">
-                            <img src="assets/images/thumb-2@2x.png" width="44" alt="" class="img-circle" />
+                            <img src="/assets/images/thumb-2@2x.png" width="44" alt="" class="img-circle" />
                         </a>
                     </aside>
 
@@ -383,24 +379,24 @@
                             <div class="row">
                                 <div class="col-sm-5">
                                     <a href="#">
-                                        <img src="assets/images/timeline-image-1.png" class="img-responsive img-rounded full-width" />
+                                        <img src="/assets/images/timeline-image-1.png" class="img-responsive img-rounded full-width" />
                                     </a>
                                 </div>
 
                                 <div class="col-sm-3">
                                     <a href="#">
-                                        <img src="assets/images/timeline-image-1.png" class="img-responsive img-rounded full-width" />
+                                        <img src="/assets/images/timeline-image-1.png" class="img-responsive img-rounded full-width" />
                                     </a>
                                 </div>
 
                                 <div class="col-sm-4">
 
                                     <a href="#">
-                                        <img src="assets/images/timeline-image-1.png" class="img-responsive img-rounded full-width margin-bottom" />
+                                        <img src="/assets/images/timeline-image-1.png" class="img-responsive img-rounded full-width margin-bottom" />
                                     </a>
 
                                     <a href="#">
-                                        <img src="assets/images/timeline-image-1.png" class="img-responsive img-rounded full-width" />
+                                        <img src="/assets/images/timeline-image-1.png" class="img-responsive img-rounded full-width" />
                                     </a>
                                 </div>
                             </div>

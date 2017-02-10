@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class AccountController extends Controller
 {
@@ -28,7 +29,6 @@ class AccountController extends Controller
 
     function myAccount()
     {
-
-        return view('account.index');
+        return view('users.profile',['my' => true, 'user' => Auth::user()]);
     }
 }

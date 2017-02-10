@@ -23,3 +23,8 @@ Route::group(['prefix' => 'account'], function ()
         Route::get('/lang/{lang}', ["uses" => "AccountController@updateLang", "as" => "lang"]);
     });
 });
+
+Route::group(['prefix' => 'users'], function()
+{
+    Route::get('/{id}', ['uses' => 'UsersController@profile', 'as' => 'id']);
+});
