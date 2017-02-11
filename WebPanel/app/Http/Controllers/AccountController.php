@@ -29,6 +29,6 @@ class AccountController extends Controller
 
     function myAccount()
     {
-        return view('users.profile',['my' => true, 'user' => Auth::user()]);
+        return view('users.profile',['me' => true, 'user' => Auth::user()]);
     }
 }
