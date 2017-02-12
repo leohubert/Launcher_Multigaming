@@ -34,21 +34,7 @@
             this.teamspeakChooser = new System.Windows.Forms.FolderBrowserDialog();
             this.teamspeakDestination = new FlatUI.FlatLabel();
             this.taskforceProgress = new FlatUI.FlatProgressBar();
-            this.SuspendLayout();
-            // 
-            // chooseButton
-            // 
-            this.chooseButton.Depth = 0;
-            this.chooseButton.Location = new System.Drawing.Point(23, 33);
-            this.chooseButton.MouseState = MaterialSkin.MouseState.HOVER;
-            this.chooseButton.Name = "chooseButton";
-            this.chooseButton.Primary = true;
-            this.chooseButton.Size = new System.Drawing.Size(166, 46);
-            this.chooseButton.TabIndex = 19;
-            this.chooseButton.Text = "Choose teamspeak3 directory";
-            this.chooseButton.UseVisualStyleBackColor = true;
-            this.chooseButton.Visible = false;
-            this.chooseButton.Click += new System.EventHandler(this.chooseButton_Click);
+            this.SuspendLayout();        
             // 
             // installButton
             // 
