@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.ComponentModel;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -18,7 +18,6 @@ namespace taskforceInstaller
     {
 
         /* VARIABLES GLOBAL */
-        string teamspeakDirectory = null;
         string apiUrl;
         string appdata;
         string vTaskForce;
@@ -34,6 +33,8 @@ namespace taskforceInstaller
         long bytesPerSecond;
         string serverID;
         string downloadPath;
+        string teamspeakDirectory = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\\TS3Client\\plugins\\";
+
 
         public taskforceMain(string _apiUrl, string _appdata, string _vTaskForce, string _launcherDest, string _serverID, string _downloadPath)
         {
@@ -46,112 +47,24 @@ namespace taskforceInstaller
             downloadPath = _downloadPath;
         }
 
-        void autodetectTeamSpeak()
-        {
-            string[] files;
-            if (Directory.Exists(@"C:\Program Files\TeamSpeak 3 Client\"))
-            {
-                files = Directory.GetFiles(@"C:\Program Files\TeamSpeak 3 Client\", "*", SearchOption.TopDirectoryOnly);
-                foreach (string file in files)
-                {
-                    if (file != null && file.Contains("ts3client"))
-                    {
-                        teamspeakDirectory = Path.GetDirectoryName(file);
-                        return;
-                    }
-                }
-            }
-            if (Directory.Exists(@"C:\Program Files (x86)\TeamSpeak 3 Client\"))
-            {
-                files = Directory.GetFiles(@"C:\Program Files (x86)\TeamSpeak 3 Client\", "*", SearchOption.TopDirectoryOnly);
-                foreach (string file in files)
-                {
-                    if (file != null && file.Contains("ts3client"))
-                    {
-                        teamspeakDirectory = Path.GetDirectoryName(file);
-                        return;
-                    }
-                }
-            }
-            if (Directory.Exists(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + @"\TeamSpeak 3 Client\"))
-            {
-                files = Directory.GetFiles(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + @"\TeamSpeak 3 Client\", "*", SearchOption.TopDirectoryOnly);
-                foreach (string file in files)
-                {
-                    if (file != null && file.Contains("ts3client"))
-                    {
-                        teamspeakDirectory = Path.GetDirectoryName(file);
-                        return;
-                    }
-                }
-            }
-            chooseButton.Visible = true;
-            teamspeakDirectory = null;
-        }
-
         private void taskforceMain_Load(object sender, EventArgs e)
         {
-            if (File.Exists(appdata + "/teamspeak.dest"))
-            {
-                teamspeakDirectory = File.ReadAllText(appdata + "/teamspeak.dest");
-                string[] files = Directory.GetFiles(teamspeakDirectory, "*", SearchOption.TopDirectoryOnly);
-                foreach (string file in files)
-                {
-                    if (file.Contains("ts3client"))
-                    {
-                        return;
-                    }
-                }
-                chooseButton.Visible = true;
-                teamspeakDirectory = null;
-            }
-            if (teamspeakDirectory == null)
-                autodetectTeamSpeak();
-            if (teamspeakDirectory != null)
-            {
-                teamspeakDestination.Text = teamspeakDirectory;
-                if (File.Exists(appdata + "/teamspeak.dest"))
-                    File.Delete(appdata + "/teamspeak.dest");
-                File.WriteAllText(appdata + "/teamspeak.dest", teamspeakDirectory);
-            }
+            
         }
 
-        private void chooseButton_Click(object sender, EventArgs e)
-        {
-            teamspeakChooser.ShowDialog();
-            string[] files = Directory.GetFiles(teamspeakChooser.SelectedPath, "*", SearchOption.TopDirectoryOnly);
-            foreach (string file in files)
-            {
-                if (file.Contains("ts3client"))
-                {
-                    teamspeakDirectory = Path.GetDirectoryName(file);
-                    teamspeakDestination.Text = teamspeakDirectory;
-                    if (File.Exists(appdata + "/teamspeak.dest"))
-                        File.Delete(appdata + "/teamspeak.dest");
-                    File.WriteAllText(appdata + "/teamspeak.dest", teamspeakDirectory);
-                    return;
-                }
-            }
-            teamspeakDirectory = null;
-            MetroMessageBox.Show(this, "TeamSpeak 3 destination not good !", "TaskForce installer", MessageBoxButtons.OK, MessageBoxIcon.Information);
-        }
+ 
 
         private async void installButton_Click(object sender, EventArgs e)
         {
-            if (teamspeakDirectory == null)
-            {
-                MetroMessageBox.Show(this, "Choose TeamSpeak 3 destination !", "TaskForce installer", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                return;
-            }
+            if (!Directory.Exists(teamspeakDirectory))
+                MetroMessageBox.Show(this, "TeamSpeak3 not installed.", "TaskForce installer", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             dynamic res;
             Queue files = new Queue();
 
             teamspeakDestination.Text = "Download initialisation";
 
             // LIST ALL FILES
-            try
-            {
-
+             
                 var client = new RestClient(apiUrl);
 
                 var request = new RestRequest("api/games/arma3/taskforce/list", Method.POST);
@@ -173,9 +86,9 @@ namespace taskforceInstaller
                     string directory;
 
                     while (i != total_files)
-                    {
-                        directory = Path.GetDirectoryName(teamspeakDirectory + "/plugins/" + res.files[i].name);
-                        file = teamspeakDirectory + "/plugins/" + res.files[i].name;
+                    {              
+                        directory = Path.GetDirectoryName(teamspeakDirectory + res.files[i].name);
+                        file = teamspeakDirectory + res.files[i].name;
                         if (!Directory.Exists(directory))
                             Directory.CreateDirectory(directory);
                         local_md5 = getFileMd5(file).ToLower();
@@ -189,11 +102,7 @@ namespace taskforceInstaller
                     }
 
                 }
-            }
-            catch
-            {
-                MessageBox.Show("Error with the server !");
-            }
+            
 
             //Download files
 
@@ -204,7 +113,7 @@ namespace taskforceInstaller
             {
                 stat = 0;
                 current = files.Dequeue().ToString();
-                startDownload(apiUrl + "/" + downloadPath +"/taskforce/" + current, teamspeakDirectory + "/plugins/" + current);
+                startDownload(apiUrl + "/" + downloadPath +"/taskforce/" + current, teamspeakDirectory + current);
                 while (stat == 0)
                     await Task.Delay(1000);
                 downloaded++;
