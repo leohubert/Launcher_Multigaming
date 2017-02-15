@@ -14,17 +14,15 @@ class AccountController extends Controller
 
     function updateLang(Request $request, $lang)
     {
-        $user = $request->user();
-
-        foreach (config('languages') as $item)
-        {
-            if ($item['flag'] == $lang)
-            {
-                $user->lang = $lang;
-                $user->save();
-            }
+        $languages = config('custom.languages');
+        if (isset($languages[$lang])) {
+            $user = $request->user();
+            $user->lang = $lang;
+            $user->save();
+            return redirect()->back();
         }
-        return redirect()->back();
+        // Not sure what you planned on doing here when the lang was not in the config
+//        return redirect()->back()->withErrors();
     }
 
     function myAccount()
