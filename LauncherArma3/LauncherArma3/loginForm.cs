@@ -589,6 +589,8 @@ namespace LauncherArma3
                 translateDic.Add("registerDisabled", translate.ReadElementContentAsString());
                 translate.ReadToFollowing("error404");
                 translateDic.Add("error404", translate.ReadElementContentAsString());
+                translate.ReadToFollowing("errorInternet");
+                translateDic.Add("errorInternet", translate.ReadElementContentAsString());                            
                 translate.ReadToFollowing("errorUpdate");
                 translateDic.Add("errorUpdate", translate.ReadElementContentAsString());
                 translate.ReadToFollowing("updateCancel");
