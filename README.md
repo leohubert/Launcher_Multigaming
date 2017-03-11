@@ -22,6 +22,10 @@ Copyright HUBERT Léo © 2014 - 2016
 
 ![Launcher_Arma3 Logo](https://raw.githubusercontent.com/MrDarkSkil/Launcher_Arma3/master/Screens/pre-release/pre-release_5.0.5.0/LauncherMain.PNG)
 
+![Launcher_Arma3 Logo](https://raw.githubusercontent.com/MrDarkSkil/Launcher_Arma3/master/Screens/pre-release/pre-release_5.0.5.0/login.PNG)
+
+![Launcher_Arma3 Logo](https://raw.githubusercontent.com/MrDarkSkil/Launcher_Arma3/master/Screens/pre-release/pre-release_5.0.5.0/register.PNG)
+
 ## Launcher Panel Install Guide:
 
 For install this panel you need to have a little VPS and you need to have DEBIAN 8 on this VPS.
