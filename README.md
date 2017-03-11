@@ -5,11 +5,11 @@ Launcher_Arma3
 ## Launcher Information:
 
 #### Last version:
-Version: 5.1.0.0
+Version: 5.1.0.2
 Functional: YES
-Release date: 03/07/2016 16:38
+Release date: 28/02/2017 19:24
 
-Copyright HUBERT Léo © 2014 - 2016
+Copyright HUBERT Léo © 2014 - 2017
 
 ## Coming soon:
 - Login with forum, facebook, etc ... (XenForo in progress)
