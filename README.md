@@ -28,41 +28,8 @@ Copyright HUBERT Léo © 2014 - 2017
 
 ## Launcher Panel Install Guide:
 
-For install this panel you need to have a little VPS and you need to have DEBIAN 8 on this VPS.
-
-
-Reccomended minimal specs required: https://www.ovh.com/fr/vps/vps-ssd.xml
-
-When you have setup a VPS you can connect to it using SSH. On Windows you can use [PUTTY](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html) or on Linux you can just use the `ssh` commands.
-
-Once connected, follow the steps below.
-
-1. Write this command in the terminal `apt-get update; apt-get upgrade`
-2. Write this command in the terminal `apt-get install apache2 php5 php5-curl`
-3. Write this command in the terminal `apt-get install mysql-server` and follow install page.  
-4. Write this command in the terminal `apt-get install phpmyadmin` and follow install page.
-5. Edit this file (/etc/apache2/apache2.conf) with this command `sudo nano /etc/apache2/apache2.conf` search this line:
-
-```
-<Directory /var/www/>
-  Options Indexes FollowSymLinks
-  AllowOverride None
-  Require all granted
-</Directory>
-```
-edit to
-```
-<Directory /var/www/>
-  Options Indexes FollowSymLinks
-  AllowOverride All
-  Require all granted
-</Directory>
-```
-6. Write this command in the terminal `a2enmod rewrite`
-7. Write this command in the terminal `service apache2 restart`
-9. Upload WebPanel to the `/var/www/html` folder (don't forget .htaccess file)
-9. Write this command in the terminal `chown -R www-data:www-data /var/www/html/games/; chmod -R 777 /var/www/html/configs/`
-10. In your browser, go to your VPS or other IP and follow the installation steps
+En Français: https://github.com/MrDarkSkil/Launcher_Multigaming/wiki/Intall-guide-for-DEBIAN-8-%5BFR%5D
+In English:  https://github.com/MrDarkSkil/Launcher_Multigaming/wiki/Intall-guide-for-DEBIAN-8-%5BEN%5D
 
 ## Creators:
 
