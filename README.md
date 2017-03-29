@@ -28,8 +28,8 @@ Copyright HUBERT Léo © 2014 - 2017
 
 ## Launcher Panel Install Guide:
 
-En Français: https://github.com/MrDarkSkil/Launcher_Multigaming/wiki/Intall-guide-for-DEBIAN-8-%5BFR%5D
-In English:  https://github.com/MrDarkSkil/Launcher_Multigaming/wiki/Intall-guide-for-DEBIAN-8-%5BEN%5D
+En Français: https://github.com/MrDarkSkil/Launcher_Multigaming/wiki/Intall-guide-for-DEBIAN-8-%5BFR%5D<br>
+In English:  https://github.com/MrDarkSkil/Launcher_Multigaming/wiki/Intall-guide-for-DEBIAN-8-%5BEN%5D<br>
 
 ## Creators:
 
