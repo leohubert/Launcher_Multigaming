@@ -17,7 +17,7 @@ Copyright HUBERT Léo © 2014 - 2017
 - Auto detect Steam UID
 - Donation system
 - Profile editing (in launcher)
-
+ 
 ## Screens:
 
 ![Launcher_Arma3 Logo](https://raw.githubusercontent.com/MrDarkSkil/Launcher_Arma3/master/Screens/pre-release/pre-release_5.0.5.0/LauncherMain.PNG)
