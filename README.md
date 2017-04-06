@@ -11,7 +11,7 @@ Release date: 28/02/2017 19:24
 
 Copyright HUBERT Léo © 2014 - 2017
 
-## Coming soon:
+## Coming soon:  
 - Login with forum, facebook, etc ... (XenForo in progress)
 - More stats ingame ( gang, total vehicle, total house etc...)
 - Auto detect Steam UID
