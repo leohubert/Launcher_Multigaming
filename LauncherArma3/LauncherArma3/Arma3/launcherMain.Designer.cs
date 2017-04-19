@@ -1150,7 +1150,6 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackgroundImage = global::LauncherArma3.Properties.Resources.ob_b0ac09_drapeau_usa;
             this.ClientSize = new System.Drawing.Size(1000, 500);
             this.Controls.Add(this.notificationNumber);
             this.Controls.Add(this.changeGameButton);
