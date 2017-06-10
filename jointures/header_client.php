@@ -75,7 +75,7 @@
                         <ul class="dropdown-menu">
                             <li><a href="/profile/view"><i class="ti-user m-r-5"></i> Profile</a></li>
                             <li><a href="/profile/edit"><i class="ti-settings m-r-5"></i> Settings</a></li>
-                            <li><a href="/refresh?page=<?php echo $_SERVER[REQUEST_URI];?>"><i class="ti-loop m-r-5"></i>Refresh session</a></li>
+                            <li><a href="/refresh?page=<?php echo $_SERVER['REQUEST_URI'];?>"><i class="ti-loop m-r-5"></i>Refresh session</a></li>
                             <li><a href="/lock"><i class="ti-lock m-r-5"></i>Lock session</a></li>
                             <li><a href="/logout"><i class="ti-power-off m-r-5"></i> Logout</a></li>
                         </ul>
