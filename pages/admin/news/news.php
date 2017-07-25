@@ -95,12 +95,12 @@
                                 <br>
                                 <br>
                                 <div class="col-sm-12">
-                                    <input type="text" class="form-control"  placeholder="News redirect link" id="news_link">
+                                    <input type="text" class="form-control"  placeholder="Link of your news" id="news_link">
                                 </div>
                                 <br>
                                 <br>
                                 <div class="col-sm-12">
-                                    <textarea type="text" class="form-control"  placeholder="News message" id="news_content"></textarea>
+                                    <textarea type="text" class="form-control"  placeholder="News content" id="news_content"></textarea>
                                 </div>
                                 <br>
                                 <br>

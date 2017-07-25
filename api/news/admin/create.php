@@ -10,8 +10,8 @@ header('Content-type: application/json');
 
 $result = array("status" => 500, "message" => "Internal error");
 
-if (isset($_POST['token']) && isset($_POST['title']) && isset($_POST['link']) && isset($_POST['server_id']) && isset($_POST['content'])
-    && $_POST['title'] != "" && $_POST['link'] != "" && $_POST['server_id'] != "" && is_numeric($_POST['server_id']) && $_POST['content'] != "")
+if (isset($_POST['token']) && isset($_POST['title']) && isset($_POST['server_id']) && isset($_POST['content'])
+    && $_POST['title'] != "" && $_POST['server_id'] != "" && is_numeric($_POST['server_id']) && $_POST['content'] != "")
 {
     $token = $_POST['token'];
     $title = $_POST['title'];

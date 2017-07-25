@@ -34,6 +34,28 @@
     </head>
     <body>
         <script>
+            window.onload = function() {
+                $.get(
+                    '/api/settings',
+                    {
+                        launcher : 0
+                    },
+
+                    function(data){
+                        var obj = JSON.parse(data);
+
+                        if (obj.uuid == 0)
+                        {
+                            var label = document.getElementById("uuid");
+
+                            label.className = "form-group hidden";
+                        }
+
+                    },
+
+                    'text'
+                );
+            };
             function register_function()
             {
                 $.post(
@@ -85,9 +107,9 @@
                     </div>
                 </div>
 				
-				 <div class="form-group">
+				 <div class="form-group" id="uuid">
                     <div class="col-xs-12">
-                        <input class="form-control" type="text" id="uid" required="" placeholder="UID">
+                        <input class="form-control" type="text" id="uid"  placeholder="UID">
                         <i class="md md-account-circle form-control-feedback l-h-34"></i>
                     </div>
                 </div>

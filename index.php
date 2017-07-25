@@ -119,6 +119,7 @@
     $router->map('POST','/api/switch/login', 'api/switch/login.php', 'api-switch-login');
     $router->map('POST','/api/switch/register', 'api/switch/register.php', 'api-switch-register');
     $router->map('POST','/api/switch/taskforce', 'api/switch/taskforce.php', 'api-switch-taskforce');
+    $router->map('POST','/api/switch/uuid', 'api/switch/uuid.php', 'api-switch-uuid');
 
     /** @var API update route */
     $router->map('POST','/api/update/maintenance', 'api/update/maintenance.php', 'api-update-maintenance');
@@ -166,6 +167,7 @@
     $router->map('POST','/api/server/admin/get', 'api/server/admin/get.php', 'api-server-admin-get');
     $router->map('POST','/api/server/admin/unlock', 'api/server/admin/unlock.php', 'api-server-admin-unlock');
     $router->map('POST','/api/server/admin/taskforce', 'api/server/admin/taskforce.php', 'api-server-admin-taskforce');
+    $router->map('POST','/api/server/admin/taskforce/update', 'api/server/admin/taskforce_update.php', 'api-server-admin-taskforce-update');
     $router->map('POST','/api/server/admin/maintenance', 'api/server/admin/maintenance.php', 'api-server-admin-maintenance');
     $router->map('POST','/api/server/admin/setpass/lock', 'api/server/admin/setLockPass.php', 'api-server-admin-setpass-lock');
     $router->map('POST','/api/server/admin/setpass/server', 'api/server/admin/setServerPass.php', 'api-server-admin-setpass-server');

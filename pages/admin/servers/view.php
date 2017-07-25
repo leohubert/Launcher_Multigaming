@@ -155,6 +155,7 @@
         );
         getDB();
     }
+
     function createModUpdate()
     {
         waitingDialog.show('Creating update in progress, don\'t refresh this page !', {progressType: 'warning'});
@@ -182,6 +183,37 @@
                 else
                     swal("Error...", obj.message, "error");
                 waitingDialog.hide();
+            },
+
+            'text'
+        );
+    }
+
+    function createTaskForceUpdate()
+    {
+        $.post(
+            '/api/server/admin/taskforce/update',
+            {
+                token : "<?php echo $_SESSION['token'];?>",
+                id : "<?php echo $id;?>"
+            },
+
+            function(data){
+                var obj = JSON.parse(data);
+
+                if (obj.status == 42)
+                {
+                    swal({
+                        title: "Success !",
+                        text: obj.message,
+                        type: "success",
+                        timer: 1500
+                    });
+                }
+                else if (obj.status == 41)
+                    window.location="/logout";
+                else
+                    swal("Error...", obj.message, "error");
             },
 
             'text'
@@ -795,6 +827,13 @@
                     <div class="panel-body text-center">
                         <button id="taskforce_button" type="button" class="btn btn-purple btn-custom waves-effect w-md waves-light m-b-5" onclick="switch_taskforce()" value="taskforce">Activate Taskforce</button>
                     </div>
+
+                    <div class="panel-body text-center">
+                        <h3 class="panel-title text-warning">Taskforce Radio Update</h3>
+                        <br>
+                        <button id="taskforce_button_update" type="button" class="btn btn-warning btn-custom waves-effect w-md waves-light m-b-5" onclick="createTaskForceUpdate()">Update Taskforce</button>
+                    </div>
+
                 </div>
             </div>
         </div>
