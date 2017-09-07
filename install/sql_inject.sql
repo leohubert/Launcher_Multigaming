@@ -111,14 +111,15 @@ CREATE TABLE IF NOT EXISTS `settings` (
   `maintenance_content` text NOT NULL,
   `login` int(11) NOT NULL,
   `register` int(11) NOT NULL,
-  `uuid` int(11) NOT NULL
+  `uuid` tinyint(1) NOT NULL DEFAULT '1'
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 
 --
 -- Contenu de la table `settings`
 --
 
-INSERT INTO `settings` (`id`, `active`, `msg_title`, `msg_content`, `maintenance`, `maintenance_title`, `maintenance_content`, `login`, `register`) VALUES
+
+INSERT INTO `settings` (`id`, `active`, `msg_title`, `msg_content`, `maintenance`, `maintenance_title`, `maintenance_content`, `login`, `register`, `uuid`) VALUES
 (1, 1, '{picture}', 'http://image.noelshack.com/fichiers/2016/25/1466452270-maintenance.png', 0, '{picture}', 'http://image.noelshack.com/fichiers/2016/25/1466452270-maintenance.png', 1, 1, 1);
 
 -- --------------------------------------------------------
