@@ -9,7 +9,7 @@ Version: 5.0
 Functional: YES
 Release date: 28/02/2017 19:24
 
-Copyright HUBERT Léo © 2014 - 2017
+Copyright HUBERT Léo © 2014 - 2018
 
 ## Coming soon:  
 - Login with forum, facebook, etc ... (XenForo in progress)
