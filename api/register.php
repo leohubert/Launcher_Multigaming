@@ -36,7 +36,7 @@ if (isset($_POST['email']) && isset($_POST['uid']) && isset($_POST['username']) 
                         if ($getUsers->rowCount() < 2) {
                             $getUsers = $database->prepare('SELECT * FROM users WHERE uid = :uid');
                             $getUsers->execute(array('uid' => $uid));
-                            if ($getUsers->rowCount() == 0) {
+                            if ($res['uuid'] == 0 || $getUsers->rowCount() == 0) {
                                 $getUsers = $database->prepare('SELECT * FROM users WHERE email = :email');
                                 $getUsers->execute(array('email' => $email));
                                 if ($getUsers->rowCount() == 0) {
