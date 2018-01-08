@@ -5,11 +5,16 @@ Launcher_Arma3
 ## Launcher Information:
 
 #### Last version:
-Version: 5.0
-Functional: YES
-Release date: 28/02/2017 19:24
+Version: 5.0<br>
+Release date: 28/02/2017 19:24 <br>
+<br>
+Copyright HUBERT Léo © 2014 - 2018<br>
 
-Copyright HUBERT Léo © 2014 - 2018
+If you have any question or suggestion you can talk with the dev team on Discord:<br>
+https://discord.gg/75pQdYx<br>
+
+You can follow the new launcher here:<br>
+https://github.com/emodyz/launcher-ezgames.eu
 
 ## Coming soon:  
 - Login with forum, facebook, etc ... (XenForo in progress)
