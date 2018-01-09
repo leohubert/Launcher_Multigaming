@@ -1,3 +1,13 @@
+/**
+ * @Author: hubert_i
+ * @Date:   2018-01-09T22:20:28+01:00
+ * @Email:  leo.hubert@epitech.eu
+ * @Last modified by:   hubert_i
+ * @Last modified time: 2018-01-09T23:01:37+01:00
+ */
+
+
+
 ﻿using LauncherArma3.Properties;
 using MaterialSkin;
 using MetroFramework;
@@ -64,6 +74,7 @@ namespace LauncherArma3
         bool notif = false;
         int taskforce;
         string vtaskforce;
+        string defaultLanguage
 
         /* TRANSLATE PART */
 
@@ -71,7 +82,7 @@ namespace LauncherArma3
         Dictionary<string, string> translateDic = new Dictionary<string, string>();
 
 
-        public loginForm(string _communityName, string api, string ftpUrl, string ftpUser, string ftpPass, bool mod)
+        public loginForm(string _communityName, string api, string ftpUrl, string ftpUser, string ftpPass, bool mod, string _defaultLanguage)
         {
             InitializeComponent();
             materialSkinManager = MaterialSkinManager.Instance;
@@ -83,6 +94,7 @@ namespace LauncherArma3
             ftp_user = ftpUser;
             ftp_pass = ftpPass;
             modDev = mod;
+            defaultLanguage = _defaultLanguage;
         }
 
         private void loginForm_Load(object sender, EventArgs e)
@@ -91,21 +103,26 @@ namespace LauncherArma3
             {
                 sessionToken = File.ReadAllText(appdata + communityName + "/token.bin2hex");
             }
-            if (File.Exists(appdata + communityName + "/language.lang"))
+            if (defaultLanguage != null)
+            {
+              language = defaultLanguage;
+              loadLanguage();
+            }
+            else if (File.Exists(appdata + communityName + "/language.lang"))
             {
                 language = File.ReadAllText(appdata + communityName + "/language.lang");
                 loadLanguage();
             }
             if (modDev == true)
             {
-                notifView("Warning ! Dev mod enabled !");   
+                notifView("Warning ! Dev mod enabled !");
             }
             if (translateDic["reverse"] == "true")
             {
                 this.RightToLeft = RightToLeft.Yes;
                 this.RightToLeftLayout = true;
             }
-                             
+
         }
 
         private void checkOptions(object sender, EventArgs e)
@@ -166,7 +183,7 @@ namespace LauncherArma3
                         newsTitle.Text = res.maintenance_title;
                         newsContent.Text = res.maintenance_content;
                     }
-                    maintenanceRefresh.RunWorkerAsync();                
+                    maintenanceRefresh.RunWorkerAsync();
                     return;
                 }
 
@@ -195,7 +212,7 @@ namespace LauncherArma3
                     if (!File.Exists(appdata + communityName + "/autoConnect"))
                     {
                         using (var chooseServer = new serverChoose(apiUrl, communityName, translateDic, appdata))
-                        {                            
+                        {
                             var result = chooseServer.ShowDialog();
                             if (result == DialogResult.OK)
                             {
@@ -217,7 +234,7 @@ namespace LauncherArma3
                     switch (serverGame)
                     {
                         case "arma3":
-                            using (var launcher = new launcherMain(communityName, apiUrl, webSite, teamSpeak, sessionToken, ftp_url, ftp_user, 
+                            using (var launcher = new launcherMain(communityName, apiUrl, webSite, teamSpeak, sessionToken, ftp_url, ftp_user,
                                 ftp_pass, vLast, taskforce, vtaskforce, modDev, serverIP, translateDic, showIGinfo, serverName, serverID,
                                 modPackName, downloadPath, serverLocked, serverMaintenance, serverPass))
                             {
@@ -291,7 +308,7 @@ namespace LauncherArma3
 
                         IRestResponse response = client.Execute(request);
                         var content = response.Content;
-                    
+
                         dynamic res = JObject.Parse(content.ToString());
 
                         if (res.status == "42")
@@ -306,7 +323,7 @@ namespace LauncherArma3
                             // Reset form
                             startLauncher = true;
                             stat = 1;
-                        }                        
+                        }
                         else
                         {
                             string message = res.message;
@@ -343,7 +360,7 @@ namespace LauncherArma3
                             getServerInfo(serverID);
                         }
                         else
-                            this.Close();        
+                            this.Close();
                     }
                 }
                 else
@@ -351,12 +368,12 @@ namespace LauncherArma3
                     string id = File.ReadAllText(appdata + communityName + "/autoConnect");
 
                     //GET SERVER INFO
-                    getServerInfo(id);        
+                    getServerInfo(id);
                 }
                 switch (serverGame)
                 {
                     case "arma3":
-                        using (var launcher = new launcherMain(communityName, apiUrl, webSite, teamSpeak, sessionToken, ftp_url, ftp_user, ftp_pass, 
+                        using (var launcher = new launcherMain(communityName, apiUrl, webSite, teamSpeak, sessionToken, ftp_url, ftp_user, ftp_pass,
                             vLast, taskforce, vtaskforce, modDev, serverIP, translateDic, showIGinfo, serverName, serverID, modPackName, downloadPath,
                             serverLocked, serverMaintenance, serverPass))
                         {
@@ -421,7 +438,7 @@ namespace LauncherArma3
                     serverLocked = false;
             }
             else if (res.status == "04")
-            {                
+            {
                 using (var chooseServer = new serverChoose(apiUrl, communityName, translateDic, appdata))
                 {
                     var result = chooseServer.ShowDialog();
@@ -465,7 +482,7 @@ namespace LauncherArma3
                     if (!File.Exists(appdata + communityName + "/autoConnect"))
                     {
                         using (var chooseServer = new serverChoose(apiUrl, communityName, translateDic, appdata))
-                        {                                                    
+                        {
                             var result = chooseServer.ShowDialog();
                             if (result == DialogResult.OK)
                             {
@@ -489,7 +506,7 @@ namespace LauncherArma3
                     switch (serverGame)
                     {
                         case "arma3":
-                            using (var launcher = new launcherMain(communityName, apiUrl, webSite, teamSpeak, sessionToken, ftp_url, ftp_user, ftp_pass, vLast, taskforce, 
+                            using (var launcher = new launcherMain(communityName, apiUrl, webSite, teamSpeak, sessionToken, ftp_url, ftp_user, ftp_pass, vLast, taskforce,
                                 vtaskforce, modDev, serverIP, translateDic, showIGinfo, serverName, serverID, modPackName, downloadPath, serverLocked, serverMaintenance,
                                 serverPass))
                             {
@@ -590,7 +607,7 @@ namespace LauncherArma3
                 translate.ReadToFollowing("error404");
                 translateDic.Add("error404", translate.ReadElementContentAsString());
                 translate.ReadToFollowing("errorInternet");
-                translateDic.Add("errorInternet", translate.ReadElementContentAsString());                            
+                translateDic.Add("errorInternet", translate.ReadElementContentAsString());
                 translate.ReadToFollowing("errorUpdate");
                 translateDic.Add("errorUpdate", translate.ReadElementContentAsString());
                 translate.ReadToFollowing("updateCancel");
@@ -736,7 +753,7 @@ namespace LauncherArma3
                 translate.ReadToFollowing("serverMaintenance");
                 translateDic.Add("serverMaintenance", translate.ReadElementContentAsString());
                 translate.ReadToFollowing("serverLocked");
-                translateDic.Add("serverLocked", translate.ReadElementContentAsString());            
+                translateDic.Add("serverLocked", translate.ReadElementContentAsString());
 
                 loginButton.Text = translateDic["logIn"];
                 registerLink.Text = translateDic["registerLink"];
@@ -744,7 +761,7 @@ namespace LauncherArma3
                 loginPassword.Hint = translateDic["password"];
                 loginRemember.Text = translateDic["remember"];
                 newPassword.Text = translateDic["forgotPass"];
-                registerMessage.Text = translateDic["registerMsg"];                           
+                registerMessage.Text = translateDic["registerMsg"];
                 this.Refresh();
             }
             catch
@@ -837,7 +854,7 @@ namespace LauncherArma3
                             newsContent.Text = res.maintenance_content;
                         }
                     }
-                });           
+                });
                 if (res.maintenance == "0")
                 {
                     maintenance = false;
@@ -862,7 +879,7 @@ namespace LauncherArma3
                 this.Refresh();
             }
             else
-                maintenanceRefresh.RunWorkerAsync();    
+                maintenanceRefresh.RunWorkerAsync();
         }
 
         void launcherUpdate()

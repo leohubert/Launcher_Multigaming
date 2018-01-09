@@ -1,3 +1,13 @@
+/**
+ * @Author: hubert_i
+ * @Date:   2018-01-09T22:20:28+01:00
+ * @Email:  leo.hubert@epitech.eu
+ * @Last modified by:   hubert_i
+ * @Last modified time: 2018-01-09T22:54:37+01:00
+ */
+
+
+
 ﻿using System;
 using System.Drawing;
 using System.Windows.Forms;
@@ -134,6 +144,7 @@ namespace LauncherArma3
                 changeGameButton.Location = new Point(826, 65);
             }
             setLanguage();
+            loadServerStatus();      
             if (File.Exists(appdata + communityName + "/armaDest"))
             {
                 armaDirectory = File.ReadAllText(appdata + communityName + "/armaDest");
@@ -281,9 +292,11 @@ namespace LauncherArma3
                 Thread thread = new Thread(() =>
                 {
                     loadServerStatus();
-                    loadIGinfos();
                     if (sessionToken != null)
-                        getNotification();
+                    {
+                      loadIGinfos();
+                      getNotification();
+                    }
                 });
                 thread.Start();
             }
@@ -1721,4 +1734,3 @@ namespace LauncherArma3
         }
     }
 }
-
