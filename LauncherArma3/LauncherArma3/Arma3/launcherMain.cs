@@ -217,7 +217,8 @@ namespace LauncherArma3
             }
             if (serverMaintenance == true || serverLocked == true)
                 refreshMaintenance();
-            getNotification();
+            if (sessionToken != null)
+                getNotification();
             autoRefresh();
 
         }
@@ -281,7 +282,8 @@ namespace LauncherArma3
                 {
                     loadServerStatus();
                     loadIGinfos();
-                    getNotification();
+                    if (sessionToken != null)
+                        getNotification();
                 });
                 thread.Start();
             }
