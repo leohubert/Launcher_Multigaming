@@ -1,5 +1,5 @@
 ## Tell if it's a panel or launcher bug:
-- [ ] Panel bug
+- [X] Panel bug
 - [ ] Launcher bug
 
 ## Brief of your bug
