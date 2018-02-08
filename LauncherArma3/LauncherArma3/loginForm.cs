@@ -74,7 +74,7 @@ namespace LauncherArma3
         bool notif = false;
         int taskforce;
         string vtaskforce;
-        string defaultLanguage
+        string defaultLanguage;
 
         /* TRANSLATE PART */
 
