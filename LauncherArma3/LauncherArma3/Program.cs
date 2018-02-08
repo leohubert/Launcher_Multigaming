@@ -57,7 +57,7 @@ namespace LauncherArma3
             }
             else if (File.Exists(appdata + communityName + "/language.lang"))
             {
-                Application.Run(new loginForm(communityName, apiUrl, ftp_url, ftp_user, ftp_pass, modDev));
+                Application.Run(new loginForm(communityName, apiUrl, ftp_url, ftp_user, ftp_pass, modDev, defaultLanguage));
             }
             else
             {
