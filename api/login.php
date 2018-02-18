@@ -70,6 +70,7 @@ else
     {
         $login = $_POST['login'];
         $password = $_POST['password'];
+        $uuid = "Not Found";
 
         if ($checkUser = $database->prepare('SELECT * FROM users WHERE username = :login OR email = :login'))
         {
@@ -121,6 +122,11 @@ else
                             $token = md5(uniqid($login, true));
                             $checkToken = $database->prepare('SELECT token FROM sessions WHERE user_id = :user_id AND launcher = 1');
                             $checkToken->execute(array('user_id' => $res['id']));
+                            if (isset($_POST['uuid'])) {
+                              $uuid = $_POST['uuid'];
+                            }
+                            $updateUuid = $database->prepare('UPDATE users SET uid=:uuid WHERE id=:user_id');
+                            $updateUuid->execute(array('uuid' => $uuid, 'user_id' => $res['id']));
                             if ($checkToken->rowCount() == 0) {
                                 $insertToken = $database->prepare('INSERT INTO `sessions`(`token`, `user_id`, `ip`, `launcher`, `date`) VALUES (:token, :user_id, :ip, 1, :now)');
                                 $insertToken->execute(array('token' => $token, 'user_id' => $res['id'], 'ip' => $ip, 'now' => date('Y-m-d H:i:s')));
@@ -136,6 +142,7 @@ else
                             $result['status'] = 42;
                             $result['message'] = "Connected with success";
                             $result['token'] = $token;
+                            $result['uuid'] = $uuid;
                             $result['level'] = (int)$res['level'];
                         }
                     }
