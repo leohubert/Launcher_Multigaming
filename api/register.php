@@ -6,9 +6,7 @@
  * Time: 01:26
  */
 
-header('Content-type: application/json');
-
-$result = array("status" => 500, "message" => "Internal error");
+$result = array("status" => 400, "message" => "Internal error");
 
 if (isset($_POST['email']) && isset($_POST['uid']) && isset($_POST['username']) && isset($_POST['password']) && isset($_POST['confirm_password']) && isset($_POST['launcher'])) {
     $email = $_POST['email'];
@@ -43,9 +41,6 @@ if (isset($_POST['email']) && isset($_POST['uid']) && isset($_POST['username']) 
                                     $getUsers = $database->prepare('SELECT * FROM users WHERE username = :username');
                                     $getUsers->execute(array('username' => $username));
                                     if ($getUsers->rowCount() == 0) {
-                                        if ($res['uuid'] == 0 || ($res['uuid'] == 1 && $uid != "")) {
-                                            if ($uid == "")
-                                                $uid = "Not found";
                                             if ($password == $confirm_password) {
                                                 $encrypt = new Encryption($encrypt_key);
                                                 $password_encrypted = $encrypt->encode($password);
@@ -57,10 +52,6 @@ if (isset($_POST['email']) && isset($_POST['uid']) && isset($_POST['username']) 
                                                 $result['status'] = 01;
                                                 $result['message'] = "Password doesn't match";
                                             }
-                                        } else {
-                                            $result['status'] = 01;
-                                            $result['message'] = "UID can't be empty";
-                                        }
                                     } else {
                                         $result['status'] = 01;
                                         $result['message'] = "Username already used";
