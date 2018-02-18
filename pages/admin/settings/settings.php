@@ -76,6 +76,17 @@
                             </div><!-- end row -->
                         </div>
                     </div> <!-- end col -->
+                    <div class="col-lg-2">
+                        <div class="card-box">
+                            <div class="row">
+                                <div class="col-sm-12 text-center">
+                                    <span>Need UUID ? <div><span class="label label-success" id="uuid_state">Activated</span></div></span>
+                                    <br>
+                                    <button id="uuid" type="button" class="btn btn-primary waves-effect w-md waves-light m-b-5" onclick="switch_uuid()">Deactivate UUID</button>
+                                </div>
+                            </div><!-- end row -->
+                        </div>
+                    </div> <!-- end col -->
                      <!-- end col -->
                 </div>
 
