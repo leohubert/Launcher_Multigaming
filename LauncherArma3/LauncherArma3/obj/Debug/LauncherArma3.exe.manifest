@@ -43,14 +43,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="LauncherArma3.exe" size="4797440">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="LauncherArma3.exe" size="4798464">
       <assemblyIdentity name="LauncherArma3" version="5.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>W3Xfb3bi7EEZWDmrsrHXYjEqa3Oc0jkG6Vg6es2Sr1w=</dsig:DigestValue>
+        <dsig:DigestValue>Tvgrm7BxelELLLVdiHt9uLPkreKZV60esvZrICpw2Ic=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -151,6 +151,18 @@
     </dependentAssembly>
   </dependency>
   <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Steamworks.NET.dll" size="277504">
+      <assemblyIdentity name="Steamworks.NET" version="11.0.0.0" language="neutral" processorArchitecture="amd64" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+        <dsig:DigestValue>N1bOkga6lHu5006Z6rLIYZbd4Mk/rYgNYeiN+Ecl3sI=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <dependency>
     <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="System.Net.Http.Extensions.dll" size="22256">
       <assemblyIdentity name="System.Net.Http.Extensions" version="2.2.18.0" publicKeyToken="B03F5F7F11D50A3A" language="neutral" processorArchitecture="msil" />
       <hash>
@@ -189,7 +201,7 @@
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>ubWtL2phfpClUvo9uPNc1rcPMGyc+Oo9RcfGlO2WA1M=</dsig:DigestValue>
+      <dsig:DigestValue>9rLlN3ZA5Ve8XrLFGiK4uaqtKq38RJj80EQrWkzRKJM=</dsig:DigestValue>
     </hash>
   </file>
   <file name="logo_regalian.ico" size="370070">

@@ -40,16 +40,16 @@
             this.registerEmail = new MaterialSkin.Controls.MaterialSingleLineTextField();
             this.errorBox = new FlatUI.FlatAlertBox();
             this.successBox = new FlatUI.FlatAlertBox();
-            this.registerUid = new MaterialSkin.Controls.MaterialSingleLineTextField();
             ((System.ComponentModel.ISupportInitialize)(this.registerLogo)).BeginInit();
             this.SuspendLayout();
             // 
             // registerLogo
             // 
             this.registerLogo.Image = ((System.Drawing.Image)(resources.GetObject("registerLogo.Image")));
-            this.registerLogo.Location = new System.Drawing.Point(32, 33);
+            this.registerLogo.Location = new System.Drawing.Point(64, 63);
+            this.registerLogo.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.registerLogo.Name = "registerLogo";
-            this.registerLogo.Size = new System.Drawing.Size(249, 64);
+            this.registerLogo.Size = new System.Drawing.Size(498, 123);
             this.registerLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.registerLogo.TabIndex = 31;
             this.registerLogo.TabStop = false;
@@ -59,21 +59,23 @@
             // 
             this.separator.BaseTabControl = null;
             this.separator.Depth = 0;
-            this.separator.Location = new System.Drawing.Point(-1, 328);
+            this.separator.Location = new System.Drawing.Point(-2, 631);
+            this.separator.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.separator.MouseState = MaterialSkin.MouseState.HOVER;
             this.separator.Name = "separator";
-            this.separator.Size = new System.Drawing.Size(325, 1);
+            this.separator.Size = new System.Drawing.Size(650, 2);
             this.separator.TabIndex = 30;
             this.separator.Text = "materialTabSelector1";
             // 
             // loginLink
             // 
             this.loginLink.Depth = 0;
-            this.loginLink.Location = new System.Drawing.Point(36, 385);
+            this.loginLink.Location = new System.Drawing.Point(72, 740);
+            this.loginLink.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.loginLink.MouseState = MaterialSkin.MouseState.HOVER;
             this.loginLink.Name = "loginLink";
             this.loginLink.Primary = true;
-            this.loginLink.Size = new System.Drawing.Size(245, 46);
+            this.loginLink.Size = new System.Drawing.Size(490, 88);
             this.loginLink.TabIndex = 28;
             this.loginLink.Text = "Sign In";
             this.loginLink.UseVisualStyleBackColor = true;
@@ -82,11 +84,12 @@
             // registerButton
             // 
             this.registerButton.Depth = 0;
-            this.registerButton.Location = new System.Drawing.Point(32, 259);
+            this.registerButton.Location = new System.Drawing.Point(64, 467);
+            this.registerButton.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.registerButton.MouseState = MaterialSkin.MouseState.HOVER;
             this.registerButton.Name = "registerButton";
             this.registerButton.Primary = true;
-            this.registerButton.Size = new System.Drawing.Size(249, 46);
+            this.registerButton.Size = new System.Drawing.Size(498, 88);
             this.registerButton.TabIndex = 25;
             this.registerButton.Text = "Register";
             this.registerButton.UseVisualStyleBackColor = true;
@@ -98,10 +101,11 @@
             this.loginMessage.Depth = 0;
             this.loginMessage.Font = new System.Drawing.Font("Roboto", 11F);
             this.loginMessage.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.loginMessage.Location = new System.Drawing.Point(32, 337);
+            this.loginMessage.Location = new System.Drawing.Point(64, 648);
+            this.loginMessage.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.loginMessage.MouseState = MaterialSkin.MouseState.HOVER;
             this.loginMessage.Name = "loginMessage";
-            this.loginMessage.Size = new System.Drawing.Size(249, 45);
+            this.loginMessage.Size = new System.Drawing.Size(498, 87);
             this.loginMessage.TabIndex = 29;
             this.loginMessage.Text = "Already registered ?";
             this.loginMessage.TextAlign = System.Drawing.ContentAlignment.TopCenter;
@@ -112,14 +116,15 @@
             this.registerPassConfirm.Depth = 0;
             this.registerPassConfirm.ForeColor = System.Drawing.Color.White;
             this.registerPassConfirm.Hint = "Confirm password";
-            this.registerPassConfirm.Location = new System.Drawing.Point(32, 230);
+            this.registerPassConfirm.Location = new System.Drawing.Point(64, 382);
+            this.registerPassConfirm.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.registerPassConfirm.MouseState = MaterialSkin.MouseState.HOVER;
             this.registerPassConfirm.Name = "registerPassConfirm";
             this.registerPassConfirm.PasswordChar = '*';
             this.registerPassConfirm.SelectedText = "";
             this.registerPassConfirm.SelectionLength = 0;
             this.registerPassConfirm.SelectionStart = 0;
-            this.registerPassConfirm.Size = new System.Drawing.Size(249, 23);
+            this.registerPassConfirm.Size = new System.Drawing.Size(498, 41);
             this.registerPassConfirm.TabIndex = 32;
             this.registerPassConfirm.UseSystemPasswordChar = true;
             // 
@@ -129,14 +134,15 @@
             this.registerPass.Depth = 0;
             this.registerPass.ForeColor = System.Drawing.Color.White;
             this.registerPass.Hint = "Password";
-            this.registerPass.Location = new System.Drawing.Point(32, 201);
+            this.registerPass.Location = new System.Drawing.Point(64, 329);
+            this.registerPass.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.registerPass.MouseState = MaterialSkin.MouseState.HOVER;
             this.registerPass.Name = "registerPass";
             this.registerPass.PasswordChar = '*';
             this.registerPass.SelectedText = "";
             this.registerPass.SelectionLength = 0;
             this.registerPass.SelectionStart = 0;
-            this.registerPass.Size = new System.Drawing.Size(249, 23);
+            this.registerPass.Size = new System.Drawing.Size(498, 41);
             this.registerPass.TabIndex = 33;
             this.registerPass.UseSystemPasswordChar = true;
             // 
@@ -146,14 +152,15 @@
             this.registerUsername.Depth = 0;
             this.registerUsername.ForeColor = System.Drawing.Color.White;
             this.registerUsername.Hint = "Username";
-            this.registerUsername.Location = new System.Drawing.Point(32, 116);
+            this.registerUsername.Location = new System.Drawing.Point(64, 223);
+            this.registerUsername.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.registerUsername.MouseState = MaterialSkin.MouseState.HOVER;
             this.registerUsername.Name = "registerUsername";
             this.registerUsername.PasswordChar = '\0';
             this.registerUsername.SelectedText = "";
             this.registerUsername.SelectionLength = 0;
             this.registerUsername.SelectionStart = 0;
-            this.registerUsername.Size = new System.Drawing.Size(249, 23);
+            this.registerUsername.Size = new System.Drawing.Size(498, 41);
             this.registerUsername.TabIndex = 34;
             this.registerUsername.UseSystemPasswordChar = false;
             // 
@@ -163,14 +170,15 @@
             this.registerEmail.Depth = 0;
             this.registerEmail.ForeColor = System.Drawing.Color.White;
             this.registerEmail.Hint = "Email";
-            this.registerEmail.Location = new System.Drawing.Point(32, 172);
+            this.registerEmail.Location = new System.Drawing.Point(64, 276);
+            this.registerEmail.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.registerEmail.MouseState = MaterialSkin.MouseState.HOVER;
             this.registerEmail.Name = "registerEmail";
             this.registerEmail.PasswordChar = '\0';
             this.registerEmail.SelectedText = "";
             this.registerEmail.SelectionLength = 0;
             this.registerEmail.SelectionStart = 0;
-            this.registerEmail.Size = new System.Drawing.Size(249, 23);
+            this.registerEmail.Size = new System.Drawing.Size(498, 41);
             this.registerEmail.TabIndex = 35;
             this.registerEmail.UseSystemPasswordChar = false;
             // 
@@ -180,9 +188,10 @@
             this.errorBox.Cursor = System.Windows.Forms.Cursors.Hand;
             this.errorBox.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.errorBox.kind = FlatUI.FlatAlertBox._Kind.Error;
-            this.errorBox.Location = new System.Drawing.Point(-1, 49);
+            this.errorBox.Location = new System.Drawing.Point(-2, 94);
+            this.errorBox.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.errorBox.Name = "errorBox";
-            this.errorBox.Size = new System.Drawing.Size(325, 42);
+            this.errorBox.Size = new System.Drawing.Size(650, 42);
             this.errorBox.TabIndex = 36;
             this.errorBox.Visible = false;
             this.errorBox.Click += new System.EventHandler(this.normalView);
@@ -193,37 +202,20 @@
             this.successBox.Cursor = System.Windows.Forms.Cursors.Hand;
             this.successBox.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.successBox.kind = FlatUI.FlatAlertBox._Kind.Success;
-            this.successBox.Location = new System.Drawing.Point(-1, 49);
+            this.successBox.Location = new System.Drawing.Point(-2, 94);
+            this.successBox.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.successBox.Name = "successBox";
-            this.successBox.Size = new System.Drawing.Size(325, 42);
+            this.successBox.Size = new System.Drawing.Size(650, 42);
             this.successBox.TabIndex = 37;
             this.successBox.Visible = false;
             this.successBox.Click += new System.EventHandler(this.normalView);
             // 
-            // registerUid
-            // 
-            this.registerUid.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.registerUid.Depth = 0;
-            this.registerUid.ForeColor = System.Drawing.Color.White;
-            this.registerUid.Hint = "Uid";
-            this.registerUid.Location = new System.Drawing.Point(32, 143);
-            this.registerUid.MouseState = MaterialSkin.MouseState.HOVER;
-            this.registerUid.Name = "registerUid";
-            this.registerUid.PasswordChar = '\0';
-            this.registerUid.SelectedText = "";
-            this.registerUid.SelectionLength = 0;
-            this.registerUid.SelectionStart = 0;
-            this.registerUid.Size = new System.Drawing.Size(249, 23);
-            this.registerUid.TabIndex = 38;
-            this.registerUid.UseSystemPasswordChar = false;
-            // 
             // registerForm
             // 
             this.AcceptButton = this.registerButton;
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(323, 474);
-            this.Controls.Add(this.registerUid);
+            this.ClientSize = new System.Drawing.Size(646, 912);
             this.Controls.Add(this.registerEmail);
             this.Controls.Add(this.registerUsername);
             this.Controls.Add(this.registerPass);
@@ -237,9 +229,10 @@
             this.Controls.Add(this.successBox);
             this.DisplayHeader = false;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.MaximizeBox = false;
             this.Name = "registerForm";
-            this.Padding = new System.Windows.Forms.Padding(20, 30, 20, 20);
+            this.Padding = new System.Windows.Forms.Padding(40, 58, 40, 38);
             this.Resizable = false;
             this.Text = "registerForm";
             this.Theme = MetroFramework.MetroThemeStyle.Dark;
@@ -261,6 +254,5 @@
         private MaterialSkin.Controls.MaterialSingleLineTextField registerEmail;
         private FlatUI.FlatAlertBox errorBox;
         private FlatUI.FlatAlertBox successBox;
-        private MaterialSkin.Controls.MaterialSingleLineTextField registerUid;
     }
 }

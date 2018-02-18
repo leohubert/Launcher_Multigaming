@@ -4,17 +4,17 @@
   <description asmv2:publisher="LauncherArma3" asmv2:product="LauncherArma3" xmlns="urn:schemas-microsoft-com:asm.v1" />
   <deployment install="true" mapFileExtensions="true" />
   <compatibleFrameworks xmlns="urn:schemas-microsoft-com:clickonce.v2">
-    <framework targetVersion="4.5.2" profile="Full" supportedRuntime="4.0.30319" />
+    <framework targetVersion="4.6.1" profile="Full" supportedRuntime="4.0.30319" />
   </compatibleFrameworks>
   <dependency>
-    <dependentAssembly dependencyType="install" codebase="LauncherArma3.exe.manifest" size="13238">
+    <dependentAssembly dependencyType="install" codebase="LauncherArma3.exe.manifest" size="13887">
       <assemblyIdentity name="LauncherArma3.exe" version="1.0.0.0" publicKeyToken="0000000000000000" language="neutral" processorArchitecture="msil" type="win32" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>Y1Zzuw5xB38SlX3Eb8w0Vc6nRJba7+1WbxuQqzvA/IU=</dsig:DigestValue>
+        <dsig:DigestValue>jOOA+xeJrpHnEAsJ8uV3v1x28dfoan5J3PVNUgNQKU0=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

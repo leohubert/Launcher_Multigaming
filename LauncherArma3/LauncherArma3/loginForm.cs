@@ -25,6 +25,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Xml;
+using Steamworks;
 
 namespace LauncherArma3
 {
@@ -72,6 +73,7 @@ namespace LauncherArma3
         bool maintenance;
         bool loaded = false;
         bool notif = false;
+        string uuid = "Not Found";
         int taskforce;
         string vtaskforce;
         string defaultLanguage;
@@ -85,6 +87,7 @@ namespace LauncherArma3
         public loginForm(string _communityName, string api, string ftpUrl, string ftpUser, string ftpPass, bool mod, string _defaultLanguage)
         {
             InitializeComponent();
+            SteamAPI.Init();
             materialSkinManager = MaterialSkinManager.Instance;
             materialSkinManager.Theme = MaterialSkinManager.Themes.DARK;
             materialSkinManager.ColorScheme = new ColorScheme(Primary.Cyan400, Primary.Indigo700, Primary.Indigo100, Accent.LightGreen200, TextShade.WHITE);
@@ -95,6 +98,7 @@ namespace LauncherArma3
             ftp_pass = ftpPass;
             modDev = mod;
             defaultLanguage = _defaultLanguage;
+            uuid = SteamUser.GetSteamID().ToString();
         }
 
         private void loginForm_Load(object sender, EventArgs e)
@@ -302,6 +306,7 @@ namespace LauncherArma3
 
                         var request = new RestRequest("api/login", Method.POST);
 
+                        request.AddParameter("uuid", uuid);
                         request.AddParameter("login", loginUsername.Text);
                         request.AddParameter("password", loginPassword.Text);
                         request.AddParameter("launcher", 1);
@@ -465,6 +470,7 @@ namespace LauncherArma3
 
                 var request = new RestRequest("api/users/client/get", Method.POST);
 
+                request.AddParameter("uuid", uuid);
                 request.AddParameter("token", sessionToken);
 
                 IRestResponse response = client.Execute(request);
