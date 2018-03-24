@@ -70,12 +70,12 @@ else
     {
         $login = $_POST['login'];
         $password = $_POST['password'];
+        $uuid = "Not Found";
 
         if ($checkUser = $database->prepare('SELECT * FROM users WHERE username = :login OR email = :login'))
         {
             $checkUser->execute(array('login' => $login));
             $res = $checkUser->fetch();
-            $uuid = $res['uid'];
             $password_encrypted = new Encryption($encrypt_key);
             $password_encrypted = $password_encrypted->encode($password);
             if ($checkUser->rowCount() != 0)
