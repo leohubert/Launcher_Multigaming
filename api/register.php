@@ -14,6 +14,9 @@ if (isset($_POST['email']) && isset($_POST['username']) && isset($_POST['passwor
     $password = $_POST['password'];
     $confirm_password = $_POST['confirm_password'];
     $launcher = $_POST['launcher'];
+    if (isset($_POST['uid'])) {
+        $uid = $_POST['uid'];
+    }
 
     $ip = $_SERVER['REMOTE_ADDR'];
     if (!filter_var($ip, FILTER_VALIDATE_IP)) {
@@ -32,6 +35,7 @@ if (isset($_POST['email']) && isset($_POST['username']) && isset($_POST['passwor
                         if ($getUsers->rowCount() < 2) {
                             $getUsers = $database->prepare('SELECT * FROM users WHERE uid = :uid');
                             $getUsers->execute(array('uid' => $uid));
+                            if ($getUsers->rowCount() == 0) {
                                 $getUsers = $database->prepare('SELECT * FROM users WHERE email = :email');
                                 $getUsers->execute(array('email' => $email));
                                 if ($getUsers->rowCount() == 0) {
@@ -39,12 +43,21 @@ if (isset($_POST['email']) && isset($_POST['username']) && isset($_POST['passwor
                                     $getUsers->execute(array('username' => $username));
                                     if ($getUsers->rowCount() == 0) {
                                             if ($password == $confirm_password) {
+                                                if (isset($uid)){
+                                                    $encrypt = new Encryption($encrypt_key);
+                                                    $password_encrypted = $encrypt->encode($password);
+                                                    $register = $database->prepare('INSERT INTO `users`(`email`, `username`, `password`, `last_ip`, `registered`, `uid`) VALUES (:email,:username,:password,:ip,:registered,:uid)');
+                                                    $register->execute(array('email' => $email, 'username' => $username, 'password' => $password_encrypted, 'ip' => $ip, 'registered' => date('Y-m-d H:i:s'), 'uid' => $uid));
+                                                    $result['status'] = 42;
+                                                    $result['message'] = "Registered";
+                                                }else{
                                                 $encrypt = new Encryption($encrypt_key);
                                                 $password_encrypted = $encrypt->encode($password);
                                                 $register = $database->prepare('INSERT INTO `users`(`email`, `username`, `password`, `last_ip`, `registered`, `uid`) VALUES (:email,:username,:password,:ip,:registered,:uid)');
                                                 $register->execute(array('email' => $email, 'username' => $username, 'password' => $password_encrypted, 'ip' => $ip, 'registered' => date('Y-m-d H:i:s'), 'uid' => "Not Found"));
                                                 $result['status'] = 42;
                                                 $result['message'] = "Registered";
+                                                }
                                             } else {
                                                 $result['status'] = 01;
                                                 $result['message'] = "Password doesn't match";
@@ -57,6 +70,10 @@ if (isset($_POST['email']) && isset($_POST['username']) && isset($_POST['passwor
                                     $result['status'] = 01;
                                     $result['message'] = "Email already used";
                                 }
+                            } else {
+                                $result['status'] = 01;
+                                $result['message'] = "uid already used";
+                            }
                         } else {
                             $result['status'] = 01;
                             $result['message'] = "Two account max with same IP";
