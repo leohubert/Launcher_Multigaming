@@ -135,7 +135,6 @@
                                 user_name : document.getElementById("user_name").value,
                                 user_password : document.getElementById("user_password").value,
                                 user_confpassword : document.getElementById("user_confpassword").value,
-                                user_uid : document.getElementById("user_uid").value,
                                 token : token,
                                 db_host : document.getElementById("mysql_host").value,
                                 db_name : document.getElementById("mysql_name").value,
@@ -328,8 +327,6 @@
                                                                 <input class="form-control required" id="user_email" name="user_email" type="text">
                                                                 <label class="col-md-4 control-label " for="user_name">User name *</label>
                                                                 <input class="form-control required" id="user_name" name="user_name" type="text">
-                                                                <label class="col-md-4 control-label " for="user_uid">User steam uid</label>
-                                                                <input class="form-control required" id="user_uid" name="user_uid" type="text">
                                                                 <label class="col-md-4 control-label " for="user_password">User password *</label>
                                                                 <input class="form-control required" id="user_password" name="user_password" type="password">
                                                                 <label class="col-md-4 control-label " for="user_confpassword">Confirm password *</label>

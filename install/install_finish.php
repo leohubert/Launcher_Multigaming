@@ -39,14 +39,34 @@
             <div class="col-sm-12 text-center">
                 <div class="home-wrapper">
                     <h1 class="icon-main text-primary m-b-25"><i class="md md-equalizer"></i></h1>
-                    <h2 class="home-text text-uppercase">Installation is complete</h2>
-                    <a href="/"><button type="button" class="btn btn-primary btn-rounded w-md waves-effect waves-light m-b-5">Go to the login page</button></a>
+                    <h2 class="home-text text-uppercase">Please wait...</h2>
+                    <center>
+                        <div class="loader"></div>
+                    </center>
+                    <h4 class="home-text text-uppercase">We preparing your installation</h4>
+
                 </div>
             </div>
         </div>
     </div>
 </section>
 <!-- END HOME -->
+
+<style>
+    .loader {
+        border: 16px solid #f3f3f3; /* Light grey */
+        border-top: 16px solid #3498db; /* Blue */
+        border-radius: 50%;
+        width: 120px;
+        height: 120px;
+        animation: spin 1s linear infinite;
+    }
+
+    @keyframes spin {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+    }
+</style>
 
 <!-- Main  -->
 <script src="assets/js/jquery.min.js"></script>
@@ -64,6 +84,11 @@
 <script src="assets/js/jquery.core.js"></script>
 <script src="assets/js/jquery.app.js"></script>
 
+<script>
+    setTimeout(function () {
+        window.location = '/';
+    }, 3000);
+</script>
 
 </body>
 </html>

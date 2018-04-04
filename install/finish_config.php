@@ -22,10 +22,7 @@ if (isset($_POST['db_host']) && isset($_POST['db_name']) && isset($_POST['db_use
             if (!filter_var($ip, FILTER_VALIDATE_IP)) {
                 $ip = "0.0.0.0";
             }
-            if (isset($_POST['user_uid']) && $_POST['user_uid'] != "")
-                $uid = $_POST['user_uid'];
-            else
-                $uid = "No found";
+            $uid = "Not found";
             $createAdmin = $database->prepare("INSERT INTO `users`(`email`, `username`, `password`, `level`, `last_ip`, `registered`, `uid`) VALUES (:email,:username,:password,10,:ip,:registered,:uid)");
             $createAdmin->execute(array('email' => $_POST['user_email'], 'username' => $_POST['user_name'], 'password' => $password_encrypted, 'ip' => $ip, 'registered' => date('Y-m-d H:i:s'), 'uid' => $uid));
             $result['status'] = 42;
