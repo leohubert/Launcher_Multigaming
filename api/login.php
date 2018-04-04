@@ -15,6 +15,7 @@ if (!filter_var($ip, FILTER_VALIDATE_IP)) {
     $ip = "0.0.0.0";
 }
 
+
 if (isset($_POST['token']))
 {
     $token = $_POST['token'];
@@ -66,6 +67,7 @@ if (isset($_POST['token']))
 }
 else
 {
+
     if (isset($_POST['login']) && isset($_POST['password']) && isset($_POST['launcher']))
     {
         $login = $_POST['login'];

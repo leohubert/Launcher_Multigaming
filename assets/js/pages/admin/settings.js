@@ -2,72 +2,6 @@
  * Created by leohu on 13/08/2016.
  */
 
-function switch_uuid()
-{
-    var button = document.getElementById("uuid");
-    var label = document.getElementById("uuid_state");
-
-    if (label.textContent == "Activated")
-    {
-        $.post(
-            '/api/switch/uuid',
-            {
-                token : $("meta[name='token']").attr("content"),
-                state : 0
-            },
-
-            function(data){
-                var obj = JSON.parse(data);
-                if (obj.status == 42)
-                {
-                    $.Notification.notify('success','top right','UUID deactivate', "UUID was been deactivated");
-                    button.textContent = "Active UUID";
-                    label.className = "label label-danger";
-                    label.textContent = "Deactivated";
-                }
-                else if (obj.status == 41)
-                    window.location="/logout";
-                else if (obj.status == 44)
-                    sweetAlert("Missing permission", obj.message, "error");
-                else
-                    $.Notification.notify('error','bottom center','Internal Error', "Error: " + obj.status + " | " + obj.message);
-            },
-
-            'text'
-        );
-    }
-    else
-    {
-        $.post(
-            '/api/switch/uuid',
-            {
-                token : $("meta[name='token']").attr("content"),
-                state : 1
-            },
-
-            function(data){
-                var obj = JSON.parse(data);
-                if (obj.status == 42)
-                {
-                    $.Notification.notify('warning','top right','UUID active', "UUID was been activated");
-                    button.textContent = "Deactivate UUID";
-                    label.className = "label label-success";
-                    label.textContent = "Activated";
-                }
-                else if (obj.status == 41)
-                    window.location="/logout";
-                else if (obj.status == 44)
-                    sweetAlert("Missing permission", obj.message, "error");
-                else
-                    $.Notification.notify('error','bottom center','Internal Error', "Error: " + obj.status + " | " + obj.message);
-
-            },
-
-            'text'
-        );
-    }
-}
-
 function switch_maintenance()
 {
     var button = document.getElementById("maintenance");
@@ -470,15 +404,6 @@ window.onload = function() {
                 var label = document.getElementById("taskforce_state");
 
                 button.textContent = "Active taskforce";
-                label.className = "label label-danger";
-                label.textContent = "Deactivated";
-            }
-            if (obj.uuid == 0)
-            {
-                var button = document.getElementById("uuid");
-                var label = document.getElementById("uuid_state");
-
-                button.textContent = "Active UUID";
                 label.className = "label label-danger";
                 label.textContent = "Deactivated";
             }
