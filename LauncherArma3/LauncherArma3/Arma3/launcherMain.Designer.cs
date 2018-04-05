@@ -81,6 +81,7 @@
             this.serverStatusLabel = new FlatUI.FlatLabel();
             this.serverStatus = new FlatUI.FlatLabel();
             this.playerInGameBox = new System.Windows.Forms.GroupBox();
+            this.igNotFound = new FlatUI.FlatLabel();
             this.IGplayerLabel_bank = new FlatUI.FlatLabel();
             this.IGplayer_bank = new FlatUI.FlatLabel();
             this.IGplayerLabel_cash = new FlatUI.FlatLabel();
@@ -749,6 +750,7 @@
             // 
             // playerInGameBox
             // 
+            this.playerInGameBox.Controls.Add(this.igNotFound);
             this.playerInGameBox.Controls.Add(this.IGplayerLabel_bank);
             this.playerInGameBox.Controls.Add(this.IGplayer_bank);
             this.playerInGameBox.Controls.Add(this.IGplayerLabel_cash);
@@ -769,6 +771,21 @@
             this.playerInGameBox.TabIndex = 31;
             this.playerInGameBox.TabStop = false;
             this.playerInGameBox.Text = "In game information";
+            // 
+            // igNotFound
+            // 
+            this.igNotFound.BackColor = System.Drawing.Color.Transparent;
+            this.igNotFound.Cursor = System.Windows.Forms.Cursors.Default;
+            this.igNotFound.Font = new System.Drawing.Font("Arial Black", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.igNotFound.ForeColor = System.Drawing.SystemColors.WindowFrame;
+            this.igNotFound.Location = new System.Drawing.Point(7, 20);
+            this.igNotFound.Name = "igNotFound";
+            this.igNotFound.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.igNotFound.Size = new System.Drawing.Size(237, 114);
+            this.igNotFound.TabIndex = 42;
+            this.igNotFound.Text = "No informations found. \r\n\r\nYou must join the server at least once.";
+            this.igNotFound.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.igNotFound.Visible = false;
             // 
             // IGplayerLabel_bank
             // 
@@ -1284,5 +1301,6 @@
         private MaterialSkin.Controls.MaterialRaisedButton changeGameButton;
         private System.Windows.Forms.NotifyIcon notification;
         private iTalk.iTalk_NotificationNumber notificationNumber;
+        private FlatUI.FlatLabel igNotFound;
     }
 }

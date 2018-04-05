@@ -546,6 +546,7 @@ namespace LauncherArma3
 
                 clearNotif();
 
+
                 if (res.status == "42")
                 {
                     if (res.online == true)
@@ -606,7 +607,11 @@ namespace LauncherArma3
                     IGplayer_mediclevel.Text = res.mediclevel;
                     IGplayer_adminlevel.Text = res.adminlevel;
                 }
-                else if (res.status != "24" && res.status != "40" && res.status != "15")
+                else if (res.status == 40)
+                {
+                    igNotFound.Visible = true;
+                }
+                else if (res.status != "24" && res.status != "15")
                 {
                     errorBox.Visible = true;
                     errorBox.Text = res.message;
