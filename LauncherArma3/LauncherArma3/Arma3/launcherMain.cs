@@ -376,7 +376,6 @@ namespace LauncherArma3
                     }
                 }
             }
-            chooseButton.Visible = true;
             directoryLabel.Visible = true;
             clearNotif();
             errorBox.Visible = true;
@@ -820,7 +819,6 @@ namespace LauncherArma3
             {
                 directoryLabel.Text = translateDic["selectArma"];
                 armaDirectory = null;
-                chooseButton.Visible = true;
                 return false;
             }
         }

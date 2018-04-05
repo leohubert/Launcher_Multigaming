@@ -121,10 +121,9 @@
     <value>Steam n'est pas lancé, nous n'avons donc pas pu récupérer votre Steam UID 
 ( qui permet au launcher de vous afficher vos information en jeu ).
 
-Veuillez lancer steam, puis connectez vous.
+Veuillez cliquer sur le bouton ci-dessous pour lancer Steam automatique.
 
-Une fois terminé, cliquez sur le bouton ci-dessous.
-</value>
+PS: Si cela ne fonctionne pas, vous pouvez lancer Steam manuelement. </value>
   </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">

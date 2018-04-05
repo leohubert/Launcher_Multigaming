@@ -29,22 +29,9 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(steamWrapper));
-            this.flatLabel1 = new FlatUI.FlatLabel();
             this.startSteam = new MaterialSkin.Controls.MaterialRaisedButton();
+            this.flatLabel1 = new FlatUI.FlatLabel();
             this.SuspendLayout();
-            // 
-            // flatLabel1
-            // 
-            this.flatLabel1.AutoSize = true;
-            this.flatLabel1.BackColor = System.Drawing.Color.Transparent;
-            this.flatLabel1.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.flatLabel1.ForeColor = System.Drawing.Color.Black;
-            this.flatLabel1.Location = new System.Drawing.Point(23, 56);
-            this.flatLabel1.Name = "flatLabel1";
-            this.flatLabel1.Size = new System.Drawing.Size(458, 102);
-            this.flatLabel1.TabIndex = 13;
-            this.flatLabel1.Text = resources.GetString("flatLabel1.Text");
-            this.flatLabel1.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // startSteam
             // 
@@ -58,6 +45,19 @@
             this.startSteam.Text = "Start Steam";
             this.startSteam.UseVisualStyleBackColor = true;
             this.startSteam.Click += new System.EventHandler(this.startSteam_Click);
+            // 
+            // flatLabel1
+            // 
+            this.flatLabel1.AutoSize = true;
+            this.flatLabel1.BackColor = System.Drawing.Color.Transparent;
+            this.flatLabel1.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.flatLabel1.ForeColor = System.Drawing.Color.Black;
+            this.flatLabel1.Location = new System.Drawing.Point(23, 56);
+            this.flatLabel1.Name = "flatLabel1";
+            this.flatLabel1.Size = new System.Drawing.Size(458, 102);
+            this.flatLabel1.TabIndex = 13;
+            this.flatLabel1.Text = resources.GetString("flatLabel1.Text");
+            this.flatLabel1.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // steamWrapper
             // 
@@ -74,6 +74,7 @@
             this.MinimizeBox = false;
             this.Name = "steamWrapper";
             this.Padding = new System.Windows.Forms.Padding(20, 30, 20, 20);
+            this.Resizable = false;
             this.Text = "Steam Wrapper";
             this.ResumeLayout(false);
             this.PerformLayout();

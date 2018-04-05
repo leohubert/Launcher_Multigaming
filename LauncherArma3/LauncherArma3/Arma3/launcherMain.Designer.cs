@@ -491,7 +491,6 @@
             this.chooseButton.TabIndex = 18;
             this.chooseButton.Text = "Choose arma directory";
             this.chooseButton.UseVisualStyleBackColor = true;
-            this.chooseButton.Visible = false;
             this.chooseButton.Click += new System.EventHandler(this.chooseButton_Click);
             // 
             // pauseButton
