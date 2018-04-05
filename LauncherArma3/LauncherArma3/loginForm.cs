@@ -139,7 +139,29 @@ namespace LauncherArma3
 
         private void loginForm_Load(object sender, EventArgs e)
         {
-            getSteamUID();
+            if (File.Exists(appdata + communityName + "/token.bin2hex"))
+            {
+                sessionToken = File.ReadAllText(appdata + communityName + "/token.bin2hex");
+            }
+            if (defaultLanguage != null)
+            {
+              language = defaultLanguage;
+              loadLanguage();
+            }
+            else if (File.Exists(appdata + communityName + "/language.lang"))
+            {
+                language = File.ReadAllText(appdata + communityName + "/language.lang");
+                loadLanguage();
+            }
+            if (modDev == true)
+            {
+                notifView("Warning ! Dev mod enabled !");
+            }
+            if (translateDic["reverse"] == "true")
+            {
+                this.RightToLeft = RightToLeft.Yes;
+                this.RightToLeftLayout = true;
+            }
         }
 
         private void checkOptions(object sender, EventArgs e)
@@ -279,6 +301,8 @@ namespace LauncherArma3
                 if (sessionToken != null)
                 {
                     loginWithToken();
+                } else {
+                    getSteamUID();
                 }
                 server = true;
             }
