@@ -142,6 +142,8 @@ namespace LauncherArma3
             if (File.Exists(appdata + communityName + "/token.bin2hex"))
             {
                 sessionToken = File.ReadAllText(appdata + communityName + "/token.bin2hex");
+            } else {
+                getSteamUID();
             }
             if (defaultLanguage != null)
             {
@@ -301,8 +303,6 @@ namespace LauncherArma3
                 if (sessionToken != null)
                 {
                     loginWithToken();
-                } else {
-                    getSteamUID();
                 }
                 server = true;
             }
@@ -573,6 +573,7 @@ namespace LauncherArma3
                 {
                     string msg = res.message;
                     notifView(msg);
+                    getSteamUID();
                     if (File.Exists(appdata + communityName + "/token.bin2hex"))
                         File.Delete(appdata + communityName + "/token.bin2hex");
                 }
