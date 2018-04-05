@@ -10,12 +10,12 @@ header('Content-type: application/json');
 
 $result = array("status" => 500, "message" => "Internal error");
 
-if (isset($_POST['token']) && isset($_POST['name'])&& isset($_POST['local_path'])&& isset($_POST['modpack_name'])&&
+if (isset($_POST['token']) && isset($_POST['name']) && isset($_POST['modpack_name'])&&
     isset($_POST['ip'])&& isset($_POST['port'])&& isset($_POST['game'])&& isset($_POST['rank']))
 {
     $token = $_POST['token'];
     $name = $_POST['name'];
-    $local_path = $_POST['local_path'];
+    $local_path = 'games/' . strtolower($_POST['name']);
     $modpack_name = $_POST['modpack_name'];
     $ip = $_POST['ip'];
     $port = $_POST['port'];

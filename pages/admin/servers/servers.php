@@ -96,11 +96,6 @@
                                     <br>
                                     <br>
                                     <div class="col-sm-12">
-                                        <input type="text" class="form-control"  placeholder="Local Path (exemple = games/'yourservername') " id="server_local_path" required>
-                                    </div>
-                                    <br>
-                                    <br>
-                                    <div class="col-sm-12">
                                         <input type="text" class="form-control"  placeholder="Server IP" id="server_ip" required>
                                     </div>
                                     <br>
@@ -189,7 +184,6 @@
                         {
                             token : "<?php echo $_SESSION['token'];?>",
                             name : $('#server_name').val(),
-                            local_path : $('#server_local_path').val(),
                             modpack_name : $('#server_modpack_name').val(),
                             ip : $('#server_ip').val(),
                             port : $('#server_port').val(),
