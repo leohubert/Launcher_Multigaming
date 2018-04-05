@@ -73,7 +73,7 @@ namespace LauncherArma3
         bool maintenance;
         bool loaded = false;
         bool notif = false;
-        string uuid = "Not Found";
+        string uuid = null;
         int taskforce;
         string vtaskforce;
         string defaultLanguage;
@@ -98,35 +98,48 @@ namespace LauncherArma3
             ftp_pass = ftpPass;
             modDev = mod;
             defaultLanguage = _defaultLanguage;
-            uuid = SteamUser.GetSteamID().ToString();
+        }
+
+        private void getSteamUID()
+        {
+            if (!SteamAPI.IsSteamRunning())
+            {
+                using (var wrapper = new steamWrapper())
+                {
+                    var result = wrapper.ShowDialog();
+                    if (result == DialogResult.OK)
+                    {
+                        uuid = wrapper.SteamUUID;
+                    } else
+                    {
+                        Environment.Exit(0);
+                    }
+                }
+            }
+            else
+            {
+                try
+                {
+                    uuid = SteamUser.GetSteamID().ToString();                    
+                } catch (Exception e) {
+                    using (var wrapper = new steamWrapper())
+                    {
+                        var result = wrapper.ShowDialog();
+                        if (result == DialogResult.OK)
+                        {
+                            uuid = wrapper.SteamUUID;
+                        } else
+                        {
+                            Environment.Exit(0);
+                        }
+                    }
+                }
+            }
         }
 
         private void loginForm_Load(object sender, EventArgs e)
         {
-            if (File.Exists(appdata + communityName + "/token.bin2hex"))
-            {
-                sessionToken = File.ReadAllText(appdata + communityName + "/token.bin2hex");
-            }
-            if (defaultLanguage != null)
-            {
-              language = defaultLanguage;
-              loadLanguage();
-            }
-            else if (File.Exists(appdata + communityName + "/language.lang"))
-            {
-                language = File.ReadAllText(appdata + communityName + "/language.lang");
-                loadLanguage();
-            }
-            if (modDev == true)
-            {
-                notifView("Warning ! Dev mod enabled !");
-            }
-            if (translateDic["reverse"] == "true")
-            {
-                this.RightToLeft = RightToLeft.Yes;
-                this.RightToLeftLayout = true;
-            }
-
+            getSteamUID();
         }
 
         private void checkOptions(object sender, EventArgs e)
@@ -394,7 +407,7 @@ namespace LauncherArma3
                     default:
                         MessageBox.Show("This game is not created on this launcher");
                         break;
-                }
+                }   
                 materialSkinManager.Theme = MaterialSkinManager.Themes.DARK;
                 this.Visible = true;
             }
@@ -945,14 +958,6 @@ namespace LauncherArma3
                 this.Left = e.X + this.Left - MouseDownLocation.X;
                 this.Top = e.Y + this.Top - MouseDownLocation.Y;
             }
-        }
-
-        private void materialRaisedButton1_Click(object sender, EventArgs e)
-        {
-            selectSteamProfile formLanguage = new selectSteamProfile();
-
-            // Show the laguage choice
-            formLanguage.ShowDialog();
         }
     }
 }

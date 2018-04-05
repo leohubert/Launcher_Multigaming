@@ -29,17 +29,16 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(taskforceMain));
-            this.chooseButton = new MaterialSkin.Controls.MaterialRaisedButton();
             this.installButton = new MaterialSkin.Controls.MaterialRaisedButton();
             this.teamspeakChooser = new System.Windows.Forms.FolderBrowserDialog();
             this.teamspeakDestination = new FlatUI.FlatLabel();
             this.taskforceProgress = new FlatUI.FlatProgressBar();
-            this.SuspendLayout();        
+            this.SuspendLayout();
             // 
             // installButton
             // 
             this.installButton.Depth = 0;
-            this.installButton.Location = new System.Drawing.Point(241, 33);
+            this.installButton.Location = new System.Drawing.Point(127, 33);
             this.installButton.MouseState = MaterialSkin.MouseState.HOVER;
             this.installButton.Name = "installButton";
             this.installButton.Primary = true;
@@ -84,7 +83,6 @@
             this.ClientSize = new System.Drawing.Size(430, 128);
             this.Controls.Add(this.teamspeakDestination);
             this.Controls.Add(this.installButton);
-            this.Controls.Add(this.chooseButton);
             this.Controls.Add(this.taskforceProgress);
             this.DisplayHeader = false;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -101,7 +99,6 @@
         #endregion
 
         private FlatUI.FlatProgressBar taskforceProgress;
-        private MaterialSkin.Controls.MaterialRaisedButton chooseButton;
         private MaterialSkin.Controls.MaterialRaisedButton installButton;
         private System.Windows.Forms.FolderBrowserDialog teamspeakChooser;
         private FlatUI.FlatLabel teamspeakDestination;

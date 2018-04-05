@@ -19,3 +19,13 @@ C:\Users\Hubert Léo\Documents\GitHub\Launcher_Arma3\LauncherArma3\taskforceInst
 C:\Users\Hubert Léo\Documents\GitHub\Launcher_Arma3\LauncherArma3\taskforceInstaller\obj\Debug\taskforceInstaller.csproj.GenerateResource.Cache
 C:\Users\Hubert Léo\Documents\GitHub\Launcher_Arma3\LauncherArma3\taskforceInstaller\obj\Debug\taskforceInstaller.exe
 C:\Users\Hubert Léo\Documents\GitHub\Launcher_Arma3\LauncherArma3\taskforceInstaller\obj\Debug\taskforceInstaller.pdb
+C:\Users\Hubert Léo\Documents\GitHub\Launcher_Multigaming\Debug\taskforceInstaller.exe.config
+C:\Users\Hubert Léo\Documents\GitHub\Launcher_Multigaming\Debug\taskforceInstaller.exe
+C:\Users\Hubert Léo\Documents\GitHub\Launcher_Multigaming\Debug\taskforceInstaller.pdb
+C:\Users\Hubert Léo\Documents\GitHub\Launcher_Multigaming\LauncherArma3\taskforceInstaller\obj\Debug\taskforceInstaller.csprojResolveAssemblyReference.cache
+C:\Users\Hubert Léo\Documents\GitHub\Launcher_Multigaming\LauncherArma3\taskforceInstaller\obj\Debug\taskforceInstaller.csproj.taskforceInstaller.exe.config
+C:\Users\Hubert Léo\Documents\GitHub\Launcher_Multigaming\LauncherArma3\taskforceInstaller\obj\Debug\taskforceInstaller.Properties.Resources.resources
+C:\Users\Hubert Léo\Documents\GitHub\Launcher_Multigaming\LauncherArma3\taskforceInstaller\obj\Debug\taskforceInstaller.taskforceMain.resources
+C:\Users\Hubert Léo\Documents\GitHub\Launcher_Multigaming\LauncherArma3\taskforceInstaller\obj\Debug\taskforceInstaller.csproj.GenerateResource.Cache
+C:\Users\Hubert Léo\Documents\GitHub\Launcher_Multigaming\LauncherArma3\taskforceInstaller\obj\Debug\taskforceInstaller.exe
+C:\Users\Hubert Léo\Documents\GitHub\Launcher_Multigaming\LauncherArma3\taskforceInstaller\obj\Debug\taskforceInstaller.pdb

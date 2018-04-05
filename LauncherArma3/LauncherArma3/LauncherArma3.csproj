@@ -173,12 +173,6 @@
     <Compile Include="registerForm.Designer.cs">
       <DependentUpon>registerForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="selectSteamProfile.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="selectSteamProfile.Designer.cs">
-      <DependentUpon>selectSteamProfile.cs</DependentUpon>
-    </Compile>
     <Compile Include="serverChoose.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -190,6 +184,12 @@
     </Compile>
     <Compile Include="Arma3\settingsForm.Designer.cs">
       <DependentUpon>settingsForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="steamWrapper.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="steamWrapper.Designer.cs">
+      <DependentUpon>steamWrapper.cs</DependentUpon>
     </Compile>
     <Compile Include="Themes\Flat UI\FlatAlertBox.cs">
       <SubType>Component</SubType>
@@ -290,9 +290,6 @@
     <EmbeddedResource Include="registerForm.resx">
       <DependentUpon>registerForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="selectSteamProfile.resx">
-      <DependentUpon>selectSteamProfile.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="serverChoose.resx">
       <DependentUpon>serverChoose.cs</DependentUpon>
     </EmbeddedResource>
@@ -301,6 +298,9 @@
     </EmbeddedResource>
     <Content Include="logo_regalian.ico" />
     <Content Include="packages.config" />
+    <EmbeddedResource Include="steamWrapper.resx">
+      <DependentUpon>steamWrapper.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Properties\app.manifest" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
