@@ -1380,24 +1380,24 @@ namespace LauncherArma3
                     if (launchOptions == null || launchOptions.Length == 0)
                     {
                         if (serverPass == null)
-                            Process.Start(armaDirectory + "/arma3battleye.exe", "0 1 -mod=" + modsPackName + " -nopause -connect=" + serverArmaIp);
+                            Process.Start("steam://run/107410//-nolauncher -mod=" + modsPackName + " -nopause -connect=" + serverArmaIp);
                         else
-                            Process.Start(armaDirectory + "/arma3battleye.exe", "0 1 -mod=" + modsPackName + " -nopause -connect=" + serverArmaIp + " -password=" + serverPass);
+                            Process.Start("steam://run/107410//-nolauncher -mod=" + modsPackName + " -nopause -connect=" + serverArmaIp + " -password=" + serverPass);
                     }
                     else
                     {
                         if (serverPass == null)
-                            Process.Start(armaDirectory + "/arma3battleye.exe", "0 1 -mod=" + modsPackName + " -nopause -connect=" + serverArmaIp + " " + launchOptions);
+                            Process.Start("steam://run/107410//-nolauncher -mod=" + modsPackName + " -nopause -connect=" + serverArmaIp + " " + launchOptions);
                         else
-                            Process.Start(armaDirectory + "/arma3battleye.exe", "0 1 -mod=" + modsPackName + " -nopause -connect=" + serverArmaIp + " -password=" + serverPass + " " + launchOptions);
+                            Process.Start("steam://run/107410//-nolauncher -mod=" + modsPackName + " -nopause -connect=" + serverArmaIp + " -password=" + serverPass + " " + launchOptions);
                     }
                 }
                 else
                 {
                     if (launchOptions == null || launchOptions.Length == 0)
-                        Process.Start(armaDirectory + "/arma3battleye.exe", "0 1 -mod=" + modsPackName + " -nopause -connect=" + serverArmaIp + " -password=" + serverLockPass);
+                        Process.Start("steam://run/107410//-nolauncher -mod=" + modsPackName + " -nopause -connect=" + serverArmaIp + " -password=" + serverLockPass);
                     else
-                        Process.Start(armaDirectory + "/arma3battleye.exe", "0 1 -mod=" + modsPackName + " -nopause -connect=" + serverArmaIp + " -password=" + serverLockPass + " " + launchOptions);
+                        Process.Start("steam://run/107410//-nolauncher -mod=" + modsPackName + " -nopause -connect=" + serverArmaIp + " -password=" + serverLockPass + " " + launchOptions);
                 }
 
                 await Task.Delay(17000);
