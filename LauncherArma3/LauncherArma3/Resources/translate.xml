@@ -17,7 +17,7 @@
     <passwordConfirm>Confirmez le mot de passe</passwordConfirm>
     <email>E-mail</email>
     <cancel>Annuler</cancel>
-    <register>S'enregistré</register>
+    <register>S'enregistrer</register>
     <forgotPass>J'ai oublié mon mot de passe</forgotPass>
     <status>Status</status>
     <disconnectMsg>Vous êtes bien déconnecté</disconnectMsg>
