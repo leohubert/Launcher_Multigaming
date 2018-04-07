@@ -312,34 +312,47 @@
                                     </div>
                                 </div>
                             </div>
-                                <div class="tab-pane p-t-10 fade" id="useradmin">
-                                    <div class="row">
-                                        <div class="form-group clearfix">
-                                            <div class="col-lg-12">
-                                                <div class="col-md-3">
-                                                </div>
-                                                <div class="col-md-6">
-                                                    <div class="card-box widget-icon">
-                                                        <div>
-                                                            <i class="md md-accessibility text-primary"></i>
-                                                            <div class="wid-icon-info">
-                                                                <label class="col-md-4 control-label " for="user_email">User email *</label>
-                                                                <input class="form-control required" id="user_email" name="user_email" type="text">
-                                                                <label class="col-md-4 control-label " for="user_name">User name *</label>
-                                                                <input class="form-control required" id="user_name" name="user_name" type="text">
-                                                                <label class="col-md-4 control-label " for="user_password">User password *</label>
-                                                                <input class="form-control required" id="user_password" name="user_password" type="password">
-                                                                <label class="col-md-4 control-label " for="user_confpassword">Confirm password *</label>
-                                                                <input class="form-control required" id="user_confpassword" name="user_confpassword" type="password"><br>
-                                                                <center><button type="button" class="btn btn-success btn-rounded w-md waves-effect waves-light m-b-5" onclick="finishInstall()">Finish install</button></center>
-                                                                <br>
-                                                                <h4>*: required</h4>
-                                                            </div>
+                            <div class="tab-pane p-t-10 fade" id="useradmin">
+                                <div class="row">
+                                    <div class="form-group clearfix">
+                                        <div class="col-lg-12">
+                                            <div class="col-md-3">
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="card-box widget-icon">
+                                                    <div>
+                                                        <i class="md md-accessibility text-primary"></i>
+                                                        <div class="wid-icon-info">
+                                                            <label class="col-md-4 control-label " for="user_email">User
+                                                                email *</label>
+                                                            <input class="form-control required" id="user_email"
+                                                                   name="user_email" type="text">
+                                                            <label class="col-md-4 control-label " for="user_name">User
+                                                                name *</label>
+                                                            <input class="form-control required" id="user_name"
+                                                                   name="user_name" type="text">
+                                                            <label class="col-md-4 control-label " for="user_password">User
+                                                                password *</label>
+                                                            <input class="form-control required" id="user_password"
+                                                                   name="user_password" type="password">
+                                                            <label class="col-md-4 control-label "
+                                                                   for="user_confpassword">Confirm password *</label>
+                                                            <input class="form-control required" id="user_confpassword"
+                                                                   name="user_confpassword" type="password"><br>
+                                                            <center>
+                                                                <button type="button"
+                                                                        class="btn btn-success btn-rounded w-md waves-effect waves-light m-b-5"
+                                                                        onclick="finishInstall()">Finish install
+                                                                </button>
+                                                            </center>
+                                                            <br>
+                                                            <h4>*: required</h4>
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <div class="col-md-3">
-                                                </div>
+                                            </div>
+                                            <div class="col-md-3">
+                                            </div>
                                             </div>
                                         </div>
                                     </div>

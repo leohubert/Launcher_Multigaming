@@ -120,7 +120,7 @@ CREATE TABLE IF NOT EXISTS `settings` (
 
 
 INSERT INTO `settings` (`id`, `active`, `msg_title`, `msg_content`, `maintenance`, `maintenance_title`, `maintenance_content`, `login`, `register`, `uuid`) VALUES
-(1, 1, '{picture}', 'http://image.noelshack.com/fichiers/2016/25/1466452270-maintenance.png', 0, '{picture}', 'http://image.noelshack.com/fichiers/2016/25/1466452270-maintenance.png', 1, 1, 1);
+(1, 1, '{picture}', 'https://cdn.discordapp.com/attachments/382262072332779530/432251644978135070/news-default.jpg', 0, '{picture}', 'http://image.noelshack.com/fichiers/2016/25/1466452270-maintenance.png', 1, 1, 1);
 
 -- --------------------------------------------------------
 
