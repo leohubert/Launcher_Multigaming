@@ -32,7 +32,9 @@ if (isset($_POST['token']))
                 $res = $userLevel->fetch();
                 $checkBanIP = $database->prepare('SELECT id FROM users WHERE banned=1 AND last_ip=:ip');
                 $checkBanIP->execute(array('ip' => $res['last_ip']));
-                if ($checkBanIP->rowCount() == 0 && (int)$res['banned'] != 1) {
+                $checkBanUID = $database->prepare('SELECT id FROM users WHERE banned=1 AND uid=:uid');
+                $checkBanUID->execute(array('uid' => $res['uid']));
+                if ($checkBanIP->rowCount() == 0 && $checkBanUID->rowCount() == 0 && (int)$res['banned'] != 1) {
                     $result['status'] = 42;
                     $result['message'] = "Connected";
                     $_SESSION['token'] = $token;
@@ -86,7 +88,9 @@ else
                 {
                     $checkBanIP = $database->prepare('SELECT id FROM users WHERE banned=1 AND last_ip=:ip');
                     $checkBanIP->execute(array('ip' => $res['last_ip']));
-                    if ($checkBanIP->rowCount() == 0 && (int)$res['banned'] != 1) {
+                    $checkBanUID = $database->prepare('SELECT id FROM users WHERE banned=1 AND uid=:uid');
+                    $checkBanUID->execute(array('uid' => $res['uid']));
+                    if ($checkBanIP->rowCount() == 0 && $checkBanUID->rowCount() == 0 && (int)$res['banned'] != 1) {
                         if ($_POST['launcher'] == 0)
                         {
                             $token = md5(uniqid($login, true));
