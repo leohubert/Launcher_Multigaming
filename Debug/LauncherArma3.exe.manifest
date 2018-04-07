@@ -50,7 +50,7 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>bgKZYdXKuofDlAOdvIbkhhQhOWC/wiDAF6uq/EuH1Bg=</dsig:DigestValue>
+        <dsig:DigestValue>q6J9e/wVaBLhCGlJtFZR9o9/mpOBExaFfB/Qi5c3o8E=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -67,14 +67,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="MaterialDesignThemes.Wpf.dll" size="4403712">
-      <assemblyIdentity name="MaterialDesignThemes.Wpf" version="2.0.0.638" language="neutral" processorArchitecture="msil" />
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="MaterialDesignThemes.Wpf.dll" size="4856832">
+      <assemblyIdentity name="MaterialDesignThemes.Wpf" version="2.4.0.1044" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>dOd3U+ElQ/pVHLcRjyyYNqQJdCRE1chjuQHILX2gt0w=</dsig:DigestValue>
+        <dsig:DigestValue>UfFldL9nCJfZly8QFxwIiETyPwNDIR58fiUVlPbB2/U=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -127,26 +127,26 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Newtonsoft.Json.dll" size="526336">
-      <assemblyIdentity name="Newtonsoft.Json" version="9.0.0.0" publicKeyToken="30AD4FE6B2A6AEED" language="neutral" processorArchitecture="msil" />
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Newtonsoft.Json.dll" size="662528">
+      <assemblyIdentity name="Newtonsoft.Json" version="11.0.0.0" publicKeyToken="30AD4FE6B2A6AEED" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>V14w+Y5OpCyeUW7ci7sprYtQsXOj5rNrW6OeEzzOlAY=</dsig:DigestValue>
+        <dsig:DigestValue>9Yw3T/yq5ONtdA2Q+/f+cNCrtzKM2a86CntwgD6ZS6Q=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="RestSharp.dll" size="173056">
-      <assemblyIdentity name="RestSharp" version="105.2.3.0" language="neutral" processorArchitecture="msil" />
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="RestSharp.dll" size="171520">
+      <assemblyIdentity name="RestSharp" version="106.2.1.0" publicKeyToken="598062E77F915F75" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>dYxLRKkYVhWGxJVKHeu0Bfbzw+/hOf43nU0cZC0LDUM=</dsig:DigestValue>
+        <dsig:DigestValue>tTn2SNqzfyEayzjfz0x5tIj6O+taft9nQPiU0tGAdEk=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -163,26 +163,38 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="System.Net.Http.Extensions.dll" size="22256">
-      <assemblyIdentity name="System.Net.Http.Extensions" version="2.2.18.0" publicKeyToken="B03F5F7F11D50A3A" language="neutral" processorArchitecture="msil" />
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="System.Net.Http.Extensions.dll" size="22232">
+      <assemblyIdentity name="System.Net.Http.Extensions" version="2.2.29.0" publicKeyToken="B03F5F7F11D50A3A" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>QdL/3rSYqH7mSXkTWi9lCQooboMqWi6zgPb5TZAJCoQ=</dsig:DigestValue>
+        <dsig:DigestValue>nIuH6alQ3rfyh1L4deqC8bVacJlqyMEgc/zqM2ZLIEg=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="System.Net.Http.Primitives.dll" size="21744">
-      <assemblyIdentity name="System.Net.Http.Primitives" version="4.2.18.0" publicKeyToken="B03F5F7F11D50A3A" language="neutral" processorArchitecture="msil" />
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="System.Net.Http.Primitives.dll" size="21720">
+      <assemblyIdentity name="System.Net.Http.Primitives" version="4.2.29.0" publicKeyToken="B03F5F7F11D50A3A" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>vfL4SCrBg5AExEIvlKEis3PCGg+ijT3v8FH14uKOsgg=</dsig:DigestValue>
+        <dsig:DigestValue>6bU19EYMdtZ99inOLLuExDWnEsqUi2HdqvMTCVBrhgQ=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="System.ValueTuple.dll" size="79200">
+      <assemblyIdentity name="System.ValueTuple" version="4.0.2.0" publicKeyToken="CC7B13FFCD2DDD51" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+        <dsig:DigestValue>efrC6DVae7uU1A0l/g401c7fVCahdvIPHM1eBgbw8II=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -195,13 +207,13 @@
       <dsig:DigestValue>mWdpttIf7CgxRDQcvJAgxqOaOxlmHgXdOyO+kRSM1AU=</dsig:DigestValue>
     </hash>
   </file>
-  <file name="LauncherArma3.exe.config" size="1275">
+  <file name="LauncherArma3.exe.config" size="782">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>9rLlN3ZA5Ve8XrLFGiK4uaqtKq38RJj80EQrWkzRKJM=</dsig:DigestValue>
+      <dsig:DigestValue>eg2Z5MmXWHNhlOKIB3YtN18AjF2gYh6kKPlZ82bf0vA=</dsig:DigestValue>
     </hash>
   </file>
   <file name="logo_regalian.ico" size="370070">
@@ -213,13 +225,13 @@
       <dsig:DigestValue>SWpYiY4rROc7EFCTOqp47xNLVqSmVbJFom0VdeaWdbg=</dsig:DigestValue>
     </hash>
   </file>
-  <file name="packages.config" size="623">
+  <file name="packages.config" size="778">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>DPAah64inFuWc9LvGkMRhfxsnLqgHCu5CFYIxDOEHEo=</dsig:DigestValue>
+      <dsig:DigestValue>PaLkm5jFgEaVqvl+fFizPnCPQs0Q5tNgRRRK4xUOI0g=</dsig:DigestValue>
     </hash>
   </file>
   <file name="Themes\Flat UI\FlatUI.csproj" size="4760">

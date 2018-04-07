@@ -80,6 +80,18 @@
             User a colour zone to easily switch the background and foreground colours, whilst still remaining within the selected Material Design palette.
             </summary>
         </member>
+        <member name="F:MaterialDesignThemes.Wpf.ComboBoxAssist.ClassicModeProperty">
+            <summary>
+            By default ComboBox uses the wrapper popup. Popup can be switched to classic Windows desktop view by means of this attached property.
+            </summary>
+        </member>
+        <member name="F:MaterialDesignThemes.Wpf.ComboBoxAssist.ShowSelectedItemProperty">
+            <summary>
+            By default the selected item is hidden from the drop down list, as per Material Design specifications. 
+            To revert to a more classic Windows desktop behaviour, and show the currently selected item again in the drop
+            down, set this attached propety to true.
+            </summary>
+        </member>
         <member name="T:MaterialDesignThemes.Wpf.Converters.CalendarDateCoalesceConverter">
             <summary>
             Help us format the content of a header button in a calendar.
@@ -89,6 +101,31 @@
                 1) DateTime Calendar.DisplayDate
                 2) DateTime? Calendar.SelectedDate
             </remarks>
+        </member>
+        <member name="T:MaterialDesignThemes.Wpf.Converters.ListViewGridViewConverter">
+            <summary>
+            Helps coerce the correct item container style for a <see cref="T:System.Windows.Controls.ListView"/>, according to whether the list is displaying in standard mode, or using a <see cref="P:System.Windows.Controls.ListView.View"/>, such as a <see cref="T:System.Windows.Controls.GridView"/>.
+            </summary>
+        </member>
+        <member name="P:MaterialDesignThemes.Wpf.Converters.ListViewGridViewConverter.DefaultValue">
+            <summary>
+            Item container style to use when <see cref="P:System.Windows.Controls.ListView.View"/> is <c>null</c>.
+            </summary>
+        </member>
+        <member name="P:MaterialDesignThemes.Wpf.Converters.ListViewGridViewConverter.ViewValue">
+            <summary>
+            Item container style to use when <see cref="P:System.Windows.Controls.ListView.View"/> is not <c>null</c>, typically when a <see cref="T:System.Windows.Controls.GridView"/> is applied.
+            </summary>
+        </member>
+        <member name="M:MaterialDesignThemes.Wpf.Converters.ListViewGridViewConverter.Convert(System.Object,System.Type,System.Object,System.Globalization.CultureInfo)">
+            <summary>
+            Returns the item container <see cref="T:System.Windows.Style"/> to use for a <see cref="T:System.Windows.Controls.ListView"/>.
+            </summary>
+            <param name="value">Should be a <see cref="T:System.Windows.Controls.ListView"/> or <see cref="T:System.Windows.Controls.ViewBase"/> instance.</param>
+            <param name="targetType"></param>
+            <param name="parameter"></param>
+            <param name="culture"></param>
+            <returns></returns>
         </member>
         <member name="T:MaterialDesignThemes.Wpf.Converters.HintProxyFabricConverter">
             <summary>
@@ -407,6 +444,11 @@
             Parameter to provide to close handlers if an close due to click away is instigated.
             </summary>
         </member>
+        <member name="P:MaterialDesignThemes.Wpf.DialogHost.SnackbarMessageQueue">
+            <summary>
+            Allows association of a snackbar, so that notifications can be paused whilst a dialog is being displayed.
+            </summary>
+        </member>
         <member name="E:MaterialDesignThemes.Wpf.DialogHost.DialogOpened">
             <summary>
             Raised when a dialog is opened.
@@ -515,9 +557,272 @@
             <see cref="!:https://github.com/Templarian/MaterialDesign/blob/master/license.txt"/>.
             </remarks>
         </member>
+        <member name="M:MaterialDesignThemes.Wpf.ISnackbarMessageQueue.Enqueue(System.Object)">
+            <summary>
+            Queues a notificaton message for display in a snackbar.
+            </summary>
+            <param name="content">Message.</param>
+        </member>
+        <member name="M:MaterialDesignThemes.Wpf.ISnackbarMessageQueue.Enqueue(System.Object,System.Object,System.Action)">
+            <summary>
+            Queues a notificaton message for display in a snackbar.
+            </summary>
+            <param name="content">Message.</param>
+            <param name="actionContent">Content for the action button.</param>
+            <param name="actionHandler">Call back to be executed if user clicks the action button.</param>
+        </member>
+        <member name="M:MaterialDesignThemes.Wpf.ISnackbarMessageQueue.Enqueue``1(System.Object,System.Object,System.Action{``0},``0)">
+            <summary>
+            Queues a notificaton message for display in a snackbar.
+            </summary>
+            <param name="content">Message.</param>
+            <param name="actionContent">Content for the action button.</param>
+            <param name="actionHandler">Call back to be executed if user clicks the action button.</param>
+            <param name="actionArgument">Argument to pass to <paramref name="actionHandler"/>.</param>
+        </member>
+        <member name="M:MaterialDesignThemes.Wpf.ISnackbarMessageQueue.Enqueue(System.Object,System.Boolean)">
+            <summary>
+            Queues a notificaton message for display in a snackbar.
+            </summary>
+            <param name="content">Message.</param>
+            <param name="neverConsiderToBeDuplicate">Subsequent, duplicate messages queued within a short time span will 
+            be discarded. To override this behaviour and ensure the message always gets displayed set to <c>true</c>.</param>
+        </member>
+        <member name="M:MaterialDesignThemes.Wpf.ISnackbarMessageQueue.Enqueue(System.Object,System.Object,System.Action,System.Boolean)">
+            <summary>
+            Queues a notificaton message for display in a snackbar.
+            </summary>
+            <param name="content">Message.</param>
+            <param name="actionContent">Content for the action button.</param>
+            <param name="actionHandler">Call back to be executed if user clicks the action button.</param>
+            <param name="promote">The message will promoted to the front of the queue.</param>
+        </member>
+        <member name="M:MaterialDesignThemes.Wpf.ISnackbarMessageQueue.Enqueue``1(System.Object,System.Object,System.Action{``0},``0,System.Boolean)">
+            <summary>
+            Queues a notificaton message for display in a snackbar.
+            </summary>
+            <param name="content">Message.</param>
+            <param name="actionContent">Content for the action button.</param>
+            <param name="actionHandler">Call back to be executed if user clicks the action button.</param>
+            <param name="actionArgument">Argument to pass to <paramref name="actionHandler"/>.</param>
+            <param name="promote">The message will be promoted to the front of the queue and never considered to be a duplicate.</param>
+        </member>
+        <member name="M:MaterialDesignThemes.Wpf.ISnackbarMessageQueue.Enqueue``1(System.Object,System.Object,System.Action{``0},``0,System.Boolean,System.Boolean)">
+            <summary>
+            Queues a notificaton message for display in a snackbar.
+            </summary>
+            <param name="content">Message.</param>
+            <param name="actionContent">Content for the action button.</param>
+            <param name="actionHandler">Call back to be executed if user clicks the action button.</param>
+            <param name="actionArgument">Argument to pass to <paramref name="actionHandler"/>.</param>
+            <param name="promote">The message will be promoted to the front of the queue.</param>
+            <param name="neverConsiderToBeDuplicate">The message will never be considered a duplicate.</param>
+        </member>
+        <member name="M:MaterialDesignThemes.Wpf.ISnackbarMessageQueue.Enqueue(System.Object,System.Object,System.Action{System.Object},System.Object,System.Boolean,System.Boolean)">
+            <summary>
+            Queues a notificaton message for display in a snackbar.
+            </summary>
+            <param name="content">Message.</param>
+            <param name="actionContent">Content for the action button.</param>
+            <param name="actionHandler">Call back to be executed if user clicks the action button.</param>
+            <param name="actionArgument">Argument to pass to <paramref name="actionHandler"/>.</param>
+            <param name="promote">The message will promoted to the front of the queue.</param>
+            <param name="neverConsiderToBeDuplicate">The message will never be considered a duplicate.</param>
+        </member>
+        <member name="T:MaterialDesignThemes.Wpf.MessageQueueExtension">
+            <summary>
+            Provides shorthand to initialise a new <see cref="T:MaterialDesignThemes.Wpf.SnackbarMessageQueue"/> for a <see cref="T:MaterialDesignThemes.Wpf.Snackbar"/>.
+            </summary>
+        </member>
         <member name="T:MaterialDesignThemes.Wpf.Palette">
             <summary>
             Provides full information about a palette.
+            </summary>
+        </member>
+        <member name="T:MaterialDesignThemes.Wpf.Plane3D">
+            <summary>
+            View a control on a 3D plane.    
+            </summary>
+            <remarks>
+            Taken from http://blogs.msdn.com/greg_schechter/archive/2007/10/26/enter-the-planerator-dead-simple-3d-in-wpf-with-a-stupid-name.aspx , Greg Schechter - Fall 2007
+            </remarks>
+        </member>
+        <member name="T:MaterialDesignThemes.Wpf.Plane3D.LayoutInvalidationCatcher">
+            <summary>
+            Wrap this around a class that we want to catch the measure and arrange 
+            processes occuring on, and propagate to the parent Planerator, if any.
+            Do this because layout invalidations don't flow up out of a 
+            Viewport2DVisual3D object.
+            </summary>
+        </member>
+        <member name="T:MaterialDesignThemes.Wpf.ScaleHost">
+            <summary>
+            Internal use only.
+            </summary>
+        </member>
+        <member name="T:MaterialDesignThemes.Wpf.Screen">
+            <summary>
+             Represents a display device or multiple display devices on a single system.
+             Based on http://referencesource.microsoft.com/#System.Windows.Forms/winforms/Managed/System/WinForms/Screen.cs
+             </summary>
+        </member>
+        <member name="F:MaterialDesignThemes.Wpf.Screen._workingArea">
+            <summary>
+            Available working area on the screen. This excludes taskbars and other
+            docked windows.
+            </summary>
+        </member>
+        <member name="P:MaterialDesignThemes.Wpf.Screen.AllScreens">
+            <summary>
+            Gets an array of all of the displays on the system.
+            </summary>
+        </member>
+        <member name="P:MaterialDesignThemes.Wpf.Screen.Bounds">
+            <summary>
+            Gets the bounds of the display.
+            </summary>
+        </member>
+        <member name="P:MaterialDesignThemes.Wpf.Screen.DeviceName">
+            <summary>
+            Gets the device name associated with a display.
+            </summary>
+        </member>
+        <member name="P:MaterialDesignThemes.Wpf.Screen.Primary">
+            <summary>
+            Gets a value indicating whether a particular display is the primary device.
+            </summary>
+        </member>
+        <member name="P:MaterialDesignThemes.Wpf.Screen.PrimaryScreen">
+            <summary>
+            Gets the primary display.
+            </summary>
+        </member>
+        <member name="P:MaterialDesignThemes.Wpf.Screen.WorkingArea">
+            <summary>
+            Gets the working area of the screen.
+            </summary>
+        </member>
+        <member name="P:MaterialDesignThemes.Wpf.Screen.DesktopChangedCount">
+            <summary>
+            Screen instances call this property to determine
+            if their WorkingArea cache needs to be invalidated.
+            </summary>
+        </member>
+        <member name="M:MaterialDesignThemes.Wpf.Screen.Equals(System.Object)">
+            <summary>
+            Specifies a value that indicates whether the specified object is equal to this one.
+            </summary>
+        </member>
+        <member name="M:MaterialDesignThemes.Wpf.Screen.FromPoint(System.Windows.Point)">
+            <summary>
+            Retrieves a <see cref='T:MaterialDesignThemes.Wpf.Screen'/> for the monitor that contains the specified point.
+            </summary>
+        </member>
+        <member name="M:MaterialDesignThemes.Wpf.Screen.FromRect(System.Windows.Rect)">
+            <summary>
+            Retrieves a <see cref='T:MaterialDesignThemes.Wpf.Screen'/> for the monitor that contains the largest region of the Rect.
+            </summary>
+        </member>
+        <member name="M:MaterialDesignThemes.Wpf.Screen.GetWorkingArea(System.Windows.Point)">
+            <summary>
+             Retrieves the working area for the monitor that is closest to the specified point.
+             </summary>
+        </member>
+        <member name="M:MaterialDesignThemes.Wpf.Screen.GetWorkingArea(System.Windows.Rect)">
+            <summary>
+             Retrieves the working area for the monitor that contains the largest region of the specified Rect.
+             </summary>
+        </member>
+        <member name="M:MaterialDesignThemes.Wpf.Screen.GetBounds(System.Windows.Point)">
+            <summary>
+             Retrieves the bounds of the monitor that is closest to the specified point.
+             </summary>
+        </member>
+        <member name="M:MaterialDesignThemes.Wpf.Screen.GetBounds(System.Windows.Rect)">
+            <summary>
+            Retrieves the bounds of the monitor that contains the largest region of the specified Rect.
+            </summary>
+        </member>
+        <member name="M:MaterialDesignThemes.Wpf.Screen.GetHashCode">
+            <summary>
+            Computes and retrieves a hash code for an object.
+            </summary>
+        </member>
+        <member name="M:MaterialDesignThemes.Wpf.Screen.OnDisplaySettingsChanging(System.Object,System.EventArgs)">
+            <summary>
+            Called by the SystemEvents class when our display settings are
+            changing.  We cache screen information and at this point we must
+            invalidate our cache.
+            </summary>
+        </member>
+        <member name="M:MaterialDesignThemes.Wpf.Screen.OnUserPreferenceChanged(System.Object,Microsoft.Win32.UserPreferenceChangedEventArgs)">
+            <summary>
+            Called by the SystemEvents class when our display settings have
+            changed.  Here, we increment a static counter that Screen instances
+            can check against to invalidate their cache.
+            </summary>
+        </member>
+        <member name="M:MaterialDesignThemes.Wpf.Screen.ToString">
+            <summary>
+            Retrieves a string representing this object.
+            </summary>
+        </member>
+        <member name="T:MaterialDesignThemes.Wpf.Snackbar">
+            <summary>
+            Implements a <see cref="T:MaterialDesignThemes.Wpf.Snackbar"/> inspired by the Material Design specs (https://material.google.com/components/snackbars-toasts.html).
+            </summary>
+        </member>
+        <member name="T:MaterialDesignThemes.Wpf.SnackbarMessage">
+            <summary>
+            Defines the content of a message within a <see cref="T:MaterialDesignThemes.Wpf.Snackbar"/>.  Primary content should be set via the 
+            standard <see cref="!:SnackbarMessage.Content"/> property.  Where an action is allowed, content
+            can be provided in <see cref="P:MaterialDesignThemes.Wpf.SnackbarMessage.ActionContent"/>.  Standard button properties are 
+            provided for actions, includiing <see cref="P:MaterialDesignThemes.Wpf.SnackbarMessage.ActionCommand"/>.
+            </summary>
+        </member>
+        <member name="F:MaterialDesignThemes.Wpf.SnackbarMessage.ActionClickEvent">
+            <summary>
+            Event correspond to left mouse button click on the Action button.
+            </summary>
+        </member>
+        <member name="E:MaterialDesignThemes.Wpf.SnackbarMessage.ActionClick">
+            <summary>
+            Add / Remove ActionClickEvent handler 
+            </summary>
+        </member>
+        <member name="P:MaterialDesignThemes.Wpf.SnackbarMessageQueueItem.Content">
+            <summary>
+            The content to be displayed
+            </summary>
+        </member>
+        <member name="P:MaterialDesignThemes.Wpf.SnackbarMessageQueueItem.ActionContent">
+            <summary>
+            The content for the action button on the snackbar
+            </summary>
+        </member>
+        <member name="P:MaterialDesignThemes.Wpf.SnackbarMessageQueueItem.ActionHandler">
+            <summary>
+            Handler to be invoked when the action button is clicked
+            </summary>
+        </member>
+        <member name="P:MaterialDesignThemes.Wpf.SnackbarMessageQueueItem.ActionArgument">
+            <summary>
+            The argument to pass to the <see cref="P:MaterialDesignThemes.Wpf.SnackbarMessageQueueItem.ActionHandler"/> delegate.
+            </summary>
+        </member>
+        <member name="P:MaterialDesignThemes.Wpf.SnackbarMessageQueueItem.IsPromoted">
+            <summary>
+            Promote the message, pushing it in front of any message that is not promoted.
+            </summary>
+        </member>
+        <member name="P:MaterialDesignThemes.Wpf.SnackbarMessageQueueItem.IgnoreDuplicate">
+            <summary>
+            Still display this message even if it is a duplicate.
+            </summary>
+        </member>
+        <member name="P:MaterialDesignThemes.Wpf.Transitions.FadeWipe.Duration">
+            <summary>
+            Duration of the animation
             </summary>
         </member>
         <member name="T:MaterialDesignThemes.Wpf.Transitions.IndexedItemOffsetMultiplierExtension">
@@ -528,6 +833,16 @@
             Example usage is for a <see cref="T:MaterialDesignThemes.Wpf.Transitions.TransitioningContent"/> to have a <see cref="P:MaterialDesignThemes.Wpf.Transitions.TransitionEffect.OffsetTime" />
             time delayed according to position in a list, so cascading animations can occur.
             </remarks>
+        </member>
+        <member name="P:MaterialDesignThemes.Wpf.Transitions.SlideWipe.Direction">
+            <summary>
+            Direction of the slide wipe
+            </summary>
+        </member>
+        <member name="P:MaterialDesignThemes.Wpf.Transitions.SlideWipe.Duration">
+            <summary>
+            Duration of the animation
+            </summary>
         </member>
         <member name="T:MaterialDesignThemes.Wpf.Transitions.TransitionAssist">
             <summary>
@@ -574,6 +889,11 @@
             Moves to the last slide.
             </summary>
         </member>
+        <member name="P:MaterialDesignThemes.Wpf.Transitions.Transitioner.AutoApplyTransitionOrigins">
+            <summary>
+            If enabled, transition origins will be applied to wipes, according to where a transition was triggered from.  For example, the mouse point where a user clicks a button.
+            </summary>
+        </member>
         <member name="T:MaterialDesignThemes.Wpf.Transitions.TransitionerSlide">
             <summary>
             Content control to host the content of an individual page within a <see cref="T:MaterialDesignThemes.Wpf.Transitions.Transitioner"/>.
@@ -605,6 +925,19 @@
             <para/>
             You should implement this interface in order to use SmartHint for your own control.
             </summary>
+        </member>
+        <member name="M:MaterialDesignThemes.Wpf.IHintProxy.IsEmpty">
+            <summary>
+            Checks to see if the targetted control can be deemed as logically 
+            empty, even if not null, affecting the current hint display.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:MaterialDesignThemes.Wpf.IHintProxy.IsFocused">
+            <summary>
+            Targeted control has keyboard focus
+            </summary>
+            <returns></returns>
         </member>
         <member name="P:MaterialDesignThemes.Wpf.MaterialDataGridTextColumn.MaxLength">
             <summary>
@@ -769,11 +1102,6 @@
         <member name="P:MaterialDesignThemes.Wpf.PopupBox.PopupContentTemplate">
             <summary>
             Popup content template.
-            </summary>
-        </member>
-        <member name="P:MaterialDesignThemes.Wpf.PopupBox.StaysOpenOnEdit">
-            <summary>
-            Prefer <see cref="P:MaterialDesignThemes.Wpf.PopupBox.StaysOpen"/>.
             </summary>
         </member>
         <member name="P:MaterialDesignThemes.Wpf.PopupBox.IsPopupOpen">
@@ -945,6 +1273,21 @@
             <param name="element"></param>
             <returns></returns>
         </member>
+        <member name="F:MaterialDesignThemes.Wpf.TextFieldAssist.HasTextFieldBoxProperty">
+            <summary>
+            Controls the visbility of the text field box.
+            </summary>
+        </member>
+        <member name="F:MaterialDesignThemes.Wpf.TextFieldAssist.HasTextAreaBoxProperty">
+            <summary>
+            Controls the visibility of the text field area box.
+            </summary>
+        </member>
+        <member name="F:MaterialDesignThemes.Wpf.TextFieldAssist.IncludeSpellingSuggestionsProperty">
+            <summary>
+            Automatially inserts spelling suggestions into the text box context menu.
+            </summary>
+        </member>
         <member name="M:MaterialDesignThemes.Wpf.TextFieldAssist.ApplyTextBoxViewMargin(System.Windows.Controls.Control,System.Windows.Thickness)">
             <summary>
             Applies the text box view margin.
@@ -971,6 +1314,13 @@
             Set to true to stop invalid text reverting back to previous valid value. Useful in cases where you
             want to display validation messages and allow the user to correct the data without it reverting.
             </summary>
+        </member>
+        <member name="M:MaterialDesignThemes.Wpf.ToggleButtonAssist.GetHasOnContent(System.Windows.DependencyObject)">
+            <summary>
+            Framework use only.
+            </summary>
+            <param name="element"></param>
+            <returns></returns>
         </member>
         <member name="F:MaterialDesignThemes.Wpf.ToggleButtonAssist.OnContentProperty">
             <summary>
@@ -1054,6 +1404,62 @@
               Determine if Ripple should use AccessText in its style
             </summary> 
         </member>
+        <member name="F:MaterialDesignThemes.Wpf.TreeViewAssist.AdditionalTemplateProperty">
+            <summary>
+            Allows additional rendering for each tree node, outside of the rippled part of the node which responsds to user selection.                        
+            </summary>
+            <remarks>
+            The content to be rendered is the same of the <see cref="T:System.Windows.Controls.TreeViewItem"/>; i.e the Header property, or
+            some other content such as a view model, typically when using a <see cref="T:System.Windows.HierarchicalDataTemplate"/>.
+            </remarks>
+        </member>
+        <member name="M:MaterialDesignThemes.Wpf.TreeViewAssist.SetAdditionalTemplate(System.Windows.DependencyObject,System.Windows.DataTemplate)">
+            <summary>
+            Sets the additional template.
+            </summary>
+            <param name="element">The element.</param>
+            <param name="value">The value.</param>
+        </member>
+        <member name="M:MaterialDesignThemes.Wpf.TreeViewAssist.GetAdditionalTemplate(System.Windows.DependencyObject)">
+            <summary>
+            Gets the additional template.
+            </summary>
+            <param name="element">The element.</param>
+            <returns>
+            The <see cref="T:System.Windows.DataTemplate" />.
+            </returns>
+        </member>
+        <member name="F:MaterialDesignThemes.Wpf.TreeViewAssist.AdditionalTemplateSelectorProperty">
+            <summary>
+            Allows additional rendering for each tree node, outside of the rippled part of the node which responsds to user selection.                        
+            </summary>
+            <remarks>
+            The content to be rendered is the same of the <see cref="T:System.Windows.Controls.TreeViewItem"/>; i.e the Header property, or
+            some other content such as a view model, typically when using a <see cref="T:System.Windows.HierarchicalDataTemplate"/>.
+            </remarks>
+        </member>
+        <member name="M:MaterialDesignThemes.Wpf.TreeViewAssist.SetAdditionalTemplateSelector(System.Windows.DependencyObject,System.Windows.Controls.DataTemplateSelector)">
+            <summary>
+            Sets the additional template selector.
+            </summary>
+            <param name="element">The element.</param>
+            <param name="value">The value.</param>
+        </member>
+        <member name="M:MaterialDesignThemes.Wpf.TreeViewAssist.GetAdditionalTemplateSelector(System.Windows.DependencyObject)">
+            <summary>
+            Gets the additional template selector.
+            </summary>
+            <param name="element">The element.</param>
+            <returns>
+            The <see cref="T:System.Windows.Controls.DataTemplateSelector" />.
+            </returns>
+        </member>
+        <member name="F:MaterialDesignThemes.Wpf.TreeViewAssist.SuppressAdditionalTemplate">
+            <summary>
+            To be used at <see cref="T:System.Windows.Controls.TreeViewItem"/> level, or to be returned by <see cref="!:AdditionalTemplateSelector"/>
+            implementors when the additional template associated with a tree should not be used.
+            </summary>
+        </member>
         <member name="T:MaterialDesignThemes.Wpf.Underline">
             <summary>
             
@@ -1084,6 +1490,36 @@
         <member name="M:MaterialDesignThemes.Wpf.ValidationAssist.GetSuppress(System.Windows.DependencyObject)">
             <summary>
             Framework use only.
+            </summary>
+        </member>
+        <member name="T:XamlGeneratedNamespace.GeneratedInternalTypeHelper">
+            <summary>
+            GeneratedInternalTypeHelper
+            </summary>
+        </member>
+        <member name="M:XamlGeneratedNamespace.GeneratedInternalTypeHelper.CreateInstance(System.Type,System.Globalization.CultureInfo)">
+            <summary>
+            CreateInstance
+            </summary>
+        </member>
+        <member name="M:XamlGeneratedNamespace.GeneratedInternalTypeHelper.GetPropertyValue(System.Reflection.PropertyInfo,System.Object,System.Globalization.CultureInfo)">
+            <summary>
+            GetPropertyValue
+            </summary>
+        </member>
+        <member name="M:XamlGeneratedNamespace.GeneratedInternalTypeHelper.SetPropertyValue(System.Reflection.PropertyInfo,System.Object,System.Object,System.Globalization.CultureInfo)">
+            <summary>
+            SetPropertyValue
+            </summary>
+        </member>
+        <member name="M:XamlGeneratedNamespace.GeneratedInternalTypeHelper.CreateDelegate(System.Type,System.Object,System.String)">
+            <summary>
+            CreateDelegate
+            </summary>
+        </member>
+        <member name="M:XamlGeneratedNamespace.GeneratedInternalTypeHelper.AddEventHandler(System.Reflection.EventInfo,System.Object,System.Delegate)">
+            <summary>
+            AddEventHandler
             </summary>
         </member>
     </members>
