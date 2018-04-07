@@ -1,4 +1,6 @@
-![Launcher_Arma3 Logo](https://raw.githubusercontent.com/MrDarkSkil/Launcher_Arma3/master/GFX/icones/favicon.png)
+<center>
+ <img src="https://raw.githubusercontent.com/MrDarkSkil/Launcher_Arma3/master/GFX/icones/favicon.png" width="100px">
+<center>
 # Launcher_Arma3
 Launcher_Arma3
 
