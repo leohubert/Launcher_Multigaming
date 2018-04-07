@@ -99,7 +99,7 @@ namespace LauncherArma3
             defaultLanguage = _defaultLanguage;
         }
 
-        private void getSteamUID()
+        private bool getSteamUID()
         {
             SteamAPI.Init();
             if (!SteamAPI.IsSteamRunning())
@@ -136,6 +136,7 @@ namespace LauncherArma3
                     }
                 }
             }
+            return true;
         }
 
         private void loginForm_Load(object sender, EventArgs e)
@@ -323,6 +324,9 @@ namespace LauncherArma3
 
         private async void loginButton_Click(object sender, EventArgs e)
         {
+            if (uuid == null) {
+                getSteamUID();            
+            }
             stat = 0;
             Thread thread = new Thread(() =>
             {
@@ -515,7 +519,6 @@ namespace LauncherArma3
                 var content = response.Content;
 
                 dynamic res = JObject.Parse(content.ToString());
-
                 if (res.status == "42")
                 {
                     startLauncher = false;
@@ -574,7 +577,8 @@ namespace LauncherArma3
                 {
                     string msg = res.message;
                     notifView(msg);
-                    getSteamUID();
+                    if (uuid == null)
+                        getSteamUID();
                     if (File.Exists(appdata + communityName + "/token.bin2hex"))
                         File.Delete(appdata + communityName + "/token.bin2hex");
                 }

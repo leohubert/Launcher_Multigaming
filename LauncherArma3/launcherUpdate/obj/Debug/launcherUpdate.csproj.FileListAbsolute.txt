@@ -27,3 +27,4 @@ C:\Users\Hubert Léo\Documents\GitHub\Launcher_Multigaming\LauncherArma3\launche
 C:\Users\Hubert Léo\Documents\GitHub\Launcher_Multigaming\LauncherArma3\launcherUpdate\obj\Debug\launcherUpdate.csproj.GenerateResource.Cache
 C:\Users\Hubert Léo\Documents\GitHub\Launcher_Multigaming\LauncherArma3\launcherUpdate\obj\Debug\launcherUpdate.exe
 C:\Users\Hubert Léo\Documents\GitHub\Launcher_Multigaming\LauncherArma3\launcherUpdate\obj\Debug\launcherUpdate.pdb
+C:\Users\Hubert Léo\Documents\GitHub\Launcher_Multigaming\LauncherArma3\launcherUpdate\obj\Debug\launcherUpdate.csprojResolveAssemblyReference.cache

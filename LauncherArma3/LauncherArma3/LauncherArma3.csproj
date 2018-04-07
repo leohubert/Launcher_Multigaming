@@ -335,7 +335,6 @@
     </None>
     <None Include="Resources\favicon.ico" />
     <None Include="Resources\logo_big.png" />
-    <None Include="Resources\YouTube_logo_%282017%29.png" />
     <Content Include="Themes\Flat UI\FlatUI.csproj" />
   </ItemGroup>
   <ItemGroup />

@@ -119,3 +119,4 @@ C:\Users\Hubert Léo\Documents\GitHub\Launcher_Multigaming\LauncherArma3\Launche
 C:\Users\Hubert Léo\Documents\GitHub\Launcher_Multigaming\LauncherArma3\LauncherArma3\obj\Debug\LauncherArma3.exe
 C:\Users\Hubert Léo\Documents\GitHub\Launcher_Multigaming\LauncherArma3\LauncherArma3\obj\Debug\LauncherArma3.pdb
 C:\Users\Hubert Léo\Documents\GitHub\Launcher_Multigaming\LauncherArma3\LauncherArma3\obj\Debug\LauncherArma3.steamWrapper.resources
+C:\Users\Hubert Léo\Documents\GitHub\Launcher_Multigaming\LauncherArma3\LauncherArma3\obj\Debug\LauncherArma3.csprojResolveAssemblyReference.cache

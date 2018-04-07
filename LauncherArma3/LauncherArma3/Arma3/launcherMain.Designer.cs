@@ -783,9 +783,8 @@
             this.igNotFound.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.igNotFound.Size = new System.Drawing.Size(237, 114);
             this.igNotFound.TabIndex = 42;
-            this.igNotFound.Text = "No informations found. \r\n\r\nYou must join the server at least once.";
+            this.igNotFound.Text = "Loading please wait..";
             this.igNotFound.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.igNotFound.Visible = false;
             // 
             // IGplayerLabel_bank
             // 

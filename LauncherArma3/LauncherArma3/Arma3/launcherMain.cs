@@ -606,13 +606,17 @@ namespace LauncherArma3
                     IGplayer_coplevel.Text = res.coplevel;
                     IGplayer_mediclevel.Text = res.mediclevel;
                     IGplayer_adminlevel.Text = res.adminlevel;
-                }
-                else if (res.status == 40)
-                {
+                    igNotFound.Visible = false;
+
+                } else if (res.status == 15) {
+                    igNotFound.Text = "Your IG configuration has not been set correctly";
                     igNotFound.Visible = true;
-                }
-                else if (res.status != "24" && res.status != "15")
-                {
+                } else if (res.status == 40) {
+                    igNotFound.Text = "No informations found.";
+                    igNotFound.Visible = true;
+                } 
+                else if (res.status != 24 && res.status != 15)
+                {                    
                     errorBox.Visible = true;
                     errorBox.Text = res.message;
                 }
