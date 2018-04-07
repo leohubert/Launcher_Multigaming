@@ -17,7 +17,7 @@
     <passwordConfirm>Confirmez le mot de passe</passwordConfirm>
     <email>E-mail</email>
     <cancel>Annuler</cancel>
-    <register>S'enregistré</register>
+    <register>S'enregistrer</register>
     <forgotPass>J'ai oublié mon mot de passe</forgotPass>
     <status>Status</status>
     <disconnectMsg>Vous êtes bien déconnecté</disconnectMsg>
@@ -26,7 +26,7 @@
     <error404>Le serveur n'est pas accéssible.</error404>
     <errorInternet>Vous n'avez pas internet</errorInternet>
     <errorUpdate>Erreur launcherUpdate.exe manquant !</errorUpdate>
-    <updateCancel>Mise à jour annulé</updateCancel>
+    <updateCancel>Mise à jour annulée</updateCancel>
     <!-- NEW TRANSLATE HERE-->
     <settings>Paramètres</settings>
     <steamUID>Steam UID</steamUID>
@@ -58,13 +58,13 @@
     <waitDownload>Veuillez attendre la fin du téléchargement des mods !</waitDownload>
     <updateTaskforceBefore>Veuillez mettre à jour taskforce avant cela !</updateTaskforceBefore>
     <downloadInitialisation>Initialisation du téléchargement</downloadInitialisation>
-    <pleaseWait>Veuillez patientez</pleaseWait>
+    <pleaseWait>Veuillez patienter</pleaseWait>
     <cancelling>Annulation...</cancelling>
     <pause>Pause</pause>
     <resume>Continuer</resume>
     <serverRequest>Requête au serveur en cours</serverRequest>
-    <listingMod>Création de la list des mods en cours</listingMod>
-    <listingCpp>Création de la list des cpps en cours</listingCpp>
+    <listingMod>Création de la liste des mods en cours</listingMod>
+    <listingCpp>Création de la liste des cpps en cours</listingCpp>
     <listingAdditional>Création de la list des autres fichier en cours</listingAdditional>
     <alreadyUpToDate>Tout est à jour, vous pouvez jouer</alreadyUpToDate>
     <inProgress>en cours</inProgress>
@@ -86,11 +86,11 @@
     <installCancel>Installation annulée</installCancel>
     <minutes>Minutes</minutes>
     <seconds>Secondes</seconds>
-    <hours>Heurs</hours>
+    <hours>Heures</hours>
     <playersIG>Joueurs en ligne</playersIG>
     <map>Carte</map>
     <adminLevel>Level admin</adminLevel>
-    <copLevel>Level flic</copLevel>
+    <copLevel>Level Gendarme</copLevel>
     <medicLevel>Level médecin</medicLevel>
     <cash>Cash</cash>
     <bank>Banque</bank>
