@@ -32,6 +32,7 @@ namespace LauncherArma3
                 try
                 {
                     this.SteamUUID = SteamUser.GetSteamID().ToString();
+                    SteamAPI.Shutdown();
                     this.DialogResult = DialogResult.OK;
                     this.Close();
                 }

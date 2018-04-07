@@ -87,7 +87,6 @@ namespace LauncherArma3
         public loginForm(string _communityName, string api, string ftpUrl, string ftpUser, string ftpPass, bool mod, string _defaultLanguage)
         {
             InitializeComponent();
-            SteamAPI.Init();
             materialSkinManager = MaterialSkinManager.Instance;
             materialSkinManager.Theme = MaterialSkinManager.Themes.DARK;
             materialSkinManager.ColorScheme = new ColorScheme(Primary.Cyan400, Primary.Indigo700, Primary.Indigo100, Accent.LightGreen200, TextShade.WHITE);
@@ -102,6 +101,7 @@ namespace LauncherArma3
 
         private void getSteamUID()
         {
+            SteamAPI.Init();
             if (!SteamAPI.IsSteamRunning())
             {
                 using (var wrapper = new steamWrapper())
@@ -120,7 +120,8 @@ namespace LauncherArma3
             {
                 try
                 {
-                    uuid = SteamUser.GetSteamID().ToString();                    
+                    uuid = SteamUser.GetSteamID().ToString();
+                    SteamAPI.Shutdown();
                 } catch (Exception e) {
                     using (var wrapper = new steamWrapper())
                     {

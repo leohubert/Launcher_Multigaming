@@ -61,21 +61,40 @@ namespace LauncherArma3.Properties {
         }
         
         /// <summary>
+        ///   Recherche une ressource localisée de type System.Drawing.Icon semblable à (Icône).
+        /// </summary>
+        internal static System.Drawing.Icon favicon {
+            get {
+                object obj = ResourceManager.GetObject("favicon", resourceCulture);
+                return ((System.Drawing.Icon)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap logo_big {
+            get {
+                object obj = ResourceManager.GetObject("logo_big", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
         ///   Recherche une chaîne localisée semblable à &lt;?xml version=&quot;1.0&quot;?&gt;
         ///&lt;user&gt;
-        ///	&lt;FR language=&quot;Français&quot;&gt;
-        ///		&lt;languageTitle&gt;Choisissez votre language&lt;/languageTitle&gt;
-        ///		&lt;contry&gt;France&lt;/contry&gt;
-        ///		&lt;logIn&gt;Se connecter&lt;/logIn&gt;
-        ///		&lt;logOut&gt;Se deconnecter&lt;/logOut&gt;
-        ///		&lt;remember&gt;Se rappeler de moi&lt;/remember&gt;
-        ///		&lt;loginMsg&gt;Pour rejoindre notre serveur
-        ///		connectez-vous.&lt;/loginMsg&gt;
-        ///		&lt;registerLink&gt;ou s&apos;enregistré&lt;/registerLink&gt;
-        ///		&lt;commingSoon&gt;Prochainement&lt;/commingSoon&gt;
-        ///		&lt;registerMsg&gt;Toujours pas enregistré ? 
-        ///		Qu&apos;attendez vous ?&lt;/registerMsg&gt;
-        ///		&lt;username&gt;Nom d&apos;utilisateur [le reste de la chaîne a été tronqué]&quot;;.
+        ///  &lt;FR language=&quot;Français&quot;&gt;
+        ///    &lt;languageTitle&gt;Choisissez votre langage&lt;/languageTitle&gt;
+        ///    &lt;contry&gt;France&lt;/contry&gt;
+        ///    &lt;money&gt;fr-FR&lt;/money&gt;
+        ///    &lt;reverse&gt;false&lt;/reverse&gt;
+        ///    &lt;logIn&gt;Se connecter&lt;/logIn&gt;
+        ///    &lt;logOut&gt;Se deconnecter&lt;/logOut&gt;
+        ///    &lt;remember&gt;Se rappeler de moi&lt;/remember&gt;
+        ///    &lt;loginMsg&gt;Déjà enregistré ?&lt;/loginMsg&gt;
+        ///    &lt;registerLink&gt;ou s&apos;enregistrer&lt;/registerLink&gt;
+        ///    &lt;commingSoon&gt;Prochainement&lt;/commingSoon&gt;
+        ///    &lt;registerMsg&gt;Nouveau sur notre communautée ?&lt;/r [le reste de la chaîne a été tronqué]&quot;;.
         /// </summary>
         internal static string translate {
             get {

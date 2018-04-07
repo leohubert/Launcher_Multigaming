@@ -53,7 +53,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>logo_regalian.ico</ApplicationIcon>
+    <ApplicationIcon>Resources\favicon.ico</ApplicationIcon>
   </PropertyGroup>
   <PropertyGroup>
     <TargetZone>LocalIntranet</TargetZone>
@@ -298,7 +298,6 @@
     <EmbeddedResource Include="Arma3\settingsForm.resx">
       <DependentUpon>settingsForm.cs</DependentUpon>
     </EmbeddedResource>
-    <Content Include="logo_regalian.ico" />
     <Content Include="packages.config" />
     <EmbeddedResource Include="steamWrapper.resx">
       <DependentUpon>steamWrapper.cs</DependentUpon>
@@ -334,6 +333,9 @@
     <None Include="Resources\translate.xml">
       <SubType>Designer</SubType>
     </None>
+    <None Include="Resources\favicon.ico" />
+    <None Include="Resources\logo_big.png" />
+    <None Include="Resources\YouTube_logo_%282017%29.png" />
     <Content Include="Themes\Flat UI\FlatUI.csproj" />
   </ItemGroup>
   <ItemGroup />

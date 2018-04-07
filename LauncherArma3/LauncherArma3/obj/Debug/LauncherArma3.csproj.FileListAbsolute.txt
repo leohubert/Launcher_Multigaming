@@ -104,7 +104,6 @@ C:\Users\Hubert Léo\Documents\GitHub\Launcher_Multigaming\Debug\LauncherArma3.e
 C:\Users\Hubert Léo\Documents\GitHub\Launcher_Multigaming\Debug\LauncherArma3.application
 C:\Users\Hubert Léo\Documents\GitHub\Launcher_Multigaming\Debug\LauncherArma3.exe
 C:\Users\Hubert Léo\Documents\GitHub\Launcher_Multigaming\Debug\LauncherArma3.pdb
-C:\Users\Hubert Léo\Documents\GitHub\Launcher_Multigaming\LauncherArma3\LauncherArma3\obj\Debug\LauncherArma3.csprojResolveAssemblyReference.cache
 C:\Users\Hubert Léo\Documents\GitHub\Launcher_Multigaming\LauncherArma3\LauncherArma3\obj\Debug\LauncherArma3.Arma3.serverPassword.resources
 C:\Users\Hubert Léo\Documents\GitHub\Launcher_Multigaming\LauncherArma3\LauncherArma3\obj\Debug\LauncherArma3.languageChoice.resources
 C:\Users\Hubert Léo\Documents\GitHub\Launcher_Multigaming\LauncherArma3\LauncherArma3\obj\Debug\LauncherArma3.launcherMain.resources

@@ -35,7 +35,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>logo_regalian.ico</ApplicationIcon>
+    <ApplicationIcon>favicon.ico</ApplicationIcon>
   </PropertyGroup>
   <PropertyGroup>
     <ApplicationManifest>app.manifest</ApplicationManifest>
@@ -188,7 +188,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="1466449098-logo-realgalian.ico" />
-    <Content Include="logo_regalian.ico" />
+    <Content Include="favicon.ico" />
     <Content Include="Themes\Flat UI\FlatUI.csproj" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <asmv1:assembly xsi:schemaLocation="urn:schemas-microsoft-com:asm.v1 assembly.adaptive.xsd" manifestVersion="1.0" xmlns:asmv1="urn:schemas-microsoft-com:asm.v1" xmlns="urn:schemas-microsoft-com:asm.v2" xmlns:asmv2="urn:schemas-microsoft-com:asm.v2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:co.v1="urn:schemas-microsoft-com:clickonce.v1" xmlns:asmv3="urn:schemas-microsoft-com:asm.v3" xmlns:dsig="http://www.w3.org/2000/09/xmldsig#" xmlns:co.v2="urn:schemas-microsoft-com:clickonce.v2">
   <asmv1:assemblyIdentity name="LauncherArma3.exe" version="1.0.0.0" publicKeyToken="0000000000000000" language="neutral" processorArchitecture="msil" type="win32" />
-  <description asmv2:iconFile="logo_regalian.ico" xmlns="urn:schemas-microsoft-com:asm.v1" />
+  <description asmv2:iconFile="Resources\favicon.ico" xmlns="urn:schemas-microsoft-com:asm.v1" />
   <application />
   <entryPoint>
     <assemblyIdentity name="LauncherArma3" version="5.0.0.0" language="neutral" processorArchitecture="msil" />
@@ -43,14 +43,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="LauncherArma3.exe" size="4800512">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="LauncherArma3.exe" size="2481664">
       <assemblyIdentity name="LauncherArma3" version="5.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>q6J9e/wVaBLhCGlJtFZR9o9/mpOBExaFfB/Qi5c3o8E=</dsig:DigestValue>
+        <dsig:DigestValue>TfzRnbykYDW9/gu59ivMVln4yGw1/+BfrZQ1b8gb7SM=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -216,15 +216,6 @@
       <dsig:DigestValue>eg2Z5MmXWHNhlOKIB3YtN18AjF2gYh6kKPlZ82bf0vA=</dsig:DigestValue>
     </hash>
   </file>
-  <file name="logo_regalian.ico" size="370070">
-    <hash>
-      <dsig:Transforms>
-        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
-      </dsig:Transforms>
-      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>SWpYiY4rROc7EFCTOqp47xNLVqSmVbJFom0VdeaWdbg=</dsig:DigestValue>
-    </hash>
-  </file>
   <file name="packages.config" size="778">
     <hash>
       <dsig:Transforms>
@@ -232,6 +223,15 @@
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
       <dsig:DigestValue>PaLkm5jFgEaVqvl+fFizPnCPQs0Q5tNgRRRK4xUOI0g=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Resources\favicon.ico" size="110984">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>/SHx+zqopqei180en96wBgvJWvdopPa9qHtmPC5vEDI=</dsig:DigestValue>
     </hash>
   </file>
   <file name="Themes\Flat UI\FlatUI.csproj" size="4760">
