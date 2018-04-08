@@ -2,10 +2,15 @@
     header("Content-Type: text/html");
     $root_path = dirname(__FILE__);
 
+
+    ini_set('display_errors', 1);
+    ini_set('display_startup_errors', 1);
+    error_reporting(E_ERROR);
+
     include dirname(__FILE__) . '/class/altoRooter.class.php';
     include dirname(__FILE__) . '/class/encryption.php';
     include dirname(__FILE__) . '/configs/config_general.php';
-
+    include dirname(__FILE__) . '/class/Indexer.php';
 
     $router = new AltoRouter();
     $router->setBasePath('');
@@ -192,6 +197,9 @@
 
     /* Match the current request */
     $match = $router->match();
+
+    $indexer = new Indexer($site, $analytics, $database);
+
     if($match) {
         require $match['target'];
     }

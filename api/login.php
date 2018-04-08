@@ -15,7 +15,6 @@ if (!filter_var($ip, FILTER_VALIDATE_IP)) {
     $ip = "0.0.0.0";
 }
 
-
 if (isset($_POST['token']))
 {
     $token = $_POST['token'];
@@ -47,6 +46,7 @@ if (isset($_POST['token']))
                     setcookie('session', time() + (60 * 30), time() + (86400 * 30), "/");
                     setcookie('locked', false, time() + (86400 * 30), "/");
                     setcookie('token', $token, time() + (86400 * 30), "/");
+                    $indexer->sendAnalytics();
                 }
                 else
                 {
@@ -90,7 +90,7 @@ else
                     $checkBanIP->execute(array('ip' => $res['last_ip']));
                     $checkBanUID = $database->prepare('SELECT id FROM users WHERE banned=1 AND uid=:uid');
                     $checkBanUID->execute(array('uid' => $res['uid']));
-                    if ($checkBanIP->rowCount() == 0 && $checkBanUID->rowCount() == 0 && (int)$res['banned'] != 1) {
+                    if ($checkBanIP->rowCount() == 0 && $checkBanUID ->rowCount() == 0 && (int)$res['banned'] != 1) {
                         if ($_POST['launcher'] == 0)
                         {
                             $token = md5(uniqid($login, true));
@@ -122,6 +122,7 @@ else
                             setcookie('session', time() + (60 * 15), time() + (86400 * 30), "/");
                             setcookie('locked', false, time() + (86400 * 30), "/");
                             setcookie('token', $token, time() + (86400 * 30), "/");
+                            $indexer->sendAnalytics();
                         }
                         else
                         {
@@ -150,6 +151,7 @@ else
                             $result['token'] = $token;
                             $result['uuid'] = $uuid;
                             $result['level'] = (int)$res['level'];
+                            $indexer->sendAnalytics();
                         }
                     }
                     else

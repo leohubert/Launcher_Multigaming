@@ -150,6 +150,7 @@
                                         '/save_config',
                                         {
                                             token : token,
+                                            analytics: document.querySelector('#analytics:checked').checked,
                                             server_name : document.getElementById("server_name").value
                                         },
 
@@ -248,8 +249,9 @@
 
                     <div id="progressbarwizard" class="pull-in">
                         <ul>
-                            <li><a href="#mysql" data-toggle="tab">Mysql settings</a></li>
-                            <li><a href="#useradmin" data-toggle="tab">Create user admin</a></li>
+                            <li><a href="#mysql" data-toggle="tab">Mysql</a></li>
+                            <li><a href="#analytics" data-toggle="tab">Analytics <span class="label label-purple">NEW !</span></a></li>
+                            <li><a href="#useradmin" data-toggle="tab">Admin</a></li>
                         </ul>
 
                         <div class="tab-content bx-s-0 m-b-0">
@@ -307,6 +309,47 @@
                                                         <div id="mysql_save"></div>
                                                     </div>
                                                 </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="tab-pane p-t-10 fade" id="analytics">
+                                <div class="row">
+                                    <div class="form-group clearfix">
+                                        <div class="col-lg-12">
+                                            <div class="col-md-3">
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="card-box widget-icon">
+                                                    <div>
+                                                        <i class="md md-help text-default"></i>
+                                                        <div class="wid-icon-info">
+                                                            <h1> Emodyz Support </h1>
+
+                                                            <div class="col-md-12">
+                                                                <span id="FR-ANALYTICS">
+                                                                    Français
+                                                                </span>
+                                                            </div>
+                                                            <div class="col-md-12">
+                                                                <span id="EN-ANALYTICS">
+                                                                    Anglais
+                                                                </span>
+                                                            </div>
+                                                            <br><br><br><br>
+                                                            <div class="checkbox checkbox-purple">
+                                                                <input id="analytics" type="checkbox" checked>
+                                                                <label for="analytics">
+                                                                    Accepter le support d'Emodyz ?
+                                                                </label>
+                                                            </div>
+                                                            <br><br><br>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-3">
                                             </div>
                                         </div>
                                     </div>

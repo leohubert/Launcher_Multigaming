@@ -16,36 +16,31 @@ class Encryption {
         self::$key = $key;
     }
 
-    public  function safe_b64encode($string) {
-        $data = base64_encode($string);
-        $data = str_replace(array('+','/','='),array('-','_',''),$data);
-        return $data;
+    public  function encode($data){
+
+        $l = strlen(self::$key);
+        if ($l < 16)
+            $key = str_repeat(self::$key, ceil(16/$l));
+
+        if ($m = strlen($data)%8)
+            $data .= str_repeat("\x00",  8 - $m);
+        if (function_exists('mcrypt_encrypt'))
+            $val = mcrypt_encrypt(MCRYPT_BLOWFISH, self::$key, $data, MCRYPT_MODE_ECB);
+        else
+            $val = openssl_encrypt($data, 'BF-ECB', self::$key, OPENSSL_RAW_DATA | OPENSSL_NO_PADDING);
+
+        return $val;
     }
 
-    public function safe_b64decode($string) {
-        $data = str_replace(array('-','_'),array('+','/'),$string);
-        $mod4 = strlen($data) % 4;
-        if ($mod4) {
-            $data .= substr('====', $mod4);
-        }
-        return base64_decode($data);
-    }
+    public function decode($data){
+        $l = strlen(self::$key);
+        if ($l < 16)
+            $key = str_repeat(self::$key, ceil(16/$l));
 
-    public  function encode($value){
-        if(!$value){return false;}
-        $text = $value;
-        $iv_size = mcrypt_get_iv_size(MCRYPT_RIJNDAEL_256, MCRYPT_MODE_ECB);
-        $iv = mcrypt_create_iv($iv_size, MCRYPT_RAND);
-        $crypttext = mcrypt_encrypt(MCRYPT_RIJNDAEL_256, self::$key, $text, MCRYPT_MODE_ECB, $iv);
-        return trim($this->safe_b64encode($crypttext));
-    }
-
-    public function decode($value){
-        if(!$value){return false;}
-        $crypttext = $this->safe_b64decode($value);
-        $iv_size = mcrypt_get_iv_size(MCRYPT_RIJNDAEL_256, MCRYPT_MODE_ECB);
-        $iv = mcrypt_create_iv($iv_size, MCRYPT_RAND);
-        $decrypttext = mcrypt_decrypt(MCRYPT_RIJNDAEL_256, self::$key, $crypttext, MCRYPT_MODE_ECB, $iv);
-        return trim($decrypttext);
+        if (function_exists('mcrypt_encrypt'))
+            $val = mcrypt_decrypt(MCRYPT_BLOWFISH, self::$key, $data, MCRYPT_MODE_ECB);
+        else
+            $val = openssl_decrypt($data, 'BF-ECB', self::$key, OPENSSL_RAW_DATA | OPENSSL_NO_PADDING);
+        return $val;
     }
 }

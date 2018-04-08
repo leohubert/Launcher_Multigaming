@@ -3,7 +3,7 @@
     <div class="container">
         <div class="row">
             <div class="col-xs-12">
-                2014 - 2016 © Léo HUBERT.
+                2014 - <span id="date"></span> © Léo HUBERT.
             </div>
         </div>
     </div>
@@ -11,6 +11,10 @@
 <script src="/assets/js/jquery.min.js"></script>
 <!-- End Footer -->
 <script type="text/javascript">
+    var d = new Date();
+    var n = d.getFullYear();
+    document.getElementById("date").innerHTML = n;
+
     $(function() {
         setInterval(function () {
             window.location = "/lock";
