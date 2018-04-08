@@ -150,7 +150,7 @@
                                         '/save_config',
                                         {
                                             token : token,
-                                            analytics: document.querySelector('#analytics:checked').checked,
+                                            analytics: $('#analytics').val(),
                                             server_name : document.getElementById("server_name").value
                                         },
 
