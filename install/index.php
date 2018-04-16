@@ -150,7 +150,7 @@
                                         '/save_config',
                                         {
                                             token : token,
-                                            analytics: $('#analytics').val(),
+                                            analytics: $('#analytics-checkbox').is(':checked'),
                                             server_name : document.getElementById("server_name").value
                                         },
 
@@ -339,8 +339,8 @@
                                                             </div>
                                                             <br><br><br><br>
                                                             <div class="checkbox checkbox-purple">
-                                                                <input id="analytics" type="checkbox" checked>
-                                                                <label for="analytics">
+                                                                <input id="analytics-checkbox" type="checkbox" checked>
+                                                                <label for="analytics-checkbox">
                                                                     Accepter le support d'Emodyz ?
                                                                 </label>
                                                             </div>

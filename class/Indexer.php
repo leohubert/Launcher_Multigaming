@@ -11,7 +11,7 @@ include './class/RestClient.php';
 class Indexer
 {
     private $api = 'http://indexer.emodyz.eu/api';
-    private $version = 'v5.4-beta';
+    private $version = 'v5.4-beta.2';
 
     private $database;
     private $name;
@@ -25,10 +25,7 @@ class Indexer
         $this->analytics = $analytics;
         $this->database = $database;
 
-        $this->currentUrl = str_replace('/api/login', '', (isset($_SERVER['HTTPS']) ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]");
-        $this->currentUrl = str_replace('/inject_mysql', '', $this->currentUrl);
-        $this->currentUrl = str_replace('/save_config', '', $this->currentUrl);
-        $this->currentUrl = str_replace('/api/register', '', $this->currentUrl);
+        $this->currentUrl = (isset($_SERVER['HTTPS']) ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
 
         $this->client = new RestClient([
             'base_url' => $this->api
@@ -40,8 +37,6 @@ class Indexer
         $result = $this->client->post('/servers', [
             'address' => $this->currentUrl,
             'name' => $this->name,
-            'nb_users' => 0,
-            'nb_servers' => 0,
             'version' => $this->version
         ]);
 
@@ -64,8 +59,24 @@ class Indexer
             'version' => $this->version
         ]);
 
+
         if($result->info->http_code == 200)
             return true;
+        else
+            return false;
+    }
+
+    public function getToken()
+    {
+        $result = $this->client->post('/sessions');
+
+        if($result->info->http_code == 200) {
+            $result->decode_response();
+            if ($result->decoded_response->token) {
+                header('Location: ' . $this->api . '/sessions/login?token='. $result->decoded_response->token);
+            }
+            return true;
+        }
         else
             return false;
     }
@@ -75,7 +86,7 @@ class Indexer
         $result = $this->client->put('/servers', [
             'address' => $this->currentUrl,
             'finished' => 1,
-            'analytics' => $analytics
+            'analytics' => $analytics == true ? 1 : 0
         ]);
 
         if($result->info->http_code == 200)

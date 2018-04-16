@@ -66,6 +66,9 @@
             {
                 $router->map('GET','/refresh', 'pages/auth/actions/refresh.php', 'refresh');
                 if ((int)$_SESSION['level'] >= 6) {
+                    if ((int)$_SESSION['level'] == 10) {
+                        $router->map('GET','/indexer/access', 'api/indexer.php', 'indexer-access');
+                    }
                     $router->map('GET','/profile/view', 'pages/admin/profile/view.php', 'profile-view');
                     $router->map('GET','/profile/edit', 'pages/admin/profile/edit.php', 'profile-edit');
                     $router->map('GET', '/', 'pages/admin/index.php', 'home-admin');

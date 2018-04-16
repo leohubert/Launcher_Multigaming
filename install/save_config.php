@@ -23,7 +23,7 @@ if (isset($_POST['server_name']) && isset($_POST['token']) && isset($_POST['anal
     $config[ 'is_config' ] = true;
     $config[ 'site' ] = $_POST['server_name'];
     $config[ 'encrypt_key' ] = $_POST['token'];
-    $config[ 'analytics' ] = boolval($_POST['analytics']);
+    $config[ 'analytics' ] = $_POST['analytics'] == 'true' ? true : false;
 
     $f = fopen( "configs/config_general.php", "w" );
     fwrite( $f, "<?php\n" );
@@ -37,7 +37,7 @@ if (isset($_POST['server_name']) && isset($_POST['token']) && isset($_POST['anal
     }
 
     fclose( $f );
-    $indexer->installFinished(boolval($_POST['analytics']));
+    $indexer->installFinished($config[ 'analytics' ]);
     $result['status'] = 42;
     $result['message'] = "Successfully saved";
 }

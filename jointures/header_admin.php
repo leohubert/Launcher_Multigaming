@@ -84,6 +84,11 @@
                             <a href="#"><i class="fa fa-search"></i></a>
                         </form>
                     </li>
+                    <?php if ($_SESSION['level'] == 10 && $analytics== true) { ?>
+                        <li>
+                            <a href="/indexer/access"><i class="ti-location-arrow m-r-5"></i> Emodyz Support Access</a>
+                        </li>
+                    <?php } ?>
                     <li class="dropdown hidden-xs" onclick="loadNotifications()">
                         <a href="#" data-target="#" class="dropdown-toggle waves-effect waves-light"
                            data-toggle="dropdown" aria-expanded="true">
@@ -94,7 +99,6 @@
                             <li class="text-center notifi-title">Notifications</li>
                             <li class="list-group nicescroll notification-list">
                                 <div id="notifications"></div>
-
                             </li>
 
                             <li>
