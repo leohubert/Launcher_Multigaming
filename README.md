@@ -46,7 +46,7 @@ In English:  https://github.com/MrDarkSkil/Launcher_Multigaming/wiki/Intall-guid
 
 ![Launcher_Arma3 Logo](Screens/release/release_5.4/laucher/login.PNG)
 
-![Launcher_Arma3 Logo](Screens/release/release_5.4/laucher/register.PNG)
+![Launcher_Arma3 Logo](Screens/release/release_5.4/laucher/login+register.PNG)
 
 ![Launcher_Arma3 Logo](Screens/release/release_5.4/laucher/launcher.PNG)
 
