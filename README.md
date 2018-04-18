@@ -74,7 +74,7 @@ In English:  https://github.com/MrDarkSkil/Launcher_Multigaming/wiki/Intall-guid
 Release 5.4:
 - Add: SteamWrapper (Autodetect SteamUID using Steam)
 - Add: Support of Windows servers
-- Add: Emodyz Support & Analytics to see your server evoluting
+- Add: Emodyz Support & Analytics to see the evolution of your Community
 - Update: Refactor Encrypt for work on PHP7
 - Update: Old icons to modern icons ( Flat )
 - Fix: Steam Error when click on Start
