@@ -8,7 +8,6 @@
 
 if (isset($_GET['text']))
 {
-    $encrypter = new Encryption($encrypt_key);
     echo $encrypter->encode($_GET['text']);
 }
 else

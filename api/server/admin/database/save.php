@@ -14,8 +14,6 @@ if (isset($_POST['token']) && isset($_POST['id']) && isset($_POST['db_host']) &&
     $id = $_POST['id'];
     $show_infos = $_POST['show_infos'];
 
-    $encrypter = new Encryption($encrypt_key);
-
     $db_host = $encrypter->encode($_POST['db_host']);
     $db_name = $encrypter->encode($_POST['db_name']);
     $db_user = $encrypter->encode($_POST['db_user']);

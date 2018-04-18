@@ -1,5 +1,6 @@
 <?php
-
 $is_config = false;
-$encrypt_key = 'r0FqxAVWT3Y1H0n1o5KaevZQ';
-$site = 'A3 Launcher';
+$site = "A3 Launcher";
+$encrypt_key1 = "t1n5soxoCii6R/FwpoUiYO4XREPdYdRDNB+/xs7BrAc=";
+$encrypt_key2 = "sHitxlnsYSnmcYkTv/d4hEMyXOqS+f6XPgLKSwnKuogKqQaU8lRpPnLyD5MUTXF0FOHbtBBRngwhzMXXNo+CSA==";
+$analytics = true;

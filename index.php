@@ -14,7 +14,10 @@
 
     $router = new AltoRouter();
     $router->setBasePath('');
-    /* Setup the URL routing. This is production ready. */
+    $encrypter = new Encryption($encrypt_key1, $encrypt_key2);
+
+
+/* Setup the URL routing. This is production ready. */
 
     // Main routes that non-customers see
     session_start();
@@ -100,6 +103,7 @@
         }
     }
 
+    $router->map('GET','/test', 'api/test.php', 'test');
     $router->map('GET','/encrypt', 'api/encrypt.php', 'encrypt');
     $router->map('GET','/terms', 'pages/auth/terms.php', 'terms');
     $router->map('GET','/login', 'pages/auth/login.php', 'login');

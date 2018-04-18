@@ -80,11 +80,11 @@ else
         {
             $checkUser->execute(array('login' => $login));
             $res = $checkUser->fetch();
-            $password_encrypted = new Encryption($encrypt_key);
-            $password_encrypted = $password_encrypted->encode($password);
+            $password_decrypted = $encrypter->decode($res['password']);
+
             if ($checkUser->rowCount() != 0)
             {
-                if ($res['password'] == $password_encrypted)
+                if ($password == $password_decrypted)
                 {
                     $checkBanIP = $database->prepare('SELECT id FROM users WHERE banned=1 AND last_ip=:ip');
                     $checkBanIP->execute(array('ip' => $res['last_ip']));

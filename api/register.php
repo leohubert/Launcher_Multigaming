@@ -38,8 +38,7 @@ if (isset($_POST['email']) && isset($_POST['username']) && isset($_POST['passwor
                             $getUsers->execute(array('username' => $username));
                             if ($getUsers->rowCount() == 0) {
                                 if ($password == $confirm_password) {
-                                    $encrypt = new Encryption($encrypt_key);
-                                    $password_encrypted = $encrypt->encode($password);
+                                    $password_encrypted = $encrypter->encode($password);
                                     $register = $database->prepare('INSERT INTO `users`(`email`, `username`, `password`, `last_ip`, `registered`, `uid`) VALUES (:email,:username,:password,:ip,:registered,:uid)');
                                     $register->execute(array('email' => $email, 'username' => $username, 'password' => $password_encrypted, 'ip' => $ip, 'registered' => date('Y-m-d H:i:s'), 'uid' => "Not Found"));
                                     $result['status'] = 42;

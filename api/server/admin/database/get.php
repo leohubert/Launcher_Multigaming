@@ -32,8 +32,6 @@ if (isset($_POST['token']) && isset($_POST['id']))
                 $getSettings->execute(array('id' => $id));
                 $res = $getSettings->fetch();
 
-                $encrypter = new Encryption($encrypt_key);
-
                 $db_host = $encrypter->decode($res['db_host']);
                 $db_name = $encrypter->decode($res['db_name']);
                 $db_user = $encrypter->decode($res['db_user']);

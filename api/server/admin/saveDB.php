@@ -13,7 +13,7 @@ if (isset($_POST['token']) && isset($_POST['id']) && isset($_POST['db_host']) &&
     $token = $_POST['token'];
     $id = $_POST['id'];
 
-    $encrypter = new Encryption($encrypt_key);
+    $encrypter = new Encryption($encrypt_key1, $encrypt_key2);
 
     $db_host = $encrypter->encode($_POST['db_host']);
     $db_name = $encrypter->encode($_POST['db_name']);

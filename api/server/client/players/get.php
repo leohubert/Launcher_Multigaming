@@ -27,7 +27,6 @@ if (isset($_POST['token']) && isset($_POST['id']) && is_numeric($_POST['id']))
         exit();
     }
 
-    $encrypter = new Encryption($encrypt_key);
 
     $custom_host = $encrypter->decode($res['db_host']);
     $custom_name = $encrypter->decode($res['db_name']);

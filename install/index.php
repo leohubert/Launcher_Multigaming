@@ -113,7 +113,8 @@ if (file_exists("configs/config_general.php"))
     }
 
     function finishInstall() {
-        var token = "<?php echo base64_encode(openssl_random_pseudo_bytes(3 * (24 >> 2))); ?>";
+        var token1 = "<?php echo base64_encode(openssl_random_pseudo_bytes(32)); ?>";
+        var token2 = "<?php echo base64_encode(openssl_random_pseudo_bytes(64)) ?>";
         var obj;
         $.post(
             '/test_mysql',
@@ -134,7 +135,8 @@ if (file_exists("configs/config_general.php"))
                             user_name: document.getElementById("user_name").value,
                             user_password: document.getElementById("user_password").value,
                             user_confpassword: document.getElementById("user_confpassword").value,
-                            token: token,
+                            token1: token1,
+                            token2: token2,
                             db_host: document.getElementById("mysql_host").value,
                             db_name: document.getElementById("mysql_name").value,
                             db_user: document.getElementById("mysql_user").value,
@@ -147,7 +149,8 @@ if (file_exists("configs/config_general.php"))
                                 $.post(
                                     '/save_config',
                                     {
-                                        token: token,
+                                        token1: token1,
+                                        token2: token2,
                                         analytics: $('#analytics-checkbox').is(':checked'),
                                         server_name: document.getElementById("server_name").value
                                     },

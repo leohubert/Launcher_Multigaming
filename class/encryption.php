@@ -9,38 +9,49 @@
 
 class Encryption {
 
-    private static $key;
+    private static $key_1;
+    private static $key_2;
 
-    public function __construct($key)
+    public function __construct($key_1, $key_2)
     {
-        self::$key = $key;
+        self::$key_1 = $key_1;
+        self::$key_2 = $key_2;
     }
 
-    public  function encode($data){
+    public  function decode($data){
 
-        $l = strlen(self::$key);
-        if ($l < 16)
-            $key = str_repeat(self::$key, ceil(16/$l));
+        $first_key = base64_decode(self::$key_1);
+        $second_key = base64_decode(self::$key_2);
+        $mix = base64_decode($data);
 
-        if ($m = strlen($data)%8)
-            $data .= str_repeat("\x00",  8 - $m);
-        if (function_exists('mcrypt_encrypt'))
-            $val = mcrypt_encrypt(MCRYPT_BLOWFISH, self::$key, $data, MCRYPT_MODE_ECB);
-        else
-            $val = openssl_encrypt($data, 'BF-ECB', self::$key, OPENSSL_RAW_DATA | OPENSSL_NO_PADDING);
+        $method = "aes-256-cbc";
+        $iv_length = openssl_cipher_iv_length($method);
 
-        return $val;
+        $iv = substr($mix,0,$iv_length);
+        $second_encrypted = substr($mix,$iv_length,64);
+        $first_encrypted = substr($mix,$iv_length+64);
+
+        $data = openssl_decrypt($first_encrypted,$method,$first_key,OPENSSL_RAW_DATA,$iv);
+        $second_encrypted_new = hash_hmac('sha3-512', $first_encrypted, $second_key, TRUE);
+
+        if (hash_equals($second_encrypted,$second_encrypted_new))
+            return $data;
+
+        return false;
     }
 
-    public function decode($data){
-        $l = strlen(self::$key);
-        if ($l < 16)
-            $key = str_repeat(self::$key, ceil(16/$l));
+    public function encode($data){
+        $first_key = base64_decode(self::$key_1);
+        $second_key = base64_decode(self::$key_2);
 
-        if (function_exists('mcrypt_encrypt'))
-            $val = mcrypt_decrypt(MCRYPT_BLOWFISH, self::$key, $data, MCRYPT_MODE_ECB);
-        else
-            $val = openssl_decrypt($data, 'BF-ECB', self::$key, OPENSSL_RAW_DATA | OPENSSL_NO_PADDING);
-        return $val;
+        $method = "aes-256-cbc";
+        $iv_length = openssl_cipher_iv_length($method);
+        $iv = openssl_random_pseudo_bytes($iv_length);
+
+        $first_encrypted = openssl_encrypt($data,$method,$first_key, OPENSSL_RAW_DATA ,$iv);
+        $second_encrypted = hash_hmac('sha3-512', $first_encrypted, $second_key, TRUE);
+
+        $output = base64_encode($iv.$second_encrypted.$first_encrypted);
+        return $output;
     }
 }

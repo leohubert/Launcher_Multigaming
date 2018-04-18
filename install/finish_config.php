@@ -9,14 +9,17 @@ header('Content-type: application/json');
 
 $result = array("status" => 500, "message" => "Internal error");
 
-if (isset($_POST['db_host']) && isset($_POST['db_name']) && isset($_POST['db_user']) && isset($_POST['db_pass']) && isset($_POST['user_name']) && isset($_POST['user_email']) && isset($_POST['user_password']) && isset($_POST['user_confpassword']) && isset($_POST['token'])
-    && $_POST['user_name'] != "" && $_POST['user_email'] != "" && $_POST['user_password'] != "" && $_POST['user_confpassword'] != "" && $_POST['db_host'] != "" && $_POST['db_name'] != "" && $_POST['db_user'] != "")
+if (isset($_POST['db_host']) && isset($_POST['db_name']) && isset($_POST['db_user']) && isset($_POST['db_pass'])
+    && isset($_POST['user_name']) && isset($_POST['user_email']) && isset($_POST['user_password'])
+    && isset($_POST['user_confpassword']) && isset($_POST['token1']) && isset($_POST['token2'])
+    && $_POST['user_name'] != "" && $_POST['user_email'] != "" && $_POST['user_password'] != ""
+    && $_POST['user_confpassword'] != "" && $_POST['db_host'] != "" && $_POST['db_name'] != "" && $_POST['db_user'] != "")
 {
     if ($_POST['user_password'] == $_POST['user_confpassword'])
     {
         try {
             $database = new PDO('mysql:host='. $_POST['db_host'] .';dbname='. $_POST['db_name'], $_POST['db_user'], $_POST['db_pass']);
-            $encrypt = new Encryption($_POST['token']);
+            $encrypt = new Encryption($_POST['token1'], $_POST['token2']);
             $password_encrypted = $encrypt->encode($_POST['user_password']);
             $ip = $_SERVER['REMOTE_ADDR'];
             if (!filter_var($ip, FILTER_VALIDATE_IP)) {

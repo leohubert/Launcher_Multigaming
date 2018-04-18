@@ -17,10 +17,9 @@ if (isset($_POST['token']) && isset($_POST['current_pass']) && isset($_POST['new
     $new_pass = $_POST['new_pass'];
     $confirm_pass = $_POST['confirm_pass'];
 
-    $encrypted = new Encryption($encrypt_key);
-    $current_pass = $encrypted->encode($current_pass);
-    $new_pass = $encrypted->encode($new_pass);
-    $confirm_pass = $encrypted->encode($confirm_pass);
+    $current_pass = $encrypter->encode($current_pass);
+    $new_pass = $encrypter->encode($new_pass);
+    $confirm_pass = $encrypter->encode($confirm_pass);
 
     $checkUser = $database->prepare('SELECT user_id FROM sessions WHERE token = :token');
     $checkUser->execute(array('token' => $token));
