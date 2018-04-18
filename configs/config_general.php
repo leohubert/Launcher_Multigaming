@@ -1,6 +1,6 @@
 <?php
-$is_config = false;
+$is_config = true;
 $site = "A3 Launcher";
-$encrypt_key1 = "t1n5soxoCii6R/FwpoUiYO4XREPdYdRDNB+/xs7BrAc=";
-$encrypt_key2 = "sHitxlnsYSnmcYkTv/d4hEMyXOqS+f6XPgLKSwnKuogKqQaU8lRpPnLyD5MUTXF0FOHbtBBRngwhzMXXNo+CSA==";
+$encrypt_key1 = "qhJh8Y/aKQSxL9bnhOX3YG0RfCpz0iLYoHb+hYXHzJc=";
+$encrypt_key2 = "G98Ismebqa5SmiB7e+UV9ha58MCvdIzgFj9uSEkqLDNpIMoefQb4DTTPUmxhoq2zU3UgpAhHuQO1zDDIjRmESg==";
 $analytics = true;

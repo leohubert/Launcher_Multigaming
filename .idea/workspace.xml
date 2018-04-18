@@ -1,24 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="71971931-68df-46df-9feb-24995bfad939" name="Default" comment="Profile view and users view at same view">
-      <change afterPath="$PROJECT_DIR$/api/test.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/Launcher_Multigaming.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Launcher_Multigaming.iml" afterDir="false" />
+    <list default="true" id="71971931-68df-46df-9feb-24995bfad939" name="Default" comment="Change encrypt class">
+      <change afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/encrypt.php" beforeDir="false" afterPath="$PROJECT_DIR$/api/encrypt.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/login.php" beforeDir="false" afterPath="$PROJECT_DIR$/api/login.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/register.php" beforeDir="false" afterPath="$PROJECT_DIR$/api/register.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/server/admin/database/get.php" beforeDir="false" afterPath="$PROJECT_DIR$/api/server/admin/database/get.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/server/admin/database/save.php" beforeDir="false" afterPath="$PROJECT_DIR$/api/server/admin/database/save.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/server/admin/saveDB.php" beforeDir="false" afterPath="$PROJECT_DIR$/api/server/admin/saveDB.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/server/client/players/get.php" beforeDir="false" afterPath="$PROJECT_DIR$/api/server/client/players/get.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/users/client/changepass.php" beforeDir="false" afterPath="$PROJECT_DIR$/api/users/client/changepass.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/test.php" beforeDir="false" afterPath="$PROJECT_DIR$/api/test.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/class/encryption.php" beforeDir="false" afterPath="$PROJECT_DIR$/class/encryption.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/configs/config_general.php" beforeDir="false" afterPath="$PROJECT_DIR$/configs/config_general.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/index.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/install/finish_config.php" beforeDir="false" afterPath="$PROJECT_DIR$/install/finish_config.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/install/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/install/index.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/install/save_config.php" beforeDir="false" afterPath="$PROJECT_DIR$/install/save_config.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -27,70 +15,98 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="DatabaseView">
+    <option name="SHOW_INTERMEDIATE" value="true" />
+    <option name="GROUP_DATA_SOURCES" value="true" />
+    <option name="GROUP_SCHEMA" value="true" />
+    <option name="GROUP_CONTENTS" value="false" />
+    <option name="SORT_POSITIONED" value="false" />
+    <option name="SHOW_EMPTY_GROUPS" value="false" />
+    <option name="AUTO_SCROLL_FROM_SOURCE" value="false" />
+    <option name="HIDDEN_KINDS">
+      <set />
+    </option>
+    <expand>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="altislife@78.129.104.37" type="feb32156:DbDataSourceImpl" />
+      </path>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="altislife@78.129.104.37" type="feb32156:DbDataSourceImpl" />
+        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
+      </path>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="altislife@78.129.104.37" type="feb32156:DbDataSourceImpl" />
+        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
+        <item name="altislife: schema" type="c314c289:MysqlImplModel$Schema" />
+      </path>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="altislife@78.129.104.37" type="feb32156:DbDataSourceImpl" />
+        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
+        <item name="altislife: schema" type="c314c289:MysqlImplModel$Schema" />
+        <item name="tables" type="d4e8921:DatabaseStructure$FamilyGroup" />
+      </path>
+    </expand>
+    <select />
+  </component>
   <component name="FavoritesManager">
     <favorites_list name="Launcher_Multigaming" />
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="index.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/index.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="227">
-              <caret line="16" column="4" selection-start-line="16" selection-start-column="4" selection-end-line="16" selection-end-column="4" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="index.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/install/index.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="227">
-              <caret line="115" column="17" selection-start-line="115" selection-start-column="12" selection-end-line="115" selection-end-column="17" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="changepass.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/api/users/client/changepass.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="210">
-              <caret line="19" column="45" selection-start-line="19" selection-start-column="45" selection-end-line="19" selection-end-column="45" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="save_config.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/install/save_config.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="269">
-              <caret line="24" column="49" selection-start-line="24" selection-start-column="49" selection-end-line="24" selection-end-column="49" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="finish_config.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/install/finish_config.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="111">
-              <caret line="12" column="98" selection-start-line="12" selection-start-column="98" selection-end-line="12" selection-end-column="98" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="test.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/api/test.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="45">
-              <caret line="8" selection-start-line="8" selection-end-line="8" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="config_general.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="config_general.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/configs/config_general.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="15">
-              <caret line="1" column="18" selection-start-line="1" selection-start-column="18" selection-end-line="1" selection-end-column="18" />
+            <state relative-caret-position="90">
+              <caret line="6" lean-forward="true" selection-start-line="6" selection-end-line="6" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="mysql_test.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/install/mysql_test.php">
+          <provider selected="true" editor-type-id="text-editor" />
+        </entry>
+      </file>
+      <file leaf-file-name="mysql_inject.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/install/mysql_inject.php">
+          <provider selected="true" editor-type-id="text-editor" />
+        </entry>
+      </file>
+      <file leaf-file-name="install_finish.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/install/install_finish.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-547" />
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="get.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/api/users/client/get.php">
+          <provider selected="true" editor-type-id="text-editor" />
+        </entry>
+      </file>
+      <file leaf-file-name="get.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/api/server/client/players/get.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="317">
+              <caret line="33" column="55" selection-start-line="33" selection-start-column="55" selection-end-line="33" selection-end-column="55" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="console.sql" pinned="false" current-in-tab="false">
+        <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/fda00e4f-3cc8-490c-9070-b3acf5394f7a/console.sql">
+          <provider selected="true" editor-type-id="text-editor" />
+        </entry>
+      </file>
+      <file leaf-file-name="cellphone" pinned="false" current-in-tab="false">
+        <entry file="das://fda00e4f-3cc8-490c-9070-b3acf5394f7a/schema/altislife/table/cellphone">
+          <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+            <state>
+              <filtering enabled="true" />
             </state>
           </provider>
         </entry>
@@ -98,22 +114,17 @@
       <file leaf-file-name="encryption.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/class/encryption.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="251">
-              <caret line="22" column="47" selection-start-line="22" selection-start-column="35" selection-end-line="22" selection-end-column="47" />
+            <state relative-caret-position="480">
+              <caret line="37" column="5" lean-forward="true" selection-start-line="37" selection-start-column="5" selection-end-line="37" selection-end-column="5" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="mysql_connect.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/configs/mysql_connect.php">
-          <provider selected="true" editor-type-id="text-editor" />
-        </entry>
-      </file>
-      <file leaf-file-name="encrypt.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/api/encrypt.php">
+      <file leaf-file-name="test.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/api/test.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="75">
-              <caret line="10" selection-start-line="10" selection-end-line="10" />
+            <state relative-caret-position="510">
+              <caret line="39" column="1" selection-start-line="39" selection-start-column="1" selection-end-line="39" selection-end-column="1" />
             </state>
           </provider>
         </entry>
@@ -205,10 +216,8 @@
         <option value="$PROJECT_DIR$/class/Indexer.php" />
         <option value="$PROJECT_DIR$/index.php" />
         <option value="$PROJECT_DIR$/api/server/admin/saveDB.php" />
-        <option value="$PROJECT_DIR$/api/test.php" />
         <option value="$PROJECT_DIR$/api/login.php" />
         <option value="$PROJECT_DIR$/api/register.php" />
-        <option value="$PROJECT_DIR$/api/server/client/players/get.php" />
         <option value="$PROJECT_DIR$/api/server/admin/database/save.php" />
         <option value="$PROJECT_DIR$/api/server/admin/database/get.php" />
         <option value="$PROJECT_DIR$/api/encrypt.php" />
@@ -216,8 +225,10 @@
         <option value="$PROJECT_DIR$/install/index.php" />
         <option value="$PROJECT_DIR$/install/finish_config.php" />
         <option value="$PROJECT_DIR$/install/save_config.php" />
-        <option value="$PROJECT_DIR$/class/encryption.php" />
+        <option value="$PROJECT_DIR$/api/server/client/players/get.php" />
         <option value="$PROJECT_DIR$/configs/config_general.php" />
+        <option value="$PROJECT_DIR$/class/encryption.php" />
+        <option value="$PROJECT_DIR$/api/test.php" />
       </list>
     </option>
   </component>
@@ -263,21 +274,22 @@
               <item name="v5-webpanel" type="b2602c69:ProjectViewProjectNode" />
               <item name="v5-webpanel" type="2a2b976b:PhpTreeStructureProvider$1" />
               <item name="api" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="users" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="server" type="2a2b976b:PhpTreeStructureProvider$1" />
             </path>
             <path>
               <item name="v5-webpanel" type="b2602c69:ProjectViewProjectNode" />
               <item name="v5-webpanel" type="2a2b976b:PhpTreeStructureProvider$1" />
               <item name="api" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="users" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="admin" type="2a2b976b:PhpTreeStructureProvider$1" />
-            </path>
-            <path>
-              <item name="v5-webpanel" type="b2602c69:ProjectViewProjectNode" />
-              <item name="v5-webpanel" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="api" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="users" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="server" type="2a2b976b:PhpTreeStructureProvider$1" />
               <item name="client" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="v5-webpanel" type="b2602c69:ProjectViewProjectNode" />
+              <item name="v5-webpanel" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="api" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="server" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="client" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="players" type="2a2b976b:PhpTreeStructureProvider$1" />
             </path>
             <path>
               <item name="v5-webpanel" type="b2602c69:ProjectViewProjectNode" />
@@ -307,6 +319,7 @@
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="com.intellij.database.dataSource.DataSourceTemplate" value="MySQL" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="node.js.path.for.package.eslint" value="project" />
     <property name="node.js.path.for.package.jscs" value="project" />
@@ -438,7 +451,7 @@
       <workItem from="1523898653087" duration="37000" />
       <workItem from="1523902883012" duration="76000" />
       <workItem from="1523917082032" duration="4278000" />
-      <workItem from="1524059994773" duration="3177000" />
+      <workItem from="1524059994773" duration="4831000" />
     </task>
     <task id="LOCAL-00001" summary="Change / to HomeController for secure home with auth system">
       <created>1486675741093</created>
@@ -496,11 +509,18 @@
       <option name="project" value="LOCAL" />
       <updated>1523921634016</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="Change encrypt class">
+      <created>1524063568229</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1524063568229</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="47094000" />
+    <option name="totallyTimeSpent" value="48748000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -520,10 +540,11 @@
       <window_info anchor="bottom" id="Database Changes" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Run" order="2" />
       <window_info anchor="bottom" id="Version Control" order="9" weight="0.32871288" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="8" visible="true" weight="0.32977778" />
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49534884" visible="true" weight="0.22310969" />
+      <window_info anchor="bottom" id="Terminal" order="8" weight="0.32977778" />
+      <window_info anchor="bottom" id="Database Console" visible="true" weight="0.32977778" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49534884" visible="true" weight="0.22310969" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
-      <window_info anchor="right" id="Database" order="3" />
+      <window_info anchor="right" id="Database" order="3" visible="true" weight="0.32960597" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32784042" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.24969475" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
@@ -553,15 +574,10 @@
     <MESSAGE value="Profile view and users view at same view" />
     <MESSAGE value="Add button to see Emodyz Support datas" />
     <MESSAGE value="Add Emodyz Support instructions" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add Emodyz Support instructions" />
+    <MESSAGE value="Change encrypt class" />
+    <option name="LAST_COMMIT_MESSAGE" value="Change encrypt class" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/WebPanel/composer.json" />
-    <entry file="file://$PROJECT_DIR$/WebPanel/artisan" />
-    <entry file="file://$PROJECT_DIR$/WebPanel/.gitignore" />
-    <entry file="file://$PROJECT_DIR$/WebPanel/.gitattributes" />
-    <entry file="file://$PROJECT_DIR$/WebPanel/.env.example" />
-    <entry file="file://$PROJECT_DIR$/WebPanel/.env" />
     <entry file="file://$PROJECT_DIR$/WebPanel/resources/lang/fr/auth.php" />
     <entry file="file://$PROJECT_DIR$/WebPanel/resources/lang/fr/pagination.php" />
     <entry file="file://$PROJECT_DIR$/WebPanel/app/Http/Middleware/TrimStrings.php" />
@@ -631,13 +647,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/api/server/client/players/get.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="203">
-          <caret line="30" column="24" selection-start-line="30" selection-start-column="19" selection-end-line="30" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/api/server/admin/database/save.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="150">
@@ -656,13 +665,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="220">
           <caret line="33" selection-start-line="33" selection-end-line="33" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/api/test.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="45">
-          <caret line="8" selection-start-line="8" selection-end-line="8" />
         </state>
       </provider>
     </entry>
@@ -704,13 +706,6 @@
     <entry file="file://$PROJECT_DIR$/configs/mysql_connect.php">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/class/encryption.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="251">
-          <caret line="22" column="47" selection-start-line="22" selection-start-column="35" selection-end-line="22" selection-end-column="47" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/install/save_config.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="269">
@@ -718,10 +713,55 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/api/users/client/get.php">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/api/server/client/players/get.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="317">
+          <caret line="33" column="55" selection-start-line="33" selection-start-column="55" selection-end-line="33" selection-end-column="55" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/fda00e4f-3cc8-490c-9070-b3acf5394f7a/console.sql">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="das://fda00e4f-3cc8-490c-9070-b3acf5394f7a/schema/altislife/table/cellphone">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/install/install_finish.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-547" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/install/mysql_test.php">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/install/mysql_inject.php">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
     <entry file="file://$PROJECT_DIR$/configs/config_general.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="1" column="18" selection-start-line="1" selection-start-column="18" selection-end-line="1" selection-end-column="18" />
+        <state relative-caret-position="90">
+          <caret line="6" lean-forward="true" selection-start-line="6" selection-end-line="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/class/encryption.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="480">
+          <caret line="37" column="5" lean-forward="true" selection-start-line="37" selection-start-column="5" selection-end-line="37" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/api/test.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="510">
+          <caret line="39" column="1" selection-start-line="39" selection-start-column="1" selection-end-line="39" selection-end-column="1" />
         </state>
       </provider>
     </entry>
