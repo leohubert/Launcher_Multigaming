@@ -24,14 +24,6 @@ https://github.com/emodyz/launcher-ezgames.eu
 - More stats ingame ( gang, total vehicle, total house etc...)
 - Donation system
 - Profile editing (in launcher)
- 
-## Screens:
-
-![Launcher_Arma3 Logo](https://raw.githubusercontent.com/MrDarkSkil/Launcher_Arma3/master/Screens/pre-release/pre-release_5.0.5.0/LauncherMain.PNG)
-
-![Launcher_Arma3 Logo](https://raw.githubusercontent.com/MrDarkSkil/Launcher_Arma3/master/Screens/pre-release/pre-release_5.0.5.0/login.PNG)
-
-![Launcher_Arma3 Logo](https://raw.githubusercontent.com/MrDarkSkil/Launcher_Arma3/master/Screens/pre-release/pre-release_5.0.5.0/register.PNG)
 
 ## Launcher Panel Install Guide:
 
@@ -50,6 +42,27 @@ In English:  https://github.com/MrDarkSkil/Launcher_Multigaming/wiki/Intall-guid
 }
 ```
 
+### Launcher Screens:
+
+![Launcher_Arma3 Logo](Screens/release/release_5.4/laucher/login.PNG)
+
+![Launcher_Arma3 Logo](Screens/release/release_5.4/laucher/register.PNG)
+
+![Launcher_Arma3 Logo](Screens/release/release_5.4/laucher/launcher.PNG)
+
+![Launcher_Arma3 Logo](Screens/release/release_5.4/laucher/server-choose.PNG)
+
+### Webpanel Screens :
+
+![Launcher_Arma3 Logo](Screens/release/release_5.4/webpanel/login.PNG)
+
+![Launcher_Arma3 Logo](Screens/release/release_5.4/webpanel/server-settings.PNG)
+
+![Launcher_Arma3 Logo](Screens/release/release_5.4/webpanel/user-list.PNG)
+
+
+
+
 ## Licences:
 
 ##### This project is under GPL licence, please refer to the LICENCE file.
@@ -57,6 +70,33 @@ In English:  https://github.com/MrDarkSkil/Launcher_Multigaming/wiki/Intall-guid
 --------------------------------------------------
 
 ### Changes Logs:
+
+Release 5.4:
+- Add: SteamWrapper (Autodetect SteamUID using Steam)
+- Add: Support of Windows servers
+- Add: Emodyz Support & Analytics to see your server evoluting
+- Update: Refactor Encrypt for work on PHP7
+- Update: Old icons to modern icons ( Flat )
+- Fix: Steam Error when click on Start
+- Fix: Spacewar in steam status
+- Fix: Bugs with PHP7 & PHP5.6 ( Encrypt & SaveConfig)
+
+Release 5.3:
+- Add: Support of AltisLife V5 with in game informations
+- Remove: LocalPath in create server config
+- Fix: Steam Error on start
+- Fix: Install WebPanel pages
+- Fix: UUID Getter
+
+Release 5.2:
+- Add: UUID autodetect
+- Remove: UUID in register page (web panel/launcher)
+- Fix: UUID register 500 error
+
+Release 5.1:
+- Add: Default language in Program.cs to hide language choose page
+- Fix: Popup showed when login is disable
+- Fix: Some bugs
 
 Release 5.0:
 - Add: Multiserver/Games
