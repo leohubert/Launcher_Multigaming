@@ -8,7 +8,7 @@ Arma3 - Altis Life / EXILE and more...
 ## Launcher Information:
 
 #### Last version:
-Version: 5.2<br>
+Version: 5.3<br>
 Release date: 28/02/2017 19:24 <br>
 <br>
 Copyright HUBERT Léo © 2014 - 2018<br>
