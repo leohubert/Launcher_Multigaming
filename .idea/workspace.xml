@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="71971931-68df-46df-9feb-24995bfad939" name="Default" comment="Add auto updater #57">
+    <list default="true" id="71971931-68df-46df-9feb-24995bfad939" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/update.php" beforeDir="false" afterPath="$PROJECT_DIR$/api/update.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/class/GitRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/class/GitRepository.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jointures/header_admin.php" beforeDir="false" afterPath="$PROJECT_DIR$/jointures/header_admin.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -56,20 +54,20 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="GitRepository.php" pinned="false" current-in-tab="false">
+      <file leaf-file-name="GitRepository.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/class/GitRepository.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="545">
-              <caret line="64" column="22" lean-forward="true" selection-start-line="64" selection-start-column="22" selection-end-line="64" selection-end-column="22" />
+            <state relative-caret-position="287">
+              <caret line="34" column="23" selection-start-line="34" selection-start-column="23" selection-end-line="34" selection-end-column="23" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="lastUpdate.txt" pinned="false" current-in-tab="true">
+      <file leaf-file-name="lastUpdate.txt" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/lastUpdate.txt">
           <provider selected="true" editor-type-id="text-editor">
             <state>
-              <caret column="7" selection-start-column="7" selection-end-column="7" />
+              <caret column="26" selection-start-column="26" selection-end-column="26" />
             </state>
           </provider>
         </entry>
@@ -77,8 +75,20 @@
       <file leaf-file-name="header_admin.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/jointures/header_admin.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="362">
-              <caret line="213" column="30" selection-start-line="213" selection-start-column="30" selection-end-line="213" selection-end-column="30" />
+            <state relative-caret-position="424">
+              <caret line="217" column="32" selection-start-line="217" selection-start-column="32" selection-end-line="217" selection-end-column="32" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="readme.md" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/readme.md">
+          <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+            <state split_layout="SPLIT">
+              <first_editor relative-caret-position="30">
+                <caret line="2" selection-start-line="2" selection-end-line="3" />
+              </first_editor>
+              <second_editor />
             </state>
           </provider>
         </entry>
@@ -196,9 +206,9 @@
         <option value="$PROJECT_DIR$/index.php" />
         <option value="$PROJECT_DIR$/class/Indexer.php" />
         <option value="$PROJECT_DIR$/api/update.php" />
+        <option value="$PROJECT_DIR$/lastUpdate.txt" />
         <option value="$PROJECT_DIR$/jointures/header_admin.php" />
         <option value="$PROJECT_DIR$/class/GitRepository.php" />
-        <option value="$PROJECT_DIR$/lastUpdate.txt" />
       </list>
     </option>
   </component>
@@ -423,7 +433,7 @@
       <workItem from="1523917082032" duration="4278000" />
       <workItem from="1524059994773" duration="5059000" />
       <workItem from="1524696272143" duration="9265000" />
-      <workItem from="1524731104113" duration="1270000" />
+      <workItem from="1524731104113" duration="2228000" />
     </task>
     <task id="LOCAL-00001" summary="Change / to HomeController for secure home with auth system">
       <created>1486675741093</created>
@@ -509,11 +519,25 @@
       <option name="project" value="LOCAL" />
       <updated>1524705537281</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="Fix git class #57">
+      <created>1524732490462</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1524732490463</updated>
+    </task>
+    <task id="LOCAL-00014" summary="Fix git class #57">
+      <created>1524733883875</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1524733883875</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="59511000" />
+    <option name="totallyTimeSpent" value="60469000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -531,9 +555,9 @@
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32906976" />
       <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" weight="0.3299435" />
       <window_info anchor="bottom" id="Database Changes" order="7" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Version Control" order="9" weight="0.32871288" />
+      <window_info active="true" anchor="bottom" id="Version Control" order="9" visible="true" weight="0.328" />
       <window_info anchor="bottom" id="Run" order="2" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="8" visible="true" weight="0.32977778" />
+      <window_info anchor="bottom" id="Terminal" order="8" weight="0.32977778" />
       <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49534884" visible="true" weight="0.22736955" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="right" id="Database" order="3" weight="0.32960597" />
@@ -571,7 +595,8 @@
     <MESSAGE value="Change encrypt class" />
     <MESSAGE value="Fix encryption windows" />
     <MESSAGE value="Add auto updater #57" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add auto updater #57" />
+    <MESSAGE value="Fix git class #57" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fix git class #57" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/WebPanel/routes/web.php" />
@@ -678,16 +703,6 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/class/GitUpdater.php" />
     <entry file="file://$PROJECT_DIR$/class/IGit.php" />
-    <entry file="file://$PROJECT_DIR$/readme.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="SPLIT">
-          <first_editor relative-caret-position="45">
-            <caret line="3" lean-forward="true" selection-start-line="3" selection-end-line="3" />
-          </first_editor>
-          <second_editor />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/people.txt" />
     <entry file="file://$PROJECT_DIR$/games/index.php">
       <provider selected="true" editor-type-id="text-editor" />
@@ -783,24 +798,34 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/lastUpdate.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="26" selection-start-column="26" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/jointures/header_admin.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="362">
-          <caret line="213" column="30" selection-start-line="213" selection-start-column="30" selection-end-line="213" selection-end-column="30" />
+        <state relative-caret-position="424">
+          <caret line="217" column="32" selection-start-line="217" selection-start-column="32" selection-end-line="217" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/readme.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="30">
+            <caret line="2" selection-start-line="2" selection-end-line="3" />
+          </first_editor>
+          <second_editor />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/class/GitRepository.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="545">
-          <caret line="64" column="22" lean-forward="true" selection-start-line="64" selection-start-column="22" selection-end-line="64" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lastUpdate.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="7" selection-start-column="7" selection-end-column="7" />
+        <state relative-caret-position="287">
+          <caret line="34" column="23" selection-start-line="34" selection-start-column="23" selection-end-line="34" selection-end-column="23" />
         </state>
       </provider>
     </entry>

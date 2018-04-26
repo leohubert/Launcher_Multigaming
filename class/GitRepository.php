@@ -32,7 +32,7 @@ class GitRepository
      */
     public function checkForUpdates()
     {
-        $file = 'lastUpdate.txt';
+        $file = 'games/lastUpdate.txt';
         $lastUpdate = file_get_contents($file);
         if ($lastUpdate) {
             $lastUpdate = new \DateTime($lastUpdate);
