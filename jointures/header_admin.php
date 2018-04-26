@@ -1,8 +1,6 @@
 <?php
 
-use Cz\Git\GitRepository;
-
-$updater = new GitRepository('.');
+$updater = new GitRepository();
 
 ?>
 
@@ -36,15 +34,15 @@ $updater = new GitRepository('.');
                                 var obj = JSON.parse(data);
 
 
-                                if (obj.status == 42) {
+                                if (obj.status === 42) {
                                     swal("Updated with success !",'Redirection in 2 seconds', "success");
                                     setTimeout(function () {
                                         location.reload();
                                     }, 2000);
                                 }
-                                else if (obj.status == 41)
+                                else if (obj.status === 41)
                                     window.location = "/logout";
-                                else if (obj.status != 422)
+                                else if (obj.status !== 422)
                                     swal("Error while trying to update", obj.message, "error");
                                 waitingDialog.hide();
                             }
@@ -213,7 +211,7 @@ $updater = new GitRepository('.');
                     <!--<li class="has-submenu pull-right">
                         <a href="/intranet/login"><i class="md md-desktop-mac"></i><?php echo $site; ?> OS</a>
                     </li>-->
-                    <?php if (!$updater->isUpToDate()) { ?>
+                    <?php if ($updater->checkForUpdates()) { ?>
                         <li class="has-submenu pull-right">
                             <div class="alert alert-warning">
                                 <strong>Good News !</strong> We have an update of webpanel for you.

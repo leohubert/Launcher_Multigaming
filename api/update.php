@@ -6,16 +6,16 @@
  * Time: 03:02
  */
 
-use Cz\Git\GitRepository;
-
 
 if (isset($_SESSION['level']) && (int)$_SESSION['level'] > 9) {
 
 
-    $updater = new GitRepository('.');
+    $updater = new GitRepository();
 
-    $updater->fetch();
-    $updater->pull();
+    if (!$updater->fetch() || !$updater->pull()) {
+        echo json_encode(['status' => 500, 'message' => "Error"]);
+        return;
+    }
 
     echo json_encode(['status' => 42, 'message' => "Success !"]);
     return;
