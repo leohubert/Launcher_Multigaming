@@ -11,7 +11,7 @@ include './class/RestClient.php';
 class Indexer
 {
     private $api = 'http://indexer.emodyz.eu/api';
-    private $version = 'v5.4-beta.2';
+    private $version = 'v5.4-beta.2-auto-updater';
 
     private $database;
     private $name;
