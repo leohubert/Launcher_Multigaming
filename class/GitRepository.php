@@ -61,7 +61,7 @@ class GitRepository
         } catch (Exception $e) {
             return false;
         }
-        if (strstr($output, 'up to date ') === false) {
+        if (strstr($output, 'up to date ') === false && strstr($output, 'up-to-date ') === false) {
             return true;
         } else {
             return false;
