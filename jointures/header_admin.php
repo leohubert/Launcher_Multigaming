@@ -215,8 +215,8 @@ $updater = new GitRepository();
                         <li class="has-submenu pull-right">
                             <div class="alert alert-warning">
                                 <strong>Good News !</strong> We have an update of webpanel for you.
-                                <button class="btn btn-purple waves-effect waves-light m-b-5" id="update-button"><i
-                                            class="fa  fa-chevron-up m-r-5"></i> <span>Update Now</span></button>
+                                  <!--  <button class="btn btn-purple waves-effect waves-light m-b-5" id="update-button"><i
+                                            class="fa  fa-chevron-up m-r-5"></i> <span>Update Now</span></button>-->
                             </div>
                         </li>
                     <?php } ?>
