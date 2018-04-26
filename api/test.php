@@ -6,6 +6,10 @@
  * Time: 21:00
  */
 
+
+
+
+
 $encrypter = new Encryption($encrypt_key1, $encrypt_key2);
 
 $test1 = "jcehjgfuegjgfkjgjegkulde";
@@ -35,3 +39,5 @@ echo $test2encrypted . "<br>";
 
 
 echo "END<br>";
+
+
