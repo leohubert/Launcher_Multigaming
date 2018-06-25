@@ -170,7 +170,7 @@ function deleteUser() {
                     {
                         swal("Deleted!", obj.message , "success");
                         setInterval(function () {
-                            location.reload();
+                            window.location = "/users/all";
                         }, 1500);
                     }
                     else if (obj.status == 41)

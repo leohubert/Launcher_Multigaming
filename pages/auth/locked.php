@@ -69,7 +69,7 @@
                 $.post(
                     '/api/login',
                     {
-                        login : "<?php echo $_SESSION['username'];?>",
+                        login : "<?php echo $_SESSION['email'];?>",
                         password : $("#password").val(),
                         launcher : "0"
                     },

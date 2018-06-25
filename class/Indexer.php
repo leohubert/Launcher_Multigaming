@@ -11,7 +11,8 @@ include './class/RestClient.php';
 class Indexer
 {
     private $api = 'http://indexer.emodyz.eu/api';
-    private $version = 'v5.4-beta.2-auto-updater';
+    private $devApi = 'http://v5-indexer.test/api';
+    private $version = 'v5.4-beta.2-last';
 
     private $database;
     private $name;
@@ -26,6 +27,11 @@ class Indexer
         $this->database = $database;
 
         $this->currentUrl = (isset($_SERVER['HTTPS']) ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
+
+
+        if (strstr($this->currentUrl, "v5-webpanel.test")) {
+            $this->api = $this->devApi;
+        }
 
         $this->client = new RestClient([
             'base_url' => $this->api
@@ -58,7 +64,6 @@ class Indexer
             'nb_servers' => (int)$nbServers,
             'version' => $this->version
         ]);
-
 
         if($result->info->http_code == 200)
             return true;
@@ -93,5 +98,24 @@ class Indexer
             return true;
         else
             return false;
+    }
+
+    /**
+     * Check if an ip is whitelisted for support
+     *
+     * @param string $ip
+     * @return bool
+     */
+    public function checkIp($ip)
+    {
+        $result = $this->client->get('/tools/whitelist/check', [
+            'ip' => $ip
+        ]);
+
+        if($result->info->http_code == 200)
+            return true;
+        else
+            return false;
+
     }
 }
