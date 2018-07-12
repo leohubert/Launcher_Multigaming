@@ -120,3 +120,26 @@ C:\Users\Hubert Léo\Documents\GitHub\Launcher_Multigaming\LauncherArma3\Launche
 C:\Users\Hubert Léo\Documents\GitHub\Launcher_Multigaming\LauncherArma3\LauncherArma3\obj\Debug\LauncherArma3.pdb
 C:\Users\Hubert Léo\Documents\GitHub\Launcher_Multigaming\LauncherArma3\LauncherArma3\obj\Debug\LauncherArma3.steamWrapper.resources
 C:\Users\Hubert Léo\Documents\GitHub\Launcher_Multigaming\LauncherArma3\LauncherArma3\obj\Debug\LauncherArma3.csprojResolveAssemblyReference.cache
+C:\Users\manet\Documents\GitHub\Launcher_Multigaming\Debug\LauncherArma3.exe.config
+C:\Users\manet\Documents\GitHub\Launcher_Multigaming\Debug\LauncherArma3.exe.manifest
+C:\Users\manet\Documents\GitHub\Launcher_Multigaming\Debug\LauncherArma3.application
+C:\Users\manet\Documents\GitHub\Launcher_Multigaming\Debug\LauncherArma3.exe
+C:\Users\manet\Documents\GitHub\Launcher_Multigaming\Debug\LauncherArma3.pdb
+C:\Users\manet\Documents\GitHub\Launcher_Multigaming\LauncherArma3\LauncherArma3\obj\Debug\LauncherArma3.csprojAssemblyReference.cache
+C:\Users\manet\Documents\GitHub\Launcher_Multigaming\LauncherArma3\LauncherArma3\obj\Debug\LauncherArma3.Arma3.serverPassword.resources
+C:\Users\manet\Documents\GitHub\Launcher_Multigaming\LauncherArma3\LauncherArma3\obj\Debug\LauncherArma3.languageChoice.resources
+C:\Users\manet\Documents\GitHub\Launcher_Multigaming\LauncherArma3\LauncherArma3\obj\Debug\LauncherArma3.launcherMain.resources
+C:\Users\manet\Documents\GitHub\Launcher_Multigaming\LauncherArma3\LauncherArma3\obj\Debug\LauncherArma3.loginForm.resources
+C:\Users\manet\Documents\GitHub\Launcher_Multigaming\LauncherArma3\LauncherArma3\obj\Debug\LauncherArma3.Properties.Resources.resources
+C:\Users\manet\Documents\GitHub\Launcher_Multigaming\LauncherArma3\LauncherArma3\obj\Debug\LauncherArma3.registerForm.resources
+C:\Users\manet\Documents\GitHub\Launcher_Multigaming\LauncherArma3\LauncherArma3\obj\Debug\LauncherArma3.serverChoose.resources
+C:\Users\manet\Documents\GitHub\Launcher_Multigaming\LauncherArma3\LauncherArma3\obj\Debug\LauncherArma3.settingsForm.resources
+C:\Users\manet\Documents\GitHub\Launcher_Multigaming\LauncherArma3\LauncherArma3\obj\Debug\LauncherArma3.steamWrapper.resources
+C:\Users\manet\Documents\GitHub\Launcher_Multigaming\LauncherArma3\LauncherArma3\obj\Debug\LauncherArma3.csproj.GenerateResource.cache
+C:\Users\manet\Documents\GitHub\Launcher_Multigaming\LauncherArma3\LauncherArma3\obj\Debug\LauncherArma3.csproj.CoreCompileInputs.cache
+C:\Users\manet\Documents\GitHub\Launcher_Multigaming\LauncherArma3\LauncherArma3\obj\Debug\LauncherArma3.TrustInfo.xml
+C:\Users\manet\Documents\GitHub\Launcher_Multigaming\LauncherArma3\LauncherArma3\obj\Debug\LauncherArma3.exe.manifest
+C:\Users\manet\Documents\GitHub\Launcher_Multigaming\LauncherArma3\LauncherArma3\obj\Debug\LauncherArma3.application
+C:\Users\manet\Documents\GitHub\Launcher_Multigaming\LauncherArma3\LauncherArma3\obj\Debug\LauncherArma3.csproj.CopyComplete
+C:\Users\manet\Documents\GitHub\Launcher_Multigaming\LauncherArma3\LauncherArma3\obj\Debug\LauncherArma3.exe
+C:\Users\manet\Documents\GitHub\Launcher_Multigaming\LauncherArma3\LauncherArma3\obj\Debug\LauncherArma3.pdb
