@@ -51,35 +51,60 @@ if (isset($_POST['token']) && isset($_POST['id']) && is_numeric($_POST['id']))
             $myID = $res['user_id'];
             $res = $userLevel->fetch();
             $id = $res['uid'];
-            if ($userLevel->rowCount() != 0 && (int)$res['banned'] != 1)
-            {
-                $getPlayerInfo = $custom_db->prepare('SELECT * FROM `players` WHERE playerid=:id');
-                $getPlayerInfo->execute(array('id' => $id));
-                if ($getPlayerInfo->rowCount() == 0) {
-                    $getPlayerInfo = $custom_db->prepare('SELECT * FROM `players` WHERE pid=:id');
-                    $getPlayerInfo->execute(array('id' => $id));
+            if (isset($_POST['type'])) {
+                $getplayercar = $custom_db->prepare('SELECT count(*) FROM `vehicles` WHERE (playerid=:id AND type = "Car")');
+                $getplayerheli = $custom_db->prepare('SELECT count(*) FROM `vehicles` WHERE (playerid=:id AND type = "Air")');
+                $getplayercar->execute(array('id' => $id));
+                $getplayerheli->execute(array('id' => $id));
+                if ($getplayercar->rowCount() == 0) {
+                    $getplayercar = $custom_db->prepare('SELECT count(*) FROM `vehicles` WHERE (pid=:id AND type = "Car")');
+                    $getplayerheli = $custom_db->prepare('SELECT count(*) FROM `vehicles` WHERE (pid=:id AND type = "Air")');
+                    $getplayercar->execute(array('id' => $id));
+                    $getplayerheli->execute(array('id' => $id));
                 }
-                $player = $getPlayerInfo->fetch();
-                if ($getPlayerInfo->rowCount() != 0) {
-                    $result['name'] = $player['name'];
-                    $result['cash'] = $player['cash'];
-                    $result['bank'] = $player['bankacc'];
-                    $result['coplevel'] = $player['coplevel'];
-                    $result['mediclevel'] = $player['mediclevel'];
-                    $result['adminlevel'] = $player['adminlevel'];
+                $vehicles = $getplayercar->fetch();
+                $helicopter = $getplayerheli->fetch();
+                if ($getplayercar->rowCount() && $getplayerheli->rowCount() != 0) {
+                    $result['vehicles'] = $vehicles[0];
+                    $result['helicopters'] = $helicopter[0];
                     $result['status'] = 42;
-                    $result['message'] = "User successfully showed";
+                    $result['message'] = "vehicles successfully showed";
+                }else {
+                    $result['status'] = 40;
+                    $result['message'] = "vehicles error showed";
+                    $result['error'] = $getplayerheli->errorInfo();
+                }
+            }else{
+                if ($userLevel->rowCount() != 0 && (int)$res['banned'] != 1)
+                {
+                    $getPlayerInfo = $custom_db->prepare('SELECT * FROM `players` WHERE playerid=:id');
+                    $getPlayerInfo->execute(array('id' => $id));
+                    if ($getPlayerInfo->rowCount() == 0) {
+                        $getPlayerInfo = $custom_db->prepare('SELECT * FROM `players` WHERE pid=:id');
+                        $getPlayerInfo->execute(array('id' => $id));
+                    }
+                    $player = $getPlayerInfo->fetch();
+                    if ($getPlayerInfo->rowCount() != 0) {
+                        $result['name'] = $player['name'];
+                        $result['cash'] = $player['cash'];
+                        $result['bank'] = $player['bankacc'];
+                        $result['coplevel'] = $player['coplevel'];
+                        $result['mediclevel'] = $player['mediclevel'];
+                        $result['adminlevel'] = $player['adminlevel'];
+                        $result['status'] = 42;
+                        $result['message'] = "User successfully showed";
+                    }
+                else
+                    {
+                        $result['status'] = 40;
+                        $result['message'] = "User do not exits.";
+                    }
                 }
                 else
                 {
-                    $result['status'] = 40;
-                    $result['message'] = "User do not exits.";
+                    $result['status'] = 44;
+                    $result['message'] = "You don't have right to create this request !";
                 }
-            }
-            else
-            {
-                $result['status'] = 44;
-                $result['message'] = "You don't have right to create this request !";
             }
         }
         else

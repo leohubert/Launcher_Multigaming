@@ -114,11 +114,11 @@
                     <div class="row">
                         <div class="col-sm-6">
                             <p class="text-muted font-500">TOTAL HELICOPTER</p>
-                            <h3 class="text-info"><span class="counter">2</span></h3>
+                            <h3 class="text-info"><span class="counter" id="helicopter">2</span></h3>
                         </div>
                         <div class="col-sm-6">
                             <p class="text-muted font-500">TOTAL VEHICLE</p>
-                            <h3 class="text-info"><span class="counter">24</span></h3>
+                            <h3 class="text-info"><span class="counter" id="vehicle">24</span></h3>
                         </div>
                     </div>
                 </div>

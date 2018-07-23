@@ -71,10 +71,10 @@ function loadUser() {
                         break;
                 }
                 $.post(
-                    '/api/server/admin/players/get',
+                    '/api/server/client/players/get',
                     {
                         token :  $("meta[name='token']").attr("content"),
-                        uid : userUID
+                        id : 64
                     },
 
                     function(data){
@@ -95,6 +95,31 @@ function loadUser() {
                             document.getElementById("player_adminlevel").innerText = "Not found";
                             document.getElementById("player_mediclevel").innerText = "Not found";
                             document.getElementById("player_coplevel").innerText = "Not found";
+                        }
+                        else if (obj.status == 41)
+                            window.location="/logout";
+                    },
+
+                    'text'
+                );
+                $.post(
+                    '/api/server/client/players/get',
+                    {
+                        token :  $("meta[name='token']").attr("content"),
+                        id : 64,
+                        type : 'yes'
+                    },
+
+                    function(data){
+                        var obj = JSON.parse(data);
+                        if (obj.status == 42) {
+                            document.getElementById("vehicle").innerText = obj.vehicles;
+                            document.getElementById("helicopter").innerText = obj.helicopters;
+                        }
+                        else if (obj.status == 40)
+                        {
+                            document.getElementById("vehicle").innerText = "Not found";
+                            document.getElementById("helicopter").innerText = "Not found";
                         }
                         else if (obj.status == 41)
                             window.location="/logout";

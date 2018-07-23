@@ -92,7 +92,8 @@
                     $.post(
                         '/api/server/client/players/get',
                         {
-                            token : "<?php echo $_SESSION['token'];?>"
+                            token : "<?php echo $_SESSION['token'];?>",
+                            id : 64
                         },
 
                         function(data){

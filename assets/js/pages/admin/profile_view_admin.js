@@ -58,7 +58,8 @@ function loadUser() {
                 $.post(
                     '/api/server/client/players/get',
                     {
-                        token :  $("meta[name='token']").attr("content")
+                        token :  $("meta[name='token']").attr("content"),
+                        id : 64
                     },
 
                     function(data){
