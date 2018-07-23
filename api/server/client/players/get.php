@@ -52,6 +52,9 @@ if (isset($_POST['token']) && isset($_POST['id']) && is_numeric($_POST['id']))
             $res = $userLevel->fetch();
             $id = $res['uid'];
             if (isset($_POST['type'])) {
+                $userLevel->execute(array('id' => $_POST['user']));
+                $resvehicle = $userLevel->fetch();
+                $id = $resvehicle['uid'];
                 $getplayercar = $custom_db->prepare('SELECT count(*) FROM `vehicles` WHERE (playerid=:id AND type = "Car")');
                 $getplayerheli = $custom_db->prepare('SELECT count(*) FROM `vehicles` WHERE (playerid=:id AND type = "Air")');
                 $getplayercar->execute(array('id' => $id));
@@ -77,6 +80,11 @@ if (isset($_POST['token']) && isset($_POST['id']) && is_numeric($_POST['id']))
             }else{
                 if ($userLevel->rowCount() != 0 && (int)$res['banned'] != 1)
                 {
+                    if (isset($_POST['user'])){
+                    $userLevel->execute(array('id' => $_POST['user']));
+                    $resadmin = $userLevel->fetch();
+                    $id = $resadmin['uid'];
+                    }
                     $getPlayerInfo = $custom_db->prepare('SELECT * FROM `players` WHERE playerid=:id');
                     $getPlayerInfo->execute(array('id' => $id));
                     if ($getPlayerInfo->rowCount() == 0) {
@@ -93,6 +101,7 @@ if (isset($_POST['token']) && isset($_POST['id']) && is_numeric($_POST['id']))
                         $result['adminlevel'] = $player['adminlevel'];
                         $result['status'] = 42;
                         $result['message'] = "User successfully showed";
+                        $result['uuid'] = $id;
                     }
                 else
                     {
