@@ -1,5 +1,5 @@
 <head>
-    <link href="assets/plugins/custombox/dist/custombox.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/custombox/4.0.3/custombox.min.css" rel="stylesheet">
 </head>
 
 

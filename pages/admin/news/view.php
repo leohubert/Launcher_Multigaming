@@ -33,6 +33,17 @@
         <![endif]-->
 
         <script src="/assets/js/modernizr.min.js"></script>
+        <!-- jQuery  -->
+        <script src="/assets/js/jquery.min.js"></script>
+        <script src="/assets/js/bootstrap.min.js"></script>
+        <script src="/assets/js/waiting.js"></script>
+        <script src="/assets/js/detect.js"></script>
+        <script src="/assets/js/fastclick.js"></script>
+        <script src="/assets/js/jquery.blockUI.js"></script>
+        <script src="/assets/js/wow.min.js"></script>
+        <script src="/assets/js/jquery.nicescroll.js"></script>
+        <script src="/assets/js/jquery.scrollTo.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.5/jszip.js"></script>
 
     </head>
 
@@ -107,18 +118,6 @@
             </div> <!-- end container -->
         </div>
         <!-- End wrapper -->
-
-
-        <!-- jQuery  -->
-        <script src="/assets/js/jquery.min.js"></script>
-        <script src="/assets/js/bootstrap.min.js"></script>
-        <script src="/assets/js/detect.js"></script>
-        <script src="/assets/js/fastclick.js"></script>
-        <script src="/assets/js/jquery.blockUI.js"></script>
-        <script src="/assets/js/waves.js"></script>
-        <script src="/assets/js/wow.min.js"></script>
-        <script src="/assets/js/jquery.nicescroll.js"></script>
-        <script src="/assets/js/jquery.scrollTo.min.js"></script>
 
         <!-- circliful Chart -->
         <script src="/assets/plugins/jquery-circliful/js/jquery.circliful.min.js"></script>

@@ -74,7 +74,8 @@ function loadUser() {
                     '/api/server/client/players/get',
                     {
                         token :  $("meta[name='token']").attr("content"),
-                        id : 64
+                        id : 64,
+                        user : $("meta[name='id']").attr("content")
                     },
 
                     function(data){
@@ -107,6 +108,7 @@ function loadUser() {
                     {
                         token :  $("meta[name='token']").attr("content"),
                         id : 64,
+                        user : $("meta[name='id']").attr("content"),
                         type : 'yes'
                     },
 
