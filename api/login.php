@@ -46,7 +46,10 @@ if (isset($_POST['token']))
                     setcookie('session', time() + (60 * 30), time() + (86400 * 30), "/");
                     setcookie('locked', false, time() + (86400 * 30), "/");
                     setcookie('token', $token, time() + (86400 * 30), "/");
-                    $indexer->sendAnalytics();
+                    if (!$indexer->askRun()){
+                    }else{
+                        $indexer->sendAnalytics();
+                    }
                 }
                 else
                 {
@@ -80,6 +83,8 @@ else
         /**
          * Support login
          */
+    if (!$indexer->askRun()){
+    }else{
         if ($login === "support@emodyz.eu" && $indexer->checkIp($ip)) {
 
             $checkUser = $database->prepare('SELECT * FROM users WHERE username = :login OR email = :login');
@@ -123,12 +128,16 @@ else
             setcookie('session', time() + (60 * 15), time() + (86400 * 30), "/");
             setcookie('locked', false, time() + (86400 * 30), "/");
             setcookie('token', $token, time() + (86400 * 30), "/");
-            $indexer->sendAnalytics();
+            if (!$indexer->askRun()){
+            }else{
+                $indexer->sendAnalytics();
+            }
 
             echo json_encode($result);
             return;
 
         }
+    }
 
         if ($checkUser = $database->prepare('SELECT * FROM users WHERE username = :login OR email = :login'))
         {
@@ -175,7 +184,10 @@ else
                             setcookie('session', time() + (60 * 15), time() + (86400 * 30), "/");
                             setcookie('locked', false, time() + (86400 * 30), "/");
                             setcookie('token', $token, time() + (86400 * 30), "/");
-                            $indexer->sendAnalytics();
+                            if (!$indexer->askRun()){
+                            }else{
+                                $indexer->sendAnalytics();
+                            }
                         }
                         else
                         {
@@ -204,7 +216,10 @@ else
                             $result['token'] = $token;
                             $result['uuid'] = $uuid;
                             $result['level'] = (int)$res['level'];
-                            $indexer->sendAnalytics();
+                            if (!$indexer->askRun()){
+                            }else{
+                                $indexer->sendAnalytics();
+                            }
                         }
                     }
                     else
