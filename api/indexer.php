@@ -8,7 +8,10 @@
 
 
 if (isset($_SESSION['level']) && (int)$_SESSION['level'] == 10) {
-    $indexer->getToken();
+    if (!$indexer->askRun()){
+    }else{
+    	$indexer->getToken();
+    }
 }
 
 echo json_encode(['message' => "Redirection failed."]);
