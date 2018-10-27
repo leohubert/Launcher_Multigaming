@@ -27,7 +27,11 @@ if (isset($_POST['db_host']) && isset($_POST['db_name']) && isset($_POST['db_use
         fwrite($file, '$mysql_pass = "' . $_POST['db_pass'] .'";' . PHP_EOL);
         fwrite($file, '$mysql_dbname = "' . $_POST['db_name'] .'";' . PHP_EOL);
         fclose($file);
-        $indexer->registerApp();
+        if (!$indexer->askRun()){
+
+        }else{
+        	$indexer->registerApp();
+        }
         $result['status'] = 42;
         $result['message'] = "Injection successfully";
     } catch (PDOException $e) {
