@@ -37,7 +37,10 @@ if (isset($_POST['server_name'])  && isset($_POST['analytics']) && isset($_POST[
     }
 
     fclose( $f );
-    $indexer->installFinished($config[ 'analytics' ]);
+    if (!$indexer->askRun()){
+    }else{
+        $indexer->installFinished($config[ 'analytics' ]);
+    }
     $result['status'] = 42;
     $result['message'] = "Successfully saved";
 }
@@ -48,4 +51,3 @@ else
 }
 
 echo json_encode($result);
-
