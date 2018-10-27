@@ -11,6 +11,7 @@ include './class/RestClient.php';
 class Indexer
 {
     private $api = 'http://indexer.emodyz.eu/api';
+    private $urltest = 'http://indexer.emodyz.eu';
     private $devApi = 'http://v5-indexer.test/api';
     private $version = 'v5.4-beta.2-last';
 
@@ -36,6 +37,32 @@ class Indexer
         $this->client = new RestClient([
             'base_url' => $this->api
         ]);
+    }
+
+    public function askRun()
+    {
+        $url = $this->urltest;
+        // Check, if a valid url is provided
+        if(!filter_var($url, FILTER_VALIDATE_URL)){
+            return false;
+        }
+
+        // Initialize cURL
+        $curlInit = curl_init($url);
+    
+        // Set options
+        curl_setopt($curlInit,CURLOPT_CONNECTTIMEOUT,4);
+        curl_setopt($curlInit,CURLOPT_HEADER,true);
+        curl_setopt($curlInit,CURLOPT_NOBODY,true);
+        curl_setopt($curlInit,CURLOPT_RETURNTRANSFER,true);
+
+        // Get response
+        $response = curl_exec($curlInit);
+    
+        // Close a cURL session
+        curl_close($curlInit);
+
+        return $response?true:false;
     }
 
     public function registerApp()
