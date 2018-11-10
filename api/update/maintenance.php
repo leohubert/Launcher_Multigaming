@@ -30,7 +30,7 @@ if (isset($_POST['token']) && isset($_POST['maintenance_title']) && isset($_POST
 
         echo json_encode($result);
     }
-    
+
 }
 else
 {

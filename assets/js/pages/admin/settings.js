@@ -326,8 +326,8 @@ function updatewebsite(){
                 $.Notification.notify('success','top right','Website Name saved', obj.message);
             else if (obj.status == 41)
                 window.location="/logout";
-            else if (obj.status == 980)
-                $.Notification.notify('error','bottom center','You are not authorized to use it');
+            else if (obj.status == 44)
+                sweetAlert("Missing permission", obj.message, "error");
             else
                 $.Notification.notify('error','bottom center','Internal Error', "Error: " + obj.status + " | " + obj.message);
         },
