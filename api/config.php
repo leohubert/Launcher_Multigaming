@@ -10,17 +10,29 @@ header('Content-type: application/json');
 
 $result = array("status" => 500, "message" => "Internal error");
 
-if (isset($_POST['name']) && isset($_POST['send']))
+if (isset($_POST['token']) && isset($_POST['name']) && isset($_POST['send']))
 {
+    $token = $_POST['token'];
     $paramname = $_POST['name'];
     $content = $_POST['send'];
 
-    $checkrespons = $config->update($paramname, $content);
+    $checkrespons = $config->update($paramname, $content, $token);
 
-    $result['status'] = 42;
-    $result['message'] = "Update with Success !";
+    if ($checkrespons === true){
 
-    echo json_encode($result);
+        $result['status'] = 42;
+        $result['message'] = "Update with Success !";
+
+        echo json_encode($result);
+    }
+
+    if ($checkrespons === false){
+
+        $result['status'] = 980;
+        $result['message'] = "Update with Success !";
+
+        echo json_encode($result);
+    }
 }
 else
 {

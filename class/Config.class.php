@@ -4,9 +4,36 @@ class Config {
 
     private $database;
     private $name;
+    private $token;
 
     public function __construct($database){
         $this->database = $database;
+    }
+
+    private function checkuser($token){
+
+        $this->token = $token;
+
+        $check = $this->database->prepare('SELECT user_id FROM sessions WHERE token = :token');
+        $check->execute(array('token' => $this->token));
+        $res = $check->fetch();
+        if ($check->rowCount() != 0 && $checklevel = $this->database->prepare('SELECT `level`,`banned` FROM users WHERE id = :id'))
+        {
+            $checklevel->execute(array('id' => $res['user_id']));
+            $res = $checklevel->fetch();
+            if ($checklevel->rowCount() != 0 && (int)$res['level'] >= 9 && (int)$res['banned'] != 1)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+        else
+        {
+            return false;
+        }
     }
 
     public function get($name){
@@ -22,29 +49,28 @@ class Config {
 
     }
 
-    public function update($paramname, $content){
+    public function update($paramname, $content, $token){
         $this->name = $paramname;
 
-        if (isset($this->name) && $this->name === "site_name"){
+        if ($this->checkuser($token) === true){
+            if (isset($this->name) && $this->name === "site_name"){
 
-            $updatename = $this->database->prepare('UPDATE settings SET site_name=:content WHERE active = 1');
-            $updatename->execute(array('content' => $content));
+                $updatename = $this->database->prepare('UPDATE settings SET site_name=:content WHERE active = 1');
+                $updatename->execute(array('content' => $content));
 
-            $result = 42;
+                return true;
+            }
 
-            return json_encode($result);
+            if (isset($this->name) && $this->name === "picture"){
+                $result = 404;
+
+                return json_encode($result);
+            }
+
+            return false;
         }
 
-        if (isset($this->name) && $this->name === "picture"){
-            $result = 404;
-
-            return json_encode($result);
-        }
-
-        $result['status'] = 404;
-        $result['message'] = "Not in conditions";
-
-        return json_encode($result);
+        return false;
     }
 
     public function remove(){

@@ -315,6 +315,7 @@ function updatewebsite(){
     $.post(
       '/api/config',
         {
+            token : $("meta[name='token']").attr("content"),
             name : "site_name",
             send : document.getElementById("sitename").value
         },
@@ -325,8 +326,8 @@ function updatewebsite(){
                 $.Notification.notify('success','top right','Website Name saved', obj.message);
             else if (obj.status == 41)
                 window.location="/logout";
-            else if (obj.status == 404)
-                console.log(obj);
+            else if (obj.status == 980)
+                $.Notification.notify('error','bottom center','You are not authorized to use it');
             else
                 $.Notification.notify('error','bottom center','Internal Error', "Error: " + obj.status + " | " + obj.message);
         },
