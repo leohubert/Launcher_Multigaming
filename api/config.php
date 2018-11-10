@@ -26,7 +26,7 @@ if (isset($_POST['token']) && isset($_POST['name']) && isset($_POST['send']))
     if ($checkrespons === true){
 
         $result['status'] = 42;
-        $result['message'] = "Update with Success !";
+        $result['message'] = "Updated with Success !";
 
         echo json_encode($result);
     }else{

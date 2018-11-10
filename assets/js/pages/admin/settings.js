@@ -28,7 +28,11 @@ function switch_maintenance()
                 else if (obj.status == 41)
                     window.location="/logout";
                 else if (obj.status == 44)
-                    sweetAlert("Missing permission", obj.message, "error");
+                    swal({title: "Missing permission", text: obj.message, type: "error"},
+                        function (){
+                            window.location="/logout";
+                        }
+                    );
                 else
                     $.Notification.notify('error','bottom center','Internal Error', "Error: " + obj.status + " | " + obj.message);
             },
@@ -57,7 +61,11 @@ function switch_maintenance()
                 else if (obj.status == 41)
                     window.location="/logout";
                 else if (obj.status == 44)
-                    sweetAlert("Missing permission", obj.message, "error");
+                    swal({title: "Missing permission", text: obj.message, type: "error"},
+                        function (){
+                            window.location="/logout";
+                        }
+                    );
                 else
                     $.Notification.notify('error','bottom center','Internal Error', "Error: " + obj.status + " | " + obj.message);
 
@@ -93,7 +101,11 @@ function switch_login()
                 else if (obj.status == 41)
                     window.location="/logout";
                 else if (obj.status == 44)
-                    sweetAlert("Missing permission", obj.message, "error");
+                    swal({title: "Missing permission", text: obj.message, type: "error"},
+                        function (){
+                            window.location="/logout";
+                        }
+                    );
                 else
                     $.Notification.notify('error','bottom center','Internal Error', "Error: " + obj.status + " | " + obj.message);
 
@@ -123,7 +135,11 @@ function switch_login()
                 else if (obj.status == 41)
                     window.location="/logout";
                 else if (obj.status == 44)
-                    sweetAlert("Missing permission", obj.message, "error");
+                    swal({title: "Missing permission", text: obj.message, type: "error"},
+                        function (){
+                            window.location="/logout";
+                        }
+                    );
                 else
                     $.Notification.notify('error','bottom center','Internal Error', "Error: " + obj.status + " | " + obj.message);
 
@@ -159,7 +175,11 @@ function switch_register()
                 else if (obj.status == 41)
                     window.location="/logout";
                 else if (obj.status == 44)
-                    sweetAlert("Missing permission", obj.message, "error");
+                    swal({title: "Missing permission", text: obj.message, type: "error"},
+                        function (){
+                            window.location="/logout";
+                        }
+                    );
                 else
                     $.Notification.notify('error','bottom center','Internal Error', "Error: " + obj.status + " | " + obj.message);
 
@@ -189,7 +209,11 @@ function switch_register()
                 else if (obj.status == 41)
                     window.location="/logout";
                 else if (obj.status == 44)
-                    sweetAlert("Missing permission", obj.message, "error");
+                    swal({title: "Missing permission", text: obj.message, type: "error"},
+                        function (){
+                            window.location="/logout";
+                        }
+                    );
                 else
                     $.Notification.notify('error','bottom center','Internal Error', "Error: " + obj.status + " | " + obj.message);
 
@@ -225,7 +249,11 @@ function switch_taskforce()
                 else if (obj.status == 41)
                     window.location="/logout";
                 else if (obj.status == 44)
-                    sweetAlert("Missing permission", obj.message, "error");
+                    swal({title: "Missing permission", text: obj.message, type: "error"},
+                        function (){
+                            window.location="/logout";
+                        }
+                    );
                 else
                     $.Notification.notify('error','bottom center','Internal Error', "Error: " + obj.status + " | " + obj.message);
 
@@ -255,7 +283,11 @@ function switch_taskforce()
                 else if (obj.status == 41)
                     window.location="/logout";
                 else if (obj.status == 44)
-                    sweetAlert("Missing permission", obj.message, "error");
+                    swal({title: "Missing permission", text: obj.message, type: "error"},
+                        function (){
+                            window.location="/logout";
+                        }
+                    );
                 else
                     $.Notification.notify('error','bottom center','Internal Error', "Error: " + obj.status + " | " + obj.message);
 
@@ -281,7 +313,11 @@ function save_maintenance() {
             else if (obj.status == 41)
                 window.location="/logout";
             else if (obj.status == 44)
-                sweetAlert("Missing permission", obj.message, "error");
+                swal({title: "Missing permission", text: obj.message, type: "error"},
+                    function (){
+                        window.location="/logout";
+                    }
+                );
             else
                 $.Notification.notify('error','bottom center','Internal Error', "Error: " + obj.status + " | " + obj.message);
         },
@@ -304,7 +340,11 @@ function save_loginNews() {
             else if (obj.status == 41)
                 window.location="/logout";
             else if (obj.status == 44)
-                sweetAlert("Missing permission", obj.message, "error");
+                swal({title: "Missing permission", text: obj.message, type: "error"},
+                    function (){
+                        window.location="/logout";
+                    }
+                );
             else
                 $.Notification.notify('error','bottom center','Internal Error', "Error: " + obj.status + " | " + obj.message);
         },
@@ -323,11 +363,19 @@ function updatewebsite(){
         function(data){
             var obj = JSON.parse(data);
             if (obj.status == 42)
-                $.Notification.notify('success','top right','Website Name saved', obj.message);
+            swal({title: "Success", text: obj.message, type: "success"},
+                function (){
+                    location.reload();
+                }
+                );
             else if (obj.status == 41)
                 window.location="/logout";
             else if (obj.status == 44)
-                sweetAlert("Missing permission", obj.message, "error");
+                swal({title: "Missing permission", text: obj.message, type: "error"},
+                    function (){
+                        window.location="/logout";
+                    }
+                );
             else
                 $.Notification.notify('error','bottom center','Internal Error', "Error: " + obj.status + " | " + obj.message);
         },
@@ -353,7 +401,11 @@ function update_vmod() {
             else if (obj.status == 41)
                 window.location="/logout";
             else if (obj.status == 44)
-                sweetAlert("Missing permission", obj.message, "error");
+                swal({title: "Missing permission", text: obj.message, type: "error"},
+                    function (){
+                        window.location="/logout";
+                    }
+                );
             else
                 $.Notification.notify('error','bottom center','Internal Error', "Error: " + obj.status + " | " + obj.message);
         },
@@ -379,7 +431,11 @@ function update_vtaskforce() {
             else if (obj.status == 41)
                 window.location="/logout";
             else if (obj.status == 44)
-                sweetAlert("Missing permission", obj.message, "error");
+                swal({title: "Missing permission", text: obj.message, type: "error"},
+                    function (){
+                        window.location="/logout";
+                    }
+                );
             else
                 $.Notification.notify('error','bottom center','Internal Error', "Error: " + obj.status + " | " + obj.message);
         },
@@ -392,7 +448,11 @@ var level = $("meta[name='level']").attr("content");
 function checkLevel()
 {
     if (level < 9)
-        sweetAlert("Missing permission", "Yon don't have right to upload a new launcher", "error");
+        swal({title: "Missing permission", text: obj.message, type: "error"},
+            function (){
+                window.location="/logout";
+            }
+        );
 }
 function escapeTags( str ) {
     return String( str )

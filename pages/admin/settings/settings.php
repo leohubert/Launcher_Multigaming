@@ -93,9 +93,8 @@
                                 <div class="col-sm-12">
                                     <div class="row">
                                         <div class="col-xs-12 text-center">
-                                            <span>Indexer Status : <div><span class="label label-success" id="indexer_state">Free Support Authorized</span></div></span>
+                                            <span>Indexer Status : <div><span class="label label-success" id="indexer_state">Support Available</span></div></span>
                                             <br>
-                                            <form class="form-inline" id="changewebsite"">
                                                 <div class="form-group">
                                                     <label class="sr-only">Your Panel Name : </label>
                                                     <p class="form-control-static">Website Name :</p>
@@ -108,7 +107,6 @@
                                                 /*die(var_dump($config->get("site_name")));*/
                                                 ?>
                                                 <button type="submit" onclick="updatewebsite()" class="btn btn-primary">Change Name</button>
-                                            </form>
                                         </div>
                                     </div><!-- End row -->
                                 </div>

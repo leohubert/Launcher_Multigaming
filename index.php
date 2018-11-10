@@ -194,9 +194,13 @@ $router->map('POST', '/api/notifications/readall', 'api/notifications/readall.ph
 /* Match the current request */
 $match = $router->match();
 
+/* Mount All Class */
 $indexer = new Indexer($site, $analytics, $database);
 $config = new Config($database);
+$utility = new Activity();
+$user = new User($database);
 
+/* Now, All are ready */
 if ($match) {
     require $match['target'];
 } else {
