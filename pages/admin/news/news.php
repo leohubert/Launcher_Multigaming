@@ -101,7 +101,7 @@
                             <div id="banned_pop"></div>
                             <div class="form-group">
                                 <div class="col-sm-12">
-                                    <input type="text" class="form-control"  placeholder="News tittle" id="news_title">
+                                    <input type="text" class="form-control"  placeholder="News title" id="news_title">
                                 </div>
                                 <br>
                                 <br>
