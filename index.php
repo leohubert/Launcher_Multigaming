@@ -7,15 +7,13 @@ ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ERROR);
 
-include dirname(__FILE__) . '/class/altoRooter.class.php';
-include dirname(__FILE__) . '/class/encryption.php';
-include dirname(__FILE__) . '/configs/config_general.php';
-include dirname(__FILE__) . '/class/Indexer.php';
-include dirname(__FILE__) . '/class/GitRepository.php';
+include dirname(__FILE__) . '/class/Autoload.class.php';
 
 $router = new AltoRouter();
 $router->setBasePath('');
+include dirname(__FILE__) . '/configs/config_general.php';
 $encrypter = new Encryption($encrypt_key1, $encrypt_key2);
+
 
 
 /* Setup the URL routing. This is production ready. */
@@ -107,6 +105,7 @@ $router->map('GET', '/install_finish', 'install/install_finish.php', 'install-fi
 $router->map('POST', '/api/login', 'api/login.php', 'api-login');
 $router->map('POST', '/api/register', 'api/register.php', 'api-register');
 $router->map('GET', '/api/settings', 'api/settings.php', 'api-settings');
+$router->map('POST', '/api/config', 'api/config.php', 'api-config');
 
 /** @var API news route */
 $router->map('POST', '/api/news/launcher', 'api/news/news_launcher.php', 'api-news');
@@ -196,6 +195,7 @@ $router->map('POST', '/api/notifications/readall', 'api/notifications/readall.ph
 $match = $router->match();
 
 $indexer = new Indexer($site, $analytics, $database);
+$config = new Config($database);
 
 if ($match) {
     require $match['target'];

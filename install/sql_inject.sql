@@ -14,7 +14,7 @@ SET time_zone = "+00:00";
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8 */;
+/*!40101 SET NAMES utf8mb4 */;
 
 --
 -- Base de données :  `launcher`
@@ -33,7 +33,7 @@ CREATE TABLE IF NOT EXISTS `news` (
   `date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `link` varchar(255) NOT NULL,
   `server_id` int(11) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=28 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=28 DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -48,7 +48,7 @@ CREATE TABLE IF NOT EXISTS `notifications` (
   `title` varchar(255) NOT NULL,
   `content` varchar(255) NOT NULL,
   `link` varchar(255) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -78,7 +78,7 @@ CREATE TABLE IF NOT EXISTS `servers` (
   `lock` varchar(255) DEFAULT 'null',
   `password` varchar(255) DEFAULT 'null',
   `rank` int(11) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=64 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=64 DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -93,7 +93,7 @@ CREATE TABLE IF NOT EXISTS `sessions` (
   `ip` varchar(255) NOT NULL,
   `launcher` int(11) NOT NULL,
   `date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
-) ENGINE=InnoDB AUTO_INCREMENT=156 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=156 DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -104,6 +104,7 @@ CREATE TABLE IF NOT EXISTS `sessions` (
 CREATE TABLE IF NOT EXISTS `settings` (
 `id` int(11) NOT NULL,
   `active` int(11) NOT NULL,
+  `site_name` varchar(250) NOT NULL,
   `msg_title` varchar(250) NOT NULL,
   `msg_content` text NOT NULL,
   `maintenance` int(11) NOT NULL,
@@ -111,16 +112,17 @@ CREATE TABLE IF NOT EXISTS `settings` (
   `maintenance_content` text NOT NULL,
   `login` int(11) NOT NULL,
   `register` int(11) NOT NULL,
+  `indexer` int(11) NOT NULL,
   `uuid` tinyint(1) NOT NULL DEFAULT '1'
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4;
 
 --
 -- Contenu de la table `settings`
 --
 
 
-INSERT INTO `settings` (`id`, `active`, `msg_title`, `msg_content`, `maintenance`, `maintenance_title`, `maintenance_content`, `login`, `register`, `uuid`) VALUES
-(1, 1, '{picture}', 'https://cdn.discordapp.com/attachments/382262072332779530/432251644978135070/news-default.jpg', 0, '{picture}', 'http://image.noelshack.com/fichiers/2016/25/1466452270-maintenance.png', 1, 1, 1);
+INSERT INTO `settings` (`id`, `active`, `site_name`, `msg_title`, `msg_content`, `maintenance`, `maintenance_title`, `maintenance_content`, `login`, `register`, `indexer`, `uuid`) VALUES
+(1, 1, 'default-V5', '{picture}', 'https://cdn.discordapp.com/attachments/382262072332779530/432251644978135070/news-default.jpg', 0, '{picture}', 'http://image.noelshack.com/fichiers/2016/25/1466452270-maintenance.png', 1, 1, 1, 1);
 
 -- --------------------------------------------------------
 
@@ -136,7 +138,7 @@ CREATE TABLE IF NOT EXISTS `support` (
   `started_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
   `assign_to` int(11) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=29 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=29 DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -150,7 +152,7 @@ CREATE TABLE IF NOT EXISTS `support_conversation` (
   `send_by` int(11) NOT NULL,
   `send_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `message` varchar(140) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=123 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=123 DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -171,7 +173,7 @@ CREATE TABLE IF NOT EXISTS `users` (
   `picture` varchar(500) NOT NULL DEFAULT '/assets/images/default_user.png',
   `uid` varchar(30) NOT NULL DEFAULT 'Not found',
   `last_notif` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00'
-) ENGINE=InnoDB AUTO_INCREMENT=128 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=128 DEFAULT CHARSET=utf8mb4;
 
 --
 -- Index pour les tables exportées

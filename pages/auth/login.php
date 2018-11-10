@@ -15,7 +15,7 @@
 
         <link rel="shortcut icon" href="assets/images/favicon_1.ico">
 
-        <title><?php echo $site;?> login</title>
+        <title><?php echo $config->get("site_name");?> login</title>
 
         <link href="assets/css/bootstrap.min.css" rel="stylesheet" type="text/css">
         <link href="assets/css/core.css" rel="stylesheet" type="text/css">
@@ -46,7 +46,7 @@
         <div class="wrapper-page">
 
             <div class="text-center">
-                <a href="/" class="logo logo-lg"><i class="md md-equalizer"></i> <span><?php echo $site;?> login</span> </a>
+                <a href="/" class="logo logo-lg"><i class="md md-equalizer"></i> <span><?php echo $config->get("site_name");?> login</span> </a>
             </div>
                 <div class="form-horizontal m-t-20">
                     <form id="loginForm" onsubmit="return login_function()">

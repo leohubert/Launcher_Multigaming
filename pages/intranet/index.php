@@ -9,7 +9,7 @@
 
         <link rel="shortcut icon" href="/assets/images/favicon_1.ico">
 
-        <title><?php echo $site;?> panel</title>
+        <title><?php echo $config->get("site_name");?> panel</title>
 
         <link href="/assets/plugins/jquery-circliful/css/jquery.circliful.css" rel="stylesheet" type="text/css" />
         <link href="/assets/plugins/sweetalert/dist/sweetalert.css" rel="stylesheet" type="text/css">

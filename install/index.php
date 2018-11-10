@@ -152,7 +152,12 @@ if (file_exists("configs/config_general.php"))
                                         token1: token1,
                                         token2: token2,
                                         analytics: $('#analytics-checkbox').is(':checked'),
-                                        server_name: document.getElementById("server_name").value
+                                        server_name: document.getElementById("server_name").value,
+                                        server_name_hide: document.getElementById("server_name_hide").value,
+                                        db_host: document.getElementById("mysql_host").value,
+                                        db_name: document.getElementById("mysql_name").value,
+                                        db_user: document.getElementById("mysql_user").value,
+                                        db_pass: document.getElementById("mysql_pass").value
                                     },
 
                                     function (data) {
@@ -269,9 +274,22 @@ if (file_exists("configs/config_general.php"))
                                     <label class="col-md-2 control-label " for="server_name">Server name</label>
                                     <div class="col-md-5">
                                         <input class="form-control required" id="server_name" name="server_name"
-                                               type="text" <?php if ($general == true) {
+                                               type="text" <?php if (!empty($site) && $general == true){
+                                            echo 'placeholder="' . $site . '"';
                                             echo 'value="' . $site . '"';
+                                        }else{
+                                            echo 'placeholder="Insert here your Community Name"';
+                                            echo 'value="Insert here your Community Name"';
                                         }; ?>>
+
+                                        <input class="form-control required" id="server_name_hide" name="server_name_hide"
+                                               type="hidden" <?php if ($general == true) {
+                                            echo 'placeholder="' . $site . '"';
+                                            echo 'value="' . $site . '"';
+                                        }else{
+                                            echo 'placeholder="Insert here your Community Name"';
+                                            echo 'value="Insert here your Community Name"';
+                                        }; ?> required>
                                     </div>
                                 </div>
                                 <br><br>

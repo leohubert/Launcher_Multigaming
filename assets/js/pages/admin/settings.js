@@ -311,6 +311,28 @@ function save_loginNews() {
         'text'
     );
 }
+function updatewebsite(){
+    $.post(
+      '/api/config',
+        {
+            name : "site_name",
+            send : document.getElementById("sitename").value
+        },
+
+        function(data){
+            var obj = JSON.parse(data);
+            if (obj.status == 42)
+                $.Notification.notify('success','top right','Website Name saved', obj.message);
+            else if (obj.status == 41)
+                window.location="/logout";
+            else if (obj.status == 404)
+                console.log(obj);
+            else
+                $.Notification.notify('error','bottom center','Internal Error', "Error: " + obj.status + " | " + obj.message);
+        },
+        'text'
+    );
+}
 function update_vmod() {
     var newVersion = parseFloat(document.getElementById("vmod").textContent) + 0.000001;
     $.post(
@@ -424,6 +446,14 @@ window.onload = function() {
                 button.textContent = "Active register";
                 label.className = "label label-danger";
                 label.textContent = "Deactivated";
+            }
+
+            if (obj.indexer == 0)
+            {
+                var label = document.getElementById("indexer_state");
+
+                label.className = "label label-danger";
+                label.textContent = "No Free Support for your account";
             }
 
             document.getElementById("maintenance_title").value = obj.maintenance_title;

@@ -23,6 +23,7 @@ if ($getSettings = $database->prepare('SELECT * FROM settings WHERE active = 1')
     $result['maintenance_content'] = $res['maintenance_content'];
     $result['login'] = (int)$res['login'];
     $result['register'] = (int)$res['register'];
+    $result['indexer'] = (int)$res['indexer'];
     $result['uuid'] = (int)$res['uuid'];
     if (file_exists('games/launcher/launcher.exe'))
     {

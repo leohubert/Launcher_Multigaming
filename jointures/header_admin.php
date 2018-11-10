@@ -16,7 +16,7 @@ $updater = new GitRepository();
 
             <!-- Logo container-->
             <div class="logo">
-                <a href="/" class="logo"><i class="md md-equalizer"></i> <span><?php echo $site; ?> admin panel</span>
+                <a href="/" class="logo"><i class="md md-equalizer"></i> <span><?php echo $config->get("site_name"); ?> admin panel</span>
                 </a>
             </div>
             <!-- End Logo container-->

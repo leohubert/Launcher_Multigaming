@@ -11,7 +11,7 @@
 
         <link rel="shortcut icon" href="/assets/images/favicon_1.ico">
 
-        <title><?php echo $site;?> panel</title>
+        <title><?php echo $config->get("site_name");?> panel</title>
 
         <link href="/assets/plugins/jquery-circliful/css/jquery.circliful.css" rel="stylesheet" type="text/css" />
 
@@ -67,7 +67,7 @@
                 </div>
 
                 <div class="row">
-                    <div class="col-lg-4">
+                    <div class="col-lg-5">
                         <div class="card-box">
                             <div class="row">
                                 <div class="col-sm-12">
@@ -81,6 +81,34 @@
                                             <span>Register <div><span class="label label-success" id="register_state">Activated</span></div></span>
                                             <br>
                                             <button id="register" type="button" class="btn btn-primary waves-effect w-md waves-light m-b-5" onclick="switch_register()">Deactivate register</button>
+                                        </div>
+                                    </div><!-- End row -->
+                                </div>
+                            </div><!-- end row -->
+                        </div>
+                    </div> <!-- end col -->
+                    <div class="col-lg-5">
+                        <div class="card-box">
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <div class="row">
+                                        <div class="col-xs-12 text-center">
+                                            <span>Indexer Status : <div><span class="label label-success" id="indexer_state">Authorized</span></div></span>
+                                            <br>
+                                            <form class="form-inline" id="changewebsite"">
+                                                <div class="form-group">
+                                                    <label class="sr-only">Your Panel Name : </label>
+                                                    <p class="form-control-static">Website Name :</p>
+                                                </div>
+                                                <div class="form-group mx-sm-3">
+                                                    <label for="sitename" class="sr-only"></label>
+                                                    <input type="text" class="form-control" id="sitename" placeholder="<?php echo $config->get("site_name")?>">
+                                                </div>
+                                                <?php
+                                                /*die(var_dump($config->get("site_name")));*/
+                                                ?>
+                                                <button type="submit" onclick="updatewebsite()" class="btn btn-primary">Change Name</button>
+                                            </form>
                                         </div>
                                     </div><!-- End row -->
                                 </div>

@@ -43,10 +43,7 @@ if (isset($_POST['email']) && isset($_POST['username']) && isset($_POST['passwor
                                     $register->execute(array('email' => $email, 'username' => $username, 'password' => $password_encrypted, 'ip' => $ip, 'registered' => date('Y-m-d H:i:s'), 'uid' => "Not Found"));
                                     $result['status'] = 42;
                                     $result['message'] = "Registered";
-                                    if (!$indexer->askRun()){
-                                    }else{
-                                        $indexer->sendAnalytics();
-                                    }
+                                    $indexer->sendAnalytics();
                                 } else {
                                     $result['status'] = 01;
                                     $result['message'] = "Password doesn't match";

@@ -9,7 +9,7 @@
 
             <!-- Logo container-->
             <div class="logo">
-                <a href="/" class="logo"><i class="md md-equalizer"></i> <span><?php echo $site;?> client panel</span> </a>
+                <a href="/" class="logo"><i class="md md-equalizer"></i> <span><?php echo $config->get("site_name");?> client panel</span> </a>
             </div>
             <!-- End Logo container-->
 
