@@ -93,7 +93,7 @@
                                 <div class="col-sm-12">
                                     <div class="row">
                                         <div class="col-xs-12 text-center">
-                                            <span>Indexer Status : <div><span class="label label-success" id="indexer_state">Authorized</span></div></span>
+                                            <span>Indexer Status : <div><span class="label label-success" id="indexer_state">Free Support Authorized</span></div></span>
                                             <br>
                                             <form class="form-inline" id="changewebsite"">
                                                 <div class="form-group">
@@ -130,9 +130,9 @@
                                         </div>
                                         <br>
                                         <div class="col-xs-13">
-                                            <input type="text" id="maintenance_title" class="form-control" placeholder="Maintenance title ( write '{picture}' for image)">
+                                            <input type="text" id="maintenance_title" class="form-control" placeholder="<?php echo $config->get("maintenance_title") ?>">
                                             <br>
-                                            <textarea class="form-control" rows="5" id="maintenance_content" placeholder="Maintenance message ( write image link if Maintenance title is '{picture}')"></textarea>
+                                            <textarea class="form-control" rows="5" id="maintenance_content" placeholder=<?php echo $config->get("maintenance_content") ?>"></textarea>
                                         </div>
                                         <br>
                                         <div class="col-xs-13 text-center ">
@@ -153,9 +153,9 @@
                                         </div>
                                         <br>
                                         <div class="col-xs-13">
-                                            <input type="text" id="msg_title" class="form-control" placeholder="Login News title ( write '{picture}' for image)">
+                                            <input type="text" id="msg_title" class="form-control" placeholder="<?php echo $config->get("msg_title") ?>">
                                             <br>
-                                            <textarea class="form-control" rows="5" id="msg_content" placeholder="Login news message ( write image link if Maintenance title is '{picture}')"></textarea>
+                                            <textarea class="form-control" rows="5" id="msg_content" placeholder="<?php echo $config->get("msg_content") ?>"></textarea>
                                         </div>
                                         <br>
                                         <div class="col-xs-13 text-center ">
