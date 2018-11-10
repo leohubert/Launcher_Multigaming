@@ -5,6 +5,7 @@ class Config {
     private $database;
     private $name;
     private $token;
+    private $content;
 
     public function __construct($database){
         $this->database = $database;
@@ -12,7 +13,7 @@ class Config {
 
     private function checkuser($token){
 
-        $this->token = $token;
+        $this->token = HtmlSpecialChars($token);
 
         $check = $this->database->prepare('SELECT user_id FROM sessions WHERE token = :token');
         $check->execute(array('token' => $this->token));
@@ -37,7 +38,7 @@ class Config {
     }
 
     public function get($name){
-        $this->name = $name;
+        $this->name = HtmlSpecialChars($name);
         $getkey = $this->database->query('SELECT * FROM settings');
         $ris = $getkey->fetch();
 
@@ -51,12 +52,13 @@ class Config {
 
     public function update($paramname, $content, $token){
         $this->name = $paramname;
+        $this->content = htmlspecialchars($content);
 
         if ($this->checkuser($token) === true){
             if (isset($this->name) && $this->name === "site_name"){
 
                 $updatename = $this->database->prepare('UPDATE settings SET site_name=:content WHERE active = 1');
-                $updatename->execute(array('content' => $content));
+                $updatename->execute(array('content' => $this->content));
 
                 return true;
             }
