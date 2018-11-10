@@ -14,38 +14,28 @@ if (isset($_POST['token']) && isset($_POST['msg_title']) && isset($_POST['msg_co
 {
     $token = $_POST['token'];
     $content = $_POST['msg_content'];
-    $title = $_POST['msg_title'];
+    $content1 = $_POST['msg_title'];
 
-    $checkUser = $database->prepare('SELECT user_id FROM sessions WHERE token = :token');
-    $checkUser->execute(array('token' => $token));
-    $res = $checkUser->fetch();
-    if ($checkUser->rowCount() != 0 && $userLevel = $database->prepare('SELECT `level`,`banned` FROM users WHERE id = :id'))
-    {
-        $userLevel->execute(array('id' => $res['user_id']));
-        $res = $userLevel->fetch();
-        if ($userLevel->rowCount() != 0 && (int)$res['level'] >= 9 && (int)$res['banned'] != 1)
-        {
-            $insertToken = $database->prepare('UPDATE settings SET msg_title=:title, msg_content=:content WHERE active = 1');
-            $insertToken->execute(array('title' => $title, 'content' => $content));
-            $result['status'] = 42;
-            $result['message'] = "Login news updated successfully";
-        }
-        else
-        {
-            $result['status'] = 44;
-            $result['message'] = "You don't have right to create this request !";
-        }
+    $request = $config->update("login", $content, $content1, $token);
+
+    if ($request === true){
+
+        $result['status'] = 42;
+        $result['message'] = "Update with Success !";
+
+        echo json_encode($result);
+    }else{
+        $result['status'] = 44;
+        $result['message'] = "You are not authorized.";
+
+        echo json_encode($result);
     }
-    else
-    {
-        $result['status'] = 41;
-        $result['message'] = "Token invalid";
-    }
+
 }
 else
 {
     $result['status'] = 404;
     $result['message'] = "Arguments missing.";
-}
 
-echo json_encode($result);
+    echo json_encode($result);
+}

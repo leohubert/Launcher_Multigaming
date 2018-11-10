@@ -6,6 +6,7 @@ class Config {
     private $name;
     private $token;
     private $content;
+    private $content1;
 
     public function __construct($database){
         $this->database = $database;
@@ -50,9 +51,10 @@ class Config {
 
     }
 
-    public function update($paramname, $content, $token){
+    public function update($paramname, $content, $content1, $token){
         $this->name = $paramname;
         $this->content = htmlspecialchars($content);
+        $this->content1 = htmlspecialchars($content1);
 
         if ($this->checkuser($token) === true){
             if (isset($this->name) && $this->name === "site_name"){
@@ -63,20 +65,25 @@ class Config {
                 return true;
             }
 
-            if (isset($this->name) && $this->name === "picture"){
-                $result = 404;
+            if (isset($this->name) && $this->name === "login"){
 
-                return json_encode($result);
+                $updatelogin = $this->database->prepare('UPDATE settings SET msg_title=:content1, msg_content=:content WHERE active=1');
+                $updatelogin->execute(array('content1' => $this->content1, 'content' => $this->content));
+
+                return true;
+            }
+
+            if (isset($this->name) && $this->name === "maintenance"){
+                $updatemaintenance = $this->database->prepare('UPDATE settings SET maintenance_title=:content1, maintenance_content=:content WHERE active=1');
+                $updatemaintenance->execute(array('content1' => $this->content1, 'content' => $this->content));
+
+                return true;
             }
 
             return false;
         }
 
         return false;
-    }
-
-    public function remove(){
-
     }
 
 }
