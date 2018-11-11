@@ -14,6 +14,10 @@ class Activity{
 
     /* Admin Tools */
 
+    /**
+     * Check Ip for the User has not the server
+     * @return array|false|string
+     */
     public function checkIp(){
 
         if (isset($_SERVER)){
