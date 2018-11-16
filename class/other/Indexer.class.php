@@ -12,7 +12,7 @@ class Indexer
 {
     private $api = 'http://indexer.emodyz.eu/api';
     private $devApi = 'http://v5-indexer.test/api';
-    private $version = 'v5.4-beta.2-last';
+    private $version = 'v5.4-beta.POO.1';
 
     private $database;
     private $name;
