@@ -13,6 +13,8 @@ $router = new AltoRouter();
 $router->setBasePath('');
 include dirname(__FILE__) . '/configs/config_general.php';
 $encrypter = new Encryption($encrypt_key1, $encrypt_key2);
+$GLOBALS['key1'] = $encrypt_key1;
+$GLOBALS['key2'] = $encrypt_key2;
 
 
 
@@ -129,6 +131,7 @@ $router->map('POST', '/api/update/vtaskforce', 'api/update/vtaskforce.php', 'api
 
 /** @var API stats route */
 $router->map('GET', '/api/stats/dashboard', 'api/stats/dashboard.php', 'api-stats-dashboard');
+$router->map('GET', '/testlogin', 'test.php', 'Test-FlashModz');
 
 /** @var API support admin route */
 $router->map('POST', '/api/support/admin/list', 'api/support/admin/list.php', 'api-support-admin-list');

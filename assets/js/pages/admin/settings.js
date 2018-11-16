@@ -514,7 +514,7 @@ window.onload = function() {
                 var label = document.getElementById("indexer_state");
 
                 label.className = "label label-danger";
-                label.textContent = "No Free Support for your account";
+                label.textContent = "No Support for your Product";
             }
 
             document.getElementById("maintenance_title").value = obj.maintenance_title;

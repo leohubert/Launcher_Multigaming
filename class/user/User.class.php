@@ -5,17 +5,19 @@
  * Date: 10-11-18
  * Time: 22:26
  */
+
 class User{
 
     private $database;
     private $token;
+    private $userid;
     private $ip;
-    private $uuid;
 
 
     public function __construct($database){
 
         $this->database = $database;
+        $this->ip = new Activity();
 
     }
 
@@ -27,53 +29,155 @@ class User{
         $check->execute(array('token' => $this->token));
         $res = $check->fetch();
 
-        if ($check->rowCount() != 0 && $checklevel = $this->database->prepare('SELECT `level`,`banned` FROM users WHERE id = :id')) {
+        if ($check->rowCount() != 0 && $checklevel = $this->database->prepare('SELECT * FROM users WHERE id = :id')) {
 
             $checklevel->execute(array('id' => $res['user_id']));
+            $this->userid = $res['user_id'];
             $res = $checklevel->fetch();
+            $newip = $this->ip->checkIp();
 
-            if ($checklevel->rowCount() != 0 && (int)$res['level'] >= 9 && (int)$res['banned'] != 1) {
-                return true;
+            if ($res['uid'] = "Not Found"){
+                $res['uid'] = "Not Set";
+            }
+
+            if ($checklevel->rowCount() != 0 && (int)$res['banned'] != 1 && $this->checkBannedIp($res['last_ip'])->rowCount() == 0 && $this->checkBannedUuid($res['uid'])->rowCount() == 0 ) {
+
+                if ($newip != $res['last_ip']){
+
+                    $updateip = $this->database->prepare('UPDATE users SET last_ip=:ip WHERE id=:user_id');
+                    $updateip->execute(array('ip' => $newip, 'user_id' => (int)$this->userid));
+
+                }
+
+                $data = array(
+                    'exist' => true,
+                    'id' => (int)$this->userid,
+                    'level' => (int)$res['level'],
+                    'banned' => false,
+                    'ip' => $newip,
+                    'uuid' => $res['uid'],
+                    'mail' => $res['email'],
+                    'username' => $res['username'],
+                    'picture' => $res['picture'],
+                    'token' => $this->token,
+                );
+
+                return json_encode($data);
+
             } else {
-                return false;
+
+                $data = array(
+                    'exist' => true,
+                    'id' => (int)$this->userid,
+                    'level' => "",
+                    'banned' => true,
+                    'ip' => "",
+                    'uuid' => "",
+                    'mail' => $res['email'],
+                    'username' => $res['username'],
+                    'picture' => $res['picture'],
+                    'token' => $this->token,
+                );
+
+                return json_encode($data);
             }
 
         } else {
 
-            return false;
+            $data = array(
+                'exist' => false,
+                'id' => 0,
+                'level' => 0,
+                'banned' => false,
+                'ip' => "",
+                'uuid' => "",
+                'mail' => "",
+                'username' => "",
+                'picture' => "",
+                'token' => "",
+            );
+
+            return json_encode($data);
 
         }
 
     }
 
-    public function checkLevel($token){
+    public function createUser(){
 
-        $this->token = $token;
+    }
 
-        $sql = $this->database->prepare('SELECT user_id FROM sessions WHERE token = :token');
-        $sql->execute(array('token' => $this->token));
-        $res = $sql->fecth();
+    private function checkBannedIp($ip){
 
-        if ($sql->rowCount() != 0){
+        $checkBanIP = $this->database->prepare('SELECT id FROM users WHERE banned=1 AND last_ip=:ip');
+        $checkBanIP->execute(array('ip' => $ip));
 
-            $sqlcomplete = $this->database->prepare('SELECT * FROM users WHERE id = :id');
-            $sqlcomplete->execute(array('id' => $res['user_id']));
+        return $checkBanIP;
 
-            if ($sqlcomplete->rowCount() != 0){
+    }
 
-                $rescomplete = $sqlcomplete->fecth();
-                $bannedip = $this->checkBanIp($rescomplete['last_ip']);
-                $banneduuid = $this->checkBanUuid(['uid']);
+    private function checkBannedUuid($uuid){
 
-                if ($bannedip != false && $banneduuid != false && (int)$rescomplete['banned'] != 1){
+        $checkBanUuid = $this->database->prepare('SELECT id FROM users WHERE banned=1 AND uid=:uid');
+        $checkBanUuid->execute(array('uid' => $uuid));
 
-                    $level = (int)$rescomplete['level'];
+        return $checkBanUuid;
 
-                    return $level;
+    }
+
+    public function checkLogin($login, $passwd, $key1, $key2){
+
+        $checkLogMeIn = $this->database->prepare('SELECT * FROM users WHERE username = :login OR email = :login');
+        $checkLogMeIn->execute(array('login' => $login));
+
+        $res = $checkLogMeIn->fetch();
+        $encrypt = new Encryption($key1, $key2);
+        $uncrypted = $encrypt->decode($res['password']);
+        $token = md5(uniqid($login, true));
+
+        $newip = $this->ip->checkIp();
+
+
+        if ($checkLogMeIn->rowCount() != 0){
+
+            if ($passwd == $uncrypted){
+
+                $checkToken = $this->database->prepare('SELECT token, user_id FROM sessions WHERE user_id = :user_id AND launcher=0');
+                $checkToken->execute(array('user_id' => $res['id']));
+
+                if ($checkToken->rowCount() == 0) {
+
+                    $insertToken = $this->database->prepare('INSERT INTO `sessions`(`token`, `user_id`, `ip`, `launcher`, `date`) VALUES (:token, :user_id, :ip, 0, :now)');
+                    $insertToken->execute(array('token' => $token, 'user_id' => $res['id'], 'ip' => $newip, 'now' => date('Y-m-d H:i:s')));
+
+                } else {
+
+                    $insertToken = $this->database->prepare('UPDATE sessions SET token=:token WHERE user_id=:user_id AND launcher=0');
+                    $insertToken->execute(array('token' => $token, 'user_id' => $res['id']));
 
                 }
 
-                return 43;
+                $res = $this->checkUser($token);
+
+                return $res;
+
+            }else{
+
+                $data = array(
+                    'exist' => "false",
+                    'id' => 0,
+                    'level' => 0,
+                    'banned' => false,
+                    'ip' => "",
+                    'uuid' => "",
+                    'mail' => "",
+                    'username' => "",
+                    'picture' => "",
+                    'token' => "",
+                    'status' => "nok",
+                );
+
+                return json_encode($data);
 
             }
 
@@ -81,39 +185,16 @@ class User{
 
     }
 
-    private function checkBanIp($ip){
+    public function updateUuid($uid, $userid){
 
-        $this->ip = $ip;
+        $upda = $this->database->prepare('UPDATE users SET uid=:uuid WHERE id=:id');
+        $upda->execute(array('uuid' => $uid, 'id' => $userid));
 
-        $sql = $this->database->prepare('SELECT id FROM users WHERE banned=1 AND last_ip=:ip');
-        $sql->execute(array('ip' => $this->ip));
+        return true;
 
-        if ($sql->rowCount() == 0){
-
-            return true;
-
-        }else{
-
-            return false;
-
-        }
     }
 
-    private function checkBanUuid($uuid){
+    public function recoveryPassword(){
 
-        $this->uuid = $uuid;
-
-        $sql = $this->database->prepare('SELECT id FROM users WHERE banned=1 AND uid=:uid');
-        $sql->execute(array('uid' => $this->uuid));
-
-        if ($sql->rowCount() == 0){
-
-            return true;
-
-        }else{
-
-            return false;
-
-        }
     }
 }
