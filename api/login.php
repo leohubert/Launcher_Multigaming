@@ -171,8 +171,6 @@ else
 
             }else{
 
-                die(var_dump($checkLog));
-
                 $result['status'] = 43;
                 $result['message'] = "You are banned, please contact an Admin !";
 

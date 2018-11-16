@@ -164,7 +164,7 @@ class User{
             }else{
 
                 $data = array(
-                    'exist' => "false",
+                    'exist' => false,
                     'id' => 0,
                     'level' => 0,
                     'banned' => false,
