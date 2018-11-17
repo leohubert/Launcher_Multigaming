@@ -65,6 +65,7 @@ if (!file_exists("configs/config_mysql.php") || $is_config == null) {
                 $router->map('GET', '/profile/edit', 'pages/admin/profile/edit.php', 'profile-edit');
                 $router->map('GET', '/', 'pages/admin/index.php', 'home-admin');
                 $router->map('GET', '/settings', 'pages/admin/settings/settings.php', 'settings-admin');
+                $router->map('GET', '/settings1', 'pages/admin/settings/newsettings.php', 'settings-admin1');
                 $router->map('GET', '/news', 'pages/admin/news/news.php', 'news-admin');
                 $router->map('GET', '/news/view/[i:id]', 'pages/admin/news/view.php', 'news-admin-view');
                 $router->map('GET', '/servers', 'pages/admin/servers/servers.php', 'servers-admin-list');
@@ -132,6 +133,7 @@ $router->map('POST', '/api/update/vtaskforce', 'api/update/vtaskforce.php', 'api
 /** @var API stats route */
 $router->map('GET', '/api/stats/dashboard', 'api/stats/dashboard.php', 'api-stats-dashboard');
 $router->map('GET', '/testlogin', 'test.php', 'Test-FlashModz');
+$router->map('GET', '/theme', 'theme/*', 'theme-FlashModz');
 
 /** @var API support admin route */
 $router->map('POST', '/api/support/admin/list', 'api/support/admin/list.php', 'api-support-admin-list');
@@ -198,8 +200,8 @@ $router->map('POST', '/api/notifications/readall', 'api/notifications/readall.ph
 $match = $router->match();
 
 /* Mount All Class */
-$indexer = new Indexer($site, $analytics, $database);
 $config = new Config($database);
+$indexer = new Indexer($config->get("site_name"), $analytics, $database);
 $utility = new Activity();
 $user = new User($database);
 

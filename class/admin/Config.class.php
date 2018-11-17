@@ -39,7 +39,7 @@ class Config {
         $this->content1 = htmlspecialchars($content1);
         $this->token = $token;
 
-        if ($this->user->checkUser($this->token) === true){
+        if ($this->user->checkAdmin($this->token) === true){
 
             if (isset($this->name) && $this->name === "site_name"){
 

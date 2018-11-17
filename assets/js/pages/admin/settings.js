@@ -443,6 +443,11 @@ function update_vtaskforce() {
     );
 }
 
+function openLauncherconfig() {
+    swal({title: "Not Yet", text: "Feature has not been completed and not functional at the moment, please check Discord", type: "warning"}
+    );
+}
+
 var level = $("meta[name='level']").attr("content");
 
 function checkLevel()
@@ -526,8 +531,14 @@ window.onload = function() {
 
         'text'
     );
+    
+    
     if (level < 9)
-        disable();
+        swal({title: "Missing permission", text: "You are not Admin !", type: "error"},
+            function (){
+                window.location="/logout";
+            }
+        );
     var btn = document.getElementById('uploadBtn'),
         progressBar = document.getElementById('progressBar'),
         progressOuter = document.getElementById('progressOuter'),

@@ -1,2 +1,3 @@
 configs/config_mysql.php
 configs/config_general.php
+pages/admin/settings/newsettings.php

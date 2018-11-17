@@ -194,6 +194,40 @@ class User{
 
     }
 
+    public function checkAdmin($token){
+
+        $this->token = $token;
+
+        if (isset($this->token)){
+
+            $taff = json_decode($this->checkUser($this->token));
+
+            if ($taff->exist){
+
+                if (!$taff->banned){
+
+                    if ($taff->level >= 9){
+
+                        return true;
+
+                    }
+
+                    return false;
+
+                }
+
+                return false;
+
+            }
+
+            return false;
+
+        }
+
+        return false;
+
+    }
+
     public function recoveryPassword(){
 
     }
