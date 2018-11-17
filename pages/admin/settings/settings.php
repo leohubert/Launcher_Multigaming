@@ -90,10 +90,13 @@ $selevlel = json_decode($user->checkAdmin($_SESSION['token']));
                                     <div class="card-box">
                                         <p><i class="md md-vpn-lock"></i> Settings</p>
                                     </div>
-                                    <div class="col-md-6 text-center">
+                                    <div class="col-md-4 text-center">
                                         <button type="button" id="websiteconfig" data-toggle="modal" data-target="#OpenWebSettings" class="btn btn-purple btn-rounded w-md waves-effect waves-light m-b-5">Open Website Settings</button>
                                     </div>
-                                    <div class="col-md-6 text-center">
+                                    <div class="col-md-4 text-center">
+                                        <button type="button" id="mailconfig" data-toggle="modal" data-target="#OpenMailSettings" class="btn btn-purple btn-rounded w-md waves-effect waves-light m-b-5">Open Mail Settings</button>
+                                    </div>
+                                    <div class="col-md-4 text-center">
                                         <button type="button" id="launcherconfig" onclick="openLauncherconfig()" class="btn btn-purple btn-rounded w-md waves-effect waves-light m-b-5">Open Launcher Settings</button>
                                     </div>
 
@@ -118,6 +121,18 @@ $selevlel = json_decode($user->checkAdmin($_SESSION['token']));
                                                             </div>
                                                         </div>
                                                     </div>
+                                                    <div class="row">
+                                                        <div class="col-md-8">
+                                                            <div class="card-box">
+                                                                <input type="text" class="form-control" id="maxaccount" placeholder="<?php echo $config->get("max_account")?>">
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-4">
+                                                            <div class="card-box">
+                                                                <button type="submit" onclick="updatemaccount()" class="btn btn-primary">Update Max Account</button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
                                                 </div><br>
 
                                                 <div class="modal-footer">
@@ -127,6 +142,50 @@ $selevlel = json_decode($user->checkAdmin($_SESSION['token']));
 
                                         </div>
                                     </div>
+
+                                    <div class="modal fade" role="dialog" id="OpenMailSettings">
+                                        <div class="modal-dialog modal-sm">
+
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h4 class="modal-title"><i class="ion-at"></i> Website Mail Settings</h4>
+                                                </div><br>
+
+                                                <div class="modal-body">
+                                                    <div class="row">
+                                                        <div class="col-md-8">
+                                                            <div class="card-box">
+
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-4">
+                                                            <div class="card-box">
+
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-md-8">
+                                                            <div class="card-box">
+
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-4">
+                                                            <div class="card-box">
+
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div><br>
+
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-purple btn-rounded w-md waves-effect waves-light m-b-5" data-dismiss="modal">Close</button>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+
                                 </div>
                             </div>
                         </div>

@@ -382,6 +382,37 @@ function updatewebsite(){
         'text'
     );
 }
+function updatemaccount(){
+    $.post(
+        '/api/config',
+        {
+            token : $("meta[name='token']").attr("content"),
+            name : "max_account",
+            send : document.getElementById("maxaccount").value
+        },
+
+        function(data){
+            var obj = JSON.parse(data);
+            if (obj.status == 42)
+                swal({title: "Success", text: obj.message, type: "success"},
+                    function (){
+                        location.reload();
+                    }
+                );
+            else if (obj.status == 41)
+                window.location="/logout";
+            else if (obj.status == 44)
+                swal({title: "Missing permission", text: obj.message, type: "error"},
+                    function (){
+                        window.location="/logout";
+                    }
+                );
+            else
+                $.Notification.notify('error','bottom center','Internal Error', "Error: " + obj.status + " | " + obj.message);
+        },
+        'text'
+    );
+}
 function update_vmod() {
     var newVersion = parseFloat(document.getElementById("vmod").textContent) + 0.000001;
     $.post(

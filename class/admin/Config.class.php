@@ -67,6 +67,15 @@ class Config {
 
             }
 
+            if (isset($this->name) && $this->name === "max_account"){
+
+                $updatemaintenance = $this->database->prepare('UPDATE settings SET max_account=:maccount WHERE active=1');
+                $updatemaintenance->execute(array('maccount' => $this->content));
+
+                return true;
+
+            }
+
             return false;
 
         }

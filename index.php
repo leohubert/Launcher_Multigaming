@@ -201,9 +201,17 @@ $match = $router->match();
 
 /* Mount All Class */
 $config = new Config($database);
-$indexer = new Indexer($config->get("site_name"), $analytics, $database);
+$mail = new Mail($database);
 $utility = new Activity();
 $user = new User($database);
+
+/* Only Work if Website Has been Installed */
+/* Reason to mount completely after install */
+if ($is_config === true){
+    $indexer = new Indexer($config->get("site_name"), $analytics, $database);
+}else{
+    $indexer = new Indexer($site, $analytics, $database);
+}
 
 /* Now, All are ready */
 if ($match) {

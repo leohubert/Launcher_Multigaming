@@ -155,9 +155,9 @@ else
 
                         $result['status'] = 42;
                         $result['message'] = "Connected with success";
-                        $result['token'] = $token;
-                        $result['uuid'] = $uuid;
-                        $result['level'] = (int)$res['level'];
+                        $result['token'] = $checkLog->token;
+                        $result['uuid'] = $checkLog->uuid;
+                        $result['level'] = $checkLog->level;
                         $indexer->sendAnalytics();
 
                     }else{
