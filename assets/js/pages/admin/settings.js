@@ -376,6 +376,9 @@ function updatewebsite(){
                         window.location="/logout";
                     }
                 );
+            else if (obj.status == 40)
+                swal({title: "Problem with the core", text: obj.message, type: "error"}
+                );
             else
                 $.Notification.notify('error','bottom center','Internal Error', "Error: " + obj.status + " | " + obj.message);
         },
@@ -394,10 +397,7 @@ function updatemaccount(){
         function(data){
             var obj = JSON.parse(data);
             if (obj.status == 42)
-                swal({title: "Success", text: obj.message, type: "success"},
-                    function (){
-                        location.reload();
-                    }
+                swal({title: "Success", text: obj.message, type: "success"}
                 );
             else if (obj.status == 41)
                 window.location="/logout";
@@ -407,12 +407,176 @@ function updatemaccount(){
                         window.location="/logout";
                     }
                 );
+            else if (obj.status == 40)
+                swal({title: "Problem with the core", text: obj.message, type: "error"}
+                );
             else
                 $.Notification.notify('error','bottom center','Internal Error', "Error: " + obj.status + " | " + obj.message);
         },
         'text'
     );
 }
+
+function updatemailhost(){
+    $.post(
+        '/api/config',
+        {
+            token : $("meta[name='token']").attr("content"),
+            name : "mail_host",
+            send : document.getElementById("mailhost").value
+        },
+
+        function(data){
+            var obj = JSON.parse(data);
+            if (obj.status == 42)
+                swal({title: "Success", text: obj.message, type: "success"}
+                );
+            else if (obj.status == 41)
+                window.location="/logout";
+            else if (obj.status == 44)
+                swal({title: "Missing permission", text: obj.message, type: "error"},
+                    function (){
+                        window.location="/logout";
+                    }
+                );
+            else if (obj.status == 40)
+                swal({title: "Problem with the core", text: obj.message, type: "error"}
+                );
+            else
+                $.Notification.notify('error','bottom center','Internal Error', "Error: " + obj.status + " | " + obj.message);
+        },
+        'text'
+    );
+}
+
+function updatemailusername(){
+    $.post(
+        '/api/config',
+        {
+            token : $("meta[name='token']").attr("content"),
+            name : "mail_username",
+            send : document.getElementById("mailusername").value
+        },
+
+        function(data){
+            var obj = JSON.parse(data);
+            if (obj.status == 42)
+                swal({title: "Success", text: obj.message, type: "success"}
+                );
+            else if (obj.status == 41)
+                window.location="/logout";
+            else if (obj.status == 44)
+                swal({title: "Missing permission", text: obj.message, type: "error"},
+                    function (){
+                        window.location="/logout";
+                    }
+                );
+            else if (obj.status == 40)
+                swal({title: "Problem with the core", text: obj.message, type: "error"}
+                );
+            else
+                $.Notification.notify('error','bottom center','Internal Error', "Error: " + obj.status + " | " + obj.message);
+        },
+        'text'
+    );
+}
+
+function updatemailpassword(){
+    $.post(
+        '/api/config',
+        {
+            token : $("meta[name='token']").attr("content"),
+            name : "mail_password",
+            send : document.getElementById("mailpassword").value
+        },
+
+        function(data){
+            var obj = JSON.parse(data);
+            if (obj.status == 42)
+                swal({title: "Success", text: obj.message, type: "success"}
+                );
+            else if (obj.status == 41)
+                window.location="/logout";
+            else if (obj.status == 44)
+                swal({title: "Missing permission", text: obj.message, type: "error"},
+                    function (){
+                        window.location="/logout";
+                    }
+                );
+            else if (obj.status == 40)
+                swal({title: "Problem with the core", text: obj.message, type: "error"}
+                );
+            else
+                $.Notification.notify('error','bottom center','Internal Error', "Error: " + obj.status + " | " + obj.message);
+        },
+        'text'
+    );
+}
+
+function updatemailsecure(){
+    $.post(
+        '/api/config',
+        {
+            token : $("meta[name='token']").attr("content"),
+            name : "mail_secure",
+            send : document.getElementById("mailsecure").value
+        },
+
+        function(data){
+            var obj = JSON.parse(data);
+            if (obj.status == 42)
+                swal({title: "Success", text: obj.message, type: "success"}
+                );
+            else if (obj.status == 41)
+                window.location="/logout";
+            else if (obj.status == 44)
+                swal({title: "Missing permission", text: obj.message, type: "error"},
+                    function (){
+                        window.location="/logout";
+                    }
+                );
+            else if (obj.status == 40)
+                swal({title: "Problem with the core", text: obj.message, type: "error"}
+                );
+            else
+                $.Notification.notify('error','bottom center','Internal Error', "Error: " + obj.status + " | " + obj.message);
+        },
+        'text'
+    );
+}
+
+function updatemailport(){
+    $.post(
+        '/api/config',
+        {
+            token : $("meta[name='token']").attr("content"),
+            name : "mail_port",
+            send : document.getElementById("mailport").value
+        },
+
+        function(data){
+            var obj = JSON.parse(data);
+            if (obj.status == 42)
+                swal({title: "Success", text: obj.message, type: "success"}
+                );
+            else if (obj.status == 41)
+                window.location="/logout";
+            else if (obj.status == 44)
+                swal({title: "Missing permission", text: obj.message, type: "error"},
+                    function (){
+                        window.location="/logout";
+                    }
+                );
+            else if (obj.status == 40)
+                swal({title: "Problem with the core", text: obj.message, type: "error"}
+                );
+            else
+                $.Notification.notify('error','bottom center','Internal Error', "Error: " + obj.status + " | " + obj.message);
+        },
+        'text'
+    );
+}
+
 function update_vmod() {
     var newVersion = parseFloat(document.getElementById("vmod").textContent) + 0.000001;
     $.post(

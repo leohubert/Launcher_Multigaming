@@ -161,7 +161,7 @@ $selevlel = json_decode($user->checkAdmin($_SESSION['token']));
                                                         </div>
                                                         <div class="col-md-4">
                                                             <div class="card-box">
-                                                                <button type="submit" onclick="" class="btn btn-primary">Change Mail Host</button>
+                                                                <button type="submit" onclick="updatemailhost()" class="btn btn-primary">Change Mail Host</button>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -173,19 +173,19 @@ $selevlel = json_decode($user->checkAdmin($_SESSION['token']));
                                                         </div>
                                                         <div class="col-md-4">
                                                             <div class="card-box">
-                                                                <button type="submit" onclick="" class="btn btn-primary">Change Mail Username</button>
+                                                                <button type="submit" onclick="updatemailusername()" class="btn btn-primary">Change Mail Username</button>
                                                             </div>
                                                         </div>
                                                     </div>
                                                     <div class="row">
                                                         <div class="col-md-8">
                                                             <div class="card-box">
-                                                                <input type="text" class="form-control" id="mailpassword" placeholder="<?php echo $config->get("mail_password")?>">
+                                                                <input type="password" class="form-control" id="mailpassword" placeholder="Encrypted Content">
                                                             </div>
                                                         </div>
                                                         <div class="col-md-4">
                                                             <div class="card-box">
-                                                                <button type="submit" onclick="" class="btn btn-primary">Change Mail Password</button>
+                                                                <button type="submit" onclick="updatemailpassword()" class="btn btn-primary">Change Mail Password</button>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -197,7 +197,7 @@ $selevlel = json_decode($user->checkAdmin($_SESSION['token']));
                                                         </div>
                                                         <div class="col-md-4">
                                                             <div class="card-box">
-                                                                <button type="submit" onclick="" class="btn btn-primary">Change Mail Encryption</button>
+                                                                <button type="submit" onclick=updatemailsecure()"" class="btn btn-primary">Change Mail Encryption</button>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -209,7 +209,7 @@ $selevlel = json_decode($user->checkAdmin($_SESSION['token']));
                                                         </div>
                                                         <div class="col-md-4">
                                                             <div class="card-box">
-                                                                <button type="submit" onclick="" class="btn btn-primary">Change Mail Port</button>
+                                                                <button type="submit" onclick="updatemailport()" class="btn btn-primary">Change Mail Port</button>
                                                             </div>
                                                         </div>
                                                     </div>

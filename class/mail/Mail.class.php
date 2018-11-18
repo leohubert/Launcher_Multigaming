@@ -15,7 +15,6 @@ class Mail{
     private $database;
     private $config;
     private $email;
-    private $smtp;
     private $from;
     private $to;
     private $type;
@@ -34,6 +33,10 @@ class Mail{
 
         $gconf = json_decode($this->getConfig());
 
+        $dcryptnow = new Encryption($GLOBALS['key1'], $GLOBALS['key2']);
+        $uncrypt = $dcryptnow->decode($gconf->password);
+        $gconf->password = $uncrypt;
+
         $this->email->SMTPDebug = 2;
         $this->email->isSMTP();
         $this->email->Host = $gconf->host;
@@ -51,7 +54,7 @@ class Mail{
         $res = array(
             'host' => $this->config->get('mail_host'),
             'username' => $this->config->get('mail_username'),
-            'password' => $this->config->get('mail_passwd'),
+            'password' => $this->config->get('mail_password'),
             'secure' => $this->config->get('mail_secure'),
             'port' => $this->config->get('mail_port'),
         );

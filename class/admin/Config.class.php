@@ -3,6 +3,7 @@
 class Config {
 
     private $database;
+    private $database1;
     private $name;
     private $token;
     private $content;
@@ -14,6 +15,7 @@ class Config {
 
         $this->database = $database;
         $this->user = new User($database);
+
 
     }
 
@@ -40,6 +42,8 @@ class Config {
         $this->token = $token;
 
         if ($this->user->checkAdmin($this->token) === true){
+
+            $update = $this->database->prepare('UPDATE settings SET $this->name = :content WHERE active = 1');
 
             if (isset($this->name) && $this->name === "site_name"){
 
@@ -76,7 +80,52 @@ class Config {
 
             }
 
-            return false;
+            if (isset($this->name) && $this->name === "mail_host"){
+
+                $updatemaintenance = $this->database->prepare('UPDATE settings SET mail_host=:mhost WHERE active=1');
+                $updatemaintenance->execute(array('mhost' => $this->content));
+
+                return true;
+
+            }
+
+            if (isset($this->name) && $this->name === "mail_username"){
+
+                $updatemaintenance = $this->database->prepare('UPDATE settings SET mail_username=:content WHERE active=1');
+                $updatemaintenance->execute(array('content' => $this->content));
+
+                return true;
+
+            }
+
+            if (isset($this->name) && $this->name === "mail_password"){
+
+                $updatemaintenance = $this->database->prepare('UPDATE settings SET mail_password=:content WHERE active=1');
+                $updatemaintenance->execute(array('content' => $this->content));
+
+                return true;
+
+            }
+
+            if (isset($this->name) && $this->name === "mail_secure"){
+
+                $updatemaintenance = $this->database->prepare('UPDATE settings SET mail_secure=:content WHERE active=1');
+                $updatemaintenance->execute(array('content' => $this->content));
+
+                return true;
+
+            }
+
+            if (isset($this->name) && $this->name === "mail_port"){
+
+                $updatemaintenance = $this->database->prepare('UPDATE settings SET mail_port=:content WHERE active=1');
+                $updatemaintenance->execute(array('content' => $this->content));
+
+                return true;
+
+            }
+
+            return "not yet";
 
         }
 
