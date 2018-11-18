@@ -148,31 +148,68 @@ $selevlel = json_decode($user->checkAdmin($_SESSION['token']));
 
                                             <div class="modal-content">
                                                 <div class="modal-header">
-                                                    <h4 class="modal-title"><i class="ion-at"></i> Website Mail Settings</h4>
+                                                    <h4 class="modal-title"><i class="ion-at"></i> Website Mail Settings</h4><br>
+                                                    <h4 class="modal-title"><i class="md md-report-problem"></i> This Feature Does NOT WORK ! - in development ...</h4>
                                                 </div><br>
 
                                                 <div class="modal-body">
                                                     <div class="row">
                                                         <div class="col-md-8">
                                                             <div class="card-box">
-
+                                                                <input type="text" class="form-control" id="mailhost" placeholder="<?php echo $config->get("mail_host")?>">
                                                             </div>
                                                         </div>
                                                         <div class="col-md-4">
                                                             <div class="card-box">
-
+                                                                <button type="submit" onclick="" class="btn btn-primary">Change Mail Host</button>
                                                             </div>
                                                         </div>
                                                     </div>
                                                     <div class="row">
                                                         <div class="col-md-8">
                                                             <div class="card-box">
-
+                                                                <input type="text" class="form-control" id="mailusername" placeholder="<?php echo $config->get("mail_username")?>">
                                                             </div>
                                                         </div>
                                                         <div class="col-md-4">
                                                             <div class="card-box">
-
+                                                                <button type="submit" onclick="" class="btn btn-primary">Change Mail Username</button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-md-8">
+                                                            <div class="card-box">
+                                                                <input type="text" class="form-control" id="mailpassword" placeholder="<?php echo $config->get("mail_password")?>">
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-4">
+                                                            <div class="card-box">
+                                                                <button type="submit" onclick="" class="btn btn-primary">Change Mail Password</button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-md-8">
+                                                            <div class="card-box">
+                                                                <input type="text" class="form-control" id="mailsecure" placeholder="<?php echo $config->get("mail_secure")?>">
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-4">
+                                                            <div class="card-box">
+                                                                <button type="submit" onclick="" class="btn btn-primary">Change Mail Encryption</button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-md-8">
+                                                            <div class="card-box">
+                                                                <input type="text" class="form-control" id="mailport" placeholder="<?php echo $config->get("mail_port")?>">
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-4">
+                                                            <div class="card-box">
+                                                                <button type="submit" onclick="" class="btn btn-primary">Change Mail Port</button>
                                                             </div>
                                                         </div>
                                                     </div>

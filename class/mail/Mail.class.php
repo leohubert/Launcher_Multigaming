@@ -6,11 +6,17 @@
  * Time: 23:47
  */
 
+include dirname(__FILE__) . 'Exception.class.php';
+include dirname(__FILE__) . 'Phpmailer.class.php';
+include dirname(__FILE__) . 'Smtp.class.php';
+
 class Mail{
 
     private $database;
     private $config;
-    private $sender;
+    private $email;
+    private $smtp;
+    private $from;
     private $to;
     private $type;
     private $content;
@@ -20,6 +26,38 @@ class Mail{
 
         $this->database = $database;
         $this->config = new Config($this->database);
+        $this->email = new PHPMailer(true);
+
+    }
+
+    private function exeConfig(){
+
+        $gconf = json_decode($this->getConfig());
+
+        $this->email->SMTPDebug = 2;
+        $this->email->isSMTP();
+        $this->email->Host = $gconf->host;
+        $this->email->SMTPAuth = true;
+        $this->email->Username = $gconf->username;
+        $this->email->Password = $gconf->password;
+        $this->email->SMTPSecure = $gconf->secure;
+        $this->email->Port = $gconf->port;
+        $this->email->isHTML(true);
+
+    }
+
+    private function getConfig(){
+
+        $res = array(
+            'host' => $this->config->get('mail_host'),
+            'username' => $this->config->get('mail_username'),
+            'password' => $this->config->get('mail_passwd'),
+            'secure' => $this->config->get('mail_secure'),
+            'port' => $this->config->get('mail_port'),
+        );
+
+        return json_encode($res);
+
 
     }
 
