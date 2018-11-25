@@ -48,12 +48,6 @@ namespace LauncherArma3
             registerPassConfirm.Hint = translateDic["passwordConfirm"];
             loginLink.Text = translateDic["logIn"];
             loginMessage.Text = translateDic["loginMsg"];
-
-            if (translateDic["reverse"] == "true")
-            {
-                this.RightToLeft = RightToLeft.Yes;
-                this.RightToLeftLayout = true;
-            }
         }
 
         private void registerLink_Click(object sender, EventArgs e)
