@@ -247,7 +247,7 @@
                     </p>
                 </div>
                 <div class="panel-footer">
-                    <button data-toggle="modal" data-target="#con-close-modal" type="button"  class="btn btn-warning btn-custom waves-effect w-md waves-light m-b-5">Change password</button>
+                    <button data-toggle="modal" data-target="#PasswordChange" type="button"  class="btn btn-warning btn-custom waves-effect w-md waves-light m-b-5">Change password</button>
                     <button type="button" class="btn btn-success btn-custom waves-effect w-md waves-light m-b-5" onclick="saveUser()">Save</button>
                 </div>
             </div>
@@ -255,7 +255,7 @@
     </div>
 </div>
 
-<div id="con-close-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+<div id="PasswordChange" class="modal fade" role="dialog" style="display: none;">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
@@ -331,7 +331,7 @@
 <script src="/assets/js/jquery.core.js"></script>
 <script src="/assets/js/jquery.app.js"></script>
 
-<script src="/assets/plugins/custombox/dist/custombox.min.js"></script>
+<script src="../../assets/plugins/custombox/dist/custombox.min.js"></script>
 <script src="/assets/plugins/custombox/dist/legacy.min.js"></script>
 
 

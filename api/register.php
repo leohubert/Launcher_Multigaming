@@ -14,10 +14,7 @@ if (isset($_POST['email']) && isset($_POST['username']) && isset($_POST['passwor
     $password = $_POST['password'];
     $confirm_password = $_POST['confirm_password'];
 
-    $ip = $_SERVER['REMOTE_ADDR'];
-    if (!filter_var($ip, FILTER_VALIDATE_IP)) {
-        $ip = "0.0.0.0";
-    }
+    $ip = $utility->checkIp();
 
     $getSettings = $database->prepare('SELECT * FROM settings WHERE active = 1');
     $getSettings->execute();
