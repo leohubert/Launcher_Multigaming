@@ -103,6 +103,7 @@ if [[ "$OSTYPE" == "linux-gnu" ]]; then
 
 			preparealldebian9x:
 			cd /tmp;
+			ls;
 			wget https://dev.mysql.com/get/mysql-apt-config_0.8.11-1_all.deb;
 			echo -e '\n \e[91m'$donotforgetv;
 			sleep 2;
@@ -112,6 +113,7 @@ if [[ "$OSTYPE" == "linux-gnu" ]]; then
 			jumpto sysreadydebian9x;
 
 			sysreadydebian9x:
+			sleep 10;
 			sudo apt install apache2 unzip php7.0 php7.0-mysql php7.0-curl git;
 			sudo apt install mysql-server;
 			sudo apt install phpmyadmin;
