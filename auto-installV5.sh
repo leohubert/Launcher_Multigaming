@@ -308,16 +308,14 @@ if [[ "$OSTYPE" == "linux-gnu" ]]; then
 			sudo apt install libbz2-dev libcurl4-openssl-dev libjpeg-dev libpng-dev libfreetype6-dev libkrb5-dev libpq-dev libxml2-dev libxslt1-dev
 			sleep 5
 			
-			awk -i '/<Directory \/var\/www\/>/,/AllowOverride None/{sub("None", "All",$0)}{print}' /etc/apache2/apache2.conf | sudo tee /etc/apache2/apache2.conf > /dev/null
+			sed -i '/<Directory "\/var\/www\/html">/,/<\/Directory>/ s/AllowOverride None/AllowOverride all/' /etc/apache2/apache2.conf
 			sudo a2enmod rewrite
 			sudo service apache2 restart
 			sudo rm -rf /var/www/html
 			cd /var/www && git clone https://github.com/MrDarkSkil/Launcher_Multigaming.git -b webpanel-test html
 			chown -R www-data:www-data /var/www/html/games/
 			chmod -R 777 /var/www/html/configs/
-			jumpto $finishdebian9x
-
-			finishdebian9x:
+			
 			echo -e '\n \e[92m'$successinstall
 			echo -e '\n \e[92m'$successinstalladress
 			exit 0;
