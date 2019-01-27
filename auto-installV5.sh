@@ -1,12 +1,168 @@
-#!/bin/bash -e
+#!/bin/bash
+
+if [ -f ".dev-debug" ]; then
+	exec 5>dev-debug.log
+	BASH_XTRACEFD="5"
+	set -x
+fi
 
 lang=$(locale | grep LANG | cut -d= -f2 | cut -d_ -f1)
+
+version="190106"
+shortname="core"
+gameservername="core"
+rootdir="$(dirname "$(readlink -f "${BASH_SOURCE[0]}")")"
+selfname="$(basename "$(readlink -f "${BASH_SOURCE[0]}")")"
+servicename="${selfname}"
+autoinstalldir="${rootdir}/emodyz"
+logdir="${rootdir}/log"
+emodyzldir="${logdir}/emodyz"
+functionsdir="${emodyzldir}/functions"
+libdir="${emodyzldir}/lib"
+tmpdir="${emodyzldir}/tmp"
+userinput="${1}"
+
+## GITHUB INFO
+guser='MrDarkSkil'
+grepo='Launcher_Multigaming'
+gbranch='bash-unix'
+
+core_functions.sh(){
+	functionfile="${FUNCNAME}"
+	fn_bootstrap_fetch_file_github "bash/functions" "core_functions.sh" "${functionsdir}" "chmodx" "run" "noforcedl" "nomd5"
+}
+
+fn_bootstrap_fetch_file(){
+	remote_fileurl="${1}"
+	local_filedir="${2}"
+	local_filename="${3}"
+	chmodx="${4:-0}"
+	run="${5:-0}"
+	forcedl="${6:-0}"
+	md5="${7:-0}"
+	# download file if missing or download forced
+	if [ ! -f "${local_filedir}/${local_filename}" ]||[ "${forcedl}" == "forcedl" ]; then
+		if [ ! -d "${local_filedir}" ]; then
+			mkdir -p "${local_filedir}"
+		fi
+		# Defines curl path
+		curlpath=$(command -v curl 2>/dev/null)
+
+		# If curl exists download file
+		if [ "$(basename "${curlpath}")" == "curl" ]; then
+			# trap to remove part downloaded files
+			echo -en "    fetching ${local_filename}...\c"
+			curlcmd=$(${curlpath} -s --fail -L -o "${local_filedir}/${local_filename}" "${remote_fileurl}" 2>&1)
+			local exitcode=$?
+			if [ ${exitcode} -ne 0 ]; then
+				echo -e "FAIL"
+				if [ -f "${lemodyz}" ]; then
+					echo -e "${remote_fileurl}" | tee -a "${lemodyz}"
+					echo "${curlcmd}" | tee -a "${lemodyz}"
+				fi
+				exit 1
+			else
+				echo -e "OK"
+			fi
+		else
+			echo "[ FAIL ] Curl is not installed"
+			exit 1
+		fi
+		# make file chmodx if chmodx is set
+		if [ "${chmodx}" == "chmodx" ]; then
+			chmod +x "${local_filedir}/${local_filename}"
+		fi
+	fi
+
+	if [ -f "${local_filedir}/${local_filename}" ]; then
+		# run file if run is set
+		if [ "${run}" == "run" ]; then
+			source "${local_filedir}/${local_filename}"
+		fi
+	fi
+}
+
+fn_bootstrap_fetch_file_github(){
+	github_file_url_dir="${1}"
+	github_file_url_name="${2}"
+	githuburl="https://raw.githubusercontent.com/${guser}/${grepo}/${gbranch}/${github_file_url_dir}/${github_file_url_name}"
+
+	remote_fileurl="${githuburl}"
+	local_filedir="${3}"
+	local_filename="${github_file_url_name}"
+	chmodx="${4:-0}"
+	run="${5:-0}"
+	forcedl="${6:-0}"
+	md5="${7:-0}"
+	# Passes vars to the file download function
+	fn_bootstrap_fetch_file "${remote_fileurl}" "${local_filedir}" "${local_filename}" "${chmodx}" "${run}" "${forcedl}" "${md5}"
+}
+
+fn_print_center() {
+	columns="$(tput cols)"
+	line="$@"
+	printf "%*s\n" $(( (${#line} + columns) / 2)) "${line}"
+}
+
+fn_print_horizontal(){
+	char="${1:-=}"
+	printf '%*s\n' "${COLUMNS:-$(tput cols)}" '' | tr ' ' "${char}"
+}
+
+fn_install_menu_bash() {
+	local resultvar=$1
+	title=$2
+	caption=$3
+	options=$4
+	fn_print_horizontal
+	fn_print_center "${title}"
+	fn_print_center "${caption}"
+	fn_print_horizontal
+	menu_options=()
+	while read -r line || [[ -n "${line}" ]]; do
+		var=$(echo "${line}" | awk -F "," '{print $2 " - " $3}')
+		menu_options+=( "${var}" )
+	done <  ${options}
+	menu_options+=( "Cancel" )
+	select option in "${menu_options[@]}"; do
+		if [ -n "${option}" ] && [ "${option}" != "Cancel" ]; then
+			eval "$resultvar=\"${option/%\ */}\""
+		fi
+		break
+	done
+}
+
+fn_install_menu_whiptail() {
+	local menucmd=$1
+	local resultvar=$2
+	title=$3
+	caption=$4
+	options=$5
+	height=${6:-40}
+	width=${7:-80}
+	menuheight=${8:-30}
+	IFS=","
+	menu_options=()
+	while read -r line; do
+		key=$(echo "${line}" | awk -F "," '{print $3}')
+		val=$(echo "${line}" | awk -F "," '{print $2}')
+		menu_options+=( ${val//\'} '${key//\'}' )
+	done < "${options}"
+	OPTION=$(${menucmd} --title "${title}" --menu "${caption}" "${height}" "${width}" "${menuheight}" "${menu_options[@]}" 3>&1 1>&2 2>&3)
+	if [ $? == 0 ]; then
+		eval "$resultvar=\"${OPTION}\""
+	else
+		eval "$resultvar="
+	fi
+}
+
+fn_ansi_loader
 
 function jumpto {
     	label=$1
     	cmd=$(sed -n "/$label:/{:a;n;p;ba};" $0 | grep -v ':$')
     	eval "$cmd"
-    	exit
+    	exit 0
 }
 
 if [[ $lang == 'fr' ]]; then
@@ -51,6 +207,7 @@ ost=''
 vers=''
 auth=''
 function version { echo "$@" | gawk -F. '{ printf("%03d%03d%03d\n", $1,$2,$3); }'; }
+startdebian9x=${1:-"startdebian9x"}
 if [[ "$OSTYPE" == "linux-gnu" ]]; then
         os='linux'
 	if [[ $(lsb_release -is) = 'Debian' ]]; then
@@ -67,29 +224,27 @@ if [[ "$OSTYPE" == "linux-gnu" ]]; then
                         echo -e '\n Version : '$vers' ...';
                         echo -e '\n Autorisé à installer ? OUI';
 
-			startdebian9x=${1:-"startdebian9x"};
-
 			if [[ $os == 'linux' || $auth == 1 ]]; then
-				echo -e '\n \e[39mPlease Confirm to accept auto Install ?';
+				echo -e '\n \e[39mPlease Confirm to accept auto Install ?'
 				if [[ "non" == $(ask_y_or_n "Are you sure?") ]]; then
-					echo -e '\n \e[39m'$confirm;
+					echo -e '\n \e[39m'$confirm
 					sleep 2;
 					if [[ "non" == $(ask_y_or_n "Are you *really* sure?") ]]; then
-    						echo -e '\n \e[91m'$cancel;
-    						exit 0;
+    						echo -e '\n \e[91m'$cancel
+    						exit 0
 					else
-						echo -e '\n \e[39m'$installprog;
-						jumpto $startdebian9x;
+						echo -e '\n \e[39m'$installprog
+						jumpto $startdebian9x
 					fi
 				else
-					echo -e '\n \e[39m'$confirm;
+					echo -e '\n \e[39m'$confirm
 					sleep 2;
 					if [[ "non" == $(ask_y_or_n "Are you *really* sure?") ]]; then
-						echo -e '\n \e[91m'$cancel;
-    						exit 0;
+						echo -e '\n \e[91m'$cancel
+    						exit 0
 					else
-						echo -e '\n \e[39m'$installprog;
-						jumpto $startdebian9x;
+						echo -e '\n \e[39m'$installprog
+						jumpto $startdebian9x
 					fi
 				fi
 			fi
