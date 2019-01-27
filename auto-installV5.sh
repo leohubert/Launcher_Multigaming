@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/bash -xv
 
 if [ -f ".dev-debug" ]; then
 	exec 5>dev-debug.log
@@ -146,8 +146,8 @@ fn_install_menu_whiptail() {
 	while read -r line; do
 		key=$(echo "${line}" | awk -F "," '{print $3}')
 		val=$(echo "${line}" | awk -F "," '{print $2}')
-		menu_options+=( ${val//\'} '${key//\'}' )
-	done < "${options}"
+		#menu_options+=( ${val//\'} '${key//\'}' )
+	done < '${options}'
 	OPTION=$(${menucmd} --title "${title}" --menu "${caption}" "${height}" "${width}" "${menuheight}" "${menu_options[@]}" 3>&1 1>&2 2>&3)
 	if [ $? == 0 ]; then
 		eval "$resultvar=\"${OPTION}\""
@@ -155,8 +155,6 @@ fn_install_menu_whiptail() {
 		eval "$resultvar="
 	fi
 }
-
-fn_ansi_loader
 
 function jumpto {
     	label=$1
@@ -197,17 +195,28 @@ if [[ $lang == 'en' ]]; then
 	}
 
 	cancel='Skipped'
+	confirm='Merci de confirmer votre choix'
+	installprog='Merci d avoir accepter, nous effectuons l installation \n soyez patient :) \n \n \e[95mL equipe EMODYZ'
+	a=' \n  \e[95mBienvenu(e) sur le script auto-install de la V5 \n \e[97mnous vous demanderons de choisir certaines option \n qui nous permet ainsi de determiner les meilleurs paramètres pour vous. \n .. \n \e[91mSoyez le plus attentif possible et consencieux dans vos réponse ...'
+	b=' \n \e[95mEmodyz vérifie votre OS et votre configuration, veuillez patienté ...'
+	checkdep='Nous vérifions les dépendances ...'
+	checkdist='Nous vérifions et mettons à jour votre distribution ..'
+	notimpl='N a pas été implémenté pour le moment, soyez patient :)'
+	donotforgetv='N oubliez pas de bien séléctionner la Version 5.7 puis OK !!!!'
+	successinstall='Installation Finalisé avec Succès !'
+	successinstalladress='Ouvrez un nouvel onglet dans votre navigateur \n \n Mettez-y l adresse IP de votre serveur \n \n ENJOY !!'
 fi
 
-echo -e $a
+sleep 3
+echo -e '${a}'
 sleep 5
-echo -e $b
+echo -e '${b}'
 os=''
 ost=''
 vers=''
 auth=''
 function version { echo "$@" | gawk -F. '{ printf("%03d%03d%03d\n", $1,$2,$3); }'; }
-startdebian9x=${1:-"startdebian9x"}
+
 if [[ "$OSTYPE" == "linux-gnu" ]]; then
         os='linux'
 	if [[ $(lsb_release -is) = 'Debian' ]]; then
@@ -216,79 +225,101 @@ if [[ "$OSTYPE" == "linux-gnu" ]]; then
 		auth=1
 		if [[ '$(version '$outh')' <  '$(version '$(lsb_release --release | awk '{ print $2 }')')' ]]; then
 			vers=$(lsb_release --release | awk '{ print $2 }')
-                        echo -e '\n \e[92mYour OS Has Authorized to proceed';
+                        echo -e '\n \e[92mYour OS Has Authorized to proceed'
                         auth=1
-                        echo -e '\n ************************* \n Informations Trouvée : \n *************************';
-                        echo -e '\n Type de Distribution : '$os' ...';
-                        echo -e '\n Nom de L OS : '$ost' ...';
-                        echo -e '\n Version : '$vers' ...';
-                        echo -e '\n Autorisé à installer ? OUI';
+                        echo -e '\n ************************* \n Informations Trouvée : \n *************************'
+                        echo -e '\n Type de Distribution : ${os}'
+                        echo -e '\n Nom de L OS : ${ost}'
+                        echo -e '\n Version : ${vers}'
+                        echo -e '\n Autorisé à installer ? OUI'
+
+			startdebian9x=${1:-"st19x"}
+			finishdebian9x=${1:-"finishdebian9x"}
 
 			if [[ $os == 'linux' || $auth == 1 ]]; then
 				echo -e '\n \e[39mPlease Confirm to accept auto Install ?'
-				if [[ "non" == $(ask_y_or_n "Are you sure?") ]]; then
-					echo -e '\n \e[39m'$confirm
-					sleep 2;
-					if [[ "non" == $(ask_y_or_n "Are you *really* sure?") ]]; then
-    						echo -e '\n \e[91m'$cancel
-    						exit 0
+				if [[ $lang == 'fr' ]]; then
+					if [[ "non" == $(ask_y_or_n "Are you sure?") ]]; then
+						echo -e '\n \e[39m ${confirm}'
+						sleep 2
+						if [[ "non" == $(ask_y_or_n "Are you *really* sure?") ]]; then
+    							echo -e '\n \e[91m ${cancel}'
+    							exit 0
+						else
+							echo -e '\n \e[39m ${installprog}'
+							jumpto $startdebian9x
+						fi
 					else
-						echo -e '\n \e[39m'$installprog
-						jumpto $startdebian9x
+						echo -e '\n \e[39m ${confirm}'
+						sleep 2;
+						if [[ "non" == $(ask_y_or_n "Are you *really* sure?") ]]; then
+							echo -e '\n \e[91m ${cancel}'
+    							exit 0
+						else
+							echo -e '\n \e[39m ${installprog}'
+							jumpto $startdebian9x
+						fi
 					fi
 				else
-					echo -e '\n \e[39m'$confirm
-					sleep 2;
-					if [[ "non" == $(ask_y_or_n "Are you *really* sure?") ]]; then
-						echo -e '\n \e[91m'$cancel
-    						exit 0
+					if [[ "no" == $(ask_y_or_n "Are you sure?") ]]; then
+						echo -e '\n \e[39m ${confirm}'
+						sleep 2
+						if [[ "no" == $(ask_y_or_n "Are you *really* sure?") ]]; then
+    							echo -e '\n \e[91m ${cancel}'
+    							exit 0
+						else
+							echo -e '\n \e[39m ${installprog}'
+							jumpto $startdebian9x
+						fi
 					else
-						echo -e '\n \e[39m'$installprog
-						jumpto $startdebian9x
+						echo -e '\n \e[39m ${confirm}'
+						sleep 2
+						if [[ "no" == $(ask_y_or_n "Are you *really* sure?") ]]; then
+							echo -e '\n \e[91m ${cancel}'
+    							exit 0
+						else
+							echo -e '\n \e[39m ${installprog}'
+							jumpto $startdebian9x
+						fi
 					fi
 				fi
 			fi
 
-			startdebian9x:
-			echo -e '\n \e[39m'$checkdep;
-			sudo apt update && sudo apt upgrade -y;
-			echo -e '\n \e[91m'$checkdist;
-			sudo apt update && sudo apt dist-upgrade -y;
-			jumpto preparealldebian9x;
-
-			preparealldebian9x:
-			cd /tmp;
-			ls;
-			wget https://dev.mysql.com/get/mysql-apt-config_0.8.11-1_all.deb;
-			echo -e '\n \e[91m'$donotforgetv;
-			sleep 2;
-			sudo dpkg -i mysql-apt-config*;
-			sudo apt update;
-			cd /;
-			jumpto sysreadydebian9x;
-
-			sysreadydebian9x:
-			sleep 10;
-			sudo apt install apache2 unzip php7.0 php7.0-mysql php7.0-curl git;
-			sudo apt install mysql-server;
-			sudo apt install phpmyadmin;
-			sudo apt install libfcgi-dev libfcgi0ldbl libjpeg62-turbo-dev libmcrypt-dev libssl-dev libc-client2007e libc-client2007e-dev libxml2-dev;
-			sudo apt install libbz2-dev libcurl4-openssl-dev libjpeg-dev libpng-dev libfreetype6-dev libkrb5-dev libpq-dev libxml2-dev libxslt1-dev;
-			sleep 5;
-			jumpto prepareapachedebian9x;
-
-			prepareapachedebian9x:
-			awk -i '/<Directory \/var\/www\/>/,/AllowOverride None/{sub("None", "All",$0)}{print}' /etc/apache2/apache2.conf | sudo tee /etc/apache2/apache2.conf > /dev/null;
-			sudo a2enmod rewrite;
-			sudo service apache2 restart;
-			sudo rm -rf /var/www/html;
-			cd /var/www && git clone https://github.com/MrDarkSkil/Launcher_Multigaming.git -b webpanel-test html;
-			chown -R www-data:www-data /var/www/html/games/; chmod -R 777 /var/www/html/configs/;
-			jumpto finishdebian9x;
+			st19x:
+			echo -e '\n \e[39m'$checkdep
+			sudo apt update && sudo apt upgrade -y
+			echo -e '\n \e[91m'$checkdist
+			sudo apt update && sudo apt dist-upgrade -y
+			
+			cd /tmp
+			ls
+			wget https://dev.mysql.com/get/mysql-apt-config_0.8.11-1_all.deb
+			echo -e '\n \e[91m'$donotforgetv
+			sleep 2
+			sudo dpkg -i mysql-apt-config*
+			sudo apt update
+			cd /
+			
+			sleep 10
+			sudo apt install apache2 unzip php7.0 php7.0-mysql php7.0-curl git
+			sudo apt install mysql-server
+			sudo apt install phpmyadmin
+			sudo apt install libfcgi-dev libfcgi0ldbl libjpeg62-turbo-dev libmcrypt-dev libssl-dev libc-client2007e libc-client2007e-dev libxml2-dev
+			sudo apt install libbz2-dev libcurl4-openssl-dev libjpeg-dev libpng-dev libfreetype6-dev libkrb5-dev libpq-dev libxml2-dev libxslt1-dev
+			sleep 5
+			
+			awk -i '/<Directory \/var\/www\/>/,/AllowOverride None/{sub("None", "All",$0)}{print}' /etc/apache2/apache2.conf | sudo tee /etc/apache2/apache2.conf > /dev/null
+			sudo a2enmod rewrite
+			sudo service apache2 restart
+			sudo rm -rf /var/www/html
+			cd /var/www && git clone https://github.com/MrDarkSkil/Launcher_Multigaming.git -b webpanel-test html
+			chown -R www-data:www-data /var/www/html/games/
+			chmod -R 777 /var/www/html/configs/
+			jumpto $finishdebian9x
 
 			finishdebian9x:
-			echo -e '\n \e[92m'$successinstall;
-			echo -e '\n \e[92m'$successinstalladress;
+			echo -e '\n \e[92m'$successinstall
+			echo -e '\n \e[92m'$successinstalladress
 			exit 0;
 		else
 			vers='ufo'
