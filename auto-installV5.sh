@@ -1,160 +1,16 @@
-#!/bin/bash -xv
-
-if [ -f ".dev-debug" ]; then
-	exec 5>dev-debug.log
-	BASH_XTRACEFD="5"
-	set -x
-fi
+#!/bin/bash
 
 lang=$(locale | grep LANG | cut -d= -f2 | cut -d_ -f1)
 
-version="190106"
-shortname="core"
-gameservername="core"
-rootdir="$(dirname "$(readlink -f "${BASH_SOURCE[0]}")")"
-selfname="$(basename "$(readlink -f "${BASH_SOURCE[0]}")")"
-servicename="${selfname}"
-autoinstalldir="${rootdir}/emodyz"
-logdir="${rootdir}/log"
-emodyzldir="${logdir}/emodyz"
-functionsdir="${emodyzldir}/functions"
-libdir="${emodyzldir}/lib"
-tmpdir="${emodyzldir}/tmp"
-userinput="${1}"
+os=''
+ost=''
+vers=''
+auth=''
 
 ## GITHUB INFO
 guser='MrDarkSkil'
 grepo='Launcher_Multigaming'
 gbranch='bash-unix'
-
-core_functions.sh(){
-	functionfile="${FUNCNAME}"
-	fn_bootstrap_fetch_file_github "bash/functions" "core_functions.sh" "${functionsdir}" "chmodx" "run" "noforcedl" "nomd5"
-}
-
-fn_bootstrap_fetch_file(){
-	remote_fileurl="${1}"
-	local_filedir="${2}"
-	local_filename="${3}"
-	chmodx="${4:-0}"
-	run="${5:-0}"
-	forcedl="${6:-0}"
-	md5="${7:-0}"
-	# download file if missing or download forced
-	if [ ! -f "${local_filedir}/${local_filename}" ]||[ "${forcedl}" == "forcedl" ]; then
-		if [ ! -d "${local_filedir}" ]; then
-			mkdir -p "${local_filedir}"
-		fi
-		# Defines curl path
-		curlpath=$(command -v curl 2>/dev/null)
-
-		# If curl exists download file
-		if [ "$(basename "${curlpath}")" == "curl" ]; then
-			# trap to remove part downloaded files
-			echo -en "    fetching ${local_filename}...\c"
-			curlcmd=$(${curlpath} -s --fail -L -o "${local_filedir}/${local_filename}" "${remote_fileurl}" 2>&1)
-			local exitcode=$?
-			if [ ${exitcode} -ne 0 ]; then
-				echo -e "FAIL"
-				if [ -f "${lemodyz}" ]; then
-					echo -e "${remote_fileurl}" | tee -a "${lemodyz}"
-					echo "${curlcmd}" | tee -a "${lemodyz}"
-				fi
-				exit 1
-			else
-				echo -e "OK"
-			fi
-		else
-			echo "[ FAIL ] Curl is not installed"
-			exit 1
-		fi
-		# make file chmodx if chmodx is set
-		if [ "${chmodx}" == "chmodx" ]; then
-			chmod +x "${local_filedir}/${local_filename}"
-		fi
-	fi
-
-	if [ -f "${local_filedir}/${local_filename}" ]; then
-		# run file if run is set
-		if [ "${run}" == "run" ]; then
-			source "${local_filedir}/${local_filename}"
-		fi
-	fi
-}
-
-fn_bootstrap_fetch_file_github(){
-	github_file_url_dir="${1}"
-	github_file_url_name="${2}"
-	githuburl="https://raw.githubusercontent.com/${guser}/${grepo}/${gbranch}/${github_file_url_dir}/${github_file_url_name}"
-
-	remote_fileurl="${githuburl}"
-	local_filedir="${3}"
-	local_filename="${github_file_url_name}"
-	chmodx="${4:-0}"
-	run="${5:-0}"
-	forcedl="${6:-0}"
-	md5="${7:-0}"
-	# Passes vars to the file download function
-	fn_bootstrap_fetch_file "${remote_fileurl}" "${local_filedir}" "${local_filename}" "${chmodx}" "${run}" "${forcedl}" "${md5}"
-}
-
-fn_print_center() {
-	columns="$(tput cols)"
-	line="$@"
-	printf "%*s\n" $(( (${#line} + columns) / 2)) "${line}"
-}
-
-fn_print_horizontal(){
-	char="${1:-=}"
-	printf '%*s\n' "${COLUMNS:-$(tput cols)}" '' | tr ' ' "${char}"
-}
-
-fn_install_menu_bash() {
-	local resultvar=$1
-	title=$2
-	caption=$3
-	options=$4
-	fn_print_horizontal
-	fn_print_center "${title}"
-	fn_print_center "${caption}"
-	fn_print_horizontal
-	menu_options=()
-	while read -r line || [[ -n "${line}" ]]; do
-		var=$(echo "${line}" | awk -F "," '{print $2 " - " $3}')
-		menu_options+=( "${var}" )
-	done <  ${options}
-	menu_options+=( "Cancel" )
-	select option in "${menu_options[@]}"; do
-		if [ -n "${option}" ] && [ "${option}" != "Cancel" ]; then
-			eval "$resultvar=\"${option/%\ */}\""
-		fi
-		break
-	done
-}
-
-fn_install_menu_whiptail() {
-	local menucmd=$1
-	local resultvar=$2
-	title=$3
-	caption=$4
-	options=$5
-	height=${6:-40}
-	width=${7:-80}
-	menuheight=${8:-30}
-	IFS=","
-	menu_options=()
-	while read -r line; do
-		key=$(echo "${line}" | awk -F "," '{print $3}')
-		val=$(echo "${line}" | awk -F "," '{print $2}')
-		#menu_options+=( ${val//\'} '${key//\'}' )
-	done < '${options}'
-	OPTION=$(${menucmd} --title "${title}" --menu "${caption}" "${height}" "${width}" "${menuheight}" "${menu_options[@]}" 3>&1 1>&2 2>&3)
-	if [ $? == 0 ]; then
-		eval "$resultvar=\"${OPTION}\""
-	else
-		eval "$resultvar="
-	fi
-}
 
 function jumpto {
     	label=$1
@@ -172,17 +28,24 @@ if [[ $lang == 'fr' ]]; then
 		esac
 	}
 
-	cancel='Vous avez annulé la procédure, vous n avez pas acceptez que EMODYZ effectue l installation automatiquement...'
+	#Before Install
 	confirm='Merci de confirmer votre choix'
 	installprog='Merci d avoir accepter, nous effectuons l installation \n soyez patient :) \n \n \e[95mL equipe EMODYZ'
 	a=' \n  \e[95mBienvenu(e) sur le script auto-install de la V5 \n \e[97mnous vous demanderons de choisir certaines option \n qui nous permet ainsi de determiner les meilleurs paramètres pour vous. \n .. \n \e[91mSoyez le plus attentif possible et consencieux dans vos réponse ...'
 	b=' \n \e[95mEmodyz vérifie votre OS et votre configuration, veuillez patienté ...'
+	
+	#During Install
 	checkdep='Nous vérifions les dépendances ...'
 	checkdist='Nous vérifions et mettons à jour votre distribution ..'
-	notimpl='N a pas été implémenté pour le moment, soyez patient :)'
 	donotforgetv='N oubliez pas de bien séléctionner la Version 5.7 puis OK !!!!'
+
+	#Install Success
 	successinstall='Installation Finalisé avec Succès !'
 	successinstalladress='Ouvrez un nouvel onglet dans votre navigateur \n \n Mettez-y l adresse IP de votre serveur \n \n ENJOY !!'
+
+	#Error
+	notimpl='N a pas été implémenté pour le moment, soyez patient :)'
+	cancel='Vous avez annulé la procédure, vous n avez pas acceptez que EMODYZ effectue l installation automatiquement...'
 fi
 
 if [[ $lang == 'en' ]]; then
@@ -194,27 +57,31 @@ if [[ $lang == 'en' ]]; then
 		esac
 	}
 
-	cancel='Skipped'
-	confirm='Merci de confirmer votre choix'
-	installprog='Merci d avoir accepter, nous effectuons l installation \n soyez patient :) \n \n \e[95mL equipe EMODYZ'
-	a=' \n  \e[95mBienvenu(e) sur le script auto-install de la V5 \n \e[97mnous vous demanderons de choisir certaines option \n qui nous permet ainsi de determiner les meilleurs paramètres pour vous. \n .. \n \e[91mSoyez le plus attentif possible et consencieux dans vos réponse ...'
-	b=' \n \e[95mEmodyz vérifie votre OS et votre configuration, veuillez patienté ...'
-	checkdep='Nous vérifions les dépendances ...'
-	checkdist='Nous vérifions et mettons à jour votre distribution ..'
-	notimpl='N a pas été implémenté pour le moment, soyez patient :)'
-	donotforgetv='N oubliez pas de bien séléctionner la Version 5.7 puis OK !!!!'
-	successinstall='Installation Finalisé avec Succès !'
-	successinstalladress='Ouvrez un nouvel onglet dans votre navigateur \n \n Mettez-y l adresse IP de votre serveur \n \n ENJOY !!'
+	#Before Install
+	confirm='Please confirm your choice'
+	installprog='Thank you for accepting, we are doing the installation \n be patient :) \n \n \e[95mThe EMODYZ team'
+	a=' \n  \e[95mWelcome to the auto-install script of the V5 \n \e[97mwe will ask you to choose some option \n which allows us to determine the best parameters for you. \n .. \n \e[91mBe as attentive as possible and conscientious in your answers ...'
+	b=' \n \e[95mEmodyz checks your OS and your configuration, please wait ...'
+
+	#During Install
+	checkdep='We check dependencies ...'
+	checkdist='We check and update your distribution ..'
+	donotforgetv='Do not forget to select Version 5.7 and OK !!!!'
+
+	#Install Success
+	successinstall='Installation Finalized with Success !'
+	successinstalladress='Open a new tab in your browser \n \n Put in it the IP address of your server \n \n ENJOY !!'
+
+	#Error
+	cancel='You canceled the procedure, you do not agree that EMODYZ performs the installation automatically ...'
+	notimpl='has not been implemented yet, be patient :)'
 fi
 
 sleep 3
 echo -e '${a}'
 sleep 5
 echo -e '${b}'
-os=''
-ost=''
-vers=''
-auth=''
+
 function version { echo "$@" | gawk -F. '{ printf("%03d%03d%03d\n", $1,$2,$3); }'; }
 
 if [[ "$OSTYPE" == "linux-gnu" ]]; then
@@ -284,41 +151,6 @@ if [[ "$OSTYPE" == "linux-gnu" ]]; then
 					fi
 				fi
 			fi
-
-			st19x:
-			echo -e '\n \e[39m'$checkdep
-			sudo apt update && sudo apt upgrade -y
-			echo -e '\n \e[91m'$checkdist
-			sudo apt update && sudo apt dist-upgrade -y
-			
-			cd /tmp
-			ls
-			wget https://dev.mysql.com/get/mysql-apt-config_0.8.11-1_all.deb
-			echo -e '\n \e[91m'$donotforgetv
-			sleep 2
-			sudo dpkg -i mysql-apt-config*
-			sudo apt update
-			cd /
-			
-			sleep 10
-			sudo apt install apache2 unzip php7.0 php7.0-mysql php7.0-curl git
-			sudo apt install mysql-server
-			sudo apt install phpmyadmin
-			sudo apt install libfcgi-dev libfcgi0ldbl libjpeg62-turbo-dev libmcrypt-dev libssl-dev libc-client2007e libc-client2007e-dev libxml2-dev
-			sudo apt install libbz2-dev libcurl4-openssl-dev libjpeg-dev libpng-dev libfreetype6-dev libkrb5-dev libpq-dev libxml2-dev libxslt1-dev
-			sleep 5
-			
-			sed -i '/<Directory "\/var\/www\/html">/,/<\/Directory>/ s/AllowOverride None/AllowOverride all/' /etc/apache2/apache2.conf
-			sudo a2enmod rewrite
-			sudo service apache2 restart
-			sudo rm -rf /var/www/html
-			cd /var/www && git clone https://github.com/MrDarkSkil/Launcher_Multigaming.git -b webpanel-test html
-			chown -R www-data:www-data /var/www/html/games/
-			chmod -R 777 /var/www/html/configs/
-			
-			echo -e '\n \e[92m'$successinstall
-			echo -e '\n \e[92m'$successinstalladress
-			exit 0;
 		else
 			vers='ufo'
 		fi
