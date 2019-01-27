@@ -1,6 +1,6 @@
 #!/bin/bash -e
 
-lang=$(locale | grep LANGUAGE | cut -d= -f2 | cut -d_ -f1)
+lang=$(locale | grep LANG | cut -d= -f2 | cut -d_ -f1)
 
 function jumpto {
     	label=$1
@@ -59,37 +59,37 @@ if [[ "$OSTYPE" == "linux-gnu" ]]; then
 		auth=1
 		if [[ '$(version '$outh')' <  '$(version '$(lsb_release --release | awk '{ print $2 }')')' ]]; then
 			vers=$(lsb_release --release | awk '{ print $2 }')
-                        echo -e '\n \e[92mYour OS Has Authorized to proceed'
+                        echo -e '\n \e[92mYour OS Has Authorized to proceed';
                         auth=1
-                        echo -e '\n ************************* \n Informations Trouvée : \n *************************'
-                        echo -e '\n Type de Distribution : '$os' ...'
-                        echo -e '\n Nom de L OS : '$ost' ...'
-                        echo -e '\n Version : '$vers' ...'
-                        echo -e '\n Autorisé à installer ? OUI'
+                        echo -e '\n ************************* \n Informations Trouvée : \n *************************';
+                        echo -e '\n Type de Distribution : '$os' ...';
+                        echo -e '\n Nom de L OS : '$ost' ...';
+                        echo -e '\n Version : '$vers' ...';
+                        echo -e '\n Autorisé à installer ? OUI';
 
-			startdebian9x=${1:-"startdebian9x"}
+			startdebian9x=${1:-"startdebian9x"};
 
 			if [[ $os == 'linux' || $auth == 1 ]]; then
-				echo -e '\n \e[39mPlease Confirm to accept auto Install ?'
+				echo -e '\n \e[39mPlease Confirm to accept auto Install ?';
 				if [[ "non" == $(ask_y_or_n "Are you sure?") ]]; then
-					echo -e '\n \e[39m'$confirm
-					sleep 2
+					echo -e '\n \e[39m'$confirm;
+					sleep 2;
 					if [[ "non" == $(ask_y_or_n "Are you *really* sure?") ]]; then
-    						echo -e '\n \e[91m'$cancel
-    						exit 0
+    						echo -e '\n \e[91m'$cancel;
+    						exit 0;
 					else
-						echo -e '\n \e[39m'$installprog
-						jumpto $startdebian9x
+						echo -e '\n \e[39m'$installprog;
+						jumpto $startdebian9x;
 					fi
 				else
-					echo -e '\n \e[39m'$confirm
-					sleep 2
+					echo -e '\n \e[39m'$confirm;
+					sleep 2;
 					if [[ "non" == $(ask_y_or_n "Are you *really* sure?") ]]; then
-						echo -e '\n \e[91m'$cancel
-    						exit 0
+						echo -e '\n \e[91m'$cancel;
+    						exit 0;
 					else
-						echo -e '\n \e[39m'$installprog
-						jumpto $startdebian9x
+						echo -e '\n \e[39m'$installprog;
+						jumpto $startdebian9x;
 					fi
 				fi
 			fi
@@ -105,7 +105,7 @@ if [[ "$OSTYPE" == "linux-gnu" ]]; then
 			cd /tmp
 			wget https://dev.mysql.com/get/mysql-apt-config_0.8.11-1_all.deb
 			echo -e '\n \e[91m'$donotforgetv
-			sleep 2
+			sleep 2;
 			sudo dpkg -i mysql-apt-config*
 			sudo apt update
 			cd /
@@ -220,8 +220,6 @@ else
 
 fi
 
-start:
-if 
 echo -e $s
 
 echo -e "\n \e[39m"$os
