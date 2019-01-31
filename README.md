@@ -25,10 +25,13 @@ https://github.com/emodyz/launcher-ezgames.eu
 - Donation system
 - Profile editing (in launcher)
 
-## Launcher Panel Install Guide:
+--------------------------------------------------
+## Install Command:
 
-En Français: https://github.com/MrDarkSkil/Launcher_Multigaming/wiki/Intall-guide-for-DEBIAN-8-%5BFR%5D<br>
-In English:  https://github.com/MrDarkSkil/Launcher_Multigaming/wiki/Intall-guide-for-DEBIAN-8-%5BEN%5D<br>
+- wget https://raw.githubusercontent.com/MrDarkSkil/Launcher_Multigaming/bash-unix/auto-installV5.sh<br>
+- chmod +x<br>
+- ./auto-installV5.sh<br>
+--------------------------------------------------
 
 ## Alpha WebPanel :
 https://github.com/MrDarkSkil/Launcher_Multigaming/tree/webpanel-test
