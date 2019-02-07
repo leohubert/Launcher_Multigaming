@@ -292,7 +292,7 @@ if [[ "$OSTYPE" == "linux-gnu" ]]; then
 				apt install libbz2-dev libcurl4-openssl-dev libjpeg-dev libpng-dev libfreetype6-dev libkrb5-dev libpq-dev libxml2-dev libxslt1-dev -y
 				sleep 5
 			
-				sed '/<Directory \/var\/www\/>/,/<\/Directory>/ s/AllowOverride None/AllowOverride all/' /etc/apache2/apache2.conf
+				sed -i '/<Directory \/var\/www\/>/,/<\/Directory>/ s/AllowOverride None/AllowOverride all/' /etc/apache2/apache2.conf
 				a2enmod rewrite
 				service apache2 restart
 				rm -rf /var/www/html
@@ -308,9 +308,6 @@ if [[ "$OSTYPE" == "linux-gnu" ]]; then
 			
 				echo -e '\n \e[92m'$successinstall
 				echo -e '\n \e[92m'$successinstalladress
-				sed '/<Directory \/var\/www\/>/,/<\/Directory>/ s/AllowOverride None/AllowOverride all/' /etc/apache2/apache2.conf 
-				a2enmod rewrite
-				service apache2 restart
 				exit 0
 		else
 			vers=$(lsb_release --release | awk '{ print $2 }')
