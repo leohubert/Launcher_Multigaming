@@ -259,7 +259,6 @@ if [[ "$OSTYPE" == "linux-gnu" ]]; then
 
 			startubuntu18x:
 			echo -e '\n \e[39m'$checkdep
-				sudo su
 				apt update && sudo apt upgrade -y
 				echo -e '\n \e[91m'$checkdist
 				apt update && sudo apt dist-upgrade -y
