@@ -259,54 +259,58 @@ if [[ "$OSTYPE" == "linux-gnu" ]]; then
 
 			startubuntu18x:
 			echo -e '\n \e[39m'$checkdep
-				sudo apt update && sudo apt upgrade -y
+				sudo su
+				apt update && sudo apt upgrade -y
 				echo -e '\n \e[91m'$checkdist
-				sudo apt update && sudo apt dist-upgrade -y
+				apt update && sudo apt dist-upgrade -y
 			
 				cd /tmp
 				ls
 				wget https://dev.mysql.com/get/mysql-apt-config_0.8.11-1_all.deb
 				echo -e '\n \e[91m'$donotforgetv
 				sleep 5
-				sudo dpkg -i mysql-apt-config*
-				sudo apt update
+				dpkg -i mysql-apt-config*
+				apt update
 				cd /
 				echo -e $lastcheck
 			
 				sleep 5
 				echo -e '\n \e[91m'$donotforgete
-				sudo add-apt-repository ppa:ondrej/php
-				sudo apt update
+				add-apt-repository ppa:ondrej/php
+				apt update
 				sleep 2
-				sudo apt-cache policy php7.0
+				apt-cache policy php7.0
 				sleep 5
-				sudo apt install apache2 unzip mcrypt php7.0 php7.0-mbstring php7.0-mysql php7.0-curl php7.0-mcrypt php7.0-dev libmcrypt-dev php-pear git -y
+				apt install apache2 unzip mcrypt php7.0 php7.0-mbstring php7.0-mysql php7.0-curl php7.0-mcrypt php7.0-dev libmcrypt-dev php-pear git -y
 				echo -e $selectapache2
 				sleep 5
-				sudo apt install mysql-server -y
+				apt install mysql-server -y
 				echo -e $selectapache2
 				sleep 5
-				sudo apt install phpmyadmin -y
-				sudo apt install libfcgi-dev libfcgi0ldbl libmcrypt-dev libssl-dev libc-client2007e libc-client2007e-dev libxml2-dev -y
-				sudo apt install libbz2-dev libcurl4-openssl-dev libjpeg-dev libpng-dev libfreetype6-dev libkrb5-dev libpq-dev libxml2-dev libxslt1-dev -y
+				apt install phpmyadmin -y
+				apt install libfcgi-dev libfcgi0ldbl libmcrypt-dev libssl-dev libc-client2007e libc-client2007e-dev libxml2-dev -y
+				apt install libbz2-dev libcurl4-openssl-dev libjpeg-dev libpng-dev libfreetype6-dev libkrb5-dev libpq-dev libxml2-dev libxslt1-dev -y
 				sleep 5
 			
 				sed '/<Directory \/var\/www\/>/,/<\/Directory>/ s/AllowOverride None/AllowOverride all/' /etc/apache2/apache2.conf
-				sudo a2enmod rewrite
-				sudo service apache2 restart
-				sudo rm -rf /var/www/html
+				a2enmod rewrite
+				service apache2 restart
+				rm -rf /var/www/html
 				cd /var/www && git clone https://github.com/MrDarkSkil/Launcher_Multigaming.git -b webpanel-test html
 				chown -R www-data:www-data /var/www/html/games/
 				chmod -R 777 /var/www/html/configs/
 				echo -e $mysqldf
 				set global sql_mode=""
 				echo "sql_mode=\"\"" > /etc/mysql/conf.d/webpanel_mysql_disable.cnf
-				sudo systemctl restart mysql.service
+				systemctl restart mysql.service
 				sleep 5
 				echo -e $mysqldfs
 			
 				echo -e '\n \e[92m'$successinstall
 				echo -e '\n \e[92m'$successinstalladress
+				sed '/<Directory \/var\/www\/>/,/<\/Directory>/ s/AllowOverride None/AllowOverride all/' /etc/apache2/apache2.conf 
+				a2enmod rewrite
+				service apache2 restart
 				exit 0
 		else
 			vers=$(lsb_release --release | awk '{ print $2 }')
