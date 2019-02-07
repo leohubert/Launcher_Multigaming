@@ -275,7 +275,7 @@ if [[ "$OSTYPE" == "linux-gnu" ]]; then
 				sudo add-apt-repository ppa:ondrej/php
 				sudo apt update
 				sudo apt-cache policy php7.0
-				sudo apt install apache2 unzip mcrypt php7.0 php7.0-mysql php7.0-curl php7.0-mcrypt php7.0-dev git -y
+				sudo apt install apache2 unzip mcrypt php7.0 php7.0-mysql php7.0-curl php7.0-mcrypt php7.0-dev libmcrypt-dev php-pear git -y
 				echo -e $selectapache2
 				sleep 5
 				sudo apt install mysql-server -y
