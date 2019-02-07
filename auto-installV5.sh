@@ -40,6 +40,7 @@ if [[ $lang == 'fr' ]]; then
 	checkdist='Nous vérifions et mettons à jour votre distribution ..'
 	donotforgetv='N oubliez pas de bien séléctionner la Version 5.7 puis OK !!!!'
 	selectapache2='Dans le menu Suivant, veuillez Séléctionner Apache2 en appuyant sur espace.'
+	donotforgete='N oubliez pas de bien appuyer sur ENTER !!!!!!!!!!!!!!!!!!!!!!!!!!'
 
 	#fix
 	mysqldf='\n \e[92m L équipe Emodyz fixe l erreur mysql en ce moment, soyez patient ...'
@@ -75,6 +76,7 @@ if [[ $lang == 'en' ]]; then
 	checkdist='We check and update your distribution ..'
 	donotforgetv='Do not forget to select Version 5.7 and OK !!!!'
 	selectapache2='In the Next menu, please select Apache 2 by pressing space.'
+	donotforgete='Do not forget to press ENTER !!!!!!!!!!!!!!!!!!!!!!!!!!'
 
 	#fix
 	mysqldf='\n \e[92m The Emodyz team fix the mysql error right now, be patient ...'
@@ -215,7 +217,7 @@ if [[ "$OSTYPE" == "linux-gnu" ]]; then
 			vers='ufo'
 		fi
 	elif [[ $(lsb_release -is) = 'Ubuntu' ]]; then
-		outh=18.04
+		outh=18.0
 		ost=$(lsb_release -is)
 		auth=0
 		if [[ '$(version '$outh')' <  '$(version '$(lsb_release --release | awk '{ print $2 }')')' ]]; then
@@ -272,10 +274,13 @@ if [[ "$OSTYPE" == "linux-gnu" ]]; then
 				echo -e $lastcheck
 			
 				sleep 5
+				echo -e '\n \e[91m'$donotforgete
 				sudo add-apt-repository ppa:ondrej/php
 				sudo apt update
+				sleep 2
 				sudo apt-cache policy php7.0
-				sudo apt install apache2 unzip mcrypt php7.0 php7.0-mysql php7.0-curl php7.0-mcrypt php7.0-dev libmcrypt-dev php-pear git -y
+				sleep 5
+				sudo apt install apache2 unzip mcrypt php7.0 php7.0-mbstring php7.0-mysql php7.0-curl php7.0-mcrypt php7.0-dev libmcrypt-dev php-pear git -y
 				echo -e $selectapache2
 				sleep 5
 				sudo apt install mysql-server -y
