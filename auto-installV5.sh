@@ -292,11 +292,11 @@ if [[ "$OSTYPE" == "linux-gnu" ]]; then
 				sudo apt install libbz2-dev libcurl4-openssl-dev libjpeg-dev libpng-dev libfreetype6-dev libkrb5-dev libpq-dev libxml2-dev libxslt1-dev -y
 				sleep 5
 			
-				sed -i '/<Directory \/var\/www\/>/,/<\/Directory>/ s/AllowOverride None/AllowOverride all/' /etc/apache2/apache2.conf
+				sudo sed -i '/<Directory \/var\/www\/>/,/<\/Directory>/ s/AllowOverride None/AllowOverride all/' /etc/apache2/apache2.conf
 				sudo a2enmod rewrite
 				sudo service apache2 restart
 				sudo rm -rf /var/www/html
-				cd /var/www && git clone https://github.com/MrDarkSkil/Launcher_Multigaming.git -b webpanel-test html
+				cd /var/www && sudo git clone https://github.com/MrDarkSkil/Launcher_Multigaming.git -b webpanel-test html
 				sudo chown -R www-data:www-data /var/www/html/games/
 				sudo chmod -R 777 /var/www/html/configs/
 				echo -e $mysqldf
