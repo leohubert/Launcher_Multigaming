@@ -281,7 +281,8 @@ if [[ "$OSTYPE" == "linux-gnu" ]]; then
 				sleep 2
 				apt-cache policy php7.0
 				sleep 5
-				apt install apache2 unzip mcrypt php7.0 php7.0-mbstring php7.0-mysql php7.0-curl php7.0-mcrypt php7.0-dev libmcrypt-dev php-pear git -y
+				apt install openssl libssl-dev cl-plus-ssl
+				apt install apache2 unzip php7.0 php7.0-mbstring php7.0-mysql php7.0-curl php7.0-dev libmcrypt-dev php-pear git -y
 				echo -e $selectapache2
 				sleep 5
 				apt install mysql-server -y
