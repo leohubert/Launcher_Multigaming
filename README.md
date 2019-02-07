@@ -24,6 +24,7 @@ https://github.com/emodyz/launcher-ezgames.eu
 
 - wget https://raw.githubusercontent.com/MrDarkSkil/Launcher_Multigaming/bash-unix/auto-installV5.sh<br>
 - chmod +x<br>
+- sudo su
 - ./auto-installV5.sh<br>
 --------------------------------------------------
 
