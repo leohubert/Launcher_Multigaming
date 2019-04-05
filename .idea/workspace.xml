@@ -1,14 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="71971931-68df-46df-9feb-24995bfad939" name="Default" comment="Fix git class #57">
+    <list default="true" id="f97ccefc-3830-4b3c-a0c2-460f9e69219e" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/Launcher_Multigaming.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/blade.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/c57ce7fc-2de6-451e-bc4a-07c53e12cb85/storage_v2/_src_/database/launcher.oA8frA.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/c57ce7fc-2de6-451e-bc4a-07c53e12cb85/storage_v2/_src_/database/launcher.oA8frA/schema/public.abK9xQ.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/fda00e4f-3cc8-490c-9070-b3acf5394f7a.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/fda00e4f-3cc8-490c-9070-b3acf5394f7a/storage_v2/_src_/schema/altislife.D-7zsg.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/fda00e4f-3cc8-490c-9070-b3acf5394f7a/storage_v2/_src_/schema/altislife.D-7zsg.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/deployment.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/login.php" beforeDir="false" afterPath="$PROJECT_DIR$/api/login.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/js/pages/admin/users_view.js" beforeDir="false" afterPath="$PROJECT_DIR$/assets/js/pages/admin/users_view.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/class/Indexer.php" beforeDir="false" afterPath="$PROJECT_DIR$/class/Indexer.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/users/client/changepass.php" beforeDir="false" afterPath="$PROJECT_DIR$/api/users/client/changepass.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/class/user/User.class.php" beforeDir="false" afterPath="$PROJECT_DIR$/class/user/User.class.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/configs/config_general.php" beforeDir="false" afterPath="$PROJECT_DIR$/configs/config_general.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/auth/locked.php" beforeDir="false" afterPath="$PROJECT_DIR$/pages/auth/locked.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/games/lastUpdate.txt" beforeDir="false" afterPath="$PROJECT_DIR$/games/lastUpdate.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/index.php" afterDir="false" />
     </list>
+    <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -26,203 +41,57 @@
     <option name="HIDDEN_KINDS">
       <set />
     </option>
-    <expand>
-      <path>
-        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
-        <item name="altislife@78.129.104.37" type="feb32156:DbDataSourceImpl" />
-      </path>
-      <path>
-        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
-        <item name="altislife@78.129.104.37" type="feb32156:DbDataSourceImpl" />
-        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
-      </path>
-      <path>
-        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
-        <item name="altislife@78.129.104.37" type="feb32156:DbDataSourceImpl" />
-        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
-        <item name="altislife: schema" type="c314c289:MysqlImplModel$Schema" />
-      </path>
-      <path>
-        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
-        <item name="altislife@78.129.104.37" type="feb32156:DbDataSourceImpl" />
-        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
-        <item name="altislife: schema" type="c314c289:MysqlImplModel$Schema" />
-        <item name="tables" type="d4e8921:DatabaseStructure$FamilyGroup" />
-      </path>
-    </expand>
+    <expand />
     <select />
   </component>
-  <component name="FUSProjectUsageTrigger">
-    <session id="1081879155">
-      <usages-collector id="statistics.file.extensions.edit">
-        <counts>
-          <entry key="php" value="531" />
-          <entry key="txt" value="22" />
-        </counts>
-      </usages-collector>
-      <usages-collector id="statistics.file.types.edit">
-        <counts>
-          <entry key="PHP" value="531" />
-          <entry key="PLAIN_TEXT" value="22" />
-        </counts>
-      </usages-collector>
-      <usages-collector id="statistics.file.extensions.open">
-        <counts>
-          <entry key="js" value="1" />
-          <entry key="php" value="16" />
-          <entry key="sql" value="1" />
-        </counts>
-      </usages-collector>
-      <usages-collector id="statistics.file.types.open">
-        <counts>
-          <entry key="JavaScript" value="1" />
-          <entry key="PHP" value="16" />
-          <entry key="SQL" value="1" />
-        </counts>
-      </usages-collector>
-    </session>
-  </component>
-  <component name="FavoritesManager">
-    <favorites_list name="Launcher_Multigaming" />
+  <component name="DefaultGradleProjectSettings">
+    <option name="testRunner" value="GRADLE" />
+    <option name="delegatedBuild" value="true" />
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/api/update.php">
+        <entry file="file://$PROJECT_DIR$/api/users/client/changepass.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <caret column="5" lean-forward="true" selection-start-column="5" selection-end-column="5" />
-              <folding>
-                <element signature="e#6#90#0#PHP" expanded="true" />
-              </folding>
+            <state relative-caret-position="399">
+              <caret line="36" column="40" selection-start-line="36" selection-start-column="40" selection-end-line="36" selection-end-column="40" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/jointures/header_client.php">
+        <entry file="file://$PROJECT_DIR$/index.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="601">
-              <caret line="181" column="17" lean-forward="true" selection-start-line="181" selection-start-column="17" selection-end-line="181" selection-end-column="17" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/jointures/header_admin.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="435">
-              <caret line="29" lean-forward="true" selection-start-line="29" selection-end-line="29" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/class/Indexer.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="80">
-              <caret line="57" column="18" selection-start-line="57" selection-start-column="8" selection-end-line="57" selection-end-column="18" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/api/indexer.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="75">
-              <caret line="10" column="19" lean-forward="true" selection-start-line="10" selection-start-column="19" selection-end-line="10" selection-end-column="19" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/api/login.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="281">
-              <caret line="110" column="13" selection-start-line="110" selection-start-column="13" selection-end-line="110" selection-end-column="13" />
+            <state relative-caret-position="598">
+              <caret line="26" column="29" selection-start-line="26" selection-start-column="29" selection-end-line="26" selection-end-column="29" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/pages/auth/locked.php">
+        <entry file="file://$PROJECT_DIR$/class/user/User.class.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="391">
-              <caret line="71" column="60" selection-start-line="71" selection-start-column="60" selection-end-line="71" selection-end-column="60" />
+            <state relative-caret-position="638">
+              <caret line="255" column="32" lean-forward="true" selection-start-line="255" selection-start-column="32" selection-end-line="255" selection-end-column="32" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/pages/admin/users/view.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="811">
-              <caret line="285" column="47" selection-start-line="285" selection-start-column="47" selection-end-line="285" selection-end-column="47" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/assets/js/pages/admin/users_view.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="416">
-              <caret line="154" column="30" lean-forward="true" selection-start-line="154" selection-start-column="30" selection-end-line="154" selection-end-column="30" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/pages/client/profile/view.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-381" />
-          </provider>
+        <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/33cd6d56-8e4d-4025-bb32-031d92eb2faa/console.sql">
+          <provider selected="true" editor-type-id="text-editor" />
         </entry>
       </file>
     </leaf>
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>&quot;assets/</find>
-      <find>checked</find>
-      <find>chec</find>
-      <find>analytics</find>
-      <find>FRAN</find>
-      <find>f</find>
-      <find>$encrypt_key)</find>
-      <find>$encrypt_key</find>
-      <find>$encrypt_key1</find>
-      <find>$encr</find>
-      <find>$encrypter = new Encryption($encrypt_key1, $encrypt_key2);</find>
-      <find>$encrypter</find>
-      <find>-&gt;encode</find>
-      <find>token</find>
-      <find>has</find>
-      <find>execute</find>
-      <find>run</find>
-      <find>fetch</find>
-      <find>&lt;link href=&quot;/assets/css/responsive.css&quot; rel=&quot;stylesheet&quot; type=&quot;text/css&quot; /&gt;</find>
-      <find>&lt;link href=&quot;/assets/plugins/sweetalert/dist/sweetalert.css&quot; rel=&quot;stylesheet&quot; type=&quot;text/css&quot;&gt;</find>
-      <find>load</find>
-      <find>update</find>
-      <find>waitingDialog</find>
-      <find>waiting</find>
-      <find>isUp</find>
-      <find>window.</find>
-      <find>ce</find>
-      <find>logout</find>
-      <find>delete</find>
-      <find>ip</find>
+      <find>User</find>
+      <find>key1</find>
+      <find>checkUser</find>
     </findStrings>
-    <replaceStrings>
-      <replace>&lt;br&gt;</replace>
-      <replace>$encrypt_key1, $encrypt_key2)</replace>
-      <replace>&lt;link href=&quot;/assets/css/responsive.css&quot; rel=&quot;stylesheet&quot; type=&quot;text/css&quot; /&gt; &lt;script src=&quot;https://unpkg.com/sweetalert/dist/sweetalert.min.js&quot;&gt;&lt;/script&gt;</replace>
-      <replace />
-    </replaceStrings>
     <dirStrings>
-      <dir>$PROJECT_DIR$/WebPanel/vendor/laravel</dir>
-      <dir>$PROJECT_DIR$/WebPanel</dir>
-      <dir>$PROJECT_DIR$</dir>
+      <dir>C:\Users\FlashModz\Documents\Giiiit\Launcher_Multigaming</dir>
     </dirStrings>
   </component>
   <component name="Git.Settings">
@@ -231,157 +100,84 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/WebPanel/app/User.php" />
-        <option value="$PROJECT_DIR$/WebPanel/.env.example" />
-        <option value="$PROJECT_DIR$/WebPanel/.env" />
-        <option value="$PROJECT_DIR$/WebPanel/config/app.php" />
-        <option value="$PROJECT_DIR$/WebPanel/app/Http/Kernel.php" />
-        <option value="$PROJECT_DIR$/WebPanel/config/tracker.php" />
-        <option value="$PROJECT_DIR$/WebPanel/storage/logs/laravel.log" />
-        <option value="$PROJECT_DIR$/WebPanel/config/database.php" />
-        <option value="$PROJECT_DIR$/WebPanel/resources/lang/fr/global.php" />
-        <option value="$USER_HOME$/Desktop/themeforest-6434477-neon-bootstrap-admin-theme/html/neon/extra-profile.html" />
-        <option value="$PROJECT_DIR$/WebPanel/resources/views/account/index.blade.php" />
-        <option value="$PROJECT_DIR$/WebPanel/public/assets/js/neon-chat.js" />
-        <option value="$PROJECT_DIR$/WebPanel/resources/views/inc/chat.blade.php" />
-        <option value="$PROJECT_DIR$/WebPanel/resources/lang/uk/global.php" />
-        <option value="$PROJECT_DIR$/WebPanel/database/migrations/2014_10_12_000000_create_users_table.php" />
-        <option value="$PROJECT_DIR$/WebPanel/routes/web.php" />
-        <option value="$PROJECT_DIR$/WebPanel/app/Http/Controllers/UsersController.php" />
-        <option value="$PROJECT_DIR$/WebPanel/resources/views/inc/sidebar.blade.php" />
-        <option value="$PROJECT_DIR$/WebPanel/resources/views/layouts/app.blade.php" />
-        <option value="$PROJECT_DIR$/WebPanel/resources/views/inc/footer.blade.php" />
-        <option value="$PROJECT_DIR$/WebPanel/app/Http/Controllers/AccountController.php" />
-        <option value="$PROJECT_DIR$/WebPanel/resources/views/users/profile.blade.php" />
-        <option value="$PROJECT_DIR$/api/indexer.php" />
-        <option value="$PROJECT_DIR$/api/server/admin/saveDB.php" />
-        <option value="$PROJECT_DIR$/api/register.php" />
-        <option value="$PROJECT_DIR$/api/server/admin/database/save.php" />
-        <option value="$PROJECT_DIR$/api/server/admin/database/get.php" />
-        <option value="$PROJECT_DIR$/api/encrypt.php" />
-        <option value="$PROJECT_DIR$/api/users/client/changepass.php" />
-        <option value="$PROJECT_DIR$/install/index.php" />
-        <option value="$PROJECT_DIR$/install/finish_config.php" />
-        <option value="$PROJECT_DIR$/install/save_config.php" />
-        <option value="$PROJECT_DIR$/api/server/client/players/get.php" />
-        <option value="$PROJECT_DIR$/class/encryption.php" />
-        <option value="$PROJECT_DIR$/class/uploader/GitUpdater.php" />
-        <option value="$PROJECT_DIR$/class/GitUpdater.php" />
-        <option value="$PROJECT_DIR$/class/IGit.php" />
-        <option value="$PROJECT_DIR$/assets/plugins/sweetalert/dist/sweetalert.min.js" />
-        <option value="$PROJECT_DIR$/pages/admin/settings/settings.php" />
-        <option value="$PROJECT_DIR$/pages/admin/index.php" />
-        <option value="$PROJECT_DIR$/api/test.php" />
-        <option value="$PROJECT_DIR$/api/update.php" />
-        <option value="$PROJECT_DIR$/lastUpdate.txt" />
-        <option value="$PROJECT_DIR$/class/GitRepository.php" />
-        <option value="$PROJECT_DIR$/assets/js/pages/admin/users_view.js" />
-        <option value="$PROJECT_DIR$/configs/config_general.php" />
-        <option value="$PROJECT_DIR$/class/Indexer.php" />
         <option value="$PROJECT_DIR$/index.php" />
-        <option value="$PROJECT_DIR$/jointures/header_admin.php" />
-        <option value="$PROJECT_DIR$/api/login.php" />
-        <option value="$PROJECT_DIR$/pages/auth/locked.php" />
+        <option value="$PROJECT_DIR$/api/users/client/changepass.php" />
+        <option value="$PROJECT_DIR$/class/user/User.class.php" />
       </list>
     </option>
   </component>
-  <component name="JsBuildToolGruntFileManager" detection-done="true" sorting="DEFINITION_ORDER" />
-  <component name="JsBuildToolPackageJson" detection-done="true" sorting="DEFINITION_ORDER" />
-  <component name="JsGulpfileManager">
-    <detection-done>true</detection-done>
-    <sorting>DEFINITION_ORDER</sorting>
-  </component>
-  <component name="PhpServers">
-    <servers />
-  </component>
-  <component name="ProjectFrameBounds" fullScreen="true">
-    <option name="width" value="1920" />
-    <option name="height" value="1200" />
-  </component>
-  <component name="ProjectLevelVcsManager">
-    <ConfirmationsSetting value="2" id="Add" />
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="1912" />
+    <option name="y" value="-8" />
+    <option name="width" value="1936" />
+    <option name="height" value="1096" />
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
             <path>
-              <item name="v5-webpanel" type="b2602c69:ProjectViewProjectNode" />
-              <item name="v5-webpanel" type="462c0819:PsiDirectoryNode" />
+              <item name="Launcher_Multigaming" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Launcher_Multigaming" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="v5-webpanel" type="b2602c69:ProjectViewProjectNode" />
-              <item name="v5-webpanel" type="462c0819:PsiDirectoryNode" />
+              <item name="Launcher_Multigaming" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Launcher_Multigaming" type="462c0819:PsiDirectoryNode" />
               <item name="api" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="v5-webpanel" type="b2602c69:ProjectViewProjectNode" />
-              <item name="v5-webpanel" type="462c0819:PsiDirectoryNode" />
-              <item name="assets" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="v5-webpanel" type="b2602c69:ProjectViewProjectNode" />
-              <item name="v5-webpanel" type="462c0819:PsiDirectoryNode" />
-              <item name="assets" type="462c0819:PsiDirectoryNode" />
-              <item name="js" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="v5-webpanel" type="b2602c69:ProjectViewProjectNode" />
-              <item name="v5-webpanel" type="462c0819:PsiDirectoryNode" />
-              <item name="assets" type="462c0819:PsiDirectoryNode" />
-              <item name="js" type="462c0819:PsiDirectoryNode" />
-              <item name="pages" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="v5-webpanel" type="b2602c69:ProjectViewProjectNode" />
-              <item name="v5-webpanel" type="462c0819:PsiDirectoryNode" />
-              <item name="assets" type="462c0819:PsiDirectoryNode" />
-              <item name="js" type="462c0819:PsiDirectoryNode" />
-              <item name="pages" type="462c0819:PsiDirectoryNode" />
-              <item name="admin" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="v5-webpanel" type="b2602c69:ProjectViewProjectNode" />
-              <item name="v5-webpanel" type="462c0819:PsiDirectoryNode" />
-              <item name="configs" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="v5-webpanel" type="b2602c69:ProjectViewProjectNode" />
-              <item name="v5-webpanel" type="462c0819:PsiDirectoryNode" />
-              <item name="install" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="v5-webpanel" type="b2602c69:ProjectViewProjectNode" />
-              <item name="v5-webpanel" type="462c0819:PsiDirectoryNode" />
-              <item name="jointures" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="v5-webpanel" type="b2602c69:ProjectViewProjectNode" />
-              <item name="v5-webpanel" type="462c0819:PsiDirectoryNode" />
-              <item name="pages" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="v5-webpanel" type="b2602c69:ProjectViewProjectNode" />
-              <item name="v5-webpanel" type="462c0819:PsiDirectoryNode" />
-              <item name="pages" type="462c0819:PsiDirectoryNode" />
-              <item name="admin" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="v5-webpanel" type="b2602c69:ProjectViewProjectNode" />
-              <item name="v5-webpanel" type="462c0819:PsiDirectoryNode" />
-              <item name="pages" type="462c0819:PsiDirectoryNode" />
-              <item name="admin" type="462c0819:PsiDirectoryNode" />
+              <item name="Launcher_Multigaming" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Launcher_Multigaming" type="462c0819:PsiDirectoryNode" />
+              <item name="api" type="462c0819:PsiDirectoryNode" />
               <item name="users" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="v5-webpanel" type="b2602c69:ProjectViewProjectNode" />
-              <item name="v5-webpanel" type="462c0819:PsiDirectoryNode" />
+              <item name="Launcher_Multigaming" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Launcher_Multigaming" type="462c0819:PsiDirectoryNode" />
+              <item name="api" type="462c0819:PsiDirectoryNode" />
+              <item name="users" type="462c0819:PsiDirectoryNode" />
+              <item name="client" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Launcher_Multigaming" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Launcher_Multigaming" type="462c0819:PsiDirectoryNode" />
+              <item name="class" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Launcher_Multigaming" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Launcher_Multigaming" type="462c0819:PsiDirectoryNode" />
+              <item name="class" type="462c0819:PsiDirectoryNode" />
+              <item name="user" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Launcher_Multigaming" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Launcher_Multigaming" type="462c0819:PsiDirectoryNode" />
               <item name="pages" type="462c0819:PsiDirectoryNode" />
-              <item name="auth" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Launcher_Multigaming" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Launcher_Multigaming" type="462c0819:PsiDirectoryNode" />
+              <item name="pages" type="462c0819:PsiDirectoryNode" />
+              <item name="client" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Launcher_Multigaming" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Launcher_Multigaming" type="462c0819:PsiDirectoryNode" />
+              <item name="pages" type="462c0819:PsiDirectoryNode" />
+              <item name="client" type="462c0819:PsiDirectoryNode" />
+              <item name="profile" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Launcher_Multigaming" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Launcher_Multigaming" type="462c0819:PsiDirectoryNode" />
+              <item name="pages" type="462c0819:PsiDirectoryNode" />
+              <item name="client" type="462c0819:PsiDirectoryNode" />
+              <item name="support" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -391,167 +187,15 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
+    <property name="DatabaseDriversLRU" value="mysql" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="com.intellij.database.dataSource.DataSourceTemplate" value="MySQL" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="node.js.path.for.package.eslint" value="project" />
-    <property name="node.js.path.for.package.jscs" value="project" />
-    <property name="node.js.path.for.package.standard" value="project" />
-    <property name="node.js.selected.package.eslint" value="" />
-    <property name="node.js.selected.package.jscs" value="" />
-    <property name="node.js.selected.package.standard" value="" />
-    <property name="nodejs_interpreter_path" value="/usr/local/bin/node" />
-  </component>
-  <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/api" />
-      <recent name="$PROJECT_DIR$/WebPanel/public/upload/avatars" />
-      <recent name="$PROJECT_DIR$/WebPanel/resources/lang/uk" />
-      <recent name="$PROJECT_DIR$/WebPanel/resources/lang/fr" />
-      <recent name="$PROJECT_DIR$/WebPanel/config" />
-    </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/class" />
-      <recent name="$PROJECT_DIR$/WebPanel/public/upload/avatars" />
-      <recent name="$PROJECT_DIR$/WebPanel/public/assets/js/scripts" />
-      <recent name="$PROJECT_DIR$/WebPanel/resources/lang/fr" />
-      <recent name="$PROJECT_DIR$/WebPanel/public" />
-    </key>
-  </component>
-  <component name="RestoreUpdateTree" date="Moments ago" ActionInfo="_Update">
-    <UpdatedFiles>
-      <FILE-GROUP>
-        <option name="myUpdateName" value="Updated from server" />
-        <option name="myStatusName" value="Changed on server" />
-        <option name="mySupportsDeletion" value="false" />
-        <option name="myCanBeAbsent" value="false" />
-        <option name="myId" value="CHANGED_ON_SERVER" />
-        <FILE-GROUP>
-          <option name="myUpdateName" value="Updated" />
-          <option name="myStatusName" value="Changed" />
-          <option name="mySupportsDeletion" value="false" />
-          <option name="myCanBeAbsent" value="false" />
-          <option name="myId" value="UPDATED" />
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/readme.md</PATH>
-        </FILE-GROUP>
-        <FILE-GROUP>
-          <option name="myUpdateName" value="Created" />
-          <option name="myStatusName" value="Created" />
-          <option name="mySupportsDeletion" value="false" />
-          <option name="myCanBeAbsent" value="false" />
-          <option name="myId" value="CREATED" />
-        </FILE-GROUP>
-        <FILE-GROUP>
-          <option name="myUpdateName" value="Deleted" />
-          <option name="myStatusName" value="Deleted" />
-          <option name="mySupportsDeletion" value="false" />
-          <option name="myCanBeAbsent" value="true" />
-          <option name="myId" value="REMOVED_FROM_REPOSITORY" />
-        </FILE-GROUP>
-        <FILE-GROUP>
-          <option name="myUpdateName" value="Restored" />
-          <option name="myStatusName" value="Will be restored" />
-          <option name="mySupportsDeletion" value="false" />
-          <option name="myCanBeAbsent" value="false" />
-          <option name="myId" value="RESTORED" />
-        </FILE-GROUP>
-      </FILE-GROUP>
-      <FILE-GROUP>
-        <option name="myUpdateName" value="Modified" />
-        <option name="myStatusName" value="Modified" />
-        <option name="mySupportsDeletion" value="false" />
-        <option name="myCanBeAbsent" value="false" />
-        <option name="myId" value="MODIFIED" />
-      </FILE-GROUP>
-      <FILE-GROUP>
-        <option name="myUpdateName" value="Skipped" />
-        <option name="myStatusName" value="Skipped" />
-        <option name="mySupportsDeletion" value="false" />
-        <option name="myCanBeAbsent" value="false" />
-        <option name="myId" value="SKIPPED" />
-      </FILE-GROUP>
-      <FILE-GROUP>
-        <option name="myUpdateName" value="Merged with conflicts" />
-        <option name="myStatusName" value="Will be merged with conflicts" />
-        <option name="mySupportsDeletion" value="false" />
-        <option name="myCanBeAbsent" value="false" />
-        <option name="myId" value="MERGED_WITH_CONFLICTS" />
-      </FILE-GROUP>
-      <FILE-GROUP>
-        <option name="myUpdateName" value="Merged with tree conflicts" />
-        <option name="myStatusName" value="Merged with tree conflicts" />
-        <option name="mySupportsDeletion" value="false" />
-        <option name="myCanBeAbsent" value="false" />
-        <option name="myId" value="MERGED_WITH_TREE_CONFLICT" />
-      </FILE-GROUP>
-      <FILE-GROUP>
-        <option name="myUpdateName" value="Merged with property conflicts" />
-        <option name="myStatusName" value="Will be merged with property conflicts" />
-        <option name="mySupportsDeletion" value="false" />
-        <option name="myCanBeAbsent" value="false" />
-        <option name="myId" value="MERGED_WITH_PROPERTY_CONFLICT" />
-      </FILE-GROUP>
-      <FILE-GROUP>
-        <option name="myUpdateName" value="Merged" />
-        <option name="myStatusName" value="Will be merged" />
-        <option name="mySupportsDeletion" value="false" />
-        <option name="myCanBeAbsent" value="false" />
-        <option name="myId" value="MERGED" />
-      </FILE-GROUP>
-      <FILE-GROUP>
-        <option name="myUpdateName" value="Not in repository" />
-        <option name="myStatusName" value="Not in repository" />
-        <option name="mySupportsDeletion" value="true" />
-        <option name="myCanBeAbsent" value="false" />
-        <option name="myId" value="UNKNOWN" />
-      </FILE-GROUP>
-      <FILE-GROUP>
-        <option name="myUpdateName" value="Locally added" />
-        <option name="myStatusName" value="Locally added" />
-        <option name="mySupportsDeletion" value="false" />
-        <option name="myCanBeAbsent" value="false" />
-        <option name="myId" value="LOCALLY_ADDED" />
-      </FILE-GROUP>
-      <FILE-GROUP>
-        <option name="myUpdateName" value="Locally removed" />
-        <option name="myStatusName" value="Locally removed" />
-        <option name="mySupportsDeletion" value="false" />
-        <option name="myCanBeAbsent" value="false" />
-        <option name="myId" value="LOCALLY_REMOVED" />
-      </FILE-GROUP>
-      <FILE-GROUP>
-        <option name="myUpdateName" value="Switched" />
-        <option name="myStatusName" value="Switched" />
-        <option name="mySupportsDeletion" value="false" />
-        <option name="myCanBeAbsent" value="false" />
-        <option name="myId" value="SWITCHED" />
-      </FILE-GROUP>
-    </UpdatedFiles>
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
+    <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
   <component name="RunDashboard">
-    <option name="ruleStates">
-      <list>
-        <RuleState>
-          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
-        </RuleState>
-        <RuleState>
-          <option name="name" value="StatusDashboardGroupingRule" />
-        </RuleState>
-      </list>
-    </option>
-  </component>
-  <component name="RunManager">
-    <configuration default="true" type="js.build_tools.gulp" factoryName="Gulp.js">
-      <node-interpreter>project</node-interpreter>
-      <node-options />
-      <gulpfile />
-      <tasks />
-      <arguments />
-      <envs />
-      <method v="2" />
-    </configuration>
-  </component>
-  <component name="RuntimeDashboard">
     <option name="ruleStates">
       <list>
         <RuleState>
@@ -568,518 +212,101 @@
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="71971931-68df-46df-9feb-24995bfad939" name="Default" comment="" />
-      <created>1486567729914</created>
+      <changelist id="f97ccefc-3830-4b3c-a0c2-460f9e69219e" name="Default Changelist" comment="" />
+      <created>1554503681726</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1486567729914</updated>
-      <workItem from="1486567732512" duration="5851000" />
-      <workItem from="1486578601706" duration="6625000" />
-      <workItem from="1486675536308" duration="6519000" />
-      <workItem from="1486687509574" duration="9320000" />
-      <workItem from="1486733120648" duration="187000" />
-      <workItem from="1486744251020" duration="4637000" />
-      <workItem from="1523388049805" duration="2259000" />
-      <workItem from="1523700367531" duration="4128000" />
-      <workItem from="1523898653087" duration="37000" />
-      <workItem from="1523902883012" duration="76000" />
-      <workItem from="1523917082032" duration="4278000" />
-      <workItem from="1524059994773" duration="5059000" />
-      <workItem from="1524696272143" duration="9265000" />
-      <workItem from="1524731104113" duration="2741000" />
-      <workItem from="1525468289104" duration="3225000" />
-      <workItem from="1525797406881" duration="2165000" />
-      <workItem from="1526072042748" duration="700000" />
-      <workItem from="1527028228941" duration="760000" />
-      <workItem from="1527702569538" duration="81000" />
-      <workItem from="1529950189282" duration="3532000" />
+      <updated>1554503681726</updated>
+      <workItem from="1554503688075" duration="94000" />
+      <workItem from="1554503802586" duration="49000" />
+      <workItem from="1554503878303" duration="3823000" />
     </task>
-    <task id="LOCAL-00001" summary="Change / to HomeController for secure home with auth system">
-      <created>1486675741093</created>
-      <option name="number" value="00001" />
-      <option name="presentableId" value="LOCAL-00001" />
-      <option name="project" value="LOCAL" />
-      <updated>1486675741093</updated>
-    </task>
-    <task id="LOCAL-00002" summary="Change / view and prepare layout">
-      <created>1486678102835</created>
-      <option name="number" value="00002" />
-      <option name="presentableId" value="LOCAL-00002" />
-      <option name="project" value="LOCAL" />
-      <updated>1486678102835</updated>
-    </task>
-    <task id="LOCAL-00003" summary="Add multi languages system">
-      <created>1486682184157</created>
-      <option name="number" value="00003" />
-      <option name="presentableId" value="LOCAL-00003" />
-      <option name="project" value="LOCAL" />
-      <updated>1486682184157</updated>
-    </task>
-    <task id="LOCAL-00004" summary="Add Entrust permission system">
-      <created>1486688549105</created>
-      <option name="number" value="00004" />
-      <option name="presentableId" value="LOCAL-00004" />
-      <option name="project" value="LOCAL" />
-      <updated>1486688549105</updated>
-    </task>
-    <task id="LOCAL-00005" summary="Prepare profile view and users control">
-      <created>1486702118806</created>
-      <option name="number" value="00005" />
-      <option name="presentableId" value="LOCAL-00005" />
-      <option name="project" value="LOCAL" />
-      <updated>1486702118806</updated>
-    </task>
-    <task id="LOCAL-00006" summary="Profile view and users view at same view">
-      <created>1486754248974</created>
-      <option name="number" value="00006" />
-      <option name="presentableId" value="LOCAL-00006" />
-      <option name="project" value="LOCAL" />
-      <updated>1486754248974</updated>
-    </task>
-    <task id="LOCAL-00007" summary="Add button to see Emodyz Support datas">
-      <created>1523919674497</created>
-      <option name="number" value="00007" />
-      <option name="presentableId" value="LOCAL-00007" />
-      <option name="project" value="LOCAL" />
-      <updated>1523919674497</updated>
-    </task>
-    <task id="LOCAL-00008" summary="Add Emodyz Support instructions">
-      <created>1523921634016</created>
-      <option name="number" value="00008" />
-      <option name="presentableId" value="LOCAL-00008" />
-      <option name="project" value="LOCAL" />
-      <updated>1523921634016</updated>
-    </task>
-    <task id="LOCAL-00009" summary="Change encrypt class">
-      <created>1524063568229</created>
-      <option name="number" value="00009" />
-      <option name="presentableId" value="LOCAL-00009" />
-      <option name="project" value="LOCAL" />
-      <updated>1524063568229</updated>
-    </task>
-    <task id="LOCAL-00010" summary="Fix encryption windows">
-      <created>1524073010933</created>
-      <option name="number" value="00010" />
-      <option name="presentableId" value="LOCAL-00010" />
-      <option name="project" value="LOCAL" />
-      <updated>1524073010933</updated>
-    </task>
-    <task id="LOCAL-00011" summary="Add auto updater #57">
-      <created>1524705385455</created>
-      <option name="number" value="00011" />
-      <option name="presentableId" value="LOCAL-00011" />
-      <option name="project" value="LOCAL" />
-      <updated>1524705385455</updated>
-    </task>
-    <task id="LOCAL-00012" summary="Add auto updater #57">
-      <created>1524705537281</created>
-      <option name="number" value="00012" />
-      <option name="presentableId" value="LOCAL-00012" />
-      <option name="project" value="LOCAL" />
-      <updated>1524705537281</updated>
-    </task>
-    <task id="LOCAL-00013" summary="Fix git class #57">
-      <created>1524732490462</created>
-      <option name="number" value="00013" />
-      <option name="presentableId" value="LOCAL-00013" />
-      <option name="project" value="LOCAL" />
-      <updated>1524732490463</updated>
-    </task>
-    <task id="LOCAL-00014" summary="Fix git class #57">
-      <created>1524733883875</created>
-      <option name="number" value="00014" />
-      <option name="presentableId" value="LOCAL-00014" />
-      <option name="project" value="LOCAL" />
-      <updated>1524733883875</updated>
-    </task>
-    <task id="LOCAL-00015" summary="Fix git class #57">
-      <created>1524733951192</created>
-      <option name="number" value="00015" />
-      <option name="presentableId" value="LOCAL-00015" />
-      <option name="project" value="LOCAL" />
-      <updated>1524733951192</updated>
-    </task>
-    <task id="LOCAL-00016" summary="Fix git class #57">
-      <created>1524734518025</created>
-      <option name="number" value="00016" />
-      <option name="presentableId" value="LOCAL-00016" />
-      <option name="project" value="LOCAL" />
-      <updated>1524734518025</updated>
-    </task>
-    <task id="LOCAL-00017" summary="Fix git class #57">
-      <created>1525468412326</created>
-      <option name="number" value="00017" />
-      <option name="presentableId" value="LOCAL-00017" />
-      <option name="project" value="LOCAL" />
-      <updated>1525468412326</updated>
-    </task>
-    <task id="LOCAL-00018" summary="Fix header dropdown">
-      <created>1529951229796</created>
-      <option name="number" value="00018" />
-      <option name="presentableId" value="LOCAL-00018" />
-      <option name="project" value="LOCAL" />
-      <updated>1529951229797</updated>
-    </task>
-    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="71445000" />
-  </component>
-  <component name="TodoView">
-    <todo-panel id="selected-file">
-      <is-autoscroll-to-source value="true" />
-    </todo-panel>
-    <todo-panel id="all">
-      <are-packages-shown value="true" />
-      <is-autoscroll-to-source value="true" />
-    </todo-panel>
+    <option name="totallyTimeSpent" value="3966000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="0" width="1920" height="1200" extended-state="0" />
+    <frame x="-8" y="-8" width="3856" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49534884" visible="true" weight="0.2284345" />
-      <window_info id="Structure" order="1" side_tool="true" weight="0.24969475" />
-      <window_info id="Favorites" order="2" sideWeight="0.5046512" side_tool="true" weight="0.25641027" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.25263435" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info id="Image Layers" order="2" />
+      <window_info id="Designer" order="3" />
+      <window_info id="UI Designer" order="4" />
+      <window_info id="Capture Tool" order="5" />
+      <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" weight="0.32711112" />
+      <window_info anchor="bottom" id="Find" order="1" />
       <window_info anchor="bottom" id="Run" order="2" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="bottom" id="TODO" order="6" weight="0.32906976" />
+      <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Database Changes" order="8" />
-      <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" weight="0.3299435" />
-      <window_info anchor="bottom" id="Messages" order="10" weight="0.32957503" />
-      <window_info anchor="bottom" id="Terminal" order="11" weight="0.32977778" />
-      <window_info anchor="bottom" id="Version Control" order="12" visible="true" weight="0.107964605" />
-      <window_info anchor="bottom" id="Run Dashboard" order="13" />
-      <window_info anchor="bottom" id="Inspection Results" order="14" weight="0.32977778" />
-      <window_info active="true" anchor="bottom" id="Database Console" order="15" visible="true" weight="0.32977778" />
-      <window_info anchor="right" id="Commander" order="0" weight="0.4" />
+      <window_info anchor="bottom" id="Version Control" order="8" />
+      <window_info anchor="bottom" id="Database Changes" order="9" />
+      <window_info anchor="bottom" id="Terminal" order="10" />
+      <window_info anchor="bottom" id="Event Log" order="11" side_tool="true" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-      <window_info anchor="right" id="Database" order="3" weight="0.32960597" />
+      <window_info anchor="right" id="Palette" order="3" />
+      <window_info anchor="right" id="Theme Preview" order="4" />
+      <window_info anchor="right" id="Maven" order="5" />
+      <window_info anchor="right" id="Capture Analysis" order="6" />
+      <window_info anchor="right" id="Palette&#9;" order="7" />
+      <window_info anchor="right" id="Database" order="8" visible="true" weight="0.32982087" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
   </component>
-  <component name="Vcs.Log.History.Properties">
-    <option name="COLUMN_ORDER">
-      <list>
-        <option value="0" />
-        <option value="2" />
-        <option value="3" />
-        <option value="1" />
-      </list>
-    </option>
-  </component>
-  <component name="VcsContentAnnotationSettings">
-    <option name="myLimit" value="2678400000" />
-  </component>
-  <component name="VcsManagerConfiguration">
-    <MESSAGE value="Change / to HomeController for secure home with auth system" />
-    <MESSAGE value="Change / view and prepare layout" />
-    <MESSAGE value="Add multi languages system" />
-    <MESSAGE value="Add Entrust permission system" />
-    <MESSAGE value="Prepare profile view and users control" />
-    <MESSAGE value="Profile view and users view at same view" />
-    <MESSAGE value="Add button to see Emodyz Support datas" />
-    <MESSAGE value="Add Emodyz Support instructions" />
-    <MESSAGE value="Change encrypt class" />
-    <MESSAGE value="Fix encryption windows" />
-    <MESSAGE value="Add auto updater #57" />
-    <MESSAGE value="Fix git class #57" />
-    <MESSAGE value="Fix header dropdown" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fix header dropdown" />
-  </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/WebPanel/resources/views/layouts/app.blade.php" />
-    <entry file="file://$PROJECT_DIR$/WebPanel/resources/views/inc/footer.blade.php" />
-    <entry file="file://$PROJECT_DIR$/WebPanel/app/Http/Controllers/Controller.php" />
-    <entry file="file://$PROJECT_DIR$/WebPanel/app/Http/Controllers/AccountController.php" />
-    <entry file="file://$PROJECT_DIR$/WebPanel/resources/views/inc/chat.blade.php" />
-    <entry file="file://$PROJECT_DIR$/WebPanel/resources/views/home.blade.php" />
-    <entry file="file://$PROJECT_DIR$/WebPanel/resources/views/users/profile.blade.php" />
-    <entry file="file://$PROJECT_DIR$/.gitignore">
+    <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/33cd6d56-8e4d-4025-bb32-031d92eb2faa/console.sql">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pages/client/profile/edit.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="1" column="8" selection-start-line="1" selection-start-column="8" selection-end-line="1" selection-end-column="8" />
-        </state>
+        <state relative-caret-position="-5175" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/api/server/admin/database/save.php">
+    <entry file="file://$PROJECT_DIR$/index.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="15" selection-start-line="15" selection-end-line="15" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/api/server/admin/saveDB.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="15" column="4" selection-start-line="15" selection-start-column="4" selection-end-line="15" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/api/server/admin/database/get.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="220">
-          <caret line="33" selection-start-line="33" selection-end-line="33" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/api/encrypt.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="10" selection-start-line="10" selection-end-line="10" />
+        <state relative-caret-position="598">
+          <caret line="26" column="29" selection-start-line="26" selection-start-column="29" selection-end-line="26" selection-end-column="29" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/api/users/client/changepass.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="19" column="45" selection-start-line="19" selection-start-column="45" selection-end-line="19" selection-end-column="45" />
+        <state relative-caret-position="399">
+          <caret line="36" column="40" selection-start-line="36" selection-start-column="40" selection-end-line="36" selection-end-column="40" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/install/save_config.php">
+    <entry file="file://$PROJECT_DIR$/class/user/User.class.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="269">
-          <caret line="24" column="49" selection-start-line="24" selection-start-column="49" selection-end-line="24" selection-end-column="49" />
+        <state relative-caret-position="638">
+          <caret line="255" column="32" lean-forward="true" selection-start-line="255" selection-start-column="32" selection-end-line="255" selection-end-column="32" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/class/encryption.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="480">
-          <caret line="37" column="5" lean-forward="true" selection-start-line="37" selection-start-column="5" selection-end-line="37" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="das://fda00e4f-3cc8-490c-9070-b3acf5394f7a/schema/altislife/table/cellphone">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/api/server/client/players/get.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="317">
-          <caret line="33" column="55" selection-start-line="33" selection-start-column="55" selection-end-line="33" selection-end-column="55" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/class/GitUpdater.php" />
-    <entry file="file://$PROJECT_DIR$/class/IGit.php" />
-    <entry file="file://$PROJECT_DIR$/people.txt" />
-    <entry file="file://$PROJECT_DIR$/pages/admin/servers/servers.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1827" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pages/admin/servers/view.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="512">
-          <caret line="902" column="45" selection-start-line="893" selection-end-line="902" selection-end-column="45" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/assets/js/waiting.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="6" column="4" selection-start-line="6" selection-start-column="4" selection-end-line="6" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/assets/plugins/sweetalert/dist/sweetalert.min.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="961">
-          <caret column="16884" selection-start-column="16884" selection-end-column="16884" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pages/admin/index.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="495">
-          <caret line="33" column="42" selection-start-line="33" selection-start-column="42" selection-end-line="33" selection-end-column="42" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/api/register.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="380">
-          <caret line="40" column="52" selection-start-line="40" selection-start-column="52" selection-end-line="40" selection-end-column="52" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/class/GitRepository.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="424">
-          <caret line="64" column="24" lean-forward="true" selection-start-line="64" selection-start-column="24" selection-end-line="64" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lastUpdate.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="26" selection-start-column="26" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/readme.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="SPLIT">
-          <first_editor relative-caret-position="30">
-            <caret line="2" selection-start-line="2" selection-end-line="3" />
-          </first_editor>
-          <second_editor />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/class/RestClient.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3780">
-          <caret line="256" selection-start-line="256" selection-end-line="256" />
-          <folding>
-            <element signature="e#7#125#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/configs/config_general.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="6" lean-forward="true" selection-start-line="6" selection-end-line="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/api/test.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="45">
-          <caret line="8" selection-start-line="8" selection-end-line="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/install/install_finish.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-524" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/install/mysql_test.php">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/install/mysql_inject.php">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/install/finish_config.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="525">
-          <caret line="35" column="9" lean-forward="true" selection-start-line="19" selection-start-column="7" selection-end-line="35" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/install/sql_inject.sql">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="416">
-          <caret line="170" column="74" selection-start-line="170" selection-start-column="43" selection-end-line="170" selection-end-column="74" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/index.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="81" column="3" selection-start-line="81" selection-start-column="3" selection-end-line="81" selection-end-column="3" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/configs/config_mysql.php">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/jointures/footer.php">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/install/index.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1240">
-          <caret line="115" column="17" selection-start-line="115" selection-start-column="12" selection-end-line="115" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/jointures/header_client.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="601">
-          <caret line="181" column="17" lean-forward="true" selection-start-line="181" selection-start-column="17" selection-end-line="181" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/api/update.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="5" lean-forward="true" selection-start-column="5" selection-end-column="5" />
-          <folding>
-            <element signature="e#6#90#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/jointures/header_admin.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="435">
-          <caret line="29" lean-forward="true" selection-start-line="29" selection-end-line="29" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pages/client/profile/view.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-381" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pages/admin/users/view.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="811">
-          <caret line="285" column="47" selection-start-line="285" selection-start-column="47" selection-end-line="285" selection-end-column="47" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/assets/js/pages/admin/users_view.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="416">
-          <caret line="154" column="30" lean-forward="true" selection-start-line="154" selection-start-column="30" selection-end-line="154" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/api/indexer.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="10" column="19" lean-forward="true" selection-start-line="10" selection-start-column="19" selection-end-line="10" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/class/Indexer.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="80">
-          <caret line="57" column="18" selection-start-line="57" selection-start-column="8" selection-end-line="57" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/api/login.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="281">
-          <caret line="110" column="13" selection-start-line="110" selection-start-column="13" selection-end-line="110" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pages/auth/locked.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="391">
-          <caret line="71" column="60" selection-start-line="71" selection-start-column="60" selection-end-line="71" selection-end-column="60" />
-        </state>
-      </provider>
-    </entry>
+  </component>
+  <component name="masterDetails">
+    <states>
+      <state key="ProjectJDKs.UI">
+        <settings>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+    </states>
   </component>
 </project>

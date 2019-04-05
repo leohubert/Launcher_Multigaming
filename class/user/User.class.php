@@ -231,4 +231,28 @@ class User{
     public function recoveryPassword(){
 
     }
+
+    public function changePasswd($id, $actual, $new, $confnew){
+        $ck = $this->database->prepare('SELECT password FROM users WHERE id = :id');
+        $ck->execute(array('id' => $id));
+        $st = $ck->fetch();
+
+        if ($actual == $st[0]) {
+            if ($new === $confnew) {
+                $cki = $this->database->prepare('UPDATE users SET password=:passwd WHERE id=:id');
+                $d = [
+                    'res' => $cki->execute(array('passwd' => $new, 'id' => $id))
+                ];
+                return json_encode($d);
+            }else{
+                $d = [
+                    'res' => false
+                ];
+
+                return json_encode($d);
+            }
+        }
+
+        return json_encode($st);
+    }
 }

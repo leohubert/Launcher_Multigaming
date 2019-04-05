@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/Launcher_Multigaming.iml" filepath="$PROJECT_DIR$/.idea/Launcher_Multigaming.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Launcher_Multigaming.iml" filepath="$PROJECT_DIR$/Launcher_Multigaming.iml" />
     </modules>
   </component>
 </project>

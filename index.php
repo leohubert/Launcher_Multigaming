@@ -198,6 +198,7 @@ $router->map('POST', '/api/notifications/readall', 'api/notifications/readall.ph
 
 /* Match the current request */
 $match = $router->match();
+$GLOBALS['datab'] = $database;
 
 /* Mount All Class */
 $config = new Config($database);
