@@ -179,7 +179,7 @@ if [[ "$OSTYPE" == "linux-gnu" ]]; then
 				wget https://dev.mysql.com/get/mysql-apt-config_0.8.11-1_all.deb
 				echo -e '\n \e[91m'$donotforgetv
 				sleep 5
-				sudo dpkg -i mysql-apt-config*
+				dpkg -i mysql-apt-config*
 				sudo apt update
 				cd /
 				echo -e $lastcheck
