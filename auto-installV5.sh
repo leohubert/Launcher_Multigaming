@@ -1,6 +1,6 @@
 #!/bin/bash
 
-lang=$(locale | grep LANG | cut -d= -f2 | cut -d_ -f1)
+lang=$(locale | grep LANG= | cut -d= -f2 | cut -d_ -f1)
 
 os=''
 ost=''
