@@ -169,8 +169,8 @@ if [[ "$OSTYPE" == "linux-gnu" ]]; then
 				
 				st19x:
 				echo -e '\n \e[39m'$checkdep
-				sudo apt update && sudo apt upgrade -y
 				apt install sudo
+				sudo apt update && sudo apt upgrade -y
 				echo -e '\n \e[91m'$checkdist
 				sudo apt update && sudo apt dist-upgrade -y
 			
