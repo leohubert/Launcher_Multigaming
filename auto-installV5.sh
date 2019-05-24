@@ -178,6 +178,7 @@ if [[ "$OSTYPE" == "linux-gnu" ]]; then
 				ls
 				wget https://dev.mysql.com/get/mysql-apt-config_0.8.11-1_all.deb
 				echo -e '\n \e[91m'$donotforgetv
+				sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 8C718D3B5072E1F5
 				sleep 5
 				dpkg -i mysql-apt-config*
 				sudo apt update
