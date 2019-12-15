@@ -54,8 +54,17 @@ namespace LauncherArma3
         {
             Thread thread = new Thread(() =>
             {
-                this.BeginInvoke((MethodInvoker)async delegate
+                if (SteamAPI.IsSteamRunning())
                 {
+                    this.SteamUUID = SteamUser.GetSteamID().ToString();
+                    SteamAPI.Shutdown();
+                    this.DialogResult = DialogResult.OK;
+                    this.Close();
+                }
+                else
+                {
+                    this.BeginInvoke((MethodInvoker)async delegate
+                    {
                     startSteam.Enabled = false;
                     startSteam.Text = "STARTING...";
                     Process.Start("steam://");
@@ -63,8 +72,9 @@ namespace LauncherArma3
                     await Task.Delay(10000);
                     while (tryToGetSteamUID(false) == false) {
                         await Task.Delay(2000);
-                    }
-                });
+                        }
+                    });
+                }
             });
             thread.Start();
         }
