@@ -210,7 +210,7 @@ if [[ "$OSTYPE" == "linux-gnu" ]]; then
 				chmod -R 777 /var/www/html/configs/
 				echo -e $mysqldf
 				set global sql_mode=""
-				echo "sql_mode=\"\"" > /etc/mysql/conf.d/webpanel_mysql_disable.cnf
+				echo "[mysqld]\n sql_mode=\"\"" > /etc/mysql/conf.d/webpanel_mysql_disable.cnf
 				sudo systemctl restart mysql.service
 				sleep 5
 				echo -e $mysqldfs
