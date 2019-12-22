@@ -106,6 +106,7 @@ if [[ "$OSTYPE" == "linux-gnu" ]]; then
 		auth=1
 		if [[ '$(version '$outh')' <  '$(version '$(lsb_release --release | awk '{ print $2 }')')' ]]; then
 			vers=$(lsb_release --release | awk '{ print $2 }')
+			lang=$(export locale | grep LANG= | cut -d= -f2 | cut -d_ -f1)
                         echo -e '\n \e[92mYour OS Has Authorized to proceed'
                         auth=1
                         echo -e '\n ************************* \n Informations Trouvée : \n *************************'
