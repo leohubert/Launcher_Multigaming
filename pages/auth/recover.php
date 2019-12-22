@@ -8,7 +8,7 @@
 
         <link rel="shortcut icon" href="assets/images/favicon_1.ico">
 
-        <title>Minton - Responsive Admin Dashboard Template</title>
+        <title><?php echo $config->get("site_name");?></title>
 
         <link href="assets/css/bootstrap.min.css" rel="stylesheet" type="text/css">
         <link href="assets/css/core.css" rel="stylesheet" type="text/css">
@@ -36,7 +36,7 @@
         <div class="wrapper-page">
 
             <div class="text-center">
-                <a href="index-2.html" class="logo logo-lg"><i class="md md-equalizer"></i> <span>Minton</span> </a>
+                <a href="index-2.html" class="logo logo-lg"><i class="md md-equalizer"></i> <span><?php echo $config->get("site_name");?></span> - Recovery </a>
             </div>
 
             <form method="post" action="#" role="form" class="text-center m-t-20">
