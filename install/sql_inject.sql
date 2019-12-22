@@ -113,7 +113,8 @@ CREATE TABLE IF NOT EXISTS `settings` (
   `login` int(11) NOT NULL,
   `register` int(11) NOT NULL,
   `indexer` int(11) NOT NULL,
-  `uuid` tinyint(1) NOT NULL DEFAULT '1'
+  `uuid` tinyint(1) NOT NULL DEFAULT '1',
+  `max_account` int(1) NOT NULL DEFAULT '1'
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4;
 
 --
