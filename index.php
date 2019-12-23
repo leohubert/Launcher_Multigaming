@@ -100,6 +100,7 @@ $router->map('GET', '/terms', 'pages/auth/terms.php', 'terms');
 $router->map('GET', '/login', 'pages/auth/login.php', 'login');
 $router->map('GET', '/register', 'pages/auth/register.php', 'register');
 $router->map('GET', '/recover', 'pages/auth/recover.php', 'recover');
+$router->map('GET', '/recoveru', 'pages/auth/recover-final.php', 'recover-final');
 $router->map('GET', '/logout', 'pages/auth/actions/logout.php', 'logout');
 $router->map('GET', '/lock', 'pages/auth/actions/lock.php', 'lock');
 $router->map('GET', '/install_finish', 'install/install_finish.php', 'install-finish');
@@ -109,6 +110,8 @@ $router->map('POST', '/api/login', 'api/login.php', 'api-login');
 $router->map('POST', '/api/register', 'api/register.php', 'api-register');
 $router->map('GET', '/api/settings', 'api/settings.php', 'api-settings');
 $router->map('POST', '/api/config', 'api/config.php', 'api-config');
+$router->map('POST', '/api/recoveryrequest', 'api/recovery-request.php', 'api-recovery-request');
+$router->map('POST', '/api/recovery', 'api/recovery.php', 'api-recovery');
 
 /** @var API news route */
 $router->map('POST', '/api/news/launcher', 'api/news/news_launcher.php', 'api-news');

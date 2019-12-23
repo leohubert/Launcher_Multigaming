@@ -133,6 +133,18 @@ $selevlel = json_decode($user->checkAdmin($_SESSION['token']));
                                                             </div>
                                                         </div>
                                                     </div>
+                                                    <div class="row">
+                                                        <div class="col-md-8">
+                                                            <div class="card-box">
+                                                                <input type="text" class="form-control" id="url_website" placeholder="<?php echo $config->get("url_website")?>">
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-4">
+                                                            <div class="card-box">
+                                                                <button type="submit" onclick="updateurlwebsite()" class="btn btn-primary">Update URL of your panel</button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
                                                 </div><br>
 
                                                 <div class="modal-footer">
@@ -156,7 +168,7 @@ $selevlel = json_decode($user->checkAdmin($_SESSION['token']));
                                                     <div class="row">
                                                         <div class="col-md-8">
                                                             <div class="card-box">
-                                                                <input type="text" class="form-control" id="mailhost" placeholder="<?php echo $config->get("mail_host")?>">
+                                                                <input type="text" class="form-control" id="mailhost" placeholder="<?php echo $config->get("host_mail")?>">
                                                             </div>
                                                         </div>
                                                         <div class="col-md-4">
@@ -168,7 +180,7 @@ $selevlel = json_decode($user->checkAdmin($_SESSION['token']));
                                                     <div class="row">
                                                         <div class="col-md-8">
                                                             <div class="card-box">
-                                                                <input type="text" class="form-control" id="mailusername" placeholder="<?php echo $config->get("mail_username")?>">
+                                                                <input type="text" class="form-control" id="mailusername" placeholder="<?php echo $config->get("username_mail")?>">
                                                             </div>
                                                         </div>
                                                         <div class="col-md-4">
@@ -192,24 +204,36 @@ $selevlel = json_decode($user->checkAdmin($_SESSION['token']));
                                                     <div class="row">
                                                         <div class="col-md-8">
                                                             <div class="card-box">
-                                                                <input type="text" class="form-control" id="mailsecure" placeholder="<?php echo $config->get("mail_secure")?>">
+                                                                <input type="text" class="form-control" id="mailsecure" placeholder="<?php echo $config->get("secure_mail")?>">
                                                             </div>
                                                         </div>
                                                         <div class="col-md-4">
                                                             <div class="card-box">
-                                                                <button type="submit" onclick=updatemailsecure()"" class="btn btn-primary">Change Mail Encryption</button>
+                                                                <button type="submit" onclick="updatemailsecure()" class="btn btn-primary">Change Mail Encryption</button>
                                                             </div>
                                                         </div>
                                                     </div>
                                                     <div class="row">
                                                         <div class="col-md-8">
                                                             <div class="card-box">
-                                                                <input type="text" class="form-control" id="mailport" placeholder="<?php echo $config->get("mail_port")?>">
+                                                                <input type="text" class="form-control" id="mailport" placeholder="<?php echo $config->get("ports_mail")?>">
                                                             </div>
                                                         </div>
                                                         <div class="col-md-4">
                                                             <div class="card-box">
                                                                 <button type="submit" onclick="updatemailport()" class="btn btn-primary">Change Mail Port</button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-md-8">
+                                                            <div class="card-box">
+                                                                <input type="text" class="form-control" id="mailsender" placeholder="<?php echo $config->get("sender_mail")?>">
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-4">
+                                                            <div class="card-box">
+                                                                <button type="submit" onclick="updatemailsender()" class="btn btn-primary">Change Mail sender</button>
                                                             </div>
                                                         </div>
                                                     </div>

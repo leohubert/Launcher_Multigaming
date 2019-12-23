@@ -80,45 +80,66 @@ class Config {
 
             }
 
-            if (isset($this->name) && $this->name === "mail_host"){
+            if (isset($this->name) && $this->name === "host_mail"){
 
-                $updatemaintenance = $this->database->prepare('UPDATE settings SET mail_host=:mhost WHERE active=1');
+                $updatemaintenance = $this->database->prepare('UPDATE settings SET host_mail=:mhost WHERE active=1');
                 $updatemaintenance->execute(array('mhost' => $this->content));
 
                 return true;
 
             }
 
-            if (isset($this->name) && $this->name === "mail_username"){
+            if (isset($this->name) && $this->name === "username_mail"){
 
-                $updatemaintenance = $this->database->prepare('UPDATE settings SET mail_username=:content WHERE active=1');
+                $updatemaintenance = $this->database->prepare('UPDATE settings SET username_mail=:content WHERE active=1');
                 $updatemaintenance->execute(array('content' => $this->content));
 
                 return true;
 
             }
 
-            if (isset($this->name) && $this->name === "mail_password"){
+            if (isset($this->name) && $this->name === "password_mail"){
 
-                $updatemaintenance = $this->database->prepare('UPDATE settings SET mail_password=:content WHERE active=1');
+                $updatemaintenance = $this->database->prepare('UPDATE settings SET password_mail=:content WHERE active=1');
+		        $dcryptnow = new Encryption($GLOBALS['key1'], $GLOBALS['key2']);
+		        $savlvation = $dcryptnow->encode($this->content);
+		        $this->content = $savlvation;
                 $updatemaintenance->execute(array('content' => $this->content));
 
                 return true;
 
             }
 
-            if (isset($this->name) && $this->name === "mail_secure"){
+            if (isset($this->name) && $this->name === "secure_mail"){
 
-                $updatemaintenance = $this->database->prepare('UPDATE settings SET mail_secure=:content WHERE active=1');
+                $updatemaintenance = $this->database->prepare('UPDATE settings SET secure_mail=:content WHERE active=1');
                 $updatemaintenance->execute(array('content' => $this->content));
 
                 return true;
 
             }
 
-            if (isset($this->name) && $this->name === "mail_port"){
+            if (isset($this->name) && $this->name === "ports_mail"){
 
-                $updatemaintenance = $this->database->prepare('UPDATE settings SET mail_port=:content WHERE active=1');
+                $updatemaintenance = $this->database->prepare('UPDATE settings SET ports_mail=:content WHERE active=1');
+                $updatemaintenance->execute(array('content' => $this->content));
+
+                return true;
+
+            }
+
+            if (isset($this->name) && $this->name === "sender_mail"){
+
+                $updatemaintenance = $this->database->prepare('UPDATE settings SET sender_mail=:content WHERE active=1');
+                $updatemaintenance->execute(array('content' => $this->content));
+
+                return true;
+
+            }
+
+            if (isset($this->name) && $this->name === "url_website"){
+
+                $updatemaintenance = $this->database->prepare('UPDATE settings SET url_website=:content WHERE active=1');
                 $updatemaintenance->execute(array('content' => $this->content));
 
                 return true;

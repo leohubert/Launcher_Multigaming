@@ -39,16 +39,23 @@
                 <a href="index-2.html" class="logo logo-lg"><i class="md md-equalizer"></i> <span><?php echo $config->get("site_name");?></span> - Recovery </a>
             </div>
 
-            <form id="recoveryForm" onsubmit="return recoveryreq_function()">
+            <form id="recoveryForm" onsubmit="return recovery_function()">
                 <div class="alert alert-success alert-dismissable">
                     <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
-                    Enter your <b>Email</b> and instructions will be sent to you!
+                    Enter your <b>Code</b> and your new password !
                 </div>
                 <div class="form-group m-b-0">
                     <div class="input-group">
-                        <input id="email" type="email" class="form-control" placeholder="Enter Email" required="">
-                        <i class="md md-email form-control-feedback l-h-34" style="left:6px;"></i>
-                        <span class="input-group-btn"> <button type="submit" class="btn btn-email btn-primary waves-effect waves-light">Reset</button> </span>
+                        <input id="code" type="text" class="form-control" placeholder="Enter your code" required="">
+                    </div></br>
+                    <div class="input-group">
+                    <input id="password" type="password" class="form-control" placeholder="Enter new password" required="yes">
+                    </div></br>
+                    <div class="input-group">
+                    <input id="retype_password" type="password" class="form-control" placeholder="Retype new password" required="yes">
+                    </div></br>
+                    <div class="input-group">
+                        <span class="input-group-btn"> <button id="rest" type="submit" class="btn btn-email btn-primary waves-effect waves-light">Reset</button> </span>
                     </div>
                 </div>
 
@@ -59,23 +66,26 @@
     	<script>
             var resizefunc = [];
 
-            function recoveryreq_function() {
+            function recovery_function() {
             $.post(
-                '/api/recoveryrequest',
+                '/api/recovery',
                 {
-                    email: $("#email").val()
+                    code: $("#code").val(),
+                    password: $("#password").val(),
+                    retype_password: $("#retype_password").val(),
                 },
 
                 function (data) {
                     var obj = JSON.parse(data);
-                    if (obj.status == 200) {
-                        $.Notification.notify('success', 'top right', 'Email has been send', obj.message);
+                    if (obj.status == 20) {
+                        $.Notification.notify('success', 'top right', 'Password has been successfully modified', obj.message);
                         setTimeout(function () {
                             window.location = "/";
-                        }, 1500);
-                    }
-                    else
-                        $.Notification.notify('error', 'top right', 'Login error', obj.message);
+                        }, 2500);
+                    }else if (obj.status == 30) {
+                        $.Notification.notify('error', 'top right', 'Your code has used ..', obj.message);
+                    }else
+                        $.Notification.notify('error', 'top right', 'password change error', obj.message);
                 },
 
                 'text'

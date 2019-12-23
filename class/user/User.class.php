@@ -12,6 +12,7 @@ class User{
     private $token;
     private $userid;
     private $ip;
+    private $usmail;
 
 
     public function __construct($database){
@@ -228,8 +229,133 @@ class User{
 
     }
 
-    public function recoveryPassword(){
+    public function recoveryPassword($mail){
+        $this->usmail = $mail;
+        $checkmail = $this->database->prepare('SELECT * FROM users WHERE email = :usmail');
+        $checkmail->execute(array('usmail' => $this->usmail));
+        $ck = $checkmail->fetch();
 
+        if ($checkmail->rowCount() == 1) {
+            $getalready = $this->database->prepare('SELECT * FROM recovery WHERE users = :usmail AND used = 0');
+            $getalready->execute(array('usmail' => $this->usmail));
+            $cku = $getalready->fetch();
+
+            if ($getalready->rowCount() == 1){
+                $mail = New Mail($this->database);
+                $ret = json_decode($mail->exeConfig($this->usmail, $cku['code']));
+                if ($ret->status == 200){
+                    $data = array(
+                        'status' => 200,
+                        'message' => 'DONE'
+                    );
+                    return json_encode($data);
+                }else{
+                    $data = array(
+                        'status' => 500,
+                        'message' => $ret->message
+                    );
+                    return json_encode($data);
+                }
+            }else{
+                $code = rand();
+                $preprecovery = $this->database->prepare('INSERT INTO recovery (users, code, date_create,used) VALUES (:usmail,:code,now(),0)');
+                $preprecovery->execute(array('usmail' => $this->usmail, 'code' => $code));
+                $mail = New Mail($this->database);
+                $ret = json_decode($mail->exeConfig($this->usmail, $code));
+                if ($ret->status == 200){
+                    $data = array(
+                        'status' => 200,
+                        'message' => 'DONE'
+                    );
+                    return json_encode($data);
+                }else{
+                    $data = array(
+                        'status' => 500,
+                        'message' => $ret->message
+                    );
+                    return json_encode($data);
+                }
+            }
+        }else{
+            $data = array(
+                'status' => 404,
+                'message' => "0 Résultats"
+            );
+            return json_encode($data);
+        }
+    }
+
+    public function ckrecoveryPassword($code){
+        $ccode = $this->database->prepare('SELECT * FROM recovery WHERE code = :cc');
+        $ccode->execute(array('cc' => $code));
+        $cccode = $ccode->fetch();
+        if ($ccode->rowCount() == 1){
+            if ($cccode['used'] != 1){
+                $d = array(
+                    'status' => 200
+                );
+                return json_encode($d);
+            }else{
+                $d = array(
+                    'status' => 200
+                );
+                return json_encode($d);
+            }
+        }else{
+            $d = array(
+                'status' => 404
+            );
+            return json_encode($d);
+        }
+    }
+
+    public function changePasswdRec($code, $password, $password1){
+        $ck = $this->database->prepare('SELECT * FROM recovery WHERE code = :cc');
+        $ck->execute(array('cc' => $code));
+        $stu = $ck->fetch();
+        if ($stu['used'] != 1){
+            $cku = $this->database->prepare('SELECT * FROM users WHERE email = :us');
+            $cku->execute(array('us' => $stu['users']));
+            $std = $cku->fetch();
+            $id = $std['id'];
+            if ($ck->rowCount() == 1) {
+                if ($password == $password1) {
+                    $dcryptnow = new Encryption($GLOBALS['key1'], $GLOBALS['key2']);
+		            $savlvation = $dcryptnow->encode($password);
+		            $savlvation1 = $savlvation;
+                    $cki = $this->database->prepare('UPDATE users SET password=:passwd WHERE id=:id');
+                    $d = [
+                        'res' => $cki->execute(array('passwd' => $savlvation1, 'id' => $id)),
+                        'status' => 20
+                    ];
+                    $cke = $this->database->prepare('UPDATE recovery SET used=:used WHERE code=:cc');
+                    $cke->execute(array('used' => 1 ,'cc' => $code));
+                    return json_encode($d);
+                }else{
+                    $d = [
+                        'res' => false,
+                        'status' => 50
+                    ];
+
+                    return json_encode($d);
+                }
+            }
+        }else{
+            $d = [
+                'res' => false,
+                'status' => 30,
+                'message' => 'Already Used !'
+            ];
+
+            return json_encode($d);
+        }
+        
+
+        $st = array(
+            'res' => false
+        );
+
+        return json_encode($st);
     }
 
     public function changePasswd($id, $actual, $new, $confnew){
