@@ -26,14 +26,42 @@ SET time_zone = "+00:00";
 -- Structure de la table `news`
 --
 
-CREATE TABLE IF NOT EXISTS `news` (
-`id` int(11) NOT NULL,
+- phpMyAdmin SQL Dump
+-- version 4.6.6deb4
+-- https://www.phpmyadmin.net/
+--
+-- Client :  localhost:3306
+-- Généré le :  Lun 23 Décembre 2019 à 02:01
+-- Version du serveur :  5.7.28
+-- Version de PHP :  7.0.33-0+deb9u6
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
+
+--
+-- Base de données :  `Launcher`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `news`
+--
+
+CREATE TABLE `news` (
+  `id` int(11) NOT NULL,
   `title` varchar(255) NOT NULL,
   `content` text NOT NULL,
   `date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `link` varchar(255) NOT NULL,
   `server_id` int(11) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=28 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -41,14 +69,29 @@ CREATE TABLE IF NOT EXISTS `news` (
 -- Structure de la table `notifications`
 --
 
-CREATE TABLE IF NOT EXISTS `notifications` (
-`id` int(11) NOT NULL,
+CREATE TABLE `notifications` (
+  `id` int(11) NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `users` varchar(255) NOT NULL,
   `title` varchar(255) NOT NULL,
   `content` varchar(255) NOT NULL,
   `link` varchar(255) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `recovery`
+--
+
+CREATE TABLE `recovery` (
+  `id` int(11) NOT NULL,
+  `users` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `code` int(255) NOT NULL,
+  `date_create` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `used` int(2) NOT NULL DEFAULT '0',
+  `Last_update` timestamp(6) NOT NULL DEFAULT '0000-00-00 00:00:00.000000' ON UPDATE CURRENT_TIMESTAMP(6)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -101,8 +144,8 @@ CREATE TABLE IF NOT EXISTS `sessions` (
 -- Structure de la table `settings`
 --
 
-CREATE TABLE IF NOT EXISTS `settings` (
-`id` int(11) NOT NULL,
+CREATE TABLE `settings` (
+  `id` int(11) NOT NULL,
   `active` int(11) NOT NULL,
   `site_name` varchar(250) NOT NULL,
   `msg_title` varchar(250) NOT NULL,
@@ -114,16 +157,23 @@ CREATE TABLE IF NOT EXISTS `settings` (
   `register` int(11) NOT NULL,
   `indexer` int(11) NOT NULL,
   `uuid` tinyint(1) NOT NULL DEFAULT '1',
-  `max_account` int(1) NOT NULL DEFAULT '1'
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4;
+  `max_account` int(11) NOT NULL,
+  `username_mail` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `password_mail` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `ports_mail` int(11) NOT NULL,
+  `secure_mail` varchar(15) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `host_mail` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `sender_mail` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'example@example.com',
+  `url_website` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'localhost.com'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Contenu de la table `settings`
 --
 
 
-INSERT INTO `settings` (`id`, `active`, `site_name`, `msg_title`, `msg_content`, `maintenance`, `maintenance_title`, `maintenance_content`, `login`, `register`, `indexer`, `uuid`) VALUES
-(1, 1, 'default-V5', '{picture}', 'https://cdn.discordapp.com/attachments/382262072332779530/432251644978135070/news-default.jpg', 0, '{picture}', 'http://image.noelshack.com/fichiers/2016/25/1466452270-maintenance.png', 1, 1, 1, 1);
+INSERT INTO `settings` (`id`, `active`, `site_name`, `msg_title`, `msg_content`, `maintenance`, `maintenance_title`, `maintenance_content`, `login`, `register`, `indexer`, `uuid`, `max_account`, `username_mail`, `password_mail`, `ports_mail`, `secure_mail`, `host_mail`, `sender_mail`, `url_website`) VALUES
+(1, 1, 'default-V5', '{picture}', 'https://cdn.discordapp.com/attachments/382262072332779530/432251644978135070/news-default.jpg', 0, '{picture}', 'http://image.noelshack.com/fichiers/2016/25/1466452270-maintenance.png', 1, 1, 1, 1, 1, 1, 1, 1, 'tls', 1, 'example@example.com', 'localhost.com');
 
 -- --------------------------------------------------------
 
@@ -193,6 +243,13 @@ ALTER TABLE `notifications`
  ADD PRIMARY KEY (`id`);
 
 --
+-- Index pour la table `recovery`
+--
+ALTER TABLE `recovery`
+  ADD UNIQUE KEY `ID` (`id`),
+  ADD UNIQUE KEY `code` (`code`);
+
+--
 -- Index pour la table `servers`
 --
 ALTER TABLE `servers`
@@ -242,6 +299,11 @@ MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=28;
 --
 ALTER TABLE `notifications`
 MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=15;
+--
+-- AUTO_INCREMENT pour la table `recovery`
+--
+ALTER TABLE `recovery`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 --
 -- AUTO_INCREMENT pour la table `servers`
 --
