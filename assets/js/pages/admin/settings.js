@@ -417,12 +417,44 @@ function updatemaccount(){
     );
 }
 
+function updateurlwebsite(){
+    $.post(
+        '/api/config',
+        {
+            token : $("meta[name='token']").attr("content"),
+            name : "url_website",
+            send : document.getElementById("url_website").value
+        },
+
+        function(data){
+            var obj = JSON.parse(data);
+            if (obj.status == 42)
+                swal({title: "Success", text: obj.message, type: "success"}
+                );
+            else if (obj.status == 41)
+                window.location="/logout";
+            else if (obj.status == 44)
+                swal({title: "Missing permission", text: obj.message, type: "error"},
+                    function (){
+                        window.location="/logout";
+                    }
+                );
+            else if (obj.status == 40)
+                swal({title: "Problem with the core", text: obj.message, type: "error"}
+                );
+            else
+                $.Notification.notify('error','bottom center','Internal Error', "Error: " + obj.status + " | " + obj.message);
+        },
+        'text'
+    );
+}
+
 function updatemailhost(){
     $.post(
         '/api/config',
         {
             token : $("meta[name='token']").attr("content"),
-            name : "mail_host",
+            name : "host_mail",
             send : document.getElementById("mailhost").value
         },
 
@@ -454,7 +486,7 @@ function updatemailusername(){
         '/api/config',
         {
             token : $("meta[name='token']").attr("content"),
-            name : "mail_username",
+            name : "username_mail",
             send : document.getElementById("mailusername").value
         },
 
@@ -486,7 +518,7 @@ function updatemailpassword(){
         '/api/config',
         {
             token : $("meta[name='token']").attr("content"),
-            name : "mail_password",
+            name : "password_mail",
             send : document.getElementById("mailpassword").value
         },
 
@@ -518,7 +550,7 @@ function updatemailsecure(){
         '/api/config',
         {
             token : $("meta[name='token']").attr("content"),
-            name : "mail_secure",
+            name : "secure_mail",
             send : document.getElementById("mailsecure").value
         },
 
@@ -550,8 +582,40 @@ function updatemailport(){
         '/api/config',
         {
             token : $("meta[name='token']").attr("content"),
-            name : "mail_port",
+            name : "ports_mail",
             send : document.getElementById("mailport").value
+        },
+
+        function(data){
+            var obj = JSON.parse(data);
+            if (obj.status == 42)
+                swal({title: "Success", text: obj.message, type: "success"}
+                );
+            else if (obj.status == 41)
+                window.location="/logout";
+            else if (obj.status == 44)
+                swal({title: "Missing permission", text: obj.message, type: "error"},
+                    function (){
+                        window.location="/logout";
+                    }
+                );
+            else if (obj.status == 40)
+                swal({title: "Problem with the core", text: obj.message, type: "error"}
+                );
+            else
+                $.Notification.notify('error','bottom center','Internal Error', "Error: " + obj.status + " | " + obj.message);
+        },
+        'text'
+    );
+}
+
+function updatemailsender(){
+    $.post(
+        '/api/config',
+        {
+            token : $("meta[name='token']").attr("content"),
+            name : "sender_mail",
+            send : document.getElementById("mailsender").value
         },
 
         function(data){
