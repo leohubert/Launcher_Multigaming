@@ -69,7 +69,7 @@ https://discord.gg/75pQdYx<br>
 
 ![Launcher_Arma3 Logo](https://cdn.discordapp.com/attachments/431901495894605824/659824143365308438/Screenshot_9.png)
 
-
+![Launcher_Arma3 Logo](https://cdn.discordapp.com/attachments/431901495894605824/659825537849491476/Screenshot_10.png)
 
 
 ## Licences:
