@@ -53,13 +53,23 @@ https://discord.gg/75pQdYx<br>
 
 ### Webpanel Screens :
 
-![Launcher_Arma3 Logo](Screens/release/release_5.4/webpanel/login.PNG)
+![Launcher_Arma3 Logo](https://cdn.discordapp.com/attachments/431901495894605824/659824118958653470/Screenshot_2.png)
 
-![Launcher_Arma3 Logo](Screens/release/release_5.4/webpanel/server-settings.PNG)
+![Launcher_Arma3 Logo](https://cdn.discordapp.com/attachments/431901495894605824/659824121076514836/Screenshot_3.png)
 
-![Launcher_Arma3 Logo](Screens/release/release_5.4/webpanel/user-list.PNG)
+![Launcher_Arma3 Logo](https://cdn.discordapp.com/attachments/431901495894605824/659824121802129439/Screenshot_4.png)
 
+![Launcher_Arma3 Logo](https://cdn.discordapp.com/attachments/431901495894605824/659824123089911841/Screenshot_5.png)
 
+![Launcher_Arma3 Logo](https://cdn.discordapp.com/attachments/431901495894605824/659824123895349250/Screenshot_6.png)
+
+![Launcher_Arma3 Logo](https://cdn.discordapp.com/attachments/431901495894605824/659824124939599873/Screenshot_7.png)
+
+![Launcher_Arma3 Logo](https://cdn.discordapp.com/attachments/431901495894605824/659824127141478440/Screenshot_8.png)
+
+![Launcher_Arma3 Logo](https://cdn.discordapp.com/attachments/431901495894605824/659824143365308438/Screenshot_9.png)
+
+![Launcher_Arma3 Logo](https://cdn.discordapp.com/attachments/431901495894605824/659825537849491476/Screenshot_10.png)
 
 
 ## Licences:
