@@ -11,7 +11,7 @@ Arma3 - Altis Life / EXILE and more...
 Version: 5.5<br>
 Release date: 24/12/2019 01:00 <br>
 <br>
-Copyright HUBERT Léo © 2014 - 2018<br>
+Copyright Emodyz © 2014 - 2018<br>
 
 If you have any question or suggestion you can talk with the dev team on Discord:<br>
 https://discord.gg/75pQdYx<br>
