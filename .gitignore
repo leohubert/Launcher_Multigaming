@@ -4,3 +4,6 @@ pages/admin/settings/newsettings.php
 .idea/dataSources.local.xml
 .idea/dataSources/33cd6d56-8e4d-4025-bb32-031d92eb2faa.xml
 Launcher_Multigaming.iml
+configs/config_general.php
+.vscode/sftp.json
+configs/config_mysql.php
