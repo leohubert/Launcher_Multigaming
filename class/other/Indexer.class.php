@@ -10,9 +10,9 @@ include '../class/RestClient.class.php';
 
 class Indexer
 {
-    private $api = 'http://indexer.emodyz.eu/api';
-    private $devApi = 'http://v5-indexer.test/api';
-    private $version = 'v5.4-beta.POO.1';
+    private $api = 'https://indexer.emodyz.eu/api';
+    private $devApi = 'https://v5-indexer.test/api';
+    private $version = 'v5.5.1';
 
     private $database;
     private $name;
