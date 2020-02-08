@@ -17,7 +17,8 @@ Current version with support
 
 | Version | Supported          |
 | ------- | ------------------ |
-| 5.4.x   | :white_check_mark: |
+| 5.5.x   | :white_check_mark: |
+| 5.4.x   | :x:                |
 | 5.3.x   | :x:                |
 | 5.0.x   | :x:                |
 | 4.0.x   | :x:                |
