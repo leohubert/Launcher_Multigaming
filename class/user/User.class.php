@@ -140,7 +140,7 @@ class User{
                             $data = array(
                                 'exist' => true,
                                 'title' => "Critical Server Error",
-                                'code' => "000",
+                                'code' => "02",
                                 'message' => "An error has occured, please contact your support team. Probably an error with the server",
                             );
                         }
