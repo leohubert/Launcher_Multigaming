@@ -76,7 +76,7 @@ namespace LauncherArma3
 
             string message = res.message;
 
-            if (res.status == "42")
+            if (res.status == "000")
             {
                 notifView("success", message);
             }
