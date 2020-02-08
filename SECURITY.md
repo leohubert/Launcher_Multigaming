@@ -32,7 +32,7 @@ Current version with support
 | 1.2.x   | :white_check_mark: |
 | 0.1.x   | :x:                |
 
-## Supported Versions WebPanel
+## Supported Versions PHP WebPanel
 
 Current version with support
 
@@ -41,6 +41,17 @@ Current version with support
 | PHP 7.x    | :white_check_mark: |
 | PHP 5.x    | :white_check_mark: |
 | PHP 4.x    | :x:                |
+
+## Supported OS Versions for WebPanel server
+
+Current version with support
+
+| Version | Supported          |
+| ------- | ------------------ |
+| Windows 10    | :white_check_mark: |
+| Ubuntu 18.04  | :white_check_mark: |
+| Ubuntu 16.04  | :white_check_mark: |
+| Debian 9      | :white_check_mark: |
 
 ## Reporting a Vulnerability
 
