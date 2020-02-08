@@ -13,6 +13,9 @@ class User{
     private $userid;
     private $ip;
     private $usmail;
+    private $password1;
+    private $password_check;
+    private $username_valid;
 
 
     public function __construct($database){
@@ -104,8 +107,81 @@ class User{
 
     }
 
-    public function createUser(){
-
+    public function createUsersT($email, $username, $password, $confirm_password, $ip){
+        $getSettings = $this->database->prepare('SELECT * FROM settings WHERE active = 1');
+        $getSettings->execute();
+        $res = $getSettings->fetch();
+        $getUsers = $this->database->prepare('SELECT `id` FROM users WHERE last_ip = :ip');
+        $getUsers->execute(array('ip' => $ip));
+        if (isset($ip) && $res['register'] == "1" && $getUsers->rowCount() == 0) {
+            if (isset($email)){
+                $this->usmail = htmlspecialchars($email);
+                $checkLogMeIn = $this->database->prepare('SELECT * FROM users WHERE username = :login OR email = :login');
+                $checkLogMeIn->execute(array('login' => $email));
+                if (isset($username) && $checkLogMeIn->rowCount() == 0){
+                    $checkLogMeInp = $this->database->prepare('SELECT * FROM users WHERE username = :login OR email = :login');
+                    $checkLogMeInp->execute(array('login' => $username));
+                    $this->username_valid = htmlspecialchars($username);
+                    if (isset($password) && isset($confirm_password) && $password==$confirm_password && $checkLogMeInp->rowCount() == 0){
+                        $alto = htmlspecialchars($password);
+                        $encrypt = new Encryption($GLOBALS['key1'], $GLOBALS['key2']);
+                        $this->password1 = $encrypt->encrypt_decrypt('encrypt', $alto);
+                        $register = $this->database->prepare('INSERT INTO `users`(`email`, `username`, `password`, `last_ip`, `registered`, `uid`) VALUES (:email,:username,:password,:ip,:registered,:uid)');
+                        $register->execute(array('email' => $this->usmail, 'username' => $this->username_valid, 'password' => $this->password1, 'ip' => $ip, 'registered' => date('Y-m-d H:i:s'), 'uid' => "Not Found"));
+                        $checkIfRegistered = $this->database->prepare('SELECT * FROM users WHERE username = :login OR email = :login');
+                        $checkIfRegistered->execute(array('login' => $username));
+                        if ($checkIfRegistered->rowCount() == 1){
+                            $data = array(
+                                'exist' => true,
+                                'code' => "000",
+                                'message' => "Registered with sucess",
+                            );
+                        }else{
+                            $data = array(
+                                'exist' => true,
+                                'title' => "Critical Server Error",
+                                'code' => "000",
+                                'message' => "An error has occured, please contact your support team. Probably an error with the server",
+                            );
+                        }
+                        /*$data = array(
+                            'exist' => true,
+                            'code' => "998",
+                            'message' => $this->password1,
+                        );*/
+                    }else{
+                        $data = array(
+                            'exist' => false,
+                            'title' => "Customer Error",
+                            'code' => "03",
+                            'message' => "Password is not set correctly or an account exist. If the problems persist please contact the support",
+                        );
+                    }
+                }else{
+                    $data = array(
+                        'exist' => false,
+                        'title' => "Server Error",
+                        'code' => "02",
+                        'message' => "An account already exist, please contact the support for any help",
+                    );
+                }
+            }else{
+                $data = array(
+                    'exist' => false,
+                    'title' => "Customer error",
+                    'code' => "01",
+                    'message' => "Your mail adress ...",
+                );
+            }
+        }else{
+            $data = array(
+                'exist' => true,
+                'title' => "Server Error",
+                'code' => "500",
+                'message' => "You have an account or the server in a maintenance, please visite our website for more information",
+            );
+        }
+        return json_encode($data);
     }
 
     private function checkBannedIp($ip){
@@ -133,7 +209,8 @@ class User{
 
         $res = $checkLogMeIn->fetch();
         $encrypt = new Encryption($key1, $key2);
-        $uncrypted = $encrypt->decode($res['password']);
+        $uncrypted = $encrypt->encrypt_decrypt('decrypt', $res['password']);
+        /*$uncrypted = $encrypt->decode($res['password']);*/
         $token = md5(uniqid($login, true));
 
         $newip = $this->ip->checkIp();
@@ -321,7 +398,8 @@ class User{
             if ($ck->rowCount() == 1) {
                 if ($password == $password1) {
                     $dcryptnow = new Encryption($GLOBALS['key1'], $GLOBALS['key2']);
-		            $savlvation = $dcryptnow->encode($password);
+                    $savlvation = $dcryptnow->encrypt_decrypt('encrypt', $password);
+		            /*$savlvation = $dcryptnow->encode($password);*/
 		            $savlvation1 = $savlvation;
                     $cki = $this->database->prepare('UPDATE users SET password=:passwd WHERE id=:id');
                     $d = [

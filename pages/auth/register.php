@@ -46,14 +46,14 @@
 
                 function (data) {
                     var obj = JSON.parse(data);
-                    if (obj.status == 42) {
+                    if (obj.status == "000") {
                         $.Notification.notify('success', 'top right', 'Registered with success', obj.message);
                         setTimeout(function () {
                             window.location = "/";
                         }, 1500);
                     }
                     else
-                        $.Notification.notify('error', 'top right', 'Login error', obj.message);
+                        $.Notification.notify('error', 'top right', obj.title, obj.message);
                 },
 
                 'text'
