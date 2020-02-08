@@ -23,7 +23,7 @@ if (isset($_POST['token']) && isset($_POST['name']) && isset($_POST['send']))
 
     if ($paramname === "mail_password"){
 
-        $encryptnow = $encrypter->encode($content);
+        $encryptnow = $encrypter->encrypt_decrypt('encrypt', $content);
         $content = $encryptnow;
 
     }

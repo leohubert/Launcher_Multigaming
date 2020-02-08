@@ -41,7 +41,7 @@ class Mail{
         $gconf->url = $config->url_website;
 
         $dcryptnow = new Encryption($GLOBALS['key1'], $GLOBALS['key2']);
-        $uncrypt = $dcryptnow->decode($gconf->password);
+        $uncrypt = $dcryptnow->encrypt_decrypt('decrypt', $gconf->password);
         $gconf->password = $uncrypt;
 
         $url =  "//{$_SERVER['HTTP_HOST']}";

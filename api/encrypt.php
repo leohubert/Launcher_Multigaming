@@ -8,7 +8,7 @@
 
 if (isset($_GET['text']))
 {
-    echo $encrypter->encode($_GET['text']);
+    echo $encrypter->encrypt_decrypt('encrypt', $_GET['text']);
 }
 else
     echo  "No text";

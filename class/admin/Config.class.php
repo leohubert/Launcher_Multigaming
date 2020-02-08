@@ -102,7 +102,7 @@ class Config {
 
                 $updatemaintenance = $this->database->prepare('UPDATE settings SET password_mail=:content WHERE active=1');
 		        $dcryptnow = new Encryption($GLOBALS['key1'], $GLOBALS['key2']);
-		        $savlvation = $dcryptnow->encode($this->content);
+		        $savlvation = $dcryptnow->encrypt_decrypt('encrypt', $this->content);
 		        $this->content = $savlvation;
                 $updatemaintenance->execute(array('content' => $this->content));
 

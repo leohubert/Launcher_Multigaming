@@ -19,9 +19,9 @@ if (isset($_POST['token']) && isset($_POST['current_pass']) && isset($_POST['new
     $new_pass = $_POST['new_pass'];
     $confirm_pass = $_POST['confirm_pass'];
 
-    $current_pass = $encrypter->encode($current_pass);
-    $new_pass = $encrypter->encode($new_pass);
-    $confirm_pass = $encrypter->encode($confirm_pass);
+    $current_pass = $encrypter->encrypt_decrypt('encrypt', $current_pass);
+    $new_pass = $encrypter->encrypt_decrypt('encrypt', $new_pass);
+    $confirm_pass = $encrypter->encrypt_decrypt('encrypt', $confirm_pass);
 
     $resp = json_decode($userss->checkUser($token));
 

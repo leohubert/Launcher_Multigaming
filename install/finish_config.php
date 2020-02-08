@@ -20,7 +20,7 @@ if (isset($_POST['db_host']) && isset($_POST['db_name']) && isset($_POST['db_use
         try {
             $database = new PDO('mysql:host='. $_POST['db_host'] .';dbname='. $_POST['db_name'], $_POST['db_user'], $_POST['db_pass']);
             $encrypt = new Encryption($_POST['token1'], $_POST['token2']);
-            $password_encrypted = $encrypt->encode($_POST['user_password']);
+            $password_encrypted = $encrypt->encrypt_decrypt('encrypt', $_POST['user_password']);
             $ip = $_SERVER['REMOTE_ADDR'];
             if (!filter_var($ip, FILTER_VALIDATE_IP)) {
                 $ip = "0.0.0.0";
