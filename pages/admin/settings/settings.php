@@ -161,7 +161,10 @@ $selevlel = json_decode($user->checkAdmin($_SESSION['token']));
                                             <div class="modal-content">
                                                 <div class="modal-header">
                                                     <h4 class="modal-title"><i class="ion-at"></i> Website Mail Settings</h4><br>
-                                                    <h4 class="modal-title"><i class="md md-report-problem"></i> This Feature Does NOT WORK ! - in development ...</h4>
+                                                    <h4 class="modal-title"><i class="md md-report-problem"></i> Please insert the necessary information.<br />
+Be careful to leave encryption in TLS only.<br /><br />
+
+A next update will improve compatibilities!</h4>
                                                 </div><br>
 
                                                 <div class="modal-body">
