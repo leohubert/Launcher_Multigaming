@@ -108,12 +108,14 @@ class User{
     }
 
     public function createUsersT($email, $username, $password, $confirm_password, $ip){
+        // Get if Register has enabled and max Account has authorized
         $getSettings = $this->database->prepare('SELECT * FROM settings WHERE active = 1');
         $getSettings->execute();
         $res = $getSettings->fetch();
+
         $getUsers = $this->database->prepare('SELECT `id` FROM users WHERE last_ip = :ip');
         $getUsers->execute(array('ip' => $ip));
-        if (isset($ip) && $res['register'] == "1" && $getUsers->rowCount() == 0) {
+        if (isset($ip) && $res['register'] == "1" && $getUsers->rowCount() == $res['max_account']) {
             if (isset($email)){
                 $this->usmail = htmlspecialchars($email);
                 $checkLogMeIn = $this->database->prepare('SELECT * FROM users WHERE username = :login OR email = :login');

@@ -135,6 +135,7 @@
                         </div>
                     </div>
                 </div>
+                <center><iframe src="https://www.instant-gaming.com/affgames/igr2812450/250x250" scrolling="no" frameborder="0" style="border-radius: 10px; overflow:hidden; width:250px; height:250px;" allowTransparency="true"></iframe></center>
 
                 <script>
                     function loadSupport()

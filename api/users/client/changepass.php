@@ -3,14 +3,12 @@
  * Created by PhpStorm.
  * User: hubert_i
  * Date: 16/06/16
- * Time: 23:16
+ * Time: 23:16 
  */
 
 header('Content-type: application/json');
 
 $result = array("status" => 500, "message" => "Internal error");
-
-$userss = new User($GLOBALS['datab']);
 
 if (isset($_POST['token']) && isset($_POST['current_pass']) && isset($_POST['new_pass']) && isset($_POST['confirm_pass']))
 {
@@ -23,7 +21,7 @@ if (isset($_POST['token']) && isset($_POST['current_pass']) && isset($_POST['new
     $new_pass = $encrypter->encrypt_decrypt('encrypt', $new_pass);
     $confirm_pass = $encrypter->encrypt_decrypt('encrypt', $confirm_pass);
 
-    $resp = json_decode($userss->checkUser($token));
+    $resp = json_decode($user->checkUser($token));
 
     if ($resp->exist === true) {
         $id = $resp->id;
@@ -31,7 +29,7 @@ if (isset($_POST['token']) && isset($_POST['current_pass']) && isset($_POST['new
 
         if (strlen($new_pass) >= 8 && strlen($confirm_pass) >= 8) {
             if ($new_pass === $confirm_pass) {
-                $p = json_decode($userss->changePasswd($resp->id, $current_pass, $new_pass, $confirm_pass));
+                $p = json_decode($user->changePasswd($resp->id, $current_pass, $new_pass, $confirm_pass));
 
                 if ($resp->banned === false) {
                     if ($p->res === true) {

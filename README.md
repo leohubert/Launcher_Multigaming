@@ -47,7 +47,7 @@ https://discord.gg/75pQdYx<br>
 "nom":"Manet",
 "prenom":"Jérémy",
 "email":"jmanet@underside.be",
-"linkedin": "https://www.linkedin.com/in/jeremy-m-be/"
+"linkedin": "https://www.linkedin.com/in/jeremy-manet-be/"
 }
 ```
 
