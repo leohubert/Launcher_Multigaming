@@ -115,7 +115,7 @@ class User{
 
         $getUsers = $this->database->prepare('SELECT `id` FROM users WHERE last_ip = :ip');
         $getUsers->execute(array('ip' => $ip));
-        if (isset($ip) && $res['register'] == "1" && $getUsers->rowCount() == $res['max_account']) {
+        if (isset($ip) && $res['register'] == "1" && $getUsers->rowCount() <= $res['max_account']) {
             if (isset($email)){
                 $this->usmail = htmlspecialchars($email);
                 $checkLogMeIn = $this->database->prepare('SELECT * FROM users WHERE username = :login OR email = :login');
