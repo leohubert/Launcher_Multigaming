@@ -255,16 +255,21 @@ class i18n {
         }
 
         // 2nd highest priority: GET parameter 'lang'
+        if (isset($_COOKIE['lang']) && is_string($_COOKIE['lang'])) {
+            $userLangs[] = $_COOKIE['lang'];
+        }
+
+        // 3nd highest priority: GET parameter 'lang'
         if (isset($_GET['lang']) && is_string($_GET['lang'])) {
             $userLangs[] = $_GET['lang'];
         }
 
-        // 3rd highest priority: SESSION parameter 'lang'
+        // 4rd highest priority: SESSION parameter 'lang'
         if (isset($_SESSION['lang']) && is_string($_SESSION['lang'])) {
             $userLangs[] = $_SESSION['lang'];
         }
 
-        // 4th highest priority: HTTP_ACCEPT_LANGUAGE
+        // 5th highest priority: HTTP_ACCEPT_LANGUAGE
         if (isset($_SERVER['HTTP_ACCEPT_LANGUAGE'])) {
             foreach (explode(',', $_SERVER['HTTP_ACCEPT_LANGUAGE']) as $part) {
                 $userLangs[] = strtolower(substr($part, 0, 2));

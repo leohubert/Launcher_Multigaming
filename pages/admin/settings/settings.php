@@ -105,7 +105,7 @@ $selevlel = json_decode($user->checkAdmin($_SESSION['token']));
 
                                             <div class="modal-content">
                                                 <div class="modal-header">
-                                                    <h4 class="modal-title"><i class="md md-vpn-lock"></i> Website Settings</h4>
+                                                    <h4 class="modal-title"><i class="md md-vpn-lock"></i> <?php echo L::settingsows_title; ?></h4>
                                                 </div><br>
 
                                                 <div class="modal-body">
@@ -117,7 +117,7 @@ $selevlel = json_decode($user->checkAdmin($_SESSION['token']));
                                                         </div>
                                                         <div class="col-md-4">
                                                             <div class="card-box">
-                                                                <button type="submit" onclick="updatewebsite()" class="btn btn-primary">Change Website Name</button>
+                                                                <button type="submit" onclick="updatewebsite()" class="btn btn-primary"><?php echo L::settingsows_savewname; ?></button>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -129,7 +129,7 @@ $selevlel = json_decode($user->checkAdmin($_SESSION['token']));
                                                         </div>
                                                         <div class="col-md-4">
                                                             <div class="card-box">
-                                                                <button type="submit" onclick="updatemaccount()" class="btn btn-primary">Update Max Account</button>
+                                                                <button type="submit" onclick="updatemaccount()" class="btn btn-primary"><?php echo L::settingsows_savemaccount; ?></button>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -141,14 +141,14 @@ $selevlel = json_decode($user->checkAdmin($_SESSION['token']));
                                                         </div>
                                                         <div class="col-md-4">
                                                             <div class="card-box">
-                                                                <button type="submit" onclick="updateurlwebsite()" class="btn btn-primary">Update URL of your panel</button>
+                                                                <button type="submit" onclick="updateurlwebsite()" class="btn btn-primary"><?php echo L::settingsows_saveurl; ?></button>
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </div><br>
 
                                                 <div class="modal-footer">
-                                                    <button type="button" class="btn btn-purple btn-rounded w-md waves-effect waves-light m-b-5" data-dismiss="modal">Close</button>
+                                                    <button type="button" class="btn btn-purple btn-rounded w-md waves-effect waves-light m-b-5" data-dismiss="modal"><?php echo L::close; ?></button>
                                                 </div>
                                             </div>
 

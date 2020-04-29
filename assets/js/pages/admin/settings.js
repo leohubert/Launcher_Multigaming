@@ -648,6 +648,22 @@ function openLauncherconfig() {
     swal({ title: "Not Yet", text: "Feature has reserved for V6, please check Discord", type: "warning" });
 }
 
+function refresh() {
+    setTimeout(function() {
+        location.reload();
+    }, 100);
+};
+
+/*
+FUTUR FOR I18N ** DONT DELETE **
+function testCookies(name, value) {
+    var today = new Date();
+    var expiry = new Date(today.getTime() + 30 * 24 * 3600 * 1000); // plus 30 days
+    document.cookie = name + "=" + escape(value) + "; path=/; expires=" + expiry.toGMTString();
+    refresh();
+}
+*/
+
 var level = $("meta[name='level']").attr("content");
 
 function checkLevel() {
