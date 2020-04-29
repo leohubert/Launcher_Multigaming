@@ -74,7 +74,7 @@ $selevlel = json_decode($user->checkAdmin($_SESSION['token']));
         <!-- Page-Title -->
         <br /><div class="row">
             <div class="col-sm-12">
-                <h4 class="page-title">Launcher control</h4>
+                <h4 class="page-title"><?php echo L::settings_title; ?></h4>
             </div>
         </div>
 
@@ -88,16 +88,16 @@ $selevlel = json_decode($user->checkAdmin($_SESSION['token']));
                             <div class="row">
                                 <div class="col-md-12 text-center">
                                     <div class="card-box">
-                                        <p><i class="md md-vpn-lock"></i> Settings</p>
+                                        <p><i class="md md-vpn-lock"></i> <?php echo L::settings_subtitle1; ?></p>
                                     </div>
                                     <div class="col-md-4 text-center">
-                                        <button type="button" id="websiteconfig" data-toggle="modal" data-target="#OpenWebSettings" class="btn btn-purple btn-rounded w-md waves-effect waves-light m-b-5">Open Website Settings</button>
+                                        <button type="button" id="websiteconfig" data-toggle="modal" data-target="#OpenWebSettings" class="btn btn-purple btn-rounded w-md waves-effect waves-light m-b-5"><?php echo L::settings_ows; ?></button>
                                     </div>
                                     <div class="col-md-4 text-center">
-                                        <button type="button" id="mailconfig" data-toggle="modal" data-target="#OpenMailSettings" class="btn btn-purple btn-rounded w-md waves-effect waves-light m-b-5">Open Mail Settings</button>
+                                        <button type="button" id="mailconfig" data-toggle="modal" data-target="#OpenMailSettings" class="btn btn-purple btn-rounded w-md waves-effect waves-light m-b-5"><?php echo L::settings_oms; ?></button>
                                     </div>
                                     <div class="col-md-4 text-center">
-                                        <button type="button" id="launcherconfig" onclick="openLauncherconfig()" class="btn btn-purple btn-rounded w-md waves-effect waves-light m-b-5">Open Launcher Settings</button>
+                                        <button type="button" id="launcherconfig" onclick="openLauncherconfig()" class="btn btn-purple btn-rounded w-md waves-effect waves-light m-b-5"><?php echo L::settings_ols; ?></button>
                                     </div>
 
                                     <div class="modal fade" role="dialog" id="OpenWebSettings">
@@ -257,7 +257,7 @@ A next update will improve compatibilities!</h4>
                     <div class="card-box">
                         <br />
                         <div class="row">
-                            <div class="card-box text-center"><span>Indexer Status : <div><span class="label label-success" id="indexer_state">Support Available</span></div></span></div>
+                            <div class="card-box text-center"><span><?php echo L::settings_is; ?> : <div><span class="label label-success" id="indexer_state">Support Available</span></div></span></div>
                         </div>
                         <div class="row">
                             <div class="col-xs-6 text-center">

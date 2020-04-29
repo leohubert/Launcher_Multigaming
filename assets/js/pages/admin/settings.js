@@ -2,72 +2,62 @@
  * Created by leohu on 13/08/2016.
  */
 
-function switch_maintenance()
-{
+function switch_maintenance() {
     var button = document.getElementById("maintenance");
     var label = document.getElementById("maintenance_state");
 
-    if (label.textContent == "Activated")
-    {
+    if (label.textContent == "Activated") {
         $.post(
-            '/api/switch/maintenance',
-            {
-                token : $("meta[name='token']").attr("content"),
-                state : 0
+            '/api/switch/maintenance', {
+                token: $("meta[name='token']").attr("content"),
+                state: 0
             },
 
-            function(data){
+            function(data) {
                 var obj = JSON.parse(data);
-                if (obj.status == 42)
-                {
-                    $.Notification.notify('success','top right','Maintenance deactivate', "Maintenance was been deactivated");
+                if (obj.status == 42) {
+                    $.Notification.notify('success', 'top right', 'Maintenance deactivate', "Maintenance was been deactivated");
                     button.textContent = "Active maintenance";
                     label.className = "label label-danger";
                     label.textContent = "Deactivated";
-                }
-                else if (obj.status == 41)
-                    window.location="/logout";
+                } else if (obj.status == 41)
+                    window.location = "/logout";
                 else if (obj.status == 44)
-                    swal({title: "Missing permission", text: obj.message, type: "error"},
-                        function (){
-                            window.location="/logout";
+                    swal({ title: "Missing permission", text: obj.message, type: "error" },
+                        function() {
+                            window.location = "/logout";
                         }
                     );
                 else
-                    $.Notification.notify('error','bottom center','Internal Error', "Error: " + obj.status + " | " + obj.message);
+                    $.Notification.notify('error', 'bottom center', 'Internal Error', "Error: " + obj.status + " | " + obj.message);
             },
 
             'text'
         );
-    }
-    else
-    {
+    } else {
         $.post(
-            '/api/switch/maintenance',
-            {
-                token : $("meta[name='token']").attr("content"),
-                state : 1
+            '/api/switch/maintenance', {
+                token: $("meta[name='token']").attr("content"),
+                state: 1
             },
 
-            function(data){
+            function(data) {
                 var obj = JSON.parse(data);
-                if (obj.status == 42)
-                {
-                    $.Notification.notify('warning','top right','Maintenance active', "Maintenance was been activated");
+                if (obj.status == 42) {
+                    $.Notification.notify('warning', 'top right', 'Maintenance active', "Maintenance was been activated");
                     button.textContent = "Deactivate maintenance";
                     label.className = "label label-success";
                     label.textContent = "Activated";
-                }
-                else if (obj.status == 41)
-                    window.location="/logout";
+                } else if (obj.status == 41)
+                    window.location = "/logout";
                 else if (obj.status == 44)
-                    swal({title: "Missing permission", text: obj.message, type: "error"},
-                        function (){
-                            window.location="/logout";
+                    swal({ title: "Missing permission", text: obj.message, type: "error" },
+                        function() {
+                            window.location = "/logout";
                         }
                     );
                 else
-                    $.Notification.notify('error','bottom center','Internal Error', "Error: " + obj.status + " | " + obj.message);
+                    $.Notification.notify('error', 'bottom center', 'Internal Error', "Error: " + obj.status + " | " + obj.message);
 
             },
 
@@ -75,73 +65,64 @@ function switch_maintenance()
         );
     }
 }
-function switch_login()
-{
+
+function switch_login() {
     var button = document.getElementById("login");
     var label = document.getElementById("login_state");
 
-    if (label.textContent == "Activated")
-    {
+    if (label.textContent == "Activated") {
         $.post(
-            '/api/switch/login',
-            {
-                token : $("meta[name='token']").attr("content"),
-                state : 0
+            '/api/switch/login', {
+                token: $("meta[name='token']").attr("content"),
+                state: 0
             },
 
-            function(data){
+            function(data) {
                 var obj = JSON.parse(data);
-                if (obj.status == 42)
-                {
-                    $.Notification.notify('warning','top right','Login deactivate', "Login was been deactivated");
+                if (obj.status == 42) {
+                    $.Notification.notify('warning', 'top right', 'Login deactivate', "Login was been deactivated");
                     button.textContent = "Active login";
                     label.className = "label label-danger";
                     label.textContent = "Deactivated";
-                }
-                else if (obj.status == 41)
-                    window.location="/logout";
+                } else if (obj.status == 41)
+                    window.location = "/logout";
                 else if (obj.status == 44)
-                    swal({title: "Missing permission", text: obj.message, type: "error"},
-                        function (){
-                            window.location="/logout";
+                    swal({ title: "Missing permission", text: obj.message, type: "error" },
+                        function() {
+                            window.location = "/logout";
                         }
                     );
                 else
-                    $.Notification.notify('error','bottom center','Internal Error', "Error: " + obj.status + " | " + obj.message);
+                    $.Notification.notify('error', 'bottom center', 'Internal Error', "Error: " + obj.status + " | " + obj.message);
 
             },
 
             'text'
         );
-    }
-    else
-    {
+    } else {
         $.post(
-            '/api/switch/login',
-            {
-                token : $("meta[name='token']").attr("content"),
-                state : 1
+            '/api/switch/login', {
+                token: $("meta[name='token']").attr("content"),
+                state: 1
             },
 
-            function(data){
+            function(data) {
                 var obj = JSON.parse(data);
-                if (obj.status == 42)
-                {
-                    $.Notification.notify('success','top right','Login activate', "Login was been activated");
+                if (obj.status == 42) {
+                    $.Notification.notify('success', 'top right', 'Login activate', "Login was been activated");
                     button.textContent = "Deactivate login";
                     label.className = "label label-success";
                     label.textContent = "Activated";
-                }
-                else if (obj.status == 41)
-                    window.location="/logout";
+                } else if (obj.status == 41)
+                    window.location = "/logout";
                 else if (obj.status == 44)
-                    swal({title: "Missing permission", text: obj.message, type: "error"},
-                        function (){
-                            window.location="/logout";
+                    swal({ title: "Missing permission", text: obj.message, type: "error" },
+                        function() {
+                            window.location = "/logout";
                         }
                     );
                 else
-                    $.Notification.notify('error','bottom center','Internal Error', "Error: " + obj.status + " | " + obj.message);
+                    $.Notification.notify('error', 'bottom center', 'Internal Error', "Error: " + obj.status + " | " + obj.message);
 
             },
 
@@ -149,73 +130,64 @@ function switch_login()
         );
     }
 }
-function switch_register()
-{
+
+function switch_register() {
     var button = document.getElementById("register");
     var label = document.getElementById("register_state");
 
-    if (label.textContent == "Activated")
-    {
+    if (label.textContent == "Activated") {
         $.post(
-            '/api/switch/register',
-            {
-                token : $("meta[name='token']").attr("content"),
-                state : 0
+            '/api/switch/register', {
+                token: $("meta[name='token']").attr("content"),
+                state: 0
             },
 
-            function(data){
+            function(data) {
                 var obj = JSON.parse(data);
-                if (obj.status == 42)
-                {
-                    $.Notification.notify('warning','top right','Register deactivate', "Register was been deactivated");
+                if (obj.status == 42) {
+                    $.Notification.notify('warning', 'top right', 'Register deactivate', "Register was been deactivated");
                     button.textContent = "Active register";
                     label.className = "label label-danger";
                     label.textContent = "Deactivated";
-                }
-                else if (obj.status == 41)
-                    window.location="/logout";
+                } else if (obj.status == 41)
+                    window.location = "/logout";
                 else if (obj.status == 44)
-                    swal({title: "Missing permission", text: obj.message, type: "error"},
-                        function (){
-                            window.location="/logout";
+                    swal({ title: "Missing permission", text: obj.message, type: "error" },
+                        function() {
+                            window.location = "/logout";
                         }
                     );
                 else
-                    $.Notification.notify('error','bottom center','Internal Error', "Error: " + obj.status + " | " + obj.message);
+                    $.Notification.notify('error', 'bottom center', 'Internal Error', "Error: " + obj.status + " | " + obj.message);
 
             },
 
             'text'
         );
-    }
-    else
-    {
+    } else {
         $.post(
-            '/api/switch/register',
-            {
-                token : $("meta[name='token']").attr("content"),
-                state : 1
+            '/api/switch/register', {
+                token: $("meta[name='token']").attr("content"),
+                state: 1
             },
 
-            function(data){
+            function(data) {
                 var obj = JSON.parse(data);
-                if (obj.status == 42)
-                {
-                    $.Notification.notify('success','top right','Register activate', "Register was been activated");
+                if (obj.status == 42) {
+                    $.Notification.notify('success', 'top right', 'Register activate', "Register was been activated");
                     button.textContent = "Deactivate register";
                     label.className = "label label-success";
                     label.textContent = "Activated";
-                }
-                else if (obj.status == 41)
-                    window.location="/logout";
+                } else if (obj.status == 41)
+                    window.location = "/logout";
                 else if (obj.status == 44)
-                    swal({title: "Missing permission", text: obj.message, type: "error"},
-                        function (){
-                            window.location="/logout";
+                    swal({ title: "Missing permission", text: obj.message, type: "error" },
+                        function() {
+                            window.location = "/logout";
                         }
                     );
                 else
-                    $.Notification.notify('error','bottom center','Internal Error', "Error: " + obj.status + " | " + obj.message);
+                    $.Notification.notify('error', 'bottom center', 'Internal Error', "Error: " + obj.status + " | " + obj.message);
 
             },
 
@@ -223,73 +195,64 @@ function switch_register()
         );
     }
 }
-function switch_taskforce()
-{
+
+function switch_taskforce() {
     var button = document.getElementById("taskforce");
     var label = document.getElementById("taskforce_state");
 
-    if (label.textContent == "Activated")
-    {
+    if (label.textContent == "Activated") {
         $.post(
-            '/api/switch/taskforce',
-            {
-                token : $("meta[name='token']").attr("content"),
-                state : 0
+            '/api/switch/taskforce', {
+                token: $("meta[name='token']").attr("content"),
+                state: 0
             },
 
-            function(data){
+            function(data) {
                 var obj = JSON.parse(data);
-                if (obj.status == 42)
-                {
-                    $.Notification.notify('warning','top right','Taskforce deactivate', "Taskforce was been deactivated");
+                if (obj.status == 42) {
+                    $.Notification.notify('warning', 'top right', 'Taskforce deactivate', "Taskforce was been deactivated");
                     button.textContent = "Active register";
                     label.className = "label label-danger";
                     label.textContent = "Deactivated";
-                }
-                else if (obj.status == 41)
-                    window.location="/logout";
+                } else if (obj.status == 41)
+                    window.location = "/logout";
                 else if (obj.status == 44)
-                    swal({title: "Missing permission", text: obj.message, type: "error"},
-                        function (){
-                            window.location="/logout";
+                    swal({ title: "Missing permission", text: obj.message, type: "error" },
+                        function() {
+                            window.location = "/logout";
                         }
                     );
                 else
-                    $.Notification.notify('error','bottom center','Internal Error', "Error: " + obj.status + " | " + obj.message);
+                    $.Notification.notify('error', 'bottom center', 'Internal Error', "Error: " + obj.status + " | " + obj.message);
 
             },
 
             'text'
         );
-    }
-    else
-    {
+    } else {
         $.post(
-            '/api/switch/taskforce',
-            {
-                token : $("meta[name='token']").attr("content"),
-                state : 1
+            '/api/switch/taskforce', {
+                token: $("meta[name='token']").attr("content"),
+                state: 1
             },
 
-            function(data){
+            function(data) {
                 var obj = JSON.parse(data);
-                if (obj.status == 42)
-                {
-                    $.Notification.notify('success','top right','Taskforce activate', "Taskforce was been activated");
+                if (obj.status == 42) {
+                    $.Notification.notify('success', 'top right', 'Taskforce activate', "Taskforce was been activated");
                     button.textContent = "Deactivate register";
                     label.className = "label label-success";
                     label.textContent = "Activated";
-                }
-                else if (obj.status == 41)
-                    window.location="/logout";
+                } else if (obj.status == 41)
+                    window.location = "/logout";
                 else if (obj.status == 44)
-                    swal({title: "Missing permission", text: obj.message, type: "error"},
-                        function (){
-                            window.location="/logout";
+                    swal({ title: "Missing permission", text: obj.message, type: "error" },
+                        function() {
+                            window.location = "/logout";
                         }
                     );
                 else
-                    $.Notification.notify('error','bottom center','Internal Error', "Error: " + obj.status + " | " + obj.message);
+                    $.Notification.notify('error', 'bottom center', 'Internal Error', "Error: " + obj.status + " | " + obj.message);
 
             },
 
@@ -297,345 +260,321 @@ function switch_taskforce()
         );
     }
 }
+
 function save_maintenance() {
     $.post(
-        '/api/update/maintenance',
-        {
-            token : $("meta[name='token']").attr("content"),
-            maintenance_title : document.getElementById("maintenance_title").value,
-            maintenance_content : document.getElementById("maintenance_content").value
+        '/api/update/maintenance', {
+            token: $("meta[name='token']").attr("content"),
+            maintenance_title: document.getElementById("maintenance_title").value,
+            maintenance_content: document.getElementById("maintenance_content").value
         },
 
-        function(data){
+        function(data) {
             var obj = JSON.parse(data);
             if (obj.status == 42)
-                $.Notification.notify('success','top right','Maintenance saved', obj.message);
+                $.Notification.notify('success', 'top right', 'Maintenance saved', obj.message);
             else if (obj.status == 41)
-                window.location="/logout";
+                window.location = "/logout";
             else if (obj.status == 44)
-                swal({title: "Missing permission", text: obj.message, type: "error"},
-                    function (){
-                        window.location="/logout";
+                swal({ title: "Missing permission", text: obj.message, type: "error" },
+                    function() {
+                        window.location = "/logout";
                     }
                 );
             else
-                $.Notification.notify('error','bottom center','Internal Error', "Error: " + obj.status + " | " + obj.message);
+                $.Notification.notify('error', 'bottom center', 'Internal Error', "Error: " + obj.status + " | " + obj.message);
         },
         'text'
     );
 }
+
 function save_loginNews() {
     $.post(
-        '/api/update/loginNews',
-        {
-            token : $("meta[name='token']").attr("content"),
-            msg_title : document.getElementById("msg_title").value,
-            msg_content : document.getElementById("msg_content").value
+        '/api/update/loginNews', {
+            token: $("meta[name='token']").attr("content"),
+            msg_title: document.getElementById("msg_title").value,
+            msg_content: document.getElementById("msg_content").value
         },
 
-        function(data){
+        function(data) {
             var obj = JSON.parse(data);
             if (obj.status == 42)
-                $.Notification.notify('success','top right','Login News saved', obj.message);
+                $.Notification.notify('success', 'top right', 'Login News saved', obj.message);
             else if (obj.status == 41)
-                window.location="/logout";
+                window.location = "/logout";
             else if (obj.status == 44)
-                swal({title: "Missing permission", text: obj.message, type: "error"},
-                    function (){
-                        window.location="/logout";
+                swal({ title: "Missing permission", text: obj.message, type: "error" },
+                    function() {
+                        window.location = "/logout";
                     }
                 );
             else
-                $.Notification.notify('error','bottom center','Internal Error', "Error: " + obj.status + " | " + obj.message);
-        },
-        'text'
-    );
-}
-function updatewebsite(){
-    $.post(
-      '/api/config',
-        {
-            token : $("meta[name='token']").attr("content"),
-            name : "site_name",
-            send : document.getElementById("sitename").value
-        },
-
-        function(data){
-            var obj = JSON.parse(data);
-            if (obj.status == 42)
-            swal({title: "Success", text: obj.message, type: "success"},
-                function (){
-                    location.reload();
-                }
-                );
-            else if (obj.status == 41)
-                window.location="/logout";
-            else if (obj.status == 44)
-                swal({title: "Missing permission", text: obj.message, type: "error"},
-                    function (){
-                        window.location="/logout";
-                    }
-                );
-            else if (obj.status == 40)
-                swal({title: "Problem with the core", text: obj.message, type: "error"}
-                );
-            else
-                $.Notification.notify('error','bottom center','Internal Error', "Error: " + obj.status + " | " + obj.message);
-        },
-        'text'
-    );
-}
-function updatemaccount(){
-    $.post(
-        '/api/config',
-        {
-            token : $("meta[name='token']").attr("content"),
-            name : "max_account",
-            send : document.getElementById("maxaccount").value
-        },
-
-        function(data){
-            var obj = JSON.parse(data);
-            if (obj.status == 42)
-                swal({title: "Success", text: obj.message, type: "success"}
-                );
-            else if (obj.status == 41)
-                window.location="/logout";
-            else if (obj.status == 44)
-                swal({title: "Missing permission", text: obj.message, type: "error"},
-                    function (){
-                        window.location="/logout";
-                    }
-                );
-            else if (obj.status == 40)
-                swal({title: "Problem with the core", text: obj.message, type: "error"}
-                );
-            else
-                $.Notification.notify('error','bottom center','Internal Error', "Error: " + obj.status + " | " + obj.message);
+                $.Notification.notify('error', 'bottom center', 'Internal Error', "Error: " + obj.status + " | " + obj.message);
         },
         'text'
     );
 }
 
-function updateurlwebsite(){
+function updatewebsite() {
     $.post(
-        '/api/config',
-        {
-            token : $("meta[name='token']").attr("content"),
-            name : "url_website",
-            send : document.getElementById("url_website").value
+        '/api/config', {
+            token: $("meta[name='token']").attr("content"),
+            name: "site_name",
+            send: document.getElementById("sitename").value
         },
 
-        function(data){
+        function(data) {
             var obj = JSON.parse(data);
             if (obj.status == 42)
-                swal({title: "Success", text: obj.message, type: "success"}
+                swal({ title: "Success", text: obj.message, type: "success" },
+                    function() {
+                        location.reload();
+                    }
                 );
             else if (obj.status == 41)
-                window.location="/logout";
+                window.location = "/logout";
             else if (obj.status == 44)
-                swal({title: "Missing permission", text: obj.message, type: "error"},
-                    function (){
-                        window.location="/logout";
+                swal({ title: "Missing permission", text: obj.message, type: "error" },
+                    function() {
+                        window.location = "/logout";
                     }
                 );
             else if (obj.status == 40)
-                swal({title: "Problem with the core", text: obj.message, type: "error"}
-                );
+                swal({ title: "Problem with the core", text: obj.message, type: "error" });
             else
-                $.Notification.notify('error','bottom center','Internal Error', "Error: " + obj.status + " | " + obj.message);
+                $.Notification.notify('error', 'bottom center', 'Internal Error', "Error: " + obj.status + " | " + obj.message);
         },
         'text'
     );
 }
 
-function updatemailhost(){
+function updatemaccount() {
     $.post(
-        '/api/config',
-        {
-            token : $("meta[name='token']").attr("content"),
-            name : "host_mail",
-            send : document.getElementById("mailhost").value
+        '/api/config', {
+            token: $("meta[name='token']").attr("content"),
+            name: "max_account",
+            send: document.getElementById("maxaccount").value
         },
 
-        function(data){
+        function(data) {
             var obj = JSON.parse(data);
             if (obj.status == 42)
-                swal({title: "Success", text: obj.message, type: "success"}
-                );
+                swal({ title: "Success", text: obj.message, type: "success" });
             else if (obj.status == 41)
-                window.location="/logout";
+                window.location = "/logout";
             else if (obj.status == 44)
-                swal({title: "Missing permission", text: obj.message, type: "error"},
-                    function (){
-                        window.location="/logout";
+                swal({ title: "Missing permission", text: obj.message, type: "error" },
+                    function() {
+                        window.location = "/logout";
                     }
                 );
             else if (obj.status == 40)
-                swal({title: "Problem with the core", text: obj.message, type: "error"}
-                );
+                swal({ title: "Problem with the core", text: obj.message, type: "error" });
             else
-                $.Notification.notify('error','bottom center','Internal Error', "Error: " + obj.status + " | " + obj.message);
+                $.Notification.notify('error', 'bottom center', 'Internal Error', "Error: " + obj.status + " | " + obj.message);
         },
         'text'
     );
 }
 
-function updatemailusername(){
+function updateurlwebsite() {
     $.post(
-        '/api/config',
-        {
-            token : $("meta[name='token']").attr("content"),
-            name : "username_mail",
-            send : document.getElementById("mailusername").value
+        '/api/config', {
+            token: $("meta[name='token']").attr("content"),
+            name: "url_website",
+            send: document.getElementById("url_website").value
         },
 
-        function(data){
+        function(data) {
             var obj = JSON.parse(data);
             if (obj.status == 42)
-                swal({title: "Success", text: obj.message, type: "success"}
-                );
+                swal({ title: "Success", text: obj.message, type: "success" });
             else if (obj.status == 41)
-                window.location="/logout";
+                window.location = "/logout";
             else if (obj.status == 44)
-                swal({title: "Missing permission", text: obj.message, type: "error"},
-                    function (){
-                        window.location="/logout";
+                swal({ title: "Missing permission", text: obj.message, type: "error" },
+                    function() {
+                        window.location = "/logout";
                     }
                 );
             else if (obj.status == 40)
-                swal({title: "Problem with the core", text: obj.message, type: "error"}
-                );
+                swal({ title: "Problem with the core", text: obj.message, type: "error" });
             else
-                $.Notification.notify('error','bottom center','Internal Error', "Error: " + obj.status + " | " + obj.message);
+                $.Notification.notify('error', 'bottom center', 'Internal Error', "Error: " + obj.status + " | " + obj.message);
         },
         'text'
     );
 }
 
-function updatemailpassword(){
+function updatemailhost() {
     $.post(
-        '/api/config',
-        {
-            token : $("meta[name='token']").attr("content"),
-            name : "password_mail",
-            send : document.getElementById("mailpassword").value
+        '/api/config', {
+            token: $("meta[name='token']").attr("content"),
+            name: "host_mail",
+            send: document.getElementById("mailhost").value
         },
 
-        function(data){
+        function(data) {
             var obj = JSON.parse(data);
             if (obj.status == 42)
-                swal({title: "Success", text: obj.message, type: "success"}
-                );
+                swal({ title: "Success", text: obj.message, type: "success" });
             else if (obj.status == 41)
-                window.location="/logout";
+                window.location = "/logout";
             else if (obj.status == 44)
-                swal({title: "Missing permission", text: obj.message, type: "error"},
-                    function (){
-                        window.location="/logout";
+                swal({ title: "Missing permission", text: obj.message, type: "error" },
+                    function() {
+                        window.location = "/logout";
                     }
                 );
             else if (obj.status == 40)
-                swal({title: "Problem with the core", text: obj.message, type: "error"}
-                );
+                swal({ title: "Problem with the core", text: obj.message, type: "error" });
             else
-                $.Notification.notify('error','bottom center','Internal Error', "Error: " + obj.status + " | " + obj.message);
+                $.Notification.notify('error', 'bottom center', 'Internal Error', "Error: " + obj.status + " | " + obj.message);
         },
         'text'
     );
 }
 
-function updatemailsecure(){
+function updatemailusername() {
     $.post(
-        '/api/config',
-        {
-            token : $("meta[name='token']").attr("content"),
-            name : "secure_mail",
-            send : document.getElementById("mailsecure").value
+        '/api/config', {
+            token: $("meta[name='token']").attr("content"),
+            name: "username_mail",
+            send: document.getElementById("mailusername").value
         },
 
-        function(data){
+        function(data) {
             var obj = JSON.parse(data);
             if (obj.status == 42)
-                swal({title: "Success", text: obj.message, type: "success"}
-                );
+                swal({ title: "Success", text: obj.message, type: "success" });
             else if (obj.status == 41)
-                window.location="/logout";
+                window.location = "/logout";
             else if (obj.status == 44)
-                swal({title: "Missing permission", text: obj.message, type: "error"},
-                    function (){
-                        window.location="/logout";
+                swal({ title: "Missing permission", text: obj.message, type: "error" },
+                    function() {
+                        window.location = "/logout";
                     }
                 );
             else if (obj.status == 40)
-                swal({title: "Problem with the core", text: obj.message, type: "error"}
-                );
+                swal({ title: "Problem with the core", text: obj.message, type: "error" });
             else
-                $.Notification.notify('error','bottom center','Internal Error', "Error: " + obj.status + " | " + obj.message);
+                $.Notification.notify('error', 'bottom center', 'Internal Error', "Error: " + obj.status + " | " + obj.message);
         },
         'text'
     );
 }
 
-function updatemailport(){
+function updatemailpassword() {
     $.post(
-        '/api/config',
-        {
-            token : $("meta[name='token']").attr("content"),
-            name : "ports_mail",
-            send : document.getElementById("mailport").value
+        '/api/config', {
+            token: $("meta[name='token']").attr("content"),
+            name: "password_mail",
+            send: document.getElementById("mailpassword").value
         },
 
-        function(data){
+        function(data) {
             var obj = JSON.parse(data);
             if (obj.status == 42)
-                swal({title: "Success", text: obj.message, type: "success"}
-                );
+                swal({ title: "Success", text: obj.message, type: "success" });
             else if (obj.status == 41)
-                window.location="/logout";
+                window.location = "/logout";
             else if (obj.status == 44)
-                swal({title: "Missing permission", text: obj.message, type: "error"},
-                    function (){
-                        window.location="/logout";
+                swal({ title: "Missing permission", text: obj.message, type: "error" },
+                    function() {
+                        window.location = "/logout";
                     }
                 );
             else if (obj.status == 40)
-                swal({title: "Problem with the core", text: obj.message, type: "error"}
-                );
+                swal({ title: "Problem with the core", text: obj.message, type: "error" });
             else
-                $.Notification.notify('error','bottom center','Internal Error', "Error: " + obj.status + " | " + obj.message);
+                $.Notification.notify('error', 'bottom center', 'Internal Error', "Error: " + obj.status + " | " + obj.message);
         },
         'text'
     );
 }
 
-function updatemailsender(){
+function updatemailsecure() {
     $.post(
-        '/api/config',
-        {
-            token : $("meta[name='token']").attr("content"),
-            name : "sender_mail",
-            send : document.getElementById("mailsender").value
+        '/api/config', {
+            token: $("meta[name='token']").attr("content"),
+            name: "secure_mail",
+            send: document.getElementById("mailsecure").value
         },
 
-        function(data){
+        function(data) {
             var obj = JSON.parse(data);
             if (obj.status == 42)
-                swal({title: "Success", text: obj.message, type: "success"}
-                );
+                swal({ title: "Success", text: obj.message, type: "success" });
             else if (obj.status == 41)
-                window.location="/logout";
+                window.location = "/logout";
             else if (obj.status == 44)
-                swal({title: "Missing permission", text: obj.message, type: "error"},
-                    function (){
-                        window.location="/logout";
+                swal({ title: "Missing permission", text: obj.message, type: "error" },
+                    function() {
+                        window.location = "/logout";
                     }
                 );
             else if (obj.status == 40)
-                swal({title: "Problem with the core", text: obj.message, type: "error"}
-                );
+                swal({ title: "Problem with the core", text: obj.message, type: "error" });
             else
-                $.Notification.notify('error','bottom center','Internal Error', "Error: " + obj.status + " | " + obj.message);
+                $.Notification.notify('error', 'bottom center', 'Internal Error', "Error: " + obj.status + " | " + obj.message);
+        },
+        'text'
+    );
+}
+
+function updatemailport() {
+    $.post(
+        '/api/config', {
+            token: $("meta[name='token']").attr("content"),
+            name: "ports_mail",
+            send: document.getElementById("mailport").value
+        },
+
+        function(data) {
+            var obj = JSON.parse(data);
+            if (obj.status == 42)
+                swal({ title: "Success", text: obj.message, type: "success" });
+            else if (obj.status == 41)
+                window.location = "/logout";
+            else if (obj.status == 44)
+                swal({ title: "Missing permission", text: obj.message, type: "error" },
+                    function() {
+                        window.location = "/logout";
+                    }
+                );
+            else if (obj.status == 40)
+                swal({ title: "Problem with the core", text: obj.message, type: "error" });
+            else
+                $.Notification.notify('error', 'bottom center', 'Internal Error', "Error: " + obj.status + " | " + obj.message);
+        },
+        'text'
+    );
+}
+
+function updatemailsender() {
+    $.post(
+        '/api/config', {
+            token: $("meta[name='token']").attr("content"),
+            name: "sender_mail",
+            send: document.getElementById("mailsender").value
+        },
+
+        function(data) {
+            var obj = JSON.parse(data);
+            if (obj.status == 42)
+                swal({ title: "Success", text: obj.message, type: "success" });
+            else if (obj.status == 41)
+                window.location = "/logout";
+            else if (obj.status == 44)
+                swal({ title: "Missing permission", text: obj.message, type: "error" },
+                    function() {
+                        window.location = "/logout";
+                    }
+                );
+            else if (obj.status == 40)
+                swal({ title: "Problem with the core", text: obj.message, type: "error" });
+            else
+                $.Notification.notify('error', 'bottom center', 'Internal Error', "Error: " + obj.status + " | " + obj.message);
         },
         'text'
     );
@@ -644,100 +583,100 @@ function updatemailsender(){
 function update_vmod() {
     var newVersion = parseFloat(document.getElementById("vmod").textContent) + 0.000001;
     $.post(
-        '/api/update/vmod',
-        {
-            token : $("meta[name='token']").attr("content"),
-            vmod : newVersion.toFixed(6)
+        '/api/update/vmod', {
+            token: $("meta[name='token']").attr("content"),
+            vmod: newVersion.toFixed(6)
         },
 
-        function(data){
+        function(data) {
             var obj = JSON.parse(data);
-            if (obj.status == 42)
-            {
-                $.Notification.notify('success','top right','New update created', obj.message);
+            if (obj.status == 42) {
+                $.Notification.notify('success', 'top right', 'New update created', obj.message);
                 document.getElementById("vmod").textContent = newVersion.toFixed(6);
-            }
-            else if (obj.status == 41)
-                window.location="/logout";
+            } else if (obj.status == 41)
+                window.location = "/logout";
             else if (obj.status == 44)
-                swal({title: "Missing permission", text: obj.message, type: "error"},
-                    function (){
-                        window.location="/logout";
+                swal({ title: "Missing permission", text: obj.message, type: "error" },
+                    function() {
+                        window.location = "/logout";
                     }
                 );
             else
-                $.Notification.notify('error','bottom center','Internal Error', "Error: " + obj.status + " | " + obj.message);
+                $.Notification.notify('error', 'bottom center', 'Internal Error', "Error: " + obj.status + " | " + obj.message);
         },
         'text'
     );
 }
+
 function update_vtaskforce() {
     var newVersion = parseFloat(document.getElementById("vtaskforce").textContent) + 0.000001;
     $.post(
-        '/api/update/vtaskforce',
-        {
-            token : $("meta[name='token']").attr("content"),
-            vtaskforce : newVersion.toFixed(6)
+        '/api/update/vtaskforce', {
+            token: $("meta[name='token']").attr("content"),
+            vtaskforce: newVersion.toFixed(6)
         },
 
-        function(data){
+        function(data) {
             var obj = JSON.parse(data);
-            if (obj.status == 42)
-            {
-                $.Notification.notify('success','top right','New taskforce update created', obj.message);
+            if (obj.status == 42) {
+                $.Notification.notify('success', 'top right', 'New taskforce update created', obj.message);
                 document.getElementById("vtaskforce").textContent = newVersion.toFixed(6);
-            }
-            else if (obj.status == 41)
-                window.location="/logout";
+            } else if (obj.status == 41)
+                window.location = "/logout";
             else if (obj.status == 44)
-                swal({title: "Missing permission", text: obj.message, type: "error"},
-                    function (){
-                        window.location="/logout";
+                swal({ title: "Missing permission", text: obj.message, type: "error" },
+                    function() {
+                        window.location = "/logout";
                     }
                 );
             else
-                $.Notification.notify('error','bottom center','Internal Error', "Error: " + obj.status + " | " + obj.message);
+                $.Notification.notify('error', 'bottom center', 'Internal Error', "Error: " + obj.status + " | " + obj.message);
         },
         'text'
     );
 }
 
+/*
+# ######################### #
+# UPDATED BY : FLASHMODZ    #
+# UPDATED AT : 04/29/2020   #
+# REASON : REMOVE FEATURE   #
+# ######################### #
+*/
+
 function openLauncherconfig() {
-    swal({title: "Not Yet", text: "Feature has not been completed and not functional at the moment, please check Discord", type: "warning"}
-    );
+    swal({ title: "Not Yet", text: "Feature has reserved for V6, please check Discord", type: "warning" });
 }
 
 var level = $("meta[name='level']").attr("content");
 
-function checkLevel()
-{
+function checkLevel() {
     if (level < 9)
-        swal({title: "Missing permission", text: obj.message, type: "error"},
-            function (){
-                window.location="/logout";
+        swal({ title: "Missing permission", text: obj.message, type: "error" },
+            function() {
+                window.location = "/logout";
             }
         );
 }
-function escapeTags( str ) {
-    return String( str )
-        .replace( /&/g, '&amp;' )
-        .replace( /"/g, '&quot;' )
-        .replace( /'/g, '&#39;' )
-        .replace( /</g, '&lt;' )
-        .replace( />/g, '&gt;' );
+
+function escapeTags(str) {
+    return String(str)
+        .replace(/&/g, '&amp;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#39;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;');
 }
 window.onload = function() {
     $.get(
-        '/api/settings',
-        {
-            launcher : 0
+        '/api/settings', {
+            launcher: 0
         },
 
-        function(data){
+        function(data) {
             var obj = JSON.parse(data);
 
-            if (obj.maintenance == 0)
-            {
+            if (obj.maintenance == 0) {
                 var button = document.getElementById("maintenance");
                 var label = document.getElementById("maintenance_state");
 
@@ -745,8 +684,7 @@ window.onload = function() {
                 label.className = "label label-danger";
                 label.textContent = "Deactivated";
             }
-            if (obj.taskforce == 0)
-            {
+            if (obj.taskforce == 0) {
                 var button = document.getElementById("taskforce");
                 var label = document.getElementById("taskforce_state");
 
@@ -754,8 +692,7 @@ window.onload = function() {
                 label.className = "label label-danger";
                 label.textContent = "Deactivated";
             }
-            if (obj.login == 0)
-            {
+            if (obj.login == 0) {
                 var button = document.getElementById("login");
                 var label = document.getElementById("login_state");
 
@@ -763,8 +700,7 @@ window.onload = function() {
                 label.className = "label label-danger";
                 label.textContent = "Deactivated";
             }
-            if (obj.register == 0)
-            {
+            if (obj.register == 0) {
                 var button = document.getElementById("register");
                 var label = document.getElementById("register_state");
 
@@ -773,8 +709,7 @@ window.onload = function() {
                 label.textContent = "Deactivated";
             }
 
-            if (obj.indexer == 0)
-            {
+            if (obj.indexer == 0) {
                 var label = document.getElementById("indexer_state");
 
                 label.className = "label label-danger";
@@ -790,12 +725,12 @@ window.onload = function() {
 
         'text'
     );
-    
-    
+
+
     if (level < 9)
-        swal({title: "Missing permission", text: "You are not Admin !", type: "error"},
-            function (){
-                window.location="/logout";
+        swal({ title: "Missing permission", text: "You are not Admin !", type: "error" },
+            function() {
+                window.location = "/logout";
             }
         );
     var btn = document.getElementById('uploadBtn'),
@@ -814,24 +749,24 @@ window.onload = function() {
         responseType: 'json',
         startXHR: function() {
             progressOuter.style.display = 'block'; // make progress bar visible
-            this.setProgressBar( progressBar );
+            this.setProgressBar(progressBar);
         },
         onSubmit: function() {
             msgBox.innerHTML = ''; // empty the message box
             btn.innerHTML = 'Uploading...'; // change button text to "Uploading..."
         },
-        onComplete: function( filename, response ) {
+        onComplete: function(filename, response) {
             btn.innerHTML = 'Choose Another File';
             progressOuter.style.display = 'none'; // hide progress bar when upload is completed
-            if ( !response ) {
+            if (!response) {
                 msgBox.innerHTML = 'Unable to upload file';
                 return;
             }
-            if ( response.success === true ) {
-                msgBox.innerHTML = '<strong>' + escapeTags( filename ) + '</strong>' + ' successfully uploaded.';
+            if (response.success === true) {
+                msgBox.innerHTML = '<strong>' + escapeTags(filename) + '</strong>' + ' successfully uploaded.';
             } else {
-                if ( response.msg )  {
-                    msgBox.innerHTML = escapeTags( response.msg );
+                if (response.msg) {
+                    msgBox.innerHTML = escapeTags(response.msg);
                 } else {
                     msgBox.innerHTML = 'An error occurred and the upload failed.';
                 }

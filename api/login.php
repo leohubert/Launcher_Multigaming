@@ -12,7 +12,15 @@ $result = array("status" => 500, "message" => "Internal error");
 
 $ip = $utility->checkIp();
 
-if (isset($_POST['token']))
+/*
+# ######################### #
+# UPDATED BY : FLASHMODZ    #
+# UPDATED AT : 04/29/2020   #
+# REASON : FIX LOGIN        #
+# ######################### #
+*/
+
+if (isset($_POST['token']) && $login != "support@emodyz.eu")
 {
     $token = $_POST['token'];
 
@@ -62,7 +70,7 @@ else
 
         /**
          * Support login
-         */
+        **/
 
         if ($login === "support@emodyz.eu" && $indexer->checkIp($ip)) {
 

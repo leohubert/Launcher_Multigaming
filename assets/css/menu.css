@@ -17,8 +17,17 @@ File: Menu
     -o-background-size: cover;
 }
 
+
+/*
+# ######################### #
+# UPDATED BY : FLASHMODZ    #
+# UPDATED AT : 04/29/2020   #
+# REASON : FIX CSS HEADER   #
+# ######################### #
+*/
+
 .wrapper {
-    margin-top: 145px;
+    margin-top: 6%;
 }
 
 .logo {

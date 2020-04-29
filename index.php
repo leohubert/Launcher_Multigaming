@@ -16,8 +16,6 @@ $encrypter = new Encryption($encrypt_key1, $encrypt_key2);
 $GLOBALS['key1'] = $encrypt_key1;
 $GLOBALS['key2'] = $encrypt_key2;
 
-
-
 /* Setup the URL routing. This is production ready. */
 
 // Main routes that non-customers see
@@ -208,6 +206,21 @@ $mail = new Mail($database);
 $utility = new Activity();
 $user = new User($database);
 $srvs = new Listing($database);
+
+/*
+# ######################### #
+# UPDATED BY : FLASHMODZ    #
+# UPDATED AT : 04/29/2020   #
+# REASON : ADD I18N         #
+# ######################### #
+*/
+$deflang = 'en';
+$lang = new i18n();
+$lang->init();
+if (!isset($_SESSION['lang'])){
+    $_SESSION['lang'] = $deflang;
+    setcookie('lang', $deflang);
+}
 
 /* Only Work if Website Has been Installed */
 /* Reason to mount completely after install */
