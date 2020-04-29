@@ -7,5 +7,5 @@ RewriteRule . /index.php [L]
 #php_value upload_max_filesize 70M
 #php_value post_max_size 80M
 #php_value memory_limit 90M
-#php_value max_execution_time 240
-#php_value max_input_time 240
+php_value max_execution_time 0
+php_value max_input_time 0
