@@ -18,7 +18,7 @@ if (isset($_POST['token']) && isset($_POST['id']) && isset($_POST['db_host']) &&
     $db_host = $encrypter->encrypt_decrypt('encrypt', $_POST['db_host']);
     $db_name = $encrypter->encrypt_decrypt('encrypt', $_POST['db_name']);
     $db_user = $encrypter->encrypt_decrypt('encrypt', $_POST['db_user']);
-    $db_pass = $encrypter->encrypt_decrypt('encrypt', ($_POST['db_pass']);
+    $db_pass = $encrypter->encrypt_decrypt('encrypt', $_POST['db_pass']);
 
     $checkUser = $database->prepare('SELECT user_id FROM sessions WHERE token = :token');
     $checkUser->execute(array('token' => $token));

@@ -58,7 +58,7 @@
         <!-- Page-Title -->
         <div class="row">
             <div class="col-sm-12">
-                <h4 class="page-title">Account editor
+                <h4 class="page-title"><?php echo L::profile_accountedi_accounteditor; ?>
                 </h4>
             </div>
         </div>
@@ -78,7 +78,7 @@
         <div class="col-sm-5 col-lg-5">
             <div class="panel panel-color panel-primary">
                 <div class="panel-heading">
-                    <h3 class="panel-title">Account control</h3>
+                    <h3 class="panel-title"><?php echo L::profile_accountedi_title; ?></h3>
                 </div>
                 <div class="panel-body">
                     <p>
@@ -112,17 +112,17 @@
                     <div class="form-group">
                         <div class="col-sm-6">
                             <select id="control_level" class="form-control" disabled>
-                                <option id="level0" value="0" selected>No valided</option>
-                                <option id="level1" value="1">Player</option>
-                                <option id="level2" value="2">Policeman</option>
-                                <option id="level3" value="3">Medic</option>
-                                <option id="level4" value="4">Rebel</option>
-                                <option id="level5" value="5">VIP</option>
-                                <option id="level6" value="6">Support</option>
-                                <option id="level7" value="7">Moderator</option>
-                                <option id="level8" value="8">Admin</option>
-                                <option id="level9" value="9">Developer</option>
-                                <option id="level10" value="10">Founder</option>
+                                <option id="level0" value="0" selected><?php echo L::profile_accountedi_notvalided; ?></option>
+                                <option id="level1" value="1"><?php echo L::profile_accountedi_player; ?></option>
+                                <option id="level2" value="2"><?php echo L::profile_accountedi_policeman; ?></option>
+                                <option id="level3" value="3"><?php echo L::profile_accountedi_medic; ?></option>
+                                <option id="level4" value="4"><?php echo L::profile_accountedi_rebel; ?></option>
+                                <option id="level5" value="5"><?php echo L::profile_accountedi_vip; ?></option>
+                                <option id="level6" value="6"><?php echo L::profile_accountedi_support; ?></option>
+                                <option id="level7" value="7"><?php echo L::profile_accountedi_moderator; ?></option>
+                                <option id="level8" value="8"><?php echo L::profile_accountedi_admin; ?></option>
+                                <option id="level9" value="9"><?php echo L::profile_accountedi_developper; ?></option>
+                                <option id="level10" value="10"><?php echo L::profile_accountedi_founder; ?></option>
                             </select>
                         </div>
                         <div class="col-sm-2 text-center">
@@ -130,16 +130,16 @@
                         </div>
                         <div class="col-sm-4">
                             <select id="control_banned" class="form-control" disabled>
-                                <option id="banned0" value="0" selected>No</option>
-                                <option id="banned1" value="1">Yes</option>
+                                <option id="banned0" value="0" selected><?php echo L::no; ?></option>
+                                <option id="banned1" value="1"><?php echo L::yes; ?></option>
                             </select>
                         </div>
                     </div>
                     </p>
                 </div>
                 <div class="panel-footer">
-                    <button data-toggle="modal" data-target="#con-close-modal" type="button"  class="btn btn-warning btn-custom waves-effect w-md waves-light m-b-5">Change password</button>
-                    <button type="button" class="btn btn-success btn-custom waves-effect w-md waves-light m-b-5" onclick="saveUser()">Save</button>
+                    <button data-toggle="modal" data-target="#con-close-modal" type="button"  class="btn btn-warning btn-custom waves-effect w-md waves-light m-b-5"><?php echo L::profile_accountedi_changepasswd; ?></button>
+                    <button type="button" class="btn btn-success btn-custom waves-effect w-md waves-light m-b-5" onclick="saveUser()"><?php echo L::save; ?></button>
                 </div>
             </div>
         </div>
@@ -151,13 +151,13 @@
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                <h4 class="modal-title">Change password</h4>
+                <h4 class="modal-title"><?php echo L::profile_accountedi_changepasswd; ?></h4>
             </div>
             <div class="modal-body">
                 <div class="row">
                     <div class="col-md-6">
                         <div class="form-group">
-                            <label for="field-1" class="control-label">Current password</label>
+                            <label for="field-1" class="control-label"><?php echo L::profile_accountedi_currentpsswd; ?></label>
                             <input type="password" class="form-control" id="password_currentpassword" placeholder="Current password">
                         </div>
                     </div>
@@ -165,7 +165,7 @@
                 <div class="row">
                     <div class="col-md-6">
                         <div class="form-group">
-                            <label for="field-1" class="control-label">New password</label>
+                            <label for="field-1" class="control-label"><?php echo L::profile_accountedi_newpsswd; ?></label>
                             <input type="password" class="form-control" id="password_newpassword" placeholder="New password">
                         </div>
                     </div>
@@ -173,15 +173,15 @@
                 <div class="row">
                     <div class="col-md-6">
                         <div class="form-group">
-                            <label for="field-1" class="control-label">Confirm password</label>
+                            <label for="field-1" class="control-label"><?php echo L::profile_accountedi_confirmpsswd; ?></label>
                             <input type="password" class="form-control" id="password_confirmpassword" placeholder="Confirm password">
                         </div>
                     </div>
                 </div>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-default waves-effect" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-info waves-effect waves-light" onclick="changePassword()">Change password</button>
+                <button type="button" class="btn btn-default waves-effect" data-dismiss="modal"><?php echo L::close; ?></button>
+                <button type="button" class="btn btn-info waves-effect waves-light" onclick="changePassword()"><?php echo L::profile_accountedi_changepasswd; ?></button>
             </div>
         </div>
     </div>

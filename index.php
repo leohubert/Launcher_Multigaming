@@ -21,22 +21,6 @@ $GLOBALS['key2'] = $encrypt_key2;
 // Main routes that non-customers see
 session_start();
 
-/*
-# ######################### #
-# UPDATED BY : FLASHMODZ    #
-# UPDATED AT : 04/29/2020   #
-# REASON : ADD I18N         #
-# ######################### #
-*/
-$deflang = 'en';
-$lang = new i18n();
-$lang->init();
-if (!isset($_COOKIE['lang'])){
-    setcookie('lang', $deflang, time() + (86400 * 30), "/");
-}else{
-    setcookie('lang', $_COOKIE['lang'], time() + (86400 * 30), "/");
-}
-
 if (!file_exists("configs/config_mysql.php") || $is_config == null) {
     if (file_exists("configs/config_mysql.php"))
         include dirname(__FILE__) . '/configs/config_mysql.php';
@@ -222,6 +206,22 @@ $mail = new Mail($database);
 $utility = new Activity();
 $user = new User($database);
 $srvs = new Listing($database);
+
+/*
+# ######################### #
+# UPDATED BY : FLASHMODZ    #
+# UPDATED AT : 04/29/2020   #
+# REASON : ADD I18N         #
+# ######################### #
+*/
+$deflang = 'en';
+$lang = new i18n();
+$lang->init();
+if (!isset($_COOKIE['lang'])){
+    setcookie('lang', $deflang, time() + (86400 * 30), "/");
+}else{
+    setcookie('lang', $_COOKIE['lang'], time() + (86400 * 30), "/");
+}
 
 /* Only Work if Website Has been Installed */
 /* Reason to mount completely after install */

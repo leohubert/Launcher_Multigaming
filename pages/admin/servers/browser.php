@@ -70,7 +70,7 @@
         <!-- Page-Title -->
         <div class="row">
             <div class="col-sm-12">
-                <h4 class="page-title">Server Browser
+                <h4 class="page-title"><?php echo L::server_serverbrowser_title; ?>
                 </h4>
             </div>
         </div>

@@ -61,7 +61,7 @@
                 <!-- Page-Title -->
                 <div class="row">
                     <div class="col-sm-12">
-                        <h4 class="page-title">News control</h4>
+                        <h4 class="page-title"><?php echo L::news_title; ?></h4>
                     </div>
                 </div>
 
@@ -76,19 +76,19 @@
                                 <h4 class="m-t-0 m-b-5" id="news_date_label"></h4>
                                 <a href="" id="news_link_redirect"><button type="button" class="btn btn-primary btn-custom waves-effect w-md waves-light m-b-5"><div id="news_link_button"></div></button></a>
                                 <br>
-                                <button type="button" class="btn btn-danger btn-custom waves-effect w-md waves-light m-b-5" onclick="removeNews()">Remove this news</button>
+                                <button type="button" class="btn btn-danger btn-custom waves-effect w-md waves-light m-b-5" onclick="removeNews()"><?php echo L::news_removenews; ?></button>
                             </div>
                         </div>
                     </div>
                     <div class="panel panel-color panel-primary">
                         <div class="panel-heading">
-                            <h3 class="panel-title">News control</h3>
+                            <h3 class="panel-title"><?php echo L::news_title; ?></h3>
                         </div>
                         <div class="panel-body">
                             <p>
                             <div class="form-group">
                                 <div class="col-sm-4">
-                                       <h3 class="panel-title">Create at: </h3>
+                                       <h3 class="panel-title"><?php echo L::createat; ?>: </h3>
                                 </div>
                                 <div class="col-sm-8">
                                      <span id="news_date"></span>
@@ -107,7 +107,7 @@
                             </p>
                         </div>
                         <div class="panel-footer">
-                            <button type="button" class="btn btn-success btn-custom waves-effect w-md waves-light m-b-5" onclick="saveNews()">Save</button>
+                            <button type="button" class="btn btn-success btn-custom waves-effect w-md waves-light m-b-5" onclick="saveNews()"><?php echo L::save; ?></button>
                         </div>
                     </div>
                 </div>

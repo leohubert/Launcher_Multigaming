@@ -1,0 +1,123 @@
+{
+    "close": "Close",
+    "save": "Save",
+    "submit": "Submit",
+    "createat": "Create At",
+    "yes": "Yes",
+    "no": "No",
+    "devices": "$",
+    "nav": {
+        "dashboard": "Dashboard",
+        "settings": "Settings",
+        "server": "Server",
+        "news": "News",
+        "users": "Users"
+    },
+    "settings": {
+        "activated": "Activated",
+        "deactivate": "Deactivate",
+        "deactivatelogin": "Deactivate login",
+        "activatelogin": "Activate login",
+        "deactivateregister": "Deactivate register",
+        "activateregister": "Activate register",
+        "deactivatemaintenance": "Deactivate maintenance",
+        "deactivatemaintenancesub": "Maintenance was been deactivated",
+        "activatemaintenance": "Activate maintenance",
+        "settingsows": {
+            "title": "General Website Settings",
+            "savewname": "Update Website name",
+            "savemaccount": "Update Max Account",
+            "saveurl": "Update URL of my panel"
+        },
+        "settingsoms": {
+            "title": "Website Mail Settings",
+            "subtitle": "Please insert the necessary information.<br />Be careful to leave encryption in TLS only<br /><br />A next update will improve compatibilities",
+            "savehmail": "Change Mail Host",
+            "saveumail": "Change Mail Username",
+            "savepmail": "Change Mail Password",
+            "saveemail": "Change Mail Encryption",
+            "savepomail": "Change Mail Port",
+            "savesmail": "Change Mail sender"
+        },
+        "title": "Control panel",
+        "otitle": "Launcher control",
+        "subtitle1": "Global Settings",
+        "ows": "Open Website Settings",
+        "oms": "Open Mail Settings",
+        "ols": "Open Launcher Settings",
+        "is": "Indexer Status",
+        "SupportAv": "Support Available",
+        "login": "Login",
+        "maintenance": "Maintenance",
+        "launcherupdate": "Launcher update",
+        "uploadlauncher": "Upload a new launcher",
+        "choosefile": "Choose File"
+    },
+    "news": {
+        "title": "News control",
+        "subtitle": "All ads",
+        "subtitlecontent": "Table of all news",
+        "row": {
+            "id": "#",
+            "title": "Title",
+            "server": "Server",
+            "date": "Date",
+            "link": "Link",
+            "action": "Action"
+        },
+        "addnews": "Add news",
+        "selectserver": "Select a server",
+        "removenews": "Remove This News"
+    },
+    "profile": {
+        "accountedi": {
+            "accounteditor": "Account editor",
+            "title": "User accounts control panel",
+            "notvalided": "No valided",
+            "player": "Player",
+            "policeman": "Policeman",
+            "medic": "Medic",
+            "rebel": "Rebel",
+            "vip": "VIP",
+            "support": "Support",
+            "moderator": "Moderator",
+            "admin": "Admin",
+            "developper": "Developer",
+            "founder": "Founder",
+            "changepasswd": "Change password",
+            "currentpsswd": "Current password",
+            "newpsswd": "New password",
+            "confirmpsswd": "Confirm password"
+        },
+        "view": {
+            "title": "Profile view",
+            "steamid": "Steam UID",
+            "igmoney": "In game money",
+            "cash": "CASH",
+            "bank": "BANK",
+            "iginfos": "In game information",
+            "username": "Username",
+            "adminlvl": "Admin level",
+            "coplvl": "Cop level",
+            "mediclvl": "Medic level"
+        }
+    },
+    "server": {
+        "serverbrowser": {
+            "title": "Server Browser"
+        },
+        "servers": {
+            "title": "Servers / Games control",
+            "subtitle": "All Servers / Games",
+            "subtitlecontent": "Table of all servers.",
+            "row": {
+                "id": "#",
+                "name": "Name",
+                "ip": "IP",
+                "game": "Game",
+                "actions": "Actions"
+            },
+            "createserver": "Create a new server"
+        }
+    }
+}

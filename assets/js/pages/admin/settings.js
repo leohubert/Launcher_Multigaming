@@ -2,6 +2,32 @@
  * Created by leohu on 13/08/2016.
  */
 
+function refresh() {
+    setTimeout(function() {
+        location.reload();
+    }, 100);
+};
+
+async function getTranslation(key) {
+    let lll = getCookie('lang');
+    let klkey = key;
+
+    if (lll) {
+        if (klkey) {
+            let data = new FormData();
+            data.append('lang', lll);
+            data.append('var', klkey);
+            return (await (await fetch("api/utility/language.php", { method: "POST", body: data })).json()).message;
+        };
+    };
+};
+
+function getCookie(name) {
+    let re = new RegExp(name + "=([^;]+)");
+    let value = re.exec(document.cookie);
+    return (value != null) ? unescape(value[1]) : null;
+}
+
 function switch_maintenance() {
     var button = document.getElementById("maintenance");
     var label = document.getElementById("maintenance_state");
@@ -645,14 +671,15 @@ function update_vtaskforce() {
 */
 
 function openLauncherconfig() {
+
     swal({ title: "Not Yet", text: "Feature has reserved for V6, please check Discord", type: "warning" });
 }
 
-function refresh() {
-    setTimeout(function() {
-        location.reload();
-    }, 100);
-};
+async function testmssg() {
+    const _close = await getTranslation('close');
+    const _title = await getTranslation('settings.title');
+    swal({ title: _title, text: _close, type: "warning" });
+}
 
 /*
 FUTUR FOR I18N ** DONT DELETE **

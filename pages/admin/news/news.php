@@ -61,27 +61,27 @@
                 <!-- Page-Title -->
                 <div class="row">
                     <div class="col-sm-12">
-                        <h4 class="page-title">News control</h4>
+                        <h4 class="page-title"><?php echo L::news_title; ?></h4>
                     </div>
                 </div>
 
                 <div class="col-sm-8">
                     <div class="card-box table-responsive">
 
-                        <h4 class="m-t-0 header-title"><b>All news</b></h4>
+                        <h4 class="m-t-0 header-title"><b><?php echo L::news_subtitle; ?></b></h4>
                         <p class="text-muted font-13 m-b-30">
-                            Table of all news.
+                        <?php echo L::news_subtitlecontent; ?>
                         </p>
 
                         <table id="datatable-responsive" class="table table-striped table-bordered dt-responsive nowrap" cellspacing="0" width="100%">
                             <thead>
                             <tr>
-                                <th>#</th>
-                                <th>Title</th>
-                                <th>Server</th>
-                                <th>Date</th>
-                                <th>Link</th>
-                                <th>Actions</th>
+                                <th><?php echo L::news_row_id; ?></th>
+                                <th><?php echo L::news_row_title; ?></th>
+                                <th><?php echo L::news_row_server; ?></th>
+                                <th><?php echo L::news_row_date; ?></th>
+                                <th><?php echo L::news_row_link; ?></th>
+                                <th><?php echo L::news_row_action; ?></th>
                             </tr>
                             </thead>
                             <tbody id="news">
@@ -94,7 +94,7 @@
                 <div class="col-sm-3 col-lg-3">
                     <div class="panel panel-color panel-primary">
                         <div class="panel-heading">
-                            <h3 class="panel-title">Add news</h3>
+                            <h3 class="panel-title"><?php echo L::news_addnews; ?></h3>
                         </div>
                         <div class="panel-body">
                             <p>
@@ -117,7 +117,7 @@
                                 <br>
                                 <div class="col-sm-12">
                                     <select class="form-control" id="news_servers">
-                                        <option value="null">Select a server</option>
+                                        <option value="null"><?php echo L::news_selectserver; ?></option>
                                     </select>
                                 </div>
 
@@ -126,7 +126,7 @@
                             </p>
                         </div>
                         <div class="panel-footer">
-                            <button type="button" class="btn btn-success btn-custom waves-effect w-md waves-light m-b-5" onclick="addNews()">Submit</button>
+                            <button type="button" class="btn btn-success btn-custom waves-effect w-md waves-light m-b-5" onclick="addNews()"><?php echo L::submit; ?></button>
                         </div>
                     </div>
                 </div>

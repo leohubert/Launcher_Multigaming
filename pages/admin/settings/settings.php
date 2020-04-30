@@ -105,7 +105,7 @@ $selevlel = json_decode($user->checkAdmin($_SESSION['token']));
 
                                             <div class="modal-content">
                                                 <div class="modal-header">
-                                                    <h4 class="modal-title"><i class="md md-vpn-lock"></i> <?php echo L::settingsows_title; ?></h4>
+                                                    <h4 class="modal-title"><i class="md md-vpn-lock"></i> <?php echo L::settings_settingsows_title; ?></h4>
                                                 </div><br>
 
                                                 <div class="modal-body">
@@ -117,7 +117,7 @@ $selevlel = json_decode($user->checkAdmin($_SESSION['token']));
                                                         </div>
                                                         <div class="col-md-4">
                                                             <div class="card-box">
-                                                                <button type="submit" onclick="updatewebsite()" class="btn btn-primary"><?php echo L::settingsows_savewname; ?></button>
+                                                                <button type="submit" onclick="updatewebsite()" class="btn btn-primary"><?php echo L::settings_settingsows_savewname; ?></button>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -129,7 +129,7 @@ $selevlel = json_decode($user->checkAdmin($_SESSION['token']));
                                                         </div>
                                                         <div class="col-md-4">
                                                             <div class="card-box">
-                                                                <button type="submit" onclick="updatemaccount()" class="btn btn-primary"><?php echo L::settingsows_savemaccount; ?></button>
+                                                                <button type="submit" onclick="updatemaccount()" class="btn btn-primary"><?php echo L::settings_settingsows_savemaccount; ?></button>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -141,7 +141,100 @@ $selevlel = json_decode($user->checkAdmin($_SESSION['token']));
                                                         </div>
                                                         <div class="col-md-4">
                                                             <div class="card-box">
-                                                                <button type="submit" onclick="updateurlwebsite()" class="btn btn-primary"><?php echo L::settingsows_saveurl; ?></button>
+                                                                <button type="submit" onclick="updateurlwebsite()" class="btn btn-primary"><?php echo L::settings_settingsows_saveurl; ?></button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div><br>
+
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-purple btn-rounded w-md waves-effect waves-light m-b-5" data-dismiss="modal"><?php echo L::close; ?></button>
+                                                    <button type="button" onclick="testmssg()" class="btn btn-purple btn-rounded w-md waves-effect waves-light m-b-5" data-dismiss="modal">Test1</button>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+
+                                    <div class="modal fade" role="dialog" id="OpenMailSettings">
+                                        <div class="modal-dialog modal-sm">
+
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h4 class="modal-title"><i class="ion-at"></i> <?php echo L::settings_settingsoms_title; ?></h4><br>
+                                                    <h4 class="modal-title"><i class="md md-report-problem"></i><?php echo L::settings_settingsoms_subtitle; ?>!</h4>
+                                                </div><br>
+
+                                                <div class="modal-body">
+                                                    <div class="row">
+                                                        <div class="col-md-8">
+                                                            <div class="card-box">
+                                                                <input type="text" class="form-control" id="mailhost" placeholder="<?php echo $config->get("host_mail")?>">
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-4">
+                                                            <div class="card-box">
+                                                                <button type="submit" onclick="updatemailhost()" class="btn btn-primary"><?php echo L::settings_settingsoms_savehmail; ?></button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-md-8">
+                                                            <div class="card-box">
+                                                                <input type="text" class="form-control" id="mailusername" placeholder="<?php echo $config->get("username_mail")?>">
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-4">
+                                                            <div class="card-box">
+                                                                <button type="submit" onclick="updatemailusername()" class="btn btn-primary"><?php echo L::settings_settingsoms_saveumail; ?></button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-md-8">
+                                                            <div class="card-box">
+                                                                <input type="password" class="form-control" id="mailpassword" placeholder="Encrypted Content">
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-4">
+                                                            <div class="card-box">
+                                                                <button type="submit" onclick="updatemailpassword()" class="btn btn-primary"><?php echo L::settings_settingsoms_savepmail; ?></button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-md-8">
+                                                            <div class="card-box">
+                                                                <input type="text" class="form-control" id="mailsecure" placeholder="<?php echo $config->get("secure_mail")?>">
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-4">
+                                                            <div class="card-box">
+                                                                <button type="submit" onclick="updatemailsecure()" class="btn btn-primary"><?php echo L::settings_settingsoms_saveemail; ?></button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-md-8">
+                                                            <div class="card-box">
+                                                                <input type="text" class="form-control" id="mailport" placeholder="<?php echo $config->get("ports_mail")?>">
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-4">
+                                                            <div class="card-box">
+                                                                <button type="submit" onclick="updatemailport()" class="btn btn-primary"><?php echo L::settings_settingsoms_savepomail; ?></button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-md-8">
+                                                            <div class="card-box">
+                                                                <input type="text" class="form-control" id="mailsender" placeholder="<?php echo $config->get("sender_mail")?>">
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-4">
+                                                            <div class="card-box">
+                                                                <button type="submit" onclick="updatemailsender()" class="btn btn-primary"><?php echo L::settings_settingsoms_savesmail; ?></button>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -155,101 +248,6 @@ $selevlel = json_decode($user->checkAdmin($_SESSION['token']));
                                         </div>
                                     </div>
 
-                                    <div class="modal fade" role="dialog" id="OpenMailSettings">
-                                        <div class="modal-dialog modal-sm">
-
-                                            <div class="modal-content">
-                                                <div class="modal-header">
-                                                    <h4 class="modal-title"><i class="ion-at"></i> Website Mail Settings</h4><br>
-                                                    <h4 class="modal-title"><i class="md md-report-problem"></i> Please insert the necessary information.<br />
-Be careful to leave encryption in TLS only.<br /><br />
-
-A next update will improve compatibilities!</h4>
-                                                </div><br>
-
-                                                <div class="modal-body">
-                                                    <div class="row">
-                                                        <div class="col-md-8">
-                                                            <div class="card-box">
-                                                                <input type="text" class="form-control" id="mailhost" placeholder="<?php echo $config->get("host_mail")?>">
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-md-4">
-                                                            <div class="card-box">
-                                                                <button type="submit" onclick="updatemailhost()" class="btn btn-primary">Change Mail Host</button>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="row">
-                                                        <div class="col-md-8">
-                                                            <div class="card-box">
-                                                                <input type="text" class="form-control" id="mailusername" placeholder="<?php echo $config->get("username_mail")?>">
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-md-4">
-                                                            <div class="card-box">
-                                                                <button type="submit" onclick="updatemailusername()" class="btn btn-primary">Change Mail Username</button>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="row">
-                                                        <div class="col-md-8">
-                                                            <div class="card-box">
-                                                                <input type="password" class="form-control" id="mailpassword" placeholder="Encrypted Content">
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-md-4">
-                                                            <div class="card-box">
-                                                                <button type="submit" onclick="updatemailpassword()" class="btn btn-primary">Change Mail Password</button>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="row">
-                                                        <div class="col-md-8">
-                                                            <div class="card-box">
-                                                                <input type="text" class="form-control" id="mailsecure" placeholder="<?php echo $config->get("secure_mail")?>">
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-md-4">
-                                                            <div class="card-box">
-                                                                <button type="submit" onclick="updatemailsecure()" class="btn btn-primary">Change Mail Encryption</button>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="row">
-                                                        <div class="col-md-8">
-                                                            <div class="card-box">
-                                                                <input type="text" class="form-control" id="mailport" placeholder="<?php echo $config->get("ports_mail")?>">
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-md-4">
-                                                            <div class="card-box">
-                                                                <button type="submit" onclick="updatemailport()" class="btn btn-primary">Change Mail Port</button>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="row">
-                                                        <div class="col-md-8">
-                                                            <div class="card-box">
-                                                                <input type="text" class="form-control" id="mailsender" placeholder="<?php echo $config->get("sender_mail")?>">
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-md-4">
-                                                            <div class="card-box">
-                                                                <button type="submit" onclick="updatemailsender()" class="btn btn-primary">Change Mail sender</button>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div><br>
-
-                                                <div class="modal-footer">
-                                                    <button type="button" class="btn btn-purple btn-rounded w-md waves-effect waves-light m-b-5" data-dismiss="modal">Close</button>
-                                                </div>
-                                            </div>
-
-                                        </div>
-                                    </div>
-
                                 </div>
                             </div>
                         </div>
@@ -257,12 +255,12 @@ A next update will improve compatibilities!</h4>
                     <div class="card-box">
                         <br />
                         <div class="row">
-                            <div class="card-box text-center"><span><?php echo L::settings_is; ?> : <div><span class="label label-success" id="indexer_state">Support Available</span></div></span></div>
+                            <div class="card-box text-center"><span><?php echo L::settings_is; ?> : <div><span class="label label-success" id="indexer_state"><?php echo L::settings_SupportAv; ?></span></div></span></div>
                         </div>
                         <div class="row">
                             <div class="col-xs-6 text-center">
                                 <div class="card-box">
-                                    <div class="row"><p><i class="md md-https"></i> login </p></div>
+                                    <div class="row"><p><i class="md md-https"></i> <?php echo L::settings_login; ?> </p></div>
                                     <div class="row">
                                         <input type="text" id="msg_title" class="form-control text-center" placeholder="<?php echo $config->get("msg_title") ?>">
                                     </div> <br>
@@ -270,21 +268,21 @@ A next update will improve compatibilities!</h4>
                                         <textarea class="form-control text-center" rows="5" id="msg_content" placeholder="<?php echo $config->get("msg_content") ?>"></textarea>
                                     </div><br>
                                     <div class="row">
-                                        <button id="msg_save" type="button" class="btn btn-info waves-effect w-md waves-light m-b-5" onclick="save_loginNews()">Save</button>
+                                        <button id="msg_save" type="button" class="btn btn-info waves-effect w-md waves-light m-b-5" onclick="save_loginNews()"><?php echo L::save; ?></button>
                                     </div>
                                 </div>
                             </div>
                             <div class="col-xs-6 text-center">
                                 <div class="card-box">
-                                    <p><i class="md md-security"></i> Maintenance </p>
+                                    <p><i class="md md-security"></i> <?php echo L::settings_maintenance; ?> </p>
                                     <div class="row">
                                         <input type="text" id="maintenance_title" class="form-control text-center" placeholder="<?php echo $config->get("maintenance_title") ?>">
                                     </div> <br>
                                     <div class="row">
-                                        <textarea class="form-control text-center" rows="5" id="maintenance_content" placeholder=<?php echo $config->get("maintenance_content") ?>"></textarea>
+                                        <textarea class="form-control text-center" rows="5" id="maintenance_content" placeholder=<?php echo $config->get("maintenance_content") ?>></textarea>
                                     </div><br>
                                     <div class="row">
-                                        <button id="maintenance_save" type="button" class="btn btn-info waves-effect w-md waves-light m-b-5" onclick="save_maintenance()">Save</button>
+                                        <button id="maintenance_save" type="button" class="btn btn-info waves-effect w-md waves-light m-b-5" onclick="save_maintenance()"><?php echo L::save; ?></button>
                                     </div>
                                 </div>
                             </div>
@@ -300,24 +298,10 @@ A next update will improve compatibilities!</h4>
                                 <div class="card-box">
                                     <div class="row">
                                         <div class="col-xs-6">
-                                            <span>Login <div><span class="label label-success" id="login_state">Activated</span></div></span>
+                                            <span>Login <div><span class="label label-success" id="login_state"><?php echo L::settings_activated; ?></span></div></span>
                                         </div>
                                         <div class="col-xs-6">
-                                            <button id="login" type="button" class="btn btn-primary waves-effect w-md waves-light m-b-5" onclick="switch_login()">Deactivate login</button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-xs-12 text-center">
-                                <div class="card-box">
-                                    <div class="row">
-                                        <div class="col-xs-6">
-                                            <span>Register <div><span class="label label-success" id="register_state">Activated</span></div></span>
-                                        </div>
-                                        <div class="col-xs-6">
-                                            <button id="register" type="button" class="btn btn-primary waves-effect w-md waves-light m-b-5" onclick="switch_register()">Deactivate register</button>
+                                            <button id="login" type="button" class="btn btn-primary waves-effect w-md waves-light m-b-5" onclick="switch_login()"><?php echo L::settings_deactivatelogin; ?></button>
                                         </div>
                                     </div>
                                 </div>
@@ -328,10 +312,24 @@ A next update will improve compatibilities!</h4>
                                 <div class="card-box">
                                     <div class="row">
                                         <div class="col-xs-6">
-                                            <span>Maintenance <div><span class="label label-success" id="maintenance_state">Activated</span></div></span>
+                                            <span>Register <div><span class="label label-success" id="register_state"><?php echo L::settings_activated; ?></span></div></span>
                                         </div>
                                         <div class="col-xs-6">
-                                            <button id="maintenance" type="button" class="btn btn-primary waves-effect w-md waves-light m-b-5" onclick="switch_maintenance()">Deactivate maintenance</button>
+                                            <button id="register" type="button" class="btn btn-primary waves-effect w-md waves-light m-b-5" onclick="switch_register()"><?php echo L::settings_deactivateregister; ?></button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-12 text-center">
+                                <div class="card-box">
+                                    <div class="row">
+                                        <div class="col-xs-6">
+                                            <span>Maintenance <div><span class="label label-success" id="maintenance_state"><?php echo L::settings_activated; ?></span></div></span>
+                                        </div>
+                                        <div class="col-xs-6">
+                                            <button id="maintenance" type="button" class="btn btn-primary waves-effect w-md waves-light m-b-5" onclick="switch_maintenance()"><?php echo L::settings_deactivatemaintenance; ?></button>
                                         </div>
                                     </div>
                                 </div>
@@ -340,17 +338,17 @@ A next update will improve compatibilities!</h4>
 
                         <div class="row text-center">
                             <div class="card-box">
-                                <span>Launcher update</span>
+                                <span><?php echo L::settings_otitle; ?></span>
                                 <div style="line-height:50%;"><br></div>
                                 <span class="label label-info" id="vlauncher">...</span>
                                 <div style="line-height:100%;"><br></div>
                                 <div class="container">
                                     <div class="page-header">
-                                        <h3>Upload a new launcher</h3>
+                                        <h3><?php echo L::settings_uploadlauncher; ?></h3>
                                     </div>
                                     <div class="row" style="padding-top:10px;">
                                         <div class="text-center">
-                                            <button id="uploadBtn" class="btn btn-large btn-primary" onclick="checkLevel()">Choose File</button>
+                                            <button id="uploadBtn" class="btn btn-large btn-primary" onclick="checkLevel()"><?php echo L::settings_choosefile; ?></button>
                                         </div>
                                         <div class="col-xs-10">
                                             <div id="progressOuter" class="progress progress-striped active" style="display:none;">

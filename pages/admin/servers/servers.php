@@ -56,26 +56,26 @@
                 <!-- Page-Title -->
                 <div class="row">
                     <div class="col-sm-12">
-                        <h4 class="page-title">Servers / Games control</h4>
+                        <h4 class="page-title"><?php echo L::server_servers_title; ?></h4>
                     </div>
                 </div>
 
                 <div class="col-sm-8">
                     <div class="card-box table-responsive">
 
-                        <h4 class="m-t-0 header-title"><b>All Servers / Games</b></h4>
+                        <h4 class="m-t-0 header-title"><b><?php echo L::server_servers_subtitle; ?></b></h4>
                         <p class="text-muted font-13 m-b-30">
-                            Table of all servers.
+                        <?php echo L::server_servers_subtitlecontent; ?>
                         </p>
 
                         <table id="datatable-responsive" class="table table-striped table-bordered dt-responsive nowrap" cellspacing="0" width="100%">
                             <thead>
                             <tr>
-                                <th>#</th>
-                                <th>Name</th>
-                                <th>IP</th>
-                                <th>Game</th>
-                                <th>Actions</th>
+                                <th><?php echo L::server_servers_row_id; ?></th>
+                                <th><?php echo L::server_servers_row_name; ?></th>
+                                <th><?php echo L::server_servers_row_ip; ?></th>
+                                <th><?php echo L::server_servers_row_game; ?></th>
+                                <th><?php echo L::server_servers_row_actions; ?></th>
                             </tr>
                             </thead>
                             <tbody id="servers">
@@ -89,7 +89,7 @@
                     <form onsubmit="return addServer()">
                     <div class="panel panel-color panel-primary">
                         <div class="panel-heading">
-                            <h3 class="panel-title">Create a new server</h3>
+                            <h3 class="panel-title"><?php echo L::server_servers_createserver; ?></h3>
                         </div>
 
                             <div class="panel-body">
@@ -127,7 +127,7 @@
                                 </div>
                             </div>
                         <div class="panel-footer">
-                            <button type="submit" class="btn btn-success btn-custom waves-effect w-md waves-light m-b-5">Submit</button>
+                            <button type="submit" class="btn btn-success btn-custom waves-effect w-md waves-light m-b-5"><?php echo L::submit; ?></button>
                         </div>
                     </div>
                     </form>

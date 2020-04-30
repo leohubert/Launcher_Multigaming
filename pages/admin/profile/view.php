@@ -56,7 +56,7 @@
         <!-- Page-Title -->
         <div class="row">
             <div class="col-sm-12">
-                <h4 class="page-title">Profile view
+                <h4 class="page-title"><?php echo L::profile_view_title; ?>
                 </h4>
             </div>
         </div>
@@ -75,40 +75,40 @@
         </div>
         <div class="col-sm-5 col-lg-4">
             <div class="widget-simple text-center card-box">
-                <p class="text-muted font-500">Steam UID</p>
+                <p class="text-muted font-500"><?php echo L::profile_view_steamid; ?></p>
                 <h3 class="text-info" id="user_uid">...</h3>
                 <div class="widget-simple text-center card-box">
-                    <p class="text-muted font-500">In game money</p>
+                    <p class="text-muted font-500"><?php echo L::profile_view_igmoney; ?></p>
                     <div class="row">
                         <div class="col-sm-6">
-                            <p class="text-muted font-500">CASH</p>
-                            <h3 class="text-warning">$ <span class="counter" id="player_cash">0</span></h3>
+                            <p class="text-muted font-500"><?php echo L::profile_view_cash; ?></p>
+                            <h3 class="text-warning"><?php echo L::devices; ?> <span class="counter" id="player_cash">0</span></h3>
                         </div>
                         <div class="col-sm-6">
-                            <p class="text-muted font-500">BANK</p>
-                            <h3 class="text-primary">$ <span class="counter" id="player_bank">0</span></h3>
+                            <p class="text-muted font-500"><?php echo L::profile_view_bank; ?></p>
+                            <h3 class="text-primary"><?php echo L::devices; ?> <span class="counter" id="player_bank">0</span></h3>
                         </div>
                     </div>
                 </div>
                 <div class="widget-simple text-center card-box">
-                    <p class="text-muted font-500">In game information</p>
+                    <p class="text-muted font-500"><?php echo L::profile_view_iginfos; ?></p>
                     <div class="row">
                         <div class="col-sm-6">
-                            <p class="text-muted font-500">Username</p>
+                            <p class="text-muted font-500"><?php echo L::profile_view_username; ?></p>
                             <h3 class="text-info" id="player_name">.</h3>
                         </div>
                         <div class="col-sm-6">
-                            <p class="text-muted font-500">Admin level</p>
+                            <p class="text-muted font-500"><?php echo L::profile_view_adminlvl; ?></p>
                             <h3 class="text-info"><span class="counter" id="player_adminlevel">0</span></h3>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-sm-6">
-                            <p class="text-muted font-500">Cop level</p>
+                            <p class="text-muted font-500"><?php echo L::profile_view_coplvl; ?></p>
                             <h3 class="text-info" id="player_coplevel">0</h3>
                         </div>
                         <div class="col-sm-6">
-                            <p class="text-muted font-500">Medic level</p>
+                            <p class="text-muted font-500"><?php echo L::profile_view_mediclvl; ?></p>
                             <h3 class="text-info"><span class="counter" id="player_mediclevel">0</span></h3>
                         </div>
                     </div>

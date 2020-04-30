@@ -1,12 +1,5 @@
 <?php
 
-/*
- * Fork this project on GitHub!
- * https://github.com/Philipp15b/php-i18n
- *
- * License: MIT
- */
-
 class i18n {
 
     /**
@@ -15,7 +8,7 @@ class i18n {
      *
      * @var string
      */
-    protected $filePath = './lang/{LANGUAGE}.ini';
+    protected $filePath = './lang/{LANGUAGE}.json';
 
     /**
      * Cache file path
@@ -40,7 +33,7 @@ class i18n {
      *
      * @var bool
      */
-    protected $mergeFallback = true;
+    protected $mergeFallback = false;
 
     /**
      * The class name of the compiled class that contains the translated texts.
@@ -88,16 +81,6 @@ class i18n {
     protected $cacheFilePath = NULL;
     protected $isInitialized = false;
 
-
-    /**
-     * Constructor
-     * The constructor sets all important settings. All params are optional, you can set the options via extra functions too.
-     *
-     * @param string [$filePath] This is the path for the language files. You must use the '{LANGUAGE}' placeholder for the language.
-     * @param string [$cachePath] This is the path for all the cache files. Best is an empty directory with no other files in it. No placeholders.
-     * @param string [$fallbackLang] This is the language which is used when there is no language file for all other user languages. It has the lowest priority.
-     * @param string [$prefix] The class name of the compiled class that contains the translated texts. Defaults to 'L'.
-     */
     public function __construct($filePath = NULL, $cachePath = NULL, $fallbackLang = NULL, $prefix = NULL) {
         // Apply settings
         if ($filePath != NULL) {
