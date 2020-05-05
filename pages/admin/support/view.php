@@ -61,13 +61,13 @@
         <!-- Page-Title -->
         <div class="row">
             <div class="col-sm-12">
-                <h4 class="page-title">Support view</h4>
+                <h4 class="page-title"><?php echo L::support_title; ?></h4>
             </div>
         </div>
 
         <div class="col-lg-7">
             <div class="card-box">
-                <h4 class="m-t-0 m-b-20 header-title"><b>Chat</b></h4>
+                <h4 class="m-t-0 m-b-20 header-title"><b><?php echo L::support_chat; ?></b></h4>
 
                 <div class="chat-conversation">
                     <ul id="chat" class="conversation-list nicescroll" tabindex="5002">
@@ -78,7 +78,7 @@
                             <input id="chat_message" type="text" class="form-control chat-input" placeholder="Enter your text">
                         </div>
                         <div class="col-sm-3 chat-send">
-                            <button type="submit" class="btn btn-md btn-primary btn-block waves-effect waves-light">Send</button>
+                            <button type="submit" class="btn btn-md btn-primary btn-block waves-effect waves-light"><?php echo L::support_send; ?></button>
                         </div>
                     </div>
                 </div>
@@ -88,24 +88,24 @@
         <div class="col-lg-5">
             <div class="panel panel-color panel-primary">
                 <div class="panel-heading">
-                    <h3 class="panel-title">Support control</h3>
+                    <h3 class="panel-title"><?php echo L::support_title; ?></h3>
                 </div>
                 <div class="panel-body">
                     <p>
                         <input id="support_title" type="text" name="state-success" class="form-control" placeholder="Support title ...">
                         <br>
                         <select id="support_status" class="form-control">
-                            <option selected id="support_status0" value="0">Not assigned</option>
-                            <option id="support_status1" value="1">Assigned</option>
-                            <option id="support_status2" value="2">In progress</option>
-                            <option id="support_status3" value="3">Done</option>
-                            <option id="support_status4" value="4">Close</option>
+                            <option selected id="support_status0" value="0"><?php echo L::support_status_notassign; ?></option>
+                            <option id="support_status1" value="1"><?php echo L::support_status_assign; ?></option>
+                            <option id="support_status2" value="2"><?php echo L::support_status_inprogress; ?></option>
+                            <option id="support_status3" value="3"><?php echo L::support_status_done; ?></option>
+                            <option id="support_status4" value="4"><?php echo L::support_status_close; ?></option>
                         </select>
                     </p>
                 </div>
                 <div class="panel-footer">
-                    <button type="button" class="btn btn-success btn-custom waves-effect w-md waves-light m-b-5" onclick="assign_support(<?php echo $id;?>)">Assign to me</button>
-                    <button type="button" class="btn btn-primary btn-custom waves-effect w-md waves-light m-b-5" onclick="save_support(<?php echo $id;?>)">Save</button>
+                    <button type="button" class="btn btn-success btn-custom waves-effect w-md waves-light m-b-5" onclick="assign_support(<?php echo $id;?>)"><?php echo L::support_assigntome; ?></button>
+                    <button type="button" class="btn btn-primary btn-custom waves-effect w-md waves-light m-b-5" onclick="save_support(<?php echo $id;?>)"><?php echo L::support_save; ?></button>
                 </div>
             </div>
         </div>

@@ -28,6 +28,13 @@ function getCookie(name) {
     return (value != null) ? unescape(value[1]) : null;
 }
 
+/*async function turnOffMaintenance() {
+    let data = new FormData(); 
+    data.append('token', $("meta[name='token']").attr("content"));
+    data.append(state, 0);
+    return (await (await fetch("/api/switch/maintenance", { method: "POST", body: data})).json()).message;
+}*/
+
 function switch_maintenance() {
     var button = document.getElementById("maintenance");
     var label = document.getElementById("maintenance_state");

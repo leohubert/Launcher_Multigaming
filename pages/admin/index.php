@@ -64,7 +64,7 @@
                 <!-- Page-Title -->
                 <div class="row">
                     <div class="col-sm-12">
-                        <h4 class="page-title">Welcome !</h4>
+                        <h4 class="page-title"><?php echo L::indexadmin_title; ?></h4>
                     </div>
                 </div>
                 <!-- Page-Title -->
@@ -75,7 +75,7 @@
                             <div>
                                 <i class="md md-account-child text-primary"></i>
                                 <div class="wid-icon-info">
-                                    <p class="text-muted m-b-5 font-13 text-uppercase">Total connections during 7 days</p>
+                                    <p class="text-muted m-b-5 font-13 text-uppercase"><?php echo L::indexadmin_conn7; ?></p>
                                     <h4 class="m-t-0 m-b-5 counter"><div id="total_7days">.</div></h4>
                                 </div>
                             </div>
@@ -86,7 +86,7 @@
                             <div>
                                 <i class="md md-account-child text-primary"></i>
                                 <div class="wid-icon-info">
-                                    <p class="text-muted m-b-5 font-13 text-uppercase">New User during 7 days</p>
+                                    <p class="text-muted m-b-5 font-13 text-uppercase"><?php echo L::indexadmin_nuser7; ?></p>
                                     <h4 class="m-t-0 m-b-5 counter"><div id="total_new7days">.</div></h4>
                                 </div>
                             </div>
@@ -97,7 +97,7 @@
                             <div>
                                 <i class="md md-account-child text-primary"></i>
                                 <div class="wid-icon-info">
-                                    <p class="text-muted m-b-5 font-13 text-uppercase">Total users</p>
+                                    <p class="text-muted m-b-5 font-13 text-uppercase"><?php echo L::indexadmin_totaluser; ?></p>
                                     <h4 class="m-t-0 m-b-5 counter"><div id="total_users">.</div></h4>
                                 </div>
                             </div>
@@ -108,7 +108,7 @@
                             <div>
                                 <i class="md md-account-child text-primary"></i>
                                 <div class="wid-icon-info">
-                                    <p class="text-muted m-b-5 font-13 text-uppercase">Total admins</p>
+                                    <p class="text-muted m-b-5 font-13 text-uppercase"><?php echo L::indexadmin_totaladmin; ?></p>
                                     <h4 class="m-t-0 m-b-5 counter"><div id="total_admins">.</div></h4>
                                 </div>
                             </div>
@@ -121,22 +121,22 @@
                         <div class="col-sm-12">
                             <div class="card-box table-responsive">
 
-                                <h4 class="m-t-0 header-title"><b>Support</b></h4>
+                                <h4 class="m-t-0 header-title"><b><?php echo L::indexadmin_suptitle; ?></b></h4>
                                 <p class="text-muted font-13 m-b-30">
-                                    All support request.
+                                <?php echo L::indexadmin_supsubtitle; ?>
                                 </p>
 
                                 <table id="datatable-responsive" class="table table-striped table-bordered dt-responsive nowrap" cellspacing="0" width="100%">
                                     <thead>
                                     <tr>
-                                        <th>#</th>
-                                        <th>Create by</th>
-                                        <th>Title</th>
-                                        <th>Start Date</th>
-                                        <th>Last Date</th>
-                                        <th>Status</th>
-                                        <th>Assigned to</th>
-                                        <th>Actions</th>
+                                        <th><?php echo L::indexadmin_rows_id; ?></th>
+                                        <th><?php echo L::indexadmin_rows_createby; ?></th>
+                                        <th><?php echo L::indexadmin_rows_title; ?></th>
+                                        <th><?php echo L::indexadmin_rows_createat; ?></th>
+                                        <th><?php echo L::indexadmin_rows_lastup; ?></th>
+                                        <th><?php echo L::indexadmin_rows_status; ?></th>
+                                        <th><?php echo L::indexadmin_rows_assignto; ?></th>
+                                        <th><?php echo L::indexadmin_rows_actions; ?></th>
                                     </tr>
                                     </thead>
                                     <tbody id="support">

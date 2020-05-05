@@ -69,7 +69,7 @@
         <!-- Page-Title -->
         <div class="row">
             <div class="col-sm-12">
-                <h4 class="page-title">All admins users</h4>
+                <h4 class="page-title"><?php echo L::adminuser_title; ?></h4>
             </div>
         </div>
         <!-- Page-Title -->
@@ -79,22 +79,22 @@
                 <div class="col-sm-12">
                     <div class="card-box table-responsive">
 
-                        <h4 class="m-t-0 header-title"><b>All users</b></h4>
+                        <h4 class="m-t-0 header-title"><b><?php echo L::adminuser_alluser; ?></b></h4>
                         <p class="text-muted font-13 m-b-30">
-                            Table with all users.
+                        <?php echo L::adminuser_subtitle; ?>
                         </p>
 
                         <table id="datatable-responsive" class="table table-striped table-bordered dt-responsive nowrap" cellspacing="0" width="100%">
                             <thead>
                             <tr>
-                                <th>#</th>
-                                <th>Username</th>
-                                <th>Email</th>
-                                <th>Banned</th>
-                                <th>Level</th>
-                                <th>Last ip</th>
-                                <th>Steam UID</th>
-                                <th>Actions</th>
+                                <th><?php echo L::adminuser_rows_id; ?></th>
+                                <th><?php echo L::adminuser_rows_username; ?></th>
+                                <th><?php echo L::adminuser_rows_mail; ?></th>
+                                <th><?php echo L::adminuser_rows_banned; ?></th>
+                                <th><?php echo L::adminuser_rows_level; ?></th>
+                                <th><?php echo L::adminuser_rows_lastip; ?></th>
+                                <th><?php echo L::adminuser_rows_steamuuid; ?></th>
+                                <th><?php echo L::adminuser_rows_actions; ?></th>
                             </tr>
                             </thead>
                             <tbody id="users">

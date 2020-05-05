@@ -119,5 +119,98 @@
             },
             "createserver": "Create a new server"
         }
+    },
+    "support": {
+        "title": "Support Center",
+        "chat": "Chat",
+        "send": "Send",
+        "status": {
+            "notassign": "Not assigned",
+            "assign": "Assigned",
+            "inprogress": "In progress",
+            "done": "Done",
+            "close": "Close"
+        },
+        "assigntome": "Assign to me",
+        "save": "Save"
+    },
+    "adminuser": {
+        "title": "All of your Staff",
+        "subtitle": "",
+        "alluser": "All users",
+        "rows": {
+            "id": "#",
+            "username": "Username",
+            "mail": "Email",
+            "banned": "Banned",
+            "level": "Level",
+            "lastip": "Last ip",
+            "steamuuid": "Steam UID",
+            "actions": "Actions"
+        },
+        "alluserp": {
+            "title": "All users control",
+            "subtitle": ""
+        },
+        "bannedp": {
+            "title": "All banned users",
+            "subtitle": ""
+        },
+        "usersp": {
+            "title": "user Profile",
+            "subtitle": "",
+            "createticket": "Create support with user",
+            "steamuuid": "Steam UID",
+            "igmoney": "In game money",
+            "cash": "CASH",
+            "bank": "BANK",
+            "iginfo": "In game information",
+            "username": "Username",
+            "adminlvl": "Admin level",
+            "coplvl": "Cop level",
+            "mediclvl": "Medic level",
+            "totalhel": "TOTAL HELICOPTER",
+            "totalcar": "TOTAL VEHICLE",
+            "usercontrol": "User control",
+            "rowsrole": {
+                "notvalid": "No valided",
+                "player": "Player",
+                "policeman": "Policeman",
+                "medic": "Medic",
+                "rebel": "Rebel",
+                "vip": "VIP",
+                "support": "Support",
+                "modo": "Moderator",
+                "admin": "Admin",
+                "devs": "Developer",
+                "ceo": "Founder"
+            },
+            "deluser": "Delete this user",
+            "createsupp": {
+                "title": "Create a support request",
+                "suptitle": "Support title",
+                "mess": "Message",
+                "sendreq": "Send request"
+            }
+        }
+    },
+    "indexadmin": {
+        "title": "Dashboard",
+        "conn7": "Total connections during 7 days",
+        "nuser7": "New User during 7 days",
+        "totaluser": "Total users",
+        "totaladmin": "Total admins",
+        "suptitle": "Support",
+        "supsubtitle": "All support request.",
+        "rows": {
+            "id": "#",
+            "createby": "Create by",
+            "title": "Title",
+            "createat": "Start Date",
+            "lastup": "Last Date",
+            "status": "Status",
+            "assignto": "Assigned to",
+            "actions": "Actions"
+        }
     }
 }

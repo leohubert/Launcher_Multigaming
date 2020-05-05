@@ -59,7 +59,7 @@
         <!-- Page-Title -->
         <div class="row">
             <div class="col-sm-12">
-                <h4 class="page-title">User viewer
+                <h4 class="page-title"><?php echo L::adminuser_usersp_title; ?>
                 </h4>
             </div>
         </div>
@@ -78,57 +78,57 @@
             <div class="card-box widget-user">
                 <div>
                     <div class="wid-u-info">
-                        <button data-toggle="modal" data-target="#con-close-modal" type="button" class="btn btn-primary btn-custom waves-effect w-md waves-light m-b-5">Create support with user</button>
+                        <button data-toggle="modal" data-target="#con-close-modal" type="button" class="btn btn-primary btn-custom waves-effect w-md waves-light m-b-5"><?php echo L::adminuser_usersp_createticket; ?></button>
                     </div>
                 </div>
             </div>
         </div>
         <div class="col-sm-5 col-lg-4">
             <div class="widget-simple text-center card-box">
-                <p class="text-muted font-500">Steam UID</p>
+                <p class="text-muted font-500"><?php echo L::adminuser_usersp_steamuuid; ?></p>
                 <h3 class="text-info" id="user_uid">...</h3>
                 <div class="widget-simple text-center card-box">
-                    <p class="text-muted font-500">In game money</p>
+                    <p class="text-muted font-500"><?php echo L::adminuser_usersp_igmoney; ?></p>
                     <div class="row">
                         <div class="col-sm-6">
-                            <p class="text-muted font-500">CASH</p>
-                            <h3 class="text-warning">$ <span class="counter" id="player_cash">0</span></h3>
+                            <p class="text-muted font-500"><?php echo L::adminuser_usersp_cash; ?></p>
+                            <h3 class="text-warning"><?php echo L::devices; ?> <span class="counter" id="player_cash">0</span></h3>
                         </div>
                         <div class="col-sm-6">
-                            <p class="text-muted font-500">BANK</p>
-                            <h3 class="text-primary">$ <span class="counter" id="player_bank">0</span></h3>
+                            <p class="text-muted font-500"><?php echo L::adminuser_usersp_bank; ?></p>
+                            <h3 class="text-primary"><?php echo L::devices; ?> <span class="counter" id="player_bank">0</span></h3>
                         </div>
                     </div>
                 </div>
                 <div class="widget-simple text-center card-box">
-                    <p class="text-muted font-500">In game information</p>
+                    <p class="text-muted font-500"><?php echo L::adminuser_usersp_iginfo; ?></p>
                     <div class="row">
                         <div class="col-sm-6">
-                            <p class="text-muted font-500">Username</p>
+                            <p class="text-muted font-500"><?php echo L::adminuser_usersp_username; ?></p>
                             <h3 class="text-info" id="player_name">.</h3>
                         </div>
                         <div class="col-sm-6">
-                            <p class="text-muted font-500">Admin level</p>
+                            <p class="text-muted font-500"><?php echo L::adminuser_usersp_adminlvl; ?></p>
                             <h3 class="text-info"><span class="counter" id="player_adminlevel">0</span></h3>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-sm-6">
-                            <p class="text-muted font-500">Cop level</p>
+                            <p class="text-muted font-500"><?php echo L::adminuser_usersp_coplvl; ?></p>
                             <h3 class="text-info" id="player_coplevel">0</h3>
                         </div>
                         <div class="col-sm-6">
-                            <p class="text-muted font-500">Medic level</p>
+                            <p class="text-muted font-500"><?php echo L::adminuser_usersp_mediclvl; ?></p>
                             <h3 class="text-info"><span class="counter" id="player_mediclevel">0</span></h3>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-sm-6">
-                            <p class="text-muted font-500">TOTAL HELICOPTER</p>
+                            <p class="text-muted font-500"><?php echo L::adminuser_usersp_totalhel; ?></p>
                             <h3 class="text-info"><span class="counter" id="helicopter">2</span></h3>
                         </div>
                         <div class="col-sm-6">
-                            <p class="text-muted font-500">TOTAL VEHICLE</p>
+                            <p class="text-muted font-500"><?php echo L::adminuser_usersp_totalcar; ?></p>
                             <h3 class="text-info"><span class="counter" id="vehicle">24</span></h3>
                         </div>
                     </div>
@@ -138,7 +138,7 @@
         <div class="col-sm-5 col-lg-5">
             <div class="panel panel-color panel-primary">
                 <div class="panel-heading">
-                    <h3 class="panel-title">User control</h3>
+                    <h3 class="panel-title"><?php echo L::adminuser_usersp_usercontrol; ?></h3>
                 </div>
                 <div class="panel-body">
                     <p>
@@ -172,17 +172,17 @@
                     <div class="form-group">
                         <div class="col-sm-6">
                             <select id="control_level" class="form-control">
-                                <option id="level0" value="0" selected>No valided</option>
-                                <option id="level1" value="1">Player</option>
-                                <option id="level2" value="2">Policeman</option>
-                                <option id="level3" value="3">Medic</option>
-                                <option id="level4" value="4">Rebel</option>
-                                <option id="level5" value="5">VIP</option>
-                                <option id="level6" value="6">Support</option>
-                                <option id="level7" value="7">Moderator</option>
-                                <option id="level8" value="8">Admin</option>
-                                <option id="level9" value="9">Developer</option>
-                                <option id="level10" value="10">Founder</option>
+                                <option id="level0" value="0" selected><?php echo L::adminuser_usersp_rowsrole_notvalid; ?></option>
+                                <option id="level1" value="1"><?php echo L::adminuser_usersp_rowsrole_player; ?></option>
+                                <option id="level2" value="2"><?php echo L::adminuser_usersp_rowsrole_policeman; ?></option>
+                                <option id="level3" value="3"><?php echo L::adminuser_usersp_rowsrole_medic; ?></option>
+                                <option id="level4" value="4"><?php echo L::adminuser_usersp_rowsrole_rebel; ?></option>
+                                <option id="level5" value="5"><?php echo L::adminuser_usersp_rowsrole_vip; ?></option>
+                                <option id="level6" value="6"><?php echo L::adminuser_usersp_rowsrole_support; ?></option>
+                                <option id="level7" value="7"><?php echo L::adminuser_usersp_rowsrole_modo; ?></option>
+                                <option id="level8" value="8"><?php echo L::adminuser_usersp_rowsrole_admin; ?></option>
+                                <option id="level9" value="9"><?php echo L::adminuser_usersp_rowsrole_devs; ?></option>
+                                <option id="level10" value="10"><?php echo L::adminuser_usersp_rowsrole_ceo; ?></option>
                             </select>
                         </div>
                         <div class="col-sm-2 text-center">
@@ -190,16 +190,16 @@
                         </div>
                         <div class="col-sm-4">
                             <select id="control_banned" class="form-control">
-                                <option id="banned0" value="0" selected>No</option>
-                                <option id="banned1" value="1">Yes</option>
+                                <option id="banned0" value="0" selected><?php echo L::no; ?></option>
+                                <option id="banned1" value="1"><?php echo L::yes; ?></option>
                             </select>
                         </div>
                     </div>
                 </p>
                 </div>
                 <div class="panel-footer">
-                    <button type="button" class="btn btn-danger btn-custom waves-effect w-md waves-light m-b-5" onclick="deleteUser()">Delete this user</button>
-                    <button type="button" class="btn btn-success btn-custom waves-effect w-md waves-light m-b-5" onclick="saveUser()">Save</button>
+                    <button type="button" class="btn btn-danger btn-custom waves-effect w-md waves-light m-b-5" onclick="deleteUser()"><?php echo L::adminuser_usersp_deluser; ?></button>
+                    <button type="button" class="btn btn-success btn-custom waves-effect w-md waves-light m-b-5" onclick="saveUser()"><?php echo L::save; ?></button>
                 </div>
             </div>
         </div>
@@ -211,7 +211,7 @@
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                <h4 class="modal-title">Create a support request</h4>
+                <h4 class="modal-title"><?php echo L::adminuser_usersp_createsupp_title; ?></h4>
             </div>
             <div class="modal-body">
                 <div class="row">
@@ -230,7 +230,7 @@
                 <div class="row">
                     <div class="col-md-6">
                         <div class="form-group">
-                            <label for="field-1" class="control-label">Support title</label>
+                            <label for="field-1" class="control-label"><?php echo L::adminuser_usersp_createsupp_suptitle; ?></label>
                             <input type="text" class="form-control" id="createSupport_title" placeholder="Ban request...">
                         </div>
                     </div>
@@ -238,15 +238,15 @@
                 <div class="row">
                     <div class="col-md-12">
                         <div class="form-group no-margin">
-                            <label for="field-7" class="control-label">Message</label>
+                            <label for="field-7" class="control-label"><?php echo L::adminuser_usersp_createsupp_mess; ?></label>
                             <textarea class="form-control autogrow" id="createSupport_message" placeholder="Write something about your request" style="overflow: hidden; word-wrap: break-word; resize: horizontal; height: 104px;"></textarea>
                         </div>
                     </div>
                 </div>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-default waves-effect" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-info waves-effect waves-light" onclick="createSupport()">Send request</button>
+                <button type="button" class="btn btn-default waves-effect" data-dismiss="modal"><?php echo L::close; ?></button>
+                <button type="button" class="btn btn-info waves-effect waves-light" onclick="createSupport()"><?php echo L::adminuser_usersp_createsupp_sendreq; ?></button>
             </div>
          </div>
         </div>
