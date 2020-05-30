@@ -33,7 +33,7 @@ class i18n {
      *
      * @var bool
      */
-    protected $mergeFallback = false;
+    protected $mergeFallback = true;
 
     /**
      * The class name of the compiled class that contains the translated texts.
