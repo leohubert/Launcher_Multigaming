@@ -29,9 +29,9 @@ https://github.com/emodyz/MultigamingLauncher
 --------------------------------------------------
 ## Install Command:
 
-- wget https://raw.githubusercontent.com/MrDarkSkil/Launcher_Multigaming/bash-unix/auto-installV5.sh<br>
-- chmod +x<br>
-- ./auto-installV5.sh<br>
+```bash
+curl -s -L https://raw.githubusercontent.com/MrDarkSkil/Launcher_Multigaming/bash-unix/auto-installV5.sh | bash
+```
 --------------------------------------------------
 
 ## WebPanel :
