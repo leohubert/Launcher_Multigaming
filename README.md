@@ -11,13 +11,14 @@ Arma3 - Altis Life / EXILE and more...
 Version: 5.4<br>
 Release date: 28/02/2017 19:24 <br>
 <br>
-Copyright HUBERT Léo © 2014 - 2018<br>
+Copyright HUBERT Léo © 2014 - 2021<br>
 
 If you have any question or suggestion you can talk with the dev team on Discord:<br>
 https://discord.gg/75pQdYx<br>
 
 You can follow the new launcher here:<br>
-https://github.com/emodyz/launcher-ezgames.eu
+https://github.com/emodyz/MultigamingPanel
+https://github.com/emodyz/MultigamingLauncher
 
 ## Coming soon:  
 - Login with forum, facebook, etc ... (XenForo in progress)
@@ -33,8 +34,8 @@ https://github.com/emodyz/launcher-ezgames.eu
 - ./auto-installV5.sh<br>
 --------------------------------------------------
 
-## Alpha WebPanel :
-https://github.com/MrDarkSkil/Launcher_Multigaming/tree/webpanel-test
+## WebPanel :
+https://github.com/leohubert/Launcher_Multigaming_Panel
 
 ## Creators:
 
