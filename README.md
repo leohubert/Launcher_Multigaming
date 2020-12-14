@@ -17,7 +17,7 @@ If you have any question or suggestion you can talk with the dev team on Discord
 https://discord.gg/75pQdYx<br>
 
 You can follow the new launcher here:<br>
-https://github.com/emodyz/MultigamingPanel
+https://github.com/emodyz/MultigamingPanel  
 https://github.com/emodyz/MultigamingLauncher
 
 ## Coming soon:  
